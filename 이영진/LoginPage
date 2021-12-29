@@ -1,0 +1,73 @@
+import React, { Component } from 'react'
+import styled from "styled-components";
+import {Typography, Button, Box, TextField, handleSubmit} from '@material-ui/core'
+
+const LoginButton = styled(Button)`
+    &&{
+        font-size: 14px;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        line-height: 2em;
+        background-color: rgb(52, 152, 219);
+        padding: 5px 100px 5px 100px
+    }
+
+`;
+
+const Box1 = styled.div`
+    border: 2px solid rgb(158,158,158);
+    padding: 40px;
+    border-radius: 10px;
+`
+
+
+
+export default class pwsearch extends Component {
+    render() {
+        const handleSubmit = (event) => {
+            event.preventDefault();
+            const data = new FormData(event.currentTarget);
+            // eslint-disable-next-line no-console
+            console.log({
+              id: data.get('id'),
+            });
+          };
+        return (
+            <div>
+                <Box
+            sx={{
+              marginTop: 150,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
+            }}>
+                 <Box1>
+                 
+              <span style={{color: '#4B89DC', fontSize: '40px', fontFamily: 'HanSans', fontWeight:'bold'}}>SUGANG</span><span style={{ color:'rgb(158,158,158)',fontWeight:'bold', paddingLeft:'10px' }}>회원가입</span>
+                     <div style={{paddingBottom:'30px', borderBottom:'2px solid rgb(158,158,158)', fontSize:'20px', fontWeight:'bold'}}>비밀번호 찾기</div>
+                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}></Box>
+                     <div style={{fontSize:"15px", fontWeight:"normal"}}>SUGANG 아이디 입력</div>
+                     <TextField margin="normal"
+                        required
+                        id="outlined-basic"
+                        variant="outlined"
+                        label="Input your ID"
+                        name="id"
+                        autoComplete="id"
+                        autoFocus
+                        ></TextField>
+                     <Box/> 
+
+                     <LoginButton>비밀번호 찾기</LoginButton>
+                     <div style={{ fontSize:'12px', fontWeight:'bold', color: 'rgb(158,158,158)', paddingTop: '20px'}}>아이디에 해당하는 학교메일로 임시 비밀번호를 전송합니다.</div>
+                     
+                     
+                     
+                </Box1>
+                
+                </Box>
+            </div>
+        )
+    }
+}
