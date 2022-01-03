@@ -1,12 +1,19 @@
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container, createTheme, ThemeProvider } from "@material-ui/core";
-import styled from "styled-components";
-import idsearch from "./idsearch";
+import React, {useState} from "react";
+import {CssBaseline, FormControlLabel, Checkbox, Link, Grid, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
 import {Box1, LoginButton, Logo, IdPwSearchLink, IdInput, PwInput} from "./login.element";
 
+
+
   const theme = createTheme();
-  
-  // 로그인 버튼 이벤트
   const Login = () => {
+    const [checked, setChecked] = useState(false);
+
+    // 체크박스 이벤트
+    const handleChange = (event) => {
+    setChecked(event.target.checked);
+    };
+
+    // 로그인 버튼 이벤트
     const handleSubmit = (event) => {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
@@ -14,9 +21,12 @@ import {Box1, LoginButton, Logo, IdPwSearchLink, IdInput, PwInput} from "./login
       console.log({
         id: data.get('id'),
         password: data.get('password'),
+        checkbox: checked
       });
     };
-  
+    
+   
+
     return (
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="xs">
@@ -27,7 +37,7 @@ import {Box1, LoginButton, Logo, IdPwSearchLink, IdInput, PwInput} from "./login
               <IdInput/>
               <PwInput/>
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
+                control={<Checkbox checked={checked} onChange={handleChange} color="primary" />}
                 label="로그인 유지"
               />
               <LoginButton
