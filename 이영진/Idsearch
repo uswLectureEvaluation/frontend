@@ -1,34 +1,13 @@
-import React, { Component } from 'react'
-import styled from "styled-components";
-import {Typography, Button, Box, TextField, handleSubmit} from '@material-ui/core'
-
-const LoginButton = styled(Button)`
-    &&{
-        font-size: 14px;
-        font-weight: bold;
-        color: rgb(255, 255, 255);
-        text-align: center;
-        line-height: 2em;
-        background-color: rgb(52, 152, 219);
-        padding: 5px 100px 5px 100px
-    }
-
-`;
-
-const Box1 = styled.div`
-    border: 2px solid rgb(158,158,158);
-    padding: 40px;
-    border-radius: 10px;
-`
+import React from 'react'
+import {Box} from '@material-ui/core'
+import {SearchButton, Box1, Logo, String1, String2, AccountInput} from "./idsearch.element"
 
 
-
-export default class idsearch extends Component {
-    render() {
+const Idsearch = () => {
+        // 아이디 찾기 버튼 이벤트
         const handleSubmit = (event) => {
             event.preventDefault();
             const data = new FormData(event.currentTarget);
-            // eslint-disable-next-line no-console
             console.log({
               email: data.get('email'),
             });
@@ -42,31 +21,19 @@ export default class idsearch extends Component {
               flexDirection: 'column',
               alignItems: 'center'
             }}>
-                 <Box1>
-                 
-              <div style={{color: '#4B89DC', fontSize: '50px', fontFamily: 'HanSans', fontWeight:'bold'}}>SUGANG</div>
-                     <div style={{paddingBottom:'30px', borderBottom:'2px solid rgb(158,158,158)', fontSize:'20px', fontWeight:'bold'}}>아이디 찾기</div>
-                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}></Box>
-                     <div style={{fontSize:"15px", fontWeight:"normal"}}>학교 계정 입력</div>
-                     <TextField margin="normal"
-                        required
-                        id="outlined-basic"
-                        variant="outlined"
-                        label="example@suwon.ac.kr"
-                        name="email"
-                        autoComplete="email"
-                        autoFocus
-                        ></TextField>
-                     <Box/> 
-
-                     <LoginButton>아이디 찾기</LoginButton>
-                     
-                     
-                     
-                </Box1>
-                
+                    <Box1>         
+                        <Logo>SUGANG</Logo>
+                        <String1>아이디 찾기</String1>
+                        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                            <String2>학교 계정 입력</String2>
+                            <AccountInput/>
+                            <Box/> 
+                            <SearchButton 
+                            type="submit">아이디 찾기</SearchButton>
+                        </Box>          
+                    </Box1>
                 </Box>
             </div>
         )
     }
-}
+export default Idsearch
