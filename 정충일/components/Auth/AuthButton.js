@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-    margin-top: 1rem;
+    margin: 0;
     padding-top: 0.6rem;
     padding-bottom: 0.5rem;
 
@@ -10,8 +10,8 @@ const Wrapper = styled.div`
     color: white;
 
     text-align: center;
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: bold;
     border-radius: 12px;
 
     cursor: pointer;

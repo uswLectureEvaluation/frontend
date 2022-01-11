@@ -10,7 +10,7 @@ const Positioner = styled.div`
 
 const Contents = styled.div`
     background: white;
-    padding: 2rem;
+    padding: 3rem 10rem;
     height: auto;
     border: 0.01em solid #e0e0e0 ;
     border-radius: 12px;
