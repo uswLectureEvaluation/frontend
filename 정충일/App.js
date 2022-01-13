@@ -1,5 +1,5 @@
 import React from 'react';
-import JoinMember from './components/Auth/joinMember'
+import JoinMember from './components/Auth/JoinMember'
 
 const App = () => {
   return (
