@@ -1,6 +1,6 @@
 import React from 'react'
 import {Box} from '@material-ui/core'
-import {Box1, String1, String2, String3, SearchButton, Logo, IdInput} from './pwsearch.element'
+import {Box1, String1, String2, String3, SearchButton, Logo, IdInput, EmailInput} from './pwsearch.element'
 
 const Pwsearch =() => {
     // 비밀번호 찾기 버튼 이벤트
@@ -15,7 +15,6 @@ const Pwsearch =() => {
             <div>
                 <Box
             sx={{
-              marginTop: 150,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center'
@@ -24,8 +23,9 @@ const Pwsearch =() => {
                         <Logo>SUGANG</Logo>
                         <String1>비밀번호 찾기</String1>
                         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                            <String2>SUGANG 아이디 입력</String2>
+                            <String2>SUGANG 아이디/이메일 입력</String2>
                             <IdInput/>
+                            <EmailInput/>
                             <Box/> 
                             <SearchButton type='submit'>비밀번호 찾기</SearchButton>
                         </Box>

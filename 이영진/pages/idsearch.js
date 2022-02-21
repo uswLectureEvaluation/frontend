@@ -16,7 +16,6 @@ const Idsearch = () => {
             <div>
                 <Box
             sx={{
-              marginTop: 150,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center'
