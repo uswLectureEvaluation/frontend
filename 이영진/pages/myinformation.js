@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Box1, Box2, String1, String2, String3, String4, Circle1, line1, Line1, ColorString1, ColorString2, LoginButton, TextButton } from './myinformation.element'
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container, createTheme, ThemeProvider } from "@material-ui/core";
-import { border } from '@mui/system';
+import { String1, String2, String3, String4, Circle1, Line1, ColorString1, ColorString2, LoginButton, TextButton } from './myinformation.element'
+import { CssBaseline, Grid, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
+import {useNavigate} from 'react-router-dom'
 
 const theme = createTheme();
 
 const Myinformation =  () => {
+  const navigate = useNavigate(); 
 
         return (
             <ThemeProvider theme={theme}>
@@ -52,7 +53,7 @@ const Myinformation =  () => {
                 <String4>로그인 아이디</String4><span style={{fontSize:"17px"}}>koownij</span>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <LoginButton>내가 쓴 글</LoginButton>
+                <LoginButton onClick={()=>{navigate("myinfodetail")}}>내가 쓴 글</LoginButton>
               </Grid>
             </Grid>
           </Box>
