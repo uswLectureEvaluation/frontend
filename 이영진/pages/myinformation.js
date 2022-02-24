@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { String1, String2, String3, String4, Circle1, Line1, ColorString1, ColorString2, LoginButton, TextButton } from './myinformation.element'
+import { String1, String2, String3, String4, Circle1, Line1, ColorString1, ColorString2, LoginButton, TextButton, Button1 } from './myinformation.element'
 import { CssBaseline, Grid, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
 import {useNavigate} from 'react-router-dom'
 
@@ -10,7 +10,7 @@ const Myinformation =  () => {
 
         return (
             <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="md" style={{backgroundColor: "white"}}>
+      <Container component="main" maxWidth="sm" style={{backgroundColor: "white"}}>
         <CssBaseline />
         <Box
           sx={{
@@ -48,14 +48,8 @@ const Myinformation =  () => {
             borderRadius: '10px'
               }}>
             <String1>내 정보</String1>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <String4>로그인 아이디</String4><span style={{fontSize:"17px"}}>koownij</span>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <LoginButton onClick={()=>{navigate("myinfodetail")}}>내가 쓴 글</LoginButton>
-              </Grid>
-            </Grid>
+            <String4>로그인 아이디</String4><span style={{fontSize:"14px"}}>koownij</span>
+            <Button1 onClick={()=>{navigate("myinfodetail")}}>내가 쓴 글</Button1>
           </Box>
           <Box noValidate sx={{ 
             mt: 3 ,
