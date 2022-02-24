@@ -10,7 +10,7 @@ const Myinformation =  () => {
 
         return (
             <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="md">
+      <Container component="main" maxWidth="md" style={{backgroundColor: "white"}}>
         <CssBaseline />
         <Box
           sx={{

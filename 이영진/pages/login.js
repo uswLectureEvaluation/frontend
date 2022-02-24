@@ -74,7 +74,7 @@ import {Cookies} from 'react-cookie'
     
     return (
       <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="xs" style={{backgroundColor:'white'}} >
           <CssBaseline />
           <Box1>
               <Logo>SUGANG</Logo>
