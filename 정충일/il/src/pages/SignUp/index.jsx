@@ -4,7 +4,7 @@ import Input from '../../components/Input'
 import * as Styled from './styled';
 import { Positioner } from '../../components/Wrapper/styled'
 
-const Join = () => {
+const SignUp = () => {
     //이름, 이메일, 비밀번호, 비밀번호 확인
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -81,37 +81,83 @@ const Join = () => {
         }
     },
     [password]
-    )
+  )
+  
+
+
+    //체크박스
+    const [checkList, setCheckList] = useState([]);
+  
+    // 체크박스 전체선택시 모두선택 체크박스 활성화시키기
+    const handleCheck = (e) => {
+      e.target.checked
+        ? setCheckList([...checkList, e.target.name])
+        : setCheckList(checkList.filter(el => el !== e.target.name));
+    };
+
+    // 전체체크 선택시 전체 선택 or 전체해제
+    const checkAll = (e) => {
+      e.target.checked ? setCheckList(['terms', 'privacy']) : setCheckList([]);
+    };
 
 
     return (
         <Positioner>
             <Styled.Title>회원가입</Styled.Title>
-                <Input label="아이디" placeholder="아이디" onChange={onChangeName} />
-                {name.length > 0 && <span className={`message ${isName ? 'success' : 'error'}`}>{nameMessage}</span>}
-                <Input label="비밀번호" placeholder="비밀번호" type="password" onChange={onChangePassword} />
-                {password.length > 0 && (<span className={`message ${isPassword ? 'success' : 'error'}`}>{passwordMessage}</span>)}
-                <Input placeholder="비밀번호 확인" type="password" onChange={onChangePasswordConfirm}/>
-                {passwordConfirm.length > 0 && (
-            <span className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</span>
-          )}
-                <Input label="이메일" placeholder="이메일" onChange={onChangeEmail} />
-                {email.length > 0 && <span className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</span>}
+            <Input label="아이디" name="username" placeholder="아이디" onChange={onChangeName} />
+            {name.length > 0 && <Styled.Checking className={`message ${isName ? 'success' : 'error'}`}>{nameMessage}</Styled.Checking>}
+    
+            <Input label="비밀번호" name="password" placeholder="비밀번호" type="password" onChange={onChangePassword} />
+            {password.length > 0 && (<Styled.Checking className={`message ${isPassword ? 'success' : 'error'}`}>{passwordMessage}</Styled.Checking>)}
+    
+            <Input placeholder="비밀번호 확인" name="passwordConfirm" type="password" onChange={onChangePasswordConfirm}/>
+            {passwordConfirm.length > 0 && (
+            <Styled.Checking className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</Styled.Checking>
+            )}
+    
+            <Input label="이메일" name="email" placeholder="이메일" onChange={onChangeEmail} />
+            {email.length > 0 && <Styled.Checking className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</Styled.Checking>}
 
-            <label>
-                <input type="checkbox"/> 전체 동의 <br/><br/>
-                <input type="checkbox"/> 이용약관 동의 <button type="button" style={{border:"0", background:"0 0", cursor:"pointer", textDecoration:"underline", color:"gray", lineHeight:"1.5", display:"block", float:"right",  fontSize:"12px"}}
-            class="link" onclick="privacyAgreeUsagePopBtnClickHandler2()">약관보기</button><br />
-                <input type="checkbox"/> 개인정보처리방침 동의 <button type="button" style={{border:"0", background:"0 0", cursor:"pointer", textDecoration:"underline", color:"gray", lineHeight:"1.5", display:"block", float:"right",  fontSize:"12px"}}
-            class="link" onclick="privacyAgreeUsagePopBtnClickHandler2()">약관보기</button><br />
-            </label>
+            <Styled.Label>
+              <div>
+                <input
+                  type="checkbox"
+                  name="checkAll"
+                  onChange={checkAll}
+                  checked={checkList.length === 2 ? true : false}
+                  />
+                  아래 내용에 모두 동의합니다.
+              </div>
+            </Styled.Label>
+            <Styled.Label>
+              <div>
+                <input
+                    type="checkbox"
+                    name="terms"
+                    onChange={handleCheck}
+                    checked={checkList.includes('terms') ? true : false}
+                  />
+              [필수] 이용약관 동의
+              </div>
+                <Styled.AgreeButton className="showMore">상세보기</Styled.AgreeButton>
+              </Styled.Label>
+              <Styled.Label>
+                <div>
+                    <input
+                      type="checkbox"
+                      name="privacy"
+                      onChange={handleCheck}
+                      checked={checkList.includes('privacy') ? true : false}
+                      />
+                [필수] 개인정보처리방침 동의
+                    </div>
+                  <Styled.AgreeButton className="showMore">상세보기</Styled.AgreeButton>
+            </Styled.Label>
             <br /><br />
-
-            
             <Button color="blue">회원가입</Button>
         </Positioner>
     );
 
 };
 
-export default Join;
+export default SignUp;

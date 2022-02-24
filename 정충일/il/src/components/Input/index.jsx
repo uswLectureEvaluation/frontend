@@ -1,8 +1,20 @@
 import React from 'react';
-import * as Styled from './styled';
+import TextField from '@mui/material/TextField';
 
-const Input = ({ onChange, placeholder }) => (
-    <Styled.Input onChange={onChange} placeholder={placeholder} />
+const Input = ({ onChange, placeholder, type }) => (
+    <TextField 
+        margin="normal"
+        required
+        id="outlined-basic"
+        variant="outlined"
+        type={type}
+        autoFocus 
+        fullWidth
+        onChange={onChange}
+        placeholder={placeholder}
+        />
 );
+
+
 
 export default Input;

@@ -1,1 +1,1 @@
-export { default as Join } from './Join';
+export { default as SignUp } from './SignUp';
