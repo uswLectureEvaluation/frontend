@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import { Display, DContainer, Row, TextCenter, VerticalMiddle, SearchButton, PrimaryButton, SearchInput, SearchBar, HeadSelection, CustomSelect, StyledOption } from './Header.elemets'
-import { HiSearch } from "react-icons/hi";
-import Table from '../Table/Table';
+import MTable from '../Table/MTable';
 import Link from '@mui/material/Link';
 import fire from '../img/fire-solid.svg'
 import check from '../img/check-solid.svg'
 import star from '../img/star-solid.svg'
 import thumb from '../img/thumbs-up-solid.svg'
 import book from '../img/book-solid.svg'
-import Ntable from '../Table/Ntable';
+import Footer from '../Footer/Footer';
 
 
 const Header = () => {
@@ -57,7 +56,7 @@ const Header = () => {
                         <HeadSelection style={{ marginBottom: '20px' }}>
                             <CustomSelect>
                                 {countries.map((c) => (
-                                    <StyledOption key={c.code} value={c.code}>
+                                    <StyledOption key={c.code} value={c.code} defaultValue={c.code == 'fire'}>
                                         <img
                                             loading="lazy"
                                             width="20"
@@ -79,7 +78,8 @@ const Header = () => {
                                 더보기>
                             </Link>
                         </HeadSelection>
-                        <Ntable />
+                        <MTable />
+                        <Footer />
                     </Row>
                 </DContainer>
             </VerticalMiddle>

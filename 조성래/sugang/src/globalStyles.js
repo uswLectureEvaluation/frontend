@@ -6,8 +6,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
-   height: auto;
-   paddin-bottom: 30px
 }
 `;
 

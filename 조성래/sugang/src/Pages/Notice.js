@@ -1,11 +1,12 @@
 import React from 'react'
+import Footer from '../Footer/Footer'
 import Nheader from '../Header/Nheader'
-import Ntable from '../Table/Ntable'
 
 const Notice = () => {
     return (
         <div>
             <Nheader />
+            <Footer />
         </div>
     )
 }

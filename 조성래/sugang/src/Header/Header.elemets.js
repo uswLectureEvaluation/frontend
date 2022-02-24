@@ -172,7 +172,6 @@ position: relative;
 z-index: 99;
 margin-top: 30px;
 
-
 `
 
 export const HeadSelection = style(Container)`
@@ -190,11 +189,12 @@ height: 100%;
 `
 
 export const DContainer = style.div`
-position: relative;
 padding-right: 15px;
 padding-left: 15px;
 margin-right: auto;
 margin-left: auto;
+ min-height: 100%;
+    position: relative;
 @media (min-width: 768px){
 width: 1000px;
 }
@@ -203,6 +203,7 @@ width: 1000px;
 export const Row = style.div`
 margin-right: -15px;
 margin-left: -15px;
+    padding-bottom: 100px;
 `
 
 export const TextCenter = style.h1`
