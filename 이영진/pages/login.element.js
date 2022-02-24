@@ -1,5 +1,6 @@
 import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container, createTheme, ThemeProvider } from "@material-ui/core";
 import styled from "styled-components";
+import swal from 'sweetalert';
 
 
 export const Logo = styled.div`
@@ -11,7 +12,6 @@ export const Logo = styled.div`
 `;
 
 export const Box1 = styled.div`
-    margin-top: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,22 +37,27 @@ export const IdPwSearchLink = styled.div`
       font-weight: bold
 `
 
-export const IdInput = () => {
+
+
+
+
+export const IdInput = ({propsFunction}) => {
     return(
         <TextField
             margin="normal"
             required
             fullWidth
-            id="id" 
+            id="email" 
             label="아이디 입력"
-            name="id"
-            autoComplete="id"
+            name="email"
+            autoComplete="email"
             autoFocus
+            onChange={propsFunction}
         />
     );
 }
 
-export const PwInput = () => {
+export const PwInput = ({propsFunction}) => {
     return(
         <TextField
             margin="normal"
@@ -63,6 +68,7 @@ export const PwInput = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={propsFunction}
             />
     )
 }

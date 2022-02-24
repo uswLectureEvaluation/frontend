@@ -1,8 +1,9 @@
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container, createTheme, ThemeProvider } from "@material-ui/core";
+import {Button, TextField, Grid} from "@material-ui/core";
 import styled from "styled-components";
 
 export const SearchButton = styled(Button)`
     &&{
+        margin-top: 10px;
         font-size: 14px;
         font-weight: bold;
         color: rgb(255, 255, 255);
@@ -33,6 +34,7 @@ export const Logo = styled.div`
 export const String1 = styled.div`
     padding-bottom: 30px;
     border-bottom: 2px solid rgb(158,158,158);
+    margin-bottom: 20px;
     font-size: 20px; 
     font-weight: bold
 `
@@ -44,16 +46,35 @@ export const String2 = styled.div`
 
 export const IdInput = () => {
     return(
+        <Grid xs={12}>
         <TextField 
-        margin="normal"
+        margin="dense"
         required
-        id="outlined-basic"
+        id="id"
         variant="outlined"
-        label="Input your ID"
+        label="Input your SUGANG ID"
         name="id"
         autoComplete="id"
         autoFocus
         ></TextField>
+        </Grid>
+    )
+}
+
+export const EmailInput = () => {
+    return(
+        <Grid xs={12}>
+        <TextField 
+        margin="dense"
+        required
+        id="email"
+        variant="outlined"
+        label="Input your Email"
+        name="email"
+        autoComplete="email"
+        autoFocus
+        ></TextField>
+        </Grid>
     )
 }
 
