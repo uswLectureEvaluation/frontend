@@ -1,12 +1,13 @@
 import styled, { createGlobalStyle } from "styled-components";
+import reset from 'styled-reset'
 
 const GlobalStyle = createGlobalStyle`
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    font-family: 'Source Sans Pro', sans-serif;
-}
+    ${reset}
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        font-family: 'Source Sans Pro', sans-serif;
+    }
 `;
 
 export const Container = styled.div`
