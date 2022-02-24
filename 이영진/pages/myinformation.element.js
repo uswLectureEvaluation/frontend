@@ -19,7 +19,7 @@ export const Line1 = styled.div`
 
 export const String1 = styled.div`
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
     padding: 20px;
 `
 
@@ -27,37 +27,37 @@ export const String2 = styled.div`
     padding: 15px;
     padding-left: 0px;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 16px;
     
 `
 
 export const String3 = styled.div`
     font-weight: bold;
-    font-size: 36px;
+    font-size: 22px;
     color: rgb(231, 76, 60);
 `
 export const String4 = styled.span`
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     padding: 20px;
 `
 
 export const ColorString1 = styled.span`
     font-weight: normal;
-    font-size: 20px;
+    font-size: 16px;
     color: rgb(231,76,60);
 `
 export const ColorString2 = styled.span`
     font-weight: normal;
-    font-size: 20px;
+    font-size: 16px;
     color: rgb(52,152,219)
 `
 
 
 export const Circle1 = styled.div`
     border-radius: 100%;
-    width: 180px;
-    height: 180px;
+    width: 120px;
+    height: 120px;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(224, 224, 224);
     display: flex;
@@ -67,21 +67,18 @@ export const Circle1 = styled.div`
     margin-left: 20px
 `
 
-export const LoginButton = styled(Button)`
-    &&{
-        font-size: 21px;
+export const Button1 = styled(Button)`
+        font-size: 12px;
         font-weight: bold;
         color: rgb(127, 127, 127);
         text-align: center;
-        line-height: 2em;
         background-color: rgb(220, 220, 220);
-        padding: 5px 50px 5px 50px
-    }
-
+        padding: 7px 50px 7px 50px;
+        float: right;
 `;
 
 export const TextButton = styled.div`
-    padding: 10px;
+    padding: 8px;
     border-bottom: 1px solid black;
-    font-size: 20px
+    font-size: 15px
 `
