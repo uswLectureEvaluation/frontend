@@ -73,8 +73,9 @@ const Login = () => {
 
 
   return (
+    <div style={{ backgroundColor: 'white' }}>
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" style={{ backgroundColor: 'white' }} >
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box1>
           <Logo>SUGANG</Logo>
@@ -109,6 +110,7 @@ const Login = () => {
         </Box1>
       </Container>
     </ThemeProvider>
+    </div>
   );
 }
 

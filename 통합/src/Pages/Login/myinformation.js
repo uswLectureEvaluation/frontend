@@ -30,10 +30,10 @@ const Myinformation = () => {
                   <String3>100 p</String3>
                 </Circle1>
               </Grid>
-              <Grid item xs={12} sm={2}>
+              <Grid item xs={12} sm={1}>
                 <Line1 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={7}>
                 <String2>작성한 강의 평가 : 0개 <ColorString1>(+100P)</ColorString1></String2>
                 <String2>작성한 시험 정보 : 0개 <ColorString1>(+40P)</ColorString1></String2>
                 <String2>시험 정보 열람 : 0개 <ColorString2>(-40P)</ColorString2></String2>
