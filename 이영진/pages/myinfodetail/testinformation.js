@@ -35,18 +35,15 @@ export const Subject = (props) => {
       padding: '20px',
       borderRadius: '20px'
         }}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <div style={{marginBottom:'15px'}}>
               <BoxString1>2020-1</BoxString1>
-            </Grid>
-            <Grid item xs={12} sm={6}>
               <BoxButton2 style={{float: "right"}}>삭제</BoxButton2>
               <BoxButton1 style={{float: "right"}}>수정</BoxButton1>
-            </Grid>
-          </Grid>  
+            </div>
+          <div>
           <BoxString2>{props.subjectName[props.index]}</BoxString2>
           <BoxString4 style={{ paddingLeft:'10px' }}>이다미 교수님</BoxString4>
-          <div/>
+          </div>
             <BoxString1>가나다라마바사아자차카타파하가나다라마바사아자차카타파하
           가나다라마바사아자차카타파하
           가나다라마바사아자차카타파하
