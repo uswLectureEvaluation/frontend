@@ -72,7 +72,6 @@ export const EmailInput = () => {
         label="Input your Email"
         name="email"
         autoComplete="email"
-        autoFocus
         ></TextField>
         </Grid>
     )

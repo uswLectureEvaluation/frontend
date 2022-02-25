@@ -17,3 +17,10 @@ export  const StringLink = styled(Button)`
         font-size: 20px;
 }
 `
+export const Box1 = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background-color: white;
+`

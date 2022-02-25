@@ -3,15 +3,12 @@ import { String1, String2, String3, String4, Circle1, Line1, ColorString1, Color
 import { CssBaseline, Grid, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
 import { useNavigate } from 'react-router-dom'
 
-const theme = createTheme();
 
 const Myinformation = () => {
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
   return (
-    <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="sm" style={{ backgroundColor: "white" }}>
-        <CssBaseline />
         <Box
           sx={{
             marginTop: 8,
@@ -48,8 +45,8 @@ const Myinformation = () => {
             borderRadius: '10px'
           }}>
             <String1>내 정보</String1>
-            <String4>로그인 아이디</String4><span style={{ fontSize: "14px" }}>koownij</span>
             <Button1 onClick={() => { navigate("/myinfodetail") }}>내가 쓴 글</Button1>
+            <String4>로그인 아이디</String4><String4 style={{ fontWeight:"normal" }}>koownij</String4>
           </Box>
           <Box noValidate sx={{
             mt: 3,
@@ -67,7 +64,6 @@ const Myinformation = () => {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
   );
 }
 

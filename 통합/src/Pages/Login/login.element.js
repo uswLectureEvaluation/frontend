@@ -3,19 +3,6 @@ import styled from "styled-components";
 import swal from 'sweetalert';
 
 
-export const Logo = styled.div`
-    color: #4B89DC;
-    font-size: 46px;
-    font-family: HanSans;
-    font-weight: bold
-
-`;
-
-export const Box1 = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`
 
 export const LoginButton = styled(Button)`
     &&{
@@ -29,12 +16,31 @@ export const LoginButton = styled(Button)`
     }
 
 `;
+export const Logo = styled.div`
+    color: #4B89DC;
+    font-size: 46px;
+    font-family: HanSans;
+    font-weight: bold
 
-export const IdPwSearchLink = styled.div`
+`;
+
+export const Box1 = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background-color: white;
+    background-size: cover;
+`
+
+
+export const IdPwSearchLink = styled(Link)`
+&&{
       padding: 10px;
       font-size: 16px;
       color:rgb(158,158,158);
       font-weight: bold
+}
 `
 
 
