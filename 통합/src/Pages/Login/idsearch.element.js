@@ -19,6 +19,7 @@ export const Box1 = styled.div`
     border: 2px solid rgba(158,158,158,.5);
     padding: 40px;
     border-radius: 10px;
+    
 `
 
 export const Logo = styled.div`

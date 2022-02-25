@@ -51,7 +51,7 @@ export const BoxButton1 = styled(Button)`
     background-color: rgb(239, 239, 239);
     color: black;
     margin-right: 10px;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 `
 
@@ -70,7 +70,7 @@ export const EvaluationInput = () => {
 }
 
 export const EditButton = styled(Button)`
-&& {
+&&{
     padding: 5px 40px 5px 40px;
     font-size: 13px;
     font-weight: bold;
@@ -84,7 +84,7 @@ export const EditButton = styled(Button)`
 `;
 
 export const CancelButton = styled(Button)`
-&& {
+&&{
     padding: 5px 15px 5px 15px;
     font-size: 13px;
     font-weight: bold;

@@ -19,7 +19,7 @@ const Idsearch = () => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center'
-            }} style={{padding:"40px"}}>
+            }}>
                     <Box1>         
                         <Logo>SUGANG</Logo>
                         <String1>아이디 찾기</String1>

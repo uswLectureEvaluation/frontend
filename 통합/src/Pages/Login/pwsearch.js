@@ -18,7 +18,7 @@ const Pwsearch =() => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center'
-            }} style={{padding: "40px"}}>
+            }}>
                     <Box1>            
                         <Logo>SUGANG</Logo>
                         <String1>비밀번호 찾기</String1>
