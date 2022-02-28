@@ -42,6 +42,7 @@ export const ModalBar = styled.div`
 `
 
 export const BoxButton1 = styled(Button)`
+&&{
     padding: 5px 10px 5px 10px;
     font-size: 10px;
     font-weight: bold;
@@ -50,6 +51,8 @@ export const BoxButton1 = styled(Button)`
     background-color: rgb(239, 239, 239);
     color: black;
     margin-right: 10px;
+    margin-top: 10px;
+}
 `
 
 export const EvaluationInput = () => {
@@ -67,7 +70,8 @@ export const EvaluationInput = () => {
 }
 
 export const EditButton = styled(Button)`
-    padding: 5px 60px 5px 60px;
+&&{
+    padding: 5px 40px 5px 40px;
     font-size: 13px;
     font-weight: bold;
     text-align: center;
@@ -76,9 +80,11 @@ export const EditButton = styled(Button)`
     color: white;
     margin-right: 10px;
     float: right;
+}
 `;
 
 export const CancelButton = styled(Button)`
+&&{
     padding: 5px 15px 5px 15px;
     font-size: 13px;
     font-weight: bold;
@@ -88,4 +94,5 @@ export const CancelButton = styled(Button)`
     color: white;
     margin-right: 10px;
     float: right;
+}
 `;

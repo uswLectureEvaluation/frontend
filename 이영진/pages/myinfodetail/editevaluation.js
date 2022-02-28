@@ -3,7 +3,6 @@ import { BoxButton1, BoxString2, BoxString3, BoxString4, EvaluationInput, EditBu
 import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container, createTheme, ThemeProvider } from "@material-ui/core";
 import { border } from '@mui/system';
 
-const theme = createTheme();
 
 export const Bar = (props) => {
   return (
@@ -28,7 +27,6 @@ const Editevaluation = (props) => {
     let [select, Setselect] = useState(['조모임', '과제', '학점'])
     let [color, setColor] = useState([{backgroundColor: 'rgb(241, 196, 15)'},{backgroundColor: 'rgb(231, 76, 60)'},{backgroundColor: 'rgb(52, 152, 219)'}])
     return(
-        <ThemeProvider theme={theme}>
           <Container component="main" maxWidth="sm">
             <CssBaseline />
             <Box
@@ -83,8 +81,6 @@ const Editevaluation = (props) => {
                 </Box>
               </Box>
           </Container>
-        </ThemeProvider>
-
     )
     
 }
