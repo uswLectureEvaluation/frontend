@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Styled from './styled';
 import { Positioner } from '../../components/Wrapper/styled'
+import MyEvaluation from '../../components/MyEvaluation'
 
 const LectureInfo = () => {
 
@@ -60,8 +61,16 @@ const LectureInfo = () => {
                         
                     </div>
                 </Styled.Content>
+                
                 <Styled.Content>
-                    그다음 여기
+                    <Styled.TitleWrapper id='top'>
+                        <Styled.TitleWrapper>
+                            <Styled.Title id='sub'>강의 평가</Styled.Title>
+                            <Styled.Title id='sub' style={{color:'gray', paddingLeft:'10px'}}>시험 정보</Styled.Title>
+                        </Styled.TitleWrapper>
+                        <Styled.Option id='type'>강의평가 쓰기</Styled.Option>
+                    </Styled.TitleWrapper>
+                    <MyEvaluation />
                 </Styled.Content>
             </Styled.Wrapper>
         </Positioner>

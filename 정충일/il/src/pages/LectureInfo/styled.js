@@ -13,6 +13,7 @@ export const Content = styled.div`
     border-radius: 10px; 
     border: 1px solid rgb(224, 224, 224);
     padding: 1rem 2rem;
+    margin: 10px 0;
 `
 
 export const Color = styled.div`
@@ -35,6 +36,10 @@ export const Title = styled.div`
     font-weight : 1000;
     margin-bottom : 1rem;
     text-align: center;
+
+    &#sub {
+        font-size: 1.5rem;
+    }
 `
 
 export const Professor = styled.div`
