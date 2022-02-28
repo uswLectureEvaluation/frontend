@@ -3,23 +3,18 @@ import {BoxString1, BoxString2, BoxString4, BoxButton1, BoxButton2 } from './tes
 import {CssBaseline,Grid, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
 
 
-const theme = createTheme();
 
 const Testinformation =  () => {
 
   let [subjectName, setSubjectName] = useState(['학문과 사고', '네트워크 개론', '데이터베이스', '운영체제론', '졸업프로젝트'])
 
         return (
-            <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="md">
         <CssBaseline />
-        
-
         { subjectName.map((name, index)=>
                 <Subject subjectName={subjectName} index={index}/>
         )}
       </Container>
-    </ThemeProvider>
   );
 }
 

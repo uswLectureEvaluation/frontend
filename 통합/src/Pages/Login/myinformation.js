@@ -3,13 +3,11 @@ import { String1, String2, String3, String4, Circle1, Line1, ColorString1, Color
 import { CssBaseline, Grid, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
 import { useNavigate } from 'react-router-dom'
 
-const theme = createTheme();
 
 const Myinformation = () => {
   const navigate = useNavigate();
 
   return (
-    <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="sm" style={{ backgroundColor: "white" }}>
         <CssBaseline />
         <Box
@@ -68,7 +66,6 @@ const Myinformation = () => {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
   );
 }
 
