@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-import { BoxButton1, BoxString2, BoxString3, BoxString4, EvaluationInput, EditButton, ModalBar, ModalLine, CancelButton } from './styled';
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container, createTheme, ThemeProvider } from "@material-ui/core";
-import { border } from '@mui/system';
-
-const theme = createTheme();
+import { BoxButton1, BoxString2, BoxString3, EvaluationInput, EditButton, ModalBar, ModalLine, CancelButton } from './styled';
+import { CssBaseline, Grid, Box, Container } from "@material-ui/core";
 
 export const Bar = (props) => {
   return (
@@ -25,10 +22,9 @@ export const Bar = (props) => {
 
 const EditEvaluation = (props) => {
     let [detail, setDetail] = useState(['꿀강 지수','배움 지수','만족도'])
-    let [select, Setselect] = useState(['조모임', '과제', '학점'])
+    // let [select, Setselect] = useState(['조모임', '과제', '학점'])
     let [color, setColor] = useState([{backgroundColor: 'rgb(241, 196, 15)'},{backgroundColor: 'rgb(231, 76, 60)'},{backgroundColor: 'rgb(52, 152, 219)'}])
     return(
-        <ThemeProvider theme={theme}>
           <Container component="main" maxWidth="sm">
             <CssBaseline />
             <Box
@@ -37,7 +33,6 @@ const EditEvaluation = (props) => {
               }}>
               <Box noValidate sx={{ 
                 mt: 1 ,
-                border: '2px solid rgb(158,158,158)',
                 border: '2px solid rgba(158,158,158,.5)',
                 padding: '20px',
                 borderRadius: '10px'
@@ -83,8 +78,6 @@ const EditEvaluation = (props) => {
                 </Box>
               </Box>
           </Container>
-        </ThemeProvider>
-
     )
     
 }
