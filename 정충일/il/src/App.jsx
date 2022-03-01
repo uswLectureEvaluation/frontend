@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import { SignUp, LectureInfo } from "./pages"
+import { SignUp, LectureInfo, Search } from "./pages"
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -19,6 +19,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<SignUp />} />
         <Route path="/lectureinfo" element={<LectureInfo />} />
+        <Route path="/search" element={<Search />} />
+
       </Routes>
     </BrowserRouter>
   );
