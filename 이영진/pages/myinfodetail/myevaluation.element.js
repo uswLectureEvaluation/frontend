@@ -3,6 +3,9 @@ import styled from "styled-components";
 
 
 export const BoxString1 = styled.span`
+    border-radius: 10px;
+    background-color: rgb(239, 239, 239);
+    padding: 5px;
     font-size: 12px;
 `
 
@@ -62,5 +65,9 @@ export const BoxButton2 = styled(Button)`
 export const ModalString1 = styled.div`
     font-weight: bold;
     font-size: 10px;
-    padding-bottom: 5px;
+`
+export const ModalString2 = styled.span`
+    font-weight: bold;
+    font-size: 10px;
+    padding-right: 10px;
 `

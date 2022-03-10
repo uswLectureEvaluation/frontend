@@ -14,7 +14,7 @@ export const BoxString2 = styled.span`
 `
 
 export const BoxString3 = styled.span`
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
 `
 
@@ -51,7 +51,7 @@ export const BoxButton1 = styled(Button)`
     background-color: rgb(239, 239, 239);
     color: black;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 `
 
@@ -63,7 +63,7 @@ export const EvaluationInput = () => {
         multiline
         variant="outlined"
         fullWidth
-        rows={8}
+        rows={5}
         style={{marginBottom:'20px'}}
       />
     )

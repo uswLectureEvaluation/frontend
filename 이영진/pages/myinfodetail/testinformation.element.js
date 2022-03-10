@@ -3,13 +3,16 @@ import styled from "styled-components";
 
 
 export const BoxString1 = styled.span`
+    border-radius: 10px;
+    background-color: rgb(239, 239, 239);
+    padding: 5px;
     font-size: 12px;
 `
 
 export const BoxString2 = styled.span`
     font-weight: bold;
     font-size: 16px;
-    margin-right: 5px;
+    padding-right: 5px;
 `
 
 export const BoxString3 = styled.span`
@@ -30,8 +33,9 @@ export const BoxString5 = styled(Button)`
 
 `
 
-export const BoxString6 = styled.div`
+export const BoxString6 = styled.span`
     font-size: 12px;
+    padding-right: 10px;
 `
 
 export const BoxButton1 = styled(Button)`
