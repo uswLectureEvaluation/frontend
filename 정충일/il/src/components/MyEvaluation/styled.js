@@ -3,23 +3,25 @@ import styled from "styled-components";
 
 
 export const BoxString1 = styled.span`
+    border-radius: 10px;
+    background-color: rgb(239, 239, 239);
+    padding: 5px;
     font-size: 12px;
 `
 
 export const BoxString2 = styled.span`
     font-weight: bold;
-    font-size: 16px;
-    margin-right: 5px;
+    font-size: 1.3rem;
+    margin-right: 0.7rem;
 `
 
 export const BoxString3 = styled.span`
-    font-size: 14px;
+    font-size: 1.3rem;
     font-weight: bold;
-    margin-top: 5px;
 `
 
 export const BoxString4 = styled.span`
-    font-size: 13px;    
+    font-size: 13px; 
 `
 
 export const BoxString5 = styled(Button)`
@@ -62,5 +64,13 @@ export const BoxButton2 = styled(Button)`
 export const ModalString1 = styled.div`
     font-weight: bold;
     font-size: 10px;
-    padding-bottom: 5px;
+`
+export const ModalString2 = styled.span`
+    font-weight: bold;
+    font-size: 10px;
+    padding-right: 10px;
+`
+
+export const TempMargin = styled.div`
+    margin-top: 0.5rem;
 `
