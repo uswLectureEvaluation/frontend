@@ -1,4 +1,5 @@
 import React from 'react'
+import { ThemeProvider, createTheme } from '@material-ui/core'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Footer from './Footer/Footer'
 import GlobalStyle from './globalStyles'
@@ -13,23 +14,34 @@ import Myinfo from './Pages/Login/myinformation'
 import Myinfodetial from './Pages/Login/myinfodetail'
 import LectureInfo from './Pages/LectureInfo/'
 import Search from './Pages/Search/'
+
+const themeLight = createTheme({
+  palette: {
+    background: {
+      default: "#ffffff"
+    }
+  },
+});
+
 const App = () => {
   return (
     <Router>
       <GlobalStyle />
-      <Nav />
-      <Routes>
-        <Route index path="/" element={<Main />} />
-        <Route path="/notice" element={<Notice />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/pwsearch' element={<PwSearch />} />
-        <Route path='/idsearch' element={<IdSearch />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/myinformation' element={<Myinfo />} />
-        <Route path='/myinfodetail' element={<Myinfodetial />} />
-        <Route path='/lectureinfo' element={<LectureInfo />} />
-        <Route path='/search' element={<Search />} />
-      </Routes>
+      <Nav style={{ zindex: 5 }} />
+      <ThemeProvider theme={themeLight}>
+        <Routes>
+          <Route index path="/" element={<Main />} />
+          <Route path="/notice" element={<Notice />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/pwsearch' element={<PwSearch />} />
+          <Route path='/idsearch' element={<IdSearch />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/myinformation' element={<Myinfo />} />
+          <Route path='/myinfodetail' element={<Myinfodetial />} />
+          <Route path='/lectureinfo' element={<LectureInfo />} />
+          <Route path='/search' element={<Search />} />
+        </Routes>
+      </ThemeProvider>
     </Router>
   )
 }
