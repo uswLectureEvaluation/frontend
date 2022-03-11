@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { Cookies } from 'react-cookie'
 
-const theme = createTheme();
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -73,8 +73,8 @@ const Login = () => {
 
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" style={{ backgroundColor: 'white' }} >
+    <div>
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box1>
           <Logo>SUGANG</Logo>
@@ -108,7 +108,7 @@ const Login = () => {
           </Box>
         </Box1>
       </Container>
-    </ThemeProvider>
+    </div>
   );
 }
 

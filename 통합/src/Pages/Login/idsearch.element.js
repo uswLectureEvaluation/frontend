@@ -1,4 +1,4 @@
-import { Button, TextField} from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import styled from "styled-components";
 
 export const SearchButton = styled(Button)`
@@ -11,7 +11,6 @@ export const SearchButton = styled(Button)`
         background-color: rgb(52, 152, 219);
         padding: 5px 100px 5px 100px
     }
-
 `;
 
 export const Box1 = styled.div`
@@ -27,7 +26,6 @@ export const Logo = styled.div`
     font-size: 50px;
     font-family: HanSans;
     font-weight: bold
-
 `;
 
 export const String1 = styled.div`
@@ -43,16 +41,16 @@ export const String2 = styled.div`
 `
 
 export const AccountInput = () => {
-    return(
-        <TextField 
-        margin="normal"
-        required
-        id="outlined-basic"
-        variant="outlined"
-        label="example@suwon.ac.kr"
-        name="email"
-        autoComplete="email"
-        autoFocus    
+    return (
+        <TextField
+            margin="normal"
+            required
+            id="outlined-basic"
+            variant="outlined"
+            label="example@suwon.ac.kr"
+            name="email"
+            autoComplete="email"
+            autoFocus
         ></TextField>
     )
 }

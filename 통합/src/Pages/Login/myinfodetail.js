@@ -3,16 +3,14 @@ import { String1, StringLink } from './myinfodetail.element'
 import { CssBaseline, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
 import Myevaluation from '../myinfodetail/myevaluation';
 import Testinformation from '../myinfodetail/testinformation'
-const theme = createTheme();
-
+import { style } from '@mui/system';
 
 const Myinfodetail = () => {
-  let [evaluation, setEvaluation] = useState(true)
-
+  const [evaluation, setEvaluation] = useState(true)
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="md" style={{ backgroundColor: "white" }}>
-        <CssBaseline />
+    <div>
+      <CssBaseline />
+      <Container component="main" maxWidth="md">
         <Box
           sx={{
             marginTop: 8,
@@ -25,7 +23,7 @@ const Myinfodetail = () => {
             padding: '20px',
             borderRadius: '10px'
           }}>
-            <StringLink onClick={() => { setEvaluation(true) }}>강의평가</StringLink>
+            <StringLink className={evaluation === true ? 'selected' : 'no'} onClick={() => { setEvaluation(true) }}>강의평가</StringLink>
             <StringLink onClick={() => { setEvaluation(false) }}>시험정보</StringLink>
             {
               evaluation === true ? <Myevaluation /> : <Testinformation />
@@ -33,8 +31,7 @@ const Myinfodetail = () => {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
-
+    </div>
   )
 }
 export default Myinfodetail

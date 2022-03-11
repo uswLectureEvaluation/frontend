@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Button} from "@material-ui/core";
+import { Button } from "@material-ui/core";
 
 
 
@@ -10,8 +10,10 @@ export const String1 = styled.div`
 `
 
 
-export  const StringLink = styled(Button)`
+export const StringLink = styled(Button)`
+&& {
         color: black;
         font-weight: bold;
         font-size: 20px;
+}
 `

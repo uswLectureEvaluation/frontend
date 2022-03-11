@@ -5,7 +5,6 @@ export const Container1 = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
 `
 export const Line1 = styled.div`
     @media only screen and (max-width: 768px) {
@@ -13,8 +12,8 @@ export const Line1 = styled.div`
   }
     border-right: 1px solid black; 
     width: 0.1px; 
-    height: 180px;
-    margin-left: 30px 
+    height: 150px;
+    margin-left: 10px 
 `
 
 export const String1 = styled.div`
@@ -68,6 +67,7 @@ export const Circle1 = styled.div`
 `
 
 export const Button1 = styled(Button)`
+&& {
         font-size: 12px;
         font-weight: bold;
         color: rgb(127, 127, 127);
@@ -75,6 +75,7 @@ export const Button1 = styled(Button)`
         background-color: rgb(220, 220, 220);
         padding: 7px 50px 7px 50px;
         float: right;
+}
 `;
 
 export const TextButton = styled.div`

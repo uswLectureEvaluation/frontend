@@ -8,7 +8,6 @@ export const Logo = styled.div`
     font-size: 46px;
     font-family: HanSans;
     font-weight: bold
-
 `;
 
 export const Box1 = styled.div`
@@ -27,7 +26,6 @@ export const LoginButton = styled(Button)`
         background-color: rgb(52, 152, 219);
         padding: 5px 100px 5px 100px
     }
-
 `;
 
 export const IdPwSearchLink = styled.div`
@@ -41,13 +39,13 @@ export const IdPwSearchLink = styled.div`
 
 
 
-export const IdInput = ({propsFunction}) => {
-    return(
+export const IdInput = ({ propsFunction }) => {
+    return (
         <TextField
             margin="normal"
             required
             fullWidth
-            id="email" 
+            id="email"
             label="아이디 입력"
             name="email"
             autoComplete="email"
@@ -57,8 +55,8 @@ export const IdInput = ({propsFunction}) => {
     );
 }
 
-export const PwInput = ({propsFunction}) => {
-    return(
+export const PwInput = ({ propsFunction }) => {
+    return (
         <TextField
             margin="normal"
             required
@@ -69,6 +67,6 @@ export const PwInput = ({propsFunction}) => {
             id="password"
             autoComplete="current-password"
             onChange={propsFunction}
-            />
+        />
     )
 }
