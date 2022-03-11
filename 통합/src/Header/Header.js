@@ -8,9 +8,12 @@ import star from '../img/star-solid.svg'
 import thumb from '../img/thumbs-up-solid.svg'
 import book from '../img/book-solid.svg'
 import Footer from '../Footer/Footer';
+import { useNavigate } from 'react-router-dom'
 
 
 const Header = () => {
+
+    const navigate = useNavigate();
 
     const [search, setSearch] = useState('');
 
@@ -21,6 +24,7 @@ const Header = () => {
 
     const onClick = () => {
         alert(search + '검색하겠습니다');
+        navigate("/search")
     }
 
 
@@ -45,6 +49,7 @@ const Header = () => {
                             <SearchInput
                                 onChange={onChange}
                                 placeholder="과목명, 교수명으로 원하는 강의평가를 찾아보세요!"
+                                onClick={onClick}
                             />
                             {/* <SearchButton>
                                 <HiSearch style={{

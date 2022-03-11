@@ -9,7 +9,7 @@ const Myinfodetail = () => {
   const [evaluation, setEvaluation] = useState(true)
   return (
     <div>
-    <CssBaseline/>
+      <CssBaseline />
       <Container component="main" maxWidth="md">
         <Box
           sx={{
@@ -23,7 +23,7 @@ const Myinfodetail = () => {
             padding: '20px',
             borderRadius: '10px'
           }}>
-            <StringLink className={evaluation===true?'selected':'no'} onClick={() => { setEvaluation(true)  }}>강의평가</StringLink>
+            <StringLink className={evaluation === true ? 'selected' : 'no'} onClick={() => { setEvaluation(true) }}>강의평가</StringLink>
             <StringLink onClick={() => { setEvaluation(false) }}>시험정보</StringLink>
             {
               evaluation === true ? <Myevaluation /> : <Testinformation />
@@ -31,7 +31,7 @@ const Myinfodetail = () => {
           </Box>
         </Box>
       </Container>
-     </div>
+    </div>
   )
 }
 export default Myinfodetail

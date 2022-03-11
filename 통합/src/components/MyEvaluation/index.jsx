@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { BoxString1, BoxString2, BoxString3, BoxString4, BoxString5, BoxString6, BoxButton1, BoxButton2, ModalString1, ModalString2 } from './myevaluation.element'
-import {CssBaseline, Grid, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
-import Editevaluation from './editevaluation'
+import { BoxString1, BoxString2, BoxString3, BoxString4, BoxString5, ModalString1, ModalString2 } from './styled'
+import {CssBaseline, Grid, Container } from "@material-ui/core";
 import Modal from 'react-modal';
+import * as Styled from './styled';
 
 const 모달스타일 = {
 	overlay: {
@@ -33,7 +33,7 @@ const 모달스타일 = {
 
 const Myevaluation = () => {
 
-  let [subjectName, setSubjectName] = useState(['학문과 사고', '네트워크 개론', '데이터베이스', '운영체제론', '졸업프로젝트'])
+  let [subjectName, setSubjectName] = useState(['학문과 사고', '네트워크 개론', '졸업프로젝트'])
 
   return (
       <Container component="main" maxWidth="md">
@@ -70,39 +70,39 @@ export const Subject = (props) => {
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const Delete = () => {
-    if(window.confirm("강의평가를 삭제하시겠습니까?")==true){
-      let arrayCopy = [...props.subjectName];
-      arrayCopy.shift();
-      props.setSubjectName(arrayCopy)
-    }else{ return }
-  }
+  // const Delete = () => {
+  //   if(window.confirm("강의평가를 삭제하시겠습니까?")===true){
+  //     let arrayCopy = [...props.subjectName];
+  //     arrayCopy.shift();
+  //     props.setSubjectName(arrayCopy)
+  //   }else{ return }
+  // }
 
   return (
     <div style={{
-      marginTop: "10px",
-      borderTop: '2px solid rgba(158,158,158)',
-      borderTop: '2px solid rgba(158,158,158,.5)',
+      margin: "10px 0",
+      borderBottom: '2px solid rgba(158,158,158,.5)',
       padding: '15px',
     }}>
      
       <div style={{ marginBottom: '15px' }}>
         <BoxString1>2020-1</BoxString1>
-        <BoxButton2 onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</BoxButton2>
-        <BoxButton1 onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</BoxButton1>
+        {/* <BoxButton2 onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</BoxButton2>
+        <BoxButton1 onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</BoxButton1> */}
       </div>
         <BoxString2>{props.subjectName[props.index]}</BoxString2>
         <BoxString4>이다미 교수님</BoxString4>
-      <div/>
+      <Styled.TempMargin>
       <BoxString3>평균 지수</BoxString3>
-      <BoxString3 style={{ paddingLeft: '10px' }}>⭐⭐⭐⭐⭐</BoxString3>
-      <span>5.0</span>
-      <BoxString5 onClick={() => { setModal(!modal) }}>{modal === true ? '간략하게 보기 >' : '자세히 보기 >'}</BoxString5>
+      <BoxString3 style={{ padding: '0 10px', letterSpacing: '-2px' }}>⭐⭐⭐⭐⭐</BoxString3>
+      <span style={{ color: "#2f2f2f"}}>5.0</span>
+        <BoxString5 onClick={() => { setModal(!modal) }}>{modal === true ? '간략하게 보기 >' : '자세히 보기 >'}</BoxString5>
+      </Styled.TempMargin>
       {modal === true ? <Modal1 /> : null}
-      <BoxString6>가나다라마바사아자차카타파하가나다라마바사아자차카타파하
+      {/* <BoxString6>가나다라마바사아자차카타파하가나다라마바사아자차카타파하
         가나다라마바사아자차카타파하
         가나다라마바사아자차카타파하
-      </BoxString6>
+      </BoxString6> */}
       <Modal 
       isOpen={modalIsOpen}
 			style={모달스타일}
@@ -110,9 +110,8 @@ export const Subject = (props) => {
 			ariaHideApp={false}
       onRequestClose={() => setModalIsOpen(false)}
     	>
-    		<Editevaluation setModalIsOpen={setModalIsOpen} />
     	</Modal>
-    </div>
+      </div>
   )
 }
 

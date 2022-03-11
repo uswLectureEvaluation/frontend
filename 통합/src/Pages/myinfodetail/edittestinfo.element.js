@@ -63,7 +63,7 @@ export const EvaluationInput = () => {
         multiline
         variant="outlined"
         fullWidth
-        rows={5}
+        rows={8}
         style={{marginBottom:'20px'}}
       />
     )
@@ -96,3 +96,15 @@ export const CancelButton = styled(Button)`
     float: right;
 }
 `;
+
+export const SelectBox = () => {
+	return (
+		<select>
+			<option key="2020-1" value="2020-1">
+				2020 - 1
+			</option>
+			<option key="2020-2" value="2020-2">2020 - 2</option>
+			<option key="2021-1" value="2021-1">2021 - 1</option>
+		</select>
+	);
+};

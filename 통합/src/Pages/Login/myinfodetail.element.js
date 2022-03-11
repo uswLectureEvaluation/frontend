@@ -11,9 +11,7 @@ export const String1 = styled.div`
 
 
 export  const StringLink = styled(Button)`
-&& {
         color: black;
         font-weight: bold;
         font-size: 20px;
-}
 `

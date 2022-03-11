@@ -1,5 +1,4 @@
 import React from 'react'
-import {ThemeProvider, createTheme} from '@material-ui/core'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Footer from './Footer/Footer'
 import GlobalStyle from './globalStyles'
@@ -12,21 +11,13 @@ import IdSearch from './Pages/Login/idsearch'
 import Signup from './Pages/SignUp/index'
 import Myinfo from './Pages/Login/myinformation'
 import Myinfodetial from './Pages/Login/myinfodetail'
-
-const themeLight = createTheme({
-  palette: {
-    background: {
-      default: "#ffffff"
-    }
-  },
-});
-
+import LectureInfo from './Pages/LectureInfo/'
+import Search from './Pages/Search/'
 const App = () => {
   return (
     <Router>
       <GlobalStyle />
       <Nav />
-      <ThemeProvider theme={themeLight}>
       <Routes>
         <Route index path="/" element={<Main />} />
         <Route path="/notice" element={<Notice />} />
@@ -36,8 +27,9 @@ const App = () => {
         <Route path='/signup' element={<Signup />} />
         <Route path='/myinformation' element={<Myinfo />} />
         <Route path='/myinfodetail' element={<Myinfodetial />} />
+        <Route path='/lectureinfo' element={<LectureInfo />} />
+        <Route path='/search' element={<Search />} />
       </Routes>
-      </ThemeProvider>
     </Router>
   )
 }

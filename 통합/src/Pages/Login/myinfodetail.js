@@ -3,13 +3,15 @@ import { String1, StringLink } from './myinfodetail.element'
 import { CssBaseline, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
 import Myevaluation from '../myinfodetail/myevaluation';
 import Testinformation from '../myinfodetail/testinformation'
+const theme = createTheme();
 
 
 const Myinfodetail = () => {
   let [evaluation, setEvaluation] = useState(true)
 
   return (
-      <Container component="main" maxWidth="md">
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="md" style={{ backgroundColor: "white" }}>
         <CssBaseline />
         <Box
           sx={{
@@ -31,6 +33,8 @@ const Myinfodetail = () => {
           </Box>
         </Box>
       </Container>
+    </ThemeProvider>
+
   )
 }
 export default Myinfodetail
