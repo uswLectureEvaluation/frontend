@@ -114,9 +114,18 @@ const SignUp = () => {
             {passwordConfirm.length > 0 && (
             <Styled.Checking className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</Styled.Checking>
             )}
-    
-            <Input label="이메일" name="email" placeholder="이메일" onChange={onChangeEmail} />
-            {email.length > 0 && <Styled.Checking className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</Styled.Checking>}
+            <Styled.EmailWrapper>
+            <Input label="이메일" id="email" name="email" placeholder="이메일" onChange={onChangeEmail} />
+              {email.length > 0 && <Styled.Checking className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</Styled.Checking>}
+              
+            <Button id="email">인증번호 전송</Button>
+        </Styled.EmailWrapper>
+        <Styled.EmailWrapper>
+            <Input label="이메일" id="email" name="email" placeholder="인증번호 입력" onChange={onChangeEmail} />
+              {email.length > 0 && <Styled.Checking className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</Styled.Checking>}
+              
+            <Button id="emailcheck">인증 확인</Button>
+            </Styled.EmailWrapper>
 
             <Styled.Label>
               <div>
