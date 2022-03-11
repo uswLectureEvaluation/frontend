@@ -23,4 +23,16 @@ export const Wrapper = styled.button`
         background-color: rgba(170,170,170);
         cursor : auto;
     }
+
+    &#email {
+        width: 40%;
+        margin: 16px 0 8px 8px;
+        font-size: 0.9rem;
+    }
+    &#emailcheck {
+        width: 40%;
+        margin: 16px 0 8px 8px;
+        font-size: 0.9rem;
+        background-color: skyblue;
+    }
 `;
