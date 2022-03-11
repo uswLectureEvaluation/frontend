@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Styled from './styled';
 import { Positioner } from '../../components/Wrapper/styled'
 import MyEvaluation from '../../components/MyEvaluation'
 
 
 const Search = () => {
+    let [detail, setDetail] = useState(['정렬', '만족도', '꿀강', '배움', '날짜', '종합']);
     return (
         <Positioner>
             <Styled.GlobalStyle />
@@ -13,10 +14,16 @@ const Search = () => {
                     <Styled.Title>검색 결과</Styled.Title>
                     <Styled.Input />
                 </div>
-                <div>
-                    정렬 만족도 꿀강 배움 날짜 종합
-                </div>
-                <MyEvaluation />
+                <Styled.SearchResultWrapper>
+                    { detail.map((name, index)=>
+                        <Styled.SearchResultMenu detail={detail} index={index}>
+                            {name}
+                        </Styled.SearchResultMenu>
+                    )}
+                </Styled.SearchResultWrapper>
+                <Styled.MyEvaluationWrapper>
+                    <MyEvaluation />
+                </Styled.MyEvaluationWrapper>
             </Styled.Wrapper>
         </Positioner>
     )
