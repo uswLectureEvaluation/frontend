@@ -20,7 +20,7 @@ export const Title = styled.div`
 `;
 
 export const Input = styled.input`
-    width: 80%;
+    width: 95%;
     height: 60px;
     background-color: #f2f2f2;
     border: 1px solid #d2d2d2;
