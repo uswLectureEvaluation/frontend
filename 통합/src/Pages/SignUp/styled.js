@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Title = styled.div`
-    font-size : 10vh;
+    font-size : 4vh;
     font-weight : 1000;
     margin : 2rem 0;
     text-align: center;
@@ -50,4 +50,8 @@ export const AgreeButton = styled.button`
     display: block;
     float: right;
     font-size: 12px
+`;
+
+export const EmailWrapper = styled.div`
+    display: flex;
 `
