@@ -4,7 +4,7 @@ export const GlobalStyle = createGlobalStyle`
   #root>div {
       width: 90%;
       @media only screen and (min-width: 768px) {
-        width: 50%;
+        width: 90%;
     }
   }
 `;
