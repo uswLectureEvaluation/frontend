@@ -3,14 +3,14 @@ import {Button} from "@material-ui/core";
 
 
 
-export const String1 = styled.div`
+export const HeaderText = styled.div`
     font-weight: bold;
     font-size: 25px;
     padding-bottom: 10px
 `
 
 
-export  const StringLink = styled(Button)`
+export  const TextLink = styled(Button)`
 && {
         color: black;
         font-weight: bold;

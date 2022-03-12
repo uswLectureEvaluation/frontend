@@ -1,60 +1,13 @@
 import { Button } from "@material-ui/core";
 import styled from "styled-components";
 
-export const Container1 = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-`
-export const Line1 = styled.div`
-    @media only screen and (max-width: 768px) {
-     display:none
-  }
-    border-right: 1px solid black; 
-    width: 0.1px; 
-    height: 150px;
-    margin-left: 10px 
-`
-
-export const String1 = styled.div`
+export const BoldText = styled.div`
     font-weight: bold;
     font-size: 20px;
     padding: 20px;
 `
 
-export const String2 = styled.div`
-    padding: 15px;
-    padding-left: 0px;
-    font-weight: normal;
-    font-size: 16px;
-    
-`
-
-export const String3 = styled.div`
-    font-weight: bold;
-    font-size: 22px;
-    color: rgb(231, 76, 60);
-`
-export const String4 = styled.span`
-    font-weight: bold;
-    font-size: 14px;
-    padding: 20px;
-`
-
-export const ColorString1 = styled.span`
-    font-weight: normal;
-    font-size: 16px;
-    color: rgb(231,76,60);
-`
-export const ColorString2 = styled.span`
-    font-weight: normal;
-    font-size: 16px;
-    color: rgb(52,152,219)
-`
-
-
-export const Circle1 = styled.div`
+export const Circle = styled.div`
     border-radius: 100%;
     width: 120px;
     height: 120px;
@@ -66,8 +19,47 @@ export const Circle1 = styled.div`
     justify-content: center;
     margin-left: 20px
 `
+export const PointText = styled.div`
+    font-weight: bold;
+    font-size: 22px;
+    color: rgb(231, 76, 60);
+`
 
-export const Button1 = styled(Button)`
+export const SeperateLine = styled.div`
+    @media only screen and (max-width: 768px) {
+     display:none
+  }
+    border-right: 1px solid black; 
+    width: 0.1px; 
+    height: 150px;
+    margin-left: 10px 
+`
+
+
+export const NormalText = styled.div`
+    padding: 15px;
+    padding-left: 0px;
+    font-weight: normal;
+    font-size: 16px;
+    
+`
+
+export const RedText = styled.span`
+    font-weight: normal;
+    font-size: 16px;
+    color: rgb(231,76,60);
+`
+export const BlueText = styled(RedText)`
+    color: rgb(52,152,219)
+`
+
+export const SmallText = styled.span`
+    font-weight: bold;
+    font-size: 14px;
+    padding: 20px;
+`
+
+export const GrayButton = styled(Button)`
 && {
         font-size: 12px;
         font-weight: bold;
@@ -79,7 +71,7 @@ export const Button1 = styled(Button)`
 }
 `;
 
-export const TextButton = styled.div`
+export const TextLink = styled.div`
     padding: 8px;
     border-bottom: 1px solid black;
     font-size: 15px

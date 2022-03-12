@@ -3,14 +3,7 @@ import styled from "styled-components";
 import swal from 'sweetalert';
 
 
-export const Logo = styled.div`
-    color: #4B89DC;
-    font-size: 46px;
-    font-family: HanSans;
-    font-weight: bold
-`;
-
-export const Box1 = styled.div`
+export const WrapperBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,6 +12,14 @@ export const Box1 = styled.div`
     border: 1px solid rgba(158,158,158,.5);
     border-radius: 15px;
 `
+
+export const Logo = styled.div`
+    color: #4B89DC;
+    font-size: 46px;
+    font-family: HanSans;
+    font-weight: bold
+`;
+
 
 export const LoginButton = styled(Button)`
     &&{

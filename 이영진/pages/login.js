@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CssBaseline, FormControlLabel, Checkbox, Link, Grid, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
-import { Box1, LoginButton, Logo, IdPwSearchLink, IdInput, PwInput } from "./login.element";
+import { WrapperBox, LoginButton, Logo, IdPwSearchLink, IdInput, PwInput } from "./login.element";
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
@@ -76,7 +76,7 @@ const Login = () => {
     <div style={{marginTop:"20px"}}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box1>
+        <WrapperBox>
           <Logo>SUGANG</Logo>
           <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={onSubmit}>
             <IdInput propsFunction={onChangeID} />
@@ -106,7 +106,7 @@ const Login = () => {
               </Grid>
             </Grid>
           </Box>
-        </Box1>
+        </WrapperBox>
       </Container>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, CssBaseline } from '@material-ui/core'
-import { SearchButton, Box1, Logo, String1, String2, AccountInput } from "./idsearch.element"
+import { SearchButton, WrapperBox, Logo, BoldText, NormalText, AccountInput } from "./idsearch.element"
 
 
 const Idsearch = () => {
@@ -12,6 +12,8 @@ const Idsearch = () => {
             email: data.get('email'),
         });
     };
+
+    
     return (
         <div style={{marginTop:"20px"}}>
             <Box
@@ -21,17 +23,17 @@ const Idsearch = () => {
                     alignItems: 'center'
                 }}>
                 <CssBaseline/>
-                <Box1>
+                <WrapperBox>
                     <Logo>SUGANG</Logo>
-                    <String1>아이디 찾기</String1>
+                    <BoldText>아이디 찾기</BoldText>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                        <String2>학교 계정 입력</String2>
+                        <NormalText>학교 계정 입력</NormalText>
                         <AccountInput />
                         <Box />
                         <SearchButton
                             type="submit">아이디 찾기</SearchButton>
                     </Box>
-                </Box1>
+                </WrapperBox>
             </Box>
         </div>
     )
