@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as Styled from './styled';
 import { Positioner } from '../../components/Wrapper/styled'
 import MyEvaluation from '../../components/MyEvaluation'
 
 
 const Search = () => {
-    let [detail, setDetail] = useState(['정렬', '만족도', '꿀강', '배움', '날짜', '종합']);
+    const detail = ['정렬', '만족도', '꿀강', '배움', '날짜', '종합'];
     return (
         <Positioner>
             <Styled.GlobalStyle />
@@ -21,6 +21,7 @@ const Search = () => {
                         </Styled.SearchResultMenu>
                     )}
                 </Styled.SearchResultWrapper>
+
                 <Styled.MyEvaluationWrapper>
                     <MyEvaluation />
                 </Styled.MyEvaluationWrapper>
