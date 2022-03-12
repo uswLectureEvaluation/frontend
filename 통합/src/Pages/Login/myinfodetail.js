@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { HeaderText, TextLink } from './myinfodetail.element'
 import { CssBaseline, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
-import Myevaluation from './myinfodetail/myevaluation';
-import Testinformation from './myinfodetail/testinformation'
+import Myevaluation from '../myinfodetail/myevaluation';
+import Testinformation from '../myinfodetail/testinformation'
 import { style } from '@mui/system';
 
 const Myinfodetail = () => {
