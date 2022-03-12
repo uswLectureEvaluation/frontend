@@ -63,12 +63,12 @@ export const BoxButton2 = styled(Button)`
 
 export const ModalString1 = styled.div`
     font-weight: bold;
-    font-size: 10px;
+    font-size: 1rem;
 `
 export const ModalString2 = styled.span`
     font-weight: bold;
-    font-size: 10px;
-    padding-right: 10px;
+    font-size: 1rem;
+    padding-right: 0.5rem;
 `
 
 export const TempMargin = styled.div`
