@@ -40,6 +40,13 @@ export const Label = styled.label`
     }
 `;
 
+export const EmailWrapper = styled.div`
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+`;
+
 export const AgreeButton = styled.button`
     border: 0;
     background: 0 0;
@@ -51,7 +58,3 @@ export const AgreeButton = styled.button`
     float: right;
     font-size: 12px
 `;
-
-export const EmailWrapper = styled.div`
-    display: flex;
-`
