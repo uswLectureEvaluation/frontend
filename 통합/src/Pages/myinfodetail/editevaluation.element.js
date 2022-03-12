@@ -8,12 +8,12 @@ export const BoxString1 = styled.div`
     
 `
 
-export const BoxString2 = styled.span`
+export const SubjectText = styled.span`
     font-weight: bold;
     font-size: 22px;
 `
 
-export const BoxString3 = styled.span`
+export const SubjectDetail = styled.span`
     font-size: 14px;
     font-weight: bold;
 `
@@ -35,13 +35,13 @@ export const ModalLine = styled.div`
     margin-top: 20px;
     margin-bottom: 20px;
 `
-export const ModalBar = styled.div`
+export const ModalColorBar = styled.div`
     padding: 16px;
     border-radius: 10px;
     background-color: rgb(241, 196, 15);
 `
 
-export const BoxButton1 = styled(Button)`
+export const DetailSelectButton = styled(Button)`
 &&{
     padding: 5px 10px 5px 10px;
     font-size: 10px;

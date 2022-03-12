@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import {BoxString1, BoxString2, BoxString4,BoxString6, BoxButton1, BoxButton2 } from './testinformation.element'
-import {CssBaseline,Grid, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
+import {YearText, SubjectText, ProfessorName, TestInfoDetail, EditButton, DeleteButton } from './testinformation.element'
+import {CssBaseline,Container} from "@material-ui/core";
 import Modal from 'react-modal';
 import Edittestinfo from './edittestinfo'
 
@@ -47,7 +47,6 @@ const Testinformation =  () => {
 
 
 export const Subject = (props) => {
-  const [edit, setEdit] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const Delete = () => {
@@ -66,24 +65,24 @@ export const Subject = (props) => {
       padding: '15px',
     }}>
             <div style={{marginBottom:'15px'}}>
-              <BoxString1>2020-1</BoxString1>
-              <BoxButton2 style={{float: "right"}} onClick={()=>{Delete()}}>삭제</BoxButton2>
-              <BoxButton1 style={{float: "right"}} onClick={() => { setModalIsOpen(true) }}>수정</BoxButton1>
+              <YearText>2020-1</YearText>
+              <DeleteButton style={{float: "right"}} onClick={()=>{Delete()}}>삭제</DeleteButton>
+              <EditButton style={{float: "right"}} onClick={() => { setModalIsOpen(true) }}>수정</EditButton>
             </div>
           <div style={{paddingBottom:'5px'}}>
-          <BoxString2>{props.subjectName[props.index]}</BoxString2>
-          <BoxString4>이다미 교수님</BoxString4>
+          <SubjectText>{props.subjectName[props.index]}</SubjectText>
+          <ProfessorName>이다미 교수님</ProfessorName>
           </div>
-            <BoxString6 style={{fontWeight:'bold'}}>시험 내용</BoxString6>
-            <BoxString6 style={{fontWeight:'bold', color:'rgb(52, 152, 219)'}}>족보, 교재, ppt</BoxString6>
+            <TestInfoDetail style={{fontWeight:'bold'}}>시험 내용</TestInfoDetail>
+            <TestInfoDetail style={{fontWeight:'bold', color:'rgb(52, 152, 219)'}}>족보, 교재, ppt</TestInfoDetail>
             <div/>
-            <BoxString6 style={{fontWeight:'bold'}}>난이도</BoxString6>
-            <BoxString6 style={{fontWeight:'bold', color:'rgb(52, 152, 219)'}}>보통</BoxString6>
+            <TestInfoDetail style={{fontWeight:'bold'}}>난이도</TestInfoDetail>
+            <TestInfoDetail style={{fontWeight:'bold', color:'rgb(52, 152, 219)'}}>보통</TestInfoDetail>
             <div style={{paddingBottom:'5px'}}/>
-            <BoxString6>가나다라마바사아자차카타파하가나다라마바사아자차카타파하
+            <TestInfoDetail>가나다라마바사아자차카타파하가나다라마바사아자차카타파하
           가나다라마바사아자차카타파하
           가나다라마바사아자차카타파하
-          </BoxString6>
+          </TestInfoDetail>
           <Modal 
       isOpen={modalIsOpen}
 			style={모달스타일}
@@ -93,7 +92,7 @@ export const Subject = (props) => {
     	>
     		<Edittestinfo setModalIsOpen={setModalIsOpen}/>
     	</Modal>
-          </div>
+    </div>
   )
 }
 
