@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { BoxString1, BoxString2, BoxString3, BoxString4, BoxString5, BoxString6, BoxButton1, BoxButton2, ModalString1, ModalString2 } from './myevaluation.element'
-import {CssBaseline, Grid, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
+import { YearText, SubjectText, StarPoint, ProfessorName, ModalOpenText, EvaluationDetail, EditButton, DeleteButton, ModalDetail, ModalSt, ModalDetailring2, ModalDetailInfo } from './myevaluation.element'
+import {CssBaseline, Grid, Container } from "@material-ui/core";
 import Editevaluation from './editevaluation'
 import Modal from 'react-modal';
 
@@ -45,21 +45,21 @@ const Myevaluation = () => {
   );
 }
 
-export const Modal1 = () => {
+export const DetailModal = () => {
   return (
     <div style={{paddingBottom:'10px', paddingTop:'5px'}}>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={4}>
-          <ModalString1>만족도 ⭐⭐⭐⭐</ModalString1>
-          <ModalString2>조모임</ModalString2><ModalString2 style={{color:'rgb(190, 190, 190)'}}>없음</ModalString2>
+          <ModalDetail>만족도 ⭐⭐⭐⭐</ModalDetail>
+          <ModalDetailInfo>조모임</ModalDetailInfo><ModalDetailInfo style={{color:'rgb(190, 190, 190)'}}>없음</ModalDetailInfo>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <ModalString1>꿀강 지수 ⭐⭐⭐⭐</ModalString1>
-          <ModalString2>과제</ModalString2><ModalString2 style={{color:'rgb(231, 76, 60)'}}>많음</ModalString2>
+          <ModalDetail>꿀강 지수 ⭐⭐⭐⭐</ModalDetail>
+          <ModalDetailInfo>과제</ModalDetailInfo><ModalDetailInfo style={{color:'rgb(231, 76, 60)'}}>많음</ModalDetailInfo>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <ModalString1>배움 지수 ⭐⭐⭐⭐</ModalString1>
-          <ModalString2>학점</ModalString2><ModalString2 style={{color:'rgb(231, 76, 60)'}}>까다로움</ModalString2>
+          <ModalDetail>배움 지수 ⭐⭐⭐⭐</ModalDetail>
+          <ModalDetailInfo>학점</ModalDetailInfo><ModalDetailInfo style={{color:'rgb(231, 76, 60)'}}>까다로움</ModalDetailInfo>
         </Grid>
       </Grid>
     </div>
@@ -87,26 +87,25 @@ export const Subject = (props) => {
     }}>
      
       <div style={{ marginBottom: '15px' }}>
-        <BoxString1>2020-1</BoxString1>
-        <BoxButton2 onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</BoxButton2>
-        <BoxButton1 onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</BoxButton1>
+        <YearText>2020-1</YearText>
+        <DeleteButton onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</DeleteButton>
+        <EditButton onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</EditButton>
       </div>
-        <BoxString2>{props.subjectName[props.index]}</BoxString2>
-        <BoxString4>이다미 교수님</BoxString4>
+        <SubjectText>{props.subjectName[props.index]}</SubjectText>
+        <ProfessorName>이다미 교수님</ProfessorName>
       <div/>
-      <BoxString3>평균 지수</BoxString3>
-      <BoxString3 style={{ paddingLeft: '10px' }}>⭐⭐⭐⭐⭐</BoxString3>
+      <StarPoint>평균 지수</StarPoint>
+      <StarPoint style={{ paddingLeft: '10px' }}>⭐⭐⭐⭐⭐</StarPoint>
       <span>5.0</span>
-      <BoxString5 onClick={() => { setModal(!modal) }}>{modal === true ? '간략하게 보기 >' : '자세히 보기 >'}</BoxString5>
-      {modal === true ? <Modal1 /> : null}
-      <BoxString6>가나다라마바사아자차카타파하가나다라마바사아자차카타파하
+      <ModalOpenText onClick={() => { setModal(!modal) }}>{modal === true ? '간략하게 보기 >' : '자세히 보기 >'}</ModalOpenText>
+      {modal === true ? <DetailModal /> : null}
+      <EvaluationDetail>가나다라마바사아자차카타파하가나다라마바사아자차카타파하
         가나다라마바사아자차카타파하
         가나다라마바사아자차카타파하
-      </BoxString6>
+      </EvaluationDetail>
       <Modal 
       isOpen={modalIsOpen}
 			style={모달스타일}
-			 // 오버레이나 esc를 누르면 핸들러 동작
 			ariaHideApp={false}
       onRequestClose={() => setModalIsOpen(false)}
     	>
