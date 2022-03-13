@@ -16,7 +16,7 @@ export const Text = styled.div`
 `;
 
 export const Checking = styled.div`
-    font-size : 1.4vw;
+    font-size : 1.2vh;
 `
 
 export const Label = styled.label`
@@ -28,15 +28,11 @@ export const Label = styled.label`
     padding-top: 15px;
     font-size: 0.8rem;
     input {
-    margin: 0 10px 0 0;
+        margin: 0 10px 0 0;
     }
-    &:first-child {
-    padding-bottom: 15px;
-    border-bottom: 1px solid #ccc;
-    }
-    &:last-child {
-    padding-top: 8px;
-    padding-bottom: 20px;
+    &#last {
+        padding-top: 8px;
+        padding-bottom: 3vh;
     }
 `;
 
@@ -56,5 +52,25 @@ export const AgreeButton = styled.button`
     line-height: 1.5;
     display: block;
     float: right;
-    font-size: 12px
+    font-size: 12px;
+`; 
+
+export const InputWrapper = styled.div`
+    display: flex;
+    align-items: center;
+`
+
+export const Wrapper = styled.div`
+    /* PC (해상도 1024px)*/ 
+    @media all and (min-width:1024px) { 
+        width: 500px;
+    } /* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
+
+    @media all and (min-width:768px) and (max-width:1023px) {
+        width: 400px;
+    } /* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/ 
+
+    @media all and (max-width:767px) {
+        width: 300px;
+    }
 `;
