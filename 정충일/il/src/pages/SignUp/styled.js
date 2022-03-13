@@ -16,7 +16,7 @@ export const Text = styled.div`
 `;
 
 export const Checking = styled.div`
-    font-size : 1.4vw;
+    font-size : 1.2vh;
 `
 
 export const Label = styled.label`
@@ -56,5 +56,9 @@ export const AgreeButton = styled.button`
     line-height: 1.5;
     display: block;
     float: right;
-    font-size: 12px
+    font-size: 12px;
+`; 
+
+export const Wrapper = styled.div`
+    width: 500px;
 `;
