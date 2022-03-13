@@ -120,7 +120,7 @@ const SignUp = () => {
        
 
             <Styled.Label>
-              <div style={{width:"100%"}}>
+              <Styled.InputWrapper>
                 <input
                   type="checkbox"
                   name="checkAll"
@@ -128,10 +128,10 @@ const SignUp = () => {
                   checked={checkList.length === 2 ? true : false}
                   />
                   아래 내용에 모두 동의합니다.
-              </div>
+              </Styled.InputWrapper>
             </Styled.Label>
             <Styled.Label>
-              <div>
+              <Styled.InputWrapper>
                 <input
                     type="checkbox"
                     name="terms"
@@ -139,11 +139,11 @@ const SignUp = () => {
                     checked={checkList.includes('terms') ? true : false}
                   />
               [필수] 이용약관 동의
-              </div>
+              </Styled.InputWrapper>
                 <Styled.AgreeButton className="showMore">상세보기</Styled.AgreeButton>
               </Styled.Label>
-              <Styled.Label>
-                <div>
+              <Styled.Label id='last'>
+                <Styled.InputWrapper>
                     <input
                       type="checkbox"
                       name="privacy"
@@ -151,10 +151,9 @@ const SignUp = () => {
                       checked={checkList.includes('privacy') ? true : false}
                       />
                 [필수] 개인정보처리방침 동의
-                    </div>
+                    </Styled.InputWrapper>
                   <Styled.AgreeButton className="showMore">상세보기</Styled.AgreeButton>
             </Styled.Label>
-            <br /><br />
           <Button disabled={!(isName && isEmail && isPassword && isPasswordConfirm && checkList.length === 2)} color="blue">회원가입</Button>
           </Styled.Wrapper>
         </Positioner>
