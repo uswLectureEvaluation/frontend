@@ -14,6 +14,7 @@ import Myinfo from './Pages/Login/myinformation'
 import Myinfodetial from './Pages/Login/myinfodetail'
 import LectureInfo from './Pages/LectureInfo/'
 import Search from './Pages/Search/'
+import EmailSignUp from './Pages/EmailSignUp/'
 
 const themeLight = createTheme({
   palette: {
@@ -40,6 +41,7 @@ const App = () => {
           <Route path='/myinfodetail' element={<Myinfodetial />} />
           <Route path='/lectureinfo' element={<LectureInfo />} />
           <Route path='/search' element={<Search />} />
+          <Route path="/emailsignup" element={<EmailSignUp />} />
         </Routes>
       </ThemeProvider>
     </Router>
