@@ -44,6 +44,7 @@ export const Title = styled.div`
 
 export const MenuTitle = styled.li`
     font-size: 1.5rem;
+    font-weight : 1000;
     margin-bottom : 1rem;
     text-align: center;
     display: inline-block;
@@ -51,10 +52,6 @@ export const MenuTitle = styled.li`
 
     &:hover {
         cursor: pointer;
-    }
-    &:active {
-    font-weight : 1000;
-    height: 100%;
     }
 `;
 
