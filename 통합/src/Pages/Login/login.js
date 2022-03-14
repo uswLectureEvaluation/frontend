@@ -77,7 +77,7 @@ const Login = () => {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <WrapperBox>
-          <Logo>SUGANG</Logo>
+          <Logo>SUWIKI</Logo>
           <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={onSubmit}>
             <IdInput propsFunction={onChangeID} />
             <PwInput propsFunction={onChangePW} />
