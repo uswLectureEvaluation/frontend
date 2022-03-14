@@ -29,6 +29,7 @@ const App = () => {
   return (
     <Router>
       <GlobalStyle />
+      <ScrollToTop />
       <Nav style={{ zindex: 5 }} />
       <ThemeProvider theme={themeLight}>
         <Routes>

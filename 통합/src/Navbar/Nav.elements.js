@@ -14,7 +14,6 @@ font-size: 1.2rem;
 position: sticky;
 top: 0;
 z-index: 999;
-
 `
 
 export const NavbarContainer = styled(Container)`
@@ -67,6 +66,7 @@ export const NavMenu = styled.ul`
   align-items: center;
   list-style: none;
   text-align: center;
+  //여기임
   @media screen and (max-width: 960px) {
     display: flex;
     flex-direction: column;
@@ -74,7 +74,7 @@ export const NavMenu = styled.ul`
     height: 90vh;
     position: absolute;
     top: 80px;
-    right: ${({ click }) => (click ? 0 : '-100%')};
+    left: ${({ click }) => (click ? 0 : '-100%')};
     opacity: 1;
     transition: all 0.5s ease;
     background: #fff;
