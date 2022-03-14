@@ -21,10 +21,10 @@ const Pwsearch = () => {
                 }}>
                 <CssBaseline/>
                 <WrapperBox>
-                    <Logo>SUGANG</Logo>
+                    <Logo>SUWIKI</Logo>
                     <BoldText>비밀번호 찾기</BoldText>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                        <NormalText>SUGANG 아이디/이메일 입력</NormalText>
+                        <NormalText>SUWIKI 아이디/이메일 입력</NormalText>
                         <IdInput />
                         <EmailInput />
                         <Box />
