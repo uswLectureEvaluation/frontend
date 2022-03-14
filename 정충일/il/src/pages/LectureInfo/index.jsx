@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import * as Styled from './styled';
 import { Positioner } from '../../components/Wrapper/styled'
 import MyEvaluation from '../../components/MyEvaluation'
-import Button from '../../components/Button'
+import TestInfo from '../../components/TestInfo'
 
 const checkList = {
     0: <MyEvaluation />,
-    1: <Button />,
+    1: <TestInfo />,
 }
 
 const LectureInfo = () => {
