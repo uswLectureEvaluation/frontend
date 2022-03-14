@@ -24,7 +24,7 @@ const Idsearch = () => {
                 }}>
                 <CssBaseline/>
                 <WrapperBox>
-                    <Logo>SUGANG</Logo>
+                    <Logo>SUWIKI</Logo>
                     <BoldText>아이디 찾기</BoldText>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                         <NormalText>학교 계정 입력</NormalText>

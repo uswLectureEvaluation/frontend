@@ -57,7 +57,7 @@ export const IdInput = () => {
                 required
                 id="id"
                 variant="outlined"
-                label="Input your SUGANG ID"
+                label="Input your SUWIKI ID"
                 name="id"
                 autoComplete="id"
                 autoFocus
