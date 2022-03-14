@@ -81,7 +81,7 @@ const LectureInfo = () => {
                         <Styled.TitleWrapper>
                             {menuList}
                         </Styled.TitleWrapper>
-                        <Styled.Option id='type'>강의평가 쓰기</Styled.Option>
+                        <Styled.Writing id='type'>강의평가 쓰기</Styled.Writing>
                     </Styled.TitleWrapper>
                     {checkList[menuCheck]}
                 </Styled.Content>

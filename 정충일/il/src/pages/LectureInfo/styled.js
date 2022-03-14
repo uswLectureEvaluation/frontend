@@ -65,6 +65,8 @@ export const Option = styled.div`
     border-radius: 10px;
     background-color: rgb(224,224,224);
     text-align: center;
+    display: flex;
+    align-items: center;
     padding: 0.2rem 0.5rem;
     margin: 0 0.5rem;
 
@@ -73,10 +75,30 @@ export const Option = styled.div`
     }
 `
 
+export const Writing = styled.div`
+    border-radius: 10px;
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 1.2rem 1.5rem;
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #7f7f7f;
+
+    &#type {
+        height: 25px;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+`
+
 export const Index = styled.div`
     font-size : 1.7rem;
     font-weight : 1000;
-    margin: 0.2rem 0;
     text-align: center;
     display: flex;
     width: 280px;
