@@ -69,6 +69,7 @@ export const Option = styled.div`
     align-items: center;
     padding: 0.2rem 0.5rem;
     margin: 0 0.5rem;
+    font-weight: bold;
 
     &#type {
         height: 25px;
