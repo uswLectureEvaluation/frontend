@@ -33,7 +33,7 @@ const StyledButton = styled('button')(
   ({ theme }) => `
   font-family: IBM Plex Sans, sans-serif;
    font-weight: bold;
-    font-size: 29px;
+    font-size: 20px;
   box-sizing: border-box;
   min-height: calc(1.5em + 22px);
   min-width: 200px;
@@ -74,7 +74,7 @@ const StyledListbox = styled('ul')(
   ({ theme }) => `
   font-family: IBM Plex Sans, sans-serif;
    font-weight: bold;
-    font-size: 29px;
+    font-size: 20px;
   box-sizing: border-box;
   padding: 5px;
   margin: 10px 0;
@@ -95,7 +95,7 @@ export const StyledOption = styled(OptionUnstyled)(
   border-radius: 0.45em;
   cursor: default;
   font-weight: bold;
-    font-size: 29px;
+    font-size: 20px;
   &:last-of-type {
     border-bottom: none;
   }
@@ -166,7 +166,6 @@ CustomSelect.propTypes = {
 
 export const Display = style.div`
 width: 100%;
-height: 300px !important;
 position: relative;
 z-index: 99;
 margin-top: 30px;
@@ -199,7 +198,7 @@ margin-left: auto;
 export const Row = style.div`
 margin-right: -15px;
 margin-left: -15px;
-    padding-bottom: 100px;
+    
 `
 
 export const TextCenter = style.h1`

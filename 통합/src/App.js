@@ -15,6 +15,7 @@ import Myinfodetial from './Pages/Login/myinfodetail'
 import LectureInfo from './Pages/LectureInfo/'
 import Search from './Pages/Search/'
 import EmailSignUp from './Pages/EmailSignUp/'
+import ScrollToTop from './ScrollToTop'
 
 const themeLight = createTheme({
   palette: {
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/emailsignup" element={<EmailSignUp />} />
         </Routes>
       </ThemeProvider>
+      <Footer />
     </Router>
   )
 }

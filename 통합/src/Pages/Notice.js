@@ -6,7 +6,6 @@ const Notice = () => {
     return (
         <div>
             <Nheader />
-            <Footer />
         </div>
     )
 }

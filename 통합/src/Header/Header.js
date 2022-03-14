@@ -60,9 +60,9 @@ const Header = () => {
                             </SearchButton> */}
                             </SearchBar>
                             <HeadSelection style={{ marginBottom: '20px' }}>
-                                <CustomSelect>
+                                <CustomSelect defaultValue={fire}>
                                     {countries.map((c) => (
-                                        <StyledOption key={c.code} value={c.code} defaultValue={c.code == 'fire'}>
+                                        <StyledOption key={c.code} value={c.code}>
                                             <img
                                                 loading="lazy"
                                                 width="20"
@@ -85,7 +85,6 @@ const Header = () => {
                                 </Link>
                             </HeadSelection>
                             <MTable />
-                            <Footer />
                         </Row>
                     </DContainer>
                 </VerticalMiddle>
