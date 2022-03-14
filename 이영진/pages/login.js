@@ -77,7 +77,7 @@ const Login = () => {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <WrapperBox>
-          <Logo>SUWIKI</Logo>
+          <Logo>로그인</Logo>
           <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={onSubmit}>
             <IdInput propsFunction={onChangeID} />
             <PwInput propsFunction={onChangePW} />
@@ -95,12 +95,12 @@ const Login = () => {
             </LoginButton>
             <Grid container>
               <Grid item xs>
-                <Link href="/Idsearch" variant="body2">
+                <Link href="/Idsearch" variant="body2" underline="none">
                   <IdPwSearchLink>아이디 찾기</IdPwSearchLink>
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/Pwsearch" variant="body2">
+                <Link href="/Pwsearch" variant="body2" underline="none">
                   <IdPwSearchLink>비밀번호 찾기</IdPwSearchLink>
                 </Link>
               </Grid>

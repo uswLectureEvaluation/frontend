@@ -8,20 +8,23 @@ export const WrapperBox = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 40px;
-    border: 1px solid rgb(158,158,158);
-    border: 1px solid rgba(158,158,158,.5);
-    border-radius: 15px;
+    @media only screen and (max-width: 500px) {
+        border: 1px solid rgb(158,158,158);
+        border: 1px solid rgba(158,158,158,.5);
+        border-radius: 15px;
+     }
+   
 `
 
 export const Logo = styled.div`
-    color: #4B89DC;
-    font-size: 46px;
-    font-family: HanSans;
+    font-size : 4vh;
+    font-weight : 1000;
+    font-family: "Pretendard-Black";
     font-weight: bold
 `;
 
 
-export const LoginButton = styled(Button)`
+/*export const LoginButton = styled(Button)`
     &&{
         font-size: 14px;
         font-weight: bold;
@@ -31,13 +34,42 @@ export const LoginButton = styled(Button)`
         background-color: rgb(52, 152, 219);
         padding: 5px 100px 5px 100px
     }
+`;*/
+
+export const LoginButton = styled.button`
+    margin: 0;
+    width: 100%;
+    padding: 0 1rem;
+    padding-top: 0.6rem;
+    border:none;
+    padding-bottom: 0.5rem;
+    background: #4b89dc;
+    color: white;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    user-select: none;
+    transition: .3s all;
+    &:hover, &:active {
+        background: #4b10f2;
+    }
+    &:disabled {
+        background-color: rgba(170,170,170);
+        cursor : auto;
+    }
 `;
 
 export const IdPwSearchLink = styled.div`
+    &:hover, &:active {
+        color: #4b10f2;
+    }
       padding: 10px;
       font-size: 16px;
       color:rgb(158,158,158);
       font-weight: bold
+
 `
 
 
