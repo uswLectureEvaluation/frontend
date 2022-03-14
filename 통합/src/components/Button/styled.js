@@ -17,7 +17,7 @@ export const Wrapper = styled.button`
     user-select: none;
     transition: .3s all;
     &:hover, &:active {
-        background: #4b10f2;
+        background: #4b70fc;
     }
     &:disabled {
         background-color: rgba(170,170,170);
