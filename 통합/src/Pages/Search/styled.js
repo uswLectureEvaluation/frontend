@@ -38,6 +38,11 @@ export const SearchResultMenu = styled.div`
     margin: 1rem;
     font-weight: bold;
     font-size: 1rem;
+    cursor: pointer;
+
+    &:first-child {
+        cursor: context-menu;
+    }
 `;
 
 export const MyEvaluationWrapper = styled.div`
