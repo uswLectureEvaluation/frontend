@@ -52,7 +52,7 @@ display: none;
 
 @media screen and (max-width: 960px) {
     display: block;
-    position: relative;
+    position: fixed;
     top: 0;
     right: 0;
     transform: translate(-100%, 60%);
@@ -85,7 +85,7 @@ text-align: center;
     //transition-timingfunction(애니메이션이 적용되는 속도를 지정)
     //transition-duration(애니메이션 효과가 몇초 지난 후 작동할지 설정) 
     //transition: all: 높이와 너비, 0.5s 총시간 , ease: 느리게 시작했다가 빨라졌다가 다시 느려짐
-    transition: all 2s ease;
+    transition: all 0.5s ease;
     background: #fff;
 }
 `;
