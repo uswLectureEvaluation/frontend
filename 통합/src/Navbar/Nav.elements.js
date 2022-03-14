@@ -19,7 +19,7 @@ z-index: 999;
 export const NavbarContainer = styled(Container)`
 display: flex;
 //아이템들의 사이에 균일한 간격을 만들어준다
-justify-content: space-between;
+justify-content: space-evenly;
 height: 80px;
 border-width: 0px 0px 2px;
     border-style: solid;
@@ -53,8 +53,7 @@ display: none;
     display: block;
     position: absolute;
     top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
+    transform: translate(-550%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
 
@@ -66,7 +65,6 @@ export const NavMenu = styled.ul`
   align-items: center;
   list-style: none;
   text-align: center;
-  //여기임
   @media screen and (max-width: 960px) {
     display: flex;
     flex-direction: column;
