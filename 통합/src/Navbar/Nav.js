@@ -42,7 +42,7 @@ const Nav = () => {
             <Navbar>
                 <NavbarContainer>
                     <NavLogo to="/" onClick={closeMobileMenu}>
-                        SUGANG
+                        SUWIKI
                     </NavLogo>
                     <MobileIcon onClick={handleClick}>
                         {click ? <FaTimes style={{ color: '#4B89DC' }} /> : <FaBars style={{ color: '#4B89DC' }} />}

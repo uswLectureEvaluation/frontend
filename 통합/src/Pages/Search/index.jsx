@@ -14,13 +14,13 @@ const Search = () => {
                 <Styled.Input />
 
                 <Styled.SearchResultWrapper>
-                    { detail.map((name, index)=>
+                    {detail.map((name, index) =>
                         <Styled.SearchResultMenu detail={detail} index={index}>
                             {name}
                         </Styled.SearchResultMenu>
                     )}
                 </Styled.SearchResultWrapper>
-                
+
                 <Styled.MyEvaluationWrapper>
                     <MyEvaluation />
                 </Styled.MyEvaluationWrapper>

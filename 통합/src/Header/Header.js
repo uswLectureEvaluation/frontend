@@ -9,7 +9,7 @@ import thumb from '../img/thumbs-up-solid.svg'
 import book from '../img/book-solid.svg'
 import Footer from '../Footer/Footer';
 import { useNavigate } from 'react-router-dom'
-
+import { Container } from "@material-ui/core";
 
 const Header = () => {
 
@@ -40,55 +40,57 @@ const Header = () => {
     ]
 
     return (
-        <Display>
-            <VerticalMiddle>
-                <DContainer>
-                    <Row>
-                        <TextCenter>강의평가 검색</TextCenter>
-                        <SearchBar>
-                            <SearchInput
-                                onChange={onChange}
-                                placeholder="과목명, 교수명으로 원하는 강의평가를 찾아보세요!"
-                                onClick={onClick}
-                            />
-                            {/* <SearchButton>
+        <Container maxWidth="lg">
+            <Display>
+                <VerticalMiddle>
+                    <DContainer>
+                        <Row>
+                            <TextCenter>강의평가 검색</TextCenter>
+                            <SearchBar>
+                                <SearchInput
+                                    onChange={onChange}
+                                    placeholder="과목명, 교수명으로 원하는 강의평가를 찾아보세요!"
+                                    onClick={onClick}
+                                />
+                                {/* <SearchButton>
                                 <HiSearch style={{
                                     width: '40px',
                                     height: '45px'
                                 }} />
                             </SearchButton> */}
-                        </SearchBar>
-                        <HeadSelection style={{ marginBottom: '20px' }}>
-                            <CustomSelect>
-                                {countries.map((c) => (
-                                    <StyledOption key={c.code} value={c.code} defaultValue={c.code == 'fire'}>
-                                        <img
-                                            loading="lazy"
-                                            width="20"
-                                            src={c.code}
+                            </SearchBar>
+                            <HeadSelection style={{ marginBottom: '20px' }}>
+                                <CustomSelect>
+                                    {countries.map((c) => (
+                                        <StyledOption key={c.code} value={c.code} defaultValue={c.code == 'fire'}>
+                                            <img
+                                                loading="lazy"
+                                                width="20"
+                                                src={c.code}
 
-                                        />
-                                        {c.label}
-                                    </StyledOption>
-                                ))}
-                            </CustomSelect>
-                            <Link
-                                component="button"
-                                variant="body2"
-                                onClick={() => {
-                                    console.log("I'm a button.");
-                                }}
-                                style={{ fontSize: '20px', color: 'rgb(158, 158, 158)' }}
-                            >
+                                            />
+                                            {c.label}
+                                        </StyledOption>
+                                    ))}
+                                </CustomSelect>
+                                <Link
+                                    component="button"
+                                    variant="body2"
+                                    onClick={() => {
+                                        console.log("I'm a button.");
+                                    }}
+                                    style={{ fontSize: '20px', color: 'rgb(158, 158, 158)' }}
+                                >
                                 더보기>
-                            </Link>
-                        </HeadSelection>
-                        <MTable />
-                        <Footer />
-                    </Row>
-                </DContainer>
-            </VerticalMiddle>
-        </Display >
+                                </Link>
+                            </HeadSelection>
+                            <MTable />
+                            <Footer />
+                        </Row>
+                    </DContainer>
+                </VerticalMiddle>
+            </Display >
+        </Container>
     )
 }
 

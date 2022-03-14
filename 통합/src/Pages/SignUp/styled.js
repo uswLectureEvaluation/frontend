@@ -53,7 +53,7 @@ export const AgreeButton = styled.button`
     display: block;
     float: right;
     font-size: 12px;
-`; 
+`;
 
 export const InputWrapper = styled.div`
     display: flex;
@@ -61,6 +61,7 @@ export const InputWrapper = styled.div`
 `
 
 export const Wrapper = styled.div`
+    margin: 0 auto;
     /* PC (해상도 1024px)*/ 
     @media all and (min-width:1024px) { 
         width: 500px;

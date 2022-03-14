@@ -36,7 +36,7 @@ const StyledButton = styled('button')(
     font-size: 29px;
   box-sizing: border-box;
   min-height: calc(1.5em + 22px);
-  min-width: 320px;
+  min-width: 200px;
   background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
   border: 0 solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
   padding: 10px;
@@ -165,7 +165,6 @@ CustomSelect.propTypes = {
 // 뒤에!important를 붙입니다.
 
 export const Display = style.div`
-display: table;
 width: 100%;
 height: 300px !important;
 position: relative;
@@ -183,7 +182,6 @@ padding: 0;
 
 export const VerticalMiddle = style.div`
 vertical-align: middle;
-display: table-cell;
 width: 100%;
 height: 100%;
 `
@@ -195,9 +193,7 @@ margin-right: auto;
 margin-left: auto;
  min-height: 100%;
     position: relative;
-@media (min-width: 768px){
-width: 1000px;
-}
+
 `
 
 export const Row = style.div`

@@ -31,9 +31,9 @@ ${Container}
 
 export const NavLogo = styled(Link)`
 
+ justify-self: flex-start;
 color: #4B89DC;
 //시작과 동일
-justify-self: right;
 cursor: pointer;
 text-decoration: none;
 font-size: 2rem;
@@ -52,7 +52,7 @@ display: none;
 
 @media screen and (max-width: 960px) {
     display: block;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     transform: translate(-100%, 60%);
@@ -63,31 +63,22 @@ display: none;
 `;
 
 export const NavMenu = styled.ul`
-display: flex;
-align-items: center;
-list-style:none;
-text-align: center;
-
-
-@media screen and ( max-width: 960px) {
+ display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+  @media screen and (max-width: 960px) {
     display: flex;
-    //세로방향으로 정렬
     flex-direction: column;
     width: 100%;
     height: 90vh;
     position: absolute;
     top: 80px;
-    right: ${({ click }) => (click ? 0 : '-100%')};
-    //불투명도
+    left: ${({ click }) => (click ? 0 : '-100%')};
     opacity: 1;
-    //transition-property(원하는 에니메이션 시키 속성을 입력), 
-    //transition-duration(애니메이션 효과가 몇초동안 실행될지)
-    //transition-timingfunction(애니메이션이 적용되는 속도를 지정)
-    //transition-duration(애니메이션 효과가 몇초 지난 후 작동할지 설정) 
-    //transition: all: 높이와 너비, 0.5s 총시간 , ease: 느리게 시작했다가 빨라졌다가 다시 느려짐
     transition: all 0.5s ease;
     background: #fff;
-}
+  }
 `;
 
 export const NavItem = styled.li`
@@ -110,24 +101,21 @@ border-bottom: 2px solid transparent;
 
 export const NavLinks = styled(Link)`
     color: #000000;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    height: 100%;
-    font: 20px HanSans;
-
-    @media screen and (max-width: 960px) {
-        text-align: center;
-        padding: 2rem;
-        width: 100%;
-        display: table;
-
-        &:hover {
-            color: #4B89DC;
-            transition: all 1s ease;
-        }
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+  @media screen and (max-width: 960px) {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+    &:hover {
+      color: #4B89DC;
+      transition: all 0.3s ease;
     }
+  }
 `;
 
 
