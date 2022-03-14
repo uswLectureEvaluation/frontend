@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Styled from './styled';
 import { Positioner } from '../../components/Wrapper/styled'
-import MyEvaluation from '../../components/MyEvaluation/'
+import MyEvaluation from '../../components/MyEvaluation'
+import TestInfo from '../../components/TestInfo'
+
+const checkList = {
+    0: <MyEvaluation />,
+    1: <TestInfo />,
+}
 
 const LectureInfo = () => {
+    const menu = ['강의 평가', '시험 정보'];
+    const menuList = menu.map((i, index) => <Styled.MenuTitle onClick={()=>clickFunc(index)}>{i}</Styled.MenuTitle>);
+    
+    const [menuCheck, setMenuCheck] = useState(0);
+
+    const clickFunc = (index) => {
+        setMenuCheck(index);
+    };
 
     return (
         <Positioner>
@@ -58,19 +72,18 @@ const LectureInfo = () => {
                                 <Styled.IndexGroup><Styled.Color style={{ color: "#e74c3c" }}>까다로움</Styled.Color></Styled.IndexGroup>
                             </Styled.Index>
                         </Styled.IndexWrapper>
-
+                        
                     </div>
                 </Styled.Content>
-
+                
                 <Styled.Content>
                     <Styled.TitleWrapper id='top'>
                         <Styled.TitleWrapper>
-                            <Styled.Title id='sub'>강의 평가</Styled.Title>
-                            <Styled.Title id='sub' style={{ color: 'gray', paddingLeft: '10px' }}>시험 정보</Styled.Title>
+                            {menuList}
                         </Styled.TitleWrapper>
                         <Styled.Option id='type'>강의평가 쓰기</Styled.Option>
                     </Styled.TitleWrapper>
-                    <MyEvaluation />
+                    {checkList[menuCheck]}
                 </Styled.Content>
             </Styled.Wrapper>
         </Positioner>
