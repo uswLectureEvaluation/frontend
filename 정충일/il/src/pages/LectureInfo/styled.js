@@ -42,6 +42,22 @@ export const Title = styled.div`
     }
 `
 
+export const MenuTitle = styled.li`
+    font-size: 1.5rem;
+    margin-bottom : 1rem;
+    text-align: center;
+    display: inline-block;
+    padding-right: 1rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+    &:active {
+    font-weight : 1000;
+    height: 100%;
+    }
+`;
+
 export const Professor = styled.div`
     display: flex;
     align-items: center;
@@ -69,7 +85,7 @@ export const Index = styled.div`
     width: 280px;
 `
 
-export const IndexWrapper = styled.div`
+export const IndexWrapper = styled.ul`
     display: flex;
     
     &#first {
