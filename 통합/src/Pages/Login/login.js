@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CssBaseline, FormControlLabel, Checkbox, Link, Grid, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
 import { WrapperBox, LoginButton, Logo, IdPwSearchLink, IdInput, PwInput } from "./login.element";
 import swal from 'sweetalert';
@@ -67,6 +67,10 @@ const Login = () => {
     loginApi(setData, username, password);
   }
 
+
+  useEffect(() => {
+    console.log(db.data)
+  }, [db.data])
 
   const onSubmit = (event) => {
     event.preventDefault();

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -15,6 +15,7 @@ import FirstPageIcon from '@mui/icons-material/FirstPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
+import { mainApi } from '../Api/Api'
 
 function TablePaginationActions(props) {
     const theme = useTheme();
@@ -35,6 +36,8 @@ function TablePaginationActions(props) {
     const handleLastPageButtonClick = (event) => {
         onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
     };
+
+
 
     return (
         <Box sx={{ flexShrink: 0, ml: 2.5 }}>
@@ -108,6 +111,16 @@ export default function MTable() {
         setPage(0);
     };
 
+    const [db, setData] = useState({
+        data: []
+    })
+
+    useEffect(() => {
+
+        mainApi(setData)
+
+    }, [])
+
     const a = []
     const handleStar = (num) => {
         for (let i = 0; i < num; i++) {
@@ -115,6 +128,8 @@ export default function MTable() {
         }
         return a;
     }
+
+
 
     return (
         <TableContainer component={Paper} >
@@ -151,6 +166,10 @@ export default function MTable() {
                             <TableCell colSpan={6} />
                         </TableRow>
                     )}
+
+                    {
+
+                    }
                 </TableBody>
             </Table>
         </TableContainer >
