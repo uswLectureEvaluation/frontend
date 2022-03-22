@@ -7,11 +7,10 @@ import axios from 'axios';
 import { Cookies } from 'react-cookie'
 
 
-
 const Login = () => {
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
-  const [username, setUserName] = useState();
+  const [loginId, setUserName] = useState();
   const [password, setPassWord] = useState();
   // 체크박스 이벤트
   const onChange = (event) => {
@@ -26,7 +25,7 @@ const Login = () => {
   const onSubmit = async e => {
 
     async function loginUser(credentials) {
-      return fetch('https://www.mecallapi.com/api/login', {
+      return fetch('/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -38,21 +37,22 @@ const Login = () => {
 
     e.preventDefault();
     const response = await loginUser({
-      username,
+      loginId,
       password
     });
-    if ('accessToken' in response) {
+    if ('AccessToken' in response) {
       swal("로그인 성공", response.message, "success", {
         buttons: false,
         timer: 2000,
       })
         .then((value) => {
-          localStorage.setItem('accessToken', response['accessToken']);
-          localStorage.setItem('user', JSON.stringify(response['user']));
+          localStorage.setItem('AccessToken', response['AccessToken']);
+          localStorage.setItem('RefreshToken', response['RefreshToken']);
           navigate("/myinformation");
         });
     } else {
       swal("로그인 실패", response.message, "error");
+      console.log(response)
       //try-catch
     }
   }
@@ -73,7 +73,7 @@ const Login = () => {
 
 
   return (
-    <div style={{marginTop:"20px"}}>
+    <div style={{ marginTop: "20px" }}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <WrapperBox>
