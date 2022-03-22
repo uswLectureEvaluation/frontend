@@ -2,9 +2,10 @@ import axios from "axios";
 import qs from "qs";
 
 
-//메인페이지 500뜸 백엔드에게 말해놈
+//메인페이지
+///lecture/findAllList/?option=lectureSatisfactionAvg&page=1 데이터 받아옴
 export const mainApi = (setData) => {
-    const url = "/lecture/findAllList/"
+    const url = "/lecture/findAllList/?option=lectureSatisfactionAvg&page=1"
 
     const options = {
         method: "GET",
