@@ -17,7 +17,7 @@ const Header = () => {
 
     const [search, setSearch] = useState('');
 
-    const [lecture, setLecture] = useState('');
+    const [lecture, setLecture] = useState('lectureHoneyAvg');
 
 
     const onChange = (e) => {
@@ -73,7 +73,7 @@ const Header = () => {
                             <HeadSelection style={{ marginBottom: '20px' }}>
                                 <CustomSelect value={lecture} onChange={onLecture}>
                                     {countries.map((c) => (
-                                        <StyledOption key={c.code} value={c.lec} >
+                                        <StyledOption key={c.code} value={c.lec}  >
                                             <img
                                                 loading="lazy"
                                                 width="20"
