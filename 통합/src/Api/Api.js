@@ -4,8 +4,12 @@ import qs from "qs";
 
 //메인페이지
 ///lecture/findAllList/?option=lectureSatisfactionAvg&page=1 데이터 받아옴
-export const mainApi = (setData) => {
-    const url = "/lecture/findAllList/?option=lectureSatisfactionAvg&page=1"
+//modifiedDate 최근강의
+//lectureSatisfactionAvg 만족도 강의
+//lectureHoneyAvg 꿀강의
+//lectureLearningAvg 배울게 많은 강의
+export const mainApi = (setData, lecture) => {
+    const url = `/lecture/findAllList/?option=${lecture}&page=1`
 
     const options = {
         method: "GET",
@@ -15,10 +19,12 @@ export const mainApi = (setData) => {
     axios(options).then(
         (r) => {
             console.log("connect");
-            console.log(r);
+            console.log(r.data);
+            console.log(url)
             setData(r.data)
         }, (error) => {
             console.log(error.response);
+            console.log(url)
         }
     )
 }

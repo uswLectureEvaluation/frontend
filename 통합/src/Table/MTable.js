@@ -94,7 +94,7 @@ const rows = [
 
 ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
-export default function MTable() {
+export default function MTable(lecture) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(4);
 
@@ -117,9 +117,9 @@ export default function MTable() {
 
     useEffect(() => {
 
-        mainApi(setData)
+        mainApi(setData, lecture.lecture)
 
-    }, [])
+    }, [lecture])
 
     const a = []
     const handleStar = (num) => {
@@ -135,16 +135,13 @@ export default function MTable() {
         <TableContainer component={Paper} >
             <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
                 <TableBody >
-                    {(rowsPerPage > 0
-                        ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        : rows
-                    ).map((row) => (
-                        <TableRow key={row.name}>
+                    {db.data.map((row) => (
+                        <TableRow key={row.id}>
                             <TableCell component="th" scope="row" style={{ fontSize: '24px', fontWeight: 'bold', fontFamily: 'HanSans' }}>
-                                {row.name} <h5 style={{ fontSize: '14px', fontFamily: 'HanSans' }}>교양대학</h5>
+                                {row.lectureName} <h5 style={{ fontSize: '14px', fontFamily: 'HanSans' }}>{row.professor}</h5>
 
                                 <div style={{ width: 300, fontSize: '22px', fontWeight: 'bold', marginTop: '15px', fontFamily: 'HanSans' }}>
-                                    평균지수 {row.num}
+                                    평균지수 {row.lectureTotalAvg}
                                 </div>
                                 <div onClick={() => alert('dd')} style={{
                                     fontSize: '16px',
@@ -156,20 +153,11 @@ export default function MTable() {
                             </TableCell>
 
                             <TableCell style={{ width: 160, fontSize: '16px', }} align="right">
-                                {row.calories}
+                                {row.lectureType}
                             </TableCell>
                         </TableRow>
                     ))}
 
-                    {emptyRows > 0 && (
-                        <TableRow style={{ height: 53 * emptyRows }}>
-                            <TableCell colSpan={6} />
-                        </TableRow>
-                    )}
-
-                    {
-
-                    }
                 </TableBody>
             </Table>
         </TableContainer >

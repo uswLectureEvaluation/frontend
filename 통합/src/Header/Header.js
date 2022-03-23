@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Display, DContainer, Row, TextCenter, VerticalMiddle, SearchButton, PrimaryButton, SearchInput, SearchBar, HeadSelection, CustomSelect, StyledOption } from './Header.elemets'
 import MTable from '../Table/MTable';
 import Link from '@mui/material/Link';
-import fire from '../img/fire-solid.svg'
+import modifiedDate from '../img/fire-solid.svg'
 import check from '../img/check-solid.svg'
-import star from '../img/star-solid.svg'
-import thumb from '../img/thumbs-up-solid.svg'
-import book from '../img/book-solid.svg'
+import lectureSatisfactionAvg from '../img/star-solid.svg'
+import lectureHoneyAvg from '../img/thumbs-up-solid.svg'
+import lectureLearningAvg from '../img/book-solid.svg'
 import Footer from '../Footer/Footer';
 import { useNavigate } from 'react-router-dom'
 import { Container } from "@material-ui/core";
@@ -16,6 +16,8 @@ const Header = () => {
     const navigate = useNavigate();
 
     const [search, setSearch] = useState('');
+
+    const [lecture, setLecture] = useState('');
 
 
     const onChange = (e) => {
@@ -28,15 +30,24 @@ const Header = () => {
     }
 
 
+    const onLecture = (e) => {
+        setLecture(e)
+        console.log(e)
+    }
+
     const countries = [
-        { code: fire, label: '최근 올라온 강의' },
+        { code: modifiedDate, label: '최근 올라온 강의', lec: 'modifiedDate' },
         {
-            code: thumb,
+            code: lectureHoneyAvg,
             label: '꿀 강의',
+            lec: 'lectureHoneyAvg'
         },
-        { code: star, label: '만족도가 높은 강의' },
-        { code: book, label: '배울게 많은 강의' },
-        { code: check, label: 'Best 강의' }
+        {
+            code: lectureSatisfactionAvg, label: '만족도가 높은 강의',
+            lec: 'lectureSatisfactionAvg'
+        },
+        { code: lectureLearningAvg, label: '배울게 많은 강의', lec: 'lectureLearningAvg' },
+        { code: check, label: 'Best 강의', lec: 'check' }
     ]
 
     return (
@@ -60,14 +71,13 @@ const Header = () => {
                             </SearchButton> */}
                             </SearchBar>
                             <HeadSelection style={{ marginBottom: '20px' }}>
-                                <CustomSelect defaultValue={fire}>
+                                <CustomSelect value={lecture} onChange={onLecture}>
                                     {countries.map((c) => (
-                                        <StyledOption key={c.code} value={c.code}>
+                                        <StyledOption key={c.code} value={c.lec} >
                                             <img
                                                 loading="lazy"
                                                 width="20"
                                                 src={c.code}
-
                                             />
                                             {c.label}
                                         </StyledOption>
@@ -84,7 +94,7 @@ const Header = () => {
                                 더보기>
                                 </Link>
                             </HeadSelection>
-                            <MTable />
+                            <MTable lecture={lecture} />
                         </Row>
                     </DContainer>
                 </VerticalMiddle>
