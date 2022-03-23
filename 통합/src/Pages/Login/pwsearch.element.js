@@ -80,7 +80,7 @@ export const SmallText = styled.div`
 `
 
 
-export const IdInput = () => {
+export const IdInput = ({propsfunction}) => {
     return (
         <Grid xs={12}>
             <TextField
@@ -92,12 +92,13 @@ export const IdInput = () => {
                 name="id"
                 autoComplete="id"
                 autoFocus
+                onChange={propsfunction}
             ></TextField>
         </Grid>
     )
 }
 
-export const EmailInput = () => {
+export const EmailInput = ({propsfunction}) => {
     return (
         <Grid xs={12}>
             <TextField
@@ -108,7 +109,7 @@ export const EmailInput = () => {
                 label="Input your Email"
                 name="email"
                 autoComplete="email"
-
+                onChange={propsfunction}
             ></TextField>
         </Grid>
     )

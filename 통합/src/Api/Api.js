@@ -103,3 +103,60 @@ export const loginApi = (setData, id, pw) => {
         }
     );
 };
+
+//아이디 찾기api
+export const findIdApi = (setData, email) => {
+    const url = "/user/find-id";
+
+    const data = {
+        email: email
+    };
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        data: data,
+        url,
+    };
+    axios(options).then(
+        (r) => {
+            console.log("connect");
+            console.log(r.data);
+            setData(r.data);
+        },
+        (error) => {
+            console.log(error.response);
+            console.log(data)
+        }
+    );
+};
+
+//비밀번호 찾기api
+export const findPwApi = (setData, id, email) => {
+    const url = "/user/find-pw";
+
+    const data = {
+        loginId: id,
+        email: email
+    };
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        data: data,
+        url,
+    };
+    axios(options).then(
+        (r) => {
+            console.log("connect");
+            console.log(r.data);
+            setData(r.data);
+        },
+        (error) => {
+            console.log(error.response);
+            console.log(data)
+        }
+    );
+};

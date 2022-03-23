@@ -73,7 +73,7 @@ export const NormalText = styled.div`
     font-weight: normal
 `
 
-export const AccountInput = () => {
+export const AccountInput = ({ propsFunction }) => {
     return (
         <TextField
             margin="normal"
@@ -84,6 +84,7 @@ export const AccountInput = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={propsFunction}
         ></TextField>
     )
 }

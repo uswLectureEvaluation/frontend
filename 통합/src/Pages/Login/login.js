@@ -19,7 +19,7 @@ const Login = () => {
     data: []
   })
   // 체크박스 이벤트
-  const onChange = (event) => {
+  const onChangeCheckBox = (event) => {
     setChecked(event.target.checked);
   };
   const onChangeID = (e) => {
@@ -72,7 +72,7 @@ const Login = () => {
     console.log(db.data)
   }, [db.data])
 
-  const onSubmit = (event) => {
+  /*const onSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
@@ -80,7 +80,7 @@ const Login = () => {
       password: data.get('password'),
       checkbox: checked
     });
-  };
+  };*/
 
 
 
@@ -90,15 +90,14 @@ const Login = () => {
         <CssBaseline />
         <WrapperBox>
           <Logo>로그인</Logo>
-          <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={onSubmit}>
+          <Box noValidate sx={{ mt: 1 }}>
             <IdInput propsFunction={onChangeID} />
             <PwInput propsFunction={onChangePW} />
             <FormControlLabel
-              control={<Checkbox checked={checked} onChange={onChange} color="primary" />}
+              control={<Checkbox checked={checked} onChange={onChangeCheckBox} color="primary" />}
               label="로그인 유지"
             />
             <LoginButton
-              type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
