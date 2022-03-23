@@ -1,10 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 import * as Styled from './styled';
 import { Positioner } from '../../components/Wrapper/styled'
-import { registerApi } from '../../Api/Api';
-
+import { checkemailApi, checkidApi, registerApi } from '../../Api/Api';
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
   //이름, 이메일, 비밀번호, 비밀번호 확인
@@ -25,6 +25,18 @@ const SignUp = () => {
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
 
 
+
+  const navigate = useNavigate();
+
+  const [idcheck, setIdcheck] = useState({
+    overlap: ''
+  }
+  );
+  const [emailcheck, setEmailcheck] = useState({
+    overlap: ''
+  }
+  );
+
   const [db, setData] = useState({
     data: ''
   })
@@ -37,11 +49,15 @@ const SignUp = () => {
     } else if (e.target.value.length > 20) {
       setNameMessage('아이디는 20자리 이하로 입력해주세요.')
       setIsName(false)
-    } else {
-      setNameMessage('사용 가능한 아이디입니다.')
+    } else if (e.target.value.length > 6 || e.target.value.length < 20) {
+      setNameMessage('아이디 중복확인해주세요.')
       setIsName(true)
     }
+
+
   }, [])
+
+
 
   // 이메일
   const onChangeEmail = useCallback((e) => {
@@ -94,6 +110,8 @@ const SignUp = () => {
   //체크박스
   const [checkList, setCheckList] = useState([]);
 
+  const [loading, setLoading] = useState(false)
+
   // 체크박스 전체선택시 모두선택 체크박스 활성화시키기
   const handleCheck = (e) => {
     e.target.checked
@@ -107,9 +125,35 @@ const SignUp = () => {
   };
 
   const onClick = () => {
-    registerApi(setData, name, password, email)
+
+    if (idcheck.overlap == false && emailcheck.overlap == false) {
+      registerApi(setData, setLoading, name, password, email)
+      console.log('dd')
+    } else {
+      console.log(idcheck.overlap)
+    }
   }
 
+  const onCheck = () => {
+    checkidApi(setIdcheck, name)
+  }
+
+  const onEmail = () => {
+    checkemailApi(setIdcheck, email)
+  }
+
+  useEffect(() => {
+    if (loading === true) {
+      console.log('ddd')
+      if (db.data !== null) {
+        alert('회원가입 성공')
+        navigate("/login")
+      } else {
+        alert('회원가입 실패')
+      }
+    }
+
+  }, [db.data, loading])
 
   return (
     <Positioner>
@@ -117,7 +161,7 @@ const SignUp = () => {
         <Styled.Title>회원가입</Styled.Title>
         <Input label="아이디" name="username" placeholder="아이디" onChange={onChangeName} />
         {name.length > 0 && <Styled.Checking className={`message ${isName ? 'success' : 'error'}`}>{nameMessage}</Styled.Checking>}
-
+        <Button onClick={onCheck}>아이디 중복확인</Button>
         <Input label="비밀번호" name="password" placeholder="비밀번호" type="password" onChange={onChangePassword} />
         {password.length > 0 && (<Styled.Checking className={`message ${isPassword ? 'success' : 'error'}`}>{passwordMessage}</Styled.Checking>)}
 
@@ -127,7 +171,9 @@ const SignUp = () => {
         )}
         <Input label="이메일" id="email" name="email" placeholder="이메일(@suwon.ac.kr)" onChange={onChangeEmail} />
         {email.length > 0 && <Styled.Checking className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</Styled.Checking>}
+        <Button onClick={onEmail}>이메일 중복확인</Button>
         <Styled.EmailWrapper>*수원대 이메일 인증 후 서비스 이용이 가능합니다.</Styled.EmailWrapper>
+
 
 
         <Styled.Label>

@@ -50,7 +50,7 @@ export const noticeApi = (setData) => {
 }
 
 //회원가입 api 0 
-export const registerApi = (setData, id, pw, email) => {
+export const registerApi = (setData, setLoading, id, pw, email) => {
     const url = "/user/join"
 
     const data = {
@@ -72,10 +72,74 @@ export const registerApi = (setData, id, pw, email) => {
             console.log("connect");
             console.log(r.data);
             setData(r.data);
+            setLoading(true)
         },
         (error) => {
             console.log(error.response.data);
             console.log(data)
+        }
+    );
+}
+
+//회원가입 아이디 중복확인
+export const checkidApi = (setData, id) => {
+    const url = "/user/check-id"
+
+    const data = {
+        loginId: id
+    }
+
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        data: data,
+        url
+    }
+
+    axios(options).then(
+        (r) => {
+            console.log("connect");
+            console.log(r.data);
+            console.log(id)
+            setData(r.data);
+            alert('사용가능합니다.')
+        },
+        (error) => {
+            console.log(error.response.data);
+            alert('중복입니다.')
+        }
+    );
+}
+
+//회원가입 이메일 중복확인
+export const checkemailApi = (setData, email) => {
+    const url = "/user/check-email"
+
+    const data = {
+        email: email
+    }
+
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        data: data,
+        url
+    }
+
+    axios(options).then(
+        (r) => {
+            console.log("connect");
+            console.log(r.data);
+            setData(r.data);
+            alert('사용가능합니다.')
+        },
+        (error) => {
+            console.log(error.response.data);
+            alert('중복입니다.')
         }
     );
 }
