@@ -1,11 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import { BoldText, NormalText, PointText, SmallText, Circle, SeperateLine, RedText, BlueText, TextLink, GrayButton } from './myinformation.element'
 import { CssBaseline, Grid, Box, Container} from "@material-ui/core";
 import { useNavigate } from 'react-router-dom'
+import { myInfoApi } from '../../Api/Api';
 
 
 const Myinformation = () => {
   const navigate = useNavigate();
+
+  const [db, setData] = useState({
+    data: []
+  })
+
+  useEffect(() => {
+    myInfoApi(setData)
+  }, []
+  )
 
   return (
       <Container component="main" maxWidth="sm">
@@ -25,16 +35,16 @@ const Myinformation = () => {
             <Grid container spacing={3}>
               <Grid item xs={12} sm={4}>
                 <Circle>
-                  <PointText>100 p</PointText>
+                  <PointText>{db.point}점</PointText>
                 </Circle>
               </Grid>
               <Grid item xs={12} sm={1}>
                 <SeperateLine />
               </Grid>
               <Grid item xs={12} sm={7}>
-                <NormalText>작성한 강의 평가 : 0개 <RedText>(+100P)</RedText></NormalText>
-                <NormalText>작성한 시험 정보 : 0개 <RedText>(+40P)</RedText></NormalText>
-                <NormalText>시험 정보 열람 : 0개 <BlueText>(-40P)</BlueText></NormalText>
+                <NormalText>작성한 강의 평가 : {db.writtenLecture}개 <RedText>(+100P)</RedText></NormalText>
+                <NormalText>작성한 시험 정보 : {db.writtenExam}개 <RedText>(+40P)</RedText></NormalText>
+                <NormalText>시험 정보 열람 : {db.viewExam}개 <BlueText>(-40P)</BlueText></NormalText>
               </Grid>
             </Grid>
           </Box>
@@ -48,7 +58,7 @@ const Myinformation = () => {
             <BoldText>내 정보</BoldText>
             <GrayButton onClick={() => { navigate("/myinfodetail") }}>내가 쓴 글</GrayButton>
             <SmallText>로그인 아이디</SmallText>
-            <SmallText style={{fontWeight:"normal"}}>koownij</SmallText>
+            <SmallText style={{fontWeight:"normal"}}>{db.loginId}</SmallText>
           </Box>
           <Box noValidate sx={{
             mt: 3,

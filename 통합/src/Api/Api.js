@@ -166,6 +166,7 @@ export const loginApi = (setData, id, pw) => {
             console.log("connect");
             console.log(r.data);
             setData(r.data);
+            localStorage.setItem('AccessToken', r.data['AccessToken'])
         },
         (error) => {
             console.log(error.response);
@@ -230,3 +231,28 @@ export const findPwApi = (setData, id, email) => {
         }
     );
 };
+
+// 내정보Api
+export const myInfoApi = (setData) => {
+
+    const url = "/user/my-page"
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            AccessToken: localStorage.getItem('AccessToken')
+        },
+        url,
+    };
+
+    axios(options).then(
+        (r) => {
+            console.log("connect");
+            console.log(r.data);
+            setData(r.data)
+        }, (error) => {
+            console.log(error.response);
+        }
+    )
+}
