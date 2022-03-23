@@ -72,15 +72,9 @@ const Login = () => {
     console.log(db.data)
   }, [db.data])
 
-  /*const onSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      id: data.get('id'),
-      password: data.get('password'),
-      checkbox: checked
-    });
-  };*/
+  };
 
 
 
@@ -90,7 +84,7 @@ const Login = () => {
         <CssBaseline />
         <WrapperBox>
           <Logo>로그인</Logo>
-          <Box noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={onSubmit} noValidate sx={{ mt: 1 }}>
             <IdInput propsFunction={onChangeID} />
             <PwInput propsFunction={onChangePW} />
             <FormControlLabel
@@ -98,6 +92,7 @@ const Login = () => {
               label="로그인 유지"
             />
             <LoginButton
+              type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}

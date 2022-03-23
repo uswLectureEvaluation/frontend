@@ -5,12 +5,9 @@ import { findPwApi } from '../../Api/Api';
 
 const Pwsearch = () => {
     // 비밀번호 찾기 버튼 이벤트
-    /*const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            id: data.get('id'),
-        });*/
+    const onSubmit = (event) => {
+        event.preventDefault();   
+        };
     const [username, setUserName] = useState();
     const [email, setEmail] = useState();
     const [db, setData] = useState({
@@ -42,12 +39,12 @@ const Pwsearch = () => {
                 <CssBaseline/>
                 <WrapperBox>
                     <BoldText>비밀번호 찾기</BoldText>
-                    <Box noValidate sx={{ mt: 1 }}>
+                    <Box component="form" onSubmit={onSubmit} noValidate sx={{ mt: 1 }}>
                         <NormalText>SUWIKI 아이디/이메일 입력</NormalText>
                         <IdInput propsfunction={onChangeID}/>
                         <EmailInput propsfunction={onChangeEmail}/>
                         <Box />
-                        <SearchButton onClick={handleSubmit}>비밀번호 찾기</SearchButton>
+                        <SearchButton onClick={handleSubmit} type="submit">비밀번호 찾기</SearchButton>
                     </Box>
                     <SmallText>아이디에 해당하는 학교메일로 임시 비밀번호를 전송합니다.</SmallText>
                 </WrapperBox>

@@ -15,13 +15,9 @@ const Idsearch = () => {
         setEmail(e.target.value);
       }
     // 아이디 찾기 버튼 이벤트
-    /*const handleSubmit = (event) => {
+    const onSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-        });
-    };*/
+    };
 
     const emailSubmit = () => {
         findIdApi(setData, email);
@@ -43,11 +39,16 @@ const Idsearch = () => {
                 <CssBaseline/>
                 <WrapperBox>
                     <BoldText>아이디 찾기</BoldText>
-                    <Box noValidate sx={{ mt: 1 }}>
+                    <Box component="form" onSubmit={onSubmit} noValidate sx={{ mt: 1 }}>
                         <NormalText>학교 계정 입력</NormalText>
                         <AccountInput propsFunction={onChangeEmail} />
                         <Box />
-                        <SearchButton onClick={emailSubmit}>아이디 찾기</SearchButton>
+                        <SearchButton 
+                        onClick={emailSubmit}
+                        type="submit"
+                        >
+                            아이디 찾기
+                            </SearchButton>
                     </Box>
                 </WrapperBox>
             </Box>
