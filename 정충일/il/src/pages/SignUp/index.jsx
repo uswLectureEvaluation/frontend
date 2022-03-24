@@ -3,6 +3,7 @@ import Button from '../../components/Button'
 import Input from '../../components/Input'
 import * as Styled from './styled';
 import { Positioner } from '../../components/Wrapper/styled'
+import axios from 'axios';
 
 const SignUp = () => {
     //이름, 이메일, 비밀번호, 비밀번호 확인
@@ -99,6 +100,19 @@ const SignUp = () => {
       e.target.checked ? setCheckList(['terms', 'privacy']) : setCheckList([]);
     };
 
+    const submitInfo = () => {
+        axios.post("https://api.suwiki.kr/user/join", {
+            loginId: name,
+            password: password,
+            email: email
+        })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    }
 
     return (
       <Positioner>
@@ -154,7 +168,7 @@ const SignUp = () => {
                     </Styled.InputWrapper>
                   <Styled.AgreeButton className="showMore">상세보기</Styled.AgreeButton>
             </Styled.Label>
-          <Button disabled={!(isName && isEmail && isPassword && isPasswordConfirm && checkList.length === 2)} color="blue">회원가입</Button>
+          <Button disabled={!(isName && isEmail && isPassword && isPasswordConfirm && checkList.length === 2)} color="blue" onClick={submitInfo}>회원가입</Button>
           </Styled.Wrapper>
         </Positioner>
     );
