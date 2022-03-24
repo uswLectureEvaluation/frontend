@@ -10,17 +10,17 @@ import {
     NavMenu,
     NavItem,
     NavLinks,
-    NavItemBtn
+    // NavItemBtn
 } from "./Nav.elements";
 
 const Nav = () => {
-    const loginState = useSelector((state)=> state.loginState);
+    const loginState = useSelector((state)=> state.login.value);
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
 
     const [text, setText] = useState('');
 
-    const [check, setCheck] = useState(false);
+    // const [check, setCheck] = useState(false);
 
     const handleClick = () => {
         setClick(!click);
@@ -43,8 +43,19 @@ const Nav = () => {
     //nav바는 로그인 text로 변경
 
     //로그인을 하면 nav바는 로그아웃 text로 변경
+    // useEffect(() => {
+    //     if (localStorage.getItem('AccessToken') != null) {
+    //         setText('로그아웃')
+    //     } else {
+    //         setText('로그인');
+    //     }
+
+    //     showButton();
+    // }, []);
+
     useEffect(() => {
-        if (localStorage.getItem('AccessToken') != null) {
+        console.log(loginState)
+        if (loginState) {
             setText('로그아웃')
         } else {
             setText('로그인');
