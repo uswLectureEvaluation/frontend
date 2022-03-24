@@ -24,8 +24,6 @@ const SignUp = () => {
   const [isPassword, setIsPassword] = useState(false);
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
 
-
-
   const navigate = useNavigate();
 
   const [idcheck, setIdcheck] = useState(false);
@@ -47,8 +45,6 @@ const SignUp = () => {
       setNameMessage('아이디 중복확인해주세요.')
       setIsName(true)
     }
-
-
   }, [])
 
 
@@ -103,7 +99,6 @@ const SignUp = () => {
 
   //체크박스
   const [checkList, setCheckList] = useState([]);
-
   const [loading, setLoading] = useState(false)
 
   // 체크박스 전체선택시 모두선택 체크박스 활성화시키기
@@ -119,13 +114,7 @@ const SignUp = () => {
   };
 
   const onClick = () => {
-
-    if (idcheck.overlap === false && emailcheck.overlap === false) {
       registerApi(setData, setLoading, name, password, email)
-      console.log('dd')
-    } else {
-      console.log(idcheck.overlap)
-    }
   }
 
   const onCheck = () => {
@@ -137,17 +126,15 @@ const SignUp = () => {
   }
 
   useEffect(() => {
-    if (loading === true) {
-      console.log('ddd')
+    if (loading) {
       if (db.data !== null) {
         alert('회원가입 성공')
-        navigate("/login")
+        navigate("/")
       } else {
         alert('회원가입 실패')
       }
     }
-
-  }, [db.data, loading])
+  })
 
   return (
     <Positioner>
@@ -205,7 +192,7 @@ const SignUp = () => {
           </Styled.InputWrapper>
           <Styled.AgreeButton className="showMore">상세보기</Styled.AgreeButton>
         </Styled.Label>
-        <Button disabled={!(isName && isEmail && isPassword && isPasswordConfirm && checkList.length === 2)} color="blue" onClick={onClick}>회원가입</Button>
+        <Button disabled={!(isName && isEmail && isPassword && isPasswordConfirm && checkList.length === 2 && idcheck && emailcheck)} color="blue" onClick={onClick}>회원가입</Button>
       </Styled.Wrapper>
     </Positioner>
   );
