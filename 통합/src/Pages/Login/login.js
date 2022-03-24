@@ -6,10 +6,13 @@ import { useNavigate } from 'react-router-dom'
 // import axios from 'axios';
 // import { Cookies } from 'react-cookie'
 import { loginApi } from "../../Api/Api";
-
+import { useDispatch } from 'react-redux';
+import { loginState } from '../../features/loginSlice';
 
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
   const [username, setUserName] = useState();
@@ -84,6 +87,8 @@ const Login = () => {
     if (loading === true) {
       if (db != null) {
         navigate("/");
+        dispatch(loginState());
+
       }
     }
   })
