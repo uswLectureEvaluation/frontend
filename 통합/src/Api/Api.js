@@ -98,7 +98,7 @@ export const checkidApi = (setData, id) => {
 
     axios(options).then(
         (response) => {
-            setData(response.data);
+            setData(!response.data.overlap);
             if (!response.data.overlap) alert('사용가능합니다.')
             else alert('중복입니다.')
         },
@@ -128,7 +128,7 @@ export const checkemailApi = (setData, email) => {
 
     axios(options).then(
         (response) => {
-            setData(response.data);
+            setData(!response.data.overlap);
             if (!response.data.overlap) alert('사용가능합니다.')
             else alert('중복입니다.')
         },

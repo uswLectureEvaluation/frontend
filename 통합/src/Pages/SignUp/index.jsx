@@ -28,14 +28,8 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
-  const [idcheck, setIdcheck] = useState({
-    overlap: ''
-  }
-  );
-  const [emailcheck, setEmailcheck] = useState({
-    overlap: ''
-  }
-  );
+  const [idcheck, setIdcheck] = useState(false);
+  const [emailcheck, setEmailcheck] = useState(false);
 
   const [db, setData] = useState({
     data: ''
