@@ -16,6 +16,10 @@ const Nav = () => {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
 
+    const [text, setText] = useState('');
+
+    const [check, setCheck] = useState(false);
+
     const handleClick = () => {
         setClick(!click);
     };
@@ -31,7 +35,19 @@ const Nav = () => {
         }
     };
 
+
+
+    //로그아웃버튼을 누르면 토큰이 없어지고
+    //nav바는 로그인 text로 변경
+
+    //로그인을 하면 nav바는 로그아웃 text로 변경
     useEffect(() => {
+        if (localStorage.getItem('AccessToken') != null) {
+            setText('로그아웃')
+        } else {
+            setText('로그인');
+        }
+
         showButton();
     }, []);
 
@@ -52,7 +68,7 @@ const Nav = () => {
                             <NavLinks to="/notice">공지사항</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to="/login">로그인</NavLinks>
+                            <NavLinks to="/login">{text}</NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to="/signup">회원가입</NavLinks>
@@ -60,7 +76,7 @@ const Nav = () => {
                     </NavMenu>
                 </NavbarContainer>
             </Navbar>
-        </IconContext.Provider>
+        </IconContext.Provider >
     );
 };
 

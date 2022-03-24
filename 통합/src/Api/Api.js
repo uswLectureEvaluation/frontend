@@ -146,7 +146,7 @@ export const checkemailApi = (setData, email) => {
 
 
 //로그인api 0
-export const loginApi = (setData, id, pw) => {
+export const loginApi = (setData, setLoading, id, pw) => {
     const url = "/user/login";
 
     const data = {
@@ -166,11 +166,13 @@ export const loginApi = (setData, id, pw) => {
             console.log("connect");
             console.log(r.data);
             setData(r.data);
+            setLoading(true)
             localStorage.setItem('AccessToken', r.data['AccessToken'])
         },
         (error) => {
             console.log(error.response);
             console.log(data)
+            alert('id 또는 pw 확인해주세요')
         }
     );
 };

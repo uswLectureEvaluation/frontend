@@ -18,6 +18,8 @@ const Login = () => {
   const [db, setData] = useState({
     data: []
   })
+
+  const [loading, setLoading] = useState(false)
   // 체크박스 이벤트
   const onChangeCheckBox = (event) => {
     setChecked(event.target.checked);
@@ -64,13 +66,18 @@ const Login = () => {
   // }
 
   const onLogin = () => {
-    loginApi(setData, username, password);
+    loginApi(setData, setLoading, username, password);
   }
 
 
   useEffect(() => {
-    console.log(db.data)
-  }, [db.data])
+    console.log(db)
+    if (loading == true) {
+      if (db != null) {
+        navigate("/");
+      }
+    }
+  }, [loading, db.data])
 
   const onSubmit = (event) => {
     event.preventDefault();
