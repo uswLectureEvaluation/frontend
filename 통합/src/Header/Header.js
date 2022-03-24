@@ -74,11 +74,7 @@ const Header = () => {
                                 <CustomSelect value={lecture} onChange={onLecture}>
                                     {countries.map((c) => (
                                         <StyledOption key={c.code} value={c.lec}  >
-                                            <img
-                                                loading="lazy"
-                                                width="20"
-                                                src={c.code}
-                                            />
+                                            <img loading="lazy"  width="20" src={c.code} />
                                             {c.label}
                                         </StyledOption>
                                     ))}
@@ -87,11 +83,11 @@ const Header = () => {
                                     component="button"
                                     variant="body2"
                                     onClick={() => {
-                                        console.log("I'm a button.");
+                                        alert("I'm a button.");
                                     }}
                                     style={{ fontSize: '20px', color: 'rgb(158, 158, 158)' }}
                                 >
-                                더보기>
+                                더보기
                                 </Link>
                             </HeadSelection>
                             <MTable lecture={lecture} />
