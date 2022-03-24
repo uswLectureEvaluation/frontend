@@ -99,11 +99,11 @@ export const checkidApi = (setData, id) => {
     }
 
     axios(options).then(
-        (r) => {
-            console.log("connect");
-            console.log(r.data);
-            console.log(id)
-            setData(r.data);
+        (response) => {
+            console.log(response.data);
+            console.log(id);
+            console.log()
+            setData(response.data);
             alert('사용가능합니다.')
         },
         (error) => {
