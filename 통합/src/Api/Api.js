@@ -1,6 +1,4 @@
 import axios from "axios";
-import qs from "qs";
-
 
 //메인페이지
 ///lecture/findAllList/?option=lectureSatisfactionAvg&page=1 데이터 받아옴
@@ -100,15 +98,13 @@ export const checkidApi = (setData, id) => {
 
     axios(options).then(
         (response) => {
-            console.log(response.data);
-            console.log(id);
-            console.log()
             setData(response.data);
-            alert('사용가능합니다.')
+            if (!response.data.overlap) alert('사용가능합니다.')
+            else alert('중복입니다.')
         },
         (error) => {
-            console.log(error.response.data);
-            alert('중복입니다.')
+            console.log(error);
+            alert('요청에 실패하였습니다.')
         }
     );
 }
