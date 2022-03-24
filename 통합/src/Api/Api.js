@@ -79,7 +79,7 @@ export const registerApi = (setData, setLoading, id, pw, email) => {
     );
 }
 
-//회원가입 아이디 중복확인
+//회원가입 아이디 중복확인 (완료)
 export const checkidApi = (setData, id) => {
     const url = "/user/check-id"
 
@@ -109,7 +109,7 @@ export const checkidApi = (setData, id) => {
     );
 }
 
-//회원가입 이메일 중복확인
+//회원가입 이메일 중복확인 (완료)
 export const checkemailApi = (setData, email) => {
     const url = "/user/check-email"
 
@@ -172,7 +172,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
     );
 };
 
-//아이디 찾기api
+//아이디 찾기api (완료)
 export const findIdApi = (setData, email) => {
     const url = "/user/find-id";
 
@@ -189,18 +189,16 @@ export const findIdApi = (setData, email) => {
     };
     axios(options).then(
         (r) => {
-            console.log("connect");
-            console.log(r.data);
+            alert("해당 아이디가 존재합니다")
             setData(r.data);
         },
         (error) => {
-            console.log(error.response);
-            console.log(data)
+            alert("해당 아이디를 찾을 수 없습니다.")
         }
     );
 };
 
-//비밀번호 찾기api
+//비밀번호 찾기api (완료)
 export const findPwApi = (setData, id, email) => {
     const url = "/user/find-pw";
 
@@ -217,14 +215,12 @@ export const findPwApi = (setData, id, email) => {
         url,
     };
     axios(options).then(
-        (r) => {
-            console.log("connect");
-            console.log(r.data);
-            setData(r.data);
+        (response) => {
+            alert("해당 이메일로 임시 비밀번호를 발송하였습니다.")
+            setData(response.data);
         },
         (error) => {
-            console.log(error.response);
-            console.log(data)
+            alert("해당 아이디.이메일을 찾을 수 없습니다.")
         }
     );
 };
