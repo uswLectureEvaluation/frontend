@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { YearText, SubjectText, StarPoint, ProfessorName, ModalOpenText, EvaluationDetail, EditButton, DeleteButton, ModalDetail, ModalSt, ModalDetailring2, ModalDetailInfo } from './myevaluation.element'
 import {CssBaseline, Grid, Container } from "@material-ui/core";
 import Editevaluation from './editevaluation'
 import Modal from 'react-modal';
+import { evaluatePostApi } from '../../Api/Api';
 
 const 모달스타일 = {
 	overlay: {
@@ -34,6 +35,15 @@ const 모달스타일 = {
 const Myevaluation = () => {
 
   let [subjectName, setSubjectName] = useState(['학문과 사고', '네트워크 개론', '데이터베이스', '운영체제론', '졸업프로젝트'])
+
+  const [db, setData] = useState({
+    data: []
+  })
+
+  useEffect(() => {
+    evaluatePostApi(setData)
+  }, []
+  )
 
   return (
       <Container component="main" maxWidth="md">

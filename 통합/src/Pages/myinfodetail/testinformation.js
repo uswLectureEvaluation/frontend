@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {YearText, SubjectText, ProfessorName, TestInfoDetail, EditButton, DeleteButton } from './testinformation.element'
 import {CssBaseline,Container} from "@material-ui/core";
 import Modal from 'react-modal';
 import Edittestinfo from './edittestinfo'
+import { examPostApi } from '../../Api/Api';
 
 const 모달스타일 = {
 	overlay: {
@@ -35,6 +36,14 @@ const Testinformation =  () => {
 
   let [subjectName, setSubjectName] = useState(['학문과 사고', '네트워크 개론', '데이터베이스', '운영체제론', '졸업프로젝트'])
 
+  const [db, setData] = useState({
+    data: []
+  })
+
+  useEffect(() => {
+    examPostApi(setData)
+  }, []
+  )
         return (
       <Container component="main" maxWidth="md">
         <CssBaseline />
