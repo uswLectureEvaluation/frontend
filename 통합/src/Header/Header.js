@@ -3,7 +3,7 @@ import { Display, DContainer, Row, TextCenter, VerticalMiddle, SearchButton, Pri
 import MTable from '../Table/MTable';
 import Link from '@mui/material/Link';
 import modifiedDate from '../img/fire-solid.svg'
-import check from '../img/check-solid.svg'
+import lectureTotalAvg from '../img/check-solid.svg'
 import lectureSatisfactionAvg from '../img/star-solid.svg'
 import lectureHoneyAvg from '../img/thumbs-up-solid.svg'
 import lectureLearningAvg from '../img/book-solid.svg'
@@ -47,7 +47,7 @@ const Header = () => {
             lec: 'lectureSatisfactionAvg'
         },
         { code: lectureLearningAvg, label: '배울게 많은 강의', lec: 'lectureLearningAvg' },
-        { code: check, label: 'Best 강의', lec: 'check' }
+        { code: lectureTotalAvg, label: 'Best 강의', lec: 'lectureTotalAvg' }
     ]
 
     return (
