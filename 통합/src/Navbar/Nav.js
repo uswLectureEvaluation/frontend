@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
+import { useSelector } from "react-redux";
 import {
     Navbar,
     NavbarContainer,
@@ -13,6 +14,7 @@ import {
 } from "./Nav.elements";
 
 const Nav = () => {
+    const loginState = useSelector((state)=> state.loginState);
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
 
