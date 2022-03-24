@@ -23,6 +23,7 @@ export const Color = styled.span`
 `
 
 export const Wrapper = styled.div`
+    margin: 0 auto;
     /* PC (해상도 1024px)*/ 
     @media all and (min-width:1024px) { 
         width: 500px;
