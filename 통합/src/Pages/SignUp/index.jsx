@@ -126,7 +126,7 @@ const SignUp = () => {
 
   const onClick = () => {
 
-    if (idcheck.overlap == false && emailcheck.overlap == false) {
+    if (idcheck.overlap === false && emailcheck.overlap === false) {
       registerApi(setData, setLoading, name, password, email)
       console.log('dd')
     } else {
@@ -139,7 +139,7 @@ const SignUp = () => {
   }
 
   const onEmail = () => {
-    checkemailApi(setIdcheck, email)
+    checkemailApi(setEmailcheck, email)
   }
 
   useEffect(() => {
