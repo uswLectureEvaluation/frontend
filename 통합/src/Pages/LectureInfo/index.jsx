@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import * as Styled from './styled';
-import { Positioner } from '../../components/Wrapper/styled'
 import MyEvaluation from '../../components/MyEvaluation'
 import TestInfo from '../../components/TestInfo'
+import { Container } from "@material-ui/core";
 
 const checkList = {
     0: <MyEvaluation />,
@@ -20,7 +20,7 @@ const LectureInfo = () => {
     };
 
     return (
-        <Positioner>
+        <Container>
             <Styled.GlobalStyle />
             <Styled.Wrapper>
                 <Styled.Content>
@@ -86,7 +86,7 @@ const LectureInfo = () => {
                     {checkList[menuCheck]}
                 </Styled.Content>
             </Styled.Wrapper>
-        </Positioner>
+        </Container>
     )
 }
 

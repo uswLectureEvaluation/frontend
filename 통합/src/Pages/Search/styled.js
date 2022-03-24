@@ -11,6 +11,9 @@ export const GlobalStyle = createGlobalStyle`
 
 
 export const Wrapper = styled.div`
+    width:70%;
+    margin: 0 auto;
+    margin-top: 50px;
 `
 
 export const Title = styled.div`

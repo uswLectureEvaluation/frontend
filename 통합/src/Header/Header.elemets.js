@@ -196,6 +196,12 @@ margin-left: auto;
 
 `
 
+export const Wrapper = style.div`
+  width:70%;
+  margin: 0 auto;
+
+`
+
 export const Row = style.div`
 margin-right: -15px;
 margin-left: -15px;

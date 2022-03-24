@@ -1,13 +1,13 @@
 import React from 'react';
 import * as Styled from './styled';
-import { Positioner } from '../../components/Wrapper/styled'
 import MyEvaluation from '../../components/MyEvaluation'
+import { Container } from "@material-ui/core";
 
 
 const Search = () => {
     const detail = ['정렬', '만족도', '꿀강', '배움', '날짜', '종합'];
     return (
-        <Positioner>
+        <Container>
             <Styled.GlobalStyle />
             <Styled.Wrapper>
                 <Styled.Title>검색 결과</Styled.Title>
@@ -25,7 +25,7 @@ const Search = () => {
                     <MyEvaluation />
                 </Styled.MyEvaluationWrapper>
             </Styled.Wrapper>
-        </Positioner>
+        </Container>
     )
 };
 

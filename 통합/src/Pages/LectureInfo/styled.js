@@ -29,6 +29,8 @@ export const TitleWrapper = styled.div`
 `
 
 export const Wrapper = styled.div`
+    width: 70%;
+    margin: 0 auto;
 `
 
 export const Title = styled.div`

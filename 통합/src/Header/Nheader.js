@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Ntable from '../Table/Ntable'
-import { DContainer, Display, Row, TextCenter, VerticalMiddle } from './Header.elemets'
+import { Wrapper, DContainer, Display, Row, TextCenter, VerticalMiddle } from './Header.elemets'
 import { Container } from "@material-ui/core";
 import { noticeApi } from '../Api/Api';
 const Nheader = () => {
@@ -16,27 +16,29 @@ const Nheader = () => {
 
   return (
     <Container maxWidth="lg">
-      <Display>
-        <VerticalMiddle>
-          <DContainer>
-            <Row>
-              <TextCenter>공지사항</TextCenter>
-              <div>
-                {
-                  db.data.map((data) => (
-                    <div>
-                      <h1>{data.id}</h1>
-                      <h1>{data.title}</h1>
-                      <h1>{data.modifiedDate}</h1>
-                    </div>
-                  ))
-                }
-              </div>
-              <Ntable />
-            </Row >
-          </DContainer>
-        </VerticalMiddle>
-      </Display >
+      <Wrapper>
+        <Display>
+          <VerticalMiddle>
+            <DContainer>
+              <Row>
+                <TextCenter>공지사항</TextCenter>
+                <div>
+                  {
+                    db.data.map((data) => (
+                      <div>
+                        <h1>{data.id}</h1>
+                        <h1>{data.title}</h1>
+                        <h1>{data.modifiedDate}</h1>
+                      </div>
+                    ))
+                  }
+                </div>
+                <Ntable />
+              </Row >
+            </DContainer>
+          </VerticalMiddle>
+        </Display >
+      </Wrapper>
     </Container>
   )
 }

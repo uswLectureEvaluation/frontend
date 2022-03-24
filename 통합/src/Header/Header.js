@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Display, DContainer, Row, TextCenter, VerticalMiddle, SearchButton, PrimaryButton, SearchInput, SearchBar, HeadSelection, CustomSelect, StyledOption } from './Header.elemets'
+import { Wrapper, Display, DContainer, Row, TextCenter, VerticalMiddle, SearchButton, PrimaryButton, SearchInput, SearchBar, HeadSelection, CustomSelect, StyledOption } from './Header.elemets'
 import MTable from '../Table/MTable';
 import Link from '@mui/material/Link';
 import modifiedDate from '../img/fire-solid.svg'
@@ -52,49 +52,51 @@ const Header = () => {
 
     return (
         <Container maxWidth="lg">
-            <Display>
-                <VerticalMiddle>
-                    <DContainer>
-                        <Row>
-                            <TextCenter>강의평가 검색</TextCenter>
-                            <SearchBar>
-                                <SearchInput
-                                    onChange={onChange}
-                                    placeholder="과목명, 교수명으로 원하는 강의평가를 찾아보세요!"
-                                    onClick={onClick}
-                                />
-                                {/* <SearchButton>
-                                <HiSearch style={{
-                                    width: '40px',
-                                    height: '45px'
-                                }} />
-                            </SearchButton> */}
-                            </SearchBar>
-                            <HeadSelection style={{ marginBottom: '20px' }}>
-                                <CustomSelect value={lecture} onChange={onLecture}>
-                                    {countries.map((c) => (
-                                        <StyledOption key={c.code} value={c.lec}  >
-                                            <img loading="lazy"  width="20" src={c.code} />
-                                            {c.label}
-                                        </StyledOption>
-                                    ))}
-                                </CustomSelect>
-                                <Link
-                                    component="button"
-                                    variant="body2"
-                                    onClick={() => {
-                                        alert("I'm a button.");
-                                    }}
-                                    style={{ fontSize: '20px', color: 'rgb(158, 158, 158)' }}
-                                >
-                                더보기
-                                </Link>
-                            </HeadSelection>
-                            <MTable lecture={lecture} />
-                        </Row>
-                    </DContainer>
-                </VerticalMiddle>
-            </Display >
+            <Wrapper>
+                <Display>
+                    <VerticalMiddle>
+                        <DContainer>
+                            <Row>
+                                <TextCenter>강의평가 검색</TextCenter>
+                                <SearchBar>
+                                    <SearchInput
+                                        onChange={onChange}
+                                        placeholder="과목명, 교수명으로 원하는 강의평가를 찾아보세요!"
+                                        onClick={onClick}
+                                    />
+                                    {/* <SearchButton>
+                                    <HiSearch style={{
+                                        width: '40px',
+                                        height: '45px'
+                                    }} />
+                                </SearchButton> */}
+                                </SearchBar>
+                                <HeadSelection style={{ marginBottom: '20px' }}>
+                                    <CustomSelect value={lecture} onChange={onLecture}>
+                                        {countries.map((c) => (
+                                            <StyledOption key={c.code} value={c.lec}  >
+                                                <img loading="lazy"  width="20" src={c.code} />
+                                                {c.label}
+                                            </StyledOption>
+                                        ))}
+                                    </CustomSelect>
+                                    <Link
+                                        component="button"
+                                        variant="body2"
+                                        onClick={() => {
+                                            alert("I'm a button.");
+                                        }}
+                                        style={{ fontSize: '20px', color: 'rgb(158, 158, 158)' }}
+                                    >
+                                    더보기
+                                    </Link>
+                                </HeadSelection>
+                                <MTable lecture={lecture} />
+                            </Row>
+                        </DContainer>
+                    </VerticalMiddle>
+                </Display >
+            </Wrapper>
         </Container>
     )
 }
