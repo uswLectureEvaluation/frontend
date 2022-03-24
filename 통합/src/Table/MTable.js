@@ -16,6 +16,8 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import { mainApi } from '../Api/Api'
+import * as Styled from './styled';
+import MainList from '../components/MainList'
 
 function TablePaginationActions(props) {
     const theme = useTheme();
@@ -129,12 +131,23 @@ export default function MTable(lecture) {
         return a;
     }
 
-
-
     return (
         <TableContainer component={Paper} >
-            <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+            <Styled.MyEvaluationWrapper>
+                <div style={{paddingTop:"20px"}}></div>
+                {
+                    db.data.map((row)=> <MainList data={row}/>)
+                } 
+            </Styled.MyEvaluationWrapper>
+
+
+
+
+
+
+            {/* <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
                 <TableBody >
+                    
                     {db.data.map((row) => (
                         <TableRow key={row.id}>
                             <TableCell component="th" scope="row" style={{ fontSize: '24px', fontWeight: 'bold', fontFamily: 'HanSans' }}>
@@ -159,7 +172,7 @@ export default function MTable(lecture) {
                     ))}
 
                 </TableBody>
-            </Table>
+            </Table> */}
         </TableContainer >
     );
 }
