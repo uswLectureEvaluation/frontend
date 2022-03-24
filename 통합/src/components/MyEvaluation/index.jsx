@@ -3,6 +3,7 @@ import { BoxString1, BoxString2, BoxString3, BoxString4, BoxString5, ModalString
 import {CssBaseline, Grid, Container } from "@material-ui/core";
 import Modal from 'react-modal';
 import * as Styled from './styled';
+import { useNavigate } from 'react-router-dom'
 
 const 모달스타일 = {
 	overlay: {
@@ -69,6 +70,11 @@ export const Modal1 = () => {
 export const Subject = (props) => {
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const onClick = () => {
+      navigate("/lectureinfo")
+  }
 
   // const Delete = () => {
   //   if(window.confirm("강의평가를 삭제하시겠습니까?")===true){
@@ -83,7 +89,8 @@ export const Subject = (props) => {
       margin: "10px 0",
       borderBottom: '2px solid rgba(158,158,158,.5)',
       padding: '15px',
-    }}>
+      cursor: "pointer",
+    }} onClick={onClick}>
      
       <div style={{ marginBottom: '15px' }}>
         <BoxString1>2020-1</BoxString1>
