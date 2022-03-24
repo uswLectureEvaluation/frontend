@@ -1,9 +1,38 @@
 import React, { useState } from 'react'
-import { DetailSelectButton, SubjectText, SubjectDetail, EvaluationInput, EditButton, ModalColorBar, ModalLine, CancelButton } from './editevaluation.element';
+import { DetailSelectButton, SubjectText, SubjectDetail, EvaluationInput, EditButton, ModalColorBar, ModalLine, CancelButton, RangeSlider, RangeOutput } from './editevaluation.element';
 import {CssBaseline, Grid, Box, Container } from "@material-ui/core";
+import { sliderClasses } from '@mui/material';
 
 
-export const Bar = (props) => {
+const useSlider = (min, max, defaultState, label, id) => {
+  const [state, setSlide] = useState(defaultState);
+  const handleChange = e => {
+    console.log('setting level', e.target.value)
+    setSlide(e.target.value);
+  };
+
+  const Slider = () => (
+    <input
+      type="range"
+      id={id}
+      min={min}
+      max={max}
+      step={0.5}
+      defaultValue={state} // but instead pass state value as default value
+      onChange={e => console.log(e.target.value)} // don't set state on all change as react will re-render
+      onMouseUp={handleChange} // only set state when handle is released
+    />
+  );
+  return [state, Slider, setSlide];
+};
+
+const Bar = (props) => {
+  
+  const [slideValue, Slider] = useSlider(
+    1,
+    5,
+    3,
+  );
   return (
     <div style={{marginTop:"10px"}}>
     <Grid container spacing={3}>
@@ -11,10 +40,10 @@ export const Bar = (props) => {
         <SubjectDetail>{props.detail[props.index]}</SubjectDetail>
       </Grid>
       <Grid item xs={12} sm={6}>
-        <ModalColorBar style={props.color[props.index]}/>
+        <Slider/>
       </Grid>
       <Grid item xs={12} sm={3}>
-        <SubjectDetail>3.5 점</SubjectDetail>
+        <SubjectDetail>{slideValue}</SubjectDetail>
       </Grid>
     </Grid>
     </div>
