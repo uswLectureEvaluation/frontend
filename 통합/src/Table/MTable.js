@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+// import Table from '@mui/material/Table';
+// import TableBody from '@mui/material/TableBody';
+// import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
-import TableFooter from '@mui/material/TableFooter';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
+// import TableFooter from '@mui/material/TableFooter';
+// import TablePagination from '@mui/material/TablePagination';
+// import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
@@ -82,36 +82,36 @@ TablePaginationActions.propTypes = {
     rowsPerPage: PropTypes.number.isRequired,
 };
 
-function createData(name, calories, num) {
-    return { name, calories, num };
-}
+// function createData(name, calories, num) {
+//     return { name, calories, num };
+// }
 
-const rows = [
-    createData('올댓베이직 ', '기교', '⭐⭐⭐⭐'),
-    createData('올댓베이직', 452, '⭐⭐⭐⭐'),
-    createData('올댓베이직', 262, '⭐⭐⭐⭐'),
-    createData('올댓베이직', 222, '⭐⭐⭐⭐'),
-    createData('올댓베이직', 452, '⭐⭐⭐⭐'),
-    createData('올댓베이직', 262, '⭐⭐⭐⭐'),
+// const rows = [
+//     createData('올댓베이직 ', '기교', '⭐⭐⭐⭐'),
+//     createData('올댓베이직', 452, '⭐⭐⭐⭐'),
+//     createData('올댓베이직', 262, '⭐⭐⭐⭐'),
+//     createData('올댓베이직', 222, '⭐⭐⭐⭐'),
+//     createData('올댓베이직', 452, '⭐⭐⭐⭐'),
+//     createData('올댓베이직', 262, '⭐⭐⭐⭐'),
 
-].sort((a, b) => (a.calories < b.calories ? -1 : 1));
+// ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 export default function MTable(lecture) {
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(4);
+    // const [page, setPage] = React.useState(0);
+    // const [rowsPerPage, setRowsPerPage] = React.useState(4);
 
     // Avoid a layout jump when reaching the last page with empty rows.
-    const emptyRows =
-        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+    // const emptyRows =
+    //     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    };
+    // const handleChangePage = (event, newPage) => {
+    //     setPage(newPage);
+    // };
 
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 10));
-        setPage(0);
-    };
+    // const handleChangeRowsPerPage = (event) => {
+    //     setRowsPerPage(parseInt(event.target.value, 10));
+    //     setPage(0);
+    // };
 
     const [db, setData] = useState({
         data: []
@@ -123,13 +123,13 @@ export default function MTable(lecture) {
 
     }, [lecture])
 
-    const a = []
-    const handleStar = (num) => {
-        for (let i = 0; i < num; i++) {
-            a[i] = '*'
-        }
-        return a;
-    }
+    // const a = []
+    // const handleStar = (num) => {
+    //     for (let i = 0; i < num; i++) {
+    //         a[i] = '*'
+    //     }
+    //     return a;
+    // }
 
     return (
         <TableContainer component={Paper} >

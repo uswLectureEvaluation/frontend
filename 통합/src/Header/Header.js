@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Wrapper, Display, DContainer, Row, TextCenter, VerticalMiddle, SearchButton, PrimaryButton, SearchInput, SearchBar, HeadSelection, CustomSelect, StyledOption } from './Header.elemets'
+import { Img, Wrapper, Display, DContainer, Row, TextCenter, VerticalMiddle, SearchInput, SearchBar, HeadSelection, CustomSelect, StyledOption } from './Header.elemets'
 import MTable from '../Table/MTable';
 import Link from '@mui/material/Link';
 import modifiedDate from '../img/fire-solid.svg'
@@ -7,7 +7,7 @@ import lectureTotalAvg from '../img/check-solid.svg'
 import lectureSatisfactionAvg from '../img/star-solid.svg'
 import lectureHoneyAvg from '../img/thumbs-up-solid.svg'
 import lectureLearningAvg from '../img/book-solid.svg'
-import Footer from '../Footer/Footer';
+// import Footer from '../Footer/Footer';
 import { useNavigate } from 'react-router-dom'
 import { Container } from "@material-ui/core";
 
@@ -75,7 +75,7 @@ const Header = () => {
                                     <CustomSelect value={lecture} onChange={onLecture}>
                                         {countries.map((c) => (
                                             <StyledOption key={c.code} value={c.lec}  >
-                                                <img loading="lazy"  width="20" src={c.code} />
+                                                <Img loading="lazy"  width="20" src={c.code} />
                                                 {c.label}
                                             </StyledOption>
                                         ))}

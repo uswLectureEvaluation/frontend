@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { CssBaseline, FormControlLabel, Checkbox, Link, Grid, Box, Container, createTheme, ThemeProvider } from "@material-ui/core";
+import { CssBaseline, FormControlLabel, Checkbox, Link, Grid, Box, Container } from "@material-ui/core";
 import { WrapperBox, LoginButton, Logo, IdPwSearchLink, IdInput, PwInput } from "./login.element";
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios';
-import { Cookies } from 'react-cookie'
+// import axios from 'axios';
+// import { Cookies } from 'react-cookie'
 import { loginApi } from "../../Api/Api";
 
 
@@ -70,6 +70,15 @@ const Login = () => {
   }
 
 
+  // useEffect(() => {
+  //   console.log(db)
+  //   if (loading === true) {
+  //     if (db != null) {
+  //       navigate("/");
+  //     }
+  //   }
+  // }, [loading, db.data])
+
   useEffect(() => {
     console.log(db)
     if (loading === true) {
@@ -77,7 +86,7 @@ const Login = () => {
         navigate("/");
       }
     }
-  }, [loading, db.data])
+  })
 
   const onSubmit = (event) => {
     event.preventDefault();

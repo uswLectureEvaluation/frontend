@@ -202,6 +202,10 @@ export const Wrapper = style.div`
 
 `
 
+export const Img = style.img`
+
+`
+
 export const Row = style.div`
 margin-right: -15px;
 margin-left: -15px;

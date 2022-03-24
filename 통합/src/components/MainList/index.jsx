@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BoxString1, BoxString2, BoxString3, BoxString4, BoxString5, ModalString1, ModalString2 } from './styled'
+import {  BoxString3, BoxString5, ModalString1, ModalString2 } from './styled'
 import {CssBaseline, Grid, Container } from "@material-ui/core";
 import Modal from 'react-modal';
 import * as Styled from './styled';
