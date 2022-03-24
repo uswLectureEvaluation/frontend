@@ -127,15 +127,14 @@ export const checkemailApi = (setData, email) => {
     }
 
     axios(options).then(
-        (r) => {
-            console.log("connect");
-            console.log(r.data);
-            setData(r.data);
-            alert('사용가능합니다.')
+        (response) => {
+            setData(response.data);
+            if (!response.data.overlap) alert('사용가능합니다.')
+            else alert('중복입니다.')
         },
         (error) => {
-            console.log(error.response.data);
-            alert('중복입니다.')
+            console.log(error);
+            alert('요청에 실패하였습니다.')
         }
     );
 }
