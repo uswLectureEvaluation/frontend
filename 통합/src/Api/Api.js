@@ -256,3 +256,53 @@ export const myInfoApi = (setData) => {
         }
     )
 }
+
+// 내가쓴글-강의평가Api
+export const evaluatePostApi = (setData) => {
+
+    const url = "/evaluate-posts/findByUserIdx"
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            AccessToken: localStorage.getItem('AccessToken')
+        },
+        url,
+    };
+
+    axios(options).then(
+        (r) => {
+            console.log("connect");
+            console.log(r.data);
+            setData(r.data)
+        }, (error) => {
+            console.log(error.response);
+        }
+    )
+}
+
+// 내가쓴글-시험정보Api
+export const examPostApi = (setData) => {
+
+    const url = "/exam-posts/findByUserIdx"
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            AccessToken: localStorage.getItem('AccessToken')
+        },
+        url,
+    };
+
+    axios(options).then(
+        (r) => {
+            console.log("connect");
+            console.log(r.data);
+            setData(r.data)
+        }, (error) => {
+            console.log(error.response);
+        }
+    )
+}
