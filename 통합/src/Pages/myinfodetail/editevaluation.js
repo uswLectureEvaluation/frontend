@@ -4,7 +4,7 @@ import {CssBaseline, Grid, Box, Container } from "@material-ui/core";
 // import { sliderClasses } from '@mui/material';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { evaluatePostsApi } from '../../Api/Api';
+// import { evaluatePostsApi } from '../../Api/Api';
 
 const useSlider = (min, max, defaultState, label, id) => {
   const [state, setSlide] = useState(defaultState);
@@ -56,9 +56,9 @@ const Editevaluation = (props) => {
     const [db, setData] = useState({
       data: []
     })
-    const onEvaluate = () => {
+   /* const onEvaluate = () => {
       evaluatePostsApi(setData);
-    }
+    }*/
     useEffect(() => {
       console.log(db.data)
     }, [db.data])
