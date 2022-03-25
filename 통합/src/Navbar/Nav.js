@@ -14,7 +14,7 @@ import {
 } from "./Nav.elements";
 
 const Nav = () => {
-    const loginState = useSelector((state)=> state.login.value);
+    const loginState = useSelector((state) => state.login.value);
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
 

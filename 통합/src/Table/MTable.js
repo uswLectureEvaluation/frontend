@@ -134,10 +134,10 @@ export default function MTable(lecture) {
     return (
         <TableContainer component={Paper} >
             <Styled.MyEvaluationWrapper>
-                <div style={{paddingTop:"20px"}}></div>
+                <div style={{ paddingTop: "20px" }}></div>
                 {
-                    db.data.map((row)=> <MainList data={row}/>)
-                } 
+                    db.data.map((row) => <MainList key={row.id} data={row} />)
+                }
             </Styled.MyEvaluationWrapper>
 
 
