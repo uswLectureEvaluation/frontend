@@ -6,6 +6,7 @@ import { Container } from '../globalStyles'
 
 export const Navbar = styled.nav`
 background: #fff;
+margin: 0 auto;
 height: 80px;
 display: flex;
 justify-content: center;
@@ -19,7 +20,7 @@ z-index: 999;
 export const NavbarContainer = styled(Container)`
 display: flex;
 //아이템들의 사이에 균일한 간격을 만들어준다
-justify-content: space-evenly;
+justify-content: space-between;
 height: 80px;
 border-width: 0px 0px 2px;
     border-style: solid;
@@ -29,7 +30,6 @@ ${Container}
 `
 
 export const NavLogo = styled(Link)`
-
  justify-self: flex-start;
 color: #4B89DC;
 //시작과 동일
@@ -39,6 +39,12 @@ font-size: 2rem;
 display: flex;
 align-items: center;
 font: 32px impact;
+
+@media screen and (max-width: 960px) {
+  
+margin: 0 auto;
+}
+
 `
 
 export const NavIcon = styled(FaMagento)`
@@ -53,7 +59,7 @@ display: none;
     display: block;
     position: absolute;
     top: 0;
-    transform: translate(-550%, 60%);
+    transform: translate(-50%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
 
