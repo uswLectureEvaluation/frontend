@@ -52,7 +52,7 @@ const Bar = (props) => {
 
 
 const Editevaluation = (props) => {
-    let detail = useState(['꿀강 지수','배움 지수','만족도'])
+    let detail = ['꿀강 지수','배움 지수','만족도']
     let color = useState([{backgroundColor: 'rgb(241, 196, 15)'},{backgroundColor: 'rgb(231, 76, 60)'},{backgroundColor: 'rgb(52, 152, 219)'}])
     return(
           <Container component="main" maxWidth="sm">
