@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import * as Styled from "./styled";
 import Item from "./Item";
 import Loader from "./Loader";
@@ -19,7 +19,7 @@ const Notice = () => {
   useEffect(() => {
     console.log(itemLists);
     console.log(db.data);
-  }, [itemLists]);
+  });
 
   const getMoreItem = async () => {
     setIsLoaded(true);
@@ -46,7 +46,7 @@ const Notice = () => {
       observer.observe(target);
     }
     return () => observer && observer.disconnect();
-  }, [target]);
+  });
 
   return (
     <Styled.AppContainer>
