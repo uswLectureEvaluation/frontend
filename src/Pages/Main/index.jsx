@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MTable from '../../Table/MTable';
 // import Link from '@mui/material/Link';
 // import modifiedDate from '../../img/fire-solid.svg'
@@ -23,7 +23,10 @@ const Main = () => {
     const [search, setSearch] = useState('');
     const [lecture, setLecture] = useState(options[1][0]);
     
-    let setData;
+
+    const [db, setData] = useState({
+        data : []
+    })
     
 
     const onChange = (e) => {
@@ -33,7 +36,7 @@ const Main = () => {
     const onClick = () => {
         searchApi(setData, search)
         alert(search + ' 검색하겠습니다');
-        navigate(`/search`)
+        //navigate(`/search`)
     }
 
     const onChangeHandler = (e) => {
@@ -48,6 +51,10 @@ const Main = () => {
             onClick()
         }
     }
+
+    useEffect(() => {
+        console.log(db.data)
+    }, [db])
     
 
 

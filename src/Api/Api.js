@@ -317,9 +317,9 @@ export const searchApi = (setData, search) => {
     axios(options).then(
         (r) => {
             console.log("connect");
-            console.log(r.data);
+            console.log(url);
+            console.log(r.data)
             setData(r.data)
-            console.log(typeof(search))
         }, (error) => {
             console.log(error.response);
         }
