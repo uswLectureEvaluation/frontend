@@ -7,8 +7,8 @@ import MTable from '../../Table/MTable';
 // import lectureHoneyAvg from '../../img/thumbs-up-solid.svg'
 // import lectureLearningAvg from '../../img/book-solid.svg'
 import * as Styled from './styled';
-import { useNavigate } from 'react-router-dom'
-import { searchApi } from '../../Api/Api';
+// import { useNavigate } from 'react-router-dom'
+// import { searchApi } from '../../Api/Api';
 
 const Main = () => {
     const options = [
@@ -19,13 +19,13 @@ const Main = () => {
             'lectureSatisfactionAvg', 'lectureLearningAvg'
             , 'lectureTotalAvg']]
     
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [search, setSearch] = useState('');
     const [lecture, setLecture] = useState(options[1][0]);
 
-    const [db, setData] = useState({
-        data: []
-    })
+    // const [db, setData] = useState({
+    //     data: []
+    // })
     
 
     const onChange = (e) => {
@@ -33,7 +33,7 @@ const Main = () => {
     }
 
     const onClick = () => {
-        searchApi(setData, search)
+        // searchApi(setData, search)
         alert(search + '검색하겠습니다');
         //navigate("/search")
     }
@@ -46,7 +46,7 @@ const Main = () => {
 
 
     const onKeypress = (e) => {
-        if(e.key == 'Enter'){
+        if(e.key === 'Enter'){
             onClick()
         }
     }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {  BoxString3, BoxString5, ModalString1, ModalString2 } from './styled'
-import {CssBaseline, Grid, Container } from "@material-ui/core";
+import {CssBaseline, Grid } from "@material-ui/core";
 import Modal from 'react-modal';
 import * as Styled from './styled';
 
@@ -33,10 +33,10 @@ const 모달스타일 = {
 
 const MainList = (props) => {
   return (
-      <Container component="main" maxWidth="md">
+      <div>
         <CssBaseline />
-          <Subject lectureName={props.data.lectureName} professor={props.data.professor} lectureType={props.data.lectureType} />,
-      </Container>
+          <Subject lectureName={props.data.lectureName} professor={props.data.professor} lectureType={props.data.lectureType} />
+      </div>
   );
 }
 
@@ -74,9 +74,10 @@ export const Subject = (props) => {
   // }
   return (
     <div style={{
-      marginTop: '5px',
-      borderBottom: '2px solid rgba(158,158,158,.5)',
-      padding: '0 15px 15px 15px',
+      border: '1.5px solid #f1f1f1',
+      padding: '0 25px 20px 25px',
+      borderRadius: '10px',
+      marginBottom:"10px"
     }}>
      
       <div style={{ marginBottom: '15px' }}>
@@ -91,10 +92,10 @@ export const Subject = (props) => {
         <Styled.Option>{props.lectureType}</Styled.Option>
       </Styled.TitleWrapper>
       <Styled.TempMargin>
-      <BoxString3>평균 지수</BoxString3>
+      <Styled.EvText>평균지수</Styled.EvText>
       <BoxString3 style={{ padding: '0 10px', letterSpacing: '-2px' }}>⭐⭐⭐⭐⭐</BoxString3>
-      <span style={{ color: "#2f2f2f"}}>5.0</span>
-        <BoxString5 onClick={() => { setModal(!modal) }}>{modal === true ? '간략하게 보기 >' : '자세히 보기 >'}</BoxString5>
+      <Styled.Rate>5.0</Styled.Rate>
+        <BoxString5 onClick={() => { setModal(!modal) }}>{modal === true ? '간략히' : '자세히'}</BoxString5>
       </Styled.TempMargin>
       {modal === true ? <Modal1 /> : null}
       {/* <BoxString6>가나다라마바사아자차카타파하가나다라마바사아자차카타파하

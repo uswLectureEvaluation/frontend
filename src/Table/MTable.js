@@ -5,18 +5,16 @@ import Box from '@mui/material/Box';
 // import Table from '@mui/material/Table';
 // import TableBody from '@mui/material/TableBody';
 // import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 // import TableFooter from '@mui/material/TableFooter';
 // import TablePagination from '@mui/material/TablePagination';
 // import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import { mainApi } from '../Api/Api'
-import * as Styled from './styled';
+// import * as Styled from './styled';
 import MainList from '../components/MainList'
 
 function TablePaginationActions(props) {
@@ -132,13 +130,10 @@ export default function MTable(lecture) {
     // }
 
     return (
-        <TableContainer component={Paper} >
-            <Styled.MyEvaluationWrapper>
-                <div style={{ paddingTop: "20px" }}></div>
-                {
-                    db.data.slice(1,4).map((row) => <MainList key={row.id} data={row} />)
-                }
-            </Styled.MyEvaluationWrapper>
-        </TableContainer >
+        <div style={{width:"100%", }}>
+            {
+                db.data.slice(1,4).map((row) => <MainList key={row.id} data={row} />)
+            }
+        </div >
     );
 }

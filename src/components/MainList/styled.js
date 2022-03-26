@@ -23,7 +23,6 @@ export const BoxString3 = styled.span`
 
 export const BoxString5 = styled(Button)`
 && {
-    padding-left: 10px;
     font-size: 12px;
     color: rgb(190, 190, 190);
     text-decoration: underline;
@@ -75,7 +74,7 @@ export const TempMargin = styled.div`
 export const TitleWrapper = styled.div`
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 
 `
 
@@ -88,12 +87,27 @@ export const Title = styled.div`
 
 export const Professor = styled.div`
     display: flex;
+    font-weight: bold;
 `
 
 export const Option = styled.div`
     display: flex;
     border-radius: 10px;
     background-color: rgb(239, 239, 239);
-    padding: 5px;
+    padding: 5px 10px;
     font-size: 12px;
+    font-weight: bold;
+    color: gray;
+`
+
+export const EvText = styled.span`
+    font-weight: bold;
+    
+`
+
+export const Rate = styled.span`
+    /* color: #3DD3C4; */
+    font-weight: bold;
+    font-size: 1.2rem;
+    
 `
