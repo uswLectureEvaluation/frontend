@@ -46,7 +46,31 @@ export const SearchInput = styled.input`
 
 export const HeadSelection = styled.div`
     display: flex;
+    align-items: center;
     width: 100%;
     justify-content: space-between;
 `
 
+export const Select = styled.select`
+    height: 3rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    background-color: white;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-radius: 10px;
+    font-size: 16px;
+    border-color: #E0E0E0;
+    &:focus-visible {
+        outline: white solid 2px;
+    }
+    option {
+        border-radius: 8px;
+        color: black;
+    }
+`;
+
+export const More = styled.div`
+    font-weight: bold;
+    cursor: pointer;
+`

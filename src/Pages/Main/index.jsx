@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import { Img, Wrapper, Display, DContainer, Row, TextCenter, VerticalMiddle, SearchInput, SearchBar, HeadSelection, CustomSelect, StyledOption } from './Header.elemets'
 import MTable from '../../Table/MTable';
 // import Link from '@mui/material/Link';
 // import modifiedDate from '../../img/fire-solid.svg'
@@ -11,12 +10,20 @@ import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom'
 
 const Main = () => {
+    const options = [
+        ['최근 올라온 강의', '꿀 강의',
+            '만족도가 높은 강의', '배울게 많은 강의'
+            , 'BEST 강의'],
+        ['modifiedDate', 'lectureHoneyAvg',
+            'lectureSatisfactionAvg', 'lectureLearningAvg'
+            , 'lectureTotalAvg']]
+    
     const navigate = useNavigate();
     const [search, setSearch] = useState('');
-    // const [lecture, setLecture] = useState('lectureHoneyAvg');
+    const [lecture, setLecture] = useState(options[1][0]);
 
     const onChange = (e) => {
-        setSearch(e.target.value)
+        setSearch(e.currentTarget.value)
     }
 
     const onClick = () => {
@@ -24,26 +31,13 @@ const Main = () => {
         navigate("/search")
     }
 
+    const onChangeHandler = (e) => {
+        setLecture(options[1][e.currentTarget.value])
+        console.log(e.currentTarget.value)
+        console.log(lecture)
+    }
 
-    // const onLecture = (e) => {
-    //     setLecture(e)
-    //     console.log(e)
-    // }
 
-    // const countries = [
-    //     { code: modifiedDate, label: '최근 올라온 강의', lec: 'modifiedDate' },
-    //     {
-    //         code: lectureHoneyAvg,
-    //         label: '꿀 강의',
-    //         lec: 'lectureHoneyAvg'
-    //     },
-    //     {
-    //         code: lectureSatisfactionAvg, label: '만족도가 높은 강의',
-    //         lec: 'lectureSatisfactionAvg'
-    //     },
-    //     { code: lectureLearningAvg, label: '배울게 많은 강의', lec: 'lectureLearningAvg' },
-    //     { code: lectureTotalAvg, label: 'Best 강의', lec: 'lectureTotalAvg' }
-    // ]
 
     return (
         <Styled.Container>
@@ -57,11 +51,17 @@ const Main = () => {
             </Styled.SearchWrapper>
             <Styled.SearchWrapper>
                 <Styled.HeadSelection>
-                    <div>셀렉</div>
-                    <div>더보기</div>
+                    <Styled.Select onChange={onChangeHandler}>
+                        {
+                            options[0].map((v, index) => (
+                                <option value={index}> {v} </option>
+                            ))
+                        }
+                    </Styled.Select>
+                    <Styled.More>더보기＞</Styled.More>
                 </Styled.HeadSelection>
                 <Styled.HeadSelection>
-                    <MTable lecture="lectureSatisfactionAvg" />
+                    <MTable lecture='lectureHoneyAvg' />
                 </Styled.HeadSelection>
             </Styled.SearchWrapper>
         </Styled.Container>
@@ -75,19 +75,6 @@ const Main = () => {
         //             </StyledOption>
                 // ))}
         //     </CustomSelect>
-        //     <Link
-        //         component="button"
-        //         variant="body2"
-        //         onClick={() => {
-        //             alert("I'm a button.");
-        //         }}
-        //         style={{ fontSize: '20px', color: 'rgb(158, 158, 158)' }}
-        //     >
-        //     더보기
-        //     </Link>
-        // </HeadSelection>
-        // <MTable lecture={lecture} />
-
     )
 }
 
