@@ -42,7 +42,7 @@ const Nav = () => {
             <Styled.NavMenu>
                 <Styled.NavLinks onClick={()=>move("notice")}>공지사항</Styled.NavLinks>
                 <Styled.NavLinks onClick={() => move("login")}>로그인</Styled.NavLinks>
-                <Styled.NavLinks onClick={() => move("signup")}>회원가입</Styled.NavLinks>
+                <Styled.NavLinks id="signup" onClick={() => move("signup")}>회원가입</Styled.NavLinks>
             </Styled.NavMenu>
         </Styled.Navbar>
     );

@@ -47,9 +47,13 @@ export const NavMenu = styled.nav`
 export const NavLinks = styled.div`
     display: flex;
     padding: 0.5rem 1rem;
+    font-weight: 700;
     &:hover {
         cursor: pointer;
         font-weight: bold;
+    }
+    &#signup {
+        color:#3DD3C4;
     }
 
     @media screen and (max-width: 960px) {
