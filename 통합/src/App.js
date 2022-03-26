@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider, createTheme } from '@material-ui/core'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Footer from './Footer/Footer'
+import Footer from './components/Footer'
 import GlobalStyle from './globalStyles'
 import Nav from './Navbar/Nav'
 import Main from './Pages/Main'

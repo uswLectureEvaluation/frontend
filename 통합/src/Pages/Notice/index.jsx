@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Ntable from '../Table/Ntable'
-import { Wrapper, DContainer, Display, Row, TextCenter, VerticalMiddle } from '../Pages/Main/Header.elemets'
+import Ntable from '../../Table/Ntable'
+import { Wrapper, DContainer, Display, Row, TextCenter, VerticalMiddle } from '../Main/Header.elemets'
 import { Container } from "@material-ui/core";
-import { noticeApi } from '../Api/Api';
-const Nheader = () => {
+import { noticeApi } from '../../Api/Api';
 
+const Notice = () => {
   const [db, setData] = useState({
     data: []
   })
@@ -43,4 +43,4 @@ const Nheader = () => {
   )
 }
 
-export default Nheader
+export default Notice;
