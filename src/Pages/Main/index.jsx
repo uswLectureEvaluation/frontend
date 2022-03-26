@@ -79,7 +79,7 @@ const Main = () => {
                             ))
                         }
                     </Styled.Select>
-                    <Styled.More>더보기＞</Styled.More>
+                    <Styled.More onClick={()=>navigate(`/search`)}>더보기＞</Styled.More>
                 </Styled.HeadSelection>
                 <Styled.HeadSelection>
                     <MTable lecture='lectureHoneyAvg' />

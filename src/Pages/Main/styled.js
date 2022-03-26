@@ -47,6 +47,10 @@ export const SearchInput = styled.input`
     background-image: url("img/icon_search_24.svg");
     background-repeat: no-repeat;
     background-position: 98%;
+
+    &:focus {
+        outline: none;
+    }
     
 `
 
