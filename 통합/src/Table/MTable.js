@@ -136,43 +136,9 @@ export default function MTable(lecture) {
             <Styled.MyEvaluationWrapper>
                 <div style={{ paddingTop: "20px" }}></div>
                 {
-                    db.data.map((row) => <MainList key={row.id} data={row} />)
+                    db.data.slice(1,4).map((row) => <MainList key={row.id} data={row} />)
                 }
             </Styled.MyEvaluationWrapper>
-
-
-
-
-
-
-            {/* <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
-                <TableBody >
-                    
-                    {db.data.map((row) => (
-                        <TableRow key={row.id}>
-                            <TableCell component="th" scope="row" style={{ fontSize: '24px', fontWeight: 'bold', fontFamily: 'HanSans' }}>
-                                {row.lectureName} <h5 style={{ fontSize: '14px', fontFamily: 'HanSans' }}>{row.professor}</h5>
-
-                                <div style={{ width: 300, fontSize: '22px', fontWeight: 'bold', marginTop: '15px', fontFamily: 'HanSans' }}>
-                                    평균지수 {row.lectureTotalAvg}
-                                </div>
-                                <div onClick={() => alert('dd')} style={{
-                                    fontSize: '16px',
-                                    color: 'rgb(190, 190, 190)',
-                                    textDecoration: 'underline', fontFamily: 'HanSans'
-                                }}>
-                                    자세히보기
-                                </div>
-                            </TableCell>
-
-                            <TableCell style={{ width: 160, fontSize: '16px', }} align="right">
-                                {row.lectureType}
-                            </TableCell>
-                        </TableRow>
-                    ))}
-
-                </TableBody>
-            </Table> */}
         </TableContainer >
     );
 }
