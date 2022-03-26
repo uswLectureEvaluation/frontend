@@ -39,7 +39,7 @@ const Myevaluation = () => {
   const [db, setData] = useState({
     data: []
   })
-
+  console.log(db)
   useEffect(() => {
     evaluatePostApi(setData)
   }, []
@@ -57,7 +57,7 @@ const Myevaluation = () => {
 
 export const DetailModal = () => {
   return (
-    <div style={{paddingBottom:'10px', paddingTop:'5px'}}>
+    <div style={{ paddingBottom: '10px', paddingTop: '5px' }}>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={4}>
           <ModalDetail>만족도 ⭐⭐⭐⭐</ModalDetail>
@@ -81,7 +81,7 @@ export const Subject = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const Delete = () => {
-    if(window.confirm("강의평가를 삭제하시겠습니까?")==true){
+    if(window.confirm("강의평가를 삭제하시겠습니까?")===true){
       let arrayCopy = [...props.subjectName];
       arrayCopy.shift();
       props.setSubjectName(arrayCopy)

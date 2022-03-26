@@ -8,7 +8,7 @@ const Nav = () => {
     const loginState = useSelector((state) => state.login.value);
     const [button, setButton] = useState(true);
     const [text, setText] = useState('');
-
+    console.log(button, text)
     const move = (location) => {
         navigate(`/${location}`)
     }
@@ -30,7 +30,7 @@ const Nav = () => {
         }
 
         showButton();
-    }, []);
+    }, [loginState]);
 
     window.addEventListener("resize", showButton);
 

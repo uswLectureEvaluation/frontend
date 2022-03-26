@@ -33,13 +33,12 @@ const 모달스타일 = {
 };
 
 const Testinformation =  () => {
-
   let [subjectName, setSubjectName] = useState(['학문과 사고', '네트워크 개론', '데이터베이스', '운영체제론', '졸업프로젝트'])
 
   const [db, setData] = useState({
     data: []
   })
-
+  console.log(db)
   useEffect(() => {
     examPostApi(setData)
   }, []
@@ -59,7 +58,7 @@ export const Subject = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const Delete = () => {
-    if(window.confirm("시험정보를 삭제하시겠습니까?")==true){
+    if(window.confirm("시험정보를 삭제하시겠습니까?")===true){
       let arrayCopy = [...props.subjectName];
       arrayCopy.shift();
       props.setSubjectName(arrayCopy)
@@ -69,7 +68,6 @@ export const Subject = (props) => {
   return(
     <div style={{
       marginTop: "10px",
-      borderTop: '2px solid rgba(158,158,158)',
       borderTop: '2px solid rgba(158,158,158,.5)',
       padding: '15px',
     }}>
