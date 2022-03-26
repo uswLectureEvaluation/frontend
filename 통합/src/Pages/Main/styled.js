@@ -15,3 +15,7 @@ export const Content = styled.div`
     padding: 1rem 2rem;
     margin: 10px 0;
 `
+
+export const Container = styled.div`
+    display: flex;
+`

@@ -7,7 +7,7 @@ import lectureTotalAvg from '../../img/check-solid.svg'
 import lectureSatisfactionAvg from '../../img/star-solid.svg'
 import lectureHoneyAvg from '../../img/thumbs-up-solid.svg'
 import lectureLearningAvg from '../../img/book-solid.svg'
-// import Footer from '../Footer/Footer';
+import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom'
 import { Container } from "@material-ui/core";
 
