@@ -13,12 +13,19 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 50%;
+    margin: 0 auto;
 `
 
 export const SearchContainer = styled.div`
     display: flex;
+`
+
+export const SearchWrapper = styled.div`
+    display: flex;
     width: 100%;
+    flex-direction: column;
+    align-items: center;
 `
 
 export const SearchTitle = styled.div`
@@ -29,6 +36,17 @@ export const SearchTitle = styled.div`
 `
 
 export const SearchInput = styled.input`
-    width:100%;
-
+    width: 100%;
+    padding-left: 20px;
+    height: 40px;
+    border-radius: 20px;
+    border: 2px solid #3DD3C4;
+    margin: 1.5rem 0;
 `
+
+export const HeadSelection = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+`
+

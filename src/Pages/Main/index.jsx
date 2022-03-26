@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // import { Img, Wrapper, Display, DContainer, Row, TextCenter, VerticalMiddle, SearchInput, SearchBar, HeadSelection, CustomSelect, StyledOption } from './Header.elemets'
-// import MTable from '../../Table/MTable';
+import MTable from '../../Table/MTable';
 // import Link from '@mui/material/Link';
 // import modifiedDate from '../../img/fire-solid.svg'
 // import lectureTotalAvg from '../../img/check-solid.svg'
@@ -47,71 +47,47 @@ const Main = () => {
 
     return (
         <Styled.Container>
-            <div>
+            <Styled.SearchWrapper>
                 <Styled.SearchTitle>강의 평가 검색</Styled.SearchTitle>
                 <Styled.SearchInput
                     onChange={onChange}
-                    placeholder="과목명, 교수명으로 원하는 강의평가를 찾아보세요!"
+                    placeholder="과목명, 교수명으로 원하는 강의평가를 찾아보세요"
                     onClick={onClick}
                 />
-            </div>
-            <div>
-                <div>
+            </Styled.SearchWrapper>
+            <Styled.SearchWrapper>
+                <Styled.HeadSelection>
                     <div>셀렉</div>
                     <div>더보기</div>
-                </div>
-                <div>
-
-                </div>
-            </div>
+                </Styled.HeadSelection>
+                <Styled.HeadSelection>
+                    <MTable lecture="lectureSatisfactionAvg" />
+                </Styled.HeadSelection>
+            </Styled.SearchWrapper>
         </Styled.Container>
-        // <Container maxWidth="lg">
-        //     <Wrapper>
-        //         <Display>
-        //             <VerticalMiddle>
-        //                 <DContainer>
-        //                     <Row>
-        //                         <TextCenter>강의평가 검색</TextCenter>
-        //                         <SearchBar>
-        //                             <SearchInput
-        //                                 onChange={onChange}
-        //                                 placeholder="과목명, 교수명으로 원하는 강의평가를 찾아보세요!"
-        //                                 onClick={onClick}
-        //                             />
-        //                             {/* <SearchButton>
-        //                             <HiSearch style={{
-        //                                 width: '40px',
-        //                                 height: '45px'
-        //                             }} />
-        //                         </SearchButton> */}
-        //                         </SearchBar>
-        //                         <HeadSelection style={{ marginBottom: '20px' }}>
-        //                             <CustomSelect value={lecture} onChange={onLecture}>
-        //                                 {countries.map((c) => (
-        //                                     <StyledOption key={c.code} value={c.lec}  >
-        //                                         <Img loading="lazy"  width="20" src={c.code} />
-        //                                         {c.label}
-        //                                     </StyledOption>
-        //                                 ))}
-        //                             </CustomSelect>
-        //                             <Link
-        //                                 component="button"
-        //                                 variant="body2"
-        //                                 onClick={() => {
-        //                                     alert("I'm a button.");
-        //                                 }}
-        //                                 style={{ fontSize: '20px', color: 'rgb(158, 158, 158)' }}
-        //                             >
-        //                             더보기
-        //                             </Link>
-        //                         </HeadSelection>
-        //                         <MTable lecture={lecture} />
-        //                     </Row>
-        //                 </DContainer>
-        //             </VerticalMiddle>
-        //         </Display >
-        //     </Wrapper>
-        // </Container>
+
+        // <HeadSelection style={{ marginBottom: '20px' }}>
+        //     <CustomSelect value={lecture} onChange={onLecture}>
+        //         {countries.map((c) => (
+        //             <StyledOption key={c.code} value={c.lec}  >
+        //                 <Img loading="lazy"  width="20" src={c.code} />
+        //                 {c.label}
+        //             </StyledOption>
+                // ))}
+        //     </CustomSelect>
+        //     <Link
+        //         component="button"
+        //         variant="body2"
+        //         onClick={() => {
+        //             alert("I'm a button.");
+        //         }}
+        //         style={{ fontSize: '20px', color: 'rgb(158, 158, 158)' }}
+        //     >
+        //     더보기
+        //     </Link>
+        // </HeadSelection>
+        // <MTable lecture={lecture} />
+
     )
 }
 
