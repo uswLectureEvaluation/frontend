@@ -299,3 +299,29 @@ export const examPostApi = (setData) => {
         }
     )
 }
+
+// 통합검색결과Api
+//꿀강순[modifiedDate, lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg]
+export const searchApi = (setData, search) => {
+
+    const url = `/lecture/findBySearchValue/?searchValue=${search}&?option=lectureHoneyAvg&?page=1`
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        url,
+    };
+
+    axios(options).then(
+        (r) => {
+            console.log("connect");
+            console.log(r.data);
+            setData(r.data)
+            console.log(typeof(search))
+        }, (error) => {
+            console.log(error.response);
+        }
+    )
+}

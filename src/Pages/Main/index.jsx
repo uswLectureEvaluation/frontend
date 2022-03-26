@@ -8,6 +8,7 @@ import MTable from '../../Table/MTable';
 // import lectureLearningAvg from '../../img/book-solid.svg'
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom'
+import { searchApi } from '../../Api/Api';
 
 const Main = () => {
     const options = [
@@ -22,13 +23,19 @@ const Main = () => {
     const [search, setSearch] = useState('');
     const [lecture, setLecture] = useState(options[1][0]);
 
+    const [db, setData] = useState({
+        data: []
+    })
+    
+
     const onChange = (e) => {
         setSearch(e.currentTarget.value)
     }
 
     const onClick = () => {
+        searchApi(setData, search)
         alert(search + '검색하겠습니다');
-        navigate("/search")
+        //navigate("/search")
     }
 
     const onChangeHandler = (e) => {
@@ -36,6 +43,14 @@ const Main = () => {
         console.log(e.currentTarget.value)
         console.log(lecture)
     }
+
+
+    const onKeypress = (e) => {
+        if(e.key == 'Enter'){
+            onClick()
+        }
+    }
+    
 
 
 
@@ -46,7 +61,8 @@ const Main = () => {
                 <Styled.SearchInput
                     onChange={onChange}
                     placeholder="과목명, 교수명으로 원하는 강의평가를 찾아보세요"
-                    onClick={onClick}
+                    onKeyPress={onKeypress}
+                    
                 />
             </Styled.SearchWrapper>
             <Styled.SearchWrapper>
