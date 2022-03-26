@@ -2,46 +2,17 @@ import { Button, TextField} from "@material-ui/core";
 import styled from "styled-components";
 
 
-export const BoxString1 = styled.div`
-    font-size: 16px;
-    padding-top: 10px;
-    
-`
-
-export const BoxString2 = styled.span`
+export const SubjectText = styled.span`
     font-weight: bold;
     font-size: 22px;
 `
 
-export const BoxString3 = styled.span`
-    font-size: 15px;
+export const SubjectDetail = styled.span`
+    font-size: 14px;
     font-weight: bold;
 `
 
-export const BoxString4 = styled.span`
-    font-size: 16px;    
-    font-weight: bold;
-`
-
-export const BoxString5 = styled(Button)`
-    padding-left: 10px;
-    font-size: 16px;
-    color: rgb(190, 190, 190);
-    text-decoration: underline;
-
-`
-export const ModalLine = styled.div`
-    border-bottom : 1px solid;
-    margin-top: 20px;
-    margin-bottom: 20px;
-`
-export const ModalBar = styled.div`
-    padding: 16px;
-    border-radius: 10px;
-    background-color: rgb(241, 196, 15);
-`
-
-export const BoxButton1 = styled(Button)`
+export const DetailSelectButton = styled(Button)`
 &&{
     padding: 5px 10px 5px 10px;
     font-size: 10px;
@@ -51,9 +22,16 @@ export const BoxButton1 = styled(Button)`
     background-color: rgb(239, 239, 239);
     color: black;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 `
+
+export const ModalLine = styled.div`
+    border-bottom : 1px solid;
+    margin-top: 20px;
+    margin-bottom: 20px;
+`
+
 
 export const EvaluationInput = () => {
     return(
@@ -96,3 +74,13 @@ export const CancelButton = styled(Button)`
     float: right;
 }
 `;
+
+export const SelectBox = () => {
+	return (
+		<select>
+			<option key="2020-1" value="2020-1">2020 - 1</option>
+			<option key="2020-2" value="2020-2">2020 - 2</option>
+			<option key="2021-1" value="2021-1">2021 - 1</option>
+		</select>
+	);
+};
