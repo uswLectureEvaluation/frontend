@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Box, CssBaseline } from '@material-ui/core'
-import { SearchButton, WrapperBox, Logo, BoldText, NormalText, AccountInput } from "./idsearch.element"
+import { SearchButton, WrapperBox, BoldText, NormalText, AccountInput } from "./idsearch.element"
 import { findIdApi } from '../../Api/Api'
 
 

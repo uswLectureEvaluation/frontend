@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { YearText, SubjectText, StarPoint, ProfessorName, ModalOpenText, EvaluationDetail, EditButton, DeleteButton, ModalDetail, ModalSt, ModalDetailring2, ModalDetailInfo } from './myevaluation.element'
+import { YearText, SubjectText, StarPoint, ProfessorName, ModalOpenText, EvaluationDetail, EditButton, DeleteButton, ModalDetail, ModalDetailInfo } from './myevaluation.element'
 import {CssBaseline, Grid, Container } from "@material-ui/core";
 import Editevaluation from './editevaluation'
 import Modal from 'react-modal';
@@ -91,7 +91,6 @@ export const Subject = (props) => {
   return (
     <div style={{
       marginTop: "10px",
-      borderTop: '2px solid rgba(158,158,158)',
       borderTop: '2px solid rgba(158,158,158,.5)',
       padding: '15px',
     }}>

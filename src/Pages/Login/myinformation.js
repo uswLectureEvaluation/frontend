@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BoldText, NormalText, PointText, SmallText, Circle, SeperateLine, RedText, BlueText, TextLink, GrayButton } from './myinformation.element'
 import { CssBaseline, Grid, Box, Container} from "@material-ui/core";
 import { useNavigate } from 'react-router-dom'
@@ -26,7 +26,6 @@ const Myinformation = () => {
           }}>
           <Box noValidate sx={{
             mt: 3,
-            border: '2px solid rgb(158,158,158)',
             border: '2px solid rgba(158,158,158,.5)',
             padding: '20px',
             borderRadius: '10px'
@@ -50,7 +49,6 @@ const Myinformation = () => {
           </Box>
           <Box noValidate sx={{
             mt: 3,
-            border: '2px solid rgb(158,158,158)',
             border: '2px solid rgba(158,158,158,.5)',
             padding: '20px',
             borderRadius: '10px'
@@ -62,7 +60,6 @@ const Myinformation = () => {
           </Box>
           <Box noValidate sx={{
             mt: 3,
-            border: '2px solid rgb(158,158,158)',
             border: '2px solid rgba(158,158,158,.5)',
             padding: '20px',
             borderRadius: '10px'

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { DetailSelectButton, SubjectText, SubjectDetail, EvaluationInput, EditButton, ModalLine, CancelButton } from './editevaluation.element';
+import { SubjectText, SubjectDetail, EvaluationInput, EditButton, ModalLine, CancelButton } from './editevaluation.element';
 import {CssBaseline, Grid, Box, Container } from "@material-ui/core";
 // import { sliderClasses } from '@mui/material';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -61,6 +61,7 @@ const Editevaluation = (props) => {
     }*/
     useEffect(() => {
       console.log(db.data)
+      setData('')
     }, [db.data])
 
     const [honey, HoneySlider] = useSlider(

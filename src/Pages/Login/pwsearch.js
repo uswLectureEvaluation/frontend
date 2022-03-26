@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Box, CssBaseline } from '@material-ui/core'
-import { WrapperBox, BoldText, NormalText, SmallText, SearchButton, Logo, IdInput, EmailInput } from './pwsearch.element'
+import { WrapperBox, BoldText, NormalText, SmallText, SearchButton, IdInput, EmailInput } from './pwsearch.element'
 import { findPwApi } from '../../Api/Api';
 
 const Pwsearch = () => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { DetailSelectButton, SubjectText, SubjectDetail, EvaluationInput, EditButton, ModalLine, CancelButton, SelectBox } from './edittestinfo.element';
 import { CssBaseline, Grid, Box, Container } from "@material-ui/core";
 

@@ -1,20 +1,19 @@
 import React, { useState } from 'react'
-import { Img, Wrapper, Display, DContainer, Row, TextCenter, VerticalMiddle, SearchInput, SearchBar, HeadSelection, CustomSelect, StyledOption } from './Header.elemets'
-import MTable from '../../Table/MTable';
-import Link from '@mui/material/Link';
-import modifiedDate from '../../img/fire-solid.svg'
-import lectureTotalAvg from '../../img/check-solid.svg'
-import lectureSatisfactionAvg from '../../img/star-solid.svg'
-import lectureHoneyAvg from '../../img/thumbs-up-solid.svg'
-import lectureLearningAvg from '../../img/book-solid.svg'
+// import { Img, Wrapper, Display, DContainer, Row, TextCenter, VerticalMiddle, SearchInput, SearchBar, HeadSelection, CustomSelect, StyledOption } from './Header.elemets'
+// import MTable from '../../Table/MTable';
+// import Link from '@mui/material/Link';
+// import modifiedDate from '../../img/fire-solid.svg'
+// import lectureTotalAvg from '../../img/check-solid.svg'
+// import lectureSatisfactionAvg from '../../img/star-solid.svg'
+// import lectureHoneyAvg from '../../img/thumbs-up-solid.svg'
+// import lectureLearningAvg from '../../img/book-solid.svg'
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom'
-import { Container } from "@material-ui/core";
 
 const Main = () => {
     const navigate = useNavigate();
     const [search, setSearch] = useState('');
-    const [lecture, setLecture] = useState('lectureHoneyAvg');
+    // const [lecture, setLecture] = useState('lectureHoneyAvg');
 
     const onChange = (e) => {
         setSearch(e.target.value)
@@ -26,25 +25,25 @@ const Main = () => {
     }
 
 
-    const onLecture = (e) => {
-        setLecture(e)
-        console.log(e)
-    }
+    // const onLecture = (e) => {
+    //     setLecture(e)
+    //     console.log(e)
+    // }
 
-    const countries = [
-        { code: modifiedDate, label: '최근 올라온 강의', lec: 'modifiedDate' },
-        {
-            code: lectureHoneyAvg,
-            label: '꿀 강의',
-            lec: 'lectureHoneyAvg'
-        },
-        {
-            code: lectureSatisfactionAvg, label: '만족도가 높은 강의',
-            lec: 'lectureSatisfactionAvg'
-        },
-        { code: lectureLearningAvg, label: '배울게 많은 강의', lec: 'lectureLearningAvg' },
-        { code: lectureTotalAvg, label: 'Best 강의', lec: 'lectureTotalAvg' }
-    ]
+    // const countries = [
+    //     { code: modifiedDate, label: '최근 올라온 강의', lec: 'modifiedDate' },
+    //     {
+    //         code: lectureHoneyAvg,
+    //         label: '꿀 강의',
+    //         lec: 'lectureHoneyAvg'
+    //     },
+    //     {
+    //         code: lectureSatisfactionAvg, label: '만족도가 높은 강의',
+    //         lec: 'lectureSatisfactionAvg'
+    //     },
+    //     { code: lectureLearningAvg, label: '배울게 많은 강의', lec: 'lectureLearningAvg' },
+    //     { code: lectureTotalAvg, label: 'Best 강의', lec: 'lectureTotalAvg' }
+    // ]
 
     return (
         <Styled.Container>
