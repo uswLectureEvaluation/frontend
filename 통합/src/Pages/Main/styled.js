@@ -9,13 +9,26 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const Content = styled.div`
-    border-radius: 10px; 
-    border: 1px solid rgb(224, 224, 224);
-    padding: 1rem 2rem;
-    margin: 10px 0;
-`
-
 export const Container = styled.div`
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+`
+
+export const SearchContainer = styled.div`
+    display: flex;
+    width: 100%;
+`
+
+export const SearchTitle = styled.div`
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-top: 4rem;
+`
+
+export const SearchInput = styled.input`
+    width:100%;
+
 `
