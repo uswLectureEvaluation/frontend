@@ -1,66 +1,46 @@
-import { memo, useCallback, useEffect, useState } from "react";
-import * as Styled from "./styled";
-import Item from "./Item";
-import Loader from "./Loader";
-import { noticeApi } from "../../Api/Api";
+import React, { useEffect, useState } from 'react'
+import Ntable from '../../Table/Ntable'
+import { Wrapper, DContainer, Display, Row, TextCenter, VerticalMiddle } from '../Main/Header.elemets'
+import { Container } from "@material-ui/core";
+import { noticeApi } from '../../Api/Api';
 
 const Notice = () => {
-  const [target, setTarget] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [itemLists, setItemLists] = useState([1]);
-
   const [db, setData] = useState({
-    data: [],
-  });
-  useEffect(() => {
-    noticeApi(setData);
-  }, []);
+    data: []
+  })
 
   useEffect(() => {
-    console.log(itemLists);
-    console.log(db.data);
-  }, [itemLists]);
-
-  const getMoreItem = async () => {
-    setIsLoaded(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    let Items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    setItemLists((itemLists) => itemLists.concat(Items));
-    setIsLoaded(false);
-  };
-
-  const onIntersect = async ([entry], observer) => {
-    if (entry.isIntersecting && !isLoaded) {
-      observer.unobserve(entry.target);
-      await getMoreItem();
-      observer.observe(entry.target);
-    }
-  };
-
-  useEffect(() => {
-    let observer;
-    if (target) {
-      observer = new IntersectionObserver(onIntersect, {
-        threshold: 0.4,
-      });
-      observer.observe(target);
-    }
-    return () => observer && observer.disconnect();
-  }, [target]);
+    noticeApi(setData)
+  }, []
+  )
 
   return (
-    <Styled.AppContainer>
-      <Styled.AppWrapper>
-        <Styled.AppTitle>공지사항</Styled.AppTitle>
-      </Styled.AppWrapper>
-          {itemLists.map((v, i) => {
-            return <Item number={i + 1} key={i} />;
-          })}
-      <Styled.Targetelement ref={setTarget}>
-        {isLoaded && <Loader />}
-      </Styled.Targetelement>
-    </Styled.AppContainer>
-  );
-};
+    <Container maxWidth="lg">
+      <Wrapper>
+        <Display>
+          <VerticalMiddle>
+            <DContainer>
+              <Row>
+                <TextCenter>공지사항</TextCenter>
+                <div>
+                  {
+                    db.data.map((data) => (
+                      <div>
+                        <h1>{data.id}</h1>
+                        <h1>{data.title}</h1>
+                        <h1>{data.modifiedDate}</h1>
+                      </div>
+                    ))
+                  }
+                </div>
+                <Ntable />
+              </Row >
+            </DContainer>
+          </VerticalMiddle>
+        </Display >
+      </Wrapper>
+    </Container>
+  )
+}
 
-export default memo(Notice);
+export default Notice;
