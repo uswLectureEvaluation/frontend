@@ -109,5 +109,12 @@ export const Rate = styled.span`
     /* color: #3DD3C4; */
     font-weight: bold;
     font-size: 1.2rem;
-    
+`
+
+export const LectureWrapper = styled.div`
+    border: 1.5px solid #f1f1f1;
+    padding: 0 25px 20px 25px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
 `

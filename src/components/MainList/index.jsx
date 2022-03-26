@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import {  BoxString3, BoxString5, ModalString1, ModalString2 } from './styled'
+import {  BoxString3, BoxString5, ModalString1 } from './styled'
 import {CssBaseline, Grid } from "@material-ui/core";
 import Modal from 'react-modal';
 import * as Styled from './styled';
+import { useNavigate } from "react-router-dom";
 
 const 모달스타일 = {
 	overlay: {
@@ -42,19 +43,16 @@ const MainList = (props) => {
 
 export const Modal1 = () => {
   return (
-    <div style={{paddingBottom:'10px', paddingTop:'5px'}}>
+    <div>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={4}>
           <ModalString1>만족도 ⭐⭐⭐⭐</ModalString1>
-          <ModalString2>조모임</ModalString2><ModalString2 style={{color:'rgb(190, 190, 190)'}}>없음</ModalString2>
         </Grid>
         <Grid item xs={12} sm={4}>
           <ModalString1>꿀강 지수 ⭐⭐⭐⭐</ModalString1>
-          <ModalString2>과제</ModalString2><ModalString2 style={{color:'rgb(231, 76, 60)'}}>많음</ModalString2>
         </Grid>
         <Grid item xs={12} sm={4}>
           <ModalString1>배움 지수 ⭐⭐⭐⭐</ModalString1>
-          <ModalString2>학점</ModalString2><ModalString2 style={{color:'rgb(231, 76, 60)'}}>까다로움</ModalString2>
         </Grid>
       </Grid>
     </div>
@@ -64,6 +62,8 @@ export const Modal1 = () => {
 export const Subject = (props) => {
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  
+  let navigate = useNavigate();
 
   // const Delete = () => {
   //   if(window.confirm("강의평가를 삭제하시겠습니까?")===true){
@@ -73,18 +73,12 @@ export const Subject = (props) => {
   //   }else{ return }
   // }
   return (
-    <div style={{
-      border: '1.5px solid #f1f1f1',
-      padding: '0 25px 20px 25px',
-      borderRadius: '10px',
-      marginBottom:"10px"
-    }}>
-     
+    <Styled.LectureWrapper>
       <div style={{ marginBottom: '15px' }}>
         {/* <BoxButton2 onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</BoxButton2>
         <BoxButton1 onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</BoxButton1> */}
       </div>
-      <Styled.TitleWrapper>
+      <Styled.TitleWrapper onClick={()=>navigate("/lectureinfo")}>
       <Styled.TitleWrapper>
         <Styled.Title>{props.lectureName}</Styled.Title>
         <Styled.Professor>{props.professor}</Styled.Professor>
@@ -110,7 +104,7 @@ export const Subject = (props) => {
       onRequestClose={() => setModalIsOpen(false)}
     	>
     	</Modal>
-      </div>
+      </Styled.LectureWrapper>
   )
 }
 
