@@ -1,24 +1,20 @@
 import React, { useState } from 'react'
 import { Img, Wrapper, Display, DContainer, Row, TextCenter, VerticalMiddle, SearchInput, SearchBar, HeadSelection, CustomSelect, StyledOption } from './Header.elemets'
-import MTable from '../Table/MTable';
+import MTable from '../../Table/MTable';
 import Link from '@mui/material/Link';
-import modifiedDate from '../img/fire-solid.svg'
-import lectureTotalAvg from '../img/check-solid.svg'
-import lectureSatisfactionAvg from '../img/star-solid.svg'
-import lectureHoneyAvg from '../img/thumbs-up-solid.svg'
-import lectureLearningAvg from '../img/book-solid.svg'
+import modifiedDate from '../../img/fire-solid.svg'
+import lectureTotalAvg from '../../img/check-solid.svg'
+import lectureSatisfactionAvg from '../../img/star-solid.svg'
+import lectureHoneyAvg from '../../img/thumbs-up-solid.svg'
+import lectureLearningAvg from '../../img/book-solid.svg'
 // import Footer from '../Footer/Footer';
 import { useNavigate } from 'react-router-dom'
 import { Container } from "@material-ui/core";
 
-const Header = () => {
-
+const Main = () => {
     const navigate = useNavigate();
-
     const [search, setSearch] = useState('');
-
     const [lecture, setLecture] = useState('lectureHoneyAvg');
-
 
     const onChange = (e) => {
         setSearch(e.target.value)
@@ -101,4 +97,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default Main

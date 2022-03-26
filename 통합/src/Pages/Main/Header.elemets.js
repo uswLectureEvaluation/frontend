@@ -1,6 +1,6 @@
 import React from 'react';
 import style from 'styled-components'
-import { Container } from '../globalStyles'
+import { Container } from '../../globalStyles'
 import PropTypes from 'prop-types';
 import SelectUnstyled, { selectUnstyledClasses } from '@mui/base/SelectUnstyled';
 import OptionUnstyled, { optionUnstyledClasses } from '@mui/base/OptionUnstyled';

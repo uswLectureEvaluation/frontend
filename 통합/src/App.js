@@ -33,7 +33,7 @@ const App = () => {
       <Nav style={{ zindex: 5 }} />
       <ThemeProvider theme={themeLight}>
         <Routes>
-          <Route index path="/" element={<Main />} />
+          <Route path="/" element={<Main />} />
           <Route path="/notice" element={<Notice />} />
           <Route path='/login' element={<Login />} />
           <Route path='/pwsearch' element={<PwSearch />} />

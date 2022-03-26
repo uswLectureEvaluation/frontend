@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Ntable from '../Table/Ntable'
-import { Wrapper, DContainer, Display, Row, TextCenter, VerticalMiddle } from './Header.elemets'
+import { Wrapper, DContainer, Display, Row, TextCenter, VerticalMiddle } from '../Pages/Main/Header.elemets'
 import { Container } from "@material-ui/core";
 import { noticeApi } from '../Api/Api';
 const Nheader = () => {
