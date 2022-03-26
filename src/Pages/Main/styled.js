@@ -40,7 +40,7 @@ export const SearchTitle = styled.div`
 export const SearchInput = styled.input`
     width: 100%;
     padding-left: 20px;
-    height: 40px;
+    height: 50px;
     border-radius: 20px;
     border: 2px solid #3DD3C4;
     margin: 1.5rem 0;

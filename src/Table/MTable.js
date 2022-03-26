@@ -132,7 +132,7 @@ export default function MTable(lecture) {
     return (
         <div style={{width:"100%", }}>
             {
-                db.data.slice(1,4).map((row) => <MainList key={row.id} data={row} />)
+                db.data.slice(1,5).map((row) => <MainList key={row.id} data={row} />)
             }
         </div >
     );
