@@ -86,8 +86,6 @@ export const More = styled.div`
 `
 
 export const Img = styled.img`
-    width: 20px;
-    background-image: url("img/icon_color_fire_36.svg");
 `
 
 export const Soption = styled.div`
