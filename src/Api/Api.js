@@ -7,7 +7,7 @@ import axios from "axios";
 //lectureHoneyAvg 꿀강의
 //lectureLearningAvg 배울게 많은 강의
 
-const onoff = "https://api.suwiki.kr";
+const onoff = "";
 
 export const mainApi = (setData, lecture) => {
     const url = `${onoff}/lecture/findAllList/?option=${lecture}&page=1`
