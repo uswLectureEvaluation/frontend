@@ -4,6 +4,7 @@ import {CssBaseline, Grid, Container } from "@material-ui/core";
 import Editevaluation from './editevaluation'
 import Modal from 'react-modal';
 import { evaluatePostApi } from '../../Api/Api';
+import Loader from '../Notice/Loader'
 
 const 모달스타일 = {
 	overlay: {
@@ -32,29 +33,6 @@ const 모달스타일 = {
 	},
 };
 
-const Myevaluation = () => {
-
-  let [subjectName, setSubjectName] = useState(['학문과 사고', '네트워크 개론', '데이터베이스', '운영체제론', '졸업프로젝트'])
-
-  const [db, setData] = useState({
-    data: []
-  })
-  console.log(db)
-  useEffect(() => {
-    evaluatePostApi(setData)
-  }, []
-  )
-
-  return (
-      <Container component="main" maxWidth="md">
-        <CssBaseline />
-        {subjectName.map((name, index) =>
-          <Subject subjectName={subjectName} setSubjectName={setSubjectName} index={index} />,
-        )}
-      </Container>
-  );
-}
-
 export const DetailModal = () => {
   return (
     <div style={{ paddingBottom: '10px', paddingTop: '5px' }}>
@@ -76,18 +54,72 @@ export const DetailModal = () => {
   )
 }
 
+const Myevaluation = () => {
+  const [target, setTarget] = useState(null);
+  const [itemLists, setItemLists] = useState([1,2,3]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const getMoreItem = async () => {
+    setIsLoaded(true);
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    let Items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    setItemLists((itemLists) => itemLists.concat(Items));
+    setIsLoaded(false);
+  };
+
+  const onIntersect = async ([entry], observer) => {
+    if (entry.isIntersecting && !isLoaded) {
+      observer.unobserve(entry.target);
+      await getMoreItem();
+      observer.observe(entry.target);
+    }
+  };
+
+  useEffect(() => {
+    let observer;
+    if (target) {
+      observer = new IntersectionObserver(onIntersect, {
+        threshold: 0.4,
+      });
+      observer.observe(target);
+    }
+    return () => observer && observer.disconnect();
+  });
+
+  const [db, setData] = useState({
+    data: []
+  })
+  console.log(db)
+  useEffect(() => {
+    evaluatePostApi(setData)
+  }, []
+  )
+
+  return (
+      <Container component="main" maxWidth="md">
+        <CssBaseline />
+        {itemLists.map((v, i) => {
+            return <Subject number={i + 1} key={i} />;
+          })}
+        <div ref={setTarget}>
+        {isLoaded && <Loader />}
+        </div>
+      </Container>
+  );
+}
+
 export const Subject = (props) => {
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const Delete = () => {
+/*   const Delete = () => {
     if(window.confirm("강의평가를 삭제하시겠습니까?")===true){
       let arrayCopy = [...props.subjectName];
       arrayCopy.shift();
       props.setSubjectName(arrayCopy)
     }else{ return }
   }
-
+ */
   return (
     <div style={{
       marginTop: "10px",
@@ -100,7 +132,7 @@ export const Subject = (props) => {
         <DeleteButton onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</DeleteButton>
         <EditButton onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</EditButton>
       </div>
-        <SubjectText>{props.subjectName[props.index]}</SubjectText>
+        <SubjectText>{props.number}</SubjectText>
         <ProfessorName>이다미 교수님</ProfessorName>
       <div/>
       <StarPoint>평균 지수</StarPoint>
@@ -118,7 +150,7 @@ export const Subject = (props) => {
 			ariaHideApp={false}
       onRequestClose={() => setModalIsOpen(false)}
     	>
-    		<Editevaluation setModalIsOpen={setModalIsOpen} />
+    		<Editevaluation setModalIsOpen={setModalIsOpen}/>
     	</Modal>
     </div>
   )
