@@ -55,14 +55,14 @@ export const DetailSelectButton = styled(Button)`
 }
 `
 
-export const EvaluationInput = ({propsfunction}) => {
+export const EvaluationInput = (props) => {
     return(
         <TextField
         id="outlined-multiline-static"
-        label="수정해주세요"
+        label={props.content}
         multiline
         variant="outlined"
-        onChange={propsfunction}
+        onChange={props.propsfunction}
         fullWidth
         rows={5}
         style={{marginBottom:'20px'}}

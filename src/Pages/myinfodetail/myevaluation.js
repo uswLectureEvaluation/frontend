@@ -55,14 +55,17 @@ export const DetailModal = () => {
 }
 
 const Myevaluation = () => {
+  const [db, setData] = useState({
+    data: []
+  })
   const [target, setTarget] = useState(null);
-  const [itemLists, setItemLists] = useState([1,2,3]);
+  const [itemLists, setItemLists] = useState([1]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const getMoreItem = async () => {
     setIsLoaded(true);
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    let Items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let Items = [1];
     setItemLists((itemLists) => itemLists.concat(Items));
     setIsLoaded(false);
   };
@@ -86,9 +89,6 @@ const Myevaluation = () => {
     return () => observer && observer.disconnect();
   });
 
-  const [db, setData] = useState({
-    data: []
-  })
   console.log(db)
   useEffect(() => {
     evaluatePostApi(setData)
@@ -98,12 +98,19 @@ const Myevaluation = () => {
   return (
       <Container component="main" maxWidth="md">
         <CssBaseline />
-        {itemLists.map((v, i) => {
-            return <Subject number={i + 1} key={i} />;
-          })}
-        <div ref={setTarget}>
+        {itemLists.map((a,i)=> {
+          return db.data.map((v,i)=>{
+            return <Subject lectureName={v.lectureName} professor={v.professor} semester={v.semester} totalAvg={v.totalAvg} content={v.content}
+            satisfaction={v.satisfaction} learning={v.learning} honey={v.honey} team={v.team} difficulty={v.difficulty} homework={v.homework}
+             semesterList={v.semesterList} id={v.id}/>;
+          })
+        })}
+{/*         {db.data.map((v, i) => {
+            return <Subject lectureName={v.lectureName} professor={v.professor} semester={v.semester} totalAvg={v.totalAvg} content={v.content}/>;
+          })} */}
+       <div ref={setTarget}>
         {isLoaded && <Loader />}
-        </div>
+        </div> 
       </Container>
   );
 }
@@ -128,21 +135,19 @@ export const Subject = (props) => {
     }}>
      
       <div style={{ marginBottom: '15px' }}>
-        <YearText>2020-1</YearText>
+        <YearText>{props.semester}</YearText>
         <DeleteButton onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</DeleteButton>
         <EditButton onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</EditButton>
       </div>
-        <SubjectText>{props.number}</SubjectText>
-        <ProfessorName>이다미 교수님</ProfessorName>
+        <SubjectText>{props.lectureName}</SubjectText>
+        <ProfessorName>{props.professor}</ProfessorName>
       <div/>
       <StarPoint>평균 지수</StarPoint>
       <StarPoint style={{ paddingLeft: '10px' }}>⭐⭐⭐⭐⭐</StarPoint>
-      <span>5.0</span>
+      <span>{props.totalAvg}</span>
       <ModalOpenText onClick={() => { setModal(!modal) }}>{modal === true ? '간략하게 보기 >' : '자세히 보기 >'}</ModalOpenText>
       {modal === true ? <DetailModal /> : null}
-      <EvaluationDetail>가나다라마바사아자차카타파하가나다라마바사아자차카타파하
-        가나다라마바사아자차카타파하
-        가나다라마바사아자차카타파하
+      <EvaluationDetail>{props.content}
       </EvaluationDetail>
       <Modal 
       isOpen={modalIsOpen}
@@ -150,7 +155,9 @@ export const Subject = (props) => {
 			ariaHideApp={false}
       onRequestClose={() => setModalIsOpen(false)}
     	>
-    		<Editevaluation setModalIsOpen={setModalIsOpen}/>
+    		<Editevaluation setModalIsOpen={setModalIsOpen} semester={props.semester} satisfaction={props.satisfaction} learning={props.learning}
+        honey={props.honey} team={props.team} difficulty={props.difficulty} homework={props.homework} content={props.content}
+        semesterList={props.semesterList} id={props.id}/>
     	</Modal>
     </div>
   )

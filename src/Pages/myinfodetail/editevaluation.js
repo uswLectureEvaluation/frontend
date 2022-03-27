@@ -37,7 +37,8 @@ const Editevaluation = (props) => {
       data: []
     })
     const onEvaluate = () => {
-      evaluatePostsApi(setData, semester, satisfaction, learning, honey, team, difficulty, homework, content);
+      evaluatePostsApi(setData, semester, satisfaction, learning, honey, team, difficulty, homework, content, props.id);
+      props.setModalIsOpen(false)
     }
     useEffect(() => {
       console.log(db.data)
@@ -45,24 +46,24 @@ const Editevaluation = (props) => {
 
 
     const [honey, HoneySlider] = useSlider(
-      1,
+      0.5,
       5,
-      3,
+      props.honey,
     );
     const [learning, LearingSlider] = useSlider(
-      1,
+      0.5,
       5,
-      3,
+      props.learning,
     );
     const [satisfaction, SatisfactionSlider] = useSlider(
-      1,
+      0.5,
       5,
-      3,
+      props.satisfaction,
     );
-    const [semester, setSemester] = useState(); //학기
-    const [team, setTeam] = useState('0'); //조모임
-    const [homework, setHomework] = useState('0') //과제
-    const [difficulty, setDifficulty] = useState('0') //학점
+    const [semester, setSemester] = useState(''); //학기
+    const [team, setTeam] = useState(`${props.team}`); //조모임
+    const [homework, setHomework] = useState(`${props.homework}`) //과제
+    const [difficulty, setDifficulty] = useState(`${props.difficulty}`) //학점
     
     const semesterChange = (e) => {
       setSemester(e.target.value);
@@ -80,8 +81,8 @@ const Editevaluation = (props) => {
     const SelectBox = () => {
       return (
         <select onChange={semesterChange}>
-          <option key="2022-1" value="2022-1">2022 - 1</option>
-          <option key="2022-2" value="2022-2">2022 - 2</option>
+          <option key="2022-1" value='2022-1'>2022 - 1</option>
+          <option key="2022-2" value='2022-2'>2022 - 2</option>
         </select>
       );
     };
@@ -189,7 +190,7 @@ const Editevaluation = (props) => {
                     </Grid>
                   </Grid>
                   <ModalLine/>
-                  <EvaluationInput propsfunction={onChangeContent}/>
+                  <EvaluationInput propsfunction={onChangeContent} content={props.content}/>
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={12}>
                       <CancelButton onClick={()=>{props.setModalIsOpen(false)}}>취소</CancelButton>
