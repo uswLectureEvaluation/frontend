@@ -136,7 +136,7 @@ export const Subject = (props) => {
      
       <div style={{ marginBottom: '15px' }}>
         <YearText>{props.semester}</YearText>
-        <DeleteButton onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</DeleteButton>
+        <DeleteButton style={{ float: "right" }}>삭제</DeleteButton>
         <EditButton onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</EditButton>
       </div>
         <SubjectText>{props.lectureName}</SubjectText>
