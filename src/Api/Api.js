@@ -305,8 +305,8 @@ export const examPostApi = (setData) => {
 
 //강의평가수정 api 미완
 export const evaluatePostsApi = 
-(setData, semester, satisfaction, learning, honey, team, difficulty, homework, content) => {
-    const url = "/evaluate-posts/update/?evaluateIdx=2";
+(setData, semester, satisfaction, learning, honey, team, difficulty, homework, content, id) => {
+    const url = `/evaluate-posts/update/?evaluateIdx=${id}`;
 
     const data = {
         semester: semester,
