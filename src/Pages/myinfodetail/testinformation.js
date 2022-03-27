@@ -3,7 +3,7 @@ import {YearText, SubjectText, ProfessorName, TestInfoDetail, EditButton, Delete
 import {CssBaseline,Container} from "@material-ui/core";
 import Modal from 'react-modal';
 import Edittestinfo from './edittestinfo'
-import { examPostApi } from '../../Api/Api';
+import { examPostApi } from '../../api/Api';
 
 const 모달스타일 = {
 	overlay: {

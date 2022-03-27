@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import MainList from '../../components/MainList';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom'
-import { searchApi } from '../../Api/Api';
+import { searchApi } from '../../api/Api';
 import { CustomSelect, StyledOption } from './selectstyled';
 
 const Main = () => {

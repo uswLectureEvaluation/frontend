@@ -3,7 +3,7 @@ import Button from '../../components/Button'
 import Input from '../../components/Input'
 import * as Styled from './styled';
 import { Positioner } from '../../components/Wrapper/styled'
-import { checkemailApi, checkidApi, registerApi } from '../../Api/Api';
+import { checkemailApi, checkidApi, registerApi } from '../../api/Api';
 import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {

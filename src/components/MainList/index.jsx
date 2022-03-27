@@ -4,7 +4,7 @@ import { Grid } from "@material-ui/core";
 import Modal from 'react-modal';
 import * as Styled from './styled';
 import { useNavigate } from "react-router-dom";
-import { mainApi } from '../../Api/Api'
+import { mainApi } from '../../api/Api'
 
 const 모달스타일 = {
 	overlay: {

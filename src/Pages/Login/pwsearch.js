@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Box, CssBaseline } from '@material-ui/core'
 import { WrapperBox, BoldText, NormalText, SmallText, SearchButton, IdInput, EmailInput } from './pwsearch.element'
-import { findPwApi } from '../../Api/Api';
+import { findPwApi } from '../../api/Api';
 
 const Pwsearch = () => {
     // 비밀번호 찾기 버튼 이벤트

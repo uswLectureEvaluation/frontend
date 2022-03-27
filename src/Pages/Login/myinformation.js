@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { BoldText, NormalText, PointText, SmallText, Circle, SeperateLine, RedText, BlueText, TextLink, GrayButton } from './myinformation.element'
 import { CssBaseline, Grid, Box, Container} from "@material-ui/core";
 import { useNavigate } from 'react-router-dom'
-import { myInfoApi } from '../../Api/Api';
+import { myInfoApi } from '../../api/Api';
 
 
 const Myinformation = () => {

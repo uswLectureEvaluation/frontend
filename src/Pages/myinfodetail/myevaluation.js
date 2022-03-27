@@ -3,7 +3,7 @@ import { YearText, SubjectText, StarPoint, ProfessorName, ModalOpenText, Evaluat
 import {CssBaseline, Grid, Container } from "@material-ui/core";
 import Editevaluation from './editevaluation'
 import Modal from 'react-modal';
-import { evaluatePostApi } from '../../Api/Api';
+import { evaluatePostApi } from '../../api/Api';
 // import Loader from '../Notice/Loader'
 
 const 모달스타일 = {

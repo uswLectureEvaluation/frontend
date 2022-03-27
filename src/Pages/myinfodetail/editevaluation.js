@@ -3,7 +3,7 @@ import { SubjectText, SubjectDetail, EvaluationInput, EditButton, ModalLine, Can
 import {CssBaseline, Grid, Box, Container } from "@material-ui/core";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { evaluatePostsApi } from '../../Api/Api';
+import { evaluatePostsApi } from '../../api/Api';
 
 // Range바 로직
 const useSlider = (min, max, defaultState, id) => {

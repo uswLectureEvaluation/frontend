@@ -5,7 +5,7 @@ import { WrapperBox, LoginButton, Logo, IdPwSearchLink, IdInput, PwInput } from 
 import { useNavigate } from 'react-router-dom'
 // import axios from 'axios';
 // import { Cookies } from 'react-cookie'
-import { loginApi } from "../../Api/Api";
+import { loginApi } from "../../api/Api";
 import { useDispatch } from 'react-redux';
 import { loginState } from '../../features/loginSlice';
 

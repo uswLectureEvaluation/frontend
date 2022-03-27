@@ -2,7 +2,7 @@ import { memo, useEffect, useState } from "react";
 import * as Styled from "./styled";
 import Item from "./Item";
 import Loader from "./Loader";
-import { noticeApi } from "../../Api/Api";
+import { noticeApi } from "../../api/Api";
 
 const Notice = () => {
   const [target, setTarget] = useState(null);
