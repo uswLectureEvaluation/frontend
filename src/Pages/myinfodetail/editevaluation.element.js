@@ -55,13 +55,14 @@ export const DetailSelectButton = styled(Button)`
 }
 `
 
-export const EvaluationInput = () => {
+export const EvaluationInput = ({propsfunction}) => {
     return(
         <TextField
         id="outlined-multiline-static"
         label="수정해주세요"
         multiline
         variant="outlined"
+        onChange={propsfunction}
         fullWidth
         rows={5}
         style={{marginBottom:'20px'}}
@@ -96,3 +97,4 @@ export const CancelButton = styled(Button)`
     float: right;
 }
 `;
+

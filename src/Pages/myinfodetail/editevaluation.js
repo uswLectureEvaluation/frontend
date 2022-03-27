@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { SubjectText, SubjectDetail, EvaluationInput, EditButton, ModalLine, CancelButton } from './editevaluation.element';
 import {CssBaseline, Grid, Box, Container } from "@material-ui/core";
-// import { sliderClasses } from '@mui/material';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-// import { evaluatePostsApi } from '../../Api/Api';
+import { evaluatePostsApi } from '../../Api/Api';
 
-const useSlider = (min, max, defaultState, label, id) => {
+// Range바 로직
+const useSlider = (min, max, defaultState, id) => {
   const [state, setSlide] = useState(defaultState);
   const handleChange = e => {
     setSlide(e.target.value);
@@ -26,43 +26,23 @@ const useSlider = (min, max, defaultState, label, id) => {
   return [state, Slider, setSlide];
 };
 
-/* const Bar = (props) => {
-  
-  const [slideValue, Slider] = useSlider(
-    1,
-    5,
-    3,
-  );
-  return (
-    <div style={{marginTop:"10px"}}>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={3}>
-          <SubjectDetail>{props.detail[props.index]}</SubjectDetail>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Slider/>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <SubjectDetail>{slideValue}</SubjectDetail>
-        </Grid>
-      </Grid>
-    </div>
-  )
-}
- */
 
 const Editevaluation = (props) => {
     let detail = ['꿀강 지수','배움 지수','만족도']
+    const [content, setContent] = useState();
+    const onChangeContent = (e) => {
+      setContent(e.target.value);
+      }
     const [db, setData] = useState({
       data: []
     })
-   /* const onEvaluate = () => {
-      evaluatePostsApi(setData);
-    }*/
+    const onEvaluate = () => {
+      evaluatePostsApi(setData, semester, satisfaction, learning, honey, team, difficulty, homework, content);
+    }
     useEffect(() => {
       console.log(db.data)
-      setData('')
     }, [db.data])
+
 
     const [honey, HoneySlider] = useSlider(
       1,
@@ -79,11 +59,14 @@ const Editevaluation = (props) => {
       5,
       3,
     );
-  
+    const [semester, setSemester] = useState(); //학기
     const [team, setTeam] = useState('0'); //조모임
     const [homework, setHomework] = useState('0') //과제
     const [difficulty, setDifficulty] = useState('0') //학점
-
+    
+    const semesterChange = (e) => {
+      setSemester(e.target.value);
+    };
     const teamChange = (event, newAlignment) => {
       setTeam(newAlignment);
     };
@@ -92,6 +75,15 @@ const Editevaluation = (props) => {
     };
     const difficultyChange = (event, newAlignment) => {
       setDifficulty(newAlignment);
+    };
+
+    const SelectBox = () => {
+      return (
+        <select onChange={semesterChange}>
+          <option key="2022-1" value="2022-1">2022 - 1</option>
+          <option key="2022-2" value="2022-2">2022 - 2</option>
+        </select>
+      );
     };
 
     return(
@@ -103,6 +95,14 @@ const Editevaluation = (props) => {
               }}>
                     <SubjectText>학문과 사고</SubjectText>
                     <ModalLine/>
+                    <Grid container spacing={2} style={{marginTop:'15px'}}>
+                    <Grid item xs={12} sm={3}>
+                      <SubjectDetail>수강학기 선택</SubjectDetail>
+                    </Grid>
+                    <Grid item xs={12} sm={7}>
+                        <SelectBox/>
+                    </Grid>
+                    </Grid>
                     <div style={{marginTop:"10px"}}> 
                       <Grid container spacing={3}>
                         <Grid item xs={12} sm={3}>
@@ -189,11 +189,11 @@ const Editevaluation = (props) => {
                     </Grid>
                   </Grid>
                   <ModalLine/>
-                  <EvaluationInput/>
+                  <EvaluationInput propsfunction={onChangeContent}/>
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={12}>
                       <CancelButton onClick={()=>{props.setModalIsOpen(false)}}>취소</CancelButton>
-                      <EditButton>수정하기</EditButton>
+                      <EditButton onClick={ onEvaluate }>수정하기</EditButton>
                     </Grid>
                   </Grid>
                 </Box>
