@@ -16,4 +16,5 @@ export const Use = styled.div`
 
 export const Privacy = styled.div`
     padding-left: 3rem;
+    font-weight: bold;
 `
