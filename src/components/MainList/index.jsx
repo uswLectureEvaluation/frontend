@@ -36,7 +36,7 @@ const MainList = (props) => {
   return (
       <div>
         <CssBaseline />
-          <Subject lectureName={props.data.lectureName} professor={props.data.professor} lectureType={props.data.lectureType} />
+          <Subject lectureName={props.data.lectureName} professor={props.data.professor} lectureType={props.data.lectureType} star={props.data.lectureTotalAvg} />
       </div>
   );
 }
@@ -88,7 +88,7 @@ export const Subject = (props) => {
       <Styled.TempMargin>
       <Styled.EvText>평균지수</Styled.EvText>
       <BoxString3 style={{ padding: '0 10px', letterSpacing: '-2px' }}>⭐⭐⭐⭐⭐</BoxString3>
-      <Styled.Rate>5.0</Styled.Rate>
+        <Styled.Rate>{ props.star.toFixed(1) }</Styled.Rate>
         <BoxString5 onClick={() => { setModal(!modal) }}>{modal === true ? '간략히' : '자세히'}</BoxString5>
       </Styled.TempMargin>
       {modal === true ? <Modal1 /> : null}
