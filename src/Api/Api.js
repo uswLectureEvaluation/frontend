@@ -303,6 +303,41 @@ export const examPostApi = (setData) => {
     )
 }
 
+//강의평가수정 api 미완
+export const evaluatePostsApi = 
+(setData, semester, satisfaction, learning, honey, team, difficulty, homework, content) => {
+    const url = "/evaluate-posts/update/?evaluateIdx=2";
+
+    const data = {
+        semester: semester,
+        satisfaction: satisfaction,
+        learning: learning,
+        honey: honey,
+        team: team,
+        difficulty: difficulty,
+        homework: homework,
+        content: content,
+    };
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            AccessToken: localStorage.getItem('AccessToken')
+        },
+        data: data,
+        url,
+    };
+    axios(options).then(
+        (response) => {
+            alert("수정완료")
+            setData(response.data);
+        },
+        (error) => {
+            alert("error")
+        }
+    );
+};
+
 
 // 통합검색결과Api
 //꿀강순[modifiedDate, lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg]
