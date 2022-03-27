@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {  BoxString3, BoxString5, ModalString1 } from './styled'
-import {CssBaseline, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Modal from 'react-modal';
 import * as Styled from './styled';
 import { useNavigate } from "react-router-dom";
@@ -34,10 +34,7 @@ const 모달스타일 = {
 
 const MainList = (props) => {
   return (
-      <div>
-        <CssBaseline />
-          <Subject lectureName={props.data.lectureName} professor={props.data.professor} lectureType={props.data.lectureType} star={props.data.lectureTotalAvg} />
-      </div>
+        <Subject lectureName={props.data.lectureName} professor={props.data.professor} lectureType={props.data.lectureType} star={props.data.lectureTotalAvg} />
   );
 }
 
