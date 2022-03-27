@@ -108,9 +108,9 @@ const Myevaluation = () => {
 {/*         {db.data.map((v, i) => {
             return <Subject lectureName={v.lectureName} professor={v.professor} semester={v.semester} totalAvg={v.totalAvg} content={v.content}/>;
           })} */}
-       <div ref={setTarget}>
+{/*        <div ref={setTarget}>
         {isLoaded && <Loader />}
-        </div> 
+        </div>  */}
       </Container>
   );
 }
