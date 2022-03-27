@@ -36,13 +36,6 @@ export const Targetelement = styled.div`
   align-items: center;
 `;
 
-export const TitleWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    
-
-`
 export const Title = styled.div`
     display: flex;
     font-weight: bold;
@@ -63,4 +56,24 @@ export const Option = styled.div`
     font-size: 12px;
     font-weight: bold;
     color: gray;
+`
+
+export const LoaderWrap = styled.div`
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+`
+
+export const NoticeWrap = styled.div`
+  width: 50%;
+  border: 1.5px solid #f1f1f1;
+  padding: 20px 25px 20px 25px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
 `
