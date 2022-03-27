@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import MTable from '../../Table/MTable';
+import MainList from '../../components/MainList';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom'
 import { searchApi } from '../../Api/Api';
@@ -69,7 +69,7 @@ const Main = () => {
                     <Styled.More onClick={() => navigate(`/search`)}>더보기＞</Styled.More>
                 </Styled.HeadSelection>
                 <Styled.HeadSelection>
-                    <MTable lecture={lecture} />
+                    <MainList lecture={lecture} />
                 </Styled.HeadSelection>
             </Styled.SearchWrapper>
         </Styled.Container>

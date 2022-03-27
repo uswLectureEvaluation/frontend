@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {  BoxString3, BoxString5, ModalString1 } from './styled'
 import { Grid } from "@material-ui/core";
 import Modal from 'react-modal';
 import * as Styled from './styled';
 import { useNavigate } from "react-router-dom";
+import { mainApi } from '../../Api/Api'
 
 const 모달스타일 = {
 	overlay: {
@@ -33,9 +34,19 @@ const 모달스타일 = {
 };
 
 const MainList = (props) => {
+  const [db, setData] = useState([])
+
+  useEffect(() => {
+        mainApi(setData, props.lecture)
+  }, [props])
+  
   return (
-        <Subject lectureName={props.data.lectureName} professor={props.data.professor} lectureType={props.data.lectureType} star={props.data.lectureTotalAvg} />
-  );
+      <div style={{width:"100%"}}>
+        {
+          db.data.map((row)=><Subject lectureName={row.lectureName} professor={row.professor} lectureType={row.lectureType} star={row.lectureTotalAvg} />)
+        }
+      </div>
+      );
 }
 
 export const Modal1 = () => {
