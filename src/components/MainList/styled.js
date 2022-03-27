@@ -23,6 +23,7 @@ export const BoxString3 = styled.span`
 
 export const BoxString5 = styled(Button)`
 && {
+    font-weight: bold;
     font-size: 12px;
     color: rgb(190, 190, 190);
     text-decoration: underline;

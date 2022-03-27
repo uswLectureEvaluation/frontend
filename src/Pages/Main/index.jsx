@@ -53,7 +53,7 @@ const Main = () => {
                 <Styled.SearchTitle>강의 평가 검색</Styled.SearchTitle>
                 <Styled.SearchInput
                     onChange={onChange}
-                    placeholder="과목명, 교수명으로 원하는 강의평가를 찾아보세요"
+                    placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
                     onKeyPress={onKeypress}
                 />
             </Styled.SearchWrapper>

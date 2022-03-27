@@ -17,7 +17,7 @@ const blue = {
 const grey = {
     100: '#E7EBF0',
     200: '#E0E3E7',
-    300: '#CDD2D7',
+    300: '#f1f1f1',
     400: '#B2BAC2',
     500: '#A0AAB4',
     600: '#6F7E8C',
@@ -33,9 +33,10 @@ const StyledButton = styled('button')(
   min-height: calc(1.5em + 22px);
   min-width: 220px;
   background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-  border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
+  border: 1.5px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
   border-radius: 0.75em;
   margin: 0.5em;
+  margin-left: 0;
   padding: 10px;
   text-align: left;
   line-height: 1.5;

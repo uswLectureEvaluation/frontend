@@ -65,6 +65,12 @@ export const Subject = (props) => {
   
   let navigate = useNavigate();
 
+  let title = props.lectureName
+
+  if (title.length >= 14) {
+    title = props.lectureName.substr(0, 14) + "...";
+  }
+
   // const Delete = () => {
   //   if(window.confirm("강의평가를 삭제하시겠습니까?")===true){
   //     let arrayCopy = [...props.subjectName];
@@ -80,7 +86,7 @@ export const Subject = (props) => {
       </div>
       <Styled.TitleWrapper onClick={()=>navigate("/lectureinfo")}>
       <Styled.TitleWrapper>
-        <Styled.Title>{props.lectureName}</Styled.Title>
+        <Styled.Title>{title}</Styled.Title>
         <Styled.Professor>{props.professor}</Styled.Professor>
         </Styled.TitleWrapper>
         <Styled.Option>{props.lectureType}</Styled.Option>
