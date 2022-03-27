@@ -6,7 +6,6 @@ import { searchApi } from '../../Api/Api';
 import { CustomSelect, StyledOption } from './selectstyled';
 
 const Main = () => {
-
     const options = [
         { name: '최근 올라온 강의', lec: 'modifiedDate', imgs: 'img/icon_color_fire_36.svg' },
         { name: '꿀 강의', lec: 'lectureHoneyAvg', imgs: 'img/icon_color_bee_36.svg' },
@@ -63,7 +62,7 @@ const Main = () => {
                     <CustomSelect defaultValue={'lectureHoneyAvg'} onChange={onChangeHandler}>
                         {options.map((index) => (
                             <StyledOption key={index.name} value={index.lec}>
-                                <Styled.Img loading="lazy" width="20" src={index.imgs} /> {index.name}
+                                <Styled.Soption><Styled.Img loading="lazy" width="22" src={index.imgs} /> {index.name}</Styled.Soption>
                             </StyledOption>
                         ))}
                     </CustomSelect>
