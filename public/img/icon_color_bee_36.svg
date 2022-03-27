@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="path18" d="M0-47.5H35.012v35.028H0Z" transform="translate(0 47.5)" fill="#985eff"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="path38" d="M10.9-24.317c0,5.558,4.171,11.781,9.317,11.781h0c5.147,0,9.317-6.223,9.317-11.781h0c0-5.558-4.17-8.086-9.317-8.086h0c-5.146,0-9.317,2.528-9.317,8.086" transform="translate(-10.899 32.404)"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <path id="path60" d="M0-47.5H35.012v35.028H0Z" transform="translate(0 47.5)"/>
+    </clipPath>
+    <clipPath id="clip-path-4">
+      <path id="path60-2" data-name="path60" d="M0-47.5H34.28v34.3H0Z" transform="translate(0 47.5)" fill="#c8fff4"/>
+    </clipPath>
+  </defs>
+  <g id="icon_color_bee_36" transform="translate(-5732 557)">
+    <rect id="사각형_25" data-name="사각형 25" width="36" height="36" transform="translate(5732 -557)" fill="rgba(255,255,255,0)"/>
+    <g id="그룹_40" data-name="그룹 40" transform="translate(3402.458 -218.529)">
+      <g id="g14" transform="translate(2329.542 -338.471)" clip-path="url(#clip-path)">
+        <g id="g20" transform="translate(16.584 28.575)">
+          <path id="path22" d="M-.657-.985c0,1.527-.412,2.765-.921,2.765S-2.5.543-2.5-.985s.413-2.765.921-2.765.921,1.238.921,2.765" transform="translate(2.5 3.75)" fill="#6200ee"/>
+        </g>
+        <g id="g24" transform="translate(10.037 1.745)">
+          <path id="path26" d="M-5.212-.116A1.662,1.662,0,0,0-7.492.21,10.39,10.39,0,0,0-9.54,3.546a13.6,13.6,0,0,0-2.816-.2,13.655,13.655,0,0,0-2.815.2A10.387,10.387,0,0,0-17.218.21,1.661,1.661,0,0,0-19.5-.116a1.664,1.664,0,0,0,.325,2.281,11.751,11.751,0,0,0,2.789,1.854,3.021,3.021,0,0,0-1.212,2.795c0,3.308,2.346,6.74,5.24,6.74s5.241-3.432,5.241-6.74A3.021,3.021,0,0,0-8.327,4.019,11.685,11.685,0,0,0-5.538,2.165,1.664,1.664,0,0,0-5.212-.116" transform="translate(19.824 0.442)" fill="#6200ee"/>
+        </g>
+        <g id="g28" transform="translate(8.034 11.132)">
+          <path id="path30" d="M-6.758-2.929C-6.758,2.726-11,9.055-16.23,9.055S-25.7,2.726-25.7-2.929s4.241-8.225,9.472-8.225,9.472,2.572,9.472,8.225" transform="translate(25.702 11.154)" fill="#985eff"/>
+        </g>
+      </g>
+      <g id="g32" transform="translate(2337.731 -326.935)">
+        <g id="g34" transform="translate(0 0)" clip-path="url(#clip-path-2)">
+          <path id="path40" d="M29.937-23.875H10V-27.5H29.937Z" transform="translate(-10.652 31.055)" fill="#03dac5"/>
+          <path id="path42" d="M29.937-13.875H10V-17.5H29.937Z" transform="translate(-10.652 28.305)" fill="#03dac5"/>
+          <path id="path44" d="M29.937-3.875H10V-7.5H29.937Z" transform="translate(-10.652 25.555)" fill="#03dac5"/>
+        </g>
+      </g>
+      <g id="g56-2" data-name="g56" transform="translate(2329.908 -336.767)" clip-path="url(#clip-path-4)">
+        <g id="g62" transform="matrix(0.966, -0.259, 0.259, 0.966, 0.913, 13.99)">
+          <path id="path64" d="M16.238,1.357c0,2.389-7.09,7.748-10.826,7.748S0,6.9,0,4.513,1.676.456,5.413.456s10.826-1.486,10.825.9" transform="translate(0 0)" fill="#c8fff4"/>
+        </g>
+        <g id="g66" transform="matrix(0.966, 0.259, -0.259, 0.966, 17.682, 9.786)">
+          <path id="path68" d="M0,1.359C0,3.748,7.089,9.107,10.827,9.107s5.413-2.2,5.412-4.592S14.563.458,10.826.457,0-1.028,0,1.359" transform="translate(0 0)" fill="#c8fff4"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <g id="icon_color_book_36" transform="translate(-5732 443)">
+    <rect id="사각형_27" data-name="사각형 27" width="36" height="36" transform="translate(5732 -443)" fill="rgba(255,255,255,0)"/>
+    <g id="그룹_36" data-name="그룹 36" transform="translate(4911.668 -661.55)">
+      <rect id="사각형_22" data-name="사각형 22" width="34" height="19.721" transform="translate(821.332 229.674)" fill="#03dac5"/>
+      <path id="패스_608" data-name="패스 608" d="M21.483,33.528a2.2,2.2,0,0,0-2.317-2.048H7V11h6.372V29.432h3.476A4.39,4.39,0,0,1,21.483,33.528Z" transform="translate(816.649 215.867)" fill="#6200ee"/>
+      <path id="패스_609" data-name="패스 609" d="M46.483,11V31.48H34.317A2.2,2.2,0,0,0,32,33.528V13.048A2.2,2.2,0,0,1,34.317,11Z" transform="translate(806.132 215.867)" fill="#985eff"/>
+      <path id="패스_610" data-name="패스 610" d="M26.11,11.141v20.7A4.409,4.409,0,0,0,21.476,27.7H18V7h3.476A4.409,4.409,0,0,1,26.11,11.141Z" transform="translate(812.022 217.55)" fill="#dbb2ff"/>
+      <path id="패스_612" data-name="패스 612" d="M48.793,11v8.69l-2.9-2.317L43,19.69V11Z" transform="translate(801.504 215.867)" fill="#c8fff4"/>
+    </g>
+  </g>
+</svg>
