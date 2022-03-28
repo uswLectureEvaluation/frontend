@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SearchList from '../../components/SearchList';
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from "react-router";
 import * as Styled from './styled';
-import { searchApi, mainApi } from '../../api/Api';
 import MainList from '../../components/MainList';
 
 
@@ -51,7 +50,7 @@ const Search = () => {
             </Styled.SearchResultWrapper>
 
             <Styled.HeadSelection>
-                {state == 'all' ? <MainList lecture={'lectureHoneyAvg'} /> : <SearchList lecture={state} />}
+                {state === 'all' ? <MainList lecture={'lectureHoneyAvg'} /> : <SearchList lecture={state} />}
             </Styled.HeadSelection>
         </Styled.Container>
     )
