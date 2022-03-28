@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { YearText, SubjectText, StarPoint, ProfessorName, ModalOpenText, EvaluationDetail, EditButton, DeleteButton, ModalDetail, ModalDetailInfo } from './myevaluation.element'
-import {CssBaseline, Grid, Container } from "@material-ui/core";
+import { BoxString3, BoxString5, YearText, EvaluationDetail, EditButton, DeleteButton } from './myevaluation.element'
+import {CssBaseline, Container } from "@material-ui/core";
 import Editevaluation from './editevaluation'
 import Modal from 'react-modal';
 import { evaluatePostApi } from '../../api/Api';
-// import Loader from '../Notice/Loader'
+import * as Styled from './myevaluation.element';
+
 
 const 모달스타일 = {
 	overlay: {
@@ -35,22 +36,20 @@ const 모달스타일 = {
 
 export const DetailModal = () => {
   return (
-    <div style={{ paddingBottom: '10px', paddingTop: '5px' }}>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={4}>
-          <ModalDetail>만족도 ⭐⭐⭐⭐</ModalDetail>
-          <ModalDetailInfo>조모임</ModalDetailInfo><ModalDetailInfo style={{color:'rgb(190, 190, 190)'}}>없음</ModalDetailInfo>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <ModalDetail>꿀강 지수 ⭐⭐⭐⭐</ModalDetail>
-          <ModalDetailInfo>과제</ModalDetailInfo><ModalDetailInfo style={{color:'rgb(231, 76, 60)'}}>많음</ModalDetailInfo>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <ModalDetail>배움 지수 ⭐⭐⭐⭐</ModalDetail>
-          <ModalDetailInfo>학점</ModalDetailInfo><ModalDetailInfo style={{color:'rgb(231, 76, 60)'}}>까다로움</ModalDetailInfo>
-        </Grid>
-      </Grid>
+    <div>
+    <Styled.StarFlex id='top'>
+      <Styled.StarFlex>만족도 ⭐⭐⭐⭐</Styled.StarFlex>
+      <Styled.StarFlex>꿀강 지수 ⭐⭐⭐⭐</Styled.StarFlex>
+      <Styled.StarFlex>배움 지수 ⭐⭐⭐⭐</Styled.StarFlex>
+    </Styled.StarFlex>
+    <Styled.StarFlex id='bottom'>
+      <Styled.StarFlex>조모임 ⭐⭐⭐⭐</Styled.StarFlex>
+      <Styled.StarFlex>과제 ⭐⭐⭐⭐</Styled.StarFlex>
+      <Styled.StarFlex>학점 ⭐⭐⭐⭐</Styled.StarFlex>
+    </Styled.StarFlex>
+
     </div>
+    
   )
 }
 
@@ -119,48 +118,56 @@ const Myevaluation = () => {
 export const Subject = (props) => {
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  let title = props.lectureName
 
-/*   const Delete = () => {
+  if (title.length >= 14) {
+    title = props.lectureName.substr(0, 14) + "...";
+  }
+ const Delete = () => {
     if(window.confirm("강의평가를 삭제하시겠습니까?")===true){
       let arrayCopy = [...props.subjectName];
       arrayCopy.shift();
       props.setSubjectName(arrayCopy)
     }else{ return }
   }
- */
+ 
   return (
-    <div style={{
-      marginTop: "10px",
-      borderTop: '2px solid rgba(158,158,158,.5)',
-      padding: '15px',
-    }}>
-     
-      <div style={{ marginBottom: '15px' }}>
-        <YearText>{props.semester}</YearText>
-        <DeleteButton style={{ float: "right" }}>삭제</DeleteButton>
-        <EditButton onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</EditButton>
-      </div>
-        <SubjectText>{props.lectureName}</SubjectText>
-        <ProfessorName>{props.professor}</ProfessorName>
-      <div/>
-      <StarPoint>평균 지수</StarPoint>
-      <StarPoint style={{ paddingLeft: '10px' }}>⭐⭐⭐⭐⭐</StarPoint>
-      <span>{props.totalAvg}</span>
-      <ModalOpenText onClick={() => { setModal(!modal) }}>{modal === true ? '간략하게 보기 >' : '자세히 보기 >'}</ModalOpenText>
+    <div style={{marginTop:"15px"}}>
+    <Styled.LectureWrapper>
+      <Styled.MarginTop id='top'>
+        <div style={{marginBottom:"10px"}}>
+          <YearText>{props.semester}</YearText>
+          <DeleteButton onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</DeleteButton>
+          <EditButton onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</EditButton>
+        </div>
+        <Styled.TitleWrapper>
+        <Styled.TitleWrapper>
+          <Styled.Title>{title}</Styled.Title>
+          <Styled.Professor>{props.professor}</Styled.Professor>
+        </Styled.TitleWrapper>
+        </Styled.TitleWrapper>
+        <span>평균지수</span>
+        <BoxString3 style={{ padding: '0 5px', letterSpacing: '-2px' }}>⭐⭐⭐⭐⭐</BoxString3>
+        <Styled.Rate>{ props.totalAvg.toFixed(1) }</Styled.Rate>
+        <BoxString5 onClick={() => { setModal(!modal) }}>{modal === true ? '간략히' : '자세히'}</BoxString5>
+      </Styled.MarginTop>
       {modal === true ? <DetailModal /> : null}
-      <EvaluationDetail>{props.content}
-      </EvaluationDetail>
+      <Styled.MarginTop id='bottom'>
+      <EvaluationDetail>{props.content}</EvaluationDetail>
+      </Styled.MarginTop>
       <Modal 
       isOpen={modalIsOpen}
 			style={모달스타일}
+			 // 오버레이나 esc를 누르면 핸들러 동작
 			ariaHideApp={false}
       onRequestClose={() => setModalIsOpen(false)}
     	>
-    		<Editevaluation setModalIsOpen={setModalIsOpen} semester={props.semester} satisfaction={props.satisfaction} learning={props.learning}
+        <Editevaluation setModalIsOpen={setModalIsOpen} semester={props.semester} satisfaction={props.satisfaction} learning={props.learning}
         honey={props.honey} team={props.team} difficulty={props.difficulty} homework={props.homework} content={props.content}
         semesterList={props.semesterList} id={props.id}/>
     	</Modal>
-    </div>
+      </Styled.LectureWrapper>
+      </div>
   )
 }
 
