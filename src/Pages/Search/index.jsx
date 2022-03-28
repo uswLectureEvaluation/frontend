@@ -5,7 +5,7 @@ import { searchApi } from '../../api/Api';
 
 
 const Search = () => {
-    const detail = ['만족도', '꿀강', '배움', '날짜', '종합'];
+    const detail = ['날짜',  '꿀강', '만족도', '배움', '종합'];
 
     let setData;
 

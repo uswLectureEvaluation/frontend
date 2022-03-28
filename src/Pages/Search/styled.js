@@ -48,7 +48,7 @@ export const SearchResultMenu = styled.div`
     padding: 5px 10px;
     cursor: pointer;
 
-    &#만족도 {
+    &#종합 {
         background-color: #3DD3C4;
         color: white;
     }

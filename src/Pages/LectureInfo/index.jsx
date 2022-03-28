@@ -97,7 +97,7 @@ const LectureInfo = () => {
                                         <Styled.FlexContainer><Styled.Color style={{ color: "#3DD3C4"}}>3.0</Styled.Color>/5</Styled.FlexContainer>
                                     </Styled.FlexContainer>
                                     <Styled.FlexContainer>
-                                        <Styled.OptionTitle>학점비율</Styled.OptionTitle>
+                                        <Styled.OptionTitle>학점</Styled.OptionTitle>
                                         <Styled.FlexContainer><Styled.Color>까다로움</Styled.Color></Styled.FlexContainer>
                                     </Styled.FlexContainer>
                                 </Styled.WidthContainer>
