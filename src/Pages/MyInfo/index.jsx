@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import * as Styled from './styled';
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { myInfoApi } from '../../api/Api';
 
 const MyInfo = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const option = ['피드백 전송', '문의하기', '이용약관', '개인정보 처리 방침',
 '오픈소스 라이선스', '비밀번호 변경', '회원 탈퇴']
     const [db, setData] = useState({
@@ -35,7 +35,7 @@ const MyInfo = () => {
                         <Styled.FlexContainer>없음</Styled.FlexContainer>
                     </Styled.FlexContainer>
                 </Styled.Content>
-                <Styled.Button onClick={()=>alert('내가 쓴 글')} background='#3DD3C4' >
+                <Styled.Button onClick={()=>navigate('/myinfodetail')} background='#3DD3C4' >
                     내가 쓴 글
                 </Styled.Button>
             </Styled.Wrapper>

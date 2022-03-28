@@ -13,10 +13,18 @@ export const Foot = styled.div`
 export const Use = styled.div`
     padding-right: 1rem;
     color: #515151;
+
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 export const Privacy = styled.div`
     padding-left: 1rem;
     font-weight: bold;
     color: #515151;
+
+    &:hover {
+        cursor: pointer;
+    }
 `
