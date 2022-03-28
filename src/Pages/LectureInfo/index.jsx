@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import * as Styled from './styled';
-import MyEvaluation from '../../components/MyEvaluation'
 import MainList from '../../components/MainList';
 import TestInfo from '../../components/TestInfo'
 import { searchApi } from '../../api/Api'
@@ -23,21 +22,17 @@ const LectureInfo = () => {
         setMenuCheck(index);
     };
 
-        let setData;
+    let setData;
 
 
     const onChange = (e) => {
         setSearch(e.currentTarget.value)
     }
 
-    const onClick = () => {
-        searchApi(setData, search)
-        navigate(`/search`)
-    }
-
     const onKeypress = (e) => {
         if (e.key === 'Enter') {
-            onClick()
+            searchApi(setData, search)
+            navigate(`/search`)
         }
     }
 

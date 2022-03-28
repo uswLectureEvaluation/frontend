@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MainList from '../../components/MainList';
+import { useNavigate } from 'react-router-dom'
 import * as Styled from './styled';
 import { searchApi } from '../../api/Api';
 
@@ -8,6 +9,7 @@ const Search = () => {
     const detail = ['날짜',  '꿀강', '만족도', '배움', '종합'];
 
     let setData;
+    let navigate = useNavigate();
 
     const [search, setSearch] = useState('');
 
@@ -15,15 +17,10 @@ const Search = () => {
         setSearch(e.currentTarget.value)
     }
 
-    const onClick = () => {
-        searchApi(setData, search)
-        alert(search + ' 검색하겠습니다');
-        //navigate(`/search`)
-    }
-
     const onKeypress = (e) => {
         if (e.key === 'Enter') {
-            onClick()
+            searchApi(setData, search)
+            navigate(`/search`)
         }
     }
 

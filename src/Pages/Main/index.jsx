@@ -29,11 +29,6 @@ const Main = () => {
         setSearch(e.currentTarget.value)
     }
 
-    const onClick = () => {
-        searchApi(setData, search)
-        navigate(`/search`)
-    }
-
     const onChangeHandler = (e) => {
         setLecture(e)
         console.log(lecture)
@@ -42,7 +37,8 @@ const Main = () => {
 
     const onKeypress = (e) => {
         if (e.key === 'Enter') {
-            onClick()
+            searchApi(setData, search)
+            navigate(`/search`)
         }
     }
 
