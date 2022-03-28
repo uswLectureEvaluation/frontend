@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import {  BoxString3, BoxString5, ModalString1 } from './styled'
-import { Grid } from "@material-ui/core";
+import {  BoxString3, BoxString5 } from './styled'
 import Modal from 'react-modal';
 import * as Styled from './styled';
 import { useNavigate } from "react-router-dom";
-import { mainApi } from '../../api/Api'
+import { mainApi } from '../../api/api'
 
 const 모달스타일 = {
 	overlay: {
