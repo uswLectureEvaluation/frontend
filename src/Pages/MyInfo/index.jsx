@@ -27,12 +27,12 @@ const MyInfo = () => {
 
                     
                     <Styled.FlexContainer>
-                        <Styled.OptionTitle>로그인 아이디</Styled.OptionTitle>
+                        <Styled.OptionTitle id='my'>로그인 아이디</Styled.OptionTitle>
                         <Styled.FlexContainer>{db.loginId}</Styled.FlexContainer>
                     </Styled.FlexContainer>
                     <Styled.FlexContainer>
-                        <Styled.OptionTitle>학교 인증 메일</Styled.OptionTitle>
-                        <Styled.FlexContainer>없음</Styled.FlexContainer>
+                        <Styled.OptionTitle id='my'>학교 인증 메일</Styled.OptionTitle>
+                        <Styled.FlexContainer>{db.email}</Styled.FlexContainer>
                     </Styled.FlexContainer>
                 </Styled.Content>
                 <Styled.Button onClick={()=>navigate('/myinfodetail')} background='#3DD3C4' >
@@ -47,15 +47,15 @@ const MyInfo = () => {
                     
                     <Styled.FlexContainer>
                         <Styled.OptionTitle>작성한 강의평가</Styled.OptionTitle>
-                        <Styled.FlexContainer>{db.writtenLecture}개</Styled.FlexContainer>
+                        <Styled.FlexContainer id='last'><Styled.Color>{db.writtenLecture}</Styled.Color>개</Styled.FlexContainer>
                     </Styled.FlexContainer>
                     <Styled.FlexContainer>
                         <Styled.OptionTitle>작성한 시험정보</Styled.OptionTitle>
-                        <Styled.FlexContainer>{db.writtenExam}개</Styled.FlexContainer>
+                        <Styled.FlexContainer id='last'><Styled.Color>{db.writtenExam}</Styled.Color>개</Styled.FlexContainer>
                     </Styled.FlexContainer>
                     <Styled.FlexContainer>
                         <Styled.OptionTitle>시험정보 열람 횟수</Styled.OptionTitle>
-                        <Styled.FlexContainer>{db.viewExam}개</Styled.FlexContainer>
+                        <Styled.FlexContainer id='last'><Styled.Color id='p'>{db.viewExam}</Styled.Color>개</Styled.FlexContainer>
                     </Styled.FlexContainer>
                 </Styled.Content>
             </Styled.Wrapper>

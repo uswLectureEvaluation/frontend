@@ -27,7 +27,7 @@ export const Container = styled.div`
 export const Content = styled.div`
     border-radius: 10px; 
     border: 1px solid rgb(224, 224, 224);
-    padding: 1rem 2rem;
+    padding: 1rem 1.8rem;
     margin: 10px 0;
 
     &#top {
@@ -43,13 +43,15 @@ export const Title = styled.div`
 
 export const OptionTitle = styled.div`
     display: flex;
-    color: #222222;
-    width: 150px;
+    width: 160px;
+
+    &#my {
+      color: #222222;
+    }
 `
 
 export const FlexContainer = styled.div`
     display: flex;
-    width: 45%;
     padding-bottom: 0.5rem;
     color: #a3a3a3;
     &#col {
@@ -88,4 +90,13 @@ export const InfoTitle = styled.div`
     font-weight: bold;
     padding-top: 4rem;
     padding-bottom: 2rem;
+`
+
+export const Color = styled.span`
+  color:#3DD3C4;
+  font-weight: bold;
+  font-size: 1.2rem;
+  &#p {
+    color:#6200ee;
+  }
 `
