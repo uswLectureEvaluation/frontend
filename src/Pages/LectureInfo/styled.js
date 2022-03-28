@@ -138,10 +138,12 @@ export const OptionTitle = styled.div`
     display: flex;
     color: #a3a3a3;
     align-items: flex-end;
+    width: 80px;
 `
 
 export const FlexContainer = styled.div`
     display: flex;
+    width: 45%;
     &#col {
         flex-direction: column;
     }

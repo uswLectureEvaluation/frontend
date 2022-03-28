@@ -69,7 +69,7 @@ const LectureInfo = () => {
                                 <Styled.WidthContainer>
                                     <Styled.FlexContainer>
                                         <Styled.OptionTitle>꿀강지수</Styled.OptionTitle>
-                                        <Styled.FlexContainer><Styled.Color style={{ color: "#3DD3C4"}}>3.0</Styled.Color>/5</Styled.FlexContainer>
+                                        <Styled.FlexContainer><Styled.Color style={{ color: "#3DD3C4", fontWeight:"bold"}}>3.0</Styled.Color>/5</Styled.FlexContainer>
                                     </Styled.FlexContainer>
                                     <Styled.FlexContainer>
                                         <Styled.OptionTitle>조모임</Styled.OptionTitle>
@@ -79,21 +79,21 @@ const LectureInfo = () => {
                                 <Styled.WidthContainer>
                                     <Styled.FlexContainer>
                                         <Styled.OptionTitle>배움지수</Styled.OptionTitle>
-                                        <Styled.FlexContainer><Styled.Color style={{ color: "#3DD3C4"}}>3.0</Styled.Color>/5</Styled.FlexContainer>
+                                        <Styled.FlexContainer><Styled.Color style={{ color: "#3DD3C4", fontWeight:"bold"}}>3.0</Styled.Color>/5</Styled.FlexContainer>
                                     </Styled.FlexContainer>
                                     <Styled.FlexContainer>
                                         <Styled.OptionTitle>과제</Styled.OptionTitle>
-                                        <Styled.FlexContainer><Styled.Color>많음</Styled.Color></Styled.FlexContainer>
+                                        <Styled.FlexContainer><Styled.Color style={{ color: "#6200ee"}}>많음</Styled.Color></Styled.FlexContainer>
                                     </Styled.FlexContainer>
                                 </Styled.WidthContainer>
                                 <Styled.WidthContainer>
                                     <Styled.FlexContainer>
                                         <Styled.OptionTitle>만족도</Styled.OptionTitle>
-                                        <Styled.FlexContainer><Styled.Color style={{ color: "#3DD3C4"}}>3.0</Styled.Color>/5</Styled.FlexContainer>
+                                        <Styled.FlexContainer><Styled.Color style={{ color: "#3DD3C4", fontWeight:"bold"}}>3.0</Styled.Color>/5</Styled.FlexContainer>
                                     </Styled.FlexContainer>
                                     <Styled.FlexContainer>
                                         <Styled.OptionTitle>학점</Styled.OptionTitle>
-                                        <Styled.FlexContainer><Styled.Color>까다로움</Styled.Color></Styled.FlexContainer>
+                                        <Styled.FlexContainer><Styled.Color style={{ color: "#6200ee"}}>까다로움</Styled.Color></Styled.FlexContainer>
                                     </Styled.FlexContainer>
                                 </Styled.WidthContainer>
                             </Styled.FlexContainer>
