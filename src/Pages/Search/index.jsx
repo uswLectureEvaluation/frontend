@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchList from '../../components/SearchList';
 import { useNavigate } from 'react-router-dom'
 import { useLocation } from "react-router";
 import * as Styled from './styled';
-import { searchApi } from '../../api/Api';
+import { searchApi, mainApi } from '../../api/Api';
+import MainList from '../../components/MainList';
 
 
 const Search = () => {
@@ -11,7 +12,7 @@ const Search = () => {
 
     const {state} = useLocation();
 
-    let setData;
+
     let navigate = useNavigate();
 
     const [search, setSearch] = useState('');
@@ -22,8 +23,7 @@ const Search = () => {
 
     const onKeypress = (e) => {
         if (e.key === 'Enter') {
-            searchApi(setData, search)
-            navigate(`/search`)
+            navigate(`/search`, {state: search})
         }
     }
 
@@ -51,7 +51,7 @@ const Search = () => {
             </Styled.SearchResultWrapper>
 
             <Styled.HeadSelection>
-                <SearchList lecture={`${state}`} />
+                {state == 'all' ? <MainList lecture={'lectureHoneyAvg'} /> : <SearchList lecture={state} />}
             </Styled.HeadSelection>
         </Styled.Container>
     )

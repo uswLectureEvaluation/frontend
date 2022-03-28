@@ -19,11 +19,6 @@ const Main = () => {
     const [lecture, setLecture] = useState('lectureHoneyAvg');
 
 
-    const [db, setData] = useState({
-        data: []
-    })
-    //let setData;
-
 
     const onChange = (e) => {
         setSearch(e.currentTarget.value)
@@ -60,7 +55,7 @@ const Main = () => {
                             </StyledOption>
                         ))}
                     </CustomSelect>
-                    <Styled.More onClick={() => navigate(`/search`)}>더보기＞</Styled.More>
+                    <Styled.More onClick={() => navigate(`/search`, {state: 'all'})}>더보기＞</Styled.More>
                 </Styled.HeadSelection>
                 <Styled.HeadSelection>
                     <MainList lecture={lecture} />
