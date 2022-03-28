@@ -3,7 +3,7 @@ import {  BoxString3, BoxString5 } from './styled'
 import Modal from 'react-modal';
 import * as Styled from './styled';
 import { useNavigate } from "react-router-dom";
-import { mainApi } from '../../api/Api'
+import { searchApi } from '../../api/Api'
 
 const 모달스타일 = {
 	overlay: {
@@ -32,11 +32,11 @@ const 모달스타일 = {
 	},
 };
 
-const MainList = (props) => {
+const SearchList = (props) => {
   const [db, setData] = useState([])
 
   useEffect(() => {
-        mainApi(setData, props.lecture)
+        searchApi(setData, props.lecture)
   }, [props])
   
   console.log(db)
@@ -110,4 +110,4 @@ export const Subject = (props) => {
   )
 }
 
-export default MainList
+export default SearchList

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import MainList from '../../components/MainList';
+import SearchList from '../../components/SearchList';
 import { useNavigate } from 'react-router-dom'
+import { useLocation } from "react-router";
 import * as Styled from './styled';
 import { searchApi } from '../../api/Api';
 
 
 const Search = () => {
     const detail = ['날짜',  '꿀강', '만족도', '배움', '종합'];
+
+    const {state} = useLocation();
 
     let setData;
     let navigate = useNavigate();
@@ -41,14 +44,14 @@ const Search = () => {
                     <Styled.Img loading="lazy" width="22" src="img/icon_sort_solid_mint_24.svg" />
                 </Styled.SearchResultMenu>
                 {detail.map((name, index) =>
-                    <Styled.SearchResultMenu id={name} detail={detail} index={index}>
+                    <Styled.SearchResultMenu key={name} id={name} detail={detail} index={index}>
                         {name}
                     </Styled.SearchResultMenu>
                 )}
             </Styled.SearchResultWrapper>
 
             <Styled.HeadSelection>
-                <MainList lecture='lectureHoneyAvg' />
+                <SearchList lecture={`${state}`} />
             </Styled.HeadSelection>
         </Styled.Container>
     )

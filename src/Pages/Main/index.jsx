@@ -19,10 +19,10 @@ const Main = () => {
     const [lecture, setLecture] = useState('lectureHoneyAvg');
 
 
-    // const [db, setData] = useState({
-    //     data: []
-    // })
-    let setData;
+    const [db, setData] = useState({
+        data: []
+    })
+    //let setData;
 
 
     const onChange = (e) => {
@@ -31,14 +31,13 @@ const Main = () => {
 
     const onChangeHandler = (e) => {
         setLecture(e)
-        console.log(lecture)
+        //console.log(lecture)
     }
 
 
     const onKeypress = (e) => {
         if (e.key === 'Enter') {
-            searchApi(setData, search)
-            navigate(`/search`)
+            navigate(`/search`, {state: search})
         }
     }
 

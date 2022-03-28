@@ -357,7 +357,7 @@ export const searchApi = (setData, search) => {
         (r) => {
             console.log("connect");
             console.log(url);
-            console.log(r.data)
+            console.log(r.data, '검색')
             setData(r.data)
         }, (error) => {
             console.log(error.response);
