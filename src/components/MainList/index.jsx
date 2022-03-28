@@ -3,7 +3,7 @@ import {  BoxString3, BoxString5 } from './styled'
 import Modal from 'react-modal';
 import * as Styled from './styled';
 import { useNavigate } from "react-router-dom";
-import { mainApi } from '../../api/api'
+import { mainApi } from '../../api/Api'
 
 const 모달스타일 = {
 	overlay: {
