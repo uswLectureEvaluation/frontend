@@ -5,7 +5,7 @@ import ReactLoading from "react-loading";
 const Loader = () => {
   return (
     <Styled.LoaderWrap>
-      <ReactLoading type="spin" color="#A593E0" />
+      <ReactLoading type="spin" color='#3dd3c4' />
     </Styled.LoaderWrap>
   );
 };
