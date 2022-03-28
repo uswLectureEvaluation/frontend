@@ -42,7 +42,7 @@ export const SearchInput = styled.input`
     padding-left: 20px;
     height: 50px;
     border-radius: 20px;
-    border: 2px solid #3DD3C4;
+    border: 1.5px solid #3DD3C4;
     margin: 1.5rem 0;
     background-image: url("img/icon_search_24.svg");
     background-repeat: no-repeat;
@@ -56,7 +56,8 @@ export const SearchInput = styled.input`
 
 export const HeadSelection = styled.div`
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    padding-bottom: 10px;
     width: 100%;
     justify-content: space-between;
 `
@@ -83,6 +84,8 @@ export const Select = styled.select`
 export const More = styled.div`
     font-weight: bold;
     cursor: pointer;
+    color: #3DD3C4;
+    padding-right: 5px;
 `
 
 export const Img = styled.img`

@@ -82,13 +82,13 @@ export const TitleWrapper = styled.div`
 export const Title = styled.div`
     display: flex;
     font-weight: bold;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin-right: 0.7rem;
 `
 
 export const Professor = styled.div`
     display: flex;
-    font-weight: bold;
+    color: #515151;
 `
 
 export const Option = styled.div`
@@ -101,19 +101,15 @@ export const Option = styled.div`
     color: gray;
 `
 
-export const EvText = styled.span`
-    font-weight: bold;
-    
-`
 
 export const Rate = styled.span`
     /* color: #3DD3C4; */
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
 `
 
 export const LectureWrapper = styled.div`
-    border: 1.5px solid #f1f1f1;
+    border: 1px solid #e0e0e0;
     padding: 0 25px 20px 25px;
     border-radius: 10px;
     margin-bottom: 10px;

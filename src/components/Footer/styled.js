@@ -11,10 +11,12 @@ export const Foot = styled.div`
 `
 
 export const Use = styled.div`
-    padding-right: 3rem;
+    padding-right: 1rem;
+    color: #515151;
 `
 
 export const Privacy = styled.div`
-    padding-left: 3rem;
+    padding-left: 1rem;
     font-weight: bold;
+    color: #515151;
 `

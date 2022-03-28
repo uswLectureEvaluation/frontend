@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Navbar = styled.nav`
     background: #ffffff;
     margin: 0 auto;
-    height: 80px;
+    height: 110px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +11,7 @@ export const Navbar = styled.nav`
     top: 0;
     z-index: 999;
     justify-content: space-around;
-    border-bottom: 2px solid #E0E0E0;
+    border-bottom: 1.5px solid #E0E0E0;
 `
 
 export const NavLogo = styled.nav`
@@ -47,7 +47,7 @@ export const NavMenu = styled.nav`
 export const NavLinks = styled.div`
     display: flex;
     padding: 0.5rem 1rem;
-    font-weight: 700;
+    font-size: 1rem;
     &:hover {
         cursor: pointer;
         font-weight: bold;

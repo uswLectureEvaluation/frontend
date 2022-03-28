@@ -103,8 +103,8 @@ export const Subject = (props) => {
         <Styled.Option>{props.lectureType}</Styled.Option>
       </Styled.TitleWrapper>
       <Styled.TempMargin>
-      <Styled.EvText>평균지수</Styled.EvText>
-      <BoxString3 style={{ padding: '0 10px', letterSpacing: '-2px' }}>⭐⭐⭐⭐⭐</BoxString3>
+      <span>평균지수</span>
+      <BoxString3 style={{ padding: '0 5px', letterSpacing: '-2px' }}>⭐⭐⭐⭐⭐</BoxString3>
         <Styled.Rate>{ props.star.toFixed(1) }</Styled.Rate>
         <BoxString5 onClick={() => { setModal(!modal) }}>{modal === true ? '간략히' : '자세히'}</BoxString5>
       </Styled.TempMargin>
