@@ -9,6 +9,51 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
+export const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+`
+
+export const SearchContainer = styled.div`
+    display: flex;
+    width: 100%;
+`
+
+export const SearchWrapper = styled.div`
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 1rem 0;
+`
+
+export const SearchTitle = styled.div`
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-top: 4rem;
+`
+
+export const SearchInput = styled.input`
+    width: 100%;
+    padding-left: 20px;
+    height: 50px;
+    border-radius: 20px;
+    border: 1.5px solid #3DD3C4;
+    margin: 1.5rem 0;
+    background-image: url("img/icon_search_24.svg");
+    background-repeat: no-repeat;
+    background-position: 98%;
+
+    &:focus {
+        outline: none;
+    }
+    
+`
+
+
 export const Content = styled.div`
     border-radius: 10px; 
     border: 1px solid rgb(224, 224, 224);
@@ -17,26 +62,31 @@ export const Content = styled.div`
 `
 
 export const Color = styled.div`
+    display: flex;
     color: black;
 `
 
 export const TitleWrapper = styled.div`
     display: flex;
+    margin-bottom: 0.5rem;
+    align-items: flex-end;
 
     &#top {
         justify-content: space-between;
+        align-items: flex-start;
+
     }
 `
 
 export const Wrapper = styled.div`
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
 `
 
 export const Title = styled.div`
-    font-size : 2.5rem;
+    display: flex;
+    font-size : 1.5rem;
     font-weight : 1000;
-    margin-bottom : 1rem;
     text-align: center;
 
     &#sub {
@@ -45,11 +95,10 @@ export const Title = styled.div`
 `
 
 export const MenuTitle = styled.li`
-    font-size: 1.5rem;
-    font-weight : 1000;
+    font-size: 1.2rem;
     margin-bottom : 1rem;
     text-align: center;
-    display: inline-block;
+    display: flex;
     padding-right: 1rem;
 
     &:hover {
@@ -60,64 +109,46 @@ export const MenuTitle = styled.li`
 export const Professor = styled.div`
     display: flex;
     align-items: center;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
 `
 
 export const Option = styled.div`
-    border-radius: 10px;
+    border-radius: 12px;
     background-color: rgb(224,224,224);
     text-align: center;
     display: flex;
     align-items: center;
     padding: 0.2rem 0.5rem;
     margin: 0 0.5rem;
-    font-weight: bold;
+    /* font-weight: bold; */
 
     &#type {
         height: 25px;
     }
 `
 
-export const Writing = styled.div`
-    border-radius: 10px;
-    background-color: #f1f1f1;
-    text-align: center;
-    padding: 1.2rem 1.5rem;
-    margin: 0 1rem;
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #7f7f7f;
-
-    &#type {
-        height: 25px;
-
-        &:hover{
-            cursor: pointer;
-        }
+export const Writing = styled.img`
+    &:hover{
+        cursor: pointer;
     }
 `
 
-export const Index = styled.div`
-    font-size : 1.7rem;
-    font-weight : 1000;
-    text-align: center;
+
+export const OptionTitle = styled.div`
     display: flex;
-    width: 280px;
+    color: #a3a3a3;
+    align-items: flex-end;
 `
 
-export const IndexWrapper = styled.ul`
+export const FlexContainer = styled.div`
     display: flex;
-    
-    &#first {
-        margin-top: 2rem;
+    &#col {
+        flex-direction: column;
     }
 `
 
-export const IndexGroup = styled.div`
-    padding: 10px;
-    width: 140px;
-    text-align: left;
+export const WidthContainer = styled.div`
+    align-items: flex-end;
     display: flex;
+    margin: 10px;
 `

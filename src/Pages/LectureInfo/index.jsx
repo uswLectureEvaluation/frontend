@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import * as Styled from './styled';
 import MyEvaluation from '../../components/MyEvaluation'
+import MainList from '../../components/MainList';
 import TestInfo from '../../components/TestInfo'
-import { Container } from "@material-ui/core";
+import { searchApi } from '../../api/Api'
+import { useNavigate } from 'react-router-dom'
 
 const checkList = {
-    0: <MyEvaluation />,
+    0: <MainList lecture='lectureHoneyAvg' />,
     1: <TestInfo />,
 }
 
 const LectureInfo = () => {
-    const menu = ['강의 평가', '시험 정보'];
+    let navigate = useNavigate();
+    const [search, setSearch] = useState('');
+    const menu = ['강의 평가(N)', '시험 정보(M)'];
     const menuList = menu.map((i, index) => <Styled.MenuTitle onClick={()=>clickFunc(index)}>{i}</Styled.MenuTitle>);
     
     const [menuCheck, setMenuCheck] = useState(0);
@@ -19,16 +23,42 @@ const LectureInfo = () => {
         setMenuCheck(index);
     };
 
+        let setData;
+
+
+    const onChange = (e) => {
+        setSearch(e.currentTarget.value)
+    }
+
+    const onClick = () => {
+        searchApi(setData, search)
+        navigate(`/search`)
+    }
+
+    const onKeypress = (e) => {
+        if (e.key === 'Enter') {
+            onClick()
+        }
+    }
+
     return (
-        <Container>
-            <Styled.GlobalStyle />
+        <Styled.Container>
+            <Styled.SearchWrapper>
+                <Styled.SearchTitle>검색 결과 (N)</Styled.SearchTitle>
+                <Styled.SearchInput
+                    onChange={onChange}
+                    placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
+                    onKeyPress={onKeypress}
+                />
+            </Styled.SearchWrapper>
+
             <Styled.Wrapper>
                 <Styled.Content>
                     <Styled.TitleWrapper id='top'>
                         <div>
                             <Styled.TitleWrapper>
                                 <Styled.Title>학문과 사고</Styled.Title>
-                                <Styled.Professor>이다민 교수님</Styled.Professor>
+                                <Styled.Professor>이다민</Styled.Professor>
                             </Styled.TitleWrapper>
                             <Styled.TitleWrapper>
                                 <Styled.Option> 2020-1 </Styled.Option>
@@ -38,42 +68,40 @@ const LectureInfo = () => {
                         </div>
                         <Styled.Option id='type'>
                             기교
-                        </Styled.Option>
+                        </Styled.Option>   
                     </Styled.TitleWrapper>
-                    <div>
-                        <Styled.IndexWrapper id='first'>
-                            <Styled.Index>
-                                <Styled.IndexGroup>꿀강 지수</Styled.IndexGroup>
-                                <Styled.IndexGroup><Styled.Color style={{ color: "#f1c40f" }}>3.5</Styled.Color>/5</Styled.IndexGroup>
-                            </Styled.Index>
-                            <Styled.Index>
-                                <Styled.IndexGroup>조모임</Styled.IndexGroup>
-                                <Styled.IndexGroup><Styled.Color style={{ color: "#9e9e9e" }}>없음</Styled.Color></Styled.IndexGroup>
-                            </Styled.Index>
-                        </Styled.IndexWrapper>
-
-                        <Styled.IndexWrapper>
-                            <Styled.Index>
-                                <Styled.IndexGroup>배움 지수</Styled.IndexGroup>
-                                <Styled.IndexGroup><Styled.Color style={{ color: "#e74c3c" }}>3.5</Styled.Color>/5</Styled.IndexGroup>
-                            </Styled.Index>
-                            <Styled.Index>
-                                <Styled.IndexGroup>과제</Styled.IndexGroup>
-                                <Styled.IndexGroup><Styled.Color style={{ color: "#e74c3c" }}>많음</Styled.Color></Styled.IndexGroup>
-                            </Styled.Index>
-                        </Styled.IndexWrapper>
-                        <Styled.IndexWrapper>
-                            <Styled.Index>
-                                <Styled.IndexGroup>만족도</Styled.IndexGroup>
-                                <Styled.IndexGroup><Styled.Color style={{ color: "#2980b9" }}>3.5</Styled.Color>/5</Styled.IndexGroup>
-                            </Styled.Index>
-                            <Styled.Index>
-                                <Styled.IndexGroup>학점비율</Styled.IndexGroup>
-                                <Styled.IndexGroup><Styled.Color style={{ color: "#e74c3c" }}>까다로움</Styled.Color></Styled.IndexGroup>
-                            </Styled.Index>
-                        </Styled.IndexWrapper>
-                        
-                    </div>
+                    <Styled.FlexContainer id='col'>
+                                <Styled.WidthContainer>
+                                    <Styled.FlexContainer>
+                                        <Styled.OptionTitle>꿀강지수</Styled.OptionTitle>
+                                        <Styled.FlexContainer><Styled.Color style={{ color: "#3DD3C4"}}>3.0</Styled.Color>/5</Styled.FlexContainer>
+                                    </Styled.FlexContainer>
+                                    <Styled.FlexContainer>
+                                        <Styled.OptionTitle>조모임</Styled.OptionTitle>
+                                        <Styled.FlexContainer>없음</Styled.FlexContainer>
+                                    </Styled.FlexContainer>
+                                </Styled.WidthContainer>
+                                <Styled.WidthContainer>
+                                    <Styled.FlexContainer>
+                                        <Styled.OptionTitle>배움지수</Styled.OptionTitle>
+                                        <Styled.FlexContainer><Styled.Color style={{ color: "#3DD3C4"}}>3.0</Styled.Color>/5</Styled.FlexContainer>
+                                    </Styled.FlexContainer>
+                                    <Styled.FlexContainer>
+                                        <Styled.OptionTitle>과제</Styled.OptionTitle>
+                                        <Styled.FlexContainer><Styled.Color>많음</Styled.Color></Styled.FlexContainer>
+                                    </Styled.FlexContainer>
+                                </Styled.WidthContainer>
+                                <Styled.WidthContainer>
+                                    <Styled.FlexContainer>
+                                        <Styled.OptionTitle>만족도</Styled.OptionTitle>
+                                        <Styled.FlexContainer><Styled.Color style={{ color: "#3DD3C4"}}>3.0</Styled.Color>/5</Styled.FlexContainer>
+                                    </Styled.FlexContainer>
+                                    <Styled.FlexContainer>
+                                        <Styled.OptionTitle>학점비율</Styled.OptionTitle>
+                                        <Styled.FlexContainer><Styled.Color>까다로움</Styled.Color></Styled.FlexContainer>
+                                    </Styled.FlexContainer>
+                                </Styled.WidthContainer>
+                            </Styled.FlexContainer>
                 </Styled.Content>
                 
                 <Styled.Content>
@@ -81,12 +109,12 @@ const LectureInfo = () => {
                         <Styled.TitleWrapper>
                             {menuList}
                         </Styled.TitleWrapper>
-                        <Styled.Writing id='type'>강의평가 쓰기</Styled.Writing>
+                        <Styled.Writing src='img/btn_write.svg'/>
                     </Styled.TitleWrapper>
                     {checkList[menuCheck]}
                 </Styled.Content>
             </Styled.Wrapper>
-        </Container>
+        </Styled.Container>
     )
 }
 
