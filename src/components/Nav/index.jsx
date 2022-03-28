@@ -8,6 +8,9 @@ const Nav = () => {
     const loginState = useSelector((state) => state.login.value);
     const [button, setButton] = useState(true);
     const [text, setText] = useState('');
+
+    const [click, setClick] = useState(false);
+
     console.log(button, text)
     const move = (location) => {
         navigate(`/${location}`)
@@ -32,6 +35,10 @@ const Nav = () => {
         showButton();
     }, [loginState]);
 
+    const handleClick = () => {
+        setClick(!click);
+    }
+
     window.addEventListener("resize", showButton);
 
     return (
@@ -39,7 +46,10 @@ const Nav = () => {
             <Styled.NavLogo onClick={() => move("")}>
                 SUWIKI
             </Styled.NavLogo>
-            <Styled.NavMenu>
+            <Styled.MobileIcon onClick={handleClick}>
+                {click ? <img src={'img/icon_color_fire_36.svg'} />: <img src={'img/icon_color_bee_36.svg'} />}
+            </Styled.MobileIcon>
+            <Styled.NavMenu onClick={handleClick} click={click}>
                 <Styled.NavLinks onClick={()=>move("notice")}>공지사항</Styled.NavLinks>
                 <Styled.NavLinks onClick={() => move("login")}>로그인</Styled.NavLinks>
                 <Styled.NavLinks id="signup" onClick={() => move("signup")}>회원가입</Styled.NavLinks>

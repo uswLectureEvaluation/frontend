@@ -26,7 +26,19 @@ export const NavLogo = styled.nav`
     @media screen and (max-width: 960px) {
         margin: 0 auto;
     }
+    
 `
+
+
+export const MobileIcon = styled.div`
+display: none;
+
+@media screen and (max-width: 960px) {
+    display: block;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+`;
 
 export const NavMenu = styled.nav`
     display: flex;
@@ -40,6 +52,7 @@ export const NavMenu = styled.nav`
         left: ${({ click }) => (click ? 0 : '-100%')};
         opacity: 1;
         transition: all 0.5s ease;
+        background: #fff;
   }
 `
 
@@ -65,3 +78,4 @@ export const NavLinks = styled.div`
         }
   }
 `
+
