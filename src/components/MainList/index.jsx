@@ -54,19 +54,11 @@ const MainList = (props) => {
 
 export const Modal1 = () => {
   return (
-    <div>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={4}>
-          <ModalString1>만족도 ⭐⭐⭐⭐</ModalString1>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <ModalString1>꿀강 지수 ⭐⭐⭐⭐</ModalString1>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <ModalString1>배움 지수 ⭐⭐⭐⭐</ModalString1>
-        </Grid>
-      </Grid>
-    </div>
+    <Styled.StarFlex id='top'>
+      <Styled.StarFlex>만족도 ⭐⭐⭐⭐</Styled.StarFlex>
+      <Styled.StarFlex>꿀강 지수 ⭐⭐⭐⭐</Styled.StarFlex>
+      <Styled.StarFlex>배움 지수 ⭐⭐⭐⭐</Styled.StarFlex>
+    </Styled.StarFlex>
   )
 }
 
@@ -91,28 +83,22 @@ export const Subject = (props) => {
   // }
   return (
     <Styled.LectureWrapper>
-      <div style={{ marginBottom: '15px' }}>
+      <Styled.MarginTop>
         {/* <BoxButton2 onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</BoxButton2>
         <BoxButton1 onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</BoxButton1> */}
-      </div>
-      <Styled.TitleWrapper onClick={()=>navigate("/lectureinfo")}>
-      <Styled.TitleWrapper>
-        <Styled.Title>{title}</Styled.Title>
-        <Styled.Professor>{props.professor}</Styled.Professor>
+        <Styled.TitleWrapper onClick={()=>navigate("/lectureinfo")}>
+        <Styled.TitleWrapper>
+          <Styled.Title>{title}</Styled.Title>
+          <Styled.Professor>{props.professor}</Styled.Professor>
         </Styled.TitleWrapper>
-        <Styled.Option>{props.lectureType}</Styled.Option>
-      </Styled.TitleWrapper>
-      <Styled.TempMargin>
-      <span>평균지수</span>
-      <BoxString3 style={{ padding: '0 5px', letterSpacing: '-2px' }}>⭐⭐⭐⭐⭐</BoxString3>
+          <Styled.Option>{props.lectureType}</Styled.Option>
+        </Styled.TitleWrapper>
+        <span>평균지수</span>
+        <BoxString3 style={{ padding: '0 5px', letterSpacing: '-2px' }}>⭐⭐⭐⭐⭐</BoxString3>
         <Styled.Rate>{ props.star.toFixed(1) }</Styled.Rate>
         <BoxString5 onClick={() => { setModal(!modal) }}>{modal === true ? '간략히' : '자세히'}</BoxString5>
-      </Styled.TempMargin>
+      </Styled.MarginTop>
       {modal === true ? <Modal1 /> : null}
-      {/* <BoxString6>가나다라마바사아자차카타파하가나다라마바사아자차카타파하
-        가나다라마바사아자차카타파하
-        가나다라마바사아자차카타파하
-      </BoxString6> */}
       <Modal 
       isOpen={modalIsOpen}
 			style={모달스타일}

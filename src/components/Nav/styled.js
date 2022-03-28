@@ -50,7 +50,6 @@ export const NavLinks = styled.div`
     font-size: 1rem;
     &:hover {
         cursor: pointer;
-        font-weight: bold;
     }
     &#signup {
         color:#3DD3C4;

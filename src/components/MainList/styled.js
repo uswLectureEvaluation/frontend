@@ -68,10 +68,6 @@ export const ModalString2 = styled.span`
     padding-right: 0.5rem;
 `
 
-export const TempMargin = styled.div`
-    margin-top: 0.5rem;
-`
-
 export const TitleWrapper = styled.div`
     display: flex;
     justify-content: space-between;
@@ -110,8 +106,23 @@ export const Rate = styled.span`
 
 export const LectureWrapper = styled.div`
     border: 1px solid #e0e0e0;
-    padding: 0 25px 20px 25px;
     border-radius: 10px;
     margin-bottom: 10px;
     cursor: pointer;
+`
+
+export const MarginTop = styled.div`
+    padding: 14px 24px;
+`
+
+
+export const StarFlex = styled.div`
+    display: flex;
+    padding-right: 1rem;
+    background-color: #f9f9f9;
+    padding: 8px 12px;
+
+    &#top {
+        border-top: 1px solid #eeeeee;
+    }
 `
