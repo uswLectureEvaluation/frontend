@@ -31,8 +31,7 @@ const Main = () => {
 
     const onClick = () => {
         searchApi(setData, search)
-        alert(search + ' 검색하겠습니다');
-        //navigate(`/search`)
+        navigate(`/search`)
     }
 
     const onChangeHandler = (e) => {

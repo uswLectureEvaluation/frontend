@@ -1,0 +1,18 @@
+<svg id="icon_sort_solid_mint_24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        opacity: 0;
+      }
+
+      .cls-2 {
+        fill: #3dd3c4;
+      }
+    </style>
+  </defs>
+  <rect id="사각형_95" data-name="사각형 95" class="cls-1" width="24" height="24"/>
+  <rect id="사각형_91" data-name="사각형 91" class="cls-2" width="11" height="4" transform="translate(3 10)"/>
+  <rect id="사각형_92" data-name="사각형 92" class="cls-2" width="6" height="4" transform="translate(3 17)"/>
+  <rect id="사각형_93" data-name="사각형 93" class="cls-2" width="18" height="4" transform="translate(3 3)"/>
+</svg>
