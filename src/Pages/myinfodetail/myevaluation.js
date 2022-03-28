@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { BoxString3, BoxString5, YearText, EvaluationDetail, EditButton, DeleteButton } from './myevaluation.element'
+import { BoxString5, YearText, EvaluationDetail, EditButton, DeleteButton } from './myevaluation.element'
 import {CssBaseline, Container } from "@material-ui/core";
 import Editevaluation from './editevaluation'
 import Modal from 'react-modal';
 import { evaluatePostApi } from '../../api/Api';
 import * as Styled from './myevaluation.element';
-
+import StarRatings from 'react-star-ratings';
 
 const 모달스타일 = {
 	overlay: {
@@ -34,7 +34,8 @@ const 모달스타일 = {
 	},
 };
 
-export const DetailModal = () => {
+export const DetailModal = (props) => {
+  
   return (
     <div>
     <Styled.StarFlex id='top'>
@@ -130,7 +131,7 @@ export const Subject = (props) => {
       props.setSubjectName(arrayCopy)
     }else{ return }
   }
- 
+
   return (
     <div style={{marginTop:"15px"}}>
     <Styled.LectureWrapper>
@@ -147,11 +148,21 @@ export const Subject = (props) => {
         </Styled.TitleWrapper>
         </Styled.TitleWrapper>
         <span>평균지수</span>
-        <BoxString3 style={{ padding: '0 5px', letterSpacing: '-2px' }}>⭐⭐⭐⭐⭐</BoxString3>
+        <StarRatings
+          rating={props.totalAvg}
+          starRatedColor="#3DD3C4"
+          numberOfStars={5}
+          name='rating'
+          starDimension='24px'
+          starSpacing='2px'
+          svgIconPath='M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z'
+          svgIconViewBox='0 0 24 24'
+        />        
         <Styled.Rate>{ props.totalAvg.toFixed(1) }</Styled.Rate>
         <BoxString5 onClick={() => { setModal(!modal) }}>{modal === true ? '간략히' : '자세히'}</BoxString5>
       </Styled.MarginTop>
-      {modal === true ? <DetailModal /> : null}
+      {modal === true ? <DetailModal satisfaction={props.satisfaction} honey={props.honey} 
+      learning={props.learning} team={props.team} homework={props.homework} difficulty={props.difficulty} /> : null}
       <Styled.MarginTop id='bottom'>
       <EvaluationDetail>{props.content}</EvaluationDetail>
       </Styled.MarginTop>
