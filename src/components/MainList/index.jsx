@@ -44,7 +44,7 @@ const MainList = (props) => {
     db.length !== 0 ?
       <div style={{width:"100%"}}>
         {
-          db.data.map((row)=><Subject key={row.id} lectureName={row.lectureName} professor={row.professor} lectureType={row.lectureType} star={row.lectureTotalAvg} />)
+          db.data.map((row)=><Subject lectureName={row.lectureName} professor={row.professor} lectureType={row.lectureType} star={row.lectureTotalAvg} />)
         }
       </div> :
       <div></div>
