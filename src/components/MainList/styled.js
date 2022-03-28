@@ -1,5 +1,6 @@
 import { Button} from "@material-ui/core";
 import styled from "styled-components";
+import { Color } from "../../globalStyles";
 
 
 export const BoxString1 = styled.span`
@@ -105,7 +106,7 @@ export const Rate = styled.span`
 `
 
 export const LectureWrapper = styled.div`
-    border: 1px solid #e0e0e0;
+    border: 1px solid ${Color('border')};
     border-radius: 10px;
     margin-bottom: 10px;
     cursor: pointer;

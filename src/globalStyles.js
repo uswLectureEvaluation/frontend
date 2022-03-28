@@ -19,6 +19,26 @@ const GlobalStyle = createGlobalStyle`
 }
 `;
 
+export const Color = (props) => {
+
+    if(props == 'main'){
+        return '#3dd3c4'
+    }else if(props =='border'){
+        return '#e0e0e0'
+    }else if(props == 'font'){
+        return '#222222'
+    }else if(props == 'sub-font'){
+        return '#515151'
+    }else if(props =='hover'){
+        return '#76d6bc'
+    }else if(props=='accent'){
+        return '#ff7675'
+    }
+
+}
+   
+
+
 export const Container = styled.div`
 z-index: 1;
 width: 100%;
