@@ -3,7 +3,7 @@ import { SubjectText, SubjectDetail, EvaluationInput, EditButton, ModalLine, Can
 import {CssBaseline, Grid, Box, Container } from "@material-ui/core";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { evaluatePostsApi } from '../../api/Api';
+import { evaluateUpdateApi } from '../../api/Api';
 
 // Range바 로직
 const useSlider = (min, max, defaultState, id) => {
@@ -37,7 +37,7 @@ const Editevaluation = (props) => {
       data: []
     })
     const onEvaluate = () => {
-      evaluatePostsApi(setData, semester, satisfaction, learning, honey, team, difficulty, homework, content, props.id);
+      evaluateUpdateApi(setData, semester, satisfaction, learning, honey, team, difficulty, homework, content, props.id);
       props.setModalIsOpen(false)
     }
     useEffect(() => {

@@ -3,7 +3,7 @@ import { BoxString5, YearText, EvaluationDetail, EditButton, DeleteButton } from
 import {CssBaseline, Container } from "@material-ui/core";
 import Editevaluation from './editevaluation'
 import Modal from 'react-modal';
-import { evaluateUpdateApi } from '../../api/Api';
+import { evaluatePostApi } from '../../api/Api';
 import * as Styled from './myevaluation.element';
 import StarRatings from 'react-star-ratings';
 
@@ -139,7 +139,7 @@ const Myevaluation = () => {
 
   console.log(db)
   useEffect(() => {
-    evaluateUpdateApi(setData)
+    evaluatePostApi(setData)
   }, []
   )
 
@@ -189,10 +189,10 @@ export const Subject = (props) => {
           <EditButton onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</EditButton>
         </div>
         <Styled.TitleWrapper>
-        <Styled.TitleWrapper>
-          <Styled.Title>{title}</Styled.Title>
-          <Styled.Professor>{props.professor}</Styled.Professor>
-        </Styled.TitleWrapper>
+          <Styled.TitleWrapper>
+            <Styled.Title>{title}</Styled.Title>
+            <Styled.Professor>{props.professor}</Styled.Professor>
+          </Styled.TitleWrapper>
         </Styled.TitleWrapper>
         <span>평균지수</span>
         <StarRatings

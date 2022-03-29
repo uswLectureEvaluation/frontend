@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import {YearText, SubjectText, ProfessorName, TestInfoDetail, EditButton, DeleteButton } from './testinformation.element'
 import {CssBaseline,Container} from "@material-ui/core";
 import Modal from 'react-modal';
 import Edittestinfo from './edittestinfo'
 import { examPostApi } from '../../api/Api';
+import * as Styled from './testinformation.element';
 
 const 모달스타일 = {
 	overlay: {
@@ -33,7 +33,6 @@ const 모달스타일 = {
 };
 
 const Testinformation =  () => {
-  let [subjectName, setSubjectName] = useState(['학문과 사고', '네트워크 개론', '데이터베이스', '운영체제론', '졸업프로젝트'])
 
   const [db, setData] = useState({
     data: []
@@ -46,8 +45,10 @@ const Testinformation =  () => {
         return (
       <Container component="main" maxWidth="md">
         <CssBaseline />
-        { subjectName.map((name, index)=>
-                <Subject subjectName={subjectName} setSubjectName={setSubjectName} index={index}/>
+        { db.data.map((v,i)=>
+                <Subject content={v.content} examDifficulty={v.examDifficulty} examInfo={v.examInfo}
+                id={v.id} lectureName={v.lectureName} professor={v.professor} semester={v.semester}
+                semesterList={v.semesterList}/>
         )}
       </Container>
   );
@@ -56,6 +57,20 @@ const Testinformation =  () => {
 
 export const Subject = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  let title = props.lectureName
+
+  if (title.length >= 14) {
+    title = props.lectureName.substr(0, 14) + "...";
+  }
+  const examDifficultySet = props.examDifficulty
+
+  const examDifficulty = {
+    "매우 쉬움" : <Styled.DataColor>매우 쉬움</Styled.DataColor>,
+    "쉬움" : <Styled.DataColor>쉬움</Styled.DataColor>,
+    "보통" : <Styled.DataColor id='cyan'>보통</Styled.DataColor>,
+    "어려움" : <Styled.DataColor id='purple'>어려움</Styled.DataColor>,
+    "매우 어려움" : <Styled.DataColor id='purple'>매우 어려움</Styled.DataColor>
+  }
 
   const Delete = () => {
     if(window.confirm("시험정보를 삭제하시겠습니까?")===true){
@@ -66,39 +81,49 @@ export const Subject = (props) => {
   }
 
   return(
-    <div style={{
-      marginTop: "10px",
-      borderTop: '2px solid rgba(158,158,158,.5)',
-      padding: '15px',
-    }}>
-            <div style={{marginBottom:'15px'}}>
-              <YearText>2020-1</YearText>
-              <DeleteButton style={{float: "right"}} onClick={()=>{Delete()}}>삭제</DeleteButton>
-              <EditButton style={{float: "right"}} onClick={() => { setModalIsOpen(true) }}>수정</EditButton>
-            </div>
-          <div style={{paddingBottom:'5px'}}>
-          <SubjectText>{props.subjectName[props.index]}</SubjectText>
-          <ProfessorName>이다미 교수님</ProfessorName>
+    <div style={{marginTop:"15px"}}>
+      <Styled.LectureWrapper>
+        <Styled.MarginTop id='top'>
+          <div style={{marginBottom:"10px"}}>
+            <Styled.YearText>{props.semester}</Styled.YearText>
+            <Styled.DeleteButton onClick={()=>{Delete()}} style={{float:"right"}}>삭제</Styled.DeleteButton>
+            <Styled.EditButton onClick={()=> setModalIsOpen(true)} style={{float:"right"}}>수정</Styled.EditButton>
           </div>
-            <TestInfoDetail style={{fontWeight:'bold'}}>시험 내용</TestInfoDetail>
-            <TestInfoDetail style={{fontWeight:'bold', color:'rgb(52, 152, 219)'}}>족보, 교재, ppt</TestInfoDetail>
-            <div/>
-            <TestInfoDetail style={{fontWeight:'bold'}}>난이도</TestInfoDetail>
-            <TestInfoDetail style={{fontWeight:'bold', color:'rgb(52, 152, 219)'}}>보통</TestInfoDetail>
-            <div style={{paddingBottom:'5px'}}/>
-            <TestInfoDetail>가나다라마바사아자차카타파하가나다라마바사아자차카타파하
-          가나다라마바사아자차카타파하
-          가나다라마바사아자차카타파하
-          </TestInfoDetail>
-          <Modal 
+          <Styled.TitleWrapper>
+            <Styled.TitleWrapper>
+              <Styled.Title>{title}</Styled.Title>
+              <Styled.Professor>{props.professor}</Styled.Professor>
+            </Styled.TitleWrapper>
+          </Styled.TitleWrapper>
+          <Styled.TitleWrapper>
+            <Styled.TitleWrapper>
+              <Styled.ExamDetail id="top">시험내용</Styled.ExamDetail>
+              <Styled.DataColor id="cyan">{props.examInfo}</Styled.DataColor>
+            </Styled.TitleWrapper>
+          </Styled.TitleWrapper>
+          <Styled.TitleWrapper>
+            <Styled.TitleWrapper>
+              <Styled.ExamDetail id="bottom">난이도</Styled.ExamDetail>
+              <Styled.ExamDetail id="data">{examDifficulty[examDifficultySet]}</Styled.ExamDetail>
+            </Styled.TitleWrapper>
+          </Styled.TitleWrapper>
+          <Styled.TitleWrapper>
+            <Styled.TitleWrapper>
+              <Styled.ExamDetail id="data">{props.content}</Styled.ExamDetail>
+            </Styled.TitleWrapper>
+          </Styled.TitleWrapper>
+        </Styled.MarginTop>
+        <Modal 
       isOpen={modalIsOpen}
 			style={모달스타일}
 			 // 오버레이나 esc를 누르면 핸들러 동작
 			ariaHideApp={false}
       onRequestClose={() => setModalIsOpen(false)}
     	>
-    		<Edittestinfo setModalIsOpen={setModalIsOpen}/>
+        <Edittestinfo setModalIsOpen={setModalIsOpen} lectureName={props.lectureName} semester={props.semester}
+        examInfo={props.examInfo} examDifficulty={props.examDifficulty} content={props.content} />
     	</Modal>
+      </Styled.LectureWrapper>
     </div>
   )
 }

@@ -33,15 +33,16 @@ export const ModalLine = styled.div`
 `
 
 
-export const EvaluationInput = () => {
+export const EvaluationInput = (props) => {
     return(
         <TextField
         id="outlined-multiline-static"
-        label="수정해주세요"
+        label={props.content}
         multiline
         variant="outlined"
         fullWidth
         rows={8}
+        onChange={props.propsfunction}
         style={{marginBottom:'20px'}}
       />
     )

@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { DetailSelectButton, SubjectText, SubjectDetail, EvaluationInput, EditButton, ModalLine, CancelButton, SelectBox } from './edittestinfo.element';
 import { CssBaseline, Grid, Box, Container } from "@material-ui/core";
 
 
 const Edittestinfo = (props) => {
+
+  const [content, setContent] = useState();
+  const onChangeContent = (e) => {
+      setContent(e.target.value);
+      }
+
     return(
           <Container component="main" maxWidth="sm">
             <CssBaseline />
@@ -11,7 +17,7 @@ const Edittestinfo = (props) => {
               sx={{
                 marginTop: 8,
               }}>
-                    <SubjectText>학문과 사고</SubjectText>
+                    <SubjectText>{props.lectureName}</SubjectText>
                     <Grid container spacing={2} style={{marginTop:'15px'}}>
                     <Grid item xs={12} sm={3}>
                       <SubjectDetail>수강학기 선택</SubjectDetail>
@@ -44,7 +50,7 @@ const Edittestinfo = (props) => {
                     </Grid>
                   </Grid>
                   <ModalLine/>
-                  <EvaluationInput/>
+                  <EvaluationInput propsfunction={onChangeContent} content={props.content}/>
                   <Grid container spacing={3} style={{marginTop:'5px'}}>
                     <Grid item xs={12} sm={12}>
                       <CancelButton onClick={()=>{props.setModalIsOpen(false)}}>취소</CancelButton>
