@@ -62,11 +62,20 @@ export const MarginTop = styled.div`
         padding: 0px 24px 14px 24px;
     }
 `
-
+export const DataColor = styled.div`
+    padding-left: 0.7rem;
+    font-weight: bold;
+    &#cyan{
+        color: #3dd3c4
+    }
+    &#purple{
+        color: #6200ee
+    }
+`
 
 export const StarFlex = styled.div`
     display: flex;
-    padding-right: 1rem;
+    padding-right: 1.0rem;
     background-color: #f9f9f9;
     padding: 8px 12px;
 

@@ -3,7 +3,7 @@ import { BoxString5, YearText, EvaluationDetail, EditButton, DeleteButton } from
 import {CssBaseline, Container } from "@material-ui/core";
 import Editevaluation from './editevaluation'
 import Modal from 'react-modal';
-import { evaluatePostApi } from '../../api/Api';
+import { evaluateUpdateApi } from '../../api/Api';
 import * as Styled from './myevaluation.element';
 import StarRatings from 'react-star-ratings';
 
@@ -35,7 +35,24 @@ const 모달스타일 = {
 };
 
 export const DetailModal = (props) => {
-  
+  const teamSet = props.team
+  const homeworkSet = props.homework
+  const difficultySet = props.difficulty
+  const team = {
+    0 : <Styled.DataColor>없음</Styled.DataColor>,
+    1 : <Styled.DataColor id='purple'>있음</Styled.DataColor>
+  }
+  const homework = {
+    0 : <Styled.DataColor>없음</Styled.DataColor>,
+    1 : <Styled.DataColor id='cyan'>보통</Styled.DataColor>,
+    2 : <Styled.DataColor id='purple'>많음</Styled.DataColor>
+  }
+  const difficulty = {
+    0 : <Styled.DataColor>까다로움</Styled.DataColor>,
+    1 : <Styled.DataColor id='cyan'>보통</Styled.DataColor>,
+    2 : <Styled.DataColor id='purple'>잘줌</Styled.DataColor>
+  }
+
   return (
     <div>
     <Styled.StarFlex id='top'>
@@ -74,9 +91,9 @@ export const DetailModal = (props) => {
         /></Styled.StarFlex>
     </Styled.StarFlex>
     <Styled.StarFlex id='bottom'>
-      <Styled.StarFlex>조모임 ⭐⭐⭐⭐</Styled.StarFlex>
-      <Styled.StarFlex>과제 ⭐⭐⭐⭐</Styled.StarFlex>
-      <Styled.StarFlex>학점 ⭐⭐⭐⭐</Styled.StarFlex>
+      <Styled.StarFlex>조모임 {team[teamSet]}</Styled.StarFlex>
+      <Styled.StarFlex>과제 {homework[homeworkSet]}</Styled.StarFlex>
+      <Styled.StarFlex>학점 {difficulty[difficultySet]}</Styled.StarFlex>
     </Styled.StarFlex>
 
     </div>
@@ -122,7 +139,7 @@ const Myevaluation = () => {
 
   console.log(db)
   useEffect(() => {
-    evaluatePostApi(setData)
+    evaluateUpdateApi(setData)
   }, []
   )
 
