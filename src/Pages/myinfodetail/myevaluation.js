@@ -39,9 +39,39 @@ export const DetailModal = (props) => {
   return (
     <div>
     <Styled.StarFlex id='top'>
-      <Styled.StarFlex>만족도 ⭐⭐⭐⭐</Styled.StarFlex>
-      <Styled.StarFlex>꿀강 지수 ⭐⭐⭐⭐</Styled.StarFlex>
-      <Styled.StarFlex>배움 지수 ⭐⭐⭐⭐</Styled.StarFlex>
+      <Styled.StarFlex>만족도 
+        <StarRatings
+          rating={props.satisfaction}
+          starRatedColor="#3DD3C4"
+          numberOfStars={5}
+          name='rating'
+          starDimension='18px'
+          starSpacing='0px'
+          svgIconPath='M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z'
+          svgIconViewBox='0 0 24 24'
+        /></Styled.StarFlex>
+      <Styled.StarFlex>꿀강 지수 
+        <StarRatings
+          rating={props.honey}
+          starRatedColor="#3DD3C4"
+          numberOfStars={5}
+          name='rating'
+          starDimension='18px'
+          starSpacing='0px'
+          svgIconPath='M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z'
+          svgIconViewBox='0 0 24 24'
+        /></Styled.StarFlex>
+      <Styled.StarFlex>배움 지수 
+        <StarRatings
+          rating={props.learning}
+          starRatedColor="#3DD3C4"
+          numberOfStars={5}
+          name='rating'
+          starDimension='18px'
+          starSpacing='0px'
+          svgIconPath='M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z'
+          svgIconViewBox='0 0 24 24'
+        /></Styled.StarFlex>
     </Styled.StarFlex>
     <Styled.StarFlex id='bottom'>
       <Styled.StarFlex>조모임 ⭐⭐⭐⭐</Styled.StarFlex>
@@ -154,7 +184,7 @@ export const Subject = (props) => {
           numberOfStars={5}
           name='rating'
           starDimension='24px'
-          starSpacing='2px'
+          starSpacing='0px'
           svgIconPath='M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z'
           svgIconViewBox='0 0 24 24'
         />        
