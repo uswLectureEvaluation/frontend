@@ -254,7 +254,7 @@ export const myInfoApi = (setData) => {
 }
 
 // 내가쓴글-강의평가Api
-export const evaluatePostApi = (setData) => {
+export const evaluateUpdateApi = (setData) => {
 
     const url = `${onoff}/evaluate-posts/findByUserIdx`
 
@@ -331,6 +331,7 @@ export const evaluatePostsApi =
         (response) => {
             alert("수정완료")
             setData(response.data);
+            window.location.reload();
         },
         (error) => {
             alert("error")
