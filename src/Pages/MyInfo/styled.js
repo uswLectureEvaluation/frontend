@@ -41,12 +41,32 @@ export const Title = styled.div`
   margin-bottom: 3rem;
 `
 
+export const TitleFlex = styled.div`
+    display: flex;
+    color: #222222;
+`
+
 export const OptionTitle = styled.div`
     display: flex;
     width: 160px;
 
     &#my {
       color: #222222;
+    }
+`
+
+export const OptionPoint = styled.div`
+    display: flex;
+    width: 36px;
+    font-weight: bold;
+    justify-content: flex-end;
+    margin-left: auto;
+    color: #3DD3C4;
+    &#minus {
+      color: #6200ee;
+    }
+    &#mypoint {
+      font-size: 1.2rem;
     }
 `
 

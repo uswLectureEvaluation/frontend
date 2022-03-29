@@ -42,20 +42,25 @@ const MyInfo = () => {
 
             <Styled.Wrapper>
                 <Styled.Content>
+                <Styled.TitleFlex>
                     <Styled.Title>현재 보유 포인트</Styled.Title>
-
+                    <Styled.OptionPoint id='mypoint'>{db.point}p</Styled.OptionPoint>
+                </Styled.TitleFlex>
                     
                     <Styled.FlexContainer>
                         <Styled.OptionTitle>작성한 강의평가</Styled.OptionTitle>
                         <Styled.FlexContainer id='last'><Styled.Color>{db.writtenLecture}</Styled.Color>개</Styled.FlexContainer>
+                        <Styled.OptionPoint id='plus'>+100</Styled.OptionPoint>
                     </Styled.FlexContainer>
                     <Styled.FlexContainer>
                         <Styled.OptionTitle>작성한 시험정보</Styled.OptionTitle>
                         <Styled.FlexContainer id='last'><Styled.Color>{db.writtenExam}</Styled.Color>개</Styled.FlexContainer>
+                        <Styled.OptionPoint id='plus'>+40</Styled.OptionPoint>
                     </Styled.FlexContainer>
                     <Styled.FlexContainer>
                         <Styled.OptionTitle>시험정보 열람 횟수</Styled.OptionTitle>
                         <Styled.FlexContainer id='last'><Styled.Color id='p'>{db.viewExam}</Styled.Color>개</Styled.FlexContainer>
+                        <Styled.OptionPoint id='minus'>-40</Styled.OptionPoint>
                     </Styled.FlexContainer>
                 </Styled.Content>
             </Styled.Wrapper>
