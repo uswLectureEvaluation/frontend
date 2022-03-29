@@ -78,7 +78,6 @@ export const StarFlex = styled.div`
     padding-right: 1.0rem;
     background-color: #f9f9f9;
     padding: 8px 12px;
-
     &#top {
         padding: 8px 12px 0px 12px;
         border-top: 1px solid #eeeeee;
@@ -99,8 +98,11 @@ export const YearText = styled.span`
 export const EvaluationDetail = styled.div`
     display: flex;
     font-size: 1.0rem;
+    padding-top: 0.7rem;
 `
-
+export const PaddingRight = styled.span`
+    padding-right: 0.7rem;
+`
 export const EditButton = styled(Button)`
 && {
     padding: 5px 15px 5px 15px;

@@ -56,7 +56,7 @@ export const DetailModal = (props) => {
   return (
     <div>
     <Styled.StarFlex id='top'>
-      <Styled.StarFlex>만족도 
+      <Styled.StarFlex>만족도<Styled.PaddingRight/>
         <StarRatings
           rating={props.satisfaction}
           starRatedColor="#3DD3C4"
@@ -67,7 +67,7 @@ export const DetailModal = (props) => {
           svgIconPath='M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z'
           svgIconViewBox='0 0 24 24'
         /></Styled.StarFlex>
-      <Styled.StarFlex>꿀강 지수 
+      <Styled.StarFlex>꿀강 지수<Styled.PaddingRight/>
         <StarRatings
           rating={props.honey}
           starRatedColor="#3DD3C4"
@@ -78,7 +78,7 @@ export const DetailModal = (props) => {
           svgIconPath='M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z'
           svgIconViewBox='0 0 24 24'
         /></Styled.StarFlex>
-      <Styled.StarFlex>배움 지수 
+      <Styled.StarFlex>배움 지수<Styled.PaddingRight/> 
         <StarRatings
           rating={props.learning}
           starRatedColor="#3DD3C4"
@@ -194,7 +194,7 @@ export const Subject = (props) => {
             <Styled.Professor>{props.professor}</Styled.Professor>
           </Styled.TitleWrapper>
         </Styled.TitleWrapper>
-        <span>평균지수</span>
+        <Styled.PaddingRight>평균지수</Styled.PaddingRight>
         <StarRatings
           rating={props.totalAvg}
           starRatedColor="#3DD3C4"
@@ -211,7 +211,7 @@ export const Subject = (props) => {
       {modal === true ? <DetailModal satisfaction={props.satisfaction} honey={props.honey} 
       learning={props.learning} team={props.team} homework={props.homework} difficulty={props.difficulty} /> : null}
       <Styled.MarginTop id='bottom'>
-      <EvaluationDetail>{props.content}</EvaluationDetail>
+      <Styled.EvaluationDetail>{props.content}</Styled.EvaluationDetail>
       </Styled.MarginTop>
       <Modal 
       isOpen={modalIsOpen}
