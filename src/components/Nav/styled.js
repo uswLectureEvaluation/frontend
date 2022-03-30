@@ -14,14 +14,6 @@ export const Navbar = styled.nav`
     border-bottom: 1.5px solid #E0E0E0;
 `
 
-export const NavbarContainer = styled.div`
-display: flex;
-//아이템들의 사이에 균일한 간격을 만들어준다
-justify-content: center;
-
-`
-
-
 export const NavLogo = styled.nav`
     color: #3DD3C4;
     display: flex;
