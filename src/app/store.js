@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import loginReducer from '../features/loginSlice'
+import selectIdReducer from '../features/selectIdSlice'
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 
 const reducers = combineReducers({
-    login: loginReducer,
+  login: loginReducer,
+  selectId:selectIdReducer
 });
 
 const persistConfig = {

@@ -4,6 +4,7 @@ import MainList from '../../components/MainList';
 import TestInfo from '../../components/TestInfo'
 import { searchApi } from '../../api/Api'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 const checkList = {
     0: <MainList lecture='lectureHoneyAvg' />,
@@ -11,6 +12,7 @@ const checkList = {
 }
 
 const LectureInfo = () => {
+    const selectId = useSelector((state) => state.selectId.value);
     let navigate = useNavigate();
     const [search, setSearch] = useState('');
     const menu = ['강의 평가(N)', '시험 정보(M)'];
@@ -22,6 +24,7 @@ const LectureInfo = () => {
         setMenuCheck(index);
     };
 
+    console.log("여기", selectId)
     let setData;
 
 
