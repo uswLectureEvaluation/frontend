@@ -11,8 +11,7 @@ const MainList = ({ lecture }) => {
     const [db, setData] = useState([])
 
     useEffect(() => {
-        mainApi(setData, lecture)
-        console.log(lecture)
+        mainApi(lecture).then((data) => setData(data))
     }, [lecture])
 
     return db.length !== 0 ? (

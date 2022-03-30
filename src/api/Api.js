@@ -8,7 +8,7 @@ import axios from "axios"
 //lectureLearningAvg 배울게 많은 강의
 const PROXY_URL = window.location.hostname === "localhost" ? "" : "/proxy"
 
-export const mainApi = (setData, lecture) => {
+export const mainApi = async (lecture) => {
     const url = `${PROXY_URL}/lecture/findAllList/?option=${lecture}&page=1`
 
     const options = {
@@ -16,18 +16,12 @@ export const mainApi = (setData, lecture) => {
         url,
     }
 
-    axios(options).then(
-        (r) => {
-            console.log("connect")
-            console.log(r.data)
-            console.log(url)
-            setData(r.data)
-        },
-        (error) => {
-            console.log(error.response)
-            console.log(url)
-        }
-    )
+    try {
+        const response = await axios(options)
+        return response.data
+    } catch (e) {
+        throw e
+    }
 }
 //공지사항api 확인 필요
 export const noticeApi = (setData) => {
