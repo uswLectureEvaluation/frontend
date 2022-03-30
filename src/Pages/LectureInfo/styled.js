@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
   #root>div {
@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 90%;
     }
   }
-`;
+`
 
 export const Container = styled.div`
     display: flex;
@@ -41,7 +41,7 @@ export const SearchInput = styled.input`
     padding-left: 20px;
     height: 50px;
     border-radius: 20px;
-    border: 1.5px solid #3DD3C4;
+    border: 1.5px solid #3dd3c4;
     margin: 1.5rem 0;
     background-image: url("img/icon_search_24.svg");
     background-repeat: no-repeat;
@@ -50,12 +50,10 @@ export const SearchInput = styled.input`
     &:focus {
         outline: none;
     }
-    
 `
 
-
 export const Content = styled.div`
-    border-radius: 10px; 
+    border-radius: 10px;
     border: 1px solid rgb(224, 224, 224);
     padding: 1rem 2rem;
     margin: 10px 0;
@@ -74,7 +72,6 @@ export const TitleWrapper = styled.div`
     &#top {
         justify-content: space-between;
         align-items: flex-start;
-
     }
 `
 
@@ -85,8 +82,8 @@ export const Wrapper = styled.div`
 
 export const Title = styled.div`
     display: flex;
-    font-size : 1.5rem;
-    font-weight : 1000;
+    font-size: 1.5rem;
+    font-weight: 1000;
     text-align: center;
 
     &#sub {
@@ -96,7 +93,7 @@ export const Title = styled.div`
 
 export const MenuTitle = styled.li`
     font-size: 1.2rem;
-    margin-bottom : 1rem;
+    margin-bottom: 1rem;
     text-align: center;
     display: flex;
     padding-right: 1rem;
@@ -104,7 +101,7 @@ export const MenuTitle = styled.li`
     &:hover {
         cursor: pointer;
     }
-`;
+`
 
 export const Professor = styled.div`
     display: flex;
@@ -114,7 +111,7 @@ export const Professor = styled.div`
 
 export const Option = styled.div`
     border-radius: 12px;
-    background-color: rgb(224,224,224);
+    background-color: rgb(224, 224, 224);
     text-align: center;
     display: flex;
     align-items: center;
@@ -128,11 +125,10 @@ export const Option = styled.div`
 `
 
 export const Writing = styled.img`
-    &:hover{
+    &:hover {
         cursor: pointer;
     }
 `
-
 
 export const OptionTitle = styled.div`
     display: flex;

@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
 export const Wrapper = styled.button`
     margin: 0;
     width: 100%;
     padding: 0 1rem;
     padding-top: 0.6rem;
-    border:none;
+    border: none;
     padding-bottom: 0.5rem;
     background: ${(props) => props.background};
     color: white;
@@ -15,13 +15,14 @@ export const Wrapper = styled.button`
     border-radius: 12px;
     cursor: pointer;
     user-select: none;
-    transition: .3s all;
-    &:hover, &:active {
+    transition: 0.3s all;
+    &:hover,
+    &:active {
         background: #4b70fc;
     }
     &:disabled {
-        background-color: rgba(170,170,170);
-        cursor : auto;
+        background-color: rgba(170, 170, 170);
+        cursor: auto;
     }
     &#email {
         width: 40%;
@@ -34,4 +35,4 @@ export const Wrapper = styled.button`
         font-size: 0.9rem;
         background-color: skyblue;
     }
-`;
+`

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
 export const Input = styled.input`
     border: 1px solid gray;
@@ -10,4 +10,4 @@ export const Input = styled.input`
     width: 100%;
     margin-bottom: 1rem;
     font-family: "Pretendard-Medium";
-`;
+`

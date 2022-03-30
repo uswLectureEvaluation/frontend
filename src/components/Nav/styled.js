@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 export const Navbar = styled.nav`
     background: #ffffff;
@@ -11,11 +11,11 @@ export const Navbar = styled.nav`
     top: 0;
     z-index: 999;
     justify-content: space-around;
-    border-bottom: 1.5px solid #E0E0E0;
+    border-bottom: 1.5px solid #e0e0e0;
 `
 
 export const NavLogo = styled.nav`
-    color: #3DD3C4;
+    color: #3dd3c4;
     display: flex;
     font-size: 2rem;
     font-weight: bold;
@@ -26,21 +26,19 @@ export const NavLogo = styled.nav`
     @media screen and (max-width: 960px) {
         margin: 0 auto;
     }
-    
 `
 
-
 export const MobileIcon = styled.div`
-display: none;
+    display: none;
 
-@media screen and (max-width: 960px) {
-    display: block;
-    font-size: 1.8rem;
-    cursor: pointer;
-    position: absolute;
-    left: 0;
-}
-`;
+    @media screen and (max-width: 960px) {
+        display: block;
+        font-size: 1.8rem;
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+    }
+`
 
 export const NavMenu = styled.nav`
     display: flex;
@@ -51,13 +49,12 @@ export const NavMenu = styled.nav`
         height: 90vh;
         position: absolute;
         top: 80px;
-        left: ${({ click }) => (click ? 0 : '-100%')};
+        left: ${({ click }) => (click ? 0 : "-100%")};
         opacity: 1;
         transition: all 0.5s ease;
         background: #fff;
-  }
+    }
 `
-
 
 export const NavLinks = styled.div`
     display: flex;
@@ -67,7 +64,7 @@ export const NavLinks = styled.div`
         cursor: pointer;
     }
     &#signup {
-        color:#3DD3C4;
+        color: #3dd3c4;
     }
 
     @media screen and (max-width: 960px) {
@@ -75,11 +72,10 @@ export const NavLinks = styled.div`
         padding: 2rem;
         display: table;
         &:hover {
-            color: #4B89DC;
+            color: #4b89dc;
             transition: all 0.3s ease;
         }
-  }
+    }
 `
 
-export const Img = styled.img`
-`
+export const Img = styled.img``

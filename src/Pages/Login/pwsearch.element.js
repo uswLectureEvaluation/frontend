@@ -1,14 +1,13 @@
-import { TextField, Grid } from "@material-ui/core";
-import styled from "styled-components";
-
+import { TextField, Grid } from "@material-ui/core"
+import styled from "styled-components"
 
 export const WrapperBox = styled.div`
     padding: 40px;
     @media only screen and (max-width: 500px) {
-        border: 1px solid rgb(158,158,158);
-        border: 1px solid rgba(158,158,158,.5);
+        border: 1px solid rgb(158, 158, 158);
+        border: 1px solid rgba(158, 158, 158, 0.5);
         border-radius: 15px;
-     }
+    }
 `
 /*export const Logo = styled.div`
     color: #4B89DC;
@@ -19,17 +18,16 @@ export const WrapperBox = styled.div`
 
 export const BoldText = styled.div`
     padding-bottom: 30px;
-    border-bottom: 2px solid rgb(158,158,158);
+    border-bottom: 2px solid rgb(158, 158, 158);
     margin-bottom: 20px;
-    font-size : 4vh;
-    font-weight : 1000;
+    font-size: 4vh;
+    font-weight: 1000;
     text-align: center;
     font-family: "Pretendard-Black";
-
 `
 export const NormalText = styled.div`
     font-size: 15px;
-    font-weight: normal
+    font-weight: normal;
 `
 
 /*export const SearchButton = styled(Button)`
@@ -45,13 +43,12 @@ export const NormalText = styled.div`
     }
 `;*/
 
-
 export const SearchButton = styled.button`
     margin-top: 10px;
     width: 100%;
     padding: 0 1rem;
     padding-top: 0.6rem;
-    border:none;
+    border: none;
     padding-bottom: 0.5rem;
     background: #4b89dc;
     color: white;
@@ -61,26 +58,25 @@ export const SearchButton = styled.button`
     border-radius: 12px;
     cursor: pointer;
     user-select: none;
-    transition: .3s all;
-    &:hover, &:active {
+    transition: 0.3s all;
+    &:hover,
+    &:active {
         background: #4b10f2;
     }
     &:disabled {
-        background-color: rgba(170,170,170);
-        cursor : auto;
+        background-color: rgba(170, 170, 170);
+        cursor: auto;
     }
-`;
-
+`
 
 export const SmallText = styled.div`
     font-size: 12px;
     font-weight: bold;
-    color: rgb(158,158,158);
+    color: rgb(158, 158, 158);
     padding-top: 20px;
 `
 
-
-export const IdInput = ({propsfunction}) => {
+export const IdInput = ({ propsfunction }) => {
     return (
         <Grid xs={12}>
             <TextField
@@ -98,7 +94,7 @@ export const IdInput = ({propsfunction}) => {
     )
 }
 
-export const EmailInput = ({propsfunction}) => {
+export const EmailInput = ({ propsfunction }) => {
     return (
         <Grid xs={12}>
             <TextField
@@ -114,4 +110,3 @@ export const EmailInput = ({propsfunction}) => {
         </Grid>
     )
 }
-

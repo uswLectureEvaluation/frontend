@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
 export const Wrapper = styled.div`
     width: 100%;
     height: 40vh;
-`;
+`
 
 export const Color = styled.span`
-    color: #3DD3C4;
-`;
+    color: #3dd3c4;
+`
 
 export const Content = styled.div`
     font-size: 1.5rem;
@@ -15,9 +15,9 @@ export const Content = styled.div`
     font-weight: bold;
     text-align: center;
     margin-top: 10rem;
-`;
+`
 
 export const BtWidth = styled.div`
     margin: 0 auto;
     width: 30%;
-`;
+`

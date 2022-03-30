@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
   #root>div {
@@ -7,14 +7,14 @@ export const GlobalStyle = createGlobalStyle`
         width: 90%;
     }
   }
-`;
+`
 
 export const Wrapper = styled.div`
     width: 100%;
     margin: 0 auto;
 
     &#top {
-      display: flex;
+        display: flex;
     }
 `
 export const Container = styled.div`
@@ -25,20 +25,20 @@ export const Container = styled.div`
     margin: 0 auto;
 `
 export const Content = styled.div`
-    border-radius: 10px; 
+    border-radius: 10px;
     border: 1px solid rgb(224, 224, 224);
     padding: 1rem 1.8rem;
     margin: 10px 0;
 
     &#top {
-      width: 100%;
-      margin-right: 2rem;
+        width: 100%;
+        margin-right: 2rem;
     }
 `
 export const Title = styled.div`
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 3rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
 `
 
 export const TitleFlex = styled.div`
@@ -51,7 +51,7 @@ export const OptionTitle = styled.div`
     width: 160px;
 
     &#my {
-      color: #222222;
+        color: #222222;
     }
 `
 
@@ -61,12 +61,12 @@ export const OptionPoint = styled.div`
     font-weight: bold;
     justify-content: flex-end;
     margin-left: auto;
-    color: #3DD3C4;
+    color: #3dd3c4;
     &#minus {
-      color: #6200ee;
+        color: #6200ee;
     }
     &#mypoint {
-      font-size: 1.2rem;
+        font-size: 1.2rem;
     }
 `
 
@@ -78,7 +78,7 @@ export const FlexContainer = styled.div`
         flex-direction: column;
     }
     &#last {
-      color: #222222;
+        color: #222222;
     }
 `
 
@@ -86,7 +86,7 @@ export const Button = styled.button`
     margin: 10px 0;
     width: 30%;
     padding: 0 1rem;
-    border:none;
+    border: none;
     background: ${(props) => props.background};
     color: white;
     text-align: center;
@@ -95,7 +95,7 @@ export const Button = styled.button`
     border-radius: 12px;
     cursor: pointer;
     user-select: none;
-`;
+`
 
 export const InfoWrapper = styled.div`
     display: flex;
@@ -113,10 +113,10 @@ export const InfoTitle = styled.div`
 `
 
 export const Color = styled.span`
-  color:#3DD3C4;
-  font-weight: bold;
-  font-size: 1.2rem;
-  &#p {
-    color:#6200ee;
-  }
+    color: #3dd3c4;
+    font-weight: bold;
+    font-size: 1.2rem;
+    &#p {
+        color: #6200ee;
+    }
 `

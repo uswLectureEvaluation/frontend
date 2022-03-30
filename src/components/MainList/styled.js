@@ -1,7 +1,6 @@
-import { Button} from "@material-ui/core";
-import styled from "styled-components";
-import { Color } from "../../globalStyles";
-
+import { Button } from "@material-ui/core"
+import styled from "styled-components"
+import { Color } from "../../globalStyles"
 
 export const BoxString1 = styled.span`
     border-radius: 10px;
@@ -21,14 +20,13 @@ export const BoxString3 = styled.span`
     font-weight: bold;
 `
 
-
 export const BoxString5 = styled(Button)`
-&& {
-    font-weight: bold;
-    font-size: 12px;
-    color: rgb(190, 190, 190);
-    text-decoration: underline;
-}
+    && {
+        font-weight: bold;
+        font-size: 12px;
+        color: rgb(190, 190, 190);
+        text-decoration: underline;
+    }
 `
 
 export const BoxString6 = styled.div`
@@ -36,27 +34,27 @@ export const BoxString6 = styled.div`
 `
 
 export const BoxButton1 = styled(Button)`
-&& {
-    padding: 5px 15px 5px 15px;
-    font-size: 12px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 10px;
-    background-color: rgb(239, 239, 239);
-    color: rgb(52, 152, 219);
-}
+    && {
+        padding: 5px 15px 5px 15px;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 10px;
+        background-color: rgb(239, 239, 239);
+        color: rgb(52, 152, 219);
+    }
 `
 export const BoxButton2 = styled(Button)`
-&& {
-    padding: 5px 15px 5px 15px;
-    margin-left: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 10px;
-    background-color: rgb(239, 239, 239);
-    color: rgb(230, 126, 34);
-}
+    && {
+        padding: 5px 15px 5px 15px;
+        margin-left: 5px;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 10px;
+        background-color: rgb(239, 239, 239);
+        color: rgb(230, 126, 34);
+    }
 `
 
 export const ModalString1 = styled.div`
@@ -73,7 +71,6 @@ export const TitleWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-
 `
 
 export const Title = styled.div`
@@ -98,9 +95,8 @@ export const Option = styled.div`
     color: gray;
 `
 
-
 export const Rate = styled.span`
-    color: #3DD3C4;
+    color: #3dd3c4;
     font-weight: bold;
     font-size: 2rem;
     padding-left: 10px;
@@ -108,7 +104,7 @@ export const Rate = styled.span`
 `
 
 export const LectureWrapper = styled.div`
-    border: 1px solid ${Color('border')};
+    border: 1px solid ${Color("border")};
     border-radius: 10px;
     margin-bottom: 10px;
     cursor: pointer;

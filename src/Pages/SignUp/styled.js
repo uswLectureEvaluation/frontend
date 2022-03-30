@@ -1,22 +1,22 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
 export const Title = styled.div`
-    font-size : 4vh;
-    font-weight : 1000;
-    margin : 2rem 0;
+    font-size: 4vh;
+    font-weight: 1000;
+    margin: 2rem 0;
     text-align: center;
     font-family: "Pretendard-Black";
-`;
+`
 
 export const Text = styled.div`
-    font-size : 2vw;
-    margin-bottom : 1.5rem;
+    font-size: 2vw;
+    margin-bottom: 1.5rem;
     text-align: center;
     font-family: "Pretendard-SemiBold";
-`;
+`
 
 export const Checking = styled.div`
-    font-size : 1.2vh;
+    font-size: 1.2vh;
 `
 
 export const Label = styled.label`
@@ -24,7 +24,7 @@ export const Label = styled.label`
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    align-items : center;
+    align-items: center;
     padding-top: 15px;
     font-size: 0.8rem;
     input {
@@ -34,14 +34,14 @@ export const Label = styled.label`
         padding-top: 8px;
         padding-bottom: 3vh;
     }
-`;
+`
 
 export const EmailWrapper = styled.div`
     margin-top: 1rem;
     margin-bottom: 0.5rem;
     font-size: 0.8rem;
     font-weight: bold;
-`;
+`
 
 export const AgreeButton = styled.button`
     border: 0;
@@ -53,7 +53,7 @@ export const AgreeButton = styled.button`
     display: block;
     float: right;
     font-size: 12px;
-`;
+`
 
 export const InputWrapper = styled.div`
     display: flex;
@@ -62,16 +62,16 @@ export const InputWrapper = styled.div`
 
 export const Wrapper = styled.div`
     margin: 0 auto;
-    /* PC (해상도 1024px)*/ 
-    @media all and (min-width:1024px) { 
+    /* PC (해상도 1024px)*/
+    @media all and (min-width: 1024px) {
         width: 500px;
     } /* 테블릿 가로, 테블릿 세로 (해상도 768px ~ 1023px)*/
 
-    @media all and (min-width:768px) and (max-width:1023px) {
+    @media all and (min-width: 768px) and (max-width: 1023px) {
         width: 400px;
-    } /* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/ 
+    } /* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
 
-    @media all and (max-width:767px) {
+    @media all and (max-width: 767px) {
         width: 300px;
     }
-`;
+`

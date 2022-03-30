@@ -1,5 +1,5 @@
-import styled, { createGlobalStyle } from 'styled-components';
-import { Color } from '../../globalStyles';
+import styled, { createGlobalStyle } from "styled-components"
+import { Color } from "../../globalStyles"
 
 export const GlobalStyle = createGlobalStyle`
   #root>div {
@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 90%;
     }
   }
-`;
+`
 
 export const Container = styled.div`
     display: flex;
@@ -43,7 +43,7 @@ export const SearchInput = styled.input`
     padding-left: 20px;
     height: 50px;
     border-radius: 20px;
-    border: 1.5px solid ${Color('main')};
+    border: 1.5px solid ${Color("main")};
     margin: 1.5rem 0;
     background-image: url("img/icon_search_24.svg");
     background-repeat: no-repeat;
@@ -52,7 +52,6 @@ export const SearchInput = styled.input`
     &:focus {
         outline: none;
     }
-    
 `
 
 export const HeadSelection = styled.div`
@@ -72,7 +71,7 @@ export const Select = styled.select`
     padding-left: 1rem;
     border-radius: 10px;
     font-size: 16px;
-    border-color: ${Color('border')};
+    border-color: ${Color("border")};
     &:focus-visible {
         outline: white solid 2px;
     }
@@ -80,12 +79,12 @@ export const Select = styled.select`
         border-radius: 8px;
         color: black;
     }
-`;
+`
 
 export const More = styled.div`
     font-weight: bold;
     cursor: pointer;
-    color: ${Color('main')};
+    color: ${Color("main")};
     padding-right: 5px;
 `
 

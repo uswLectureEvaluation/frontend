@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
   #root>div {
@@ -7,8 +7,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 90%;
     }
   }
-`;
-
+`
 
 export const Container = styled.div`
     display: flex;
@@ -19,10 +18,10 @@ export const Container = styled.div`
 `
 
 export const Title = styled.div`
-    font-size : 2rem;
-    font-weight : 1000;
-    margin-bottom : 1rem;
-`;
+    font-size: 2rem;
+    font-weight: 1000;
+    margin-bottom: 1rem;
+`
 
 export const Input = styled.input`
     width: 100%;
@@ -30,15 +29,13 @@ export const Input = styled.input`
     background-color: #f2f2f2;
     border: none;
     border-radius: 10px;
-`;
+`
 
 export const SearchResultWrapper = styled.div`
     display: flex;
     width: 100%;
     margin-top: 0.5rem;
 `
-
-
 
 export const SearchResultMenu = styled.div`
     display: flex;
@@ -48,29 +45,28 @@ export const SearchResultMenu = styled.div`
     border: 1px solid #e0e0e0;
     padding: 5px 10px;
     cursor: pointer;
-    
+
     &:hover {
-        background-color: #3DD3C4;
+        background-color: #3dd3c4;
         color: white;
     }
-    &#${({ check }) => (check)}{
-        background-color: #3DD3C4;
+    &#${({ check }) => check} {
+        background-color: #3dd3c4;
         color: white;
     }
 
     &#sort {
-        border:none;
+        border: none;
     }
     &:first-child {
         cursor: context-menu;
     }
-`;
+`
 
 export const MyEvaluationWrapper = styled.div`
     border: 2px solid #f1f1f1;
     border-radius: 10px;
     width: 100%;
-
 `
 
 export const SearchContainer = styled.div`
@@ -97,7 +93,7 @@ export const SearchInput = styled.input`
     padding-left: 20px;
     height: 50px;
     border-radius: 20px;
-    border: 1.5px solid #3DD3C4;
+    border: 1.5px solid #3dd3c4;
     margin: 1.5rem 0;
     background-image: url("img/icon_search_24.svg");
     background-repeat: no-repeat;
@@ -106,11 +102,9 @@ export const SearchInput = styled.input`
     &:focus {
         outline: none;
     }
-    
 `
 
-export const Img = styled.img`
-`
+export const Img = styled.img``
 export const HeadSelection = styled.div`
     display: flex;
     align-items: flex-end;

@@ -1,6 +1,5 @@
-import React from 'react';
-import * as Styled from './styled';
-
+import React from "react"
+import * as Styled from "./styled"
 
 const Footer = () => {
     return (
