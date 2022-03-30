@@ -31,7 +31,10 @@ const Main = () => {
 
     const onKeypress = (e) => {
         if (e.key === 'Enter') {
-            navigate(`/search`, {state: search})
+            navigate(`/search`, {state: {
+                search_value: search,
+                search_option: lecture
+            }})
         }
     }
 
@@ -54,7 +57,7 @@ const Main = () => {
                             </StyledOption>
                         ))}
                     </CustomSelect>
-                    <Styled.More onClick={() => navigate(`/search`, {state: 'all'})}>더보기＞</Styled.More>
+                    <Styled.More onClick={() => navigate(`/search`, {state: {search_value : 'all'}})}>더보기＞</Styled.More>
                 </Styled.HeadSelection>
                 <Styled.HeadSelection>
                     <MainList lecture={lecture} />

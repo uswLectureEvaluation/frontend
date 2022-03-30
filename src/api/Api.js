@@ -342,9 +342,9 @@ export const evaluateUpdateApi =
 
 // 통합검색결과Api
 //꿀강순[modifiedDate, lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg]
-export const searchApi = (setData, search) => {
+export const searchApi = (setData, search, lecutre) => {
 
-    const url = `${onoff}/lecture/findBySearchValue/?searchValue=${search}&?option=lectureHoneyAvg&?page=1`
+    const url = `${onoff}/lecture/findBySearchValue/?searchValue=${search}&?option=${lecutre}&?page=1`
 
     const options = {
         method: "GET",

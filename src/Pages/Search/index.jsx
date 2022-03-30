@@ -9,12 +9,15 @@ import MainList from '../../components/MainList';
 const Search = () => {
     const detail = ['날짜',  '꿀강', '만족도', '배움', '종합'];
 
-    const {state} = useLocation();
+    const location = useLocation();
 
+    const { search_value } = location.state;
 
     let navigate = useNavigate();
 
     const [search, setSearch] = useState('');
+
+    
 
     const onChange = (e) => {
         setSearch(e.currentTarget.value)
@@ -22,7 +25,10 @@ const Search = () => {
 
     const onKeypress = (e) => {
         if (e.key === 'Enter') {
-            navigate(`/search`, {state: search})
+            navigate(`/search`, {state: {
+                search_value: search,
+                search_option: 'lectureHoneyAvg'
+            }})
         }
     }
 
@@ -50,7 +56,7 @@ const Search = () => {
             </Styled.SearchResultWrapper>
 
             <Styled.HeadSelection>
-                {state === 'all' ? <MainList lecture={'lectureHoneyAvg'} /> : <SearchList lecture={state} />}
+                {search_value === 'all' ? <MainList lecture={'lectureHoneyAvg'} /> : <SearchList props={location.state} />}
             </Styled.HeadSelection>
         </Styled.Container>
     )

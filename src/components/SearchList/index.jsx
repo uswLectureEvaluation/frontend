@@ -36,7 +36,8 @@ const SearchList = (props) => {
   const [db, setData] = useState([])
 
   useEffect(() => {
-        searchApi(setData, props.lecture)
+      console.log(props)
+        searchApi(setData, props.props.search_value, props.props.search_option)
   }, [props])
   
   console.log(db)
