@@ -9,10 +9,10 @@ const MainList = (props) => {
   const [db, setData] = useState([])
 
   useEffect(() => {
-        mainApi(setData, props.lecture)
-  }, [props])
+    mainApi(setData, props.lecture)
+    console.log(db)
+  }, [props, db])
   
-  console.log(db)
   return (
     db.length !== 0 ?
       <div style={{width:"100%"}}>
