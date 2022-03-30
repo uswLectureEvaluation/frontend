@@ -9,7 +9,7 @@ import axios from "axios";
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 export const mainApi = (setData, lecture) => {
-    const url = `${PROXY_URL}/lecture/findAllList/?option=${lecture}&page=1`
+    const url = `${PROXY_URL}/lecture/findAllList/?option=lectureHoneyAvg&page=1`
 
     const options = {
         method: "GET",
