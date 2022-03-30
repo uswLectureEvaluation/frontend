@@ -7,7 +7,8 @@ const Edittestinfo = (props) => {
 
   const [content, setContent] = useState();
   const onChangeContent = (e) => {
-      setContent(e.target.value);
+        setContent(e.target.value);
+        console.log(content);
       }
 
     return(

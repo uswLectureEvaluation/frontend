@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BoxString5, YearText, EvaluationDetail, EditButton, DeleteButton } from './myevaluation.element'
+import { BoxString5, YearText, EditButton, DeleteButton } from './myevaluation.element'
 import {CssBaseline, Container } from "@material-ui/core";
 import Editevaluation from './editevaluation'
 import Modal from 'react-modal';
