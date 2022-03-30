@@ -6,11 +6,10 @@ import axios from "axios";
 //lectureSatisfactionAvg 만족도 강의
 //lectureHoneyAvg 꿀강의
 //lectureLearningAvg 배울게 많은 강의
-
-const onoff = "https://api.suwiki.kr";
+const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 export const mainApi = (setData, lecture) => {
-    const url = `${onoff}/lecture/findAllList/?option=${lecture}&page=1`
+    const url = `${PROXY_URL}/lecture/findAllList/?option=${lecture}&page=1`
 
     const options = {
         method: "GET",
@@ -32,7 +31,7 @@ export const mainApi = (setData, lecture) => {
 //공지사항api 확인 필요
 export const noticeApi = (setData) => {
 
-    const url = `${onoff}/notice/findAllList`
+    const url = `${PROXY_URL}/notice/findAllList`
 
     const options = {
         method: "GET",
@@ -52,7 +51,7 @@ export const noticeApi = (setData) => {
 
 //회원가입 api 0 
 export const registerApi = (setData, setLoading, id, pw, email) => {
-    const url = `${onoff}/user/join`
+    const url = `${PROXY_URL}/user/join`
 
     const data = {
         loginId: id,
@@ -84,7 +83,7 @@ export const registerApi = (setData, setLoading, id, pw, email) => {
 
 //회원가입 아이디 중복확인 (완료)
 export const checkidApi = (setData, id) => {
-    const url = `${onoff}/user/check-id`
+    const url = `${PROXY_URL}/user/check-id`
 
     const data = {
         loginId: id
@@ -114,7 +113,7 @@ export const checkidApi = (setData, id) => {
 
 //회원가입 이메일 중복확인 (완료)
 export const checkemailApi = (setData, email) => {
-    const url = `${onoff}/user/check-email`
+    const url = `${PROXY_URL}/user/check-email`
 
     const data = {
         email: email
@@ -145,7 +144,7 @@ export const checkemailApi = (setData, email) => {
 
 //로그인api 0
 export const loginApi = (setData, setLoading, id, pw) => {
-    const url = `${onoff}/user/login`
+    const url = `${PROXY_URL}/user/login`
 
     const data = {
         loginId: id,
@@ -177,7 +176,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
 
 //아이디 찾기api (완료)
 export const findIdApi = (setData, email) => {
-    const url = `${onoff}/user/find-id`
+    const url = `${PROXY_URL}/user/find-id`
 
     const data = {
         email: email
@@ -203,7 +202,7 @@ export const findIdApi = (setData, email) => {
 
 //비밀번호 찾기api (완료)
 export const findPwApi = (setData, id, email) => {
-    const url = `${onoff}/user/find-pw`
+    const url = `${PROXY_URL}/user/find-pw`
 
     const data = {
         loginId: id,
@@ -231,7 +230,7 @@ export const findPwApi = (setData, id, email) => {
 // 내정보Api
 export const myInfoApi = (setData) => {
 
-    const url = `${onoff}/user/my-page`
+    const url = `${PROXY_URL}/user/my-page`
 
     const options = {
         method: "GET",
@@ -256,7 +255,7 @@ export const myInfoApi = (setData) => {
 // 내가쓴글-강의평가Api
 export const evaluatePostApi = (setData) => {
 
-    const url = `${onoff}/evaluate-posts/findByUserIdx`
+    const url = `${PROXY_URL}/evaluate-posts/findByUserIdx`
 
     const options = {
         method: "GET",
@@ -281,7 +280,7 @@ export const evaluatePostApi = (setData) => {
 // 내가쓴글-시험정보Api
 export const examPostApi = (setData) => {
 
-    const url = `${onoff}/exam-posts/findByUserIdx`
+    const url = `${PROXY_URL}/exam-posts/findByUserIdx`
 
     const options = {
         method: "GET",
@@ -375,7 +374,7 @@ export const examUpdateApi =
 //꿀강순[modifiedDate, lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg]
 export const searchApi = (setData, search, lecutre) => {
 
-    const url = `${onoff}/lecture/findBySearchValue/?searchValue=${search}&option=${lecutre}&?page=1`
+    const url = `${PROXY_URL}/lecture/findBySearchValue/?searchValue=${search}&option=${lecutre}&?page=1`
 
     const options = {
         method: "GET",

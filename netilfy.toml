@@ -1,0 +1,14 @@
+[[redirects]]
+  from = "/proxy/*"
+  to = "https://api.suwiki.kr:8080/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production.environment]
+  TOML_ENV_VAR = "From netlify.toml"
+  AWS_API_URL = "From netlify.toml (AWS_API_URL)"
