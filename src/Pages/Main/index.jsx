@@ -57,7 +57,7 @@ const Main = () => {
                             </StyledOption>
                         ))}
                     </CustomSelect>
-                    <Styled.More onClick={() => navigate(`/search`, {state: {search_value : 'all'}})}>더보기＞</Styled.More>
+                    <Styled.More onClick={() => navigate(`/search`, {state: {search_value : 'all', search_option: lecture}})}>더보기＞</Styled.More>
                 </Styled.HeadSelection>
                 <Styled.HeadSelection>
                     <MainList lecture={lecture} />

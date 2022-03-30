@@ -4,20 +4,32 @@ import { useNavigate } from 'react-router-dom'
 import { useLocation } from "react-router";
 import * as Styled from './styled';
 import MainList from '../../components/MainList';
+import { searchApi } from '../../api/Api';
 
 
 const Search = () => {
-    const detail = ['날짜',  '꿀강', '만족도', '배움', '종합'];
+
+    const detail = [
+        { name: '날짜', option: 'modifiedDate'},
+        { name: '꿀강', option: 'lectureHoneyAvg'},
+        { name: '만족도', option: 'lectureSatisfactionAvg'},
+        { name: '배움', option: 'lectureLearningAvg'},
+        { name: '종합', option: 'lectureTotalAvg'}
+    ]
+
+    //const detail = ['날짜',  '꿀강', '만족도', '배움', '종합'];
 
     const location = useLocation();
 
-    const { search_value } = location.state;
+    const { search_value, search_option } = location.state;
 
     let navigate = useNavigate();
 
     const [search, setSearch] = useState('');
 
-    
+    const [option, setOption] = useState('lectureHoneyAvg')    
+
+    const [check, setCheck] = useState(search_option)
 
     const onChange = (e) => {
         setSearch(e.currentTarget.value)
@@ -27,9 +39,15 @@ const Search = () => {
         if (e.key === 'Enter') {
             navigate(`/search`, {state: {
                 search_value: search,
-                search_option: 'lectureHoneyAvg'
+                search_option: option
             }})
         }
+    }
+
+    const onClick =(e) => {
+        setCheck(e.target.id)
+        setOption(e.target.id)
+        console.log(e.target.id, check)
     }
 
     return (
@@ -48,15 +66,15 @@ const Search = () => {
                     정렬
                     <Styled.Img loading="lazy" width="22" src="img/icon_sort_solid_mint_24.svg" />
                 </Styled.SearchResultMenu>
-                {detail.map((name, index) =>
-                    <Styled.SearchResultMenu key={name} id={name} detail={detail} index={index}>
-                        {name}
+                {detail.map((index) =>
+                    <Styled.SearchResultMenu key={index.option} id={index.option} onClick={onClick} check={check}>
+                        {index.name}
                     </Styled.SearchResultMenu>
                 )}
             </Styled.SearchResultWrapper>
 
             <Styled.HeadSelection>
-                {search_value === 'all' ? <MainList lecture={'lectureHoneyAvg'} /> : <SearchList props={location.state} />}
+                {search_value === 'all' ? <MainList lecture={search_option} /> : <SearchList props={location.state} />}
             </Styled.HeadSelection>
         </Styled.Container>
     )

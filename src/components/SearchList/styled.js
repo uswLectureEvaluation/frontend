@@ -1,5 +1,6 @@
 import { Button} from "@material-ui/core";
 import styled from "styled-components";
+import { Color } from "../../globalStyles";
 
 
 export const BoxString1 = styled.span`
@@ -99,13 +100,15 @@ export const Option = styled.div`
 
 
 export const Rate = styled.span`
-    /* color: #3DD3C4; */
+    color: #3DD3C4;
     font-weight: bold;
-    font-size: 1.8rem;
+    font-size: 2rem;
+    padding-left: 10px;
+    vertical-align: bottom;
 `
 
 export const LectureWrapper = styled.div`
-    border: 1px solid #e0e0e0;
+    border: 1px solid ${Color('border')};
     border-radius: 10px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -114,7 +117,9 @@ export const LectureWrapper = styled.div`
 export const MarginTop = styled.div`
     padding: 14px 24px;
 `
-
+export const MarginRight = styled.span`
+    margin-right: 6px;
+`
 
 export const StarFlex = styled.div`
     display: flex;

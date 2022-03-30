@@ -39,6 +39,7 @@ export const SearchResultWrapper = styled.div`
 `
 
 
+
 export const SearchResultMenu = styled.div`
     display: flex;
     margin: 0 0.5rem 1rem 0.5rem;
@@ -47,8 +48,12 @@ export const SearchResultMenu = styled.div`
     border: 1px solid #e0e0e0;
     padding: 5px 10px;
     cursor: pointer;
-
-    &#종합 {
+    
+    &:hover {
+        background-color: #3DD3C4;
+        color: white;
+    }
+    &#${({ check }) => (check)}{
         background-color: #3DD3C4;
         color: white;
     }
