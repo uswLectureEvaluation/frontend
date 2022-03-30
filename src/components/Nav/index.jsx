@@ -48,7 +48,7 @@ const Nav = () => {
                 SUWIKI
             </Styled.NavLogo>
             <Styled.MobileIcon onClick={handleClick}>
-                {click ? <img src={'img/icon_color_fire_36.svg'} />: <img src={'img/icon_color_bee_36.svg'} />}
+                {click ? <Styled.Img src={'Styled.Img/icon_color_fire_36.svg'} />: <Styled.Img src={'img/icon_color_bee_36.svg'} />}
             </Styled.MobileIcon>
            
             <Styled.NavMenu onClick={handleClick} click={click}>

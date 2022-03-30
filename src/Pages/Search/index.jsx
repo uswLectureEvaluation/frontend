@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { useLocation } from "react-router";
 import * as Styled from './styled';
 import MainList from '../../components/MainList';
-import { searchApi } from '../../api/Api';
 
 
 const Search = () => {
@@ -17,18 +16,13 @@ const Search = () => {
         { name: '종합', option: 'lectureTotalAvg'}
     ]
 
-    //const detail = ['날짜',  '꿀강', '만족도', '배움', '종합'];
-
     const location = useLocation();
-
     const { search_value, search_option } = location.state;
 
     let navigate = useNavigate();
 
     const [search, setSearch] = useState('');
-
     const [option, setOption] = useState('lectureHoneyAvg')    
-
     const [check, setCheck] = useState(search_option)
 
     const onChange = (e) => {

@@ -1,38 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import {  BoxString3, BoxString5 } from './styled'
-import Modal from 'react-modal';
+import { BoxString5 } from './styled'
 import * as Styled from './styled';
 import { useNavigate } from "react-router-dom";
 import { searchApi } from '../../api/Api'
 import StarRatings from 'react-star-ratings';
 import {Detail} from '../MainList/index'
-
-const 모달스타일 = {
-	overlay: {
-		position: "fixed",
-		top: 0,
-		left: 0,
-		right: 0,
-		bottom: 0,
-		backgroundColor: "rgba(0, 0, 0, 0.4)",
-		zIndex: 1100,
-	},
-	content: {
-    display: "flex",
-		justifyContent: "center",
-		background: "#ffffff",
-		overflow: "auto",
-    maxWidth:"600px",
-    minWidth:"500px",
-    left: "50%",
-    top:"0%",
-    transform: "translate(-50%, 3%)",
-		WebkitOverflowScrolling: "touch",
-		borderRadius: "14px",
-		outline: "none",
-		zIndex: 1100,
-	},
-};
 
 const SearchList = (props) => {
   const [db, setData] = useState([])
@@ -66,7 +38,6 @@ export const Modal1 = () => {
 
 export const Subject = (props) => {
   const [modal, setModal] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   
   let navigate = useNavigate();
 
