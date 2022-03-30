@@ -339,6 +339,38 @@ export const evaluateUpdateApi =
     );
 };
 
+//시험정보수정 api 미완
+export const examUpdateApi = 
+(setData, semester, examInfo, examDifficuty, content, id) => {
+    const url = `/exam-posts/update/?examIdx=${id}`;
+
+    const data = {
+        semester: semester,
+        examInfo: examInfo,
+        examDifficuty: examDifficuty,
+        content: content
+    };
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            AccessToken: localStorage.getItem('AccessToken')
+        },
+        data: data,
+        url,
+    };
+    axios(options).then(
+        (response) => {
+            alert("수정완료")
+            setData(response.data);
+            window.location.reload();
+        },
+        (error) => {
+            alert("error")
+        }
+    );
+};
+
 // 통합검색결과Api
 //꿀강순[modifiedDate, lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg]
 export const searchApi = (setData, search, lecutre) => {
