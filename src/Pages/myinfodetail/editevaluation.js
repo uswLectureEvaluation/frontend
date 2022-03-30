@@ -68,13 +68,13 @@ const Editevaluation = (props) => {
     const semesterChange = (e) => {
       setSemester(e.target.value);
     };
-    const teamChange = (newAlignment) => {
+    const teamChange = (event, newAlignment) => {
       setTeam(newAlignment);
     };
-    const homeworkChange = (newAlignment) => {
+    const homeworkChange = (event, newAlignment) => {
       setHomework(newAlignment);
     };
-    const difficultyChange = (newAlignment) => {
+    const difficultyChange = (event, newAlignment) => {
       setDifficulty(newAlignment);
     };
 
