@@ -341,13 +341,13 @@ export const evaluateUpdateApi =
 
 //시험정보수정 api 미완
 export const examUpdateApi = 
-(setData, semester, examInfo, examDifficuty, content, id) => {
+(setData, semester, examInfo, examDifficulty, content, id) => {
     const url = `/exam-posts/update/?examIdx=${id}`;
 
     const data = {
         semester: semester,
         examInfo: examInfo,
-        examDifficuty: examDifficuty,
+        examDifficulty: examDifficulty,
         content: content
     };
     const options = {
