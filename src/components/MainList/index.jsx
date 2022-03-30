@@ -17,7 +17,8 @@ const MainList = (props) => {
     db.length !== 0 ?
       <div style={{width:"100%"}}>
         {
-          db.data.map((row)=><Subject lectureName={row.lectureName} professor={row.professor} lectureType={row.lectureType} star={row.lectureTotalAvg} />)
+          db.data.map((row)=><Subject lectureName={row.lectureName} professor={row.professor} lectureType={row.lectureType} star={row.lectureTotalAvg}
+          lectureSatisfactionAvg={row.lectureSatisfactionAvg} lectureHoneyAvg={row.lectureHoneyAvg} lectureLearningAvg={row.lectureLearningAvg} />)
         }
       </div> :
       <div></div>
@@ -108,7 +109,7 @@ export const Subject = (props) => {
         <Styled.Rate>{ props.star.toFixed(1) }</Styled.Rate>
         <BoxString5 onClick={() => { setModal(!modal) }}>{modal === true ? '간략히' : '자세히'}</BoxString5>
       </Styled.MarginTop>
-      {modal === true ? <Detail /> : null}
+      {modal === true ? <Detail lectureSatisfactionAvg={props.lectureSatisfactionAvg} lectureHoneyAvg={props.lectureHoneyAvg} lectureLearningAvg={props.lectureLearningAvg} /> : null}
       </Styled.LectureWrapper>
   )
 }
