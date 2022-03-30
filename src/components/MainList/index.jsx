@@ -96,7 +96,7 @@ export const Subject = (props) => {
         </Styled.TitleWrapper>
         <Styled.MarginRight>평균지수</Styled.MarginRight>
         <StarRatings
-          rating={props.totalAvg}
+          rating={props.star}
           starRatedColor="#3DD3C4"
           numberOfStars={5}
           name='rating'
