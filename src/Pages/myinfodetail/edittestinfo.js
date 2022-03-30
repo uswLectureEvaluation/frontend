@@ -1,15 +1,49 @@
-import React, {useState} from 'react'
-import { DetailSelectButton, SubjectText, SubjectDetail, EvaluationInput, EditButton, ModalLine, CancelButton, SelectBox } from './edittestinfo.element';
+import React, {useState, useEffect} from 'react'
+import { SubjectText, SubjectDetail, EvaluationInput, EditButton, ModalLine, CancelButton } from './edittestinfo.element';
 import { CssBaseline, Grid, Box, Container } from "@material-ui/core";
-
+import { examUpdateApi } from '../../api/Api';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 const Edittestinfo = (props) => {
-
-  const [content, setContent] = useState();
+  const [db, setData] = useState({
+    data: []
+  })
+  const [semester, setSemester] = useState(props.semester); //학기
+  const [examDifficulty, setDifficulty] = useState(`${props.examDifficulty}`) //난이도
+  const [content, setContent] = useState(); //글쓰기
+  const [exam, setExamInfo] = useState(() => props.examInfo.split(', ')); //시험내용
+  const examInfo = exam.join(', ')
+  
+  const semesterChange = (e) => {
+    setSemester(e.target.value);
+  };
+  const difficultyChange = (e, newAlignment) => {
+    setDifficulty(newAlignment);
+  };
+  const handleExam = (e, newInfo) => {
+    setExamInfo(newInfo);
+  };
   const onChangeContent = (e) => {
-        setContent(e.target.value);
-        console.log(content);
+      setContent(e.target.value);
       }
+  const onTest = () => {
+        examUpdateApi(setData, semester, examInfo, examDifficulty, content, props.id);
+        props.setModalIsOpen(false)
+      }
+
+  useEffect(() => {
+    console.log(db.data)
+  }, [db.data])
+
+  const SelectBox = () => {
+    return (
+      <select onChange={semesterChange}>
+        <option key="2022-1" value='2022-1'>2022 - 1</option>
+        <option key="2022-2" value='2022-2'>2022 - 2</option>
+      </select>
+    );
+  };
 
     return(
           <Container component="main" maxWidth="sm">
@@ -31,23 +65,49 @@ const Edittestinfo = (props) => {
                       <div style={{fontSize:'11px'}}>(복수선택)</div>
                     </Grid>
                     <Grid item xs={12} sm={9} style={{float: "right"}}>
-                      <DetailSelectButton>족보</DetailSelectButton>
-                      <DetailSelectButton>교재</DetailSelectButton>
-                      <DetailSelectButton>PPT</DetailSelectButton>
-                      <DetailSelectButton>필기</DetailSelectButton>
-                      <DetailSelectButton>응용</DetailSelectButton>
-                      <DetailSelectButton>실습</DetailSelectButton>
-                      <DetailSelectButton>과제</DetailSelectButton>
+                    <ToggleButtonGroup
+                      value={exam}
+                      onChange={handleExam}
+                    >
+                      <ToggleButton value="족보">
+                        족보
+                      </ToggleButton>
+                      <ToggleButton value="교재">
+                        교재
+                      </ToggleButton>
+                      <ToggleButton value="PPT">
+                        PPT
+                      </ToggleButton>
+                      <ToggleButton value="필기">
+                        필기
+                      </ToggleButton>
+                      <ToggleButton value="응용">
+                        응용
+                      </ToggleButton>
+                      <ToggleButton value="실습">
+                        실습
+                      </ToggleButton>
+                      <ToggleButton value="과제">
+                        과제
+                      </ToggleButton>
+                    </ToggleButtonGroup>
                     </Grid>
                     <Grid item xs={12} sm={3}>
                       <SubjectDetail>난이도</SubjectDetail>
                     </Grid>
                     <Grid item xs={12} sm={9} style={{float: "right"}}>
-                      <DetailSelectButton>매우 쉬움</DetailSelectButton>
-                      <DetailSelectButton>쉬움</DetailSelectButton>
-                      <DetailSelectButton>보통</DetailSelectButton>
-                      <DetailSelectButton>어려움</DetailSelectButton>
-                      <DetailSelectButton>매우 어려움</DetailSelectButton>
+                    <ToggleButtonGroup
+                        color="primary"
+                        value={examDifficulty}
+                        exclusive
+                        onChange={difficultyChange}
+                      >
+                        <ToggleButton value='매우 쉬움'>매우 쉬움</ToggleButton>
+                        <ToggleButton value='쉬움'>쉬움</ToggleButton>
+                        <ToggleButton value='보통'>보통</ToggleButton>
+                        <ToggleButton value='어려움'>어려움</ToggleButton>
+                        <ToggleButton value='매우 어려움'>매우 어려움</ToggleButton>
+                      </ToggleButtonGroup>
                     </Grid>
                   </Grid>
                   <ModalLine/>
@@ -55,12 +115,11 @@ const Edittestinfo = (props) => {
                   <Grid container spacing={3} style={{marginTop:'5px'}}>
                     <Grid item xs={12} sm={12}>
                       <CancelButton onClick={()=>{props.setModalIsOpen(false)}}>취소</CancelButton>
-                      <EditButton>수정하기</EditButton>
+                      <EditButton onClick={ onTest }>수정하기</EditButton>
                     </Grid>
                   </Grid>
                 </Box>
           </Container>
     )
-    
 }
 export default Edittestinfo

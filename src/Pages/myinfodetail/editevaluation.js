@@ -60,7 +60,7 @@ const Editevaluation = (props) => {
       5,
       props.satisfaction,
     );
-    const [semester, setSemester] = useState(''); //학기
+    const [semester, setSemester] = useState(props.semester); //학기
     const [team, setTeam] = useState(`${props.team}`); //조모임
     const [homework, setHomework] = useState(`${props.homework}`) //과제
     const [difficulty, setDifficulty] = useState(`${props.difficulty}`) //학점
@@ -68,13 +68,13 @@ const Editevaluation = (props) => {
     const semesterChange = (e) => {
       setSemester(e.target.value);
     };
-    const teamChange = (newAlignment) => {
+    const teamChange = (event, newAlignment) => {
       setTeam(newAlignment);
     };
-    const homeworkChange = (newAlignment) => {
+    const homeworkChange = (event, newAlignment) => {
       setHomework(newAlignment);
     };
-    const difficultyChange = (newAlignment) => {
+    const difficultyChange = (event, newAlignment) => {
       setDifficulty(newAlignment);
     };
 

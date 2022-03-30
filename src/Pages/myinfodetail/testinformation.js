@@ -121,7 +121,7 @@ export const Subject = (props) => {
       onRequestClose={() => setModalIsOpen(false)}
     	>
         <Edittestinfo setModalIsOpen={setModalIsOpen} lectureName={props.lectureName} semester={props.semester}
-        examInfo={props.examInfo} examDifficulty={props.examDifficulty} content={props.content} />
+        examInfo={props.examInfo} examDifficulty={props.examDifficulty} content={props.content} id={props.id}/>
     	</Modal>
       </Styled.LectureWrapper>
     </div>
