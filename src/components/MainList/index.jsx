@@ -4,20 +4,22 @@ import * as Styled from './styled';
 import { useNavigate } from "react-router-dom";
 import { mainApi } from '../../api/Api'
 import StarRatings from 'react-star-ratings';
+import { selectIdState } from '../../features/selectIdSlice';
+import { useDispatch } from 'react-redux';
 
-const MainList = (props) => {
+const MainList = ({lecture}) => {
   const [db, setData] = useState([])
 
   useEffect(() => {
-    mainApi(setData, props.lecture)
-    console.log(db)
-  }, [props, db])
+    mainApi(setData, lecture)
+    console.log(lecture)
+  }, [lecture])
   
   return (
     db.length !== 0 ?
       <div style={{width:"100%"}}>
         {
-          db.data.map((row)=><Subject lectureName={row.lectureName} professor={row.professor} lectureType={row.lectureType} star={row.lectureTotalAvg}
+          db.data.map((row)=><Subject id={row.id} lectureName={row.lectureName} professor={row.professor} lectureType={row.lectureType} star={row.lectureTotalAvg}
           lectureSatisfactionAvg={row.lectureSatisfactionAvg} lectureHoneyAvg={row.lectureHoneyAvg} lectureLearningAvg={row.lectureLearningAvg} />)
         }
       </div> :
@@ -69,11 +71,17 @@ export const Subject = (props) => {
   const [modal, setModal] = useState(false);
   
   let navigate = useNavigate();
+  const dispatch = useDispatch();
 
   let title = props.lectureName
 
   if (title.length >= 14) {
     title = props.lectureName.substr(0, 14) + "...";
+  }
+
+  const onClick = ( id ) => {
+      dispatch(selectIdState(id))
+      navigate("/lectureinfo")
   }
 
   // const Delete = () => {
@@ -88,7 +96,7 @@ export const Subject = (props) => {
       <Styled.MarginTop>
         {/* <BoxButton2 onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</BoxButton2>
         <BoxButton1 onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</BoxButton1> */}
-        <Styled.TitleWrapper onClick={()=>navigate("/lectureinfo")}>
+        <Styled.TitleWrapper onClick={()=>onClick(props.id)}>
         <Styled.TitleWrapper>
           <Styled.Title>{title}</Styled.Title>
           <Styled.Professor>{props.professor}</Styled.Professor>
