@@ -1,4 +1,14 @@
 import axios from "axios"
+import {Cookies} from "react-cookie"
+
+const cookies = new Cookies()
+
+export const setCookie = (name, value, option) => {
+    return cookies.set(name, value, {...option})
+}
+export const getCookie = (name) => {
+    return cookies.get(name)
+}
 
 //메인페이지
 ///lecture/findAllList/?option=lectureSatisfactionAvg&page=1 데이터 받아옴
@@ -154,7 +164,16 @@ export const loginApi = (setData, setLoading, id, pw) => {
             console.log(r.data)
             setData(r.data)
             setLoading(true)
-            localStorage.setItem("AccessToken", r.data["AccessToken"])
+            setCookie('AccessToken', r.data['AccessToken'], {
+                path:"/",
+                secure: true,
+                sameSite: false,
+            })
+            setCookie('RefreshToken', r.data['RefreshToken'], {
+                path:"/",
+                secure: true,
+                sameSite: false,
+            })
         },
         (error) => {
             console.log(error.response)
@@ -225,7 +244,7 @@ export const myInfoApi = (setData) => {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            AccessToken: localStorage.getItem("AccessToken"),
+            AccessToken: getCookie('AccessToken')
         },
         url,
     }
@@ -250,7 +269,7 @@ export const evaluatePostApi = (setData) => {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            AccessToken: localStorage.getItem("AccessToken"),
+            AccessToken: getCookie('AccessToken'),
         },
         url,
     }
@@ -275,7 +294,7 @@ export const examPostApi = (setData) => {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            AccessToken: localStorage.getItem("AccessToken"),
+            AccessToken: getCookie('AccessToken'),
         },
         url,
     }
@@ -321,7 +340,7 @@ export const evaluateUpdateApi = (
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            AccessToken: localStorage.getItem("AccessToken"),
+            AccessToken: getCookie('AccessToken'),
         },
         data: data,
         url,
@@ -359,7 +378,7 @@ export const examUpdateApi = (
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            AccessToken: localStorage.getItem("AccessToken"),
+            AccessToken: getCookie('AccessToken'),
         },
         data: data,
         url,
