@@ -1,7 +1,7 @@
 import { memo } from "react"
 import * as Styled from "./styled"
 
-const Item = ({ number }) => {
+const NoticeItem = ({ number }) => {
     const onClick = () => {
         alert(number)
     }
@@ -13,4 +13,4 @@ const Item = ({ number }) => {
     )
 }
 
-export default memo(Item)
+export default memo(NoticeItem)
