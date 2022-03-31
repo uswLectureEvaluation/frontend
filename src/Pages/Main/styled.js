@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
 export const Banner = styled.div`
     width: 100%;
     height: 40vh;
-    background-color: #3dd3c4;
+    background-color: #eeeeee;
 `
 
 export const BannerWrapper = styled.div`
@@ -29,7 +29,7 @@ export const BannerWrapper = styled.div`
     display: flex;
     align-items: center;
     font-weight: bold;
-    color: #ffffff;
+    color: #000000;
     font-size: 1.5rem;
     justify-content: space-between;
 `
