@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom"
 import { searchApi } from "../../api/Api"
 import StarRatings from "react-star-ratings"
 import { Detail } from "../MainList/index"
+import { selectIdState } from "../../features/selectIdSlice"
+import { useDispatch } from "react-redux"
 
 const SearchList = (props) => {
     const [db, setData] = useState([])
@@ -46,11 +48,17 @@ export const Subject = (props) => {
     const [modal, setModal] = useState(false)
 
     let navigate = useNavigate()
+    const dispatch = useDispatch()
 
     let title = props.lectureName
 
     if (title.length >= 14) {
         title = props.lectureName.substr(0, 14) + "..."
+    }
+
+    const onClick = (id) => {
+        dispatch(selectIdState(id))
+        navigate("/lectureinfo")
     }
 
     // const Delete = () => {
@@ -65,7 +73,7 @@ export const Subject = (props) => {
             <Styled.MarginTop>
                 {/* <BoxButton2 onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</BoxButton2>
         <BoxButton1 onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</BoxButton1> */}
-                <Styled.TitleWrapper onClick={() => navigate("/lectureinfo")}>
+                <Styled.TitleWrapper onClick={() => onClick(props.id)}>
                     <Styled.TitleWrapper>
                         <Styled.Title>{title}</Styled.Title>
                         <Styled.Professor>{props.professor}</Styled.Professor>
