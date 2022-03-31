@@ -123,8 +123,9 @@ export const Soption = styled.span`
 
 export const Button = styled.button`
     margin: 10px 0;
+    margin-bottom: 10vh;
     width: 40%;
-    padding: 1rem 1rem;
+    padding: 0.5rem 1rem;
     border: none;
     background: ${(props) => props.background};
     color: white;
