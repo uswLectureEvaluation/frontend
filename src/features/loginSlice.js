@@ -6,8 +6,8 @@ export const loginSlice = createSlice({
     name: "login",
     initialState,
     reducers: {
-        loginState: (state) => {
-            state.value = !state.value
+        loginState: (state, actions) => {
+            state.value = actions.payload
         },
     },
 })

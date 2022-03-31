@@ -16,10 +16,7 @@ import {
     IdInput,
     PwInput,
 } from "./login.element"
-// import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom"
-// import axios from 'axios';
-// import { Cookies } from 'react-cookie'
 import { loginApi } from "../../api/Api"
 import { useDispatch } from "react-redux"
 import { loginState } from "../../features/loginSlice"
