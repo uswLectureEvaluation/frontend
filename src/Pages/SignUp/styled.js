@@ -59,6 +59,10 @@ export const AgreeButton = styled.button`
 export const InputWrapper = styled.div`
     display: flex;
     align-items: center;
+
+    &#top {
+        align-items: stretch;
+    }
 `
 
 export const Wrapper = styled.div`
@@ -92,3 +96,29 @@ export const SignUpWrapper = styled.div`
 `
 
 export const Img = styled.img``
+
+export const Button = styled.button`
+    margin: 0;
+    padding: 0 1rem;
+    padding-top: 0.6rem;
+    margin: 8px 0;
+    border: none;
+    padding-bottom: 0.5rem;
+    background: ${(props) => props.background};
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s all;
+    &:disabled {
+        background-color: rgba(170, 170, 170);
+        cursor: auto;
+    }
+
+    &#check {
+        position: relative;
+        left: 10px;
+    }
+`

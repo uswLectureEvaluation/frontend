@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useEffect } from "react"
-import Button from "../../components/Button"
 import * as Styled from "./styled"
 import { checkemailApi, checkidApi, registerApi } from "../../api/Api"
 import { useNavigate } from "react-router-dom"
@@ -141,17 +140,26 @@ const SignUp = () => {
             <Styled.Img src="img/signup.svg" width={450} />
             <Styled.SignUpWrapper>
                 <Styled.Title>회원가입</Styled.Title>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="username"
-                    label="아이디 입력"
-                    name="username"
-                    autoComplete="username"
-                    autoFocus
-                    onChange={onChangeName}
-                />
+                <Styled.InputWrapper id="top">
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="username"
+                        label="아이디 입력"
+                        name="username"
+                        autoComplete="username"
+                        autoFocus
+                        onChange={onChangeName}
+                    />
+                    <Styled.Button
+                        id="check"
+                        onClick={onCheck}
+                        background="#3DD3C4"
+                    >
+                        Check
+                    </Styled.Button>
+                </Styled.InputWrapper>
                 {name.length > 0 && (
                     <Styled.Checking
                         className={`message ${isName ? "success" : "error"}`}
@@ -159,9 +167,7 @@ const SignUp = () => {
                         {nameMessage}
                     </Styled.Checking>
                 )}
-                <Button onClick={onCheck} color="#3DD3C4">
-                    아이디 중복확인
-                </Button>
+
                 <TextField
                     margin="normal"
                     required
@@ -202,17 +208,26 @@ const SignUp = () => {
                         {passwordConfirmMessage}
                     </Styled.Checking>
                 )}
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="email"
-                    label="이메일 입력"
-                    type="email"
-                    id="email"
-                    autoComplete="current-email"
-                    onChange={onChangeEmail}
-                />
+                <Styled.InputWrapper id="top">
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="email"
+                        label="이메일 입력"
+                        type="email"
+                        id="email"
+                        autoComplete="current-email"
+                        onChange={onChangeEmail}
+                    />
+                    <Styled.Button
+                        id="check"
+                        onClick={onEmail}
+                        background="#3DD3C4"
+                    >
+                        Check
+                    </Styled.Button>
+                </Styled.InputWrapper>
                 {email.length > 0 && (
                     <Styled.Checking
                         className={`message ${isEmail ? "success" : "error"}`}
@@ -220,9 +235,7 @@ const SignUp = () => {
                         {emailMessage}
                     </Styled.Checking>
                 )}
-                <Button onClick={onEmail} color="#3DD3C4">
-                    이메일 중복확인
-                </Button>
+
                 <Styled.EmailWrapper>
                     *수원대 이메일 인증 후 서비스 이용이 가능합니다.
                 </Styled.EmailWrapper>
@@ -268,7 +281,7 @@ const SignUp = () => {
                         상세보기
                     </Styled.AgreeButton>
                 </Styled.Label>
-                <Button
+                <Styled.Button
                     disabled={
                         !(
                             isName &&
@@ -284,7 +297,7 @@ const SignUp = () => {
                     onClick={onClick}
                 >
                     회원가입
-                </Button>
+                </Styled.Button>
             </Styled.SignUpWrapper>
         </Styled.Container>
     )
