@@ -9,11 +9,11 @@ import {
     Search,
     SignUp,
     Login,
+    IdSearch,
 } from "./Pages"
 import Notice from "./Pages/Notice"
 import NoticeDetail from "./Pages/NoticeDetail"
 import PwSearch from "./Pages/Login/pwsearch"
-import IdSearch from "./Pages/Login/idsearch"
 import Myinfodetial from "./Pages/Login/myinfodetail"
 import ScrollToTop from "./ScrollToTop"
 
