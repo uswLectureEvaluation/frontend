@@ -1,12 +1,12 @@
 import React, { useState } from "react"
 import * as Styled from "./styled"
-import { useSelector, useDispatch } from "react-redux"
+// import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 const Nav = () => {
     let navigate = useNavigate()
-    const dispatch = useDispatch()
-    const loginState = useSelector((state) => state.login.value)
+    // const dispatch = useDispatch()
+    // const loginState = useSelector((state) => state.login.value)
     const [button, setButton] = useState(true)
 
     const [click, setClick] = useState(false)
@@ -25,11 +25,11 @@ const Nav = () => {
         setClick(!click)
     }
 
-    const logoutClick = () => {
-        dispatch(loginState(false))
-        navigate("/")
-        console.log("로그인 상태", loginState)
-    }
+    // const logoutClick = () => {
+    //     dispatch(loginState(false))
+    //     navigate("/")
+    //     console.log("로그인 상태", loginState)
+    // }
 
     window.addEventListener("resize", showButton)
 
