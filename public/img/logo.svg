@@ -1,0 +1,11 @@
+<svg id="logo" xmlns="http://www.w3.org/2000/svg" width="108.402" height="48.587" viewBox="0 0 108.402 48.587">
+  <g id="그룹_286" data-name="그룹 286">
+    <g id="그룹_300" data-name="그룹 300">
+      <text id="SUWI_I" data-name="SUWI  I" transform="translate(0 30)" fill="#222" font-size="28" font-family="Jost-BlackItalic, Jost" font-weight="800" font-style="italic" letter-spacing="-0.003em"><tspan x="0" y="0" xml:space="preserve">SUWI  I</tspan></text>
+      <path id="패스_630" data-name="패스 630" d="M5583.248,6884.8l-9.114,8.391,6.919,8.708" transform="translate(-5489.536 -6872.378)" fill="none" stroke="#3dd3c4" stroke-width="5"/>
+      <path id="패스_631" data-name="패스 631" d="M5433.7,6917.467h0c.1.046,48.132,23.107,105.615,0" transform="translate(-5432.032 -6882.208)" fill="none" stroke="#3dd3c4" stroke-width="6"/>
+    </g>
+  </g>
+  <ellipse id="타원_10" data-name="타원 10" cx="3.751" cy="3.751" rx="3.751" ry="3.751" transform="translate(99.781)" fill="#3dd3c4"/>
+  <ellipse id="타원_15" data-name="타원 15" cx="3.751" cy="3.751" rx="3.751" ry="3.751" transform="translate(72.781)" fill="#3dd3c4"/>
+</svg>
