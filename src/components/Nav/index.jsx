@@ -35,7 +35,11 @@ const Nav = () => {
 
     return (
         <Styled.Navbar>
-            <Styled.Img src="img/logo.svg" onClick={() => navigate("/")} />
+            <Styled.Img
+                src="img/logo.png"
+                width={110}
+                onClick={() => navigate("/")}
+            />
             {/* <Styled.MobileIcon onClick={handleClick}>
                 {click ? (
                     <Styled.Img src={"Styled.Img/icon_color_fire_36.svg"} />
