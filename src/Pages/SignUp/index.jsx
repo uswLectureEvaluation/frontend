@@ -153,6 +153,7 @@ const SignUp = () => {
                         onChange={onChangeName}
                     />
                     <Styled.Button
+                        disabled={!isName}
                         id="check"
                         onClick={onCheck}
                         background="#3DD3C4"
@@ -221,6 +222,7 @@ const SignUp = () => {
                         onChange={onChangeEmail}
                     />
                     <Styled.Button
+                        disabled={!isEmail}
                         id="check"
                         onClick={onEmail}
                         background="#3DD3C4"
