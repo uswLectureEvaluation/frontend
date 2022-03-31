@@ -18,6 +18,7 @@ const MainList = ({ lecture }) => {
         <div style={{ width: "100%" }}>
             {db.data.map((row) => (
                 <Subject
+                    key={row.id}
                     id={row.id}
                     lectureName={row.lectureName}
                     professor={row.professor}
