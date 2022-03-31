@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from "react"
 import * as Styled from "./styled"
-import Item from "./Item"
-import Loader from "./Loader"
+import NoticeItem from "../../components/NoticeItem"
+import ReactLoading from "react-loading"
 import { noticeApi } from "../../api/Api"
 
 const Notice = () => {
@@ -16,10 +16,7 @@ const Notice = () => {
         noticeApi().then((data) => setData(data))
     }, [])
 
-    useEffect(() => {
-        console.log(itemLists)
-        console.log(db.data)
-    })
+    console.log(db)
 
     const getMoreItem = async () => {
         setIsLoaded(true)
@@ -50,14 +47,13 @@ const Notice = () => {
 
     return (
         <Styled.AppContainer>
-            <Styled.AppWrapper>
-                <Styled.AppTitle>공지사항</Styled.AppTitle>
-            </Styled.AppWrapper>
+            <Styled.AppTitle>공지사항</Styled.AppTitle>
+
             {itemLists.map((v, i) => {
-                return <Item number={i + 1} key={i} />
+                return <NoticeItem number={i + 1} key={i} />
             })}
             <Styled.Targetelement ref={setTarget}>
-                {isLoaded && <Loader />}
+                {isLoaded && <ReactLoading type="spin" color="#3dd3c4" />}
             </Styled.Targetelement>
         </Styled.AppContainer>
     )
