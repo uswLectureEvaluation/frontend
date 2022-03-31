@@ -42,13 +42,13 @@ const LectureInfo = () => {
         }
     }
     const [db, lectureData] = useState({
-        data: []
-      })
-    
-      useEffect(() => {
+        data: [],
+    })
+
+    useEffect(() => {
         searchLectureApi(lectureData, selectId)
-      }, []
-      )
+    }, [selectId])
+
     const teamSet = db.data.lectureTeamAvg
     const homeworkSet = db.data.lectureHomeworkAvg
     const difficultySet = db.data.lectureDifficultyAvg
@@ -83,14 +83,23 @@ const LectureInfo = () => {
                     <Styled.TitleWrapper id="top">
                         <div>
                             <Styled.TitleWrapper>
-                                <Styled.Title>{db.data.lectureName}</Styled.Title>
-                                <Styled.Professor>{db.data.professor}</Styled.Professor>
+                                <Styled.Title>
+                                    {db.data.lectureName}
+                                </Styled.Title>
+                                <Styled.Professor>
+                                    {db.data.professor}
+                                </Styled.Professor>
                             </Styled.TitleWrapper>
                             <Styled.TitleWrapper>
-                                <Styled.Option> {db.data.semester} </Styled.Option>
+                                <Styled.Option>
+                                    {" "}
+                                    {db.data.semester}{" "}
+                                </Styled.Option>
                             </Styled.TitleWrapper>
                         </div>
-                        <Styled.Option id="type">{db.data.lectureType}</Styled.Option>
+                        <Styled.Option id="type">
+                            {db.data.lectureType}
+                        </Styled.Option>
                     </Styled.TitleWrapper>
                     <Styled.FlexContainer id="col">
                         <Styled.WidthContainer>
