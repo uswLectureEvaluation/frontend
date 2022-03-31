@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import MainList from "../../components/MainList"
 import * as Styled from "./styled"
 import { useNavigate } from "react-router-dom"
-import { CustomSelect, StyledOption } from "./selectstyled"
 
 const Main = () => {
     const options = [
@@ -69,12 +68,15 @@ const Main = () => {
             </Styled.SearchWrapper>
             <Styled.SearchWrapper>
                 <Styled.HeadSelection>
-                    <CustomSelect
+                    <Styled.CustomSelect
                         defaultValue={"lectureHoneyAvg"}
                         onChange={onChangeHandler}
                     >
                         {options.map((index) => (
-                            <StyledOption key={index.name} value={index.lec}>
+                            <Styled.StyledOption
+                                key={index.name}
+                                value={index.lec}
+                            >
                                 <Styled.Soption>
                                     <Styled.Img
                                         loading="lazy"
@@ -83,9 +85,9 @@ const Main = () => {
                                     />{" "}
                                     {index.name}
                                 </Styled.Soption>
-                            </StyledOption>
+                            </Styled.StyledOption>
                         ))}
-                    </CustomSelect>
+                    </Styled.CustomSelect>
                     <Styled.More
                         onClick={() =>
                             navigate(`/search`, {
