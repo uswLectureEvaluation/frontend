@@ -1,20 +1,13 @@
-import React from "react"
 import { ThemeProvider, createTheme } from "@material-ui/core"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import Footer from "./components/Footer"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { Footer, Nav } from "./components"
 import GlobalStyle from "./globalStyles"
-import Nav from "./components/Nav"
-import Main from "./Pages/Main"
+import { EmailSignUp, LectureInfo, Main, MyInfo, Search, SignUp } from "./Pages"
 import Notice from "./Pages/Notice"
 import Login from "./Pages/Login/login"
 import PwSearch from "./Pages/Login/pwsearch"
 import IdSearch from "./Pages/Login/idsearch"
-import Signup from "./Pages/SignUp/index"
-import Myinfo from "./Pages/MyInfo"
 import Myinfodetial from "./Pages/Login/myinfodetail"
-import LectureInfo from "./Pages/LectureInfo/"
-import Search from "./Pages/Search/"
-import EmailSignUp from "./Pages/EmailSignUp/"
 import ScrollToTop from "./ScrollToTop"
 
 const themeLight = createTheme({
@@ -27,7 +20,7 @@ const themeLight = createTheme({
 
 const App = () => {
     return (
-        <Router>
+        <BrowserRouter>
             <GlobalStyle />
             <ScrollToTop />
             <Nav style={{ zindex: 5 }} />
@@ -38,8 +31,8 @@ const App = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/pwsearch" element={<PwSearch />} />
                     <Route path="/idsearch" element={<IdSearch />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/myinformation" element={<Myinfo />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/myinformation" element={<MyInfo />} />
                     <Route path="/myinfodetail" element={<Myinfodetial />} />
                     <Route path="/lectureinfo" element={<LectureInfo />} />
                     <Route path="/search" element={<Search />} />
@@ -47,7 +40,7 @@ const App = () => {
                 </Routes>
             </ThemeProvider>
             <Footer />
-        </Router>
+        </BrowserRouter>
     )
 }
 

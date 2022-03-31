@@ -37,6 +37,9 @@ const EditEvaluation = (props) => {
         { backgroundColor: "rgb(231, 76, 60)" },
         { backgroundColor: "rgb(52, 152, 219)" },
     ])
+
+    setDetail()
+    setColor()
     return (
         <Container component="main" maxWidth="sm">
             <CssBaseline />

@@ -97,7 +97,7 @@ const Login = () => {
         if (loading === true) {
             if (db != null) {
                 navigate("/")
-                dispatch(loginState())
+                dispatch(loginState(true))
             }
         }
     })
