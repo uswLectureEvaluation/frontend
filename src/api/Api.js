@@ -1,10 +1,10 @@
 import axios from "axios"
-import {Cookies} from "react-cookie"
+import { Cookies } from "react-cookie"
 
 const cookies = new Cookies()
 
 export const setCookie = (name, value, option) => {
-    return cookies.set(name, value, {...option})
+    return cookies.set(name, value, { ...option })
 }
 export const getCookie = (name) => {
     return cookies.get(name)
@@ -39,6 +39,27 @@ export const noticeApi = async () => {
 
     const options = {
         method: "GET",
+        url,
+    }
+
+    try {
+        const response = await axios(options)
+        return response.data
+    } catch (e) {
+        throw e
+    }
+}
+
+//공지사항 자세히보기 api
+export const noticeDetailApi = async (notice) => {
+    const url = `${PROXY_URL}/notice/?noticeId=${notice}`
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            AccessToken: getCookie('AccessToken')
+        },
         url,
     }
 
@@ -165,12 +186,12 @@ export const loginApi = (setData, setLoading, id, pw) => {
             setData(r.data)
             setLoading(true)
             setCookie('AccessToken', r.data['AccessToken'], {
-                path:"/",
+                path: "/",
                 secure: true,
                 sameSite: false,
             })
             setCookie('RefreshToken', r.data['RefreshToken'], {
-                path:"/",
+                path: "/",
                 secure: true,
                 sameSite: false,
             })
