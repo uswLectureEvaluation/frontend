@@ -4,21 +4,19 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { noticeState } from "../../features/noticeSlice"
 
-
 const NoticeItem = ({ id, title, modifiedDate }) => {
-
     const dispatch = useDispatch()
 
     const navigate = useNavigate()
 
     const onClick = () => {
         dispatch(noticeState(id))
-        navigate('/noticedetail')
+        navigate("/noticedetail")
     }
     return (
         <Styled.NoticeWrap onClick={onClick}>
             <Styled.Title>{title}</Styled.Title>
-            <Styled.Option>{modifiedDate}</Styled.Option>
+            <Styled.Option>{modifiedDate.slice(0, 10)}</Styled.Option>
         </Styled.NoticeWrap>
     )
 }
