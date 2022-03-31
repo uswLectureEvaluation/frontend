@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import * as Styled from "./styled"
 import MainList from "../../components/MainList"
 import TestInfo from "../../components/TestInfo"
-import { searchApi } from "../../api/Api"
+import { searchApi, searchLectureApi } from "../../api/Api"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 
@@ -41,6 +41,31 @@ const LectureInfo = () => {
             navigate(`/search`)
         }
     }
+    const [db, lectureData] = useState({
+        data: []
+      })
+    
+      useEffect(() => {
+        searchLectureApi(lectureData, selectId)
+      }, []
+      )
+    const teamSet = db.data.lectureTeamAvg
+    const homeworkSet = db.data.lectureHomeworkAvg
+    const difficultySet = db.data.lectureDifficultyAvg
+    const team = {
+        0: <Styled.DataColor>없음</Styled.DataColor>,
+        1: <Styled.DataColor id="purple">있음</Styled.DataColor>,
+    }
+    const homework = {
+        0: <Styled.DataColor>없음</Styled.DataColor>,
+        1: <Styled.DataColor id="cyan">보통</Styled.DataColor>,
+        2: <Styled.DataColor id="purple">많음</Styled.DataColor>,
+    }
+    const difficulty = {
+        0: <Styled.DataColor>까다로움</Styled.DataColor>,
+        1: <Styled.DataColor id="cyan">보통</Styled.DataColor>,
+        2: <Styled.DataColor id="purple">잘줌</Styled.DataColor>,
+    }
 
     return (
         <Styled.Container>
@@ -58,16 +83,14 @@ const LectureInfo = () => {
                     <Styled.TitleWrapper id="top">
                         <div>
                             <Styled.TitleWrapper>
-                                <Styled.Title>학문과 사고</Styled.Title>
-                                <Styled.Professor>이다민</Styled.Professor>
+                                <Styled.Title>{db.data.lectureName}</Styled.Title>
+                                <Styled.Professor>{db.data.professor}</Styled.Professor>
                             </Styled.TitleWrapper>
                             <Styled.TitleWrapper>
-                                <Styled.Option> 2020-1 </Styled.Option>
-                                <Styled.Option> 2019-1 </Styled.Option>
-                                <Styled.Option> 2018-1 </Styled.Option>
+                                <Styled.Option> {db.data.semester} </Styled.Option>
                             </Styled.TitleWrapper>
                         </div>
-                        <Styled.Option id="type">기교</Styled.Option>
+                        <Styled.Option id="type">{db.data.lectureType}</Styled.Option>
                     </Styled.TitleWrapper>
                     <Styled.FlexContainer id="col">
                         <Styled.WidthContainer>
@@ -82,7 +105,7 @@ const LectureInfo = () => {
                                             fontWeight: "bold",
                                         }}
                                     >
-                                        3.0
+                                        {db.data.lectureHoneyAvg}
                                     </Styled.Color>
                                     /5
                                 </Styled.FlexContainer>
@@ -90,7 +113,7 @@ const LectureInfo = () => {
                             <Styled.FlexContainer>
                                 <Styled.OptionTitle>조모임</Styled.OptionTitle>
                                 <Styled.FlexContainer>
-                                    없음
+                                    {team[teamSet]}
                                 </Styled.FlexContainer>
                             </Styled.FlexContainer>
                         </Styled.WidthContainer>
@@ -106,7 +129,7 @@ const LectureInfo = () => {
                                             fontWeight: "bold",
                                         }}
                                     >
-                                        3.0
+                                        {db.data.lectureLearningAvg}
                                     </Styled.Color>
                                     /5
                                 </Styled.FlexContainer>
@@ -115,7 +138,7 @@ const LectureInfo = () => {
                                 <Styled.OptionTitle>과제</Styled.OptionTitle>
                                 <Styled.FlexContainer>
                                     <Styled.Color style={{ color: "#6200ee" }}>
-                                        많음
+                                        {homework[homeworkSet]}
                                     </Styled.Color>
                                 </Styled.FlexContainer>
                             </Styled.FlexContainer>
@@ -130,7 +153,7 @@ const LectureInfo = () => {
                                             fontWeight: "bold",
                                         }}
                                     >
-                                        3.0
+                                        {db.data.lectureSatisfactionAvg}
                                     </Styled.Color>
                                     /5
                                 </Styled.FlexContainer>
@@ -139,7 +162,7 @@ const LectureInfo = () => {
                                 <Styled.OptionTitle>학점</Styled.OptionTitle>
                                 <Styled.FlexContainer>
                                     <Styled.Color style={{ color: "#6200ee" }}>
-                                        까다로움
+                                        {difficulty[difficultySet]}
                                     </Styled.Color>
                                 </Styled.FlexContainer>
                             </Styled.FlexContainer>

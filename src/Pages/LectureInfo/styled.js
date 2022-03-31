@@ -8,6 +8,15 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 `
+export const DataColor = styled.div`
+    font-weight: bold;
+    &#cyan {
+        color: #3dd3c4;
+    }
+    &#purple {
+        color: #6200ee;
+    }
+`
 
 export const Container = styled.div`
     display: flex;
