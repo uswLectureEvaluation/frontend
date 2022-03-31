@@ -24,7 +24,7 @@ export const mainApi = async (lecture) => {
     }
 }
 //공지사항api 확인 필요
-export const noticeApi = (setData) => {
+export const noticeApi = async () => {
     const url = `${PROXY_URL}/notice/findAllList`
 
     const options = {
@@ -32,16 +32,12 @@ export const noticeApi = (setData) => {
         url,
     }
 
-    axios(options).then(
-        (r) => {
-            console.log("connect")
-            console.log(r.data)
-            setData(r.data)
-        },
-        (error) => {
-            console.log(error.response)
-        }
-    )
+    try {
+        const response = await axios(options)
+        return response.data
+    } catch (e) {
+        throw e
+    }
 }
 
 //회원가입 api 0

@@ -13,7 +13,7 @@ const Notice = () => {
         data: [],
     })
     useEffect(() => {
-        noticeApi(setData)
+        noticeApi().then((data) => setData(data))
     }, [])
 
     useEffect(() => {
