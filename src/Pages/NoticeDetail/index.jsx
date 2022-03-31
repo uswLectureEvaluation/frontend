@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import * as Styled from "./styled"
 import { useSelector } from "react-redux"
 import { noticeDetailApi } from "../../api/Api"
 
@@ -9,27 +10,25 @@ const NoticeDetail = () => {
 
     useEffect(() => {
         noticeDetailApi(notice).then((data) => setData(data))
-
     }, [notice])
 
     console.log(db.data)
 
+    return db.length !== 0 ? (
+        <Styled.AppContainer>
+            <Styled.AppTitle>공지사항</Styled.AppTitle>
 
-    return (
-        <div>
-            {
-                db.data.id
-            }
-            {
-                db.data.title
-            }
-            {
-                db.data.content
-            }
-            {
-                db.data.modifiedDate
-            }
-        </div>
+            <Styled.Content>
+                <Styled.Title>{db.data.title}</Styled.Title>
+                <Styled.Date>
+                    {db.data.modifiedDate.slice(0, 10)}{" "}
+                    {db.data.modifiedDate.slice(11)}
+                </Styled.Date>
+                {db.data.content}
+            </Styled.Content>
+        </Styled.AppContainer>
+    ) : (
+        <div></div>
     )
 }
 
