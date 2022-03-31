@@ -6,11 +6,12 @@ import {
     DeleteButton,
 } from "./myevaluation.element"
 import { CssBaseline, Container } from "@material-ui/core"
-import Editevaluation from "./editevaluation"
+// import Editevaluation from "./del_editevaluation"
 import Modal from "react-modal"
 import { evaluatePostApi } from "../../api/Api"
 import * as Styled from "./myevaluation.element"
 import StarRatings from "react-star-ratings"
+import EditEvaluation from "../../components/EditEvaluation"
 
 const 모달스타일 = {
     overlay: {
@@ -279,7 +280,7 @@ export const Subject = (props) => {
                     ariaHideApp={false}
                     onRequestClose={() => setModalIsOpen(false)}
                 >
-                    <Editevaluation
+                    <EditEvaluation
                         setModalIsOpen={setModalIsOpen}
                         semester={props.semester}
                         satisfaction={props.satisfaction}

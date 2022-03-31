@@ -3,7 +3,7 @@ import { Footer, Nav } from "./components"
 import GlobalStyle from "./globalStyles"
 import { EmailSignUp, LectureInfo, Main, MyInfo, Search, SignUp } from "./Pages"
 import Notice from "./Pages/Notice"
-import NoticeDetail from './Pages/NoticeDetail'
+import NoticeDetail from "./Pages/NoticeDetail"
 import Login from "./Pages/Login/login"
 import PwSearch from "./Pages/Login/pwsearch"
 import IdSearch from "./Pages/Login/idsearch"

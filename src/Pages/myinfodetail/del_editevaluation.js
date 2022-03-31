@@ -6,7 +6,7 @@ import {
     EditButton,
     ModalLine,
     CancelButton,
-} from "./editevaluation.element"
+} from "./del_editevaluation.element"
 import { CssBaseline, Grid, Box, Container } from "@material-ui/core"
 import ToggleButton from "@mui/material/ToggleButton"
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
