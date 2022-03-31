@@ -14,7 +14,7 @@ import {
 } from "./Pages"
 import Notice from "./Pages/Notice"
 import NoticeDetail from "./Pages/NoticeDetail"
-import Myinfodetial from "./Pages/Login/myinfodetail"
+import Myinfodetial from "./Pages/myinfodetail/myinfodetail"
 import ScrollToTop from "./ScrollToTop"
 
 const App = () => {
