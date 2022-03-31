@@ -76,13 +76,15 @@ export const TitleWrapper = styled.div`
 export const Title = styled.div`
     display: flex;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-right: 0.7rem;
 `
 
 export const Professor = styled.div`
     display: flex;
     color: #515151;
+    font-size: 0.8rem;
+    margin: 0.3rem 0;
 `
 
 export const Option = styled.div`
@@ -90,7 +92,7 @@ export const Option = styled.div`
     border-radius: 10px;
     background-color: rgb(239, 239, 239);
     padding: 5px 10px;
-    font-size: 12px;
+    font-size: 0.3rem;
     font-weight: bold;
     color: gray;
 `
@@ -98,12 +100,13 @@ export const Option = styled.div`
 export const Rate = styled.span`
     color: #3dd3c4;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.8rem;
     padding-left: 10px;
     vertical-align: bottom;
 `
 
 export const LectureWrapper = styled.div`
+    width: 49%;
     border: 1px solid ${Color("border")};
     border-radius: 10px;
     margin-bottom: 10px;
@@ -115,15 +118,25 @@ export const MarginTop = styled.div`
 `
 export const MarginRight = styled.span`
     margin-right: 6px;
+    font-size: 1rem;
 `
 
 export const StarFlex = styled.div`
     display: flex;
+    font-size: 0.6rem;
     padding-right: 1rem;
     background-color: #f9f9f9;
     padding: 8px 12px;
+    align-items: center;
 
     &#top {
         border-top: 1px solid #eeeeee;
     }
+`
+
+export const FlexWrap = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
 `

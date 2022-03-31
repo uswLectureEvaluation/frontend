@@ -15,7 +15,7 @@ const MainList = ({ lecture }) => {
     }, [lecture])
 
     return db.length !== 0 ? (
-        <div style={{ width: "100%" }}>
+        <Styled.FlexWrap>
             {db.data.map((row) => (
                 <Subject
                     key={row.id}
@@ -29,7 +29,7 @@ const MainList = ({ lecture }) => {
                     lectureLearningAvg={row.lectureLearningAvg}
                 />
             ))}
-        </div>
+        </Styled.FlexWrap>
     ) : (
         <div></div>
     )
@@ -111,13 +111,11 @@ export const Subject = (props) => {
                 {/* <BoxButton2 onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</BoxButton2>
         <BoxButton1 onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</BoxButton1> */}
                 <Styled.TitleWrapper onClick={() => onClick(props.id)}>
-                    <Styled.TitleWrapper>
-                        <Styled.Title>{title}</Styled.Title>
-                        <Styled.Professor>{props.professor}</Styled.Professor>
-                    </Styled.TitleWrapper>
+                    <Styled.Title>{title}</Styled.Title>
                     <Styled.Option>{props.lectureType}</Styled.Option>
                 </Styled.TitleWrapper>
-                <Styled.MarginRight>평균지수</Styled.MarginRight>
+                <Styled.Professor>{props.professor}</Styled.Professor>
+                {/* <Styled.MarginRight>평균지수</Styled.MarginRight> */}
                 <StarRatings
                     rating={props.star}
                     starRatedColor="#3DD3C4"

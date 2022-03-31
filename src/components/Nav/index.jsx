@@ -35,9 +35,7 @@ const Nav = () => {
 
     return (
         <Styled.Navbar>
-            <Styled.NavLogo onClick={() => navigate("/")}>
-                SUWIKI
-            </Styled.NavLogo>
+            <Styled.Img src="img/logo.svg" onClick={() => navigate("/")} />
             {/* <Styled.MobileIcon onClick={handleClick}>
                 {click ? (
                     <Styled.Img src={"Styled.Img/icon_color_fire_36.svg"} />

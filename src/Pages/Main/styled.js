@@ -16,11 +16,29 @@ export const GlobalStyle = createGlobalStyle`
   }
 `
 
+export const Banner = styled.div`
+    width: 100%;
+    height: 40vh;
+    background-color: #3dd3c4;
+`
+
+export const BannerWrapper = styled.div`
+    width: 60%;
+    margin: 0 auto;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 1.5rem;
+    justify-content: space-between;
+`
+
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
 `
 
@@ -42,14 +60,14 @@ export const SearchTitle = styled.div`
     font-size: 1.5rem;
     font-weight: bold;
     padding-top: 4rem;
+    width: 100%;
 `
 
 export const SearchInput = styled.input`
     width: 100%;
-    padding-left: 20px;
     height: 50px;
-    border-radius: 20px;
-    border: 1.5px solid ${Color("main")};
+    border: none;
+    border-bottom: 1.5px solid #000000;
     margin: 1.5rem 0;
     background-image: url("img/icon_search_24.svg");
     background-repeat: no-repeat;
@@ -96,10 +114,26 @@ export const More = styled.div`
 
 export const Img = styled.img`
     vertical-align: bottom;
+    pointer-events: none;
 `
 
 export const Soption = styled.span`
     font-weight: bold;
+`
+
+export const Button = styled.button`
+    margin: 10px 0;
+    width: 40%;
+    padding: 1rem 1rem;
+    border: none;
+    background: ${(props) => props.background};
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    user-select: none;
 `
 
 const blue = {
@@ -131,6 +165,7 @@ const StyledButton = styled_mui("button")(
   min-width: 220px;
   background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
   border: 1px solid ${theme.palette.mode === "dark" ? grey[800] : grey[300]};
+  border:none;
   border-radius: 0.75em;
   margin: 0.5em 0.5em 0 0;
   padding: 10px;

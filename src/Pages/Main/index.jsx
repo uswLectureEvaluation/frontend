@@ -57,55 +57,68 @@ const Main = () => {
     }
 
     return (
-        <Styled.Container>
-            <Styled.SearchWrapper>
-                <Styled.SearchTitle>강의 평가 검색</Styled.SearchTitle>
-                <Styled.SearchInput
-                    onChange={onChange}
-                    placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
-                    onKeyPress={onKeypress}
-                />
-            </Styled.SearchWrapper>
-            <Styled.SearchWrapper>
-                <Styled.HeadSelection>
-                    <Styled.CustomSelect
-                        defaultValue={"lectureHoneyAvg"}
-                        onChange={onChangeHandler}
-                    >
-                        {options.map((index) => (
-                            <Styled.StyledOption
-                                key={index.name}
-                                value={index.lec}
-                            >
-                                <Styled.Soption>
-                                    <Styled.Img
-                                        loading="lazy"
-                                        width="22"
-                                        src={index.imgs}
-                                    />{" "}
-                                    {index.name}
-                                </Styled.Soption>
-                            </Styled.StyledOption>
-                        ))}
-                    </Styled.CustomSelect>
-                    <Styled.More
-                        onClick={() =>
-                            navigate(`/search`, {
-                                state: {
-                                    search_value: "all",
-                                    search_option: lecture,
-                                },
-                            })
-                        }
-                    >
-                        더보기＞
-                    </Styled.More>
-                </Styled.HeadSelection>
-                <Styled.HeadSelection>
-                    <MainList lecture={lecture} />
-                </Styled.HeadSelection>
-            </Styled.SearchWrapper>
-        </Styled.Container>
+        <>
+            <Styled.Banner>
+                <Styled.BannerWrapper>
+                    <div>
+                        수위키,
+                        <br />
+                        수원대 강의평가의 모든 것
+                    </div>
+                    <Styled.Img src="img/banner.svg" />
+                </Styled.BannerWrapper>
+            </Styled.Banner>
+            <Styled.Container>
+                <Styled.SearchWrapper>
+                    <Styled.SearchTitle>강의 평가 검색</Styled.SearchTitle>
+                    <Styled.SearchInput
+                        onChange={onChange}
+                        placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
+                        onKeyPress={onKeypress}
+                    />
+                </Styled.SearchWrapper>
+                <Styled.SearchWrapper>
+                    <Styled.HeadSelection>
+                        <Styled.CustomSelect
+                            defaultValue={"lectureHoneyAvg"}
+                            onChange={onChangeHandler}
+                        >
+                            {options.map((index) => (
+                                <Styled.StyledOption
+                                    key={index.name}
+                                    value={index.lec}
+                                >
+                                    <Styled.Soption>
+                                        <Styled.Img
+                                            loading="lazy"
+                                            width="22"
+                                            src={index.imgs}
+                                        />{" "}
+                                        {index.name}
+                                    </Styled.Soption>
+                                </Styled.StyledOption>
+                            ))}
+                        </Styled.CustomSelect>
+                    </Styled.HeadSelection>
+                    <Styled.HeadSelection>
+                        <MainList lecture={lecture} />
+                    </Styled.HeadSelection>
+                </Styled.SearchWrapper>
+                <Styled.Button
+                    background="#3DD3C4"
+                    onClick={() =>
+                        navigate(`/search`, {
+                            state: {
+                                search_value: "all",
+                                search_option: lecture,
+                            },
+                        })
+                    }
+                >
+                    더 보러 가기
+                </Styled.Button>
+            </Styled.Container>
+        </>
     )
 }
 
