@@ -3,7 +3,7 @@ import * as Styled from "./styled"
 import { findIdApi } from "../../api/Api"
 import { TextField } from "@material-ui/core"
 
-const Idsearch = () => {
+const IdSearch = () => {
     const [email, setEmail] = useState()
     const [db, setData] = useState({
         data: [],
@@ -50,4 +50,4 @@ const Idsearch = () => {
     )
 }
 
-export default Idsearch
+export default IdSearch
