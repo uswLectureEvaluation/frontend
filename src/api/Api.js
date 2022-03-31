@@ -441,3 +441,28 @@ export const searchApi = (setData, search, lecutre) => {
         }
     )
 }
+
+// 검색 결과 자세히보기 (Lecture)
+export const searchLectureApi = (setData, selectId) => {
+    const url = `${PROXY_URL}/lecture/?lectureId=${selectId}`
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            AccessToken: getCookie('AccessToken')
+        },
+        url,
+    }
+
+    axios(options).then(
+        (r) => {
+            console.log("connect")
+            console.log(r.data)
+            setData(r.data)
+        },
+        (error) => {
+            console.log(error.response)
+        }
+    )
+}
