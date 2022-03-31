@@ -10,10 +10,10 @@ import {
     SignUp,
     Login,
     IdSearch,
+    PwSearch,
 } from "./Pages"
 import Notice from "./Pages/Notice"
 import NoticeDetail from "./Pages/NoticeDetail"
-import PwSearch from "./Pages/Login/pwsearch"
 import Myinfodetial from "./Pages/Login/myinfodetail"
 import ScrollToTop from "./ScrollToTop"
 
