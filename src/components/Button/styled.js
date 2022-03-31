@@ -16,10 +16,6 @@ export const Wrapper = styled.button`
     cursor: pointer;
     user-select: none;
     transition: 0.3s all;
-    &:hover,
-    &:active {
-        background: #4b70fc;
-    }
     &:disabled {
         background-color: rgba(170, 170, 170);
         cursor: auto;

@@ -1,11 +1,12 @@
 import styled from "styled-components"
 
 export const Title = styled.div`
-    font-size: 4vh;
-    font-weight: 1000;
-    margin: 2rem 0;
-    text-align: center;
-    font-family: "Pretendard-Black";
+    display: flex;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 `
 
 export const Text = styled.div`
@@ -75,3 +76,19 @@ export const Wrapper = styled.div`
         width: 300px;
     }
 `
+export const Container = styled.div`
+    display: flex;
+    align-items: center;
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 4rem;
+    justify-content: space-between;
+`
+
+export const SignUpWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+`
+
+export const Img = styled.img``

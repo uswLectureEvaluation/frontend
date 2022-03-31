@@ -1,10 +1,9 @@
 import React, { useState, useCallback, useEffect } from "react"
 import Button from "../../components/Button"
-import Input from "../../components/Input"
 import * as Styled from "./styled"
-import { Positioner } from "../../components/Wrapper/styled"
 import { checkemailApi, checkidApi, registerApi } from "../../api/Api"
 import { useNavigate } from "react-router-dom"
+import { TextField } from "@material-ui/core"
 
 const SignUp = () => {
     //이름, 이메일, 비밀번호, 비밀번호 확인
@@ -138,13 +137,19 @@ const SignUp = () => {
     })
 
     return (
-        <Positioner>
-            <Styled.Wrapper>
+        <Styled.Container>
+            <Styled.Img src="img/signup.svg" width={450} />
+            <Styled.SignUpWrapper>
                 <Styled.Title>회원가입</Styled.Title>
-                <Input
-                    label="아이디"
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="username"
+                    label="아이디 입력"
                     name="username"
-                    placeholder="아이디"
+                    autoComplete="username"
+                    autoFocus
                     onChange={onChangeName}
                 />
                 {name.length > 0 && (
@@ -154,12 +159,18 @@ const SignUp = () => {
                         {nameMessage}
                     </Styled.Checking>
                 )}
-                <Button onClick={onCheck}>아이디 중복확인</Button>
-                <Input
-                    label="비밀번호"
+                <Button onClick={onCheck} color="#3DD3C4">
+                    아이디 중복확인
+                </Button>
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
                     name="password"
-                    placeholder="비밀번호"
+                    label="비밀번호 입력"
                     type="password"
+                    id="password"
+                    autoComplete="current-password"
                     onChange={onChangePassword}
                 />
                 {password.length > 0 && (
@@ -171,11 +182,15 @@ const SignUp = () => {
                         {passwordMessage}
                     </Styled.Checking>
                 )}
-
-                <Input
-                    placeholder="비밀번호 확인"
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
                     name="passwordConfirm"
+                    label="비밀번호 확인"
                     type="password"
+                    id="passwordConfirm"
+                    autoComplete="current-password"
                     onChange={onChangePasswordConfirm}
                 />
                 {passwordConfirm.length > 0 && (
@@ -187,11 +202,15 @@ const SignUp = () => {
                         {passwordConfirmMessage}
                     </Styled.Checking>
                 )}
-                <Input
-                    label="이메일"
-                    id="email"
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
                     name="email"
-                    placeholder="이메일(@suwon.ac.kr)"
+                    label="이메일 입력"
+                    type="email"
+                    id="email"
+                    autoComplete="current-email"
                     onChange={onChangeEmail}
                 />
                 {email.length > 0 && (
@@ -201,7 +220,9 @@ const SignUp = () => {
                         {emailMessage}
                     </Styled.Checking>
                 )}
-                <Button onClick={onEmail}>이메일 중복확인</Button>
+                <Button onClick={onEmail} color="#3DD3C4">
+                    이메일 중복확인
+                </Button>
                 <Styled.EmailWrapper>
                     *수원대 이메일 인증 후 서비스 이용이 가능합니다.
                 </Styled.EmailWrapper>
@@ -259,13 +280,13 @@ const SignUp = () => {
                             emailcheck
                         )
                     }
-                    color="blue"
+                    color="#3DD3C4"
                     onClick={onClick}
                 >
                     회원가입
                 </Button>
-            </Styled.Wrapper>
-        </Positioner>
+            </Styled.SignUpWrapper>
+        </Styled.Container>
     )
 }
 
