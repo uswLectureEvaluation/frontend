@@ -15,6 +15,7 @@ import {
 import Notice from "./Pages/Notice"
 import NoticeDetail from "./Pages/NoticeDetail"
 import Myinfodetial from "./Pages/myinfodetail/myinfodetail"
+import ScrollButton from "./components/ScrollButton"
 
 const App = () => {
     return (
@@ -35,6 +36,7 @@ const App = () => {
                 <Route path="/emailsignup" element={<EmailSignUp />} />
                 <Route path="/noticedetail" element={<NoticeDetail />} />
             </Routes>
+            <ScrollButton />
             <Footer />
         </BrowserRouter>
     )
