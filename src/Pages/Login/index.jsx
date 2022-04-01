@@ -89,6 +89,14 @@ const Login = () => {
                 >
                     로그인
                 </Styled.Button>
+                <Styled.SearchWrapper>
+                    <Styled.SearchButton onClick={() => navigate("/idsearch")}>
+                        아이디 찾기
+                    </Styled.SearchButton>
+                    <Styled.SearchButton onClick={() => navigate("/pwsearch")}>
+                        비밀번호 찾기
+                    </Styled.SearchButton>
+                </Styled.SearchWrapper>
             </Styled.LoginWrapper>
         </Styled.Container>
     )

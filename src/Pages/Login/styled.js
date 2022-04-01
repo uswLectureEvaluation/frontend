@@ -43,9 +43,25 @@ export const Button = styled.button`
     cursor: pointer;
     user-select: none;
 `
+export const SearchButton = styled.button`
+    display: flex;
+    border: none;
+    border-bottom: 1px solid;
+    padding: 0;
+    background-color: white;
+    &:hover {
+        cursor: pointer;
+    }
+`
+
+export const SearchWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+`
 
 export const LoginWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 35%;
 `
