@@ -1,4 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components"
+import { TextField } from "@material-ui/core"
+import * as styles from "@mui/material/styles"
 
 export const GlobalStyle = createGlobalStyle`
   #root>div {
@@ -65,3 +67,14 @@ export const LoginWrapper = styled.div`
     flex-direction: column;
     width: 40%;
 `
+export const CssTextField = styles.styled(TextField)({
+    '& label.Mui-focused': {
+        color: '#3dd3c4',
+      },
+      '& .MuiInput-underline:after': {
+        borderBottomColor: '#3dd3c4',
+      },
+      '& .MuiInput-underline:before': {
+        borderBottomColor: '#3dd3c4',
+      },   
+})

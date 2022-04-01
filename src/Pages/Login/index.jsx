@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { loginApi } from "../../api/Api"
 import { useDispatch } from "react-redux"
 import { loginState } from "../../features/loginSlice"
-import { TextField, FormControlLabel, Checkbox } from "@material-ui/core"
+import { FormControlLabel, Checkbox } from "@material-ui/core"
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -47,7 +47,7 @@ const Login = () => {
             <Styled.Img src="img/signup.svg" width={450} />
             <Styled.LoginWrapper>
                 <Styled.Title>로그인</Styled.Title>
-                <TextField
+                <Styled.CssTextField
                     margin="normal"
                     required
                     fullWidth
@@ -58,7 +58,7 @@ const Login = () => {
                     autoFocus
                     onChange={onChangeID}
                 />
-                <TextField
+                <Styled.CssTextField
                     margin="normal"
                     required
                     fullWidth
