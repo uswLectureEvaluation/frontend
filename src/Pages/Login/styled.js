@@ -63,5 +63,5 @@ export const SearchWrapper = styled.div`
 export const LoginWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 35%;
+    width: 40%;
 `
