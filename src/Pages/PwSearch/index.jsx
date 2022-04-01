@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import * as Styled from "./styled"
 import { findPwApi } from "../../api/Api"
-import { TextField } from "@material-ui/core"
 
 const PwSearch = () => {
     const [username, setUserName] = useState()
