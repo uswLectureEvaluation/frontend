@@ -69,13 +69,13 @@ const EditEvaluation = (props) => {
     const semesterChange = (e) => {
         setSemester(e.target.value)
     }
-    const teamChange = (newAlignment) => {
+    const teamChange = (e, newAlignment) => {
         setTeam(newAlignment)
     }
-    const homeworkChange = (newAlignment) => {
+    const homeworkChange = (e, newAlignment) => {
         setHomework(newAlignment)
     }
-    const difficultyChange = (newAlignment) => {
+    const difficultyChange = (e, newAlignment) => {
         setDifficulty(newAlignment)
     }
 
@@ -83,7 +83,9 @@ const EditEvaluation = (props) => {
         <Styled.Wrapper>
             <Styled.TitleWrapper>
                 <Styled.Title>학문과 사고</Styled.Title>
-                <Styled.Title>X</Styled.Title>
+                <Styled.Title onClick={() => {
+                                props.setModalIsOpen(false)
+                            }}>X</Styled.Title>
             </Styled.TitleWrapper>
 
             <Styled.ContentWrapper>
