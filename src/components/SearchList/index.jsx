@@ -26,21 +26,14 @@ const SearchList = (props) => {
                     professor={row.professor}
                     lectureType={row.lectureType}
                     star={row.lectureTotalAvg}
+                    lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+                    lectureHoneyAvg={row.lectureHoneyAvg}
+                    lectureLearningAvg={row.lectureLearningAvg}
                 />
             ))}
         </div>
     ) : (
         <div></div>
-    )
-}
-
-export const Modal1 = () => {
-    return (
-        <Styled.StarFlex id="top">
-            <Styled.StarFlex>만족도 ⭐⭐⭐⭐</Styled.StarFlex>
-            <Styled.StarFlex>꿀강 지수 ⭐⭐⭐⭐</Styled.StarFlex>
-            <Styled.StarFlex>배움 지수 ⭐⭐⭐⭐</Styled.StarFlex>
-        </Styled.StarFlex>
     )
 }
 
@@ -100,7 +93,11 @@ export const Subject = (props) => {
                     {modal === true ? "간략히" : "자세히"}
                 </BoxString5>
             </Styled.MarginTop>
-            {modal === true ? <Detail /> : null}
+            {modal === true ? <Detail 
+                                lectureSatisfactionAvg={props.lectureSatisfactionAvg}
+                                lectureHoneyAvg={props.lectureHoneyAvg}
+                                lectureLearningAvg={props.lectureLearningAvg}
+            /> : null}
         </Styled.LectureWrapper>
     )
 }
