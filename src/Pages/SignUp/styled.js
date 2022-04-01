@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import { TextField } from "@material-ui/core"
+import * as styles from "@mui/material/styles"
 
 export const Title = styled.div`
     display: flex;
@@ -122,3 +124,14 @@ export const Button = styled.button`
         left: 10px;
     }
 `
+export const CssTextField = styles.styled(TextField)({
+    '& label.Mui-focused': {
+        color: '#3dd3c4',
+      },
+      '& .MuiInput-underline:after': {
+        borderBottomColor: '#3dd3c4',
+      },
+      '& .MuiInput-underline:before': {
+        borderBottomColor: '#3dd3c4',
+      },   
+})
