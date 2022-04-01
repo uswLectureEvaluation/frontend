@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import * as Styled from "./styled"
 import { findIdApi } from "../../api/Api"
-import { TextField } from "@material-ui/core"
 
 const IdSearch = () => {
     const [email, setEmail] = useState()
@@ -24,7 +23,7 @@ const IdSearch = () => {
             <Styled.Img src="img/signup.svg" width={450} />
             <Styled.LoginWrapper>
                 <Styled.Title>아이디 찾기</Styled.Title>
-                <TextField
+                <Styled.CssTextField
                     margin="normal"
                     required
                     id="outlined-basic"
