@@ -28,7 +28,7 @@ const PwSearch = () => {
             <Styled.Img src="img/signup.svg" width={450} />
             <Styled.LoginWrapper>
                 <Styled.Title>비밀번호 찾기</Styled.Title>
-                <TextField
+                <Styled.CssTextField
                     margin="normal"
                     required
                     id="id"
@@ -38,7 +38,7 @@ const PwSearch = () => {
                     autoFocus
                     onChange={onChangeID}
                 />
-                <TextField
+                <Styled.CssTextField
                     margin="normal"
                     required
                     id="email"
