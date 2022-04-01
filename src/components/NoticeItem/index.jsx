@@ -1,17 +1,13 @@
 import { memo } from "react"
 import * as Styled from "./styled"
 import { useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
-import { noticeState } from "../../features/noticeSlice"
 
 const NoticeItem = ({ id, title, modifiedDate }) => {
-    const dispatch = useDispatch()
 
     const navigate = useNavigate()
 
     const onClick = () => {
-        dispatch(noticeState(id))
-        navigate("/noticedetail")
+        navigate("/noticedetail", { state: { id: id } })
     }
     return (
         <Styled.NoticeWrap onClick={onClick}>

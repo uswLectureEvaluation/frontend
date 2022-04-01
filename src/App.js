@@ -15,13 +15,11 @@ import {
 import Notice from "./Pages/Notice"
 import NoticeDetail from "./Pages/NoticeDetail"
 import Myinfodetial from "./Pages/myinfodetail/myinfodetail"
-import ScrollToTop from "./ScrollToTop"
 
 const App = () => {
     return (
         <BrowserRouter>
             <GlobalStyle />
-            <ScrollToTop />
             <Nav style={{ zindex: 5 }} />
             <Routes>
                 <Route path="/" element={<Main />} />

@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react"
 import * as Styled from "./styled"
-import { useSelector } from "react-redux"
+import { useLocation } from "react-router"
 import { noticeDetailApi } from "../../api/Api"
 
 const NoticeDetail = () => {
-    const notice = useSelector((state) => state.notice.value)
+
+    const location = useLocation()
+    const { id } = location.state
 
     const [db, setData] = useState({ data: {} })
 
     useEffect(() => {
-        noticeDetailApi(notice).then((data) => setData(data))
-    }, [notice])
+        noticeDetailApi(id).then((data) => setData(data))
+    }, [id])
 
-    console.log(db.data)
 
     return (
         <Styled.AppContainer>
