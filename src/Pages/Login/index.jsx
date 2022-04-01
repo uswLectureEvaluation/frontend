@@ -84,7 +84,6 @@ const Login = () => {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
                     onClick={onLogin}
                 >
                     로그인

@@ -28,8 +28,7 @@ const IdSearch = () => {
                     margin="normal"
                     required
                     id="outlined-basic"
-                    variant="outlined"
-                    label="example@suwon.ac.kr"
+                    label="이메일 입력"
                     name="email"
                     autoComplete="email"
                     autoFocus
@@ -40,7 +39,6 @@ const IdSearch = () => {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
                     onClick={emailSubmit}
                 >
                     아이디 찾기

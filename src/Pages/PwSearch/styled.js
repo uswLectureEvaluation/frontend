@@ -49,3 +49,7 @@ export const LoginWrapper = styled.div`
     flex-direction: column;
     width: 40%;
 `
+
+export const Info = styled.div`
+    font-size: 0.8rem;
+`

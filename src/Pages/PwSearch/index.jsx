@@ -29,22 +29,20 @@ const PwSearch = () => {
             <Styled.LoginWrapper>
                 <Styled.Title>비밀번호 찾기</Styled.Title>
                 <TextField
-                    margin="dense"
+                    margin="normal"
                     required
                     id="id"
-                    variant="outlined"
-                    label="Input your SUWIKI ID"
+                    label="아이디 입력"
                     name="id"
                     autoComplete="id"
                     autoFocus
                     onChange={onChangeID}
                 />
                 <TextField
-                    margin="dense"
+                    margin="normal"
                     required
                     id="email"
-                    variant="outlined"
-                    label="Input your Email"
+                    label="이메일 입력"
                     name="email"
                     autoComplete="email"
                     onChange={onChangeEmail}
@@ -54,14 +52,13 @@ const PwSearch = () => {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
                     onClick={handleSubmit}
                 >
                     비밀번호 찾기
                 </Styled.Button>
-                아이디에 해당하는
-                <br />
-                학교메일로 임시 비밀번호를 전송합니다.
+                <Styled.Info>
+                    *아이디에 해당하는 학교메일로 임시 비밀번호를 전송합니다.
+                </Styled.Info>
             </Styled.LoginWrapper>
         </Styled.Container>
     )
