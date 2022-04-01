@@ -8,7 +8,7 @@ import {
 import { CssBaseline, Container } from "@material-ui/core"
 // import Editevaluation from "./del_editevaluation"
 import Modal from "react-modal"
-import { evaluatePostApi } from "../../api/Api"
+import { evaluatePostApi, deleteEvaluateApi } from "../../api/Api"
 import * as Styled from "./myevaluation.element"
 import StarRatings from "react-star-ratings"
 import EditEvaluation from "../../components/EditEvaluation"
@@ -199,11 +199,9 @@ export const Subject = (props) => {
     if (title.length >= 14) {
         title = props.lectureName.substr(0, 14) + "..."
     }
-    const Delete = () => {
+    const onDelete = () => {
         if (window.confirm("강의평가를 삭제하시겠습니까?") === true) {
-            let arrayCopy = [...props.subjectName]
-            arrayCopy.shift()
-            props.setSubjectName(arrayCopy)
+            deleteEvaluateApi(props.id)
         } else {
             return
         }
@@ -217,7 +215,7 @@ export const Subject = (props) => {
                         <YearText>{props.semester}</YearText>
                         <DeleteButton
                             onClick={() => {
-                                Delete()
+                                onDelete()
                             }}
                             style={{ float: "right" }}
                         >
