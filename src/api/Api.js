@@ -58,7 +58,7 @@ export const noticeDetailApi = async (notice) => {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            AccessToken: getCookie('AccessToken')
+            AccessToken: getCookie("AccessToken")
         },
         url,
     }
@@ -185,12 +185,12 @@ export const loginApi = (setData, setLoading, id, pw) => {
             console.log(r.data)
             setData(r.data)
             setLoading(true)
-            setCookie('AccessToken', r.data['AccessToken'], {
+            setCookie("AccessToken", r.data["AccessToken"], {
                 path: "/",
                 secure: true,
                 sameSite: false,
             })
-            setCookie('RefreshToken', r.data['RefreshToken'], {
+            setCookie("RefreshToken", r.data["RefreshToken"], {
                 path: "/",
                 secure: true,
                 sameSite: false,
@@ -265,7 +265,7 @@ export const myInfoApi = (setData) => {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            AccessToken: getCookie('AccessToken')
+            AccessToken: getCookie("AccessToken")
         },
         url,
     }
@@ -290,7 +290,7 @@ export const evaluatePostApi = (setData) => {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            AccessToken: getCookie('AccessToken'),
+            AccessToken: getCookie("AccessToken"),
         },
         url,
     }
@@ -315,7 +315,7 @@ export const examPostApi = (setData) => {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            AccessToken: getCookie('AccessToken'),
+            AccessToken: getCookie("AccessToken"),
         },
         url,
     }
@@ -361,7 +361,7 @@ export const evaluateUpdateApi = (
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            AccessToken: getCookie('AccessToken'),
+            AccessToken: getCookie("AccessToken"),
         },
         data: data,
         url,
@@ -370,6 +370,28 @@ export const evaluateUpdateApi = (
         (response) => {
             alert("수정완료")
             setData(response.data)
+            window.location.reload()
+        },
+        (error) => {
+            alert("error")
+        }
+    )
+}
+
+// 강의 평가 삭제 api
+export const deleteEvaluateApi = (id) => {
+    const url = `/evaluate-posts/delete/?evaluateIdx=${id}`
+
+    const options = {
+        method: "DELETE",
+        headers: {
+            AccessToken: getCookie("AccessToken"),
+        },
+        url,
+    }
+    axios(options).then(
+        (response) => {
+            alert("삭제완료")
             window.location.reload()
         },
         (error) => {
@@ -399,7 +421,7 @@ export const examUpdateApi = (
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            AccessToken: getCookie('AccessToken'),
+            AccessToken: getCookie("AccessToken"),
         },
         data: data,
         url,
@@ -450,7 +472,7 @@ export const searchLectureApi = (setData, selectId) => {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            AccessToken: getCookie('AccessToken')
+            AccessToken: getCookie("AccessToken")
         },
         url,
     }
