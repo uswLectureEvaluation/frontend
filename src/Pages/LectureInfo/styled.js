@@ -105,10 +105,15 @@ export const MenuTitle = styled.li`
     margin-bottom: 1rem;
     text-align: center;
     display: flex;
+    color: lightgray;
     padding-right: 1rem;
 
     &:hover {
         cursor: pointer;
+    }
+    &#${({ check }) => check} {
+        font-weight: bold;
+        color: black;
     }
 `
 

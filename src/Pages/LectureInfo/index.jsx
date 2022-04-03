@@ -15,10 +15,18 @@ const LectureInfo = () => {
     const selectId = useSelector((state) => state.selectId.value)
     let navigate = useNavigate()
     const [search, setSearch] = useState("")
-    const menu = ["강의 평가(N)", "시험 정보(M)"]
+    const menu = [
+        { name: "강의 평가(N)", option: "lecture" },
+        { name: "시험 정보(M)", option: "info" },
+    ]
     const menuList = menu.map((i, index) => (
-        <Styled.MenuTitle onClick={() => clickFunc(index)}>
-            {i}
+        <Styled.MenuTitle
+            key={i.option}
+            id={i.option}
+            check={i.option}
+            onClick={() => clickFunc(index)}
+        >
+            {i.name}
         </Styled.MenuTitle>
     ))
 
