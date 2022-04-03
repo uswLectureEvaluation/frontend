@@ -14,6 +14,7 @@ const checkList = {
 const LectureInfo = () => {
     const selectId = useSelector((state) => state.selectId.value)
     let navigate = useNavigate()
+    const [check, setCheck] = useState("lecture")
     const [search, setSearch] = useState("")
     const menu = [
         { name: "강의 평가(N)", option: "lecture" },
@@ -23,8 +24,8 @@ const LectureInfo = () => {
         <Styled.MenuTitle
             key={i.option}
             id={i.option}
-            check={i.option}
-            onClick={() => clickFunc(index)}
+            check={check}
+            onClick={(e) => clickFunc(e, index)}
         >
             {i.name}
         </Styled.MenuTitle>
@@ -32,8 +33,9 @@ const LectureInfo = () => {
 
     const [menuCheck, setMenuCheck] = useState(0)
 
-    const clickFunc = (index) => {
+    const clickFunc = (e, index) => {
         setMenuCheck(index)
+        setCheck(e.target.id)
     }
 
     console.log("여기", selectId)
