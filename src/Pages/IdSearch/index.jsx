@@ -34,7 +34,7 @@ const IdSearch = () => {
                     onChange={onChangeEmail}
                 />
                 <Styled.Button
-                    background="#3DD3C4"
+                    background="#346cfd"
                     type="submit"
                     fullWidth
                     variant="contained"

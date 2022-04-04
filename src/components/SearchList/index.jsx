@@ -13,7 +13,9 @@ const SearchList = (props) => {
 
     useEffect(() => {
         console.log(props)
-        searchApi(props.props.search_value, props.props.search_option).then((data)=>(setData(data)))
+        searchApi(props.props.search_value, props.props.search_option).then(
+            (data) => setData(data)
+        )
     }, [props])
 
     console.log(db)
@@ -77,7 +79,7 @@ export const Subject = (props) => {
                 <Styled.MarginRight>평균지수</Styled.MarginRight>
                 <StarRatings
                     rating={props.star}
-                    starRatedColor="#3DD3C4"
+                    starRatedColor="#346cfd"
                     numberOfStars={5}
                     name="rating"
                     starDimension="24px"
@@ -94,11 +96,13 @@ export const Subject = (props) => {
                     {modal === true ? "간략히" : "자세히"}
                 </BoxString5>
             </Styled.MarginTop>
-            {modal === true ? <Detail 
-                                lectureSatisfactionAvg={props.lectureSatisfactionAvg}
-                                lectureHoneyAvg={props.lectureHoneyAvg}
-                                lectureLearningAvg={props.lectureLearningAvg}
-            /> : null}
+            {modal === true ? (
+                <Detail
+                    lectureSatisfactionAvg={props.lectureSatisfactionAvg}
+                    lectureHoneyAvg={props.lectureHoneyAvg}
+                    lectureLearningAvg={props.lectureLearningAvg}
+                />
+            ) : null}
         </Styled.LectureWrapper>
     )
 }

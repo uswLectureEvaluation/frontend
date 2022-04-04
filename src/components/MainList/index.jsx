@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux"
 
 const MainList = ({ lecture }) => {
     const [db, setData] = useState([])
-   
 
     useEffect(() => {
         mainApi(lecture).then((data) => setData(data))
@@ -36,10 +35,7 @@ const MainList = ({ lecture }) => {
     )
 }
 
-
-
 export const Detail = (props) => {
-
     return (
         <Styled.StarFlex id="top">
             <Styled.StarFlex>
@@ -122,7 +118,7 @@ export const Subject = (props) => {
                 {/* <Styled.MarginRight>평균지수</Styled.MarginRight> */}
                 <StarRatings
                     rating={props.star}
-                    starRatedColor="#3DD3C4"
+                    starRatedColor="#346cfd"
                     numberOfStars={5}
                     name="rating"
                     starDimension="24px"

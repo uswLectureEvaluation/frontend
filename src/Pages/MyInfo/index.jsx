@@ -19,7 +19,7 @@ const MyInfo = () => {
     })
 
     useEffect(() => {
-        myInfoApi().then((data)=>setData(data))
+        myInfoApi().then((data) => setData(data))
     }, [])
     console.log(db)
     return (
@@ -48,7 +48,7 @@ const MyInfo = () => {
                 </Styled.Content>
                 <Styled.Button
                     onClick={() => navigate("/myinfodetail")}
-                    background="#3DD3C4"
+                    background="#346cfd"
                 >
                     내가 쓴 글
                 </Styled.Button>

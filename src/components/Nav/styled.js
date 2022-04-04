@@ -15,7 +15,7 @@ export const Navbar = styled.nav`
 `
 
 export const NavLogo = styled.nav`
-    color: #3dd3c4;
+    color: #346cfd;
     display: flex;
     font-size: 2rem;
     font-weight: bold;
@@ -64,7 +64,7 @@ export const NavLinks = styled.div`
         cursor: pointer;
     }
     &#signup {
-        color: #3dd3c4;
+        color: #346cfd;
     }
 
     @media screen and (max-width: 960px) {

@@ -61,7 +61,7 @@ export const OptionPoint = styled.div`
     font-weight: bold;
     justify-content: flex-end;
     margin-left: auto;
-    color: #3dd3c4;
+    color: #346cfd;
     &#minus {
         color: #6200ee;
     }
@@ -113,7 +113,7 @@ export const InfoTitle = styled.div`
 `
 
 export const Color = styled.span`
-    color: #3dd3c4;
+    color: #346cfd;
     font-weight: bold;
     font-size: 1.2rem;
     &#p {

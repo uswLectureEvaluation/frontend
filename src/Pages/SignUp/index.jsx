@@ -155,7 +155,7 @@ const SignUp = () => {
                         disabled={!isName}
                         id="check"
                         onClick={onCheck}
-                        background="#3DD3C4"
+                        background="#346cfd"
                     >
                         Check
                     </Styled.Button>
@@ -224,7 +224,7 @@ const SignUp = () => {
                         disabled={!isEmail}
                         id="check"
                         onClick={onEmail}
-                        background="#3DD3C4"
+                        background="#346cfd"
                     >
                         Check
                     </Styled.Button>
@@ -294,7 +294,7 @@ const SignUp = () => {
                             emailcheck
                         )
                     }
-                    color="#3DD3C4"
+                    color="#346cfd"
                     onClick={onClick}
                 >
                     회원가입

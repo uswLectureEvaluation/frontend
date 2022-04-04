@@ -57,13 +57,13 @@ export const Info = styled.div`
 `
 
 export const CssTextField = styles.styled(TextField)({
-    '& label.Mui-focused': {
-        color: '#3dd3c4',
-      },
-      '& .MuiInput-underline:after': {
-        borderBottomColor: '#3dd3c4',
-      },
-      '& .MuiInput-underline:before': {
-        borderBottomColor: '#3dd3c4',
-      },   
+    "& label.Mui-focused": {
+        color: "#346cfd",
+    },
+    "& .MuiInput-underline:after": {
+        borderBottomColor: "#346cfd",
+    },
+    "& .MuiInput-underline:before": {
+        borderBottomColor: "#346cfd",
+    },
 })

@@ -56,7 +56,7 @@ const LectureInfo = () => {
     })
 
     useEffect(() => {
-        searchLectureApi(selectId).then((data)=>(lectureData(data)))
+        searchLectureApi(selectId).then((data) => lectureData(data))
     }, [selectId])
 
     const teamSet = db.data.lectureTeamAvg
@@ -120,7 +120,7 @@ const LectureInfo = () => {
                                 <Styled.FlexContainer>
                                     <Styled.Color
                                         style={{
-                                            color: "#3DD3C4",
+                                            color: "#346cfd",
                                             fontWeight: "bold",
                                         }}
                                     >
@@ -144,7 +144,7 @@ const LectureInfo = () => {
                                 <Styled.FlexContainer>
                                     <Styled.Color
                                         style={{
-                                            color: "#3DD3C4",
+                                            color: "#346cfd",
                                             fontWeight: "bold",
                                         }}
                                     >
@@ -168,7 +168,7 @@ const LectureInfo = () => {
                                 <Styled.FlexContainer>
                                     <Styled.Color
                                         style={{
-                                            color: "#3DD3C4",
+                                            color: "#346cfd",
                                             fontWeight: "bold",
                                         }}
                                     >

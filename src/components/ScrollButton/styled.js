@@ -5,7 +5,7 @@ export const TopButton = styled.button`
     bottom: 30px;
     right: 30px;
     z-index: 999;
-    border: 1px solid #3dd3c4;
+    border: 1px solid #346cfd;
     background-color: white;
     color: #333;
     cursor: pointer;
