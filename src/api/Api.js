@@ -374,3 +374,11 @@ export const searchLectureApi = (selectId) => {
         method: "GET"
     })
 }
+
+// 검색 결과 자세히보기 (Evaluation)
+export const searchEvaluationApi = (selectId) => {
+    return instance({
+        url: `/evaluate-posts/findByLectureId/?lectureId=${selectId}&page=1`,
+        method: "GET"
+    })
+}

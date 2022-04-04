@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react"
 import * as Styled from "./styled"
-import MainList from "../../components/MainList"
+import SearchEvaluationList from "../../components/SearchEvaluationList"
 import TestInfo from "../../components/TestInfo"
 import { searchApi, searchLectureApi } from "../../api/Api"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 
-const checkList = {
-    0: <MainList lecture="lectureHoneyAvg" />,
-    1: <TestInfo />,
-}
 
 const LectureInfo = () => {
     const selectId = useSelector((state) => state.selectId.value)
@@ -20,6 +16,10 @@ const LectureInfo = () => {
         { name: "강의 평가(N)", option: "lecture" },
         { name: "시험 정보(M)", option: "info" },
     ]
+    const checkList = {
+        0: <SearchEvaluationList selectId={selectId} />,
+        1: <TestInfo />,
+    }
     const menuList = menu.map((i, index) => (
         <Styled.MenuTitle
             key={i.option}
