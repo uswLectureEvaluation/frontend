@@ -4,7 +4,7 @@ import Modal from "react-modal"
 import { examPostApi } from "../../api/Api"
 import * as Styled from "./styled"
 
-const Testinformation = (props) => {
+const SearchTestList = (props) => {
     return (
         <Container component="main" maxWidth="md">
             <CssBaseline />
@@ -86,4 +86,4 @@ export const Subject = (props) => {
     )
 }
 
-export default Testinformation
+export default SearchTestList
