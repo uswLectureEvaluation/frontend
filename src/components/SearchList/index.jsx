@@ -22,6 +22,7 @@ const SearchList = (props) => {
             {db.data.map((row) => (
                 <Subject
                     key={row.id}
+                    id={row.id}
                     lectureName={row.lectureName}
                     professor={row.professor}
                     lectureType={row.lectureType}
