@@ -2,10 +2,37 @@ import React, { useState, useEffect } from "react"
 import * as Styled from "./styled"
 import SearchEvaluationList from "../../components/SearchEvaluationList"
 import TestInfo from "../../components/TestInfo"
+import WriteEvaluation from "../../components/WriteEvaluation"
 import { searchApi, searchLectureApi } from "../../api/Api"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
-
+import Modal from "react-modal"
+const 모달스타일 = {
+    overlay: {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: "rgba(0, 0, 0, 0.4)",
+        zIndex: 1100,
+    },
+    content: {
+        display: "flex",
+        justifyContent: "center",
+        background: "#ffffff",
+        overflow: "auto",
+        maxWidth: "600px",
+        minWidth: "500px",
+        left: "50%",
+        top: "0%",
+        transform: "translate(-50%, 3%)",
+        WebkitOverflowScrolling: "touch",
+        borderRadius: "14px",
+        outline: "none",
+        zIndex: 1100,
+    },
+}
 
 const LectureInfo = () => {
     const selectId = useSelector((state) => state.selectId.value)
@@ -37,6 +64,7 @@ const LectureInfo = () => {
         setMenuCheck(index)
         setCheck(e.target.id)
     }
+    const [modalIsOpen, setModalIsOpen] = useState(false)
 
     console.log("여기", selectId)
     let setData
@@ -192,11 +220,21 @@ const LectureInfo = () => {
                 <Styled.Content>
                     <Styled.TitleWrapper id="top">
                         <Styled.TitleWrapper>{menuList}</Styled.TitleWrapper>
-                        <Styled.Writing src="img/btn_write.svg" />
+                        <Styled.Writing src="img/btn_write.svg" onClick={() => setModalIsOpen(true)} />
                     </Styled.TitleWrapper>
                     {checkList[menuCheck]}
                 </Styled.Content>
             </Styled.Wrapper>
+            {menuCheck===0 ? 
+                (<Modal
+                    isOpen={modalIsOpen}
+                    style={모달스타일}
+                    // 오버레이나 esc를 누르면 핸들러 동작
+                    ariaHideApp={false}
+                    onRequestClose={() => setModalIsOpen(false)}
+                ><WriteEvaluation selectId={selectId} lectureName={db.data.lectureName} professor={db.data.professor} setModalIsOpen={setModalIsOpen}/>
+                </Modal> ): <div></div>}
+
         </Styled.Container>
     )
 }

@@ -298,6 +298,42 @@ export const evaluateUpdateApi = (
     )
 }
 
+//강의평가작성 api
+export const evaluateWriteApi = (selectId, lectureName, professor, semester, satisfaction, learning, honey, team, difficulty, homework, content) => {
+    const url = `evaluate-posts/write/?lectureId=${selectId}`
+
+    const data = {
+        lectureName: lectureName,
+        semester: semester,
+        professor: professor,
+        satisfaction: satisfaction,
+        learning: learning,
+        honey: honey,
+        team: team,
+        difficulty: difficulty,
+        homework: homework,
+        content: content,
+    }
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            AccessToken: getCookie("AccessToken"),
+        },
+        data: data,
+        url,
+    }
+    axios(options).then(
+        (response) => {
+            alert("작성완료")
+            window.location.reload()
+        },
+        (error) => {
+            alert("error")
+        }
+    )
+}
+
 // 강의 평가 삭제 api
 export const deleteEvaluateApi = (id) => {
     const url = `/evaluate-posts/delete/?evaluateIdx=${id}`
