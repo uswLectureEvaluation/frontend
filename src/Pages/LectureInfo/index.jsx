@@ -7,6 +7,7 @@ import { searchApi, searchLectureApi } from "../../api/Api"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import Modal from "react-modal"
+import WriteExam from "../../components/WriteExam"
 const 모달스타일 = {
     overlay: {
         position: "fixed",
@@ -233,7 +234,15 @@ const LectureInfo = () => {
                     ariaHideApp={false}
                     onRequestClose={() => setModalIsOpen(false)}
                 ><WriteEvaluation selectId={selectId} lectureName={db.data.lectureName} professor={db.data.professor} setModalIsOpen={setModalIsOpen}/>
-                </Modal> ): <div></div>}
+                </Modal> ): <Modal
+                    isOpen={modalIsOpen}
+                    style={모달스타일}
+                    // 오버레이나 esc를 누르면 핸들러 동작
+                    ariaHideApp={false}
+                    onRequestClose={() => setModalIsOpen(false)}
+                >
+                    <WriteExam selectId={selectId} lectureName={db.data.lectureName} professor={db.data.professor} setModalIsOpen={setModalIsOpen} />
+                    </Modal>}
 
         </Styled.Container>
     )

@@ -356,6 +356,46 @@ export const deleteEvaluateApi = (id) => {
     )
 }
 
+//시험정보쓰기 api
+export const examWriteApi = (
+    selectId,
+    lectureName,
+    professor,
+    semester,
+    examInfo,
+    examDifficulty,
+    content
+) => {
+    const url = `/exam-posts/write/?lectureId=${selectId}`
+
+    const data = {
+        lectureName: lectureName,
+        professor: professor,
+        semester: semester,
+        examInfo: examInfo,
+        examDifficulty: examDifficulty,
+        content: content
+    }
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            AccessToken: getCookie("AccessToken"),
+        },
+        data: data,
+        url,
+    }
+    axios(options).then(
+        (response) => {
+            alert("작성완료")
+            window.location.reload()
+        },
+        (error) => {
+            alert("error")
+        }
+    )
+}
+
 //시험정보수정 api 미완
 export const examUpdateApi = (
     setData,
