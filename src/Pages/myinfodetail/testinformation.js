@@ -38,7 +38,7 @@ const Testinformation = () => {
     })
     console.log(db)
     useEffect(() => {
-        examPostApi(setData)
+        examPostApi().then((data)=>(setData(data)))
     }, [])
     return (
         <Container component="main" maxWidth="md">

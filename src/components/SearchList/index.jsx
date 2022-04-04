@@ -13,7 +13,7 @@ const SearchList = (props) => {
 
     useEffect(() => {
         console.log(props)
-        searchApi(setData, props.props.search_value, props.props.search_option)
+        searchApi(props.props.search_value, props.props.search_option).then((data)=>(setData(data)))
     }, [props])
 
     console.log(db)

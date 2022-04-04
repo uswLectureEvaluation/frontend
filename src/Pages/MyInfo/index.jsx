@@ -19,7 +19,7 @@ const MyInfo = () => {
     })
 
     useEffect(() => {
-        myInfoApi(setData)
+        myInfoApi().then((data)=>setData(data))
     }, [])
     console.log(db)
     return (

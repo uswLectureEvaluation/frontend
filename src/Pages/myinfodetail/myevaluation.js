@@ -154,7 +154,7 @@ const Myevaluation = () => {
 
     console.log(db)
     useEffect(() => {
-        evaluatePostApi(setData)
+        evaluatePostApi().then((data)=>(setData(data)))
     }, [])
 
     return (

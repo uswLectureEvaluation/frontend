@@ -1,5 +1,6 @@
 import axios from "axios"
 import { Cookies } from "react-cookie"
+import instance from "./ApiController"
 
 const cookies = new Cookies()
 
@@ -19,56 +20,26 @@ export const getCookie = (name) => {
 const PROXY_URL = window.location.hostname === "localhost" ? "" : "/proxy"
 
 export const mainApi = async (lecture) => {
-    const url = `${PROXY_URL}/lecture/findAllList/?option=${lecture}&page=1`
-
-    const options = {
-        method: "GET",
-        url,
-    }
-
-    try {
-        const response = await axios(options)
-        return response.data
-    } catch (e) {
-        throw e
-    }
+    return instance({
+        url: `/lecture/findAllList/?option=${lecture}&page=1`,
+        method: "GET"
+    })
 }
+
 //공지사항api 확인 필요
 export const noticeApi = async () => {
-    const url = `${PROXY_URL}/notice/findAllList`
-
-    const options = {
-        method: "GET",
-        url,
-    }
-
-    try {
-        const response = await axios(options)
-        return response.data
-    } catch (e) {
-        throw e
-    }
+    return instance({
+        url: `/notice/findAllList`,
+        method: "GET"
+    })
 }
 
 //공지사항 자세히보기 api
 export const noticeDetailApi = async (notice) => {
-    const url = `${PROXY_URL}/notice/?noticeId=${notice}`
-
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            AccessToken: getCookie("AccessToken")
-        },
-        url,
-    }
-
-    try {
-        const response = await axios(options)
-        return response.data
-    } catch (e) {
-        throw e
-    }
+    return instance({
+        url: `/notice/?noticeId=${notice}`,
+        method: "GET"
+    })
 }
 
 //회원가입 api 0
@@ -258,78 +229,27 @@ export const findPwApi = (setData, id, email) => {
 }
 
 // 내정보Api
-export const myInfoApi = (setData) => {
-    const url = `${PROXY_URL}/user/my-page`
-
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            AccessToken: getCookie("AccessToken")
-        },
-        url,
-    }
-
-    axios(options).then(
-        (r) => {
-            console.log("connect")
-            console.log(r.data)
-            setData(r.data)
-        },
-        (error) => {
-            console.log(error.response)
-        }
-    )
+export const myInfoApi = () => {
+    return instance({
+        url: `/user/my-page`,
+        method: "GET"
+    })
 }
 
 // 내가쓴글-강의평가Api
-export const evaluatePostApi = (setData) => {
-    const url = `${PROXY_URL}/evaluate-posts/findByUserIdx`
-
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            AccessToken: getCookie("AccessToken"),
-        },
-        url,
-    }
-
-    axios(options).then(
-        (r) => {
-            console.log("connect")
-            console.log(r.data)
-            setData(r.data)
-        },
-        (error) => {
-            console.log(error.response)
-        }
-    )
+export const evaluatePostApi = () => {
+    return instance({
+        url: `/evaluate-posts/findByUserIdx`,
+        method: "GET"
+    })
 }
 
 // 내가쓴글-시험정보Api
-export const examPostApi = (setData) => {
-    const url = `${PROXY_URL}/exam-posts/findByUserIdx`
-
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            AccessToken: getCookie("AccessToken"),
-        },
-        url,
-    }
-
-    axios(options).then(
-        (r) => {
-            console.log("connect")
-            console.log(r.data)
-            setData(r.data)
-        },
-        (error) => {
-            console.log(error.response)
-        }
-    )
+export const examPostApi = () => {
+    return instance({
+        url: `/exam-posts/findByUserIdx`,
+        method: "GET"
+    })
 }
 
 //강의평가수정 api 미완
@@ -440,51 +360,17 @@ export const examUpdateApi = (
 
 // 통합검색결과Api
 //꿀강순[modifiedDate, lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg]
-export const searchApi = (setData, search, lecutre) => {
-    const url = `${PROXY_URL}/lecture/findBySearchValue/?searchValue=${search}&option=${lecutre}&?page=1`
-
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        url,
-    }
-
-    axios(options).then(
-        (r) => {
-            console.log("connect")
-            console.log(url)
-            console.log(r.data, "검색")
-            setData(r.data)
-        },
-        (error) => {
-            console.log(error.response)
-        }
-    )
+export const searchApi = (search, lecutre) => {
+    return instance({
+        url: `/lecture/findBySearchValue/?searchValue=${search}&option=${lecutre}&?page=1`,
+        method: "GET"
+    })
 }
 
 // 검색 결과 자세히보기 (Lecture)
-export const searchLectureApi = (setData, selectId) => {
-    const url = `${PROXY_URL}/lecture/?lectureId=${selectId}`
-
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            AccessToken: getCookie("AccessToken")
-        },
-        url,
-    }
-
-    axios(options).then(
-        (r) => {
-            console.log("connect")
-            console.log(r.data)
-            setData(r.data)
-        },
-        (error) => {
-            console.log(error.response)
-        }
-    )
+export const searchLectureApi = (selectId) => {
+    return instance({
+        url: `/lecture/?lectureId=${selectId}`,
+        method: "GET"
+    })
 }

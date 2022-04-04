@@ -56,7 +56,7 @@ const LectureInfo = () => {
     })
 
     useEffect(() => {
-        searchLectureApi(lectureData, selectId)
+        searchLectureApi(selectId).then((data)=>(lectureData(data)))
     }, [selectId])
 
     const teamSet = db.data.lectureTeamAvg
