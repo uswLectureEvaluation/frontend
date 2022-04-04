@@ -45,7 +45,7 @@ const LectureInfo = () => {
     ]
     const checkList = {
         0: <SearchEvaluationList selectId={selectId} />,
-        1: <TestInfo />,
+        1: <TestInfo selectId={selectId}/>,
     }
     const menuList = menu.map((i, index) => (
         <Styled.MenuTitle

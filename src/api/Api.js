@@ -394,6 +394,28 @@ export const examUpdateApi = (
     )
 }
 
+//시험정보 구매
+export const buyTestInfo = (selectId) => {
+    const url = `/exam-posts/buyExamInfo/?lectureId=${selectId}`
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            AccessToken: getCookie("AccessToken"),
+        },
+        url,
+    }
+    axios(options).then(
+        (response) => {
+            alert("구매완료")
+            window.location.reload()
+        },
+        (error) => {
+            alert("포인트부족")
+            window.location.reload()
+        }
+    )}
+
 // 통합검색결과Api
 //꿀강순[modifiedDate, lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg]
 export const searchApi = (search, lecutre) => {
@@ -415,6 +437,14 @@ export const searchLectureApi = (selectId) => {
 export const searchEvaluationApi = (selectId) => {
     return instance({
         url: `/evaluate-posts/findByLectureId/?lectureId=${selectId}&page=1`,
+        method: "GET"
+    })
+}
+
+// 검색 결과 자세히보기 (Exam)
+export const searchExamApi = (selectId) => {
+    return instance({
+        url: `/exam-posts/findByLectureId/?lectureId=${selectId}&page=1`,
         method: "GET"
     })
 }
