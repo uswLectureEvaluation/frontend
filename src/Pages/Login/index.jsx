@@ -32,6 +32,14 @@ const Login = () => {
     const onLogin = () => {
         loginApi(setData, setLoading, username, password)
     }
+
+
+    const onKeypress = (e) => {
+        if (e.key === "Enter") {
+            loginApi(setData, setLoading, username, password)
+        }
+    }
+
     useEffect(() => {
         console.log(db)
         if (loading === true) {
@@ -68,6 +76,8 @@ const Login = () => {
                     id="password"
                     autoComplete="current-password"
                     onChange={onChangePW}
+                    onKeyPress={onKeypress}
+
                 />
                 <FormControlLabel
                     control={
