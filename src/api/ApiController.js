@@ -12,13 +12,15 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
     function (config) {
-    	//request 정상
+        //request 정상
         config.headers["Content-Type"] = "application/json";
         config.headers["AccessToken"] = cookies.get("AccessToken")
+        console.log(config)
+
         return config;
     },
     function (error) {
-    	//request 에러
+        //request 에러
         return Promise.reject(error);
     }
 );
@@ -30,7 +32,9 @@ instance.interceptors.response.use(
         return response.data;
     },
     function (error) {
-    	//response 에러
+        //response 에러
+        console.log(error, 'dddd')
+        
         return Promise.reject(error);
     }
 );

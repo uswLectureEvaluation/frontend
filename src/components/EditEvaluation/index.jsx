@@ -5,24 +5,15 @@ import { evaluateUpdateApi } from "../../api/Api"
 import * as Styled from "./styled"
 
 import { TextField } from "@material-ui/core"
+import RangeInput from "../RangeInput"
 
 const useSlider = (min, max, defaultState, id) => {
-    const [state, setSlide] = useState(defaultState)
-    const handleChange = (e) => {
-        setSlide(e.target.value)
-    }
+
+    const [state, setSlide] = useState(3)
 
     const Slider = () => (
-        <input
-            type="range"
-            id={id}
-            min={min}
-            max={max}
-            step={0.5}
-            defaultValue={state}
-            onMouseUp={handleChange}
-            color={"#ffffff"}
-        />
+        <RangeInput onChange={setSlide} defaultValue={state} />
+
     )
     return [state, Slider, setSlide]
 }
@@ -99,15 +90,15 @@ const EditEvaluation = (props) => {
 
                 <Styled.Content>
                     <Styled.ContentTitle>꿀강지수</Styled.ContentTitle>
-                    <HoneySlider /> {honey}
+                    <HoneySlider /> <Styled.Score>{honey}</Styled.Score>
                 </Styled.Content>
                 <Styled.Content>
                     <Styled.ContentTitle>배움지수</Styled.ContentTitle>
-                    <LearingSlider /> {learning}
+                    <LearingSlider /> <Styled.Score>{learning}</Styled.Score>
                 </Styled.Content>
                 <Styled.Content id="group">
                     <Styled.ContentTitle>만족도</Styled.ContentTitle>
-                    <SatisfactionSlider /> {satisfaction}
+                    <SatisfactionSlider /> <Styled.Score>{satisfaction}</Styled.Score>
                 </Styled.Content>
 
                 <Styled.Content>

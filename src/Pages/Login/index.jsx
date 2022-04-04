@@ -44,7 +44,7 @@ const Login = () => {
         console.log(db)
         if (loading === true) {
             if (db != null) {
-                navigate("/")
+                navigate("/myinformation")
                 dispatch(loginState(true))
             }
         }

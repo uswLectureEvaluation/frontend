@@ -13,6 +13,17 @@ export const Title = styled.div`
     font-weight: bold;
 `
 
+export const Score = styled.span`
+    margin: 2px 0 1px 24px;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.11;
+    letter-spacing: 0.32px;
+    color: #346cfd;
+`
 export const TitleWrapper = styled.div`
     display: flex;
     justify-content: space-between;

@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux"
 
 const MainList = ({ lecture }) => {
     const [db, setData] = useState([])
+   
 
     useEffect(() => {
         mainApi(lecture).then((data) => setData(data))
@@ -35,7 +36,10 @@ const MainList = ({ lecture }) => {
     )
 }
 
+
+
 export const Detail = (props) => {
+
     return (
         <Styled.StarFlex id="top">
             <Styled.StarFlex>
