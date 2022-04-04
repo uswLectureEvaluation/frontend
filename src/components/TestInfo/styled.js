@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
 `
 
 export const Color = styled.span`
-    color: #3dd3c4;
+    color: #346cfd;
 `
 
 export const Content = styled.div`

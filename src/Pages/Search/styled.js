@@ -47,11 +47,11 @@ export const SearchResultMenu = styled.div`
     cursor: pointer;
 
     &:hover {
-        background-color: #3dd3c4;
+        background-color: #346cfd;
         color: white;
     }
     &#${({ check }) => check} {
-        background-color: #3dd3c4;
+        background-color: #346cfd;
         color: white;
     }
 
@@ -93,7 +93,7 @@ export const SearchInput = styled.input`
     padding-left: 20px;
     height: 50px;
     border-radius: 20px;
-    border: 1.5px solid #3dd3c4;
+    border: 1.5px solid #346cfd;
     margin: 1.5rem 0;
     background-image: url("img/icon_search_24.svg");
     background-repeat: no-repeat;

@@ -118,7 +118,7 @@ export const Subject = (props) => {
                 {/* <Styled.MarginRight>평균지수</Styled.MarginRight> */}
                 <StarRatings
                     rating={props.star}
-                    starRatedColor="#3DD3C4"
+                    starRatedColor="#346cfd"
                     numberOfStars={5}
                     name="rating"
                     starDimension="24px"

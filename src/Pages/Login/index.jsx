@@ -33,7 +33,6 @@ const Login = () => {
         loginApi(setData, setLoading, username, password)
     }
 
-
     const onKeypress = (e) => {
         if (e.key === "Enter") {
             loginApi(setData, setLoading, username, password)
@@ -44,7 +43,7 @@ const Login = () => {
         console.log(db)
         if (loading === true) {
             if (db != null) {
-                navigate("/")
+                navigate("/myinformation")
                 dispatch(loginState(true))
             }
         }
@@ -77,20 +76,19 @@ const Login = () => {
                     autoComplete="current-password"
                     onChange={onChangePW}
                     onKeyPress={onKeypress}
-
                 />
                 <FormControlLabel
                     control={
                         <Checkbox
                             checked={checked}
                             onChange={onChangeCheckBox}
-                            color="#3DD3C4"
+                            color="#346cfd"
                         />
                     }
                     label="로그인 유지"
                 />
                 <Styled.Button
-                    background="#3DD3C4"
+                    background="#346cfd"
                     type="submit"
                     fullWidth
                     variant="contained"

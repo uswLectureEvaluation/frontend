@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from "styled-components"
 const GlobalStyle = createGlobalStyle`
 
 :root {
-    --main-color: '#3dd3c4',
+    --main-color: '#346cfd',
     --border-color: #e0e0e0;
     --font-color: #222222;
     --sub-font-color: #515151;
@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
 
 export const Color = (props) => {
     if (props === "main") {
-        return "#3dd3c4"
+        return "#346cfd"
     } else if (props === "border") {
         return "#e0e0e0"
     } else if (props === "font") {

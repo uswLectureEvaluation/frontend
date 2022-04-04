@@ -38,7 +38,7 @@ export const Option = styled.div`
 `
 
 export const Rate = styled.span`
-    color: #3dd3c4;
+    color: #346cfd;
     font-weight: bold;
     font-size: 1.8rem;
     padding-left: 10px;
@@ -63,7 +63,7 @@ export const DataColor = styled.div`
     padding-left: 0.7rem;
     font-weight: bold;
     &#cyan {
-        color: #3dd3c4;
+        color: #346cfd;
     }
     &#purple {
         color: #6200ee;

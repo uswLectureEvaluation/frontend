@@ -67,7 +67,7 @@ export const DetailModal = (props) => {
                     <Styled.PaddingRight />
                     <StarRatings
                         rating={props.satisfaction}
-                        starRatedColor="#3DD3C4"
+                        starRatedColor="#346cfd"
                         numberOfStars={5}
                         name="rating"
                         starDimension="18px"
@@ -81,7 +81,7 @@ export const DetailModal = (props) => {
                     <Styled.PaddingRight />
                     <StarRatings
                         rating={props.honey}
-                        starRatedColor="#3DD3C4"
+                        starRatedColor="#346cfd"
                         numberOfStars={5}
                         name="rating"
                         starDimension="18px"
@@ -95,7 +95,7 @@ export const DetailModal = (props) => {
                     <Styled.PaddingRight />
                     <StarRatings
                         rating={props.learning}
-                        starRatedColor="#3DD3C4"
+                        starRatedColor="#346cfd"
                         numberOfStars={5}
                         name="rating"
                         starDimension="18px"
@@ -154,7 +154,7 @@ const Myevaluation = () => {
 
     console.log(db)
     useEffect(() => {
-        evaluatePostApi().then((data)=>(setData(data)))
+        evaluatePostApi().then((data) => setData(data))
     }, [])
 
     return (
@@ -239,7 +239,7 @@ export const Subject = (props) => {
                     <Styled.PaddingRight>평균지수</Styled.PaddingRight>
                     <StarRatings
                         rating={props.totalAvg}
-                        starRatedColor="#3DD3C4"
+                        starRatedColor="#346cfd"
                         numberOfStars={5}
                         name="rating"
                         starDimension="24px"

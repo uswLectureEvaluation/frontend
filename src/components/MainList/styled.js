@@ -98,7 +98,7 @@ export const Option = styled.div`
 `
 
 export const Rate = styled.span`
-    color: #3dd3c4;
+    color: #346cfd;
     font-weight: bold;
     font-size: 1.8rem;
     padding-left: 10px;

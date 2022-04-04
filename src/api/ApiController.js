@@ -7,32 +7,36 @@ const PROXY_URL = window.location.hostname === "localhost" ? "" : "/proxy"
 
 const instance = axios.create({
     baseURL: `${PROXY_URL}`,
-    timeout : 5000,
+    timeout: 5000,
 })
 
 instance.interceptors.request.use(
     function (config) {
-    	//request 정상
-        config.headers["Content-Type"] = "application/json";
+        //request 정상
+        config.headers["Content-Type"] = "application/json"
         config.headers["AccessToken"] = cookies.get("AccessToken")
-        return config;
+        console.log(config)
+
+        return config
     },
     function (error) {
-    	//request 에러
-        return Promise.reject(error);
+        //request 에러
+        return Promise.reject(error)
     }
-);
+)
 
 instance.interceptors.response.use(
     function (response) {
-    	//response 정상
+        //response 정상
         console.log(response)
-        return response.data;
+        return response.data
     },
     function (error) {
-    	//response 에러
-        return Promise.reject(error);
-    }
-);
+        //response 에러
+        console.log(error, "dddd")
 
-export default instance;
+        return Promise.reject(error)
+    }
+)
+
+export default instance
