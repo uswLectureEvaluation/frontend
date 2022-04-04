@@ -22,7 +22,7 @@ const PROXY_URL = window.location.hostname === "localhost" ? "" : "/proxy"
 export const mainApi = async (lecture) => {
     return instance({
         url: `/lecture/findAllList/?option=${lecture}&page=1`,
-        method: "GET"
+        method: "GET",
     })
 }
 
@@ -30,7 +30,7 @@ export const mainApi = async (lecture) => {
 export const noticeApi = async () => {
     return instance({
         url: `/notice/findAllList`,
-        method: "GET"
+        method: "GET",
     })
 }
 
@@ -38,7 +38,7 @@ export const noticeApi = async () => {
 export const noticeDetailApi = async (notice) => {
     return instance({
         url: `/notice/?noticeId=${notice}`,
-        method: "GET"
+        method: "GET",
     })
 }
 
@@ -232,7 +232,7 @@ export const findPwApi = (setData, id, email) => {
 export const myInfoApi = () => {
     return instance({
         url: `/user/my-page`,
-        method: "GET"
+        method: "GET",
     })
 }
 
@@ -240,7 +240,7 @@ export const myInfoApi = () => {
 export const evaluatePostApi = () => {
     return instance({
         url: `/evaluate-posts/findByUserIdx`,
-        method: "GET"
+        method: "GET",
     })
 }
 
@@ -248,7 +248,7 @@ export const evaluatePostApi = () => {
 export const examPostApi = () => {
     return instance({
         url: `/exam-posts/findByUserIdx`,
-        method: "GET"
+        method: "GET",
     })
 }
 
@@ -363,7 +363,7 @@ export const examUpdateApi = (
 export const searchApi = (search, lecutre) => {
     return instance({
         url: `/lecture/findBySearchValue/?searchValue=${search}&option=${lecutre}&?page=1`,
-        method: "GET"
+        method: "GET",
     })
 }
 
@@ -371,6 +371,6 @@ export const searchApi = (search, lecutre) => {
 export const searchLectureApi = (selectId) => {
     return instance({
         url: `/lecture/?lectureId=${selectId}`,
-        method: "GET"
+        method: "GET",
     })
 }
