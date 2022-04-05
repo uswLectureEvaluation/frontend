@@ -24,14 +24,15 @@ const PwSearch = () => {
   }, [db.data]);
   return (
     <Styled.Container>
-      <Styled.Img src="img/signup.svg" width={450} />
+      <Styled.Img src="img/signup.png" width={450} />
       <Styled.LoginWrapper>
         <Styled.Title>비밀번호 찾기</Styled.Title>
+        <Styled.Sub>아이디에 해당하는 학교 이메일로 임시 비밀번호를 전송합니다</Styled.Sub>
         <Styled.CssTextField
           margin="normal"
           required
           id="id"
-          label="아이디 입력"
+          label="아이디"
           name="id"
           autoComplete="id"
           autoFocus
@@ -41,7 +42,7 @@ const PwSearch = () => {
           margin="normal"
           required
           id="email"
-          label="이메일 입력"
+          label="학교 이메일"
           name="email"
           autoComplete="email"
           onChange={onChangeEmail}
@@ -53,9 +54,8 @@ const PwSearch = () => {
           variant="contained"
           onClick={handleSubmit}
         >
-          비밀번호 찾기
+          전송
         </Styled.Button>
-        <Styled.Info>*아이디에 해당하는 학교메일로 임시 비밀번호를 전송합니다.</Styled.Info>
       </Styled.LoginWrapper>
     </Styled.Container>
   );

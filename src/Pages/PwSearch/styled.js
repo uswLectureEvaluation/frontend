@@ -16,7 +16,7 @@ export const Container = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
-  padding-top: 4rem;
+  padding: 8rem 0;
   justify-content: space-between;
 `;
 
@@ -26,34 +26,33 @@ export const Title = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-family: 'Pretendard-SemiBold';
   padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.6rem;
 `;
 
 export const Button = styled.button`
-  margin: 10px 0;
-  width: 100%;
-  padding: 0.5rem 1rem;
+  margin: 0;
+  padding: 0 1rem;
+  padding-top: 1rem;
+  margin: 8px 0;
   border: none;
+  padding-bottom: 1rem;
   background: ${(props) => props.background};
   color: white;
-  text-align: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   border-radius: 12px;
+  font-family: 'Pretendard-Regular';
   cursor: pointer;
   user-select: none;
+  transition: 0.3s all;
 `;
 
 export const LoginWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 40%;
-`;
-
-export const Info = styled.div`
-  font-size: 0.8rem;
 `;
 
 export const CssTextField = styles.styled(TextField)({
@@ -67,3 +66,8 @@ export const CssTextField = styles.styled(TextField)({
     borderBottomColor: '#346cfd',
   },
 });
+
+export const Sub = styled.div`
+  font-size: 0.8rem;
+  font-family: 'Pretendard-SemiBold';
+`;
