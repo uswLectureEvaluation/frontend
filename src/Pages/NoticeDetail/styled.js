@@ -28,6 +28,10 @@ export const Content = styled.div`
   margin-top: 2vh;
 `;
 
+export const Img = styled.img`
+  margin-right: 6px;
+`;
+
 export const Title = styled.div`
   display: flex;
   font-size: 1.7rem;
@@ -38,4 +42,19 @@ export const Date = styled.div`
   font-size: 0.9rem;
   padding-bottom: 3rem;
   color: #a3a3a3;
+`;
+
+export const BackWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+`;
+
+export const Back = styled.div`
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
 `;
