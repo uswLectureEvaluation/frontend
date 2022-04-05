@@ -6,7 +6,7 @@ export const Title = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-family: 'Pretendard-SemiBold';
   padding-top: 1rem;
   padding-bottom: 1rem;
 `;
@@ -43,7 +43,7 @@ export const EmailWrapper = styled.div`
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
-  font-weight: bold;
+  font-family: 'Pretendard-SemiBold';
 `;
 
 export const AgreeButton = styled.button`
@@ -87,7 +87,7 @@ export const Container = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
-  padding-top: 4rem;
+  padding: 8rem 0;
   justify-content: space-between;
 `;
 
@@ -102,15 +102,16 @@ export const Img = styled.img``;
 export const Button = styled.button`
   margin: 0;
   padding: 0 1rem;
-  padding-top: 0.6rem;
+  padding-top: 1rem;
   margin: 8px 0;
   border: none;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
   background: ${(props) => props.background};
   color: white;
   font-size: 1rem;
   font-weight: bold;
   border-radius: 12px;
+  font-family: 'Pretendard-Regular';
   cursor: pointer;
   user-select: none;
   transition: 0.3s all;
@@ -120,8 +121,19 @@ export const Button = styled.button`
   }
 
   &#check {
-    position: relative;
-    left: 10px;
+    position: absolute;
+    right: 20%;
+    margin-top: 28px;
+    font-weight: 100;
+    font-size: 0.9rem;
+    border-radius: 14px;
+    padding: 0.2rem 0.8rem;
+
+    :disabled {
+      background: white;
+      color: rgba(170, 170, 170);
+      border: 1px solid rgba(170, 170, 170);
+    }
   }
 `;
 export const CssTextField = styles.styled(TextField)({

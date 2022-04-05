@@ -133,7 +133,7 @@ const SignUp = () => {
 
   return (
     <Styled.Container>
-      <Styled.Img src="img/signup.svg" width={450} />
+      <Styled.Img src="img/signup.png" width={450} />
       <Styled.SignUpWrapper>
         <Styled.Title>회원가입</Styled.Title>
         <Styled.InputWrapper id="top">
@@ -142,14 +142,14 @@ const SignUp = () => {
             required
             fullWidth
             id="username"
-            label="아이디 입력"
+            label="아이디"
             name="username"
             autoComplete="username"
             autoFocus
             onChange={onChangeName}
           />
           <Styled.Button disabled={!isName} id="check" onClick={onCheck} background="#346cfd">
-            Check
+            중복확인
           </Styled.Button>
         </Styled.InputWrapper>
         {name.length > 0 && (
@@ -163,7 +163,7 @@ const SignUp = () => {
           required
           fullWidth
           name="password"
-          label="비밀번호 입력"
+          label="비밀번호"
           type="password"
           id="password"
           autoComplete="current-password"
@@ -196,14 +196,14 @@ const SignUp = () => {
             required
             fullWidth
             name="email"
-            label="이메일 입력"
+            label="학교 이메일(@suwon.ac.kr)"
             type="email"
             id="email"
             autoComplete="current-email"
             onChange={onChangeEmail}
           />
           <Styled.Button disabled={!isEmail} id="check" onClick={onEmail} background="#346cfd">
-            Check
+            중복확인
           </Styled.Button>
         </Styled.InputWrapper>
         {email.length > 0 && (
@@ -233,7 +233,7 @@ const SignUp = () => {
               onChange={handleCheck}
               checked={checkList.includes('terms') ? true : false}
             />
-            [필수] 이용약관 동의
+            이용약관 동의(필수)
           </Styled.InputWrapper>
           <Styled.AgreeButton className="showMore">상세보기</Styled.AgreeButton>
         </Styled.Label>
@@ -245,7 +245,7 @@ const SignUp = () => {
               onChange={handleCheck}
               checked={checkList.includes('privacy') ? true : false}
             />
-            [필수] 개인정보처리방침 동의
+            개인정보처리방침 동의(필수)
           </Styled.InputWrapper>
           <Styled.AgreeButton className="showMore">상세보기</Styled.AgreeButton>
         </Styled.Label>
