@@ -7,10 +7,10 @@ import MainList from '../../components/MainList';
 
 const Search = () => {
   const detail = [
-    { name: '날짜', option: 'modifiedDate' },
-    { name: '꿀강', option: 'lectureHoneyAvg' },
     { name: '만족도', option: 'lectureSatisfactionAvg' },
+    { name: '꿀강', option: 'lectureHoneyAvg' },
     { name: '배움', option: 'lectureLearningAvg' },
+    { name: '날짜', option: 'modifiedDate' },
     { name: '종합', option: 'lectureTotalAvg' },
   ];
 
@@ -47,7 +47,7 @@ const Search = () => {
   return (
     <Styled.Container>
       <Styled.SearchWrapper>
-        <Styled.SearchTitle>검색 결과 (N)</Styled.SearchTitle>
+        <Styled.SearchTitle>강의평가 검색</Styled.SearchTitle>
         <Styled.SearchInput
           onChange={onChange}
           placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
@@ -56,20 +56,25 @@ const Search = () => {
       </Styled.SearchWrapper>
 
       <Styled.SearchResultWrapper>
-        <Styled.SearchResultMenu id="sort">
-          정렬
-          <Styled.Img loading="lazy" width="22" src="img/icon_sort_solid_mint_24.svg" />
-        </Styled.SearchResultMenu>
-        {detail.map((index) => (
-          <Styled.SearchResultMenu
-            key={index.option}
-            id={index.option}
-            onClick={onClick}
-            check={check}
-          >
-            {index.name}
+        <Styled.FlexWrapper>
+          <Styled.SearchResultMenu id="sort">
+            정렬
+            <Styled.Img loading="lazy" width="22" src="img/icon_sort_solid_color_24.svg" />
           </Styled.SearchResultMenu>
-        ))}
+          {detail.map((index) => (
+            <Styled.SearchResultMenu
+              key={index.option}
+              id={index.option}
+              onClick={onClick}
+              check={check}
+            >
+              {index.name}
+            </Styled.SearchResultMenu>
+          ))}
+        </Styled.FlexWrapper>
+        <Styled.FlexWrapper>
+          총 <Styled.Color> 777</Styled.Color>건
+        </Styled.FlexWrapper>
       </Styled.SearchResultWrapper>
 
       <Styled.HeadSelection>
