@@ -2,35 +2,15 @@ import { Button } from '@material-ui/core';
 import styled from 'styled-components';
 import { Color } from '../../globalStyles';
 
-export const BoxString1 = styled.span`
-  border-radius: 10px;
-  background-color: rgb(239, 239, 239);
-  padding: 5px;
-  font-size: 12px;
-`;
+export const Minute = styled.span`
+  font-size: 0.7rem;
+  color: #515151;
+  text-decoration: underline;
+  padding-left: 4px;
 
-export const BoxString2 = styled.span`
-  font-weight: bold;
-  font-size: 1.3rem;
-  margin-right: 0.7rem;
-`;
-
-export const BoxString3 = styled.span`
-  font-size: 1.3rem;
-  font-weight: bold;
-`;
-
-export const BoxString5 = styled(Button)`
-  && {
-    font-weight: bold;
-    font-size: 12px;
-    color: rgb(190, 190, 190);
-    text-decoration: underline;
+  &:hover {
+    cursor: pointer;
   }
-`;
-
-export const BoxString6 = styled.div`
-  font-size: 12px;
 `;
 
 export const BoxButton1 = styled(Button)`
@@ -57,16 +37,6 @@ export const BoxButton2 = styled(Button)`
   }
 `;
 
-export const ModalString1 = styled.div`
-  font-weight: bold;
-  font-size: 1rem;
-`;
-export const ModalString2 = styled.span`
-  font-weight: bold;
-  font-size: 1rem;
-  padding-right: 0.5rem;
-`;
-
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -75,8 +45,7 @@ export const TitleWrapper = styled.div`
 
 export const Title = styled.div`
   display: flex;
-  font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-right: 0.7rem;
 `;
 
@@ -93,16 +62,17 @@ export const Option = styled.div`
   background-color: rgb(239, 239, 239);
   padding: 5px 10px;
   font-size: 0.3rem;
-  font-weight: bold;
-  color: gray;
+`;
+
+export const RateWrapper = styled.span`
+  display: flex;
+  align-items: center;
 `;
 
 export const Rate = styled.span`
   color: #346cfd;
-  font-weight: bold;
-  font-size: 1.8rem;
-  padding-left: 10px;
-  vertical-align: bottom;
+  font-size: 1.2rem;
+  padding-left: 4px;
 `;
 
 export const LectureWrapper = styled.div`

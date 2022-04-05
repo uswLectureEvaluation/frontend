@@ -64,13 +64,14 @@ const Main = () => {
             수위키,
             <br />
             수원대 강의평가의 모든 것
+            <Styled.BannerSub>수원대 강의평가의 모든 것 수위키</Styled.BannerSub>
           </div>
           <Styled.Img src="img/banner.svg" />
         </Styled.BannerWrapper>
       </Styled.Banner>
       <Styled.Container>
         <Styled.SearchWrapper>
-          <Styled.SearchTitle>강의 평가 검색</Styled.SearchTitle>
+          <Styled.SearchTitle>강의평가 검색</Styled.SearchTitle>
           <Styled.SearchInput
             onChange={onChange}
             placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
@@ -104,7 +105,7 @@ const Main = () => {
             })
           }
         >
-          더 보러 가기
+          더 보러 가기 →
         </Styled.Button>
       </Styled.Container>
     </>

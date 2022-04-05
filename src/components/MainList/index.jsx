@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { BoxString5 } from './styled';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
 import { mainApi } from '../../api/Api';
@@ -116,24 +115,26 @@ export const Subject = (props) => {
         </Styled.TitleWrapper>
         <Styled.Professor>{props.professor}</Styled.Professor>
         {/* <Styled.MarginRight>평균지수</Styled.MarginRight> */}
-        <StarRatings
-          rating={props.star}
-          starRatedColor="#346cfd"
-          numberOfStars={5}
-          name="rating"
-          starDimension="24px"
-          starSpacing="0px"
-          svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
-          svgIconViewBox="0 0 24 24"
-        />
-        <Styled.Rate>{props.star.toFixed(1)}</Styled.Rate>
-        <BoxString5
-          onClick={() => {
-            setModal(!modal);
-          }}
-        >
-          {modal === true ? '간략히' : '자세히'}
-        </BoxString5>
+        <Styled.RateWrapper>
+          <StarRatings
+            rating={props.star}
+            starRatedColor="#346cfd"
+            numberOfStars={5}
+            name="rating"
+            starDimension="20px"
+            starSpacing="0px"
+            svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
+            svgIconViewBox="0 0 24 24"
+          />
+          <Styled.Rate>{props.star.toFixed(1)}</Styled.Rate>
+          <Styled.Minute
+            onClick={() => {
+              setModal(!modal);
+            }}
+          >
+            {modal === true ? '간략히' : '자세히'}
+          </Styled.Minute>
+        </Styled.RateWrapper>
       </Styled.MarginTop>
       {modal === true ? (
         <Detail

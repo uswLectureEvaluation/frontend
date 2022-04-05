@@ -28,10 +28,15 @@ export const BannerWrapper = styled.div`
   height: 40vh;
   display: flex;
   align-items: center;
-  font-weight: bold;
   color: #000000;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   justify-content: space-between;
+`;
+
+export const BannerSub = styled.div`
+  font-size: 1rem;
+  margin-top: 1vh;
+  font-family: 'Pretendard-Light';
 `;
 
 export const Container = styled.div`
@@ -58,7 +63,6 @@ export const SearchWrapper = styled.div`
 export const SearchTitle = styled.div`
   display: flex;
   font-size: 1.5rem;
-  font-weight: bold;
   padding-top: 4rem;
   width: 100%;
 `;
@@ -71,7 +75,7 @@ export const SearchInput = styled.input`
   margin: 1.5rem 0;
   background-image: url('img/icon_search_24.svg');
   background-repeat: no-repeat;
-  background-position: 98%;
+  background-position: 99%;
 
   &:focus {
     outline: none;
@@ -125,16 +129,16 @@ export const Button = styled.button`
   margin: 10px 0;
   margin-bottom: 10vh;
   width: 40%;
-  padding: 0.5rem 1rem;
+  padding: 0.8rem 1rem;
   border: none;
   background: ${(props) => props.background};
   color: white;
   text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.1rem;
   border-radius: 12px;
   cursor: pointer;
   user-select: none;
+  font-family: 'Pretendard-Medium';
 `;
 
 const blue = {
