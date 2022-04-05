@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Title = styled.div`
   display: flex;
   font-size: 1rem;
-  font-weight: bold;
   margin-right: 0.7rem;
 `;
 
@@ -11,7 +10,8 @@ export const Option = styled.div`
   border-radius: 10px;
   padding: 0.5rem 0;
   font-size: 0.8rem;
-  color: gray;
+  color: #a3a3a3;
+  font-family: 'Pretendard-Light';
 `;
 
 export const NoticeWrap = styled.div`
