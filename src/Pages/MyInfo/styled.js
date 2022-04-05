@@ -53,6 +53,11 @@ export const OptionTitle = styled.div`
   &#my {
     color: #222222;
   }
+
+  &#text {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 `;
 
 export const OptionPoint = styled.div`
@@ -79,6 +84,7 @@ export const FlexContainer = styled.div`
   }
   &#last {
     color: #222222;
+    align-items: center;
   }
 `;
 
@@ -107,9 +113,9 @@ export const InfoWrapper = styled.div`
 export const InfoTitle = styled.div`
   display: flex;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-family: 'Pretendard-SemiBold';
   padding-top: 4rem;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 `;
 
 export const Color = styled.span`

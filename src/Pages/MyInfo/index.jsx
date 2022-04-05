@@ -79,7 +79,16 @@ const MyInfo = () => {
       <Styled.Wrapper>
         <Styled.Content>
           <Styled.Title>포인트 제도 안내</Styled.Title>
-          <div style={{ height: '20vh' }}></div>
+          <div style={{ height: '20vh' }}>
+            <Styled.OptionTitle id="text">
+              - 포인트는 강의평가 서비스 내에서만 이용되는 제도입니다.
+              <br />- 다른 계정으로 학교 인증 시 해당 계정으로 포인트가 합산 되며, 기존 계정의
+              포인트는 초기화 됩니다.
+              <br />- 포인트 획득을 위해 허위/중복/성의없는 정보를 작성할 경우, 서비스 이용이 영구
+              제한될 수 있습니다.
+              <br />- 허위 신고를 남용하는 이용자 또한 제재가 가해질 수 있습니다.
+            </Styled.OptionTitle>
+          </div>
         </Styled.Content>
       </Styled.Wrapper>
 
