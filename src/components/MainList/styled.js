@@ -6,7 +6,7 @@ export const Minute = styled.span`
   font-size: 0.7rem;
   color: #515151;
   text-decoration: underline;
-  padding-left: 4px;
+  padding-left: 6px;
 
   &:hover {
     cursor: pointer;
@@ -67,6 +67,7 @@ export const Option = styled.div`
 export const RateWrapper = styled.span`
   display: flex;
   align-items: center;
+  margin-top: 14px;
 `;
 
 export const Rate = styled.span`
