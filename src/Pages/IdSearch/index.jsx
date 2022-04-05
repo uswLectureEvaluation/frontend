@@ -20,14 +20,15 @@ const IdSearch = () => {
   }, [db.data]);
   return (
     <Styled.Container>
-      <Styled.Img src="img/signup.svg" width={450} />
+      <Styled.Img src="img/signup.png" width={450} />
       <Styled.LoginWrapper>
         <Styled.Title>아이디 찾기</Styled.Title>
+        <Styled.Sub>학교 계정을 입력하세요</Styled.Sub>
         <Styled.CssTextField
           margin="normal"
           required
           id="outlined-basic"
-          label="이메일 입력"
+          label="학교 이메일 입력(@suwon.ac.kr)"
           name="email"
           autoComplete="email"
           autoFocus
@@ -40,7 +41,7 @@ const IdSearch = () => {
           variant="contained"
           onClick={emailSubmit}
         >
-          아이디 찾기
+          전송
         </Styled.Button>
       </Styled.LoginWrapper>
     </Styled.Container>
