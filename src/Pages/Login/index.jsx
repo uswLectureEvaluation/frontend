@@ -51,7 +51,7 @@ const Login = () => {
 
   return (
     <Styled.Container>
-      <Styled.Img src="img/signup.svg" width={450} />
+      <Styled.Img src="img/signup.png" width={450} />
       <Styled.LoginWrapper>
         <Styled.Title>로그인</Styled.Title>
         <Styled.CssTextField
@@ -59,7 +59,7 @@ const Login = () => {
           required
           fullWidth
           id="email"
-          label="아이디 입력"
+          label="아이디"
           name="email"
           autoComplete="email"
           autoFocus
@@ -70,17 +70,27 @@ const Login = () => {
           required
           fullWidth
           name="password"
-          label="비밀번호 입력"
+          label="비밀번호"
           type="password"
           id="password"
           autoComplete="current-password"
           onChange={onChangePW}
           onKeyPress={onKeypress}
         />
-        <FormControlLabel
-          control={<Checkbox checked={checked} onChange={onChangeCheckBox} color="#346cfd" />}
-          label="로그인 유지"
-        />
+        <Styled.SearchWrapper>
+          <FormControlLabel
+            control={<Checkbox checked={checked} onChange={onChangeCheckBox} color="#346cfd" />}
+            label="로그인 유지"
+          />
+          <div>
+            <Styled.SearchButton onClick={() => navigate('/idsearch')}>
+              아이디 찾기
+            </Styled.SearchButton>
+            <Styled.SearchButton onClick={() => navigate('/pwsearch')}>
+              비밀번호 찾기
+            </Styled.SearchButton>
+          </div>
+        </Styled.SearchWrapper>
         <Styled.Button
           background="#346cfd"
           type="submit"
@@ -90,14 +100,6 @@ const Login = () => {
         >
           로그인
         </Styled.Button>
-        <Styled.SearchWrapper>
-          <Styled.SearchButton onClick={() => navigate('/idsearch')}>
-            아이디 찾기
-          </Styled.SearchButton>
-          <Styled.SearchButton onClick={() => navigate('/pwsearch')}>
-            비밀번호 찾기
-          </Styled.SearchButton>
-        </Styled.SearchWrapper>
       </Styled.LoginWrapper>
     </Styled.Container>
   );
