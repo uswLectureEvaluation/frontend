@@ -5,14 +5,16 @@ export const Foot = styled.div`
   background-color: rgb(237, 237, 237);
   display: flex;
   margin-top: 30px;
+  height: 170px;
   padding: 3rem;
   justify-content: center;
   align-items: center;
 `;
 
 export const Use = styled.div`
+  font-family: 'Pretendard-Light';
   padding-right: 1rem;
-  color: #515151;
+  color: #222222;
 
   &:hover {
     cursor: pointer;
@@ -21,8 +23,7 @@ export const Use = styled.div`
 
 export const Privacy = styled.div`
   padding-left: 1rem;
-  font-weight: bold;
-  color: #515151;
+  color: #222222;
 
   &:hover {
     cursor: pointer;
