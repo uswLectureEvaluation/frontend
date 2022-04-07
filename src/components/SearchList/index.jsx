@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { BoxString5 } from './styled';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
 import { searchApi } from '../../api/Api';
 import StarRatings from 'react-star-ratings';
-import { Detail } from '../MainList/index';
 import { selectIdState } from '../../features/selectIdSlice';
 import { useDispatch } from 'react-redux';
 
-const SearchList = (props) => {
+const SearchList = ({ lecture }) => {
   const [db, setData] = useState([]);
 
   useEffect(() => {
-    console.log(props);
-    searchApi(props.props.search_value, props.props.search_option).then((data) => setData(data));
-  }, [props]);
+    searchApi(lecture.search_value, lecture.search_option).then((data) => setData(data));
+  }, [lecture]);
 
-  console.log(db);
   return db.length !== 0 ? (
-    <div style={{ width: '100%' }}>
+    <Styled.FlexWrap>
       {db.data.map((row) => (
         <Subject
           key={row.id}
@@ -32,9 +28,55 @@ const SearchList = (props) => {
           lectureLearningAvg={row.lectureLearningAvg}
         />
       ))}
-    </div>
+    </Styled.FlexWrap>
   ) : (
     <div></div>
+  );
+};
+
+export const Detail = (props) => {
+  return (
+    <Styled.StarFlex id="top">
+      <Styled.StarFlex>
+        만족도
+        <StarRatings
+          rating={props.lectureSatisfactionAvg}
+          starRatedColor="#a3a3a3"
+          numberOfStars={5}
+          name="rating"
+          starDimension="18px"
+          starSpacing="0px"
+          svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
+          svgIconViewBox="0 0 24 24"
+        />{' '}
+      </Styled.StarFlex>
+      <Styled.StarFlex>
+        꿀강 지수
+        <StarRatings
+          rating={props.lectureHoneyAvg}
+          starRatedColor="#a3a3a3"
+          numberOfStars={5}
+          name="rating"
+          starDimension="18px"
+          starSpacing="0px"
+          svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
+          svgIconViewBox="0 0 24 24"
+        />{' '}
+      </Styled.StarFlex>
+      <Styled.StarFlex>
+        배움 지수
+        <StarRatings
+          rating={props.lectureLearningAvg}
+          starRatedColor="#a3a3a3"
+          numberOfStars={5}
+          name="rating"
+          starDimension="18px"
+          starSpacing="0px"
+          svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
+          svgIconViewBox="0 0 24 24"
+        />{' '}
+      </Styled.StarFlex>
+    </Styled.StarFlex>
   );
 };
 
@@ -68,31 +110,31 @@ export const Subject = (props) => {
         {/* <BoxButton2 onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</BoxButton2>
         <BoxButton1 onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</BoxButton1> */}
         <Styled.TitleWrapper onClick={() => onClick(props.id)}>
-          <Styled.TitleWrapper>
-            <Styled.Title>{title}</Styled.Title>
-            <Styled.Professor>{props.professor}</Styled.Professor>
-          </Styled.TitleWrapper>
+          <Styled.Title>{title}</Styled.Title>
           <Styled.Option>{props.lectureType}</Styled.Option>
         </Styled.TitleWrapper>
-        <Styled.MarginRight>평균지수</Styled.MarginRight>
-        <StarRatings
-          rating={props.star}
-          starRatedColor="#346cfd"
-          numberOfStars={5}
-          name="rating"
-          starDimension="24px"
-          starSpacing="0px"
-          svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
-          svgIconViewBox="0 0 24 24"
-        />
-        <Styled.Rate>{props.star.toFixed(1)}</Styled.Rate>
-        <BoxString5
-          onClick={() => {
-            setModal(!modal);
-          }}
-        >
-          {modal === true ? '간략히' : '자세히'}
-        </BoxString5>
+        <Styled.Professor>{props.professor}</Styled.Professor>
+        {/* <Styled.MarginRight>평균지수</Styled.MarginRight> */}
+        <Styled.RateWrapper>
+          <StarRatings
+            rating={props.star}
+            starRatedColor="#346cfd"
+            numberOfStars={5}
+            name="rating"
+            starDimension="20px"
+            starSpacing="0px"
+            svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
+            svgIconViewBox="0 0 24 24"
+          />
+          <Styled.Rate>{props.star.toFixed(1)}</Styled.Rate>
+          <Styled.Minute
+            onClick={() => {
+              setModal(!modal);
+            }}
+          >
+            {modal === true ? '간략히' : '자세히'}
+          </Styled.Minute>
+        </Styled.RateWrapper>
       </Styled.MarginTop>
       {modal === true ? (
         <Detail

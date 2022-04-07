@@ -81,7 +81,7 @@ const Search = () => {
         {search_value === 'all' ? (
           <MainList lecture={search_option} />
         ) : (
-          <SearchList props={location.state} />
+          <SearchList lecture={location.state} />
         )}
       </Styled.HeadSelection>
     </Styled.Container>
