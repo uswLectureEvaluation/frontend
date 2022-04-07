@@ -15,19 +15,40 @@ const SearchList = ({ lecture }) => {
 
   return db.length !== 0 ? (
     <Styled.FlexWrap>
-      {db.data.map((row) => (
-        <Subject
-          key={row.id}
-          id={row.id}
-          lectureName={row.lectureName}
-          professor={row.professor}
-          lectureType={row.lectureType}
-          star={row.lectureTotalAvg}
-          lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-          lectureHoneyAvg={row.lectureHoneyAvg}
-          lectureLearningAvg={row.lectureLearningAvg}
-        />
-      ))}
+      <Styled.FlexWrapSub>
+        {db.data
+          .filter((row, i) => !(i % 2))
+          .map((row, i) => (
+            <Subject
+              key={row.id}
+              id={row.id}
+              lectureName={row.lectureName}
+              professor={row.professor}
+              lectureType={row.lectureType}
+              star={row.lectureTotalAvg}
+              lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+              lectureHoneyAvg={row.lectureHoneyAvg}
+              lectureLearningAvg={row.lectureLearningAvg}
+            />
+          ))}
+      </Styled.FlexWrapSub>
+      <Styled.FlexWrapSub>
+        {db.data
+          .filter((row, i) => i % 2)
+          .map((row, i) => (
+            <Subject
+              key={row.id}
+              id={row.id}
+              lectureName={row.lectureName}
+              professor={row.professor}
+              lectureType={row.lectureType}
+              star={row.lectureTotalAvg}
+              lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+              lectureHoneyAvg={row.lectureHoneyAvg}
+              lectureLearningAvg={row.lectureLearningAvg}
+            />
+          ))}
+      </Styled.FlexWrapSub>
     </Styled.FlexWrap>
   ) : (
     <div></div>

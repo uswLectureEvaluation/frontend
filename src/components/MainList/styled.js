@@ -77,7 +77,7 @@ export const Rate = styled.span`
 `;
 
 export const LectureWrapper = styled.div`
-  width: 49%;
+  width: 100%;
   border: 1px solid ${Color('border')};
   border-radius: 10px;
   margin-bottom: 10px;
@@ -107,7 +107,12 @@ export const StarFlex = styled.div`
 
 export const FlexWrap = styled.div`
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
   justify-content: space-between;
+`;
+
+export const FlexWrapSub = styled.div`
+  width: 49%;
+  display: flex;
+  flex-direction: column;
 `;
