@@ -281,7 +281,7 @@ export const evaluateUpdateApi = (
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      AccessToken: getCookie('AccessToken'),
+      Authorization: getCookie('AccessToken'),
     },
     data: data,
     url,
@@ -330,7 +330,7 @@ export const evaluateWriteApi = (
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      AccessToken: getCookie('AccessToken'),
+      Authorization: getCookie('AccessToken'),
     },
     data: data,
     url,
@@ -353,7 +353,7 @@ export const deleteEvaluateApi = (id) => {
   const options = {
     method: 'DELETE',
     headers: {
-      AccessToken: getCookie('AccessToken'),
+      Authorization: getCookie('AccessToken'),
     },
     url,
   };
@@ -392,7 +392,7 @@ export const examWriteApi = (
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      AccessToken: getCookie('AccessToken'),
+      Authorization: getCookie('AccessToken'),
     },
     data: data,
     url,
@@ -422,7 +422,7 @@ export const examUpdateApi = (setData, semester, examInfo, examDifficulty, conte
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      AccessToken: getCookie('AccessToken'),
+      Authorization: getCookie('AccessToken'),
     },
     data: data,
     url,
@@ -446,7 +446,7 @@ export const buyTestInfo = (selectId) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      AccessToken: getCookie('AccessToken'),
+      Authorization: getCookie('AccessToken'),
     },
     url,
   };
