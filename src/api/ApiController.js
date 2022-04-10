@@ -25,7 +25,7 @@ instance.interceptors.request.use(
   function (config) {
     //request 정상
     config.headers['Content-Type'] = 'application/json';
-    config.headers['AccessToken'] = cookies.get('AccessToken');
+    config.headers['Authorization'] = cookies.get('AccessToken');
     console.log(config);
 
     return config;
@@ -71,7 +71,7 @@ instance.interceptors.response.use(
           sameSite: false,
         }));
         isTokenRefreshing = false;
-        axios.defaults.headers.common['AccessToken'] = newAccessToken;
+        axios.defaults.headers.common['Authorization'] = newAccessToken;
         // 새로운 토큰으로 지연되었던 요청 진행
         onTokenRefreshed(newAccessToken);
       }
