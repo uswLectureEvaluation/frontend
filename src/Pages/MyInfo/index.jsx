@@ -96,7 +96,7 @@ const MyInfo = () => {
         <Styled.Content>
           <Styled.Title>이용 안내</Styled.Title>
           {option.map((i) => (
-            <Styled.FlexContainer>
+            <Styled.FlexContainer key={i}>
               <Styled.FlexContainer id="last">{i}</Styled.FlexContainer>
             </Styled.FlexContainer>
           ))}

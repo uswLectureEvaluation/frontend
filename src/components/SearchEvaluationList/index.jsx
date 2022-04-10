@@ -92,7 +92,7 @@ const SearchEvaluationList = ({ selectId }) => {
     <Container component="main" maxWidth="md">
       <CssBaseline />
       {db.data.map((v, i) => (
-        <Subject
+        <Subject key={v.id}
           semester={v.semester}
           totalAvg={v.totalAvg}
           content={v.content}

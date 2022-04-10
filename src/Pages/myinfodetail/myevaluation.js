@@ -156,7 +156,7 @@ const Myevaluation = () => {
       {itemLists.map((a, i) => {
         return db.data.map((v, i) => {
           return (
-            <Subject
+            <Subject key={v.id}
               lectureName={v.lectureName}
               professor={v.professor}
               semester={v.semester}

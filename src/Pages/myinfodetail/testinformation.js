@@ -44,7 +44,7 @@ const Testinformation = () => {
     <Container component="main" maxWidth="md">
       <CssBaseline />
       {db.data.map((v, i) => (
-        <Subject
+        <Subject key={v.id}
           content={v.content}
           examDifficulty={v.examDifficulty}
           examInfo={v.examInfo}

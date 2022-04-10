@@ -9,7 +9,7 @@ const SearchTestList = (props) => {
     <Container component="main" maxWidth="md">
       <CssBaseline />
       {props.db.map((v, i) => (
-        <Subject
+        <Subject key={v.id}
           content={v.content}
           examDifficulty={v.examDifficulty}
           examInfo={v.examInfo}
