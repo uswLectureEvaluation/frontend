@@ -46,7 +46,7 @@ instance.interceptors.response.use(
       response: { status },
     } = error;
     const originalRequest = config;
-    if (error) {
+    if (status === 401) {
       if (!isTokenRefreshing) {
         // isTokenRefreshing이 false인 경우에만 token refresh 요청
         isTokenRefreshing = true;
@@ -79,7 +79,7 @@ instance.interceptors.response.use(
       const retryOriginalRequest = new Promise((resolve) => {
         addRefreshSubscriber((AccessToken) => {
           originalRequest.headers.Authorization = AccessToken;
-          resolve(axios(originalRequest));
+          resolve(instance(originalRequest));
         });
       });
       return retryOriginalRequest;
