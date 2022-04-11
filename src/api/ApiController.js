@@ -54,7 +54,7 @@ instance.interceptors.response.use(
         const { data } = await axios({
           url: `/user/refresh`, // 토큰 재요청
           headers: {
-            RefreshToken,
+            Authorization: RefreshToken,
           },
           method: 'POST',
         });
