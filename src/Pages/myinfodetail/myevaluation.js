@@ -62,7 +62,7 @@ export const DetailModal = (props) => {
           <Styled.PaddingRight />
           <StarRatings
             rating={props.satisfaction}
-            starRatedColor="#346cfd"
+            starRatedColor="#a3a3a3"
             numberOfStars={5}
             name="rating"
             starDimension="18px"
@@ -76,7 +76,7 @@ export const DetailModal = (props) => {
           <Styled.PaddingRight />
           <StarRatings
             rating={props.honey}
-            starRatedColor="#346cfd"
+            starRatedColor="#a3a3a3"
             numberOfStars={5}
             name="rating"
             starDimension="18px"
@@ -90,7 +90,7 @@ export const DetailModal = (props) => {
           <Styled.PaddingRight />
           <StarRatings
             rating={props.learning}
-            starRatedColor="#346cfd"
+            starRatedColor="#a3a3a3"
             numberOfStars={5}
             name="rating"
             starDimension="18px"

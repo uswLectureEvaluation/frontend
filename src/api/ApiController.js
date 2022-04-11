@@ -46,7 +46,7 @@ instance.interceptors.response.use(
       response: { status },
     } = error;
     const originalRequest = config;
-    if (status === 401) {
+    if (error) {
       if (!isTokenRefreshing) {
         // isTokenRefreshing이 false인 경우에만 token refresh 요청
         isTokenRefreshing = true;
