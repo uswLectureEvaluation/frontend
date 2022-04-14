@@ -89,15 +89,25 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 8rem 0;
   justify-content: space-between;
+  @media only screen and (max-width: 960px) {
+    justify-content: center;
+  }
 `;
 
 export const SignUpWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 405px;
+  @media only screen and (max-width: 960px) {
+    width: 350px;
+  }
 `;
 
-export const Img = styled.img``;
+export const Img = styled.img`
+  @media only screen and (max-width: 960px) {
+    display: none;
+  }
+`;
 
 export const Button = styled.button`
   margin: 0;
@@ -128,12 +138,15 @@ export const Button = styled.button`
     font-size: 0.9rem;
     border-radius: 14px;
     padding: 0.2rem 0.8rem;
-
+    @media only screen and (max-width: 960px) {
+      right: 27%;
+    }
     :disabled {
       background: white;
       color: rgba(170, 170, 170);
       border: 1px solid rgba(170, 170, 170);
     }
+    
   }
 `;
 export const CssTextField = styles.styled(TextField)({

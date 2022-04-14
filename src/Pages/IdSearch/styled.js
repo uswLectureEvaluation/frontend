@@ -18,9 +18,16 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 8rem 0;
   justify-content: space-between;
+  @media only screen and (max-width: 960px) {
+    justify-content: center;
+  }
 `;
 
-export const Img = styled.img``;
+export const Img = styled.img`
+  @media only screen and (max-width: 960px) {
+    display: none;
+  }
+`;
 
 export const Title = styled.div`
   display: flex;
@@ -52,8 +59,12 @@ export const Button = styled.button`
 export const LoginWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 405px;
+  @media only screen and (max-width: 960px) {
+    width: 350px;
+  }
 `;
+
 export const CssTextField = styles.styled(TextField)({
   '& label.Mui-focused': {
     color: '#346cfd',
