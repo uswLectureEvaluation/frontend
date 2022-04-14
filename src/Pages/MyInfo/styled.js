@@ -23,6 +23,9 @@ export const Container = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
+  @media only screen and (max-width: 960px) {
+    width: 90%;
+  }
 `;
 export const Content = styled.div`
   border-radius: 10px;
@@ -101,6 +104,9 @@ export const Button = styled.button`
   border-radius: 12px;
   cursor: pointer;
   user-select: none;
+  @media only screen and (max-width: 960px) {
+    font-size: 1.3rem;
+  }
 `;
 
 export const InfoWrapper = styled.div`
