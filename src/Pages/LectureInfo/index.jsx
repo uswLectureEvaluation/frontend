@@ -41,8 +41,8 @@ const LectureInfo = () => {
   const [check, setCheck] = useState('lecture');
   const [search, setSearch] = useState('');
   const menu = [
-    { name: '강의 평가(N)', option: 'lecture' },
-    { name: '시험 정보(M)', option: 'info' },
+    { name: '강의 평가', option: 'lecture' },
+    { name: '시험 정보', option: 'info' },
   ];
   const checkList = {
     0: <SearchEvaluationList selectId={selectId} />,
@@ -109,7 +109,7 @@ const LectureInfo = () => {
   return (
     <Styled.Container>
       <Styled.SearchWrapper>
-        <Styled.SearchTitle>검색 결과 (N)</Styled.SearchTitle>
+        <Styled.SearchTitle>검색 결과</Styled.SearchTitle>
         <Styled.SearchInput
           onChange={onChange}
           placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
@@ -118,7 +118,7 @@ const LectureInfo = () => {
       </Styled.SearchWrapper>
 
       <Styled.Wrapper>
-        <Styled.Content>
+        <Styled.Content id="top">
           <Styled.TitleWrapper id="top">
             <div>
               <Styled.TitleWrapper>
@@ -142,7 +142,7 @@ const LectureInfo = () => {
                       fontWeight: 'bold',
                     }}
                   >
-                    {db.data.lectureHoneyAvg}
+                    {db.data.lectureHoneyAvg.toFixed(1)}
                   </Styled.Color>
                   /5
                 </Styled.FlexContainer>
@@ -162,7 +162,7 @@ const LectureInfo = () => {
                       fontWeight: 'bold',
                     }}
                   >
-                    {db.data.lectureLearningAvg}
+                    {db.data.lectureLearningAvg.toFixed(1)}
                   </Styled.Color>
                   /5
                 </Styled.FlexContainer>
@@ -184,7 +184,7 @@ const LectureInfo = () => {
                       fontWeight: 'bold',
                     }}
                   >
-                    {db.data.lectureSatisfactionAvg}
+                    {db.data.lectureSatisfactionAvg.toFixed(1)}
                   </Styled.Color>
                   /5
                 </Styled.FlexContainer>
@@ -203,7 +203,7 @@ const LectureInfo = () => {
 
         <Styled.Content>
           <Styled.TitleWrapper id="top">
-            <Styled.TitleWrapper>{menuList}</Styled.TitleWrapper>
+            <Styled.TitleWrapper id="bottom">{menuList}</Styled.TitleWrapper>
             <Styled.Writing src="img/btn_write.svg" onClick={() => setModalIsOpen(true)} />
           </Styled.TitleWrapper>
           {checkList[menuCheck]}

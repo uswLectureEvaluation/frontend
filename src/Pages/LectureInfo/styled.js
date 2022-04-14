@@ -41,7 +41,7 @@ export const SearchWrapper = styled.div`
 export const SearchTitle = styled.div`
   display: flex;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-family: 'Pretendard-SemiBold';
   padding-top: 4rem;
 `;
 
@@ -63,9 +63,12 @@ export const SearchInput = styled.input`
 
 export const Content = styled.div`
   border-radius: 10px;
-  border: 1px solid rgb(224, 224, 224);
-  padding: 1rem 2rem;
   margin: 10px 0;
+
+  &#top {
+    padding: 1rem 2rem;
+    border: 1px solid rgb(224, 224, 224);
+  }
 `;
 
 export const Color = styled.div`
@@ -81,6 +84,10 @@ export const TitleWrapper = styled.div`
   &#top {
     justify-content: space-between;
     align-items: flex-start;
+  }
+  &#bottom {
+    margin-top: 2rem;
+    margin-left: 1rem;
   }
 `;
 
@@ -104,6 +111,7 @@ export const MenuTitle = styled.li`
   font-size: 1.2rem;
   margin-bottom: 1rem;
   text-align: center;
+  font-family: 'Pretendard-SemiBold';
   display: flex;
   color: lightgray;
   padding-right: 1rem;

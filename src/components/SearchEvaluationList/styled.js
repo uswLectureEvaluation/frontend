@@ -1,5 +1,6 @@
 import { Button } from '@material-ui/core';
 import styled from 'styled-components';
+import { Color } from '../../globalStyles';
 
 export const BoxString5 = styled(Button)`
   && {
@@ -45,7 +46,8 @@ export const Rate = styled.span`
 `;
 
 export const LectureWrapper = styled.div`
-  border: 1px solid #e0e0e0;
+  width: 100%;
+  border: 1px solid ${Color('border')};
   border-radius: 10px;
   margin-bottom: 10px;
   cursor: pointer;
@@ -110,15 +112,15 @@ export const EditButton = styled(Button)`
     color: rgb(52, 152, 219);
   }
 `;
-export const DeleteButton = styled(Button)`
-  && {
-    padding: 5px 15px 5px 15px;
-    margin-left: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 10px;
-    background-color: rgb(239, 239, 239);
-    color: rgb(230, 126, 34);
-  }
+
+export const DeleteButton = styled.div`
+  font-size: 0.7rem;
+  color: #a3a3a3;
+  cursor: pointer;
+`;
+
+export const FlexWrap = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 `;
