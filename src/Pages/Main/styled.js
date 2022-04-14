@@ -31,12 +31,32 @@ export const BannerWrapper = styled.div`
   color: #000000;
   font-size: 1.8rem;
   justify-content: space-between;
+
+    @media screen and (max-width: 960px) {
+     width: 100%;
+  margin: 0 auto;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  font-size: 2rem;
+  justify-content: flex-end;
+
+  }
 `;
 
 export const BannerSub = styled.div`
   font-size: 1rem;
   margin-top: 1vh;
   font-family: 'Pretendard-Light';
+
+   @media screen and (max-width: 960px) {
+     font-size: 1rem;
+  margin-top: 1vh;
+  font-family: 'Pretendard-Light';
+
+  }
+  
 `;
 
 export const Container = styled.div`
@@ -116,9 +136,25 @@ export const More = styled.div`
   padding-right: 5px;
 `;
 
+export const BannerImg = styled.img`
+  vertical-align: bottom;
+  pointer-events: none;
+   @media screen and (max-width: 960px) {
+      width: 400px;
+      vertical-align: bottom;
+      pointer-events: none;
+  }
+ 
+`;
+
 export const Img = styled.img`
   vertical-align: bottom;
   pointer-events: none;
+   @media screen and (max-width: 960px) {
+      vertical-align: bottom;
+      pointer-events: none;
+  }
+ 
 `;
 
 export const Soption = styled.span`
@@ -139,6 +175,7 @@ export const Button = styled.button`
   cursor: pointer;
   user-select: none;
   font-family: 'Pretendard-Medium';
+  
 `;
 
 const blue = {

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const Navbar = styled.nav`
   background: #ffffff;
   margin: 0 auto;
@@ -23,38 +24,38 @@ export const NavLogo = styled.nav`
     cursor: pointer;
   }
 
-  @media screen and (max-width: 960px) {
-    margin: 0 auto;
-  }
+  // @media screen and (max-width: 960px) {
+  //   margin: 0 auto;
+  // }
 `;
 
 export const MobileIcon = styled.div`
   display: none;
 
-  @media screen and (max-width: 960px) {
-    display: block;
-    font-size: 1.8rem;
-    cursor: pointer;
-    position: absolute;
-    left: 0;
-  }
+  // @media screen and (max-width: 960px) {
+  //   display: block;
+  //   font-size: 1.8rem;
+  //   cursor: pointer;
+  //   position: absolute;
+  //   left: 0;
+  // }
 `;
 
 export const NavMenu = styled.nav`
   display: flex;
   padding-top: 3vh;
 
-  @media screen and (max-width: 960px) {
-    flex-direction: column;
-    width: 100%;
-    height: 90vh;
-    position: absolute;
-    top: 80px;
-    left: ${({ click }) => (click ? 0 : '-100%')};
-    opacity: 1;
-    transition: all 0.5s ease;
-    background: #fff;
-  }
+  // @media screen and (max-width: 960px) {
+  //   flex-direction: column;
+  //   width: 100%;
+  //   height: 90vh;
+  //   position: absolute;
+  //   top: 80px;
+  //   left: ${({ click }) => (click ? 0 : '-100%')};
+  //   opacity: 1;
+  //   transition: all 0.5s ease;
+  //   background: #fff;
+  // }
 `;
 
 export const NavLinks = styled.div`
@@ -68,19 +69,22 @@ export const NavLinks = styled.div`
     color: #346cfd;
   }
 
-  @media screen and (max-width: 960px) {
-    text-align: center;
-    padding: 2rem;
-    display: table;
-    &:hover {
-      color: #4b89dc;
-      transition: all 0.3s ease;
-    }
-  }
+  // @media screen and (max-width: 960px) {
+  //   text-align: center;
+  //   padding: 2rem;
+  //   display: table;
+  //   &:hover {
+  //     color: #4b89dc;
+  //     transition: all 0.3s ease;
+  //   }
+  // }
 `;
 
 export const Img = styled.img`
+
   &:hover {
     cursor: pointer;
   }
+
+
 `;

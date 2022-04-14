@@ -109,10 +109,24 @@ export const FlexWrap = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+
+   @media screen and (max-width: 768px) {
+    width: 100%;
+  display: flex;
+
+  }
 `;
 
 export const FlexWrapSub = styled.div`
   width: 49%;
   display: flex;
   flex-direction: column;
+ @media screen and (max-width: 768px) {
+    width: 49%;
+  display: flex;
+  flex-direction: column;
+
+  }
+  
+
 `;

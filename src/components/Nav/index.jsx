@@ -35,14 +35,14 @@ const Nav = () => {
 
   return (
     <Styled.Navbar>
-      <Styled.Img src="img/logo.png" width={110} onClick={() => navigate('/')} />
+      {button ? <Styled.Img src="img/logo.png" width={110} onClick={() => navigate('/')} /> : <Styled.Img src="img/tabletlogo.png" width={110} onClick={() => navigate('/')} />}
       {/* <Styled.MobileIcon onClick={handleClick}>
-                {click ? (
-                    <Styled.Img src={"Styled.Img/icon_color_fire_36.svg"} />
-                ) : (
-                    <Styled.Img src={"img/icon_color_bee_36.svg"} />
-                )}
-            </Styled.MobileIcon> */}
+        {click ? (
+          <Styled.Img src={"Styled.Img/icon_color_fire_36.svg"} />
+        ) : (
+          <Styled.Img src={"img/icon_color_bee_36.svg"} />
+        )}
+      </Styled.MobileIcon> */}
 
       <Styled.NavMenu onClick={handleClick} click={click}>
         <Styled.NavLinks onClick={() => navigate('notice')}>공지사항</Styled.NavLinks>
