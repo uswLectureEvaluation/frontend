@@ -76,6 +76,7 @@ const LectureInfo = () => {
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
+      
       searchApi(setData, search);
       navigate(`/search`);
     }
@@ -142,7 +143,7 @@ const LectureInfo = () => {
                       fontWeight: 'bold',
                     }}
                   >
-                    {db.data.lectureHoneyAvg.toFixed(1)}
+                    {Number(db.data.lectureHoneyAvg).toFixed(1)}
                   </Styled.Color>
                   /5
                 </Styled.FlexContainer>
@@ -162,7 +163,7 @@ const LectureInfo = () => {
                       fontWeight: 'bold',
                     }}
                   >
-                    {db.data.lectureLearningAvg.toFixed(1)}
+                    {Number(db.data.lectureLearningAvg).toFixed(1)}
                   </Styled.Color>
                   /5
                 </Styled.FlexContainer>
@@ -184,7 +185,7 @@ const LectureInfo = () => {
                       fontWeight: 'bold',
                     }}
                   >
-                    {db.data.lectureSatisfactionAvg.toFixed(1)}
+                    {Number(db.data.lectureSatisfactionAvg).toFixed(1)}
                   </Styled.Color>
                   /5
                 </Styled.FlexContainer>
