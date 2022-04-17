@@ -7,6 +7,17 @@ export const AppContainer = styled.div`
   width: 60%;
   padding-bottom: 25rem;
   margin: 0 auto;
+
+  @media screen and (max-width: 960px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    padding-bottom: 25rem;
+    margin: 0 auto;
+
+
+ }
 `;
 
 export const AppTitle = styled.div`
