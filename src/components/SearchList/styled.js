@@ -116,3 +116,10 @@ export const FlexWrapSub = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+
+export const FullWrapSub = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;

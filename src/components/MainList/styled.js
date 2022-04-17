@@ -121,12 +121,20 @@ export const FlexWrapSub = styled.div`
   width: 49%;
   display: flex;
   flex-direction: column;
- @media screen and (max-width: 768px) {
-    width: 49%;
+
+`;
+
+export const FullWrapSub = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
 
-  }
-  
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  display: flex;
 
+  }
+ 
+
+  }
 `;

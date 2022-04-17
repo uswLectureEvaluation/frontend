@@ -33,14 +33,14 @@ export const BannerWrapper = styled.div`
   justify-content: space-between;
 
     @media screen and (max-width: 960px) {
-     width: 100%;
+     width: 80%;
   margin: 0 auto;
   height: 40vh;
   display: flex;
   align-items: center;
   color: #000000;
-  font-size: 2rem;
-  justify-content: flex-end;
+  font-size: 1.3rem;
+  justify-content: space-evenly;
 
   }
 `;
@@ -65,6 +65,18 @@ export const Container = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
+
+  @media screen and (max-width: 960px) {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+
+
+ }
+
+  
 `;
 
 export const SearchContainer = styled.div`

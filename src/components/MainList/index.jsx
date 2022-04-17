@@ -9,11 +9,24 @@ import { useDispatch } from 'react-redux';
 const MainList = ({ lecture }) => {
   const [db, setData] = useState([]);
 
+  const [win, setWin] = useState(false)
+
+  const showWin = () => {
+    if (window.innerWidth <= 960) {
+      setWin(false);
+    } else {
+      setWin(true);
+    }
+  };
+
+  window.addEventListener('resize', showWin);
+
   useEffect(() => {
     mainApi(lecture).then((data) => setData(data));
   }, [lecture]);
 
   return db.length !== 0 ? (
+    win ? 
     <Styled.FlexWrap>
       <Styled.FlexWrapSub>
         {db.data
@@ -49,7 +62,25 @@ const MainList = ({ lecture }) => {
             />
           ))}
       </Styled.FlexWrapSub>
-    </Styled.FlexWrap>
+    </Styled.FlexWrap> : 
+    <Styled.FlexWrap>
+      <Styled.FullWrapSub>
+        {db.data
+          .map((row, i) => (
+            <Subject
+              key={row.id}
+              id={row.id}
+              lectureName={row.lectureName}
+              professor={row.professor}
+              lectureType={row.lectureType}
+              star={row.lectureTotalAvg}
+              lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+              lectureHoneyAvg={row.lectureHoneyAvg}
+              lectureLearningAvg={row.lectureLearningAvg}
+            />
+          ))}
+      </Styled.FullWrapSub>
+      </Styled.FlexWrap>
   ) : (
     <div></div>
   );

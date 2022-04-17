@@ -15,6 +15,9 @@ export const Container = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
+  @media only screen and (max-width: 960px) {
+    width: 90%;
+  }
 `;
 
 export const Title = styled.div`
