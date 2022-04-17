@@ -117,9 +117,23 @@ export const FlexWrapSub = styled.div`
   flex-direction: column;
 `;
 
-
 export const FullWrapSub = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+`;
+
+export const ErrorText = styled.div`
+  margin: 0 auto;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #a3a3a3;
 `;

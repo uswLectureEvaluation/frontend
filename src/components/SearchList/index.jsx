@@ -7,7 +7,10 @@ import { selectIdState } from '../../features/selectIdSlice';
 import { useDispatch } from 'react-redux';
 
 const SearchList = ({ lecture }) => {
-  const [db, setData] = useState([]);
+  const [db, setData] = useState({
+    data: [],
+    count: ''
+  });
 
   const [win, setWin] = useState(false)
 
@@ -22,10 +25,11 @@ const SearchList = ({ lecture }) => {
   window.addEventListener('resize', showWin);
 
   useEffect(() => {
+    console.log(db.count)
     searchApi(lecture.search_value, lecture.search_option).then((data) => setData(data));
   }, [lecture]);
 
-  return db.length !== 0 ? (
+  return db.count !== 0 ? (
     win ? 
     <Styled.FlexWrap>
       <Styled.FlexWrapSub>
@@ -81,7 +85,10 @@ const SearchList = ({ lecture }) => {
       </Styled.FullWrapSub>
       </Styled.FlexWrap>
   ) : (
-    <div></div>
+    <Styled.ErrorText>
+    <div>{lecture.search_value}에 대한 검색 결과가 없습니다.</div>
+
+      </Styled.ErrorText>
   );
 };
 
