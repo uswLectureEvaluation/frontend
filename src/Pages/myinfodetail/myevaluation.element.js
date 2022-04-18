@@ -25,6 +25,17 @@ export const Title = styled.span`
   margin-right: 8px;
 `;
 
+export const Major = styled.span`
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: normal;
+  color: #515151;
+  &#border {
+    color: #e0e0e0;
+    padding: 0px 5px;
+  }
+`
+
 export const Professor = styled.span`
   font-family: Pretendard;
   font-size: 14px;
@@ -70,6 +81,7 @@ export const MarginTop = styled.div`
 `;
 export const DataColor = styled.div`
   padding-left: 0.7rem;
+  font-weight: 500;
   &#cyan {
     color: #346cfd;
   }
@@ -82,7 +94,7 @@ export const StarFlex = styled.div`
   display: flex;
   align-items: center;
   padding-right: 1rem;
-  padding: 8px 12px;
+  padding: 5px 12px;
   font-family: Pretendard;
   font-size: 13px;
   &#top {
@@ -91,7 +103,17 @@ export const StarFlex = styled.div`
   &#bottom {
     padding: 0px 12px 8px 12px;
   }
+  &#between {
+    justify-content: space-between;
+  }
 `;
+
+export const FlexContainer = styled.div`
+  display: flex;
+  &#col {
+    flex-direction : column;
+  }
+`
 
 export const YearText = styled.span`
   font-family: Pretendard;

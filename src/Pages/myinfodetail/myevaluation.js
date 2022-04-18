@@ -57,26 +57,30 @@ export const DetailModal = (props) => {
   return (
     <div>
       <Styled.StarFlex id="top">
-        <Styled.StarFlex>
-          만족도
-          <Styled.PaddingRight />
-          <Styled.Rate id='modal'>{props.satisfaction.toFixed(1)}</Styled.Rate>
-        </Styled.StarFlex>
-        <Styled.StarFlex>
+        <Styled.FlexContainer id='col'>
+          <Styled.StarFlex id='between'>
+            만족도
+            <Styled.PaddingRight />
+            <Styled.Rate id='modal'>{props.satisfaction.toFixed(1)}</Styled.Rate>
+          </Styled.StarFlex>
+          <Styled.StarFlex id='between'>조모임 {team[teamSet]}</Styled.StarFlex>
+        </Styled.FlexContainer>
+        <Styled.FlexContainer id='col'>
+        <Styled.StarFlex id='between'>
           꿀강 지수
           <Styled.PaddingRight />
           <Styled.Rate id='modal'>{props.honey.toFixed(1)}</Styled.Rate>
         </Styled.StarFlex>
-        <Styled.StarFlex>
+        <Styled.StarFlex id='between'>과제 {homework[homeworkSet]}</Styled.StarFlex>
+        </Styled.FlexContainer>
+        <Styled.FlexContainer id='col'>
+        <Styled.StarFlex id='between'>
           배움 지수
           <Styled.PaddingRight />
           <Styled.Rate id='modal'>{props.learning.toFixed(1)}</Styled.Rate>
         </Styled.StarFlex>
-      </Styled.StarFlex>
-      <Styled.StarFlex id="bottom">
-        <Styled.StarFlex>조모임 {team[teamSet]}</Styled.StarFlex>
-        <Styled.StarFlex>과제 {homework[homeworkSet]}</Styled.StarFlex>
-        <Styled.StarFlex>학점 {difficulty[difficultySet]}</Styled.StarFlex>
+        <Styled.StarFlex id='between'>학점 {difficulty[difficultySet]}</Styled.StarFlex>
+        </Styled.FlexContainer>
       </Styled.StarFlex>
     </div>
   );
@@ -125,13 +129,13 @@ const Myevaluation = () => {
 
   return (
     <Container component="main" maxWidth="md">
-      <CssBaseline />
       {itemLists.map((a, i) => {
         return db.data.map((v, i) => {
           return (
             <Subject key={v.id}
               lectureName={v.lectureName}
               professor={v.professor}
+              majorType={v.majorType}
               semester={v.semester}
               totalAvg={v.totalAvg}
               content={v.content}
@@ -181,6 +185,7 @@ export const Subject = (props) => {
           <Styled.TitleWrapper>
               <Styled.YearText>{props.semester}</Styled.YearText>
               <Styled.Title>{title}</Styled.Title>
+              <Styled.Major>{props.majorType}</Styled.Major><Styled.Major id='border'>|</Styled.Major>
               <Styled.Professor>{props.professor}</Styled.Professor>
               </Styled.TitleWrapper>
               <Styled.DeleteButton
