@@ -9,8 +9,11 @@ export const HeaderText = styled.div`
 
 export const TextLink = styled(Button)`
   && {
-    color: black;
-    font-weight: bold;
     font-size: 20px;
+    color: #a3a3a3;
+    font-family: Pretendard;
+  }
+  &#selected {
+    color: black;
   }
 `;

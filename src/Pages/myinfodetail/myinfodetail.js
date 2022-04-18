@@ -6,6 +6,8 @@ import Testinformation from '../myinfodetail/testinformation';
 
 const Myinfodetail = () => {
   const [evaluation, setEvaluation] = useState(true);
+ 
+
   return (
     <div>
       <CssBaseline />
@@ -14,19 +16,9 @@ const Myinfodetail = () => {
           sx={{
             marginTop: 8,
           }}
-        >
-          <HeaderText>내가 쓴 글</HeaderText>
-          <Box
-            noValidate
-            sx={{
-              mt: 1,
-              border: '2px solid rgba(158,158,158,.5)',
-              padding: '20px',
-              borderRadius: '10px',
-            }}
-          >
+        >     
             <TextLink
-              className={evaluation === true ? 'selected' : 'no'}
+              id={evaluation === true ? 'selected' : 'none'}
               onClick={() => {
                 setEvaluation(true);
               }}
@@ -34,6 +26,7 @@ const Myinfodetail = () => {
               강의평가
             </TextLink>
             <TextLink
+              id={evaluation === true ? 'none' : 'selected'}
               onClick={() => {
                 setEvaluation(false);
               }}
@@ -41,7 +34,6 @@ const Myinfodetail = () => {
               시험정보
             </TextLink>
             {evaluation === true ? <Myevaluation /> : <Testinformation />}
-          </Box>
         </Box>
       </Container>
     </div>
