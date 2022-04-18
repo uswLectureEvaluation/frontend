@@ -23,7 +23,7 @@ const 모달스타일 = {
     justifyContent: 'center',
     background: '#ffffff',
     overflow: 'auto',
-    maxWidth: '600px',
+    maxWidth: '500px',
     minWidth: '500px',
     left: '50%',
     top: '0%',
@@ -248,6 +248,7 @@ export const Subject = (props) => {
             homework={props.homework}
             content={props.content}
             semesterList={props.semesterList}
+            lectureName={props.lectureName}
             id={props.id}
           />
         </Modal>

@@ -8,7 +8,7 @@ import { TextField } from '@material-ui/core';
 import RangeInput from '../RangeInput';
 
 const useSlider = (min, max, defaultState, id) => {
-  const [state, setSlide] = useState(3);
+  const [state, setSlide] = useState(defaultState);
 
   const Slider = () => <RangeInput onChange={setSlide} defaultValue={state} />;
   return [state, Slider, setSlide];
@@ -49,9 +49,7 @@ const EditEvaluation = (props) => {
   const [team, setTeam] = useState(`${props.team}`); //조모임
   const [homework, setHomework] = useState(`${props.homework}`); //과제
   const [difficulty, setDifficulty] = useState(`${props.difficulty}`); //학점
-  const semesterChange = (e) => {
-    setSemester(e.target.value);
-  };
+
   const teamChange = (e, newAlignment) => {
     setTeam(newAlignment);
   };
@@ -61,11 +59,10 @@ const EditEvaluation = (props) => {
   const difficultyChange = (e, newAlignment) => {
     setDifficulty(newAlignment);
   };
-
   return (
     <Styled.Wrapper>
       <Styled.TitleWrapper>
-        <Styled.Title>학문과 사고</Styled.Title>
+        <Styled.Title>{props.lectureName}</Styled.Title>
         <Styled.Title
           onClick={() => {
             props.setModalIsOpen(false);
@@ -78,9 +75,9 @@ const EditEvaluation = (props) => {
       <Styled.ContentWrapper>
         <Styled.Content id="group">
           <Styled.ContentTitle>수강학기</Styled.ContentTitle>
-          <select onChange={semesterChange}>
-            <option>2021-1</option>
-            <option>2022-1</option>
+          <select onChange={(e)=>{setSemester(e.target.value)}}>
+            <option value="2021-1">2021-1</option>
+            <option value="2022-1">2022-1</option>
           </select>
         </Styled.Content>
 
