@@ -49,9 +49,9 @@ export const DetailModal = (props) => {
     2: <Styled.DataColor id="purple">많음</Styled.DataColor>,
   };
   const difficulty = {
-    0: <Styled.DataColor>까다로움</Styled.DataColor>,
+    0: <Styled.DataColor id="purple">까다로움</Styled.DataColor>,
     1: <Styled.DataColor id="cyan">보통</Styled.DataColor>,
-    2: <Styled.DataColor id="purple">잘줌</Styled.DataColor>,
+    2: <Styled.DataColor>잘줌</Styled.DataColor>,
   };
 
   return (
@@ -60,44 +60,17 @@ export const DetailModal = (props) => {
         <Styled.StarFlex>
           만족도
           <Styled.PaddingRight />
-          <StarRatings
-            rating={props.satisfaction}
-            starRatedColor="#a3a3a3"
-            numberOfStars={5}
-            name="rating"
-            starDimension="18px"
-            starSpacing="0px"
-            svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
-            svgIconViewBox="0 0 24 24"
-          />
+          <Styled.Rate id='modal'>{props.satisfaction.toFixed(1)}</Styled.Rate>
         </Styled.StarFlex>
         <Styled.StarFlex>
           꿀강 지수
           <Styled.PaddingRight />
-          <StarRatings
-            rating={props.honey}
-            starRatedColor="#a3a3a3"
-            numberOfStars={5}
-            name="rating"
-            starDimension="18px"
-            starSpacing="0px"
-            svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
-            svgIconViewBox="0 0 24 24"
-          />
+          <Styled.Rate id='modal'>{props.honey.toFixed(1)}</Styled.Rate>
         </Styled.StarFlex>
         <Styled.StarFlex>
           배움 지수
           <Styled.PaddingRight />
-          <StarRatings
-            rating={props.learning}
-            starRatedColor="#a3a3a3"
-            numberOfStars={5}
-            name="rating"
-            starDimension="18px"
-            starSpacing="0px"
-            svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
-            svgIconViewBox="0 0 24 24"
-          />
+          <Styled.Rate id='modal'>{props.learning.toFixed(1)}</Styled.Rate>
         </Styled.StarFlex>
       </Styled.StarFlex>
       <Styled.StarFlex id="bottom">
@@ -205,44 +178,41 @@ export const Subject = (props) => {
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
           <div style={{ marginBottom: '10px' }}>
-            <YearText>{props.semester}</YearText>
-            <DeleteButton
-              onClick={() => {
-                onDelete();
-              }}
-              style={{ float: 'right' }}
-            >
-              삭제
-            </DeleteButton>
-            <EditButton onClick={() => setModalIsOpen(true)} style={{ float: 'right' }}>
-              수정
-            </EditButton>
-          </div>
           <Styled.TitleWrapper>
-            <Styled.TitleWrapper>
+              <Styled.YearText>{props.semester}</Styled.YearText>
               <Styled.Title>{title}</Styled.Title>
               <Styled.Professor>{props.professor}</Styled.Professor>
-            </Styled.TitleWrapper>
-          </Styled.TitleWrapper>
-          <Styled.PaddingRight>평균지수</Styled.PaddingRight>
+              </Styled.TitleWrapper>
+              <Styled.DeleteButton
+                onClick={() => {
+                  onDelete();
+                }}
+              >
+                삭제
+              </Styled.DeleteButton>
+              <Styled.EditButton onClick={() => setModalIsOpen(true)}>
+                수정
+              </Styled.EditButton>
+          </div>
+          <div style={{marginBottom:"40px"}}/>
           <StarRatings
             rating={props.totalAvg}
             starRatedColor="#346cfd"
             numberOfStars={5}
             name="rating"
-            starDimension="24px"
+            starDimension="18px"
             starSpacing="0px"
             svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
             svgIconViewBox="0 0 24 24"
           />
           <Styled.Rate>{props.totalAvg.toFixed(1)}</Styled.Rate>
-          <BoxString5
+          <Styled.ModalOpen
             onClick={() => {
               setModal(!modal);
             }}
           >
             {modal === true ? '간략히' : '자세히'}
-          </BoxString5>
+          </Styled.ModalOpen>
         </Styled.MarginTop>
         {modal === true ? (
           <DetailModal

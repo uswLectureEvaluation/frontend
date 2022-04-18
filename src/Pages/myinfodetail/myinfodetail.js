@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HeaderText, TextLink } from './myinfodetail.element';
+import { TextLink } from './myinfodetail.element';
 import { CssBaseline, Box, Container } from '@material-ui/core';
 import Myevaluation from '../myinfodetail/myevaluation';
 import Testinformation from '../myinfodetail/testinformation';
@@ -7,9 +7,8 @@ import Testinformation from '../myinfodetail/testinformation';
 const Myinfodetail = () => {
   const [evaluation, setEvaluation] = useState(true);
  
-
   return (
-    <div>
+    <div style={{marginTop:"30px"}}>
       <CssBaseline />
       <Container component="main" maxWidth="md">
         <Box
