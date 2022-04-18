@@ -11,6 +11,10 @@ export const ModalOpen = styled.span`
     cursor: pointer;
   }
 `;
+
+export const Wrapper = styled.div`
+  margin: 0px 20px;
+`
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -77,6 +81,7 @@ export const MarginTop = styled.div`
   }
   &#bottom {
     padding: 0px 24px 14px 24px;
+    margin-top: 5px;
   }
 `;
 export const DataColor = styled.div`

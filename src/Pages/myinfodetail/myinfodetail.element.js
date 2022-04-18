@@ -1,19 +1,28 @@
 import styled from 'styled-components';
-import { Button } from '@material-ui/core';
 
-export const HeaderText = styled.div`
-  font-weight: bold;
-  font-size: 25px;
-  padding-bottom: 10px;
-`;
+export const FlexContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+export const FlexBox = styled.div`
+  width: 900px;
+  padding-top: 40px;
+`
 
-export const TextLink = styled(Button)`
-  && {
+export const MarginBottom = styled.div`
+  margin-bottom: 25px;
+`
+
+export const TextLink = styled.span`
     font-size: 20px;
     color: #a3a3a3;
     font-family: Pretendard;
-  }
-  &#selected {
-    color: black;
-  }
+    font-weight: 450;
+    margin-left: 15px;
+    &#selected {
+      color: black;
+    }
+    &:hover {
+      cursor: pointer;
+    }
 `;

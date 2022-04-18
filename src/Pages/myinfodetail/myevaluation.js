@@ -128,7 +128,7 @@ const Myevaluation = () => {
   }, []);
 
   return (
-    <Container component="main" maxWidth="md">
+    <Styled.Wrapper>
       {itemLists.map((a, i) => {
         return db.data.map((v, i) => {
           return (
@@ -157,7 +157,7 @@ const Myevaluation = () => {
       {/*        <div ref={setTarget}>
         {isLoaded && <Loader />}
         </div>  */}
-    </Container>
+    </Styled.Wrapper>
   );
 };
 
@@ -181,13 +181,12 @@ export const Subject = (props) => {
     <div style={{ marginTop: '15px' }}>
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
-          <div style={{ marginBottom: '10px' }}>
           <Styled.TitleWrapper>
               <Styled.YearText>{props.semester}</Styled.YearText>
               <Styled.Title>{title}</Styled.Title>
               <Styled.Major>{props.majorType}</Styled.Major><Styled.Major id='border'>|</Styled.Major>
               <Styled.Professor>{props.professor}</Styled.Professor>
-              </Styled.TitleWrapper>
+          </Styled.TitleWrapper>
               <Styled.DeleteButton
                 onClick={() => {
                   onDelete();
@@ -198,8 +197,7 @@ export const Subject = (props) => {
               <Styled.EditButton onClick={() => setModalIsOpen(true)}>
                 수정
               </Styled.EditButton>
-          </div>
-          <div style={{marginBottom:"40px"}}/>
+          <div style={{marginBottom:"35px"}}/>
           <StarRatings
             rating={props.totalAvg}
             starRatedColor="#346cfd"
