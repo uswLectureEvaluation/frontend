@@ -24,7 +24,7 @@ const PwSearch = () => {
   }, [db.data]);
   return (
     <Styled.Container>
-      <Styled.Img src="img/signup.png" width={450} />
+      <Styled.Img src="img/signup.svg" width={450} />
       <Styled.LoginWrapper>
         <Styled.Title>비밀번호 찾기</Styled.Title>
         <Styled.Sub>아이디에 해당하는 학교 이메일로 임시 비밀번호를 전송합니다</Styled.Sub>
