@@ -9,7 +9,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 export const DataColor = styled.div`
-  font-weight: bold;
   &#cyan {
     color: #346cfd;
   }
@@ -27,13 +26,11 @@ export const Container = styled.div`
 
   @media screen and (max-width: 960px) {
     display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-  margin: 0 auto;
-
-
- }
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+  }
 `;
 
 export const SearchContainer = styled.div`
@@ -73,6 +70,7 @@ export const SearchInput = styled.input`
 export const Content = styled.div`
   border-radius: 10px;
   margin: 10px 0;
+  margin-bottom: 3rem;
 
   &#top {
     padding: 1rem 2rem;
@@ -82,7 +80,6 @@ export const Content = styled.div`
 
 export const Color = styled.div`
   display: flex;
-  color: black;
 `;
 
 export const TitleWrapper = styled.div`
@@ -96,7 +93,6 @@ export const TitleWrapper = styled.div`
   }
   &#bottom {
     margin-top: 2rem;
-    margin-left: 1rem;
   }
 `;
 
@@ -108,7 +104,6 @@ export const Wrapper = styled.div`
 export const Title = styled.div`
   display: flex;
   font-size: 1.5rem;
-  font-weight: 1000;
   text-align: center;
 
   &#sub {
@@ -120,7 +115,7 @@ export const MenuTitle = styled.li`
   font-size: 1.2rem;
   margin-bottom: 1rem;
   text-align: center;
-  font-family: 'Pretendard-SemiBold';
+  font-family: 'Pretendard-Regular';
   display: flex;
   color: lightgray;
   padding-right: 1rem;
@@ -136,8 +131,7 @@ export const MenuTitle = styled.li`
 
 export const Professor = styled.div`
   display: flex;
-  align-items: center;
-  padding-left: 0.5rem;
+  margin: 0.4rem 0;
 `;
 
 export const Option = styled.div`
@@ -147,8 +141,6 @@ export const Option = styled.div`
   display: flex;
   align-items: center;
   padding: 0.2rem 0.5rem;
-  margin: 0 0.5rem;
-  /* font-weight: bold; */
 
   &#type {
     height: 25px;
@@ -163,13 +155,14 @@ export const Writing = styled.img`
 
 export const OptionTitle = styled.div`
   display: flex;
-  color: #a3a3a3;
+  color: #222222;
   align-items: flex-end;
   width: 80px;
 `;
 
 export const FlexContainer = styled.div`
   display: flex;
+  color: #a3a3a3;
   width: 45%;
   &#col {
     flex-direction: column;

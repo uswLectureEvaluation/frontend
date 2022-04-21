@@ -41,8 +41,8 @@ const LectureInfo = () => {
   const [check, setCheck] = useState('lecture');
   const [search, setSearch] = useState('');
   const menu = [
-    { name: '강의 평가', option: 'lecture' },
-    { name: '시험 정보', option: 'info' },
+    { name: '강의평가', option: 'lecture' },
+    { name: '시험정보', option: 'info' },
   ];
   const checkList = {
     0: <SearchEvaluationList selectId={selectId} />,
@@ -76,7 +76,6 @@ const LectureInfo = () => {
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
-      
       searchApi(setData, search);
       navigate(`/search`);
     }
@@ -122,9 +121,11 @@ const LectureInfo = () => {
         <Styled.Content id="top">
           <Styled.TitleWrapper id="top">
             <div>
+              <Styled.Title>{db.data.lectureName}</Styled.Title>
               <Styled.TitleWrapper>
-                <Styled.Title>{db.data.lectureName}</Styled.Title>
-                <Styled.Professor>{db.data.professor}</Styled.Professor>
+                <Styled.Professor>
+                  {db.data.majorType} | {db.data.professor}
+                </Styled.Professor>
               </Styled.TitleWrapper>
               <Styled.TitleWrapper>
                 <Styled.Option> {db.data.semester} </Styled.Option>
@@ -150,7 +151,7 @@ const LectureInfo = () => {
               </Styled.FlexContainer>
               <Styled.FlexContainer>
                 <Styled.OptionTitle>조모임</Styled.OptionTitle>
-                <Styled.FlexContainer>{team[teamSet]}</Styled.FlexContainer>
+                <Styled.Color style={{ color: '#6200ee' }}>{team[teamSet]}</Styled.Color>
               </Styled.FlexContainer>
             </Styled.WidthContainer>
             <Styled.WidthContainer>
