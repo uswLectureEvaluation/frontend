@@ -57,14 +57,13 @@ export const SearchTitle = styled.div`
 
 export const SearchInput = styled.input`
   width: 100%;
-  padding-left: 20px;
   height: 50px;
-  border-radius: 20px;
-  border: 1.5px solid #346cfd;
+  border: none;
+  border-bottom: 1.5px solid #000000;
   margin: 1.5rem 0;
   background-image: url('img/icon_search_24.svg');
   background-repeat: no-repeat;
-  background-position: 98%;
+  background-position: 99%;
 
   &:focus {
     outline: none;
