@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { BoxString5, YearText, EditButton, DeleteButton } from './myevaluation.element';
-import { CssBaseline, Container } from '@material-ui/core';
-// import Editevaluation from "./del_editevaluation"
 import Modal from 'react-modal';
 import { evaluatePostApi, deleteEvaluateApi } from '../../api/Api';
 import * as Styled from './myevaluation.element';
@@ -57,29 +54,29 @@ export const DetailModal = (props) => {
   return (
     <div>
       <Styled.StarFlex id="top">
-        <Styled.FlexContainer id='col'>
-          <Styled.StarFlex id='between'>
+        <Styled.FlexContainer id="col">
+          <Styled.StarFlex id="between">
             만족도
             <Styled.PaddingRight />
-            <Styled.Rate id='modal'>{props.satisfaction.toFixed(1)}</Styled.Rate>
+            <Styled.Rate id="modal">{props.satisfaction.toFixed(1)}</Styled.Rate>
           </Styled.StarFlex>
-          <Styled.StarFlex id='between'>조모임 {team[teamSet]}</Styled.StarFlex>
+          <Styled.StarFlex id="between">조모임 {team[teamSet]}</Styled.StarFlex>
         </Styled.FlexContainer>
-        <Styled.FlexContainer id='col'>
-        <Styled.StarFlex id='between'>
-          꿀강 지수
-          <Styled.PaddingRight />
-          <Styled.Rate id='modal'>{props.honey.toFixed(1)}</Styled.Rate>
-        </Styled.StarFlex>
-        <Styled.StarFlex id='between'>과제 {homework[homeworkSet]}</Styled.StarFlex>
+        <Styled.FlexContainer id="col">
+          <Styled.StarFlex id="between">
+            꿀강 지수
+            <Styled.PaddingRight />
+            <Styled.Rate id="modal">{props.honey.toFixed(1)}</Styled.Rate>
+          </Styled.StarFlex>
+          <Styled.StarFlex id="between">과제 {homework[homeworkSet]}</Styled.StarFlex>
         </Styled.FlexContainer>
-        <Styled.FlexContainer id='col'>
-        <Styled.StarFlex id='between'>
-          배움 지수
-          <Styled.PaddingRight />
-          <Styled.Rate id='modal'>{props.learning.toFixed(1)}</Styled.Rate>
-        </Styled.StarFlex>
-        <Styled.StarFlex id='between'>학점 {difficulty[difficultySet]}</Styled.StarFlex>
+        <Styled.FlexContainer id="col">
+          <Styled.StarFlex id="between">
+            배움 지수
+            <Styled.PaddingRight />
+            <Styled.Rate id="modal">{props.learning.toFixed(1)}</Styled.Rate>
+          </Styled.StarFlex>
+          <Styled.StarFlex id="between">학점 {difficulty[difficultySet]}</Styled.StarFlex>
         </Styled.FlexContainer>
       </Styled.StarFlex>
     </div>
@@ -132,7 +129,8 @@ const Myevaluation = () => {
       {itemLists.map((a, i) => {
         return db.data.map((v, i) => {
           return (
-            <Subject key={v.id}
+            <Subject
+              key={v.id}
               lectureName={v.lectureName}
               professor={v.professor}
               majorType={v.majorType}
@@ -182,22 +180,21 @@ export const Subject = (props) => {
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
           <Styled.TitleWrapper>
-              <Styled.YearText>{props.semester}</Styled.YearText>
-              <Styled.Title>{title}</Styled.Title>
-              <Styled.Major>{props.majorType}</Styled.Major><Styled.Major id='border'>|</Styled.Major>
-              <Styled.Professor>{props.professor}</Styled.Professor>
+            <Styled.YearText>{props.semester}</Styled.YearText>
+            <Styled.Title>{title}</Styled.Title>
+            <Styled.Major>{props.majorType}</Styled.Major>
+            <Styled.Major id="border">|</Styled.Major>
+            <Styled.Professor>{props.professor}</Styled.Professor>
           </Styled.TitleWrapper>
-              <Styled.DeleteButton
-                onClick={() => {
-                  onDelete();
-                }}
-              >
-                삭제
-              </Styled.DeleteButton>
-              <Styled.EditButton onClick={() => setModalIsOpen(true)}>
-                수정
-              </Styled.EditButton>
-          <div style={{marginBottom:"35px"}}/>
+          <Styled.DeleteButton
+            onClick={() => {
+              onDelete();
+            }}
+          >
+            삭제
+          </Styled.DeleteButton>
+          <Styled.EditButton onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
+          <div style={{ marginBottom: '35px' }} />
           <StarRatings
             rating={props.totalAvg}
             starRatedColor="#346cfd"

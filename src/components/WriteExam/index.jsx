@@ -45,7 +45,7 @@ const WriteExam = (props) => {
   };
 
   useEffect(() => {
-    console.log(db.data);
+    console.log(db.data, setData);
   }, [db.data]);
 
   return (

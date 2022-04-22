@@ -30,7 +30,7 @@ const TestInfo = (props) => {
   });
   useEffect(() => {
     searchExamApi(props.selectId).then((data) => setData(data));
-  }, []);
+  }, [props.selectId]);
   const unlock = () => {
     if (window.confirm('시험정보를 열람하시겠습니까?') === true) {
       buyTestInfo(props.selectId);

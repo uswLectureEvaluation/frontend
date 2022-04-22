@@ -1,4 +1,3 @@
-import { Button } from '@material-ui/core';
 import styled from 'styled-components';
 
 export const ModalOpen = styled.span`
@@ -14,7 +13,7 @@ export const ModalOpen = styled.span`
 
 export const Wrapper = styled.div`
   margin: 0px 20px;
-`
+`;
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -38,7 +37,7 @@ export const Major = styled.span`
     color: #e0e0e0;
     padding: 0px 5px;
   }
-`
+`;
 
 export const Professor = styled.span`
   font-family: Pretendard;
@@ -63,7 +62,7 @@ export const Rate = styled.span`
   font-size: 18px;
   font-weight: 500;
   padding-left: 5px;
-  &#modal{
+  &#modal {
     font-size: 16px;
     padding-left: 0px;
   }
@@ -116,9 +115,9 @@ export const StarFlex = styled.div`
 export const FlexContainer = styled.div`
   display: flex;
   &#col {
-    flex-direction : column;
+    flex-direction: column;
   }
-`
+`;
 
 export const YearText = styled.span`
   font-family: Pretendard;
@@ -140,25 +139,25 @@ export const PaddingRight = styled.span`
   padding-right: 0.7rem;
 `;
 export const EditButton = styled.span`
-    font-family: Pretendard;
-    font-size: 12px;
-    font-weight: 500;
-    text-align: center;
-    color: #a3a3a3;
-    float: right;
-    margin-right: 10px;
-    &:hover{
-      cursor: pointer;
-    }
+  font-family: Pretendard;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  color: #a3a3a3;
+  float: right;
+  margin-right: 10px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 export const DeleteButton = styled.span`
-    font-family: Pretendard;
-    font-size: 12px;
-    font-weight: 500;
-    text-align: center;
-    color: #a3a3a3;
-    float: right;
-    &:hover{
-      cursor: pointer;
-    }
+  font-family: Pretendard;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  color: #a3a3a3;
+  float: right;
+  &:hover {
+    cursor: pointer;
+  }
 `;

@@ -9,10 +9,10 @@ import { useDispatch } from 'react-redux';
 const SearchList = ({ lecture }) => {
   const [db, setData] = useState({
     data: [],
-    count: ''
+    count: '',
   });
 
-  const [win, setWin] = useState(false)
+  const [win, setWin] = useState(false);
 
   const showWin = () => {
     if (window.innerWidth <= 960) {
@@ -25,70 +25,70 @@ const SearchList = ({ lecture }) => {
   window.addEventListener('resize', showWin);
 
   useEffect(() => {
-    console.log(db.count)
     searchApi(lecture.search_value, lecture.search_option).then((data) => setData(data));
-  }, [lecture]);
+  }, [lecture.search_value, lecture.search_option]);
 
   return db.count !== 0 ? (
-    win ? 
-    <Styled.FlexWrap>
-      <Styled.FlexWrapSub>
-        {db.data
-          .filter((row, i) => !(i % 2))
-          .map((row, i) => (
-            <Subject
-              key={row.id}
-              id={row.id}
-              lectureName={row.lectureName}
-              professor={row.professor}
-              lectureType={row.lectureType}
-              star={row.lectureTotalAvg}
-              lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-              lectureHoneyAvg={row.lectureHoneyAvg}
-              lectureLearningAvg={row.lectureLearningAvg}
-            />
-          ))}
-      </Styled.FlexWrapSub>
-      <Styled.FlexWrapSub>
-        {db.data
-          .filter((row, i) => i % 2)
-          .map((row, i) => (
-            <Subject
-              key={row.id}
-              id={row.id}
-              lectureName={row.lectureName}
-              professor={row.professor}
-              lectureType={row.lectureType}
-              star={row.lectureTotalAvg}
-              lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-              lectureHoneyAvg={row.lectureHoneyAvg}
-              lectureLearningAvg={row.lectureLearningAvg}
-            />
-          ))}
-      </Styled.FlexWrapSub>
-    </Styled.FlexWrap> :  <Styled.FlexWrap>
-      <Styled.FullWrapSub>
-        {db.data
-          .map((row, i) => (
-            <Subject
-              key={row.id}
-              id={row.id}
-              lectureName={row.lectureName}
-              professor={row.professor}
-              lectureType={row.lectureType}
-              star={row.lectureTotalAvg}
-              lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-              lectureHoneyAvg={row.lectureHoneyAvg}
-              lectureLearningAvg={row.lectureLearningAvg}
-            />
-          ))}
-      </Styled.FullWrapSub>
+    win ? (
+      <Styled.FlexWrap>
+        <Styled.FlexWrapSub>
+          {db.data
+            .filter((row, i) => !(i % 2))
+            .map((row, i) => (
+              <Subject
+                key={row.id}
+                id={row.id}
+                lectureName={row.lectureName}
+                professor={row.professor}
+                lectureType={row.lectureType}
+                star={row.lectureTotalAvg}
+                lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+                lectureHoneyAvg={row.lectureHoneyAvg}
+                lectureLearningAvg={row.lectureLearningAvg}
+              />
+            ))}
+        </Styled.FlexWrapSub>
+        <Styled.FlexWrapSub>
+          {db.data
+            .filter((row, i) => i % 2)
+            .map((row, i) => (
+              <Subject
+                key={row.id}
+                id={row.id}
+                lectureName={row.lectureName}
+                professor={row.professor}
+                lectureType={row.lectureType}
+                star={row.lectureTotalAvg}
+                lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+                lectureHoneyAvg={row.lectureHoneyAvg}
+                lectureLearningAvg={row.lectureLearningAvg}
+              />
+            ))}
+        </Styled.FlexWrapSub>
       </Styled.FlexWrap>
+    ) : (
+      <Styled.FlexWrap>
+        <Styled.FullWrapSub>
+          {db.data.map((row, i) => (
+            <Subject
+              key={row.id}
+              id={row.id}
+              lectureName={row.lectureName}
+              professor={row.professor}
+              lectureType={row.lectureType}
+              star={row.lectureTotalAvg}
+              lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+              lectureHoneyAvg={row.lectureHoneyAvg}
+              lectureLearningAvg={row.lectureLearningAvg}
+            />
+          ))}
+        </Styled.FullWrapSub>
+      </Styled.FlexWrap>
+    )
   ) : (
     <Styled.ErrorText>
-    <div>{lecture.search_value}에 대한 검색 결과가 없습니다.</div>
-
-      </Styled.ErrorText>
+      <div>{lecture.search_value}에 대한 검색 결과가 없습니다.</div>
+    </Styled.ErrorText>
   );
 };
 

@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { CssBaseline, Container } from '@material-ui/core';
-import Modal from 'react-modal';
-import { examPostApi } from '../../api/Api';
 import * as Styled from './styled';
 
 const SearchTestList = (props) => {
@@ -9,7 +7,8 @@ const SearchTestList = (props) => {
     <Container component="main" maxWidth="md">
       <CssBaseline />
       {props.db.map((v, i) => (
-        <Subject key={v.id}
+        <Subject
+          key={v.id}
           content={v.content}
           examDifficulty={v.examDifficulty}
           examInfo={v.examInfo}

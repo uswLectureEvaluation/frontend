@@ -84,7 +84,7 @@ const SearchEvaluationList = ({ selectId }) => {
   });
   useEffect(() => {
     searchEvaluationApi(selectId).then((data) => setData(data));
-  }, []);
+  }, [selectId]);
 
   return db.length !== 0 ? (
     <Styled.FlexWrap>
