@@ -23,7 +23,7 @@ const WriteEvaluation = (props) => {
     data: [],
   });
   useEffect(() => {
-    console.log(db.data);
+    console.log(db.data, setData);
   }, [db.data]);
 
   const [honey, HoneySlider] = useSlider(0.5, 5);
