@@ -125,7 +125,7 @@ const EditEvaluation = (props) => {
       </Styled.ContentWrapper>
       <TextField
         id="outlined-multiline-static"
-        label={props.content}
+        defaultValue={props.content}
         multiline
         variant="outlined"
         onChange={onChangeContent}
