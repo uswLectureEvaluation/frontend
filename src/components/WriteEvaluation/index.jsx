@@ -7,7 +7,7 @@ import * as Styled from './styled';
 import { TextField } from '@material-ui/core';
 import RangeInput from '../RangeInput';
 
-const useSlider = (min, max, defaultState, id) => {
+const useSlider = () => {
   const [state, setSlide] = useState(3);
 
   const Slider = () => <RangeInput onChange={setSlide} defaultValue={state} />;
