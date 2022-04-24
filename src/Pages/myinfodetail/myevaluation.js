@@ -180,7 +180,7 @@ export const Subject = (props) => {
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
           <Styled.TitleWrapper>
-            <Styled.YearText>{props.semester}</Styled.YearText>
+            <Styled.YearText>{props.semesterList}</Styled.YearText>
             <Styled.Title>{title}</Styled.Title>
             <Styled.Major>{props.majorType}</Styled.Major>
             <Styled.Major id="border">|</Styled.Major>
