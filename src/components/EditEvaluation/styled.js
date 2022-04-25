@@ -5,13 +5,16 @@ export const Wrapper = styled.div`
   font-family: Pretendard;
   flex-direction: column;
   width: 100%;
+  &#button {
+    align-items: center;
+  }
 `;
 
 export const Title = styled.div`
-  font-size: 1.5rem;
+  font-size: 18px;
   padding: 2rem;
   padding-bottom: 1rem;
-  font-weight: bold;
+  font-weight: 500;
 `;
 
 export const Score = styled.span`
@@ -67,6 +70,20 @@ export const TextField = styled.textarea`
   border: solid 1px #e0e0e0;
   border-radius: 15px;
   background-color: #f9f9f9;
+`
+
+export const EditButton = styled.div`
+  font-size: 16px;
+  font-weight: 600;
+  width: 350px;
+  padding: 12px 20px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #346cfd;
+  border-radius: 15px;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 // 라디오버튼 스타일
