@@ -38,7 +38,7 @@ export const ContentWrapper = styled.div`
   border-bottom: 1px solid #e0e0e0;
 `;
 
-export const Content = styled.div`
+export const Content = styled.form`
   display: flex;
   margin: 0.5rem 0;
 
@@ -50,3 +50,50 @@ export const Content = styled.div`
 export const ContentTitle = styled.div`
   width: 20%;
 `;
+
+// 라디오버튼 스타일
+export const FormLabel = styled.label`
+`
+export const FormCheckText = styled.span`
+  font-size: 16px;
+  padding: 8px 15px;
+  background: #e6e6e6;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #777;
+  margin-right: 8px;
+`;
+
+export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
+  &:checked {
+    display: inline-block;
+    background: none;
+    padding: 0px 10px;
+    text-align: center;
+    height: 35px;
+    line-height: 33px;
+    font-weight: 500;
+    display: none;
+  }
+  &#difficult {
+    &:checked + ${FormCheckText} {
+      color: #7800ff;
+    }  
+  }
+  &#normal {
+    &:checked + ${FormCheckText} {
+      color: #222222;
+    }  
+  }
+  &#easy {
+    &:checked + ${FormCheckText} {
+      color: #346cfd;
+    }  
+  }
+  display: none;
+`;
+// 여기까지

@@ -50,14 +50,14 @@ const EditEvaluation = (props) => {
   const [homework, setHomework] = useState(`${props.homework}`); //과제
   const [difficulty, setDifficulty] = useState(`${props.difficulty}`); //학점
 
-  const teamChange = (e, newAlignment) => {
-    setTeam(newAlignment);
+  const teamChange = (e) => {
+    setTeam(e.target.value);
   };
-  const homeworkChange = (e, newAlignment) => {
-    setHomework(newAlignment);
+  const homeworkChange = (e) => {
+    setHomework(e.target.value);
   };
-  const difficultyChange = (e, newAlignment) => {
-    setDifficulty(newAlignment);
+  const difficultyChange = (e) => {
+    setDifficulty(e.target.value);
   };
   return (
     <Styled.Wrapper>
@@ -94,33 +94,46 @@ const EditEvaluation = (props) => {
           <SatisfactionSlider /> <Styled.Score>{satisfaction}</Styled.Score>
         </Styled.Content>
 
-        <Styled.Content>
+        <Styled.Content onChange={teamChange}>
           <Styled.ContentTitle>조모임</Styled.ContentTitle>
-          <ToggleButtonGroup color="primary" value={team} exclusive onChange={teamChange}>
-            <ToggleButton value="0">없음</ToggleButton>
-            <ToggleButton value="1">있음</ToggleButton>
-          </ToggleButtonGroup>
+          <Styled.FormLabel>
+          <Styled.FormCheckLeft name="team" id="easy" value="0" checked={team === "0"}/>
+          <Styled.FormCheckText>없음</Styled.FormCheckText>
+        </Styled.FormLabel>
+        <Styled.FormLabel>
+          <Styled.FormCheckLeft name="team" id="difficult" value="1" checked={team === "1"}/>
+          <Styled.FormCheckText>있음</Styled.FormCheckText>
+        </Styled.FormLabel>
         </Styled.Content>
-        <Styled.Content>
+        <Styled.Content onChange={homeworkChange}>
           <Styled.ContentTitle>과제</Styled.ContentTitle>
-          <ToggleButtonGroup color="primary" value={homework} exclusive onChange={homeworkChange}>
-            <ToggleButton value="0">없음</ToggleButton>
-            <ToggleButton value="1">보통</ToggleButton>
-            <ToggleButton value="2">많음</ToggleButton>
-          </ToggleButtonGroup>
+          <Styled.FormLabel>
+          <Styled.FormCheckLeft name="homework" id="easy" value="0" checked={homework === "0"}/>
+          <Styled.FormCheckText>없음</Styled.FormCheckText>
+        </Styled.FormLabel>
+        <Styled.FormLabel>
+          <Styled.FormCheckLeft name="homework" id="normal" value="1" checked={homework === "1"}/>
+          <Styled.FormCheckText>보통</Styled.FormCheckText>
+        </Styled.FormLabel>
+        <Styled.FormLabel>
+          <Styled.FormCheckLeft name="homework" id="difficult" value="2" checked={homework === "2"}/>
+          <Styled.FormCheckText>많음</Styled.FormCheckText>
+        </Styled.FormLabel>
         </Styled.Content>
-        <Styled.Content id="group">
+        <Styled.Content id="group" onChange={difficultyChange}>
           <Styled.ContentTitle>학점</Styled.ContentTitle>
-          <ToggleButtonGroup
-            color="primary"
-            value={difficulty}
-            exclusive
-            onChange={difficultyChange}
-          >
-            <ToggleButton value="0">까다로움</ToggleButton>
-            <ToggleButton value="1">보통</ToggleButton>
-            <ToggleButton value="2">잘줌</ToggleButton>
-          </ToggleButtonGroup>
+        <Styled.FormLabel>
+          <Styled.FormCheckLeft name="score" id="difficult" value="0" checked={difficulty === "0"}/>
+          <Styled.FormCheckText>까다로움</Styled.FormCheckText>
+        </Styled.FormLabel>
+        <Styled.FormLabel>
+          <Styled.FormCheckLeft name="score" id="normal" value="1" checked={difficulty === "1"}/>
+          <Styled.FormCheckText>보통</Styled.FormCheckText>
+        </Styled.FormLabel>
+        <Styled.FormLabel>
+          <Styled.FormCheckLeft name="score" id="easy" value="2" checked={difficulty === "2"}/>
+          <Styled.FormCheckText>너그러움</Styled.FormCheckText>
+        </Styled.FormLabel>
         </Styled.Content>
       </Styled.ContentWrapper>
       <TextField

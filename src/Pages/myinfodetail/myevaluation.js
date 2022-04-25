@@ -48,7 +48,7 @@ export const DetailModal = (props) => {
   const difficulty = {
     0: <Styled.DataColor id="purple">까다로움</Styled.DataColor>,
     1: <Styled.DataColor id="cyan">보통</Styled.DataColor>,
-    2: <Styled.DataColor>잘줌</Styled.DataColor>,
+    2: <Styled.DataColor>너그러움</Styled.DataColor>,
   };
 
   return (
