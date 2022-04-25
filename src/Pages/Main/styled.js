@@ -171,6 +171,11 @@ export const Img = styled.img`
 
 export const Soption = styled.span`
   font-weight: bold;
+  &#semester {
+    font-family: Pretendard;
+    font-size: 16px;
+    font-weight: normal;
+  }
 `;
 
 export const Button = styled.button`
@@ -226,7 +231,16 @@ const StyledButton = styled_mui('button')(
   text-align: left;
   line-height: 1.5;
   color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
-
+  &#semester {
+    min-width: 130px;
+    background: ${theme.palette.mode === 'dark' ? grey[900] : '#eee'};
+    border-radius: 10px;
+    padding: 5px 10px;
+    &:hover {
+      background: ${theme.palette.mode === 'dark' ? '' : grey[100]};
+      border-color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
+    }
+  }
   &:hover {
     background: ${theme.palette.mode === 'dark' ? '' : grey[100]};
     border-color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
@@ -271,13 +285,30 @@ const StyledListbox = styled_mui('ul')(
   `
 );
 
+const StyledSemesterListbox = styled_mui('ul')(
+  ({ theme }) => `
+  font-family: IBM Plex Sans, sans-serif;
+  font-size: 0.875rem;
+  box-sizing: border-box;
+  padding: 5px;
+  margin: 10px 0;
+  min-width: 130px;
+  max-height: 400px;
+  background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
+  border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
+  border-radius: 0.75em;
+  color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
+  overflow: auto;
+  outline: 0px;
+  `
+);
+
 export const StyledOption = styled_mui(OptionUnstyled)(
   ({ theme }) => `
   list-style: none;
   padding: 8px;
   border-radius: 0.45em;
   cursor: default;
-
   &:last-of-type {
     border-bottom: none;
   }
@@ -328,6 +359,30 @@ export const CustomSelect = React.forwardRef(function CustomSelect(props, ref) {
 });
 
 CustomSelect.propTypes = {
+  /**
+   * The components used for each slot inside the Select.
+   * Either a string to use a HTML element or a component.
+   * @default {}
+   */
+  components: PropTypes.shape({
+    Listbox: PropTypes.elementType,
+    Popper: PropTypes.func,
+    Root: PropTypes.elementType,
+  }),
+};
+
+export const SemesterSelect = React.forwardRef(function CustomSelect(props, ref) {
+  const components = {
+    Root: StyledButton,
+    Listbox: StyledSemesterListbox,
+    Popper: StyledPopper,
+    ...props.components,
+  };
+
+  return <SelectUnstyled {...props} ref={ref} components={components} />;
+});
+
+SemesterSelect.propTypes = {
   /**
    * The components used for each slot inside the Select.
    * Either a string to use a HTML element or a component.

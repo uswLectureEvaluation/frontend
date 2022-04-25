@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { evaluateUpdateApi } from '../../api/Api';
 import * as Styled from './styled';
 import RangeInput from '../RangeInput';
+import {SemesterSelect, StyledOption, Soption} from '../../Pages/Main/styled'
 
 const useSlider = (min, max, defaultState, id) => {
   const [state, setSlide] = useState(defaultState);
@@ -41,7 +42,7 @@ const EditEvaluation = (props) => {
     props.setModalIsOpen(false);
   };
 
-  const [semester, setSemester] = useState(props.semester); //학기
+  const [semester, setSemester] = useState(''); //학기
   const [team, setTeam] = useState(`${props.team}`); //조모임
   const [homework, setHomework] = useState(`${props.homework}`); //과제
   const [difficulty, setDifficulty] = useState(`${props.difficulty}`); //학점
@@ -55,6 +56,8 @@ const EditEvaluation = (props) => {
   const difficultyChange = (e) => {
     setDifficulty(e.target.value);
   };
+  const options = ['선택','2021-1','2022-1'];
+    
   return (
     <Styled.Wrapper>
       <Styled.TitleWrapper>
@@ -71,10 +74,15 @@ const EditEvaluation = (props) => {
       <Styled.ContentWrapper>
         <Styled.Content id="group">
           <Styled.ContentTitle>수강학기</Styled.ContentTitle>
-          <select onChange={(e)=>{setSemester(e.target.value)}}>
-            <option value="2021-1">2021-1</option>
-            <option value="2022-1">2022-1</option>
-          </select>
+          <SemesterSelect id='semester' defaultValue={`${props.semester}`} onChange={(e)=>{setSemester(e)}}>
+              {options.map((index) => (
+                <StyledOption id='semester' key={index} value={index}>
+                  <Soption id='semester'>
+                    {index}
+                  </Soption>
+                </StyledOption>
+              ))}
+            </SemesterSelect>
         </Styled.Content>
 
         <Styled.Content>
@@ -101,6 +109,7 @@ const EditEvaluation = (props) => {
           <Styled.FormCheckText>있음</Styled.FormCheckText>
         </Styled.FormLabel>
         </Styled.Content>
+
         <Styled.Content onChange={homeworkChange}>
           <Styled.ContentTitle>과제</Styled.ContentTitle>
           <Styled.FormLabel>
@@ -116,6 +125,7 @@ const EditEvaluation = (props) => {
           <Styled.FormCheckText>많음</Styled.FormCheckText>
         </Styled.FormLabel>
         </Styled.Content>
+
         <Styled.Content id="group" onChange={difficultyChange}>
           <Styled.ContentTitle>학점</Styled.ContentTitle>
         <Styled.FormLabel>
@@ -131,11 +141,12 @@ const EditEvaluation = (props) => {
           <Styled.FormCheckText>너그러움</Styled.FormCheckText>
         </Styled.FormLabel>
         </Styled.Content>
+
       </Styled.ContentWrapper>
       <Styled.TextField
         defaultValue={props.content}
         onChange={onChangeContent}
-        rows="10"
+        rows="15"
       />
       <Styled.Wrapper id='button'>
         <Styled.EditButton onClick={onEvaluate}>수정하기</Styled.EditButton>
