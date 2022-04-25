@@ -58,13 +58,24 @@ font-weight: 500;
 color: #222;
 `
 
+export const TextField = styled.textarea`
+  margin-bottom: 20px;
+  width: 100%;
+  resize: none;
+  padding: 22px;
+  outline-color: #346cfd;
+  border: solid 1px #e0e0e0;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+`
+
 // 라디오버튼 스타일
 export const FormLabel = styled.label`
 `
 export const FormCheckText = styled.span`
   font-size: 16px;
   padding: 8px 15px;
-  background: #e6e6e6;
+  background: #eee;
   border-radius: 10px;
   border: none;
   display: flex;

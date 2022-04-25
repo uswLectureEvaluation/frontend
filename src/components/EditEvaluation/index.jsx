@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { evaluateUpdateApi } from '../../api/Api';
 import * as Styled from './styled';
-
-import { TextField } from '@material-ui/core';
 import RangeInput from '../RangeInput';
 
 const useSlider = (min, max, defaultState, id) => {
@@ -136,15 +132,10 @@ const EditEvaluation = (props) => {
         </Styled.FormLabel>
         </Styled.Content>
       </Styled.ContentWrapper>
-      <TextField
-        id="outlined-multiline-static"
+      <Styled.TextField
         defaultValue={props.content}
-        multiline
-        variant="outlined"
         onChange={onChangeContent}
-        fullWidth
-        rows={5}
-        style={{ marginBottom: '20px' }}
+        rows="10"
       />
       <button onClick={onEvaluate}>수정하기</button>
     </Styled.Wrapper>
