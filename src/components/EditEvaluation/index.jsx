@@ -83,15 +83,15 @@ const EditEvaluation = (props) => {
 
         <Styled.Content>
           <Styled.ContentTitle>꿀강지수</Styled.ContentTitle>
-          <HoneySlider /> <Styled.Score>{honey}</Styled.Score>
+          <HoneySlider /> <Styled.Score>{honey.toFixed(1)}</Styled.Score>
         </Styled.Content>
         <Styled.Content>
           <Styled.ContentTitle>배움지수</Styled.ContentTitle>
-          <LearingSlider /> <Styled.Score>{learning}</Styled.Score>
+          <LearingSlider /> <Styled.Score>{learning.toFixed(1)}</Styled.Score>
         </Styled.Content>
         <Styled.Content id="group">
           <Styled.ContentTitle>만족도</Styled.ContentTitle>
-          <SatisfactionSlider /> <Styled.Score>{satisfaction}</Styled.Score>
+          <SatisfactionSlider /> <Styled.Score>{satisfaction.toFixed(1)}</Styled.Score>
         </Styled.Content>
 
         <Styled.Content onChange={teamChange}>
