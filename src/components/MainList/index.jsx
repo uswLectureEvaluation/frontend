@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 const MainList = ({ lecture }) => {
   const [db, setData] = useState([]);
 
-  const [win, setWin] = useState(false)
+  const [win, setWin] = useState(true)
 
   const showWin = () => {
     if (window.innerWidth <= 960) {
