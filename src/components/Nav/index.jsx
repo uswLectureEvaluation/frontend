@@ -58,10 +58,16 @@ const Nav = () => {
         ) : (
           <Styled.NavLinks onClick={logoutClick}>로그아웃</Styled.NavLinks>
         )}
-
-        <Styled.NavLinks id="signup" onClick={() => navigate('signup')}>
+        {cookies.get('AccessToken') == null ? (
+          <Styled.NavLinks id="signup" onClick={() => navigate('signup')}>
           회원가입
         </Styled.NavLinks>
+        ) : (
+          <Styled.NavLinks id="signup" onClick={() => navigate('myinformation')}>
+          내 정보
+        </Styled.NavLinks>
+        )}
+        
       </Styled.NavMenu>
     </Styled.Navbar>
   );
