@@ -26,10 +26,19 @@ const WriteExam = (props) => {
     setContent(e.target.value);
   };
   const onTest = () => {
+    if(semester===''){
+      alert('학기를 선택해주세요')
+    } else if(examType===''){
+      alert('시험종류를 선택해주세요')
+    } else if(examDifficulty===''){
+      alert('난이도(란)을 선택해주세요')
+    } else if(exam.length===0){
+      alert('시험유형(란)을 선택해주세요')
+    } else {
     examWriteApi(props.selectId, props.lectureName, props.professor, semester, examInfo, examType, examDifficulty, content);
     props.setModalIsOpen(false);
   };
-
+  }
   const semesterOptions = ['선택','2021-1','2022-1'];
   const examTypeOptions = ['선택','중간고사','기말고사','쪽지','기타']
 
