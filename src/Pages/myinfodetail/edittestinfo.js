@@ -73,7 +73,7 @@ const Edittestinfo = (props) => {
                     {index}
                   </Soption>
                 </StyledOption>
-              ))} {console.log(examType)}
+              ))}
             </SemesterSelect>
         </Styled.Content>
 
@@ -91,7 +91,7 @@ const Edittestinfo = (props) => {
           <Styled.FormCheckLeft name="examDifficulty" id="difficult" value="어려움" defaultChecked={examDifficulty === "어려움"}/>
           <Styled.FormCheckText>어려움</Styled.FormCheckText>
         </Styled.FormLabel>
-        </Styled.Content>{console.log(examDifficulty)}
+        </Styled.Content>
 
         <Styled.Content onChange={(e)=>handleExam(e.target.checked, e.target.value)}>
           <Styled.ContentTitle>시험유형</Styled.ContentTitle>

@@ -251,7 +251,8 @@ const StyledButton = styled_mui('button')(
   color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
   &#semester {
     min-width: 130px;
-    background: ${theme.palette.mode === 'dark' ? grey[900] : '#eee'};
+    background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
+    border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
     border-radius: 10px;
     padding: 5px 10px;
     margin-right: 30px;

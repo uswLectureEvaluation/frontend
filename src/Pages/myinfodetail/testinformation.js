@@ -94,7 +94,7 @@ export const Subject = (props) => {
           <Styled.TitleWrapper>
             <Styled.YearText>{props.semester}</Styled.YearText>
             <Styled.YearText>
-              {props.examType === 'middle' ? '중간고사' : '기말고사'}
+              {props.examType}
             </Styled.YearText>
             <Styled.Title>{title}</Styled.Title>
             <Styled.Major>{props.majorType}</Styled.Major>
