@@ -55,6 +55,10 @@ export const ContentTitle = styled.div`
   width: 17%;
 `;
 
+export const SmallTitle = styled.div`
+  font-size: 12px;
+`
+
 export const WriteButton = styled.button`
 font-size: 16px;
 font-weight: 500;

@@ -96,7 +96,7 @@ const WriteExam = (props) => {
         </Styled.Content>
 
         <Styled.Content onChange={(e)=>handleExam(e.target.checked, e.target.value)}>
-          <Styled.ContentTitle>시험유형</Styled.ContentTitle>
+          <Styled.ContentTitle>시험유형<Styled.SmallTitle>(복수선택)</Styled.SmallTitle></Styled.ContentTitle>
         <Styled.FormLabel>
           <Styled.FormCheckMulti name="examType" id="normal" value="족보" />
           <Styled.FormCheckText>족보</Styled.FormCheckText>
