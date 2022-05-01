@@ -57,21 +57,21 @@ const MyInfo = () => {
             <Styled.FlexContainer id="last">
               <Styled.Color>{db.writtenLecture}</Styled.Color>개
             </Styled.FlexContainer>
-            <Styled.OptionPoint id="plus">+100</Styled.OptionPoint>
+            <Styled.OptionPoint id="plus">+{db.writtenLecture*10}</Styled.OptionPoint>
           </Styled.FlexContainer>
           <Styled.FlexContainer>
             <Styled.OptionTitle>작성한 시험정보</Styled.OptionTitle>
             <Styled.FlexContainer id="last">
               <Styled.Color>{db.writtenExam}</Styled.Color>개
             </Styled.FlexContainer>
-            <Styled.OptionPoint id="plus">+40</Styled.OptionPoint>
+            <Styled.OptionPoint id="plus">+{db.writtenExam*20}</Styled.OptionPoint>
           </Styled.FlexContainer>
           <Styled.FlexContainer>
             <Styled.OptionTitle>시험정보 열람 횟수</Styled.OptionTitle>
             <Styled.FlexContainer id="last">
               <Styled.Color id="p">{db.viewExam}</Styled.Color>개
             </Styled.FlexContainer>
-            <Styled.OptionPoint id="minus">-40</Styled.OptionPoint>
+            <Styled.OptionPoint id="minus">-{db.viewExam*20}</Styled.OptionPoint>
           </Styled.FlexContainer>
         </Styled.Content>
       </Styled.Wrapper>
