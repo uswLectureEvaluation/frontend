@@ -20,6 +20,8 @@ const WriteExam = (props) => {
   const [examDifficulty, setDifficulty] = useState(''); //난이도
   const [content, setContent] = useState(''); //글쓰기
   const [exam, setExamInfo] = useState([]); //시험내용
+
+  const [examType, setExamType] = useState('middle');
   const examInfo = exam.join(', ');
 
   const difficultyChange = (e, newAlignment) => {
@@ -38,6 +40,7 @@ const WriteExam = (props) => {
       props.professor,
       semester,
       examInfo,
+      examType,
       examDifficulty,
       content
     );
@@ -72,6 +75,24 @@ const WriteExam = (props) => {
               </option>
               <option key="2022-2" value="2022-2">
                 2022-2
+              </option>
+            </select>
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <SubjectDetail>시험정보 선택</SubjectDetail>
+          </Grid>
+          <Grid item xs={12} sm={9} style={{ float: 'right' }}>
+            <select
+              onChange={(e) => {
+                setExamType(e.target.value);
+                console.log(e.target.value)
+              }}
+            >
+              <option key="middle" value="middle">
+                중간고사
+              </option>
+              <option key="final" value="final">
+                기말고사
               </option>
             </select>
           </Grid>

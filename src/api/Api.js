@@ -374,6 +374,7 @@ export const examWriteApi = (
   professor,
   semester,
   examInfo,
+  examType,
   examDifficulty,
   content
 ) => {
@@ -384,6 +385,7 @@ export const examWriteApi = (
     professor: professor,
     semester: semester,
     examInfo: examInfo,
+    examType: examType,
     examDifficulty: examDifficulty,
     content: content,
   };

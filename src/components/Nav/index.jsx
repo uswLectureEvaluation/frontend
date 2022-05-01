@@ -31,7 +31,6 @@ const Nav = () => {
     
     cookies.remove('AccessToken');
     navigate('/login');
-    console.log(cookies.get('AccessToken'));
   };
 
   window.addEventListener('resize', showButton);
