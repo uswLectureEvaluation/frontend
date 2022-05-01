@@ -10,7 +10,7 @@ const Edittestinfo = (props) => {
   const [semester, setSemester] = useState(`${props.semester}`); //학기
   const [examType, setExamType] = useState(`${props.examType}`); //중간,기말
   const [examDifficulty, setDifficulty] = useState(`${props.examDifficulty}`); //난이도
-  const [content, setContent] = useState(); //글쓰기
+  const [content, setContent] = useState(`${props.content}`); //글쓰기
   const [exam, setExamInfo] = useState(() => props.examInfo.split(', ')); //시험내용
   const examInfo = exam.join(', ');
 
