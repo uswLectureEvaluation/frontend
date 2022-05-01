@@ -92,7 +92,7 @@ export const Subject = (props) => {
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
           <Styled.TitleWrapper>
-            <Styled.YearText>{props.semesterList}</Styled.YearText>
+            <Styled.YearText>{props.semester}</Styled.YearText>
             <Styled.YearText>
               {props.examType === 'middle' ? '중간고사' : '기말고사'}
             </Styled.YearText>
@@ -147,6 +147,7 @@ export const Subject = (props) => {
             examDifficulty={props.examDifficulty}
             content={props.content}
             id={props.id}
+            examType={props.examType}
           />
         </Modal>
       </Styled.LectureWrapper>

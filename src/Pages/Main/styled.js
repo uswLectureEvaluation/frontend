@@ -254,6 +254,7 @@ const StyledButton = styled_mui('button')(
     background: ${theme.palette.mode === 'dark' ? grey[900] : '#eee'};
     border-radius: 10px;
     padding: 5px 10px;
+    margin-right: 30px;
     &:hover {
       background: ${theme.palette.mode === 'dark' ? '' : grey[100]};
       border-color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
