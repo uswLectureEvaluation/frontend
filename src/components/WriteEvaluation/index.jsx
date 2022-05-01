@@ -11,7 +11,7 @@ const useSlider = (min, max, defaultState, id) => {
   return [state, Slider, setSlide];
 };
 
-const EditEvaluation = (props) => {
+const WriteEvaluation = (props) => {
   const [content, setContent] = useState();
   const onChangeContent = (e) => {
     setContent(e.target.value);
@@ -149,4 +149,4 @@ const EditEvaluation = (props) => {
   );
 };
 
-export default EditEvaluation;
+export default WriteEvaluation;

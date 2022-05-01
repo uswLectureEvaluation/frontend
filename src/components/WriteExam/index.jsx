@@ -3,7 +3,7 @@ import { examWriteApi } from '../../api/Api';
 import * as Styled from './styled'
 import {SemesterSelect, StyledOption, Soption} from '../../Pages/Main/styled'
 
-const Edittestinfo = (props) => {
+const WriteExam = (props) => {
   const [semester, setSemester] = useState(''); //학기
   const [examType, setExamType] = useState(''); //중간,기말
   const [examDifficulty, setDifficulty] = useState(``); //난이도
@@ -132,4 +132,4 @@ const Edittestinfo = (props) => {
     </Styled.Wrapper>
   );
 };
-export default Edittestinfo;
+export default WriteExam;
