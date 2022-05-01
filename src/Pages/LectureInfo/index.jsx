@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Modal from 'react-modal';
 import WriteExam from '../../components/WriteExam';
+
 const 모달스타일 = {
   overlay: {
     position: 'fixed',
@@ -23,11 +24,12 @@ const 모달스타일 = {
     justifyContent: 'center',
     background: '#ffffff',
     overflow: 'auto',
-    maxWidth: '600px',
-    minWidth: '500px',
+    maxWidth: '580px',
+    minWidth: '580px',
+    maxHeight: '800px',
     left: '50%',
     top: '0%',
-    transform: 'translate(-50%, 3%)',
+    transform: 'translate(-50%, 2%)',
     WebkitOverflowScrolling: 'touch',
     borderRadius: '14px',
     outline: 'none',
