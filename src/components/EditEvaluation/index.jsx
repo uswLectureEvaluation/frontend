@@ -19,10 +19,6 @@ const EditEvaluation = (props) => {
   const [db, setData] = useState({
     data: [],
   });
-  useEffect(() => {
-    console.log(db.data);
-  }, [db.data]);
-
   const [honey, HoneySlider] = useSlider(0.5, 5, props.honey);
   const [learning, LearingSlider] = useSlider(0.5, 5, props.learning);
   const [satisfaction, SatisfactionSlider] = useSlider(0.5, 5, props.satisfaction);
@@ -101,11 +97,11 @@ const EditEvaluation = (props) => {
         <Styled.Content onChange={teamChange}>
           <Styled.ContentTitle>조모임</Styled.ContentTitle>
           <Styled.FormLabel>
-          <Styled.FormCheckLeft name="team" id="easy" value="0" checked={team === "0"}/>
+          <Styled.FormCheckLeft name="team" id="easy" value="0" defaultChecked={team === "0"}/>
           <Styled.FormCheckText>없음</Styled.FormCheckText>
         </Styled.FormLabel>
         <Styled.FormLabel>
-          <Styled.FormCheckLeft name="team" id="difficult" value="1" checked={team === "1"}/>
+          <Styled.FormCheckLeft name="team" id="difficult" value="1" defaultChecked={team === "1"}/>
           <Styled.FormCheckText>있음</Styled.FormCheckText>
         </Styled.FormLabel>
         </Styled.Content>
@@ -113,15 +109,15 @@ const EditEvaluation = (props) => {
         <Styled.Content onChange={homeworkChange}>
           <Styled.ContentTitle>과제</Styled.ContentTitle>
           <Styled.FormLabel>
-          <Styled.FormCheckLeft name="homework" id="easy" value="0" checked={homework === "0"}/>
+          <Styled.FormCheckLeft name="homework" id="easy" value="0" defaultChecked={homework === "0"}/>
           <Styled.FormCheckText>없음</Styled.FormCheckText>
         </Styled.FormLabel>
         <Styled.FormLabel>
-          <Styled.FormCheckLeft name="homework" id="normal" value="1" checked={homework === "1"}/>
+          <Styled.FormCheckLeft name="homework" id="normal" value="1" defaultChecked={homework === "1"}/>
           <Styled.FormCheckText>보통</Styled.FormCheckText>
         </Styled.FormLabel>
         <Styled.FormLabel>
-          <Styled.FormCheckLeft name="homework" id="difficult" value="2" checked={homework === "2"}/>
+          <Styled.FormCheckLeft name="homework" id="difficult" value="2" defaultChecked={homework === "2"}/>
           <Styled.FormCheckText>많음</Styled.FormCheckText>
         </Styled.FormLabel>
         </Styled.Content>
@@ -129,15 +125,15 @@ const EditEvaluation = (props) => {
         <Styled.Content id="group" onChange={difficultyChange}>
           <Styled.ContentTitle>학점</Styled.ContentTitle>
         <Styled.FormLabel>
-          <Styled.FormCheckLeft name="score" id="difficult" value="0" checked={difficulty === "0"}/>
+          <Styled.FormCheckLeft name="score" id="difficult" value="0" defaultChecked={difficulty === "0"}/>
           <Styled.FormCheckText>까다로움</Styled.FormCheckText>
         </Styled.FormLabel>
         <Styled.FormLabel>
-          <Styled.FormCheckLeft name="score" id="normal" value="1" checked={difficulty === "1"}/>
+          <Styled.FormCheckLeft name="score" id="normal" value="1" defaultChecked={difficulty === "1"}/>
           <Styled.FormCheckText>보통</Styled.FormCheckText>
         </Styled.FormLabel>
         <Styled.FormLabel>
-          <Styled.FormCheckLeft name="score" id="easy" value="2" checked={difficulty === "2"}/>
+          <Styled.FormCheckLeft name="score" id="easy" value="2" defaultChecked={difficulty === "2"}/>
           <Styled.FormCheckText>너그러움</Styled.FormCheckText>
         </Styled.FormLabel>
         </Styled.Content>
