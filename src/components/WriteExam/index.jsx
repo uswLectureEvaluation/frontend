@@ -122,6 +122,7 @@ const Edittestinfo = (props) => {
         </Styled.Content>
       </Styled.ContentWrapper>
       <Styled.TextField
+        placeholder='시험에 대한 정보, 공부법, 문제유형 등을 자유롭게 작성해주세요 :)'
         onChange={onChangeContent}
         rows="15"
       />

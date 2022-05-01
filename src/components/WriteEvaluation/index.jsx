@@ -138,6 +138,7 @@ const EditEvaluation = (props) => {
 
       </Styled.ContentWrapper>
       <Styled.TextField
+        placeholder='강의평가를 작성해주세요 :)'
         onChange={onChangeContent}
         rows="15"
       />
