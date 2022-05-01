@@ -1,22 +1,21 @@
-import React from 'react';
-import { CssBaseline, Container } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
 import * as Styled from './styled';
 
 const SearchTestList = (props) => {
   return (
-    <Container component="main" maxWidth="md">
-      <CssBaseline />
+    <Styled.Wrapper>
       {props.db.map((v, i) => (
         <Subject
           key={v.id}
           content={v.content}
           examDifficulty={v.examDifficulty}
           examInfo={v.examInfo}
+          examType={v.examType}
           id={v.id}
           semester={v.semester}
         />
       ))}
-    </Container>
+    </Styled.Wrapper>
   );
 };
 
@@ -24,10 +23,10 @@ export const Subject = (props) => {
   const examDifficultySet = props.examDifficulty;
 
   const examDifficulty = {
-    '매우 쉬움': <Styled.DataColor>매우 쉬움</Styled.DataColor>,
-    쉬움: <Styled.DataColor>쉬움</Styled.DataColor>,
-    보통: <Styled.DataColor id="cyan">보통</Styled.DataColor>,
-    어려움: <Styled.DataColor id="purple">어려움</Styled.DataColor>,
+    '매우 쉬움': <Styled.DataColor id="cyan">매우 쉬움</Styled.DataColor>,
+    '쉬움': <Styled.DataColor id="cyan">쉬움</Styled.DataColor>,
+    '보통': <Styled.DataColor>보통</Styled.DataColor>,
+    '어려움': <Styled.DataColor id="purple">어려움</Styled.DataColor>,
     '매우 어려움': <Styled.DataColor id="purple">매우 어려움</Styled.DataColor>,
   };
 
@@ -35,32 +34,35 @@ export const Subject = (props) => {
     <div style={{ marginTop: '15px' }}>
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
-          <div style={{ marginBottom: '10px' }}>
+          <Styled.TitleWrapper>
             <Styled.YearText>{props.semester}</Styled.YearText>
-            <Styled.DeleteButton style={{ float: 'right' }}>신고</Styled.DeleteButton>
-          </div>
-          <Styled.TitleWrapper>
-            <Styled.TitleWrapper>
-              <Styled.Professor></Styled.Professor>
-            </Styled.TitleWrapper>
+            <Styled.YearText>
+              {props.examType}
+            </Styled.YearText>
           </Styled.TitleWrapper>
-          <Styled.TitleWrapper>
-            <Styled.TitleWrapper>
-              <Styled.ExamDetail id="top">시험내용</Styled.ExamDetail>
-              <Styled.DataColor id="cyan">{props.examInfo}</Styled.DataColor>
-            </Styled.TitleWrapper>
-          </Styled.TitleWrapper>
-          <Styled.TitleWrapper>
-            <Styled.TitleWrapper>
-              <Styled.ExamDetail id="bottom">난이도</Styled.ExamDetail>
-              <Styled.ExamDetail id="data">{examDifficulty[examDifficultySet]}</Styled.ExamDetail>
-            </Styled.TitleWrapper>
-          </Styled.TitleWrapper>
-          <Styled.TitleWrapper>
-            <Styled.TitleWrapper>
-              <Styled.ExamDetail id="data">{props.content}</Styled.ExamDetail>
-            </Styled.TitleWrapper>
-          </Styled.TitleWrapper>
+          <Styled.EditButton>신고</Styled.EditButton>
+          <div style={{ marginBottom: '35px' }} />
+        </Styled.MarginTop>
+
+        <div>
+          <Styled.StarFlex id="top">
+            <Styled.FlexContainer id="col">
+              <Styled.StarFlex id="between">
+                난이도
+                <Styled.StarFlex id="data">{examDifficulty[examDifficultySet]}</Styled.StarFlex>
+              </Styled.StarFlex>
+            </Styled.FlexContainer>
+            <Styled.FlexContainer id="col">
+              <Styled.StarFlex id="between">
+                시험유형
+                <Styled.StarFlex id="black">{props.examInfo}</Styled.StarFlex>
+              </Styled.StarFlex>
+            </Styled.FlexContainer>
+          </Styled.StarFlex>
+        </div>
+
+        <Styled.MarginTop id="bottom">
+          <Styled.EvaluationDetail>{props.content}</Styled.EvaluationDetail>
         </Styled.MarginTop>
       </Styled.LectureWrapper>
     </div>
