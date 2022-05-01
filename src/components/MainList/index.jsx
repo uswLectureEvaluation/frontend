@@ -22,8 +22,9 @@ const MainList = ({ lecture }) => {
   window.addEventListener('resize', showWin);
 
   useEffect(() => {
+    showWin()
     mainApi(lecture).then((data) => setData(data));
-  }, [lecture]);
+  }, [win, lecture]);
 
   return db.length !== 0 ? (
     win ? 

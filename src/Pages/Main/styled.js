@@ -20,6 +20,9 @@ export const Banner = styled.div`
   width: 100%;
   height: 40vh;
   background-color: #eeeeee;
+  @media screen and (max-width: 480px) {
+    display: none;
+ }
 `;
 
 export const BannerWrapper = styled.div`
@@ -193,6 +196,21 @@ export const Button = styled.button`
   user-select: none;
   font-family: 'Pretendard-Medium';
   
+  @media screen and (max-width: 480px) {
+    margin: 10px 0;
+  margin-bottom: 10vh;
+  width: 50%;
+  padding: 0.8rem 1rem;
+  border: none;
+  background: ${(props) => props.background};
+  color: white;
+  text-align: center;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+  font-family: 'Pretendard-Medium';
+ }
 `;
 
 const blue = {
