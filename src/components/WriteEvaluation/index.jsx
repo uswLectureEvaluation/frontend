@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { evaluateUpdateApi, evaluateWriteApi } from '../../api/Api';
+import React, { useState } from 'react';
+import { evaluateWriteApi } from '../../api/Api';
 import * as Styled from './styled';
 import RangeInput from '../RangeInput';
 import {SemesterSelect, StyledOption, Soption} from '../../Pages/Main/styled'

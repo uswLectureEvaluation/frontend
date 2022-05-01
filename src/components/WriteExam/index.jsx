@@ -1,150 +1,134 @@
 import React, { useState, useEffect } from 'react';
-import {
-  SubjectText,
-  SubjectDetail,
-  EvaluationInput,
-  EditButton,
-  ModalLine,
-  CancelButton,
-} from './styled';
-import { CssBaseline, Grid, Box, Container } from '@material-ui/core';
 import { examWriteApi } from '../../api/Api';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import * as Styled from './styled'
+import {SemesterSelect, StyledOption, Soption} from '../../Pages/Main/styled'
 
-const WriteExam = (props) => {
-  const [db, setData] = useState({
-    data: [],
-  });
+const Edittestinfo = (props) => {
   const [semester, setSemester] = useState(''); //학기
-  const [examDifficulty, setDifficulty] = useState(''); //난이도
-  const [content, setContent] = useState(''); //글쓰기
+  const [examType, setExamType] = useState(''); //중간,기말
+  const [examDifficulty, setDifficulty] = useState(``); //난이도
+  const [content, setContent] = useState(); //글쓰기
   const [exam, setExamInfo] = useState([]); //시험내용
-
-  const [examType, setExamType] = useState('middle');
   const examInfo = exam.join(', ');
 
-  const difficultyChange = (e, newAlignment) => {
-    setDifficulty(newAlignment);
+  const difficultyChange = (e) => {
+    setDifficulty(e.target.value);
   };
-  const handleExam = (e, newInfo) => {
-    setExamInfo(newInfo);
+  const handleExam = (checked, value) => {
+    if (checked) {
+      setExamInfo([...exam, value]);
+    } else {
+      // 체크 해제
+      setExamInfo(exam.filter((data) => data !== value));
+    }
   };
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
   const onTest = () => {
-    examWriteApi(
-      props.selectId,
-      props.lectureName,
-      props.professor,
-      semester,
-      examInfo,
-      examType,
-      examDifficulty,
-      content
-    );
+    examWriteApi(props.selectId, props.lectureName, props.professor, semester, examInfo, examType, examDifficulty, content);
     props.setModalIsOpen(false);
   };
 
-  useEffect(() => {
-    console.log(db.data, setData);
-  }, [db.data]);
+  const semesterOptions = ['선택','2021-1','2022-1'];
+  const examTypeOptions = ['선택','중간고사','기말고사','쪽지','기타']
 
   return (
-    <Container component="main" maxWidth="sm">
-      <CssBaseline />
-      <Box
-        sx={{
-          marginTop: 8,
-        }}
-      >
-        <SubjectText>{props.lectureName}</SubjectText>
-        <Grid container spacing={2} style={{ marginTop: '15px' }}>
-          <Grid item xs={12} sm={3}>
-            <SubjectDetail>수강학기 선택</SubjectDetail>
-          </Grid>
-          <Grid item xs={12} sm={9} style={{ float: 'right' }}>
-            <select
-              onChange={(e) => {
-                setSemester(e.target.value);
-              }}
-            >
-              <option key="2022-1" value="2022-1">
-                2022-1
-              </option>
-              <option key="2022-2" value="2022-2">
-                2022-2
-              </option>
-            </select>
-          </Grid>
-          <Grid item xs={12} sm={3}>
-            <SubjectDetail>시험정보 선택</SubjectDetail>
-          </Grid>
-          <Grid item xs={12} sm={9} style={{ float: 'right' }}>
-            <select
-              onChange={(e) => {
-                setExamType(e.target.value);
-                console.log(e.target.value)
-              }}
-            >
-              <option key="middle" value="middle">
-                중간고사
-              </option>
-              <option key="final" value="final">
-                기말고사
-              </option>
-            </select>
-          </Grid>
-          <Grid item xs={12} sm={3}>
-            <SubjectDetail>시험내용</SubjectDetail>
-            <div style={{ fontSize: '11px' }}>(복수선택)</div>
-          </Grid>
-          <Grid item xs={12} sm={9} style={{ float: 'right' }}>
-            <ToggleButtonGroup value={exam} onChange={handleExam}>
-              <ToggleButton value="족보">족보</ToggleButton>
-              <ToggleButton value="교재">교재</ToggleButton>
-              <ToggleButton value="PPT">PPT</ToggleButton>
-              <ToggleButton value="필기">필기</ToggleButton>
-              <ToggleButton value="응용">응용</ToggleButton>
-              <ToggleButton value="실습">실습</ToggleButton>
-              <ToggleButton value="과제">과제</ToggleButton>
-            </ToggleButtonGroup>
-          </Grid>
-          <Grid item xs={12} sm={3}>
-            <SubjectDetail>난이도</SubjectDetail>
-          </Grid>
-          <Grid item xs={12} sm={9} style={{ float: 'right' }}>
-            <ToggleButtonGroup
-              color="primary"
-              value={examDifficulty}
-              exclusive
-              onChange={difficultyChange}
-            >
-              <ToggleButton value="매우 쉬움">매우 쉬움</ToggleButton>
-              <ToggleButton value="쉬움">쉬움</ToggleButton>
-              <ToggleButton value="보통">보통</ToggleButton>
-              <ToggleButton value="어려움">어려움</ToggleButton>
-              <ToggleButton value="매우 어려움">매우 어려움</ToggleButton>
-            </ToggleButtonGroup>
-          </Grid>
-        </Grid>
-        <ModalLine />
-        <EvaluationInput propsfunction={onChangeContent} content={props.content} />
-        <Grid container spacing={3} style={{ marginTop: '5px' }}>
-          <Grid item xs={12} sm={12}>
-            <CancelButton
-              onClick={() => {
-                props.setModalIsOpen(false);
-              }}
-            >
-              취소
-            </CancelButton>
-            <EditButton onClick={onTest}>작성하기</EditButton>
-          </Grid>
-        </Grid>
-      </Box>
-    </Container>
+    <Styled.Wrapper>
+      <Styled.TitleWrapper>
+        <Styled.Title>{props.lectureName}</Styled.Title>
+        <Styled.Title
+          onClick={() => {
+            props.setModalIsOpen(false);
+          }}
+        >
+          X
+        </Styled.Title>
+      </Styled.TitleWrapper>
+
+      <Styled.ContentWrapper>
+        <Styled.Content id="group">
+          <Styled.ContentTitle>수강학기</Styled.ContentTitle>
+          <SemesterSelect id='semester' defaultValue={'선택'} onChange={(e)=>{setSemester(e)}}>
+              {semesterOptions.map((index) => (
+                <StyledOption id='semester' key={index} value={index}>
+                  <Soption id='semester'>
+                    {index}
+                  </Soption>
+                </StyledOption>
+              ))}
+            </SemesterSelect>
+            <Styled.ContentTitle>시험종류</Styled.ContentTitle>
+            <SemesterSelect id='semester' defaultValue={'선택'} onChange={(e)=>{setExamType(e)}}>
+              {examTypeOptions.map((index) => (
+                <StyledOption id='semester' key={index} value={index}>
+                  <Soption id='semester'>
+                    {index}
+                  </Soption>
+                </StyledOption>
+              ))}
+            </SemesterSelect>
+        </Styled.Content>
+
+        <Styled.Content onChange={difficultyChange}>
+          <Styled.ContentTitle>난이도</Styled.ContentTitle>
+          <Styled.FormLabel>
+          <Styled.FormCheckLeft name="examDifficulty" id="easy" value="쉬움" />
+          <Styled.FormCheckText>쉬움</Styled.FormCheckText>
+        </Styled.FormLabel>
+        <Styled.FormLabel>
+          <Styled.FormCheckLeft name="examDifficulty" id="normal" value="보통" />
+          <Styled.FormCheckText>보통</Styled.FormCheckText>
+        </Styled.FormLabel>
+        <Styled.FormLabel>
+          <Styled.FormCheckLeft name="examDifficulty" id="difficult" value="어려움" />
+          <Styled.FormCheckText>어려움</Styled.FormCheckText>
+        </Styled.FormLabel>
+        </Styled.Content>
+
+        <Styled.Content onChange={(e)=>handleExam(e.target.checked, e.target.value)}>
+          <Styled.ContentTitle>시험유형</Styled.ContentTitle>
+        <Styled.FormLabel>
+          <Styled.FormCheckMulti name="examType" id="normal" value="족보" />
+          <Styled.FormCheckText>족보</Styled.FormCheckText>
+        </Styled.FormLabel>
+        <Styled.FormLabel>
+          <Styled.FormCheckMulti name="examType" id="normal" value="교재" />
+          <Styled.FormCheckText>교재</Styled.FormCheckText>
+        </Styled.FormLabel>
+        <Styled.FormLabel>
+          <Styled.FormCheckMulti name="examType" id="normal" value="PPT"/>
+          <Styled.FormCheckText>PPT</Styled.FormCheckText>
+        </Styled.FormLabel>
+        <Styled.FormLabel>
+          <Styled.FormCheckMulti name="examType" id="normal" value="필기" />
+          <Styled.FormCheckText>필기</Styled.FormCheckText>
+        </Styled.FormLabel>
+        </Styled.Content>
+        <Styled.Content id="group" onChange={(e)=>handleExam(e.target.checked, e.target.value)}>
+        <Styled.ContentTitle />
+        <Styled.FormLabel>
+          <Styled.FormCheckMulti name="examType" id="normal" value="응용" />
+          <Styled.FormCheckText>응용</Styled.FormCheckText>
+        </Styled.FormLabel>
+        <Styled.FormLabel>
+          <Styled.FormCheckMulti name="examType" id="normal" value="실습" />
+          <Styled.FormCheckText>실습</Styled.FormCheckText>
+        </Styled.FormLabel>
+        <Styled.FormLabel>
+          <Styled.FormCheckMulti name="examType" id="normal" value="과제" />
+          <Styled.FormCheckText>과제</Styled.FormCheckText>
+        </Styled.FormLabel>
+        </Styled.Content>
+      </Styled.ContentWrapper>
+      <Styled.TextField
+        onChange={onChangeContent}
+        rows="15"
+      />
+      <Styled.Wrapper id='button'>
+        <Styled.EditButton onClick={onTest}>작성하기 (+20P)</Styled.EditButton>
+      </Styled.Wrapper>
+    </Styled.Wrapper>
   );
 };
-export default WriteExam;
+export default Edittestinfo;
