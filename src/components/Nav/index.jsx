@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import * as Styled from './styled';
 import { Cookies } from 'react-cookie';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { VscChromeClose } from 'react-icons/vsc';
 // import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from 'react-router-dom';
 
@@ -13,7 +15,6 @@ const Nav = () => {
   const [click, setClick] = useState(false);
 
   const cookies = new Cookies();
-
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -28,7 +29,6 @@ const Nav = () => {
   };
 
   const logoutClick = () => {
-    
     cookies.remove('AccessToken');
     navigate('/login');
   };
@@ -38,17 +38,13 @@ const Nav = () => {
   return (
     <Styled.Navbar>
       {button ? (
-        <Styled.Img src="img/logo.png" width={110} onClick={() => navigate('/')} />
+        <Styled.NavLogo src="img/logo.png" width={110} onClick={() => navigate('/')} />
       ) : (
-        <Styled.Img src="img/tabletlogo.png" width={110} onClick={() => navigate('/')} />
+        <Styled.NavLogo src="img/tabletlogo.png" width={110} onClick={() => navigate('/')} />
       )}
-      {/* <Styled.MobileIcon onClick={handleClick}>
-        {click ? (
-          <Styled.Img src={"Styled.Img/icon_color_fire_36.svg"} />
-        ) : (
-          <Styled.Img src={"img/icon_color_bee_36.svg"} />
-        )}
-      </Styled.MobileIcon> */}
+      <Styled.MobileIcon onClick={handleClick}>
+        {click ? <VscChromeClose /> : <GiHamburgerMenu />}
+      </Styled.MobileIcon>
 
       <Styled.NavMenu onClick={handleClick} click={click}>
         <Styled.NavLinks onClick={() => navigate('notice')}>공지사항</Styled.NavLinks>
@@ -59,14 +55,13 @@ const Nav = () => {
         )}
         {cookies.get('AccessToken') == null ? (
           <Styled.NavLinks id="signup" onClick={() => navigate('signup')}>
-          회원가입
-        </Styled.NavLinks>
+            회원가입
+          </Styled.NavLinks>
         ) : (
           <Styled.NavLinks id="signup" onClick={() => navigate('myinformation')}>
-          내 정보
-        </Styled.NavLinks>
+            내 정보
+          </Styled.NavLinks>
         )}
-        
       </Styled.NavMenu>
     </Styled.Navbar>
   );
