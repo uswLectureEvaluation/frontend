@@ -195,7 +195,7 @@ export const Subject = (props) => {
             삭제
           </Styled.DeleteButton>
           <Styled.EditButton onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
-          <div style={{ marginBottom: '35px' }} />
+          <div style={{ marginBottom: '38px' }} />
           <StarRatings
             rating={props.totalAvg}
             starRatedColor="#346cfd"

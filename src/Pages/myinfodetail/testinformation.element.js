@@ -84,7 +84,7 @@ export const MarginTop = styled.div`
   }
 `;
 export const DataColor = styled.div`
-
+  font-weight: 500;
   &#cyan {
     color: #346cfd;
   }
@@ -96,8 +96,7 @@ export const DataColor = styled.div`
 export const StarFlex = styled.div`
   display: flex;
   align-items: center;
-  padding-right: 1rem;
-  padding: 5px 12px;
+  padding: 2px 11px;
   font-family: Pretendard;
   font-size: 13px;
   &#top {
@@ -108,6 +107,12 @@ export const StarFlex = styled.div`
   }
   &#between {
     justify-content: space-between;
+  }
+  &#black {
+    font-weight: 500;
+  }
+  &#data {
+    padding-right: 0px;
   }
 `;
 

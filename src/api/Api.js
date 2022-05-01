@@ -463,6 +463,29 @@ export const buyTestInfo = (selectId) => {
   );
 };
 
+// 시험정보 삭제
+export const deleteExamInfoApi = (id) => {
+  const url = `/exam-posts/delete/?examIdx=${id}`;
+
+  const options = {
+    method: 'DELETE',
+    headers: {
+      Authorization: getCookie('AccessToken'),
+    },
+    url,
+  };
+  axios(options).then(
+    (response) => {
+      alert('삭제완료');
+      window.location.reload();
+    },
+    (error) => {
+      alert('error');
+    }
+  );
+};
+
+
 // 통합검색결과Api
 //꿀강순[modifiedDate, lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg]
 export const searchApi = (search, lecutre) => {

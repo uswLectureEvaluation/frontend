@@ -1,6 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { examPostApi } from '../../api/Api';
+import { deleteExamInfoApi, examPostApi } from '../../api/Api';
 import * as Styled from './testinformation.element';
+import EditTestInfo from './edittestinfo'
+import Modal from 'react-modal';
+
+const 모달스타일 = {
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    zIndex: 1100,
+  },
+  content: {
+    display: 'flex',
+    justifyContent: 'center',
+    background: '#ffffff',
+    overflow: 'auto',
+    maxWidth: '580px',
+    minWidth: '580px',
+    maxHeight: '800px',
+    left: '50%',
+    top: '0%',
+    transform: 'translate(-50%, 2%)',
+    WebkitOverflowScrolling: 'touch',
+    borderRadius: '14px',
+    outline: 'none',
+    zIndex: 1100,
+  },
+};
 
 const Testinformation = () => {
   const [db, setData] = useState({
@@ -32,17 +62,27 @@ const Testinformation = () => {
 };
 
 export const Subject = (props) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   let title = props.lectureName;
 
   if (title.length >= 14) {
     title = props.lectureName.substr(0, 14) + '...';
   }
+
+  const onDelete = () => {
+    if (window.confirm('강의평가를 삭제하시겠습니까?') === true) {
+      deleteExamInfoApi(props.id);
+    } else {
+      return;
+    }
+  };
+
   const examDifficultySet = props.examDifficulty;
 
   const examDifficulty = {
-    '매우 쉬움': <Styled.DataColor>매우 쉬움</Styled.DataColor>,
-    '쉬움': <Styled.DataColor>쉬움</Styled.DataColor>,
-    '보통': <Styled.DataColor id="cyan">보통</Styled.DataColor>,
+    '매우 쉬움': <Styled.DataColor id="cyan">매우 쉬움</Styled.DataColor>,
+    '쉬움': <Styled.DataColor id="cyan">쉬움</Styled.DataColor>,
+    '보통': <Styled.DataColor>보통</Styled.DataColor>,
     '어려움': <Styled.DataColor id="purple">어려움</Styled.DataColor>,
     '매우 어려움': <Styled.DataColor id="purple">매우 어려움</Styled.DataColor>,
   };
@@ -61,7 +101,14 @@ export const Subject = (props) => {
             <Styled.Major id="border">|</Styled.Major>
             <Styled.Professor>{props.professor}</Styled.Professor>
           </Styled.TitleWrapper>
-          <Styled.EditButton onClick={() => alert('신고')}>신고</Styled.EditButton>
+          <Styled.DeleteButton
+            onClick={() => {
+              onDelete();
+            }}
+          >
+            삭제
+          </Styled.DeleteButton>
+          <Styled.EditButton onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
           <div style={{ marginBottom: '35px' }} />
         </Styled.MarginTop>
 
@@ -70,15 +117,13 @@ export const Subject = (props) => {
             <Styled.FlexContainer id="col">
               <Styled.StarFlex id="between">
                 난이도
-                <Styled.PaddingRight />
-                <Styled.StarFlex id="between">{examDifficulty[examDifficultySet]}</Styled.StarFlex>
+                <Styled.StarFlex id="data">{examDifficulty[examDifficultySet]}</Styled.StarFlex>
               </Styled.StarFlex>
             </Styled.FlexContainer>
             <Styled.FlexContainer id="col">
               <Styled.StarFlex id="between">
                 시험유형
-                <Styled.PaddingRight />
-                <Styled.DataColor id="cyan">{props.examInfo}</Styled.DataColor>
+                <Styled.StarFlex id="black">{props.examInfo}</Styled.StarFlex>
               </Styled.StarFlex>
             </Styled.FlexContainer>
           </Styled.StarFlex>
@@ -87,6 +132,23 @@ export const Subject = (props) => {
         <Styled.MarginTop id="bottom">
           <Styled.EvaluationDetail>{props.content}</Styled.EvaluationDetail>
         </Styled.MarginTop>
+        <Modal
+          isOpen={modalIsOpen}
+          style={모달스타일}
+          // 오버레이나 esc를 누르면 핸들러 동작
+          ariaHideApp={false}
+          onRequestClose={() => setModalIsOpen(false)}
+        >
+          <EditTestInfo
+            setModalIsOpen={setModalIsOpen}
+            lectureName={props.lectureName}
+            semester={props.semester}
+            examInfo={props.examInfo}
+            examDifficulty={props.examDifficulty}
+            content={props.content}
+            id={props.id}
+          />
+        </Modal>
       </Styled.LectureWrapper>
     </div>
   );
