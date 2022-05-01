@@ -7,8 +7,8 @@ const Edittestinfo = (props) => {
   const [db, setData] = useState({
     data: [],
   });
-  const [semester, setSemester] = useState(''); //학기
-  const [examType, setExamType] = useState(''); //중간,기말
+  const [semester, setSemester] = useState(`${props.semester}`); //학기
+  const [examType, setExamType] = useState(`${props.examType}`); //중간,기말
   const [examDifficulty, setDifficulty] = useState(`${props.examDifficulty}`); //난이도
   const [content, setContent] = useState(); //글쓰기
   const [exam, setExamInfo] = useState(() => props.examInfo.split(', ')); //시험내용
@@ -29,9 +29,19 @@ const Edittestinfo = (props) => {
     setContent(e.target.value);
   };
   const onTest = () => {
+    if(semester==='' || semester==='선택'){
+      alert('학기를 선택해주세요')
+    } else if(examType==='' || examType==='선택'){
+      alert('시험종류를 선택해주세요')
+    } else if(examDifficulty===''){
+      alert('난이도(란)을 선택해주세요')
+    } else if(exam.length===0){
+      alert('시험유형(란)을 선택해주세요')
+    } else {
     examUpdateApi(setData, semester, examInfo, examType, examDifficulty, content, props.id);
     props.setModalIsOpen(false);
   };
+}
 
   useEffect(() => {
     console.log(db.data);

@@ -26,9 +26,9 @@ const WriteExam = (props) => {
     setContent(e.target.value);
   };
   const onTest = () => {
-    if(semester===''){
+    if(semester==='' || semester==='선택'){
       alert('학기를 선택해주세요')
-    } else if(examType===''){
+    } else if(examType==='' || examType==='선택'){
       alert('시험종류를 선택해주세요')
     } else if(examDifficulty===''){
       alert('난이도(란)을 선택해주세요')
