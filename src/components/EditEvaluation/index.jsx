@@ -12,7 +12,7 @@ const useSlider = (min, max, defaultState, id) => {
 };
 
 const EditEvaluation = (props) => {
-  const [content, setContent] = useState();
+  const [content, setContent] = useState(`${props.content}`);
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
@@ -23,6 +23,16 @@ const EditEvaluation = (props) => {
   const [learning, LearingSlider] = useSlider(0.5, 5, props.learning);
   const [satisfaction, SatisfactionSlider] = useSlider(0.5, 5, props.satisfaction);
   const onEvaluate = () => {
+    if(semester==='' || semester==='선택'){
+      alert('학기를 선택해주세요')
+    } else if(team===''){
+      alert('조모임(란)을 선택해주세요')
+    } else if(homework===''){
+      alert('과제(란)을 선택해주세요')
+    } else if(difficulty===''){
+      alert('학점(란)을 선택해주세요')
+    }
+    else{
     evaluateUpdateApi(
       setData,
       semester,
@@ -37,8 +47,8 @@ const EditEvaluation = (props) => {
     );
     props.setModalIsOpen(false);
   };
-
-  const [semester, setSemester] = useState(''); //학기
+  }
+  const [semester, setSemester] = useState(`${props.semester}`); //학기
   const [team, setTeam] = useState(`${props.team}`); //조모임
   const [homework, setHomework] = useState(`${props.homework}`); //과제
   const [difficulty, setDifficulty] = useState(`${props.difficulty}`); //학점

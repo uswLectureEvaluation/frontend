@@ -20,7 +20,7 @@ const WriteEvaluation = (props) => {
   const [learning, LearingSlider] = useSlider(0.5, 5);
   const [satisfaction, SatisfactionSlider] = useSlider(0.5, 5);
   const onEvaluate = () => {
-    if(semester===''){
+    if(semester==='' || semester==='선택'){
       alert('학기를 선택해주세요')
     } else if(team===''){
       alert('조모임(란)을 선택해주세요')
