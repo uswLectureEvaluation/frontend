@@ -61,6 +61,14 @@ export const OptionTitle = styled.div`
     width: 100%;
     margin-bottom: 10px;
   }
+
+  &#point {
+    width: 110px;
+  }
+
+  &#points {
+    width: 170px;
+  }
 `;
 
 export const OptionPoint = styled.div`
@@ -82,6 +90,7 @@ export const FlexContainer = styled.div`
   display: flex;
   padding-bottom: 0.5rem;
   color: #a3a3a3;
+  
   &#col {
     flex-direction: column;
   }
@@ -107,6 +116,13 @@ export const Button = styled.button`
   @media only screen and (max-width: 960px) {
     font-size: 1.3rem;
   }
+
+  @media only screen and (max-width: 480px) {
+  margin: 10px 0;
+  width: 100%;
+  height: 48px;
+  
+  }
 `;
 
 export const InfoWrapper = styled.div`
@@ -131,4 +147,14 @@ export const Color = styled.span`
   &#p {
     color: #6200ee;
   }
+
+  &#pp {
+    font-weight: normal;
+  }
+
+  &#ppp {
+    font-weight: normal;
+    color: #6200ee;
+  }
+
 `;
