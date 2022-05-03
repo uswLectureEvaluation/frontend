@@ -9,6 +9,9 @@ export const Title = styled.div`
   font-family: 'Pretendard-SemiBold';
   padding-top: 1rem;
   padding-bottom: 1rem;
+  @media only screen and (max-width: 960px) {
+    font-family: 'Pretendard';
+  }
 `;
 
 export const Text = styled.div`
@@ -92,6 +95,11 @@ export const Container = styled.div`
   @media only screen and (max-width: 960px) {
     justify-content: center;
   }
+
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    padding : 20px;
+  }
 `;
 
 export const SignUpWrapper = styled.div`
@@ -125,6 +133,8 @@ export const Button = styled.button`
   cursor: pointer;
   user-select: none;
   transition: 0.3s all;
+
+
   &:disabled {
     background-color: rgba(170, 170, 170);
     cursor: auto;
@@ -141,13 +151,19 @@ export const Button = styled.button`
     @media only screen and (max-width: 960px) {
       right: 27%;
     }
+    @media only screen and (max-width: 480px) {
+      right: 5%
+    }
     :disabled {
       background: white;
       color: rgba(170, 170, 170);
       border: 1px solid rgba(170, 170, 170);
     }
+
     
   }
+
+  
 `;
 export const CssTextField = styles.styled(TextField)({
   '& label.Mui-focused': {
