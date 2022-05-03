@@ -21,6 +21,11 @@ export const Container = styled.div`
   @media only screen and (max-width: 960px) {
     justify-content: center;
   }
+
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    padding : 20px;
+  }
 `;
 
 export const Img = styled.img`
@@ -36,6 +41,11 @@ export const Title = styled.div`
   font-family: 'Pretendard-SemiBold';
   padding-top: 1rem;
   padding-bottom: 1rem;
+
+  @media only screen and (max-width: 480px) {
+    font-family: 'Pretendard';
+    font-size: 24px;
+  }
 `;
 
 export const Button = styled.button`
@@ -54,6 +64,10 @@ export const Button = styled.button`
   cursor: pointer;
   user-select: none;
   transition: 0.3s all;
+
+  @media only screen and (max-width: 480px) {
+    margin-top: 5rem;
+  }
 `;
 export const SearchButton = styled.button`
   border: none;
