@@ -21,6 +21,11 @@ export const Container = styled.div`
   @media only screen and (max-width: 960px) {
     justify-content: center;
   }
+
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    padding: 20px;
+  }
 `;
 
 export const Img = styled.img`
@@ -54,6 +59,10 @@ export const Button = styled.button`
   cursor: pointer;
   user-select: none;
   transition: 0.3s all;
+
+  @media only screen and (max-width: 480px) {
+    margin-top : 10rem;
+  }
 `;
 
 export const LoginWrapper = styled.div`
