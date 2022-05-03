@@ -12,7 +12,7 @@ const SearchList = ({ lecture }) => {
     count: '',
   });
 
-  const [win, setWin] = useState(true);
+  const [win, setWin] = useState(true)
 
   const showWin = () => {
     if (window.innerWidth <= 960) {
@@ -24,9 +24,12 @@ const SearchList = ({ lecture }) => {
 
   window.addEventListener('resize', showWin);
 
+
+
   useEffect(() => {
+    showWin()
     searchApi(lecture.search_value, lecture.search_option).then((data) => setData(data));
-  }, [lecture.search_value, lecture.search_option]);
+  }, [win, lecture.search_value, lecture.search_option]);
 
   return db.count !== 0 ? (
     win ? (

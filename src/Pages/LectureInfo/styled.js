@@ -31,6 +31,8 @@ export const Container = styled.div`
     width: 90%;
     margin: 0 auto;
   }
+
+
 `;
 
 export const SearchContainer = styled.div`
@@ -75,6 +77,10 @@ export const Content = styled.div`
   &#top {
     padding: 1rem 2rem;
     border: 1px solid rgb(224, 224, 224);
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
   }
 `;
 
@@ -158,6 +164,10 @@ export const OptionTitle = styled.div`
   color: #222222;
   align-items: flex-end;
   width: 80px;
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
+  
 `;
 
 export const FlexContainer = styled.div`
@@ -166,6 +176,10 @@ export const FlexContainer = styled.div`
   width: 45%;
   &#col {
     flex-direction: column;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
   }
 `;
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchList from '../../components/SearchList';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router';
@@ -26,6 +26,24 @@ const Search = () => {
   const onChange = (e) => {
     setSearch(e.currentTarget.value);
   };
+
+  const [win, setWin] = useState(true)
+
+  const showWin = () => {
+    if (window.innerWidth <= 960) {
+      setWin(false);
+    } else {
+      setWin(true);
+    }
+  };
+
+  window.addEventListener('resize', showWin);
+
+
+
+  useEffect(() => {
+    showWin()
+  }, [win])
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
@@ -72,9 +90,12 @@ const Search = () => {
             </Styled.SearchResultMenu>
           ))}
         </Styled.FlexWrapper>
-        <Styled.FlexWrapper>
+
+        {win ? <Styled.FlexWrapper>
           총 <Styled.Color> 777</Styled.Color>건
         </Styled.FlexWrapper>
+        : ''}
+        
       </Styled.SearchResultWrapper>
 
       <Styled.HeadSelection>
