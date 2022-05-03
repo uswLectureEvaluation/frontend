@@ -54,6 +54,8 @@ export const Option = styled.div`
   font-size: 12px;
   font-weight: bold;
   color: gray;
+
+  
 `;
 
 export const Rate = styled.span`
@@ -77,6 +79,8 @@ export const LectureWrapper = styled.div`
 export const MarginTop = styled.div`
   &#top {
     padding: 14px 24px 0px 24px;
+
+    
   }
   &#bottom {
     padding: 0px 24px 14px 24px;
@@ -99,8 +103,14 @@ export const StarFlex = styled.div`
   padding: 2px 11px;
   font-family: Pretendard;
   font-size: 13px;
+  @media screen and (max-width: 480px) {
+    font-size: 12px;
+    padding: 2px 10px;
+  }
   &#top {
     padding: 8px 12px 0px 12px;
+
+   
   }
   &#bottom {
     padding: 0px 12px 8px 12px;
