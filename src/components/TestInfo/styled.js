@@ -20,4 +20,8 @@ export const Content = styled.div`
 export const BtWidth = styled.div`
   margin: 0 auto;
   width: 30%;
+
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;

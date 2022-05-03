@@ -154,7 +154,7 @@ const LectureInfo = () => {
               <Styled.FlexContainer>
                 <Styled.OptionTitle>조모임</Styled.OptionTitle>
                 <Styled.FlexContainer>
-                  <Styled.Color style={{ color: '#6200ee' }}>{team[teamSet]}</Styled.Color>
+                <Styled.Color style={{ color: '#6200ee' }}>{team[teamSet]}</Styled.Color>
                 </Styled.FlexContainer>
               </Styled.FlexContainer>
             </Styled.WidthContainer>
