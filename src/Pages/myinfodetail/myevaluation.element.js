@@ -16,9 +16,27 @@ export const Wrapper = styled.div`
 `;
 export const TitleWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   float: left;
   align-items: center;
+  @media only screen and (max-width: 480px) {
+    display: none;
+  }
+`;
+
+export const MobileWrapper = styled.div`
+  display: none;
+  @media only screen and (max-width: 480px) {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      float: left;
+      align-items: center;
+      margin-bottom: 10px;
+      &#top {
+        justify-content: space-between;
+      }
+  }
 `;
 
 export const Title = styled.span`
@@ -149,6 +167,11 @@ export const EditButton = styled.span`
   &:hover {
     cursor: pointer;
   }
+  &#pc {
+    @media only screen and (max-width: 480px) {
+      display: none;
+    }
+  }
 `;
 export const DeleteButton = styled.span`
   font-family: Pretendard;
@@ -159,5 +182,10 @@ export const DeleteButton = styled.span`
   float: right;
   &:hover {
     cursor: pointer;
+  }
+  &#pc {
+    @media only screen and (max-width: 480px) {
+      display: none;
+    }
   }
 `;

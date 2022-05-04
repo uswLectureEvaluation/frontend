@@ -180,6 +180,26 @@ export const Subject = (props) => {
     <div style={{ marginTop: '15px' }}>
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
+          <Styled.MobileWrapper id='top'>
+            <Styled.YearText>{props.semester}</Styled.YearText>
+            <div>
+              <Styled.DeleteButton
+                onClick={() => {
+                  onDelete();
+                }}
+              >
+                삭제
+              </Styled.DeleteButton>
+              <Styled.EditButton onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
+            </div>
+          </Styled.MobileWrapper>
+          <Styled.MobileWrapper>
+            <Styled.Title>{title}</Styled.Title>
+            <Styled.Major>{props.majorType}</Styled.Major>
+            <Styled.Major id="border">|</Styled.Major>
+            <Styled.Professor>{props.professor}</Styled.Professor>
+          </Styled.MobileWrapper>
+          
           <Styled.TitleWrapper>
             <Styled.YearText>{props.semester}</Styled.YearText>
             <Styled.Title>{title}</Styled.Title>
@@ -187,14 +207,15 @@ export const Subject = (props) => {
             <Styled.Major id="border">|</Styled.Major>
             <Styled.Professor>{props.professor}</Styled.Professor>
           </Styled.TitleWrapper>
-          <Styled.DeleteButton
-            onClick={() => {
-              onDelete();
-            }}
-          >
-            삭제
+          <Styled.DeleteButton id="pc"
+                onClick={() => {
+                  onDelete();
+                }}
+              >
+                삭제
           </Styled.DeleteButton>
-          <Styled.EditButton onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
+          <Styled.EditButton id="pc" onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
+          
           <div style={{ marginBottom: '38px' }} />
           <StarRatings
             rating={props.totalAvg}
