@@ -10,7 +10,7 @@ export const Title = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
   @media only screen and (max-width: 960px) {
-    font-family: 'Pretendard';
+    font-family: 'Pretendard-SemiBold';
   }
 `;
 

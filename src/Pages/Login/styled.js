@@ -45,6 +45,7 @@ export const Title = styled.div`
   @media only screen and (max-width: 480px) {
     font-family: 'Pretendard';
     font-size: 24px;
+    font-weight: 600;
   }
 `;
 
