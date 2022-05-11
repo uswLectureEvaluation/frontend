@@ -135,7 +135,7 @@ const Myevaluation = () => {
               lectureName={v.lectureName}
               professor={v.professor}
               majorType={v.majorType}
-              semester={v.semester}
+              selectedSemester={v.selectedSemester}
               totalAvg={v.totalAvg}
               content={v.content}
               satisfaction={v.satisfaction}
@@ -151,7 +151,7 @@ const Myevaluation = () => {
         });
       })}
       {/*         {db.data.map((v, i) => {
-            return <Subject lectureName={v.lectureName} professor={v.professor} semester={v.semester} totalAvg={v.totalAvg} content={v.content}/>;
+            return <Subject lectureName={v.lectureName} professor={v.professor} selectedSemester={v.selectedSemester} totalAvg={v.totalAvg} content={v.content}/>;
           })} */}
       {/*        <div ref={setTarget}>
         {isLoaded && <Loader />}
@@ -181,7 +181,7 @@ export const Subject = (props) => {
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
           <Styled.MobileWrapper id='top'>
-            <Styled.YearText>{props.semester}</Styled.YearText>
+            <Styled.YearText>{props.selectedSemester}</Styled.YearText>
             <div>
               <Styled.DeleteButton
                 onClick={() => {
@@ -201,7 +201,7 @@ export const Subject = (props) => {
           </Styled.MobileWrapper>
           
           <Styled.TitleWrapper>
-            <Styled.YearText>{props.semester}</Styled.YearText>
+            <Styled.YearText>{props.selectedSemester}</Styled.YearText>
             <Styled.Title>{title}</Styled.Title>
             <Styled.Major>{props.majorType}</Styled.Major>
             <Styled.Major id="border">|</Styled.Major>
@@ -258,7 +258,7 @@ export const Subject = (props) => {
         >
           <EditEvaluation
             setModalIsOpen={setModalIsOpen}
-            semester={props.semester}
+            semester={props.selectedSemester}
             satisfaction={props.satisfaction}
             learning={props.learning}
             honey={props.honey}

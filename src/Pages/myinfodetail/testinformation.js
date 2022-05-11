@@ -53,7 +53,7 @@ const Testinformation = () => {
           id={v.id}
           lectureName={v.lectureName}
           professor={v.professor}
-          semester={v.semester}
+          selectedSemester={v.selectedSemester}
           semesterList={v.semesterList}
         />
       ))}
@@ -92,7 +92,7 @@ export const Subject = (props) => {
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
           <Styled.TitleWrapper>
-            <Styled.YearText>{props.semester}</Styled.YearText>
+            <Styled.YearText>{props.selectedSemester}</Styled.YearText>
             <Styled.YearText>
               {props.examType}
             </Styled.YearText>
@@ -142,7 +142,7 @@ export const Subject = (props) => {
           <EditTestInfo
             setModalIsOpen={setModalIsOpen}
             lectureName={props.lectureName}
-            semester={props.semester}
+            semester={props.selectedSemester}
             examInfo={props.examInfo}
             examDifficulty={props.examDifficulty}
             content={props.content}
