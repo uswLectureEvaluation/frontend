@@ -108,6 +108,7 @@ const LectureInfo = () => {
     2: <Styled.DataColor id="purple">잘줌</Styled.DataColor>,
   };
 
+  console.log(db)
   return (
     <Styled.Container>
       <Styled.SearchWrapper>
@@ -123,14 +124,14 @@ const LectureInfo = () => {
         <Styled.Content id="top">
           <Styled.TitleWrapper id="top">
             <div>
+            <Styled.SubWrapper>
               <Styled.Title>{db.data.lectureName}</Styled.Title>
-              <Styled.TitleWrapper>
                 <Styled.Professor>
                   {db.data.majorType} | {db.data.professor}
                 </Styled.Professor>
-              </Styled.TitleWrapper>
+              </Styled.SubWrapper>
               <Styled.TitleWrapper>
-                <Styled.Option> {db.data.semester} </Styled.Option>
+                <Styled.Option> {db.data.selectedSemester} </Styled.Option>
               </Styled.TitleWrapper>
             </div>
             <Styled.Option id="type">{db.data.lectureType}</Styled.Option>

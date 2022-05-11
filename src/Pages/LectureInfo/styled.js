@@ -101,6 +101,13 @@ export const TitleWrapper = styled.div`
     margin-top: 2rem;
   }
 `;
+export const SubWrapper = styled.div`
+  display: flex;
+  margin-bottom: 0.5rem;
+  align-items: flex-end;
+  justify-content: space-around;
+ 
+`;
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -137,7 +144,15 @@ export const MenuTitle = styled.li`
 
 export const Professor = styled.div`
   display: flex;
-  margin: 0.4rem 0;
+  color: #222;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  margin-left: 10px;
 `;
 
 export const Option = styled.div`
