@@ -72,8 +72,14 @@ export const RateWrapper = styled.span`
 
 export const Rate = styled.span`
   color: #346cfd;
-  font-size: 1.2rem;
-  padding-left: 4px;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 500;
+  padding-left: 5px;
+  &#modal {
+    font-size: 16px;
+    padding-left: 0px;
+  }
 `;
 
 export const LectureWrapper = styled.div`
@@ -91,18 +97,32 @@ export const MarginRight = styled.span`
   margin-right: 6px;
   font-size: 1rem;
 `;
+export const FlexContainer = styled.div`
+  display: flex;
+  &#col {
+    flex-direction: column;
+  }
+`;
 
 export const StarFlex = styled.div`
   display: flex;
-  font-size: 0.6rem;
-  padding-right: 1rem;
-  background-color: #f9f9f9;
-  padding: 8px 12px;
   align-items: center;
-
+  padding-right: 1rem;
+  padding: 6px 12px;
+  font-family: Pretendard;
+  font-size: 13px;
   &#top {
-    border-top: 1px solid #eeeeee;
+    border-top: 1px solid #e0e0e0;
   }
+  &#bottom {
+  }
+  &#between {
+    justify-content: space-between;
+  }
+`;
+
+export const PaddingRight = styled.span`
+  padding-right: 0.7rem;
 `;
 
 export const FlexWrap = styled.div`
