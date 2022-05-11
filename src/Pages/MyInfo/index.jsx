@@ -6,15 +6,42 @@ import { myInfoApi } from '../../api/Api';
 const MyInfo = () => {
   const navigate = useNavigate();
   const option = [
-    '이용 제한 내역',
-    '구매이력',
-    '피드백 전송',
-    '문의하기',
-    '이용약관',
-    '개인정보 처리 방침',
-    '오픈소스 라이선스',
-    '비밀번호 변경',
-    '회원 탈퇴'
+    {
+      title: '이용 제한 내역',
+      page: 'myinformation',
+    },
+    {
+      title: '구매이력',
+      page: 'historytest',
+    },
+    {
+      title: '피드백 전송',
+      page: 'myinformation',
+    },
+    {
+      title: '문의하기',
+      page: 'myinformation',
+    },
+    {
+      title: '이용약관',
+      page: 'myinformation',
+    },
+    {
+      title: '개인정보 처리 방침',
+      page: 'myinformation',
+    },
+    {
+      title: '오픈소스 라이선스',
+      page: 'myinformation',
+    },
+    {
+      title: '비밀번호 변경',
+      page: 'myinformation',
+    },
+    {
+      title: '회원 탈퇴',
+      page: 'myinformation',
+    },
   ];
   const [db, setData] = useState({
     data: [],
@@ -149,8 +176,8 @@ const MyInfo = () => {
         <Styled.Content>
           <Styled.Title>이용 안내</Styled.Title>
           {option.map((i) => (
-            <Styled.FlexContainer key={i}>
-              <Styled.FlexContainer id="last">{i}</Styled.FlexContainer>
+            <Styled.FlexContainer key={i.title}>
+              <Styled.FlexContainer id="last" onClick={()=> navigate(`/${i.page}`)}>{i.title}</Styled.FlexContainer>
             </Styled.FlexContainer>
           ))}
         </Styled.Content>
@@ -267,8 +294,10 @@ const MyInfo = () => {
         <Styled.Content>
           <Styled.Title>이용 안내</Styled.Title>
           {option.map((i) => (
-            <Styled.FlexContainer key={i}>
-              <Styled.FlexContainer id="last">{i}</Styled.FlexContainer>
+            <Styled.FlexContainer key={i.title}>
+              <Styled.FlexContainer id="last" onClick={() => navigate(`${i.page}`)}>
+                {i.title}
+              </Styled.FlexContainer>
             </Styled.FlexContainer>
           ))}
         </Styled.Content>
