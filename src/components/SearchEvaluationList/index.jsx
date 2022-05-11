@@ -69,7 +69,7 @@ const SearchEvaluationList = ({selectId}) => {
       {db.data.map((v, i) => (
         <Subject
           key={v.id}
-          semester={v.semester}
+          semester={v.selectedSemester}
           totalAvg={v.totalAvg}
           content={v.content}
           satisfaction={v.satisfaction}

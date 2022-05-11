@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import * as Styled from './styled';
 
 const SearchTestList = (props) => {
+  console.log(props)
+
   return (
     <Styled.Wrapper>
       {props.db.map((v, i) => (
@@ -12,12 +14,14 @@ const SearchTestList = (props) => {
           examInfo={v.examInfo}
           examType={v.examType}
           id={v.id}
-          semester={v.semester}
+          semester={v.selectedSemester}
         />
       ))}
     </Styled.Wrapper>
   );
 };
+
+
 
 export const Subject = (props) => {
   const examDifficultySet = props.examDifficulty;
