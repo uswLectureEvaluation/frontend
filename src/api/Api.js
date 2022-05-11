@@ -519,3 +519,12 @@ export const searchExamApi = (selectId) => {
     method: 'GET',
   });
 };
+
+
+//시험정보 구매이력
+export const historyTestInfo = () => {
+  return instance({
+    url: `/exam-posts/purchase-history`,
+    method: 'GET',
+  });
+};

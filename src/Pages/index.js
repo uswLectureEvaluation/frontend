@@ -7,3 +7,4 @@ export { default as SignUp } from './SignUp';
 export { default as Login } from './Login';
 export { default as IdSearch } from './IdSearch';
 export { default as PwSearch } from './PwSearch';
+export { default as HistoryTest } from './HistoryTest';

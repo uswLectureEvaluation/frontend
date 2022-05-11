@@ -11,6 +11,7 @@ import {
   Login,
   IdSearch,
   PwSearch,
+  HistoryTest,
 } from './Pages';
 import Notice from './Pages/Notice';
 import NoticeDetail from './Pages/NoticeDetail';
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/search" element={<Search />} />
         <Route path="/emailsignup" element={<EmailSignUp />} />
         <Route path="/noticedetail" element={<NoticeDetail />} />
+        <Route path="/historytest" element={<HistoryTest />} />
       </Routes>
       <ScrollButton />
       <Footer />

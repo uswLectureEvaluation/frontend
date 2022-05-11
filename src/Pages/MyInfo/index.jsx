@@ -6,13 +6,15 @@ import { myInfoApi } from '../../api/Api';
 const MyInfo = () => {
   const navigate = useNavigate();
   const option = [
+    '이용 제한 내역',
+    '구매이력',
     '피드백 전송',
     '문의하기',
     '이용약관',
     '개인정보 처리 방침',
     '오픈소스 라이선스',
     '비밀번호 변경',
-    '회원 탈퇴',
+    '회원 탈퇴'
   ];
   const [db, setData] = useState({
     data: [],
