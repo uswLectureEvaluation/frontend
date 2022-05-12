@@ -18,6 +18,11 @@
   margin: 0;
   padding: 0;
 }
+@media (max-width: 550px) {
+  .range{
+    width: 90%;
+  }
+}
 .range:focus {
   outline: none;
 }
