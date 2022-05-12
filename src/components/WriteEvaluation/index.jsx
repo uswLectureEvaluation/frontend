@@ -91,7 +91,7 @@ const WriteEvaluation = (props) => {
         </Styled.Content>
         <Styled.MobileContent id='semester'>
           <Styled.ContentTitle id='mobile'>수강학기</Styled.ContentTitle>
-            <SemesterSelect id='semester' defaultValue={`${props.semester}`} onChange={(e)=>{setSemester(e)}}>
+            <SemesterSelect id='semester' defaultValue='선택' onChange={(e)=>{setSemester(e)}}>
                 {options.map((index) => (
                   <StyledOption id='semester' key={index} value={index}>
                     <Soption id='semester'>
