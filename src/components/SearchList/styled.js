@@ -74,6 +74,10 @@ export const Rate = styled.span`
   color: #346cfd;
   font-size: 1.2rem;
   padding-left: 4px;
+  &#modal {
+    font-size: 16px;
+    padding-left: 0px;
+  }
 `;
 
 export const LectureWrapper = styled.div`
