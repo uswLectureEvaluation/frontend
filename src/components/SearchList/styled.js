@@ -94,15 +94,30 @@ export const MarginRight = styled.span`
 
 export const StarFlex = styled.div`
   display: flex;
-  font-size: 0.6rem;
-  padding-right: 1rem;
-  background-color: #f9f9f9;
-  padding: 8px 12px;
   align-items: center;
-
+  padding-right: 1rem;
+  padding: 6px 12px;
+  font-family: Pretendard;
+  font-size: 13px;
   &#top {
-    border-top: 1px solid #eeeeee;
+    border-top: 1px solid #e0e0e0;
   }
+  &#bottom {
+  }
+  &#between {
+    justify-content: space-between;
+  }
+`;
+
+export const FlexContainer = styled.div`
+  display: flex;
+  &#col {
+    flex-direction: column;
+  }
+`;
+
+export const PaddingRight = styled.span`
+  padding-right: 0.7rem;
 `;
 
 export const FlexWrap = styled.div`
