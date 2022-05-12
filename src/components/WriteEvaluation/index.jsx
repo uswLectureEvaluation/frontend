@@ -89,21 +89,47 @@ const WriteEvaluation = (props) => {
               ))}
             </SemesterSelect>
         </Styled.Content>
+        <Styled.MobileContent id='semester'>
+          <Styled.ContentTitle id='mobile'>수강학기</Styled.ContentTitle>
+            <SemesterSelect id='semester' defaultValue={`${props.semester}`} onChange={(e)=>{setSemester(e)}}>
+                {options.map((index) => (
+                  <StyledOption id='semester' key={index} value={index}>
+                    <Soption id='semester'>
+                      {index}
+                    </Soption>
+                  </StyledOption>
+                ))}
+            </SemesterSelect>
+        </Styled.MobileContent>
 
         <Styled.Content>
           <Styled.ContentTitle>꿀강지수</Styled.ContentTitle>
           <HoneySlider /> <Styled.Score>{honey}</Styled.Score>
         </Styled.Content>
+        <Styled.MobileContent>
+          <div style={{display:"flex", justifyContent:"space-between", marginBottom:"5px"}}><Styled.ContentTitle id='mobile'>꿀강지수</Styled.ContentTitle><Styled.Score id='mobile'>{honey}</Styled.Score></div>
+          <HoneySlider /> 
+        </Styled.MobileContent>
+
         <Styled.Content>
           <Styled.ContentTitle>배움지수</Styled.ContentTitle>
           <LearingSlider /> <Styled.Score>{learning}</Styled.Score>
         </Styled.Content>
+        <Styled.MobileContent>
+          <div style={{display:"flex", justifyContent:"space-between", marginBottom:"5px"}}><Styled.ContentTitle id='mobile'>배움지수</Styled.ContentTitle><Styled.Score id='mobile'>{learning}</Styled.Score></div>
+          <LearingSlider /> 
+        </Styled.MobileContent>
+
         <Styled.Content id="group">
           <Styled.ContentTitle>만족도</Styled.ContentTitle>
           <SatisfactionSlider /> <Styled.Score>{satisfaction}</Styled.Score>
         </Styled.Content>
+        <Styled.MobileContent>
+          <div style={{display:"flex", justifyContent:"space-between", marginBottom:"5px"}}><Styled.ContentTitle id='mobile'>만족도</Styled.ContentTitle><Styled.Score id='mobile'>{satisfaction}</Styled.Score></div>
+          <SatisfactionSlider /> 
+        </Styled.MobileContent>
 
-        <Styled.Content onChange={teamChange}>
+        <Styled.Content id='content' onChange={teamChange}>
           <Styled.ContentTitle>조모임</Styled.ContentTitle>
           <Styled.FormLabel>
           <Styled.FormCheckLeft name="team" id="easy" value="0" checked={team === "0"}/>
@@ -115,7 +141,7 @@ const WriteEvaluation = (props) => {
         </Styled.FormLabel>
         </Styled.Content>
 
-        <Styled.Content onChange={homeworkChange}>
+        <Styled.Content id='content' onChange={homeworkChange}>
           <Styled.ContentTitle>과제</Styled.ContentTitle>
           <Styled.FormLabel>
           <Styled.FormCheckLeft name="homework" id="easy" value="0" checked={homework === "0"}/>
@@ -131,7 +157,7 @@ const WriteEvaluation = (props) => {
         </Styled.FormLabel>
         </Styled.Content>
 
-        <Styled.Content id="group" onChange={difficultyChange}>
+        <Styled.Content id="content" onChange={difficultyChange}>
           <Styled.ContentTitle>학점</Styled.ContentTitle>
         <Styled.FormLabel>
           <Styled.FormCheckLeft name="score" id="difficult" value="0" checked={difficulty === "0"}/>

@@ -3,7 +3,6 @@ import { evaluateUpdateApi } from '../../api/Api';
 import * as Styled from './styled';
 import RangeInput from '../RangeInput';
 import {SemesterSelect, StyledOption, Soption} from '../../Pages/Main/styled'
-import { MarginTop } from '../../Pages/myinfodetail/myevaluation.element';
 
 const useSlider = (min, max, defaultState, id) => {
   const [state, setSlide] = useState(defaultState);
