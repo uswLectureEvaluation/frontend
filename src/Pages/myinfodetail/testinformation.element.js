@@ -77,12 +77,25 @@ export const LectureWrapper = styled.div`
 export const MarginTop = styled.div`
   &#top {
     padding: 14px 24px 0px 24px;
+    @media only screen and (max-width: 550px) {
+      display: none;
+    }
   }
   &#bottom {
     padding: 0px 24px 14px 24px;
     margin-top: 5px;
   }
 `;
+
+export const MobileMarginTop = styled.div`
+  display: none;
+  @media only screen and (max-width: 550px) {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 24px 0px 24px;
+  }
+`
+
 export const DataColor = styled.div`
   font-weight: 500;
   &#cyan {
@@ -118,6 +131,7 @@ export const StarFlex = styled.div`
 
 export const FlexContainer = styled.div`
   display: flex;
+  min-width: 90px;
   &#col {
     flex-direction: column;
   }

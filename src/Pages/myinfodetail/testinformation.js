@@ -91,6 +91,14 @@ export const Subject = (props) => {
     <div style={{ marginTop: '15px' }}>
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
+          <Styled.DeleteButton
+              onClick={() => {
+                onDelete();
+              }}
+            >
+              삭제
+            </Styled.DeleteButton>
+            <Styled.EditButton onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
           <Styled.TitleWrapper>
             <Styled.YearText>{props.selectedSemester}</Styled.YearText>
             <Styled.YearText>
@@ -101,16 +109,35 @@ export const Subject = (props) => {
             <Styled.Major id="border">|</Styled.Major>
             <Styled.Professor>{props.professor}</Styled.Professor>
           </Styled.TitleWrapper>
-          <Styled.DeleteButton
-            onClick={() => {
-              onDelete();
-            }}
-          >
-            삭제
-          </Styled.DeleteButton>
-          <Styled.EditButton onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
-          <div style={{ marginBottom: '35px' }} />
+          <div style={{ marginBottom: '30px' }} />
         </Styled.MarginTop>
+
+        <Styled.MobileMarginTop>
+          <div style={{marginBottom:"20px"}}>
+          <div>
+            <Styled.DeleteButton
+                  onClick={() => {
+                    onDelete();
+                  }}
+                >
+                  삭제
+            </Styled.DeleteButton>
+            <Styled.EditButton onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
+            </div>
+            <div>
+            <Styled.YearText>{props.selectedSemester}</Styled.YearText>
+            <Styled.YearText>
+              {props.examType}
+            </Styled.YearText>
+            </div>
+            </div>
+            <div>
+            <Styled.Title>{title}</Styled.Title>
+            <Styled.Major>{props.majorType}</Styled.Major>
+            <Styled.Major id="border">|</Styled.Major>
+            <Styled.Professor>{props.professor}</Styled.Professor>
+            </div>
+        </Styled.MobileMarginTop>
 
         <div>
           <Styled.StarFlex id="top">
@@ -122,7 +149,7 @@ export const Subject = (props) => {
             </Styled.FlexContainer>
             <Styled.FlexContainer id="col">
               <Styled.StarFlex id="between">
-                시험유형
+                <div style={{minWidth:"45px"}}>시험유형</div>
                 <Styled.StarFlex id="black">{props.examInfo}</Styled.StarFlex>
               </Styled.StarFlex>
             </Styled.FlexContainer>
