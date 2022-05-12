@@ -86,9 +86,35 @@ const Edittestinfo = (props) => {
               ))}
             </SemesterSelect>
         </Styled.Content>
+        <Styled.MobileContent>
+        <Styled.MobileContent id='semester'>
+        <Styled.ContentTitle id='mobile'>수강학기</Styled.ContentTitle>
+          <SemesterSelect id='semester' defaultValue={`${props.semester}`} onChange={(e)=>{setSemester(e)}}>
+              {semesterOptions.map((index) => (
+                <StyledOption id='semester' key={index} value={index}>
+                  <Soption id='semester'>
+                    {index}
+                  </Soption>
+                </StyledOption>
+              ))}
+            </SemesterSelect>
+            </Styled.MobileContent>
+            <Styled.MobileContent id='semester'>
+            <Styled.ContentTitle id='mobile'>시험종류</Styled.ContentTitle>
+            <SemesterSelect id='semester' defaultValue={`${props.examType}`} onChange={(e)=>{setExamType(e)}}>
+              {examTypeOptions.map((index) => (
+                <StyledOption id='semester' key={index} value={index}>
+                  <Soption id='semester'>
+                    {index}
+                  </Soption>
+                </StyledOption>
+              ))}
+            </SemesterSelect>
+            </Styled.MobileContent>
+        </Styled.MobileContent>
 
-        <Styled.Content onChange={difficultyChange}>
-          <Styled.ContentTitle>난이도</Styled.ContentTitle>
+        <Styled.Content id='content' onChange={difficultyChange}>
+          <Styled.ContentTitle id='mobile'>난이도</Styled.ContentTitle>
           <Styled.FormLabel>
           <Styled.FormCheckLeft name="examDifficulty" id="easy" value="쉬움" defaultChecked={examDifficulty === "쉬움"}/>
           <Styled.FormCheckText>쉬움</Styled.FormCheckText>
@@ -103,8 +129,8 @@ const Edittestinfo = (props) => {
         </Styled.FormLabel>
         </Styled.Content>
 
-        <Styled.Content onChange={(e)=>handleExam(e.target.checked, e.target.value)}>
-          <Styled.ContentTitle>시험유형<Styled.SmallTitle>(복수선택)</Styled.SmallTitle></Styled.ContentTitle>
+        <Styled.Content id='content' onChange={(e)=>handleExam(e.target.checked, e.target.value)}>
+          <Styled.ContentTitle id='mobile'>시험유형<Styled.SmallTitle>(복수선택)</Styled.SmallTitle></Styled.ContentTitle>
         <Styled.FormLabel>
           <Styled.FormCheckMulti name="examType" id="normal" value="족보" defaultChecked={exam.includes("족보") === true}/>
           <Styled.FormCheckText>족보</Styled.FormCheckText>
@@ -122,8 +148,8 @@ const Edittestinfo = (props) => {
           <Styled.FormCheckText>필기</Styled.FormCheckText>
         </Styled.FormLabel>
         </Styled.Content>
-        <Styled.Content id="group" onChange={(e)=>handleExam(e.target.checked, e.target.value)}>
-        <Styled.ContentTitle />
+        <Styled.Content id="content" onChange={(e)=>handleExam(e.target.checked, e.target.value)}>
+        <Styled.ContentTitle id='mobile' />
         <Styled.FormLabel>
           <Styled.FormCheckMulti name="examType" id="normal" value="응용" defaultChecked={exam.includes("응용") === true}/>
           <Styled.FormCheckText>응용</Styled.FormCheckText>

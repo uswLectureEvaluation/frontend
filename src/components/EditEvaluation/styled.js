@@ -15,6 +15,9 @@ export const Title = styled.div`
   padding: 2rem;
   padding-bottom: 1rem;
   font-weight: 500;
+  @media only screen and (max-width: 550px) {
+    padding: 1rem;
+  }
 `;
 
 export const Score = styled.span`
@@ -43,6 +46,9 @@ export const ContentWrapper = styled.div`
   padding-left: 2rem;
   margin: 1.5rem 0;
   border-bottom: 1px solid #e0e0e0;
+  @media only screen and (max-width: 550px) {
+    padding-left: 1rem;
+  }
 `;
 
 export const Content = styled.form`

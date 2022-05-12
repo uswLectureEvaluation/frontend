@@ -20,7 +20,7 @@ const 모달스타일 = {
     background: '#ffffff',
     overflow: 'auto',
     maxWidth: '580px',
-    minWidth: '580px',
+    minWidth: '350px',
     maxHeight: '800px',
     left: '50%',
     top: '0%',

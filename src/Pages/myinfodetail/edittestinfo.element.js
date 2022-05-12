@@ -15,6 +15,9 @@ export const Title = styled.div`
   padding: 2rem;
   padding-bottom: 1rem;
   font-weight: 500;
+  @media only screen and (max-width: 550px) {
+    padding: 1rem;
+  }
 `;
 
 export const Score = styled.span`
@@ -40,6 +43,9 @@ export const ContentWrapper = styled.div`
   padding-left: 2rem;
   margin: 1.5rem 0;
   border-bottom: 1px solid #e0e0e0;
+  @media only screen and (max-width: 550px) {
+    padding-left: 1rem;
+  }
 `;
 
 export const Content = styled.form`
@@ -49,10 +55,35 @@ export const Content = styled.form`
   &#group {
     margin-bottom: 1.5rem;
   }
+  @media only screen and (max-width: 550px) {
+    display: none;
+    &#content {
+      display: flex;
+      margin: 0.5rem 0;
+      align-items: center;
+    }
+  }
 `;
+
+export const MobileContent = styled.form`
+  display: none;
+  @media only screen and (max-width: 550px) {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    &#semester {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+`
 
 export const ContentTitle = styled.div`
   width: 17%;
+  &#mobile {
+    width: 25%;
+  }
 `;
 
 export const SmallTitle = styled.div`
@@ -74,6 +105,9 @@ export const TextField = styled.textarea`
   border: solid 1px #e0e0e0;
   border-radius: 15px;
   background-color: #f9f9f9;
+  @media only screen and (max-width: 550px) {
+    min-height: 200px;
+  }
 `
 
 export const EditButton = styled.div`
@@ -87,6 +121,10 @@ export const EditButton = styled.div`
   border-radius: 15px;
   &:hover {
     cursor: pointer;
+  }
+  @media only screen and (max-width: 550px) {
+    width: 80%;
+    margin-bottom: 20px;
   }
 `
 
@@ -105,6 +143,10 @@ export const FormCheckText = styled.span`
   cursor: pointer;
   color: #777;
   margin-right: 8px;
+  @media only screen and (max-width: 550px) {
+    font-size: 16px;
+    padding: 6px 9px;
+  }
 `;
 
 export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
