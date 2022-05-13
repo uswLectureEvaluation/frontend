@@ -97,9 +97,9 @@ const MyInfo = () => {
           <Styled.FlexContainer>
             <Styled.OptionTitle>작성한 강의평가</Styled.OptionTitle>
             <Styled.FlexContainer id="last">
-              <Styled.Color>{db.writtenLecture}</Styled.Color>개
+              <Styled.Color>{db.writtenEvaluation}</Styled.Color>개
             </Styled.FlexContainer>
-            <Styled.OptionPoint id="plus">+{db.writtenLecture * 10}</Styled.OptionPoint>
+            <Styled.OptionPoint id="plus">+{db.writtenEvaluation * 10}</Styled.OptionPoint>
           </Styled.FlexContainer>
           <Styled.FlexContainer>
             <Styled.OptionTitle>작성한 시험정보</Styled.OptionTitle>
@@ -216,9 +216,9 @@ const MyInfo = () => {
           <Styled.FlexContainer>
             <Styled.OptionTitle>작성한 강의평가</Styled.OptionTitle>
             <Styled.FlexContainer id="last">
-              <Styled.Color>{db.writtenLecture}</Styled.Color>개
+              <Styled.Color>{db.writtenEvaluation}</Styled.Color>개
             </Styled.FlexContainer>
-            <Styled.OptionPoint id="plus">+{db.writtenLecture * 10}</Styled.OptionPoint>
+            <Styled.OptionPoint id="plus">+{db.writtenEvaluation * 10}</Styled.OptionPoint>
           </Styled.FlexContainer>
           <Styled.FlexContainer>
             <Styled.OptionTitle>작성한 시험정보</Styled.OptionTitle>
