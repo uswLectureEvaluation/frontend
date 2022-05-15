@@ -1,10 +1,10 @@
 import { useState } from "react"
-import { evaluateReportApi } from "../../api/Api"
+import { examReportApi } from "../../api/Api"
 
-const ReportEvaluation = (props) => {
+const ReportExam = (props) => {
     const [content, setContent] = useState();
     const onReport = () => {
-        evaluateReportApi(props.evaluateIdx, content)
+        examReportApi(props.examIdx, content)
     }
     return(
         <div>
@@ -15,4 +15,4 @@ const ReportEvaluation = (props) => {
     )
 }
 
-export default ReportEvaluation
+export default ReportExam
