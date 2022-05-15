@@ -2,6 +2,36 @@ import React, { useState, useEffect } from 'react';
 import * as Styled from './styled';
 import StarRatings from 'react-star-ratings';
 import { searchEvaluationApi } from '../../api/Api';
+import Modal from 'react-modal';
+import ReportEvaluation from '../ReportEvaluation';
+
+const 모달스타일 = {
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    zIndex: 1100,
+  },
+  content: {
+    display: 'flex',
+    justifyContent: 'center',
+    background: '#ffffff',
+    overflow: 'auto',
+    maxWidth: '580px',
+    minWidth: '350px',
+    maxHeight: '500px',
+    left: '50%',
+    top: '0%',
+    transform: 'translate(-50%, 2%)',
+    WebkitOverflowScrolling: 'touch',
+    borderRadius: '14px',
+    outline: 'none',
+    zIndex: 1100,
+  },
+};
 
 
 export const DetailModal = (props) => {
@@ -89,6 +119,8 @@ const SearchEvaluationList = ({selectId}) => {
 
 export const Subject = (props) => {
   const [modal, setModal] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   return (
     <div style={{ marginTop: '15px' }}>
       <Styled.LectureWrapper>
@@ -96,7 +128,7 @@ export const Subject = (props) => {
           <Styled.TitleWrapper>
             <Styled.YearText>{props.semester}</Styled.YearText>
           </Styled.TitleWrapper>
-          <Styled.EditButton>신고</Styled.EditButton>
+          <Styled.EditButton onClick={()=>{setModalIsOpen(true)}}>신고</Styled.EditButton>
           <StarRatings
             rating={props.totalAvg}
             starRatedColor="#346cfd"
@@ -130,6 +162,17 @@ export const Subject = (props) => {
         <Styled.MarginTop id="bottom">
           <Styled.EvaluationDetail>{props.content}</Styled.EvaluationDetail>
         </Styled.MarginTop>
+        <Modal
+          isOpen={modalIsOpen}
+          style={모달스타일}
+          // 오버레이나 esc를 누르면 핸들러 동작
+          ariaHideApp={false}
+          onRequestClose={() => setModalIsOpen(false)}
+        >
+          <ReportEvaluation
+            evaluateIdx={props.id}
+          />
+        </Modal>
       </Styled.LectureWrapper>
     </div>
   );

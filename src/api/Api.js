@@ -367,6 +367,41 @@ export const deleteEvaluateApi = (id) => {
   );
 };
 
+//강의평가 신고 api
+export const evaluateReportApi = (
+  evaluateIdx,
+  content,
+) => {
+  const url = `/report`;
+
+  const data = {
+    evaluateIdx: evaluateIdx,
+    examIdx: 0,
+    postType: true,
+    content: content
+  };
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: getCookie('AccessToken'),
+    },
+    data: data,
+    url,
+  };
+  axios(options).then(
+    (response) => {
+      alert('신고완료');
+      window.location.reload();
+    },
+    (error) => {
+      alert('error');
+      console.log(error)
+    }
+  );
+};
+
+
 //시험정보쓰기 api
 export const examWriteApi = (
   selectId,
