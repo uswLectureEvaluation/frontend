@@ -315,7 +315,7 @@ export const evaluateWriteApi = (
 
   const data = {
     lectureName: lectureName,
-    semester: semester,
+    selectedSemester: semester,
     professor: professor,
     satisfaction: satisfaction,
     learning: learning,
@@ -418,7 +418,7 @@ export const examWriteApi = (
   const data = {
     lectureName: lectureName,
     professor: professor,
-    semester: semester,
+    selectedSemester: semester,
     examInfo: examInfo,
     examType: examType,
     examDifficulty: examDifficulty,
