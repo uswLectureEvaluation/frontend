@@ -372,12 +372,10 @@ export const evaluateReportApi = (
   evaluateIdx,
   content,
 ) => {
-  const url = `/report`;
+  const url = `/user/report/evaluate`;
 
   const data = {
     evaluateIdx: evaluateIdx,
-    examIdx: 0,
-    postType: true,
     content: content
   };
   const options = {
@@ -395,6 +393,7 @@ export const evaluateReportApi = (
       window.location.reload();
     },
     (error) => {
+      console.log(data)
       alert('error');
       console.log(error)
     }
@@ -406,12 +405,10 @@ export const examReportApi = (
   examIdx,
   content,
 ) => {
-  const url = `/report`;
+  const url = `/user/report/exam`;
 
   const data = {
-    evaluateIdx: 0,
     examIdx: examIdx,
-    postType: false,
     content: content
   };
   const options = {
