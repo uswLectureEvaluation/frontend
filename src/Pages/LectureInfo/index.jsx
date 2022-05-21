@@ -131,7 +131,7 @@ const LectureInfo = () => {
                 </Styled.Professor>
               </Styled.SubWrapper>
               <Styled.TitleWrapper>
-                <Styled.Option> {db.data.selectedSemester} </Styled.Option>
+                <Styled.Option> {db.data.semesterList} </Styled.Option>
               </Styled.TitleWrapper>
             </div>
             <Styled.Option id="type">{db.data.lectureType}</Styled.Option>
