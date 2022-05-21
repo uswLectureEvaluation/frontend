@@ -97,6 +97,9 @@ export const FlexContainer = styled.div`
   &#last {
     color: #222222;
     align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
