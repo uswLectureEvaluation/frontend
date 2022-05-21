@@ -15,8 +15,6 @@ export const AppContainer = styled.div`
     width: 90%;
     padding-bottom: 25rem;
     margin: 0 auto;
-
-
  }
 `;
 
@@ -64,6 +62,11 @@ export const NoticeWrap = styled.div`
   &:hover {
     cursor: pointer;
   }
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+ }
 `;
 
 export const Button = styled.button`

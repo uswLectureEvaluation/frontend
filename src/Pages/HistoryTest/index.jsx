@@ -8,7 +8,7 @@ const HistoryTest = () => {
 
   useEffect(() => {
     historyTestInfo().then((data) => setData(data));
-  });
+  }, []);
   /*
        "id" : Long, //구매한 시험정보의 인조키
             "lectureName" : String, //과목 이름
@@ -40,10 +40,12 @@ export const NoticeItem = (props) => {
   return (
     <Styled.NoticeWrap>
       <Styled.Option>{props.createDate}</Styled.Option>
-      <Styled.Title>{props.title}</Styled.Title>
-      <Styled.Professor>
-        {props.major} | {props.professor}
-      </Styled.Professor>
+      <div style={{display:"flex"}}>
+        <Styled.Title>{props.title}</Styled.Title>
+        <Styled.Professor>
+          {props.major} | {props.professor}
+        </Styled.Professor>
+      </div>
     </Styled.NoticeWrap>
   );
 };
