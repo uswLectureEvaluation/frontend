@@ -18,6 +18,14 @@ export const AppContainer = styled.div`
 
 
  }
+
+ .Target-Element {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
 `;
 
 export const AppTitle = styled.div`
