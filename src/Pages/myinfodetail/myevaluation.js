@@ -98,37 +98,43 @@ const Myevaluation = () => {
   const getMoreItem = async () => {
     setIsLoaded(true);
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    evaluatePostApi(page).then((data) => setData(data));
+    await evaluatePostApi(page).then((data) => setData(data));
+    setItemLists(itemLists.concat(db.data));
 
     setIsLoaded(false);
   };
 
-  const onIntersect = async ([entry], observer) => {
-    if (entry.isIntersecting && !isLoaded) {
-      observer.unobserve(entry.target);
-      await getMoreItem();
-      observer.observe(entry.target);
-    }
-  };
-
   useEffect(() => {
     console.log('page ? ', page);
+    getMoreItem();
   }, [page]);
+
+  const onIntersect = async (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        //뷰포트에 마지막 이미지가 들어오고, page값에 1을 더하여 새 fetch 요청을 보내게됨 (useEffect의 dependency배열에 page가 있음)
+        setPage((prev) => prev + 1);
+        // 현재 타겟을 unobserve한다.
+        observer.unobserve(entry.target);
+      }
+    });
+  };
 
   useEffect(() => {
     let observer;
     if (target) {
       observer = new IntersectionObserver(onIntersect, {
-        threshold: 0.5,
+        threshold: 1,
       });
       observer.observe(target);
     }
+
     return () => observer && observer.disconnect();
-  });
+  }, [itemLists]);
 
   return (
     <Styled.Wrapper>
-      {db.data.map((v, i) => {
+      {itemLists.map((v, i) => {
         return (
           <Subject
             key={v.id}
@@ -149,54 +155,9 @@ const Myevaluation = () => {
           />
         );
       })}
-
       <div ref={setTarget} className="Target-Element">
         {isLoaded && <Loader />}
       </div>
-
-      {/* {itemLists?.map((v, i) => {
-        if (i === v.length - 1) {
-          return (
-            <Subject
-              key={v.id}
-              lectureName={v.lectureName}
-              professor={v.professor}
-              majorType={v.majorType}
-              selectedSemester={v.selectedSemester}
-              totalAvg={v.totalAvg}
-              content={v.content}
-              satisfaction={v.satisfaction}
-              learning={v.learning}
-              honey={v.honey}
-              team={v.team}
-              difficulty={v.difficulty}
-              homework={v.homework}
-              semesterList={v.semesterList}
-              id={v.id}
-            />
-          );
-        } else {
-          return (
-            <Subject
-              key={v.id}
-              lectureName={v.lectureName}
-              professor={v.professor}
-              majorType={v.majorType}
-              selectedSemester={v.selectedSemester}
-              totalAvg={v.totalAvg}
-              content={v.content}
-              satisfaction={v.satisfaction}
-              learning={v.learning}
-              honey={v.honey}
-              team={v.team}
-              difficulty={v.difficulty}
-              homework={v.homework}
-              semesterList={v.semesterList}
-              id={v.id}
-            />
-          );
-        }
-      })} */}
     </Styled.Wrapper>
   );
 };

@@ -13,8 +13,9 @@ export const ModalOpen = styled.span`
 
 export const Wrapper = styled.div`
   margin: 0px 20px;
+  height: 100%;
 
-   .Target-Element {
+  .Target-Element {
   height: 150px;
   display: flex;
   justify-content: center;
