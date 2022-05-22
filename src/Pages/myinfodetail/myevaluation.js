@@ -4,6 +4,7 @@ import { evaluatePostApi, deleteEvaluateApi } from '../../api/Api';
 import * as Styled from './myevaluation.element';
 import StarRatings from 'react-star-ratings';
 import EditEvaluation from '../../components/EditEvaluation';
+import Loader from '../../components/Loader';
 
 const 모달스타일 = {
   overlay: {
@@ -88,16 +89,17 @@ const Myevaluation = () => {
   const [db, setData] = useState({
     data: [],
   });
-  // const [target, setTarget] = useState(null);
-  const target = null;
-  const [itemLists, setItemLists] = useState([1]);
+  const [target, setTarget] = useState(null);
+  const [page, setPage] = useState(1);
+
+  const [itemLists, setItemLists] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const getMoreItem = async () => {
     setIsLoaded(true);
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    let Items = [1];
-    setItemLists((itemLists) => itemLists.concat(Items));
+    evaluatePostApi(page).then((data) => setData(data));
+
     setIsLoaded(false);
   };
 
@@ -110,25 +112,50 @@ const Myevaluation = () => {
   };
 
   useEffect(() => {
+    console.log('page ? ', page);
+  }, [page]);
+
+  useEffect(() => {
     let observer;
     if (target) {
       observer = new IntersectionObserver(onIntersect, {
-        threshold: 0.4,
+        threshold: 0.5,
       });
       observer.observe(target);
     }
     return () => observer && observer.disconnect();
   });
 
-  console.log(db);
-  useEffect(() => {
-    evaluatePostApi().then((data) => setData(data));
-  }, []);
-
   return (
     <Styled.Wrapper>
-      {itemLists.map((a, i) => {
-        return db.data.map((v, i) => {
+      {db.data.map((v, i) => {
+        return (
+          <Subject
+            key={v.id}
+            lectureName={v.lectureName}
+            professor={v.professor}
+            majorType={v.majorType}
+            selectedSemester={v.selectedSemester}
+            totalAvg={v.totalAvg}
+            content={v.content}
+            satisfaction={v.satisfaction}
+            learning={v.learning}
+            honey={v.honey}
+            team={v.team}
+            difficulty={v.difficulty}
+            homework={v.homework}
+            semesterList={v.semesterList}
+            id={v.id}
+          />
+        );
+      })}
+
+      <div ref={setTarget} className="Target-Element">
+        {isLoaded && <Loader />}
+      </div>
+
+      {/* {itemLists?.map((v, i) => {
+        if (i === v.length - 1) {
           return (
             <Subject
               key={v.id}
@@ -148,14 +175,28 @@ const Myevaluation = () => {
               id={v.id}
             />
           );
-        });
-      })}
-      {/*         {db.data.map((v, i) => {
-            return <Subject lectureName={v.lectureName} professor={v.professor} selectedSemester={v.selectedSemester} totalAvg={v.totalAvg} content={v.content}/>;
-          })} */}
-      {/*        <div ref={setTarget}>
-        {isLoaded && <Loader />}
-        </div>  */}
+        } else {
+          return (
+            <Subject
+              key={v.id}
+              lectureName={v.lectureName}
+              professor={v.professor}
+              majorType={v.majorType}
+              selectedSemester={v.selectedSemester}
+              totalAvg={v.totalAvg}
+              content={v.content}
+              satisfaction={v.satisfaction}
+              learning={v.learning}
+              honey={v.honey}
+              team={v.team}
+              difficulty={v.difficulty}
+              homework={v.homework}
+              semesterList={v.semesterList}
+              id={v.id}
+            />
+          );
+        }
+      })} */}
     </Styled.Wrapper>
   );
 };
@@ -180,7 +221,7 @@ export const Subject = (props) => {
     <div style={{ marginTop: '15px' }}>
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
-          <Styled.MobileWrapper id='top'>
+          <Styled.MobileWrapper id="top">
             <Styled.YearText>{props.selectedSemester}</Styled.YearText>
             <div>
               <Styled.DeleteButton
@@ -199,7 +240,7 @@ export const Subject = (props) => {
             <Styled.Major id="border">|</Styled.Major>
             <Styled.Professor>{props.professor}</Styled.Professor>
           </Styled.MobileWrapper>
-          
+
           <Styled.TitleWrapper>
             <Styled.YearText>{props.selectedSemester}</Styled.YearText>
             <Styled.Title>{title}</Styled.Title>
@@ -207,15 +248,18 @@ export const Subject = (props) => {
             <Styled.Major id="border">|</Styled.Major>
             <Styled.Professor>{props.professor}</Styled.Professor>
           </Styled.TitleWrapper>
-          <Styled.DeleteButton id="pc"
-                onClick={() => {
-                  onDelete();
-                }}
-              >
-                삭제
+          <Styled.DeleteButton
+            id="pc"
+            onClick={() => {
+              onDelete();
+            }}
+          >
+            삭제
           </Styled.DeleteButton>
-          <Styled.EditButton id="pc" onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
-          
+          <Styled.EditButton id="pc" onClick={() => setModalIsOpen(true)}>
+            수정
+          </Styled.EditButton>
+
           <div style={{ marginBottom: '38px' }} />
           <StarRatings
             rating={props.totalAvg}

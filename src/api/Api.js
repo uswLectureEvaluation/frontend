@@ -236,9 +236,9 @@ export const myInfoApi = () => {
 };
 
 // 내가쓴글-강의평가Api
-export const evaluatePostApi = () => {
+export const evaluatePostApi = (page) => {
   return instance({
-    url: `/evaluate-posts/findByUserIdx`,
+    url: `/evaluate-posts/findByUserIdx/?page=${page}`,
     method: 'GET',
   });
 };

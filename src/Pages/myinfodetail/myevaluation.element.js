@@ -13,6 +13,14 @@ export const ModalOpen = styled.span`
 
 export const Wrapper = styled.div`
   margin: 0px 20px;
+
+   .Target-Element {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
 `;
 export const TitleWrapper = styled.div`
   display: flex;
