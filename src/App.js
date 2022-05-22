@@ -17,6 +17,7 @@ import Notice from './Pages/Notice';
 import NoticeDetail from './Pages/NoticeDetail';
 import Myinfodetial from './Pages/myinfodetail/myinfodetail';
 import ScrollButton from './components/ScrollButton';
+import ResetPassword from './Pages/ResetPassword';
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/emailsignup" element={<EmailSignUp />} />
         <Route path="/noticedetail" element={<NoticeDetail />} />
         <Route path="/historytest" element={<HistoryTest />} />
+        <Route path="/resetpassword" element={<ResetPassword />} />
       </Routes>
       <ScrollButton />
       <Footer />

@@ -594,3 +594,29 @@ export const historyTestInfo = () => {
     method: 'GET',
   });
 };
+
+//SUWIKI 비밀번호 변경
+export const resetPasswordApi = (password) => {
+  const url = `/user/reset-pw`;
+  const data = {
+    password: password
+  };
+  const options = {
+    method: 'post',
+    headers: {
+      Authorization: getCookie('AccessToken'),
+    },
+    data,
+    url
+  }
+  axios(options).then(
+    (response) => {
+      alert('변경완료');
+      window.location.reload();
+    },
+    (error) => {
+      alert('error');
+    }
+  );
+
+}
