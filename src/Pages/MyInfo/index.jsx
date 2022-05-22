@@ -36,7 +36,7 @@ const MyInfo = () => {
     },
     {
       title: '비밀번호 변경',
-      page: 'myinformation',
+      page: 'resetpassword',
     },
     {
       title: '회원 탈퇴',
