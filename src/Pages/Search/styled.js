@@ -46,12 +46,12 @@ export const SearchResultWrapper = styled.div`
 
 export const SearchResultMenu = styled.div`
   display: flex;
-  margin: 0 0.3rem 1rem 0.3rem;
   font-size: 1rem;
   border-radius: 10px;
   border: 1px solid #e0e0e0;
   padding: 5px 16px;
   cursor: pointer;
+  align-items: center;
 
   &:hover {
     background-color: #346cfd;
@@ -76,8 +76,8 @@ export const SearchResultMenu = styled.div`
 
   @media only screen and (max-width: 480px) {
 
-    display: flex;
-  margin: 0  0.3rem 1rem 0.3rem;
+  display: flex;
+  align-items: center;
   font-size: 1rem;
   border-radius: 10px;
   border: 1px solid #e0e0e0;
@@ -139,8 +139,7 @@ export const HeadSelection = styled.div`
 
 export const FlexWrapper = styled.div`
   display: flex;
-
-  
+  margin-bottom: 1rem;
 `;
 
 export const Color = styled.span`

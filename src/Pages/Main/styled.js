@@ -261,6 +261,39 @@ const StyledButton = styled_mui('button')(
       border-color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
     }
   }
+  &#sort {
+    min-width: 150px;
+    min-height: calc(1.5em + 0px);
+    background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
+    border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-right: 30px;
+    color: #346cfd;
+    &:hover {
+      background: ${theme.palette.mode === 'dark' ? '' : grey[100]};
+      border-color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
+    }
+    &::before {
+      content: '정렬';
+      margin-right: 10px;
+      color: black;
+      font-size: 15px;
+      font-family: Pretendard-Regular;
+    }
+    &.${selectUnstyledClasses.expanded} {
+      &::after {
+        content: url('img/icon_up_arrow_solid_24.svg');
+        color: black;
+      }
+    }
+  
+    &::after {
+      content: url('img/icon_down_arrow_solid_24.svg');
+      float: right;
+      color: black;
+    }
+  }
   &:hover {
     background: ${theme.palette.mode === 'dark' ? '' : grey[100]};
     border-color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
@@ -273,12 +306,14 @@ const StyledButton = styled_mui('button')(
   &.${selectUnstyledClasses.expanded} {
     &::after {
       content: '▴';
+      color: black;
     }
   }
 
   &::after {
     content: '▾';
     float: right;
+    color: black;
   }
 
   & img {
@@ -313,6 +348,24 @@ const StyledSemesterListbox = styled_mui('ul')(
   padding: 5px;
   margin: 10px 0;
   min-width: 130px;
+  max-height: 400px;
+  background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
+  border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
+  border-radius: 0.75em;
+  color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
+  overflow: auto;
+  outline: 0px;
+  `
+);
+
+const StyledSortListbox = styled_mui('ul')(
+  ({ theme }) => `
+  font-family: IBM Plex Sans, sans-serif;
+  font-size: 0.875rem;
+  box-sizing: border-box;
+  padding: 5px;
+  margin: 10px 0;
+  min-width: 150px;
   max-height: 400px;
   background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
   border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
@@ -403,6 +456,30 @@ export const SemesterSelect = React.forwardRef(function CustomSelect(props, ref)
 });
 
 SemesterSelect.propTypes = {
+  /**
+   * The components used for each slot inside the Select.
+   * Either a string to use a HTML element or a component.
+   * @default {}
+   */
+  components: PropTypes.shape({
+    Listbox: PropTypes.elementType,
+    Popper: PropTypes.func,
+    Root: PropTypes.elementType,
+  }),
+};
+
+export const SortSelect = React.forwardRef(function CustomSelect(props, ref) {
+  const components = {
+    Root: StyledButton,
+    Listbox: StyledSortListbox,
+    Popper: StyledPopper,
+    ...props.components,
+  };
+
+  return <SelectUnstyled {...props} ref={ref} components={components} />;
+});
+
+SortSelect.propTypes = {
   /**
    * The components used for each slot inside the Select.
    * Either a string to use a HTML element or a component.

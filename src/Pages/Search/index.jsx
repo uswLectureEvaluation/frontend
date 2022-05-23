@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import * as Styled from './styled';
 import MainList from '../../components/MainList';
+import {SortSelect, StyledOption, Soption} from '../Main/styled'
 
 const Search = () => {
   const detail = [
@@ -55,13 +56,17 @@ const Search = () => {
       });
     }
   };
-
+  console.log(check, option)
   const onClick = (e) => {
     setCheck(e.target.id);
     setOption(e.target.id);
-    console.log(e.target.id, check);
   };
 
+  const onSelect = (e) => {
+    setCheck(e);
+    setOption(e);
+  };
+  
   return (
     <Styled.Container>
       <Styled.SearchWrapper>
@@ -75,20 +80,15 @@ const Search = () => {
 
       <Styled.SearchResultWrapper>
         <Styled.FlexWrapper>
-          <Styled.SearchResultMenu id="sort">
-            정렬
-            <Styled.Img loading="lazy" width="22" src="img/icon_sort_solid_color_24.svg" />
-          </Styled.SearchResultMenu>
-          {detail.map((index) => (
-            <Styled.SearchResultMenu
-              key={index.option}
-              id={index.option}
-              onClick={onClick}
-              check={check}
-            >
-              {index.name}
-            </Styled.SearchResultMenu>
-          ))}
+          <SortSelect id='sort' defaultValue={`${check}`} onChange={onSelect}>
+              {detail.map((index) => (
+                <StyledOption id='semester' key={index.option} value={index.option}>
+                  <Soption id='semester'>
+                    {index.name}
+                  </Soption>
+                </StyledOption>
+              ))}
+            </SortSelect>
         </Styled.FlexWrapper>
 
         {win ? <Styled.FlexWrapper>
@@ -100,7 +100,7 @@ const Search = () => {
 
       <Styled.HeadSelection>
         {search_value === 'all' ? (
-          <MainList lecture={search_option} />
+          <MainList lecture={check} />
         ) : (
           <SearchList lecture={location.state} />
         )}
