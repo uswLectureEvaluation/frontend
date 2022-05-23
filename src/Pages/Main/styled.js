@@ -173,7 +173,7 @@ export const Img = styled.img`
 `;
 
 export const Soption = styled.span`
-  font-weight: bold;
+  font-weight: normal;
   &#semester {
     font-family: Pretendard;
     font-size: 16px;
@@ -236,16 +236,17 @@ const grey = {
 
 const StyledButton = styled_mui('button')(
   ({ theme }) => `
+  font-family: Pretendard-Regular;
   font-size: 0.875rem;
   box-sizing: border-box;
   min-height: calc(1.5em + 22px);
-  min-width: 220px;
+  min-width: 166px;
   background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
   border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
-  border:none;
+  border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
   border-radius: 0.75em;
   margin: 0.5em 0.5em 0 0;
-  padding: 10px;
+  padding: 5px 10px;
   text-align: left;
   line-height: 1.5;
   color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
@@ -305,31 +306,31 @@ const StyledButton = styled_mui('button')(
 
   &.${selectUnstyledClasses.expanded} {
     &::after {
-      content: '▴';
+      content: url('img/icon_up_arrow_solid_24.svg');
       color: black;
     }
   }
 
   &::after {
-    content: '▾';
-    float: right;
-    color: black;
+    content: url('img/icon_down_arrow_solid_24.svg');
+      float: right;
+      color: black;
   }
 
   & img {
-    margin-right: 10px;
+    margin-right: 5px;
   }
   `
 );
 
 const StyledListbox = styled_mui('ul')(
   ({ theme }) => `
-  font-family: IBM Plex Sans, sans-serif;
+  font-family: Pretendard-Regular;
   font-size: 0.875rem;
   box-sizing: border-box;
   padding: 5px;
   margin: 10px 0;
-  min-width: 320px;
+  min-width: 166px;
   max-height: 400px;
   background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
   border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
@@ -411,7 +412,7 @@ export const StyledOption = styled_mui(OptionUnstyled)(
   }
 
   & img {
-    margin-right: 10px;
+    margin-right: 5px;
   }
   `
 );
