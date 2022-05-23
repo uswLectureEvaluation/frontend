@@ -23,7 +23,7 @@ export const Container = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
-
+  font-family: Pretendard;
   @media screen and (max-width: 960px) {
     display: flex;
     flex-direction: column;
@@ -86,6 +86,8 @@ export const Content = styled.div`
 
 export const Color = styled.div`
   display: flex;
+  font-size: 16px;
+  font-weight: 500;
 `;
 
 export const TitleWrapper = styled.div`
@@ -98,14 +100,14 @@ export const TitleWrapper = styled.div`
     align-items: flex-start;
   }
   &#bottom {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 `;
 export const SubWrapper = styled.div`
   display: flex;
   margin-bottom: 0.5rem;
-  align-items: flex-end;
-  justify-content: space-around;
+  align-items: flex-start;
+  justify-content: flex-start;
  
 `;
 
@@ -116,19 +118,19 @@ export const Wrapper = styled.div`
 
 export const Title = styled.div`
   display: flex;
-  font-size: 1.5rem;
+  font-size: 18px;
   text-align: center;
-
+  font-weight: 500;
   &#sub {
     font-size: 1.5rem;
   }
 `;
 
 export const MenuTitle = styled.li`
-  font-size: 1.2rem;
+  font-size: 16px;
   margin-bottom: 1rem;
   text-align: center;
-  font-family: 'Pretendard-Regular';
+  font-family: Pretendard;
   display: flex;
   color: lightgray;
   padding-right: 1rem;
@@ -137,7 +139,7 @@ export const MenuTitle = styled.li`
     cursor: pointer;
   }
   &#${({ check }) => check} {
-    font-weight: bold;
+    font-weight: 500;
     color: black;
   }
 `;
@@ -152,19 +154,20 @@ export const Professor = styled.div`
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  margin-left: 10px;
 `;
 
 export const Option = styled.div`
   border-radius: 12px;
-  background-color: rgb(224, 224, 224);
+  background-color: #eeeeee;
   text-align: center;
+  margin-top: 10px;
   display: flex;
   align-items: center;
-  padding: 0.2rem 0.5rem;
-
+  padding: 4.5px 12px;
+  font-size: 14px;
   &#type {
     height: 25px;
+    margin-top: 0px;
   }
 `;
 
@@ -178,7 +181,9 @@ export const OptionTitle = styled.div`
   display: flex;
   color: #222222;
   align-items: flex-end;
+  margin-left: 5px;
   width: 80px;
+  font-size: 14px;
   @media screen and (max-width: 480px) {
     width: 100%;
   }
@@ -202,4 +207,5 @@ export const WidthContainer = styled.div`
   align-items: flex-end;
   display: flex;
   margin: 10px;
+  margin-left: 0px;
 `;

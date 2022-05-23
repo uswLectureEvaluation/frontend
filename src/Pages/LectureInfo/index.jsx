@@ -126,10 +126,12 @@ const LectureInfo = () => {
             <div>
             <Styled.SubWrapper>
               <Styled.Title>{db.data.lectureName}</Styled.Title>
+              </Styled.SubWrapper>
+              <Styled.SubWrapper>
                 <Styled.Professor>
                   {db.data.majorType} | {db.data.professor}
                 </Styled.Professor>
-              </Styled.SubWrapper>
+                </Styled.SubWrapper>
               <Styled.TitleWrapper>
                 <Styled.Option> {db.data.semesterList} </Styled.Option>
               </Styled.TitleWrapper>
@@ -144,7 +146,7 @@ const LectureInfo = () => {
                   <Styled.Color
                     style={{
                       color: '#346cfd',
-                      fontWeight: 'bold',
+                      fontWeight: '500',
                     }}
                   >
                     {Number(db.data.lectureHoneyAvg).toFixed(1)}
@@ -155,7 +157,7 @@ const LectureInfo = () => {
               <Styled.FlexContainer>
                 <Styled.OptionTitle>조모임</Styled.OptionTitle>
                 <Styled.FlexContainer>
-                <Styled.Color style={{ color: '#6200ee' }}>{team[teamSet]}</Styled.Color>
+                <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>{team[teamSet]}</Styled.Color>
                 </Styled.FlexContainer>
               </Styled.FlexContainer>
             </Styled.WidthContainer>
@@ -166,7 +168,7 @@ const LectureInfo = () => {
                   <Styled.Color
                     style={{
                       color: '#346cfd',
-                      fontWeight: 'bold',
+                      fontWeight: '500',
                     }}
                   >
                     {Number(db.data.lectureLearningAvg).toFixed(1)}
@@ -177,7 +179,7 @@ const LectureInfo = () => {
               <Styled.FlexContainer>
                 <Styled.OptionTitle>과제</Styled.OptionTitle>
                 <Styled.FlexContainer>
-                  <Styled.Color style={{ color: '#6200ee' }}>{homework[homeworkSet]}</Styled.Color>
+                  <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>{homework[homeworkSet]}</Styled.Color>
                 </Styled.FlexContainer>
               </Styled.FlexContainer>
             </Styled.WidthContainer>
@@ -188,7 +190,7 @@ const LectureInfo = () => {
                   <Styled.Color
                     style={{
                       color: '#346cfd',
-                      fontWeight: 'bold',
+                      fontWeight: '500',
                     }}
                   >
                     {Number(db.data.lectureSatisfactionAvg).toFixed(1)}
@@ -199,7 +201,7 @@ const LectureInfo = () => {
               <Styled.FlexContainer>
                 <Styled.OptionTitle>학점</Styled.OptionTitle>
                 <Styled.FlexContainer>
-                  <Styled.Color style={{ color: '#6200ee' }}>
+                  <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>
                     {difficulty[difficultySet]}
                   </Styled.Color>
                 </Styled.FlexContainer>
