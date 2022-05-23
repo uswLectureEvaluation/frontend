@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Color } from '../../globalStyles';
 
 export const Minute = styled.span`
-  font-size: 0.7rem;
+  font-size: 12px;
   color: #515151;
   text-decoration: underline;
   padding-left: 6px;
@@ -45,14 +45,15 @@ export const TitleWrapper = styled.div`
 
 export const Title = styled.div`
   display: flex;
-  font-size: 1.1rem;
+  font-size: 18px;
+  font-weight: 500;
   margin-right: 0.7rem;
 `;
 
 export const Professor = styled.div`
   display: flex;
   color: #515151;
-  font-size: 0.8rem;
+  font-size: 14px;
   margin: 0.3rem 0;
 `;
 
@@ -61,7 +62,8 @@ export const Option = styled.div`
   border-radius: 10px;
   background-color: rgb(239, 239, 239);
   padding: 5px 10px;
-  font-size: 0.3rem;
+  font-size: 12px;
+  font-weight: 500;
 `;
 
 export const RateWrapper = styled.span`
@@ -88,6 +90,7 @@ export const LectureWrapper = styled.div`
   border-radius: 10px;
   margin-bottom: 10px;
   cursor: pointer;
+  font-family: Pretendard;
 `;
 
 export const MarginTop = styled.div`
