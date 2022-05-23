@@ -244,9 +244,9 @@ export const evaluatePostApi = (page) => {
 };
 
 // 내가쓴글-시험정보Api
-export const examPostApi = () => {
+export const examPostApi = (page) => {
   return instance({
-    url: `/exam-posts/findByUserIdx`,
+    url: `/exam-posts/findByUserIdx/?page=${page}`,
     method: 'GET',
   });
 };

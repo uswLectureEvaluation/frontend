@@ -3,6 +3,7 @@ import { deleteExamInfoApi, examPostApi } from '../../api/Api';
 import * as Styled from './testinformation.element';
 import EditTestInfo from './edittestinfo'
 import Modal from 'react-modal';
+import Loader from '../../components/Loader';
 
 const 모달스타일 = {
   overlay: {
@@ -36,13 +37,52 @@ const Testinformation = () => {
   const [db, setData] = useState({
     data: [],
   });
-  console.log(db);
+  const [target, setTarget] = useState(null);
+  const [page, setPage] = useState(1);
+
+  const [itemLists, setItemLists] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const getMoreItem = async () => {
+    setIsLoaded(true);
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await examPostApi(page).then((data) => setData(data));
+    setItemLists(itemLists.concat(db.data));
+
+    setIsLoaded(false);
+  };
+
   useEffect(() => {
-    examPostApi().then((data) => setData(data));
-  }, []);
+    console.log('page ? ', page);
+    getMoreItem();
+  }, [page]);
+
+  const onIntersect = async (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        //뷰포트에 마지막 이미지가 들어오고, page값에 1을 더하여 새 fetch 요청을 보내게됨 (useEffect의 dependency배열에 page가 있음)
+        setPage((prev) => prev + 1);
+        // 현재 타겟을 unobserve한다.
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+  
+  useEffect(() => {
+    let observer;
+    if (target) {
+      observer = new IntersectionObserver(onIntersect, {
+        threshold: 1,
+      });
+      observer.observe(target);
+    }
+
+    return () => observer && observer.disconnect();
+  }, [itemLists]);
+
   return (
     <Styled.Wrapper>
-      {db.data.map((v, i) => (
+      {itemLists.map((v, i) => (
         <Subject
           key={v.id}
           content={v.content}
@@ -57,6 +97,9 @@ const Testinformation = () => {
           semesterList={v.semesterList}
         />
       ))}
+      <div ref={setTarget} className="Target-Element">
+        {isLoaded && <Loader />}
+      </div>
     </Styled.Wrapper>
   );
 };
