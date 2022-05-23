@@ -5,7 +5,7 @@ import * as Styled from './style';
 const Loader = () => {
   return (
     <Styled.LoaderWrap>
-      <ReactLoading type="spin" color="#A593E0" />
+      <ReactLoading type="spin" color="#346cfd" />
     </Styled.LoaderWrap>
   );
 };
