@@ -76,12 +76,24 @@ export const LectureWrapper = styled.div`
 export const MarginTop = styled.div`
   &#top {
     padding: 14px 24px 0px 24px;
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
   }
   &#bottom {
     padding: 0px 24px 14px 24px;
     margin-top: 5px;
   }
 `;
+
+export const MobileWrapper = styled.div`
+  display: none;
+  @media only screen and (max-width: 768px) {
+    display: flex;
+    padding: 14px 24px 0px 24px;
+    flex-direction: column;
+  }
+`
 export const DataColor = styled.div`
   padding-left: 0.7rem;
   font-weight: 500;

@@ -12,7 +12,6 @@ export const ModalOpen = styled.span`
 `;
 
 export const Wrapper = styled.div`
-  margin: 0px 20px;
 `;
 export const TitleWrapper = styled.div`
   display: flex;
