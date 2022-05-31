@@ -33,7 +33,6 @@ const 모달스타일 = {
   },
 };
 
-
 export const DetailModal = (props) => {
   const teamSet = props.team;
   const homeworkSet = props.homework;
@@ -85,14 +84,14 @@ export const DetailModal = (props) => {
   );
 };
 
-const SearchEvaluationList = ({selectId}) => {
+const SearchEvaluationList = (props) => {
   const [db, setData] = useState({
     data: [],
   });
+
   useEffect(() => {
-    searchEvaluationApi(selectId).then((data) => setData(data));
-    console.log(db)
-  }, [selectId]);
+    searchEvaluationApi(props.selectId).then((data) => setData(data));
+  }, [props.selectId]);
 
   return db.length !== 0 ? (
     <Styled.Wrapper>
@@ -128,7 +127,13 @@ export const Subject = (props) => {
           <Styled.TitleWrapper>
             <Styled.YearText>{props.semester}</Styled.YearText>
           </Styled.TitleWrapper>
-          <Styled.EditButton onClick={()=>{setModalIsOpen(true)}}>신고</Styled.EditButton>
+          <Styled.EditButton
+            onClick={() => {
+              setModalIsOpen(true);
+            }}
+          >
+            신고
+          </Styled.EditButton>
           <StarRatings
             rating={props.totalAvg}
             starRatedColor="#346cfd"
@@ -149,34 +154,40 @@ export const Subject = (props) => {
           </Styled.ModalOpen>
         </Styled.MarginTop>
         <Styled.MobileWrapper>
-          <div style={{marginBottom:"15px"}}>
-          <Styled.TitleWrapper>
-            <Styled.YearText>{props.semester}</Styled.YearText>
-          </Styled.TitleWrapper>
-          <Styled.EditButton onClick={()=>{setModalIsOpen(true)}}>신고</Styled.EditButton>
+          <div style={{ marginBottom: '15px' }}>
+            <Styled.TitleWrapper>
+              <Styled.YearText>{props.semester}</Styled.YearText>
+            </Styled.TitleWrapper>
+            <Styled.EditButton
+              onClick={() => {
+                setModalIsOpen(true);
+              }}
+            >
+              신고
+            </Styled.EditButton>
           </div>
           <div>
-          <StarRatings
-            rating={props.totalAvg}
-            starRatedColor="#346cfd"
-            numberOfStars={5}
-            name="rating"
-            starDimension="18px"
-            starSpacing="0px"
-            svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
-            svgIconViewBox="0 0 24 24"
-          />
-          <Styled.Rate>{props.totalAvg.toFixed(1)}</Styled.Rate>
-          <Styled.ModalOpen
-            onClick={() => {
-              setModal(!modal);
-            }}
-          >
-            {modal === true ? '간략히' : '자세히'}
-          </Styled.ModalOpen>
+            <StarRatings
+              rating={props.totalAvg}
+              starRatedColor="#346cfd"
+              numberOfStars={5}
+              name="rating"
+              starDimension="18px"
+              starSpacing="0px"
+              svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
+              svgIconViewBox="0 0 24 24"
+            />
+            <Styled.Rate>{props.totalAvg.toFixed(1)}</Styled.Rate>
+            <Styled.ModalOpen
+              onClick={() => {
+                setModal(!modal);
+              }}
+            >
+              {modal === true ? '간략히' : '자세히'}
+            </Styled.ModalOpen>
           </div>
         </Styled.MobileWrapper>
-        
+
         <div style={{ marginBottom: '5px' }} />
         {modal === true ? (
           <DetailModal
@@ -198,9 +209,7 @@ export const Subject = (props) => {
           ariaHideApp={false}
           onRequestClose={() => setModalIsOpen(false)}
         >
-          <ReportEvaluation
-            evaluateIdx={props.id}
-          />
+          <ReportEvaluation evaluateIdx={props.id} />
         </Modal>
       </Styled.LectureWrapper>
     </div>
