@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import * as Styled from './styled';
 import MainList from '../../components/MainList';
-import {SortSelect, StyledOption, Soption} from '../Main/styled'
+import { SortSelect, StyledOption, Soption } from '../Main/styled';
 
 const Search = () => {
   const detail = [
@@ -28,7 +28,7 @@ const Search = () => {
     setSearch(e.currentTarget.value);
   };
 
-  const [win, setWin] = useState(true)
+  const [win, setWin] = useState(true);
 
   const showWin = () => {
     if (window.innerWidth <= 960) {
@@ -40,11 +40,9 @@ const Search = () => {
 
   window.addEventListener('resize', showWin);
 
-
-
   useEffect(() => {
-    showWin()
-  }, [win])
+    showWin();
+  }, [win]);
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
@@ -56,17 +54,12 @@ const Search = () => {
       });
     }
   };
-  console.log(check, option)
-  const onClick = (e) => {
-    setCheck(e.target.id);
-    setOption(e.target.id);
-  };
 
   const onSelect = (e) => {
     setCheck(e);
     setOption(e);
   };
-  
+
   return (
     <Styled.Container>
       <Styled.SearchWrapper>
@@ -80,22 +73,22 @@ const Search = () => {
 
       <Styled.SearchResultWrapper>
         <Styled.FlexWrapper>
-          <SortSelect id='sort' defaultValue={`${check}`} onChange={onSelect}>
-              {detail.map((index) => (
-                <StyledOption id='semester' key={index.option} value={index.option}>
-                  <Soption id='semester'>
-                    {index.name}
-                  </Soption>
-                </StyledOption>
-              ))}
-            </SortSelect>
+          <SortSelect id="sort" defaultValue={`${check}`} onChange={onSelect}>
+            {detail.map((index) => (
+              <StyledOption id="semester" key={index.option} value={index.option}>
+                <Soption id="semester">{index.name}</Soption>
+              </StyledOption>
+            ))}
+          </SortSelect>
         </Styled.FlexWrapper>
 
-        {win ? <Styled.FlexWrapper>
-          총 <Styled.Color> 777</Styled.Color>건
-        </Styled.FlexWrapper>
-        : ''}
-        
+        {win ? (
+          <Styled.FlexWrapper>
+            총 <Styled.Color> 777</Styled.Color>건
+          </Styled.FlexWrapper>
+        ) : (
+          ''
+        )}
       </Styled.SearchResultWrapper>
 
       <Styled.HeadSelection>
