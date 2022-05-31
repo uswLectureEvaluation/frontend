@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Modal from 'react-modal';
 import { evaluatePostApi, deleteEvaluateApi } from '../../api/Api';
 import * as Styled from './myevaluation.element';
@@ -68,19 +68,18 @@ const Myevaluation = () => {
   const [itemLists, setItemLists] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const getMoreItem = async () => {
+  const getMoreItem = useCallback(async () => {
     setIsLoaded(true);
     await new Promise((resolve) => setTimeout(resolve, 1500));
     await evaluatePostApi(page).then((data) => setData(data));
     setItemLists(itemLists.concat(db.data));
 
     setIsLoaded(false);
-  };
+  }, [db.data, itemLists, page]);
 
   useEffect(() => {
-    console.log('page ? ', page);
     getMoreItem();
-  }, [page]);
+  }, [db.data, getMoreItem, itemLists, page]);
 
   const onIntersect = async (entries, observer) => {
     entries.forEach((entry) => {
@@ -103,7 +102,7 @@ const Myevaluation = () => {
     }
 
     return () => observer && observer.disconnect();
-  }, [itemLists]);
+  }, [itemLists, target]);
 
   return (
     <Styled.Wrapper>
