@@ -12,33 +12,7 @@ import { CssBaseline, Grid, Container } from '@material-ui/core';
 import Modal from 'react-modal';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
-
-const 모달스타일 = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-    zIndex: 1100,
-  },
-  content: {
-    display: 'flex',
-    justifyContent: 'center',
-    background: '#ffffff',
-    overflow: 'auto',
-    maxWidth: '600px',
-    minWidth: '500px',
-    left: '50%',
-    top: '0%',
-    transform: 'translate(-50%, 3%)',
-    WebkitOverflowScrolling: 'touch',
-    borderRadius: '14px',
-    outline: 'none',
-    zIndex: 1100,
-  },
-};
+import ModalStyle from '../../components/ModalStyle';
 
 const Myevaluation = () => {
   let [subjectName, setSubjectName] = useState(['학문과 사고', '네트워크 개론', '졸업프로젝트']);
@@ -130,7 +104,7 @@ export const Subject = (props) => {
       </BoxString6> */}
       <Modal
         isOpen={modalIsOpen}
-        style={모달스타일}
+        style={ModalStyle}
         // 오버레이나 esc를 누르면 핸들러 동작
         ariaHideApp={false}
         onRequestClose={() => setModalIsOpen(false)}

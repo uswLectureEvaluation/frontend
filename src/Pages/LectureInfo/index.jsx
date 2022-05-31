@@ -8,34 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Modal from 'react-modal';
 import WriteExam from '../../components/WriteExam';
+import ModalStyle from '../../components/ModalStyle';
 
-const 모달스타일 = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-    zIndex: 1100,
-  },
-  content: {
-    display: 'flex',
-    justifyContent: 'center',
-    background: '#ffffff',
-    overflow: 'auto',
-    maxWidth: '580px',
-    minWidth: '350px',
-    maxHeight: '800px',
-    left: '50%',
-    top: '0%',
-    transform: 'translate(-50%, 2%)',
-    WebkitOverflowScrolling: 'touch',
-    borderRadius: '14px',
-    outline: 'none',
-    zIndex: 1100,
-  },
-};
 
 const LectureInfo = () => {
   const selectId = useSelector((state) => state.selectId.value);
@@ -221,7 +195,7 @@ const LectureInfo = () => {
       {menuCheck === 0 ? (
         <Modal
           isOpen={modalIsOpen}
-          style={모달스타일}
+          style={ModalStyle}
           // 오버레이나 esc를 누르면 핸들러 동작
           ariaHideApp={false}
           onRequestClose={() => setModalIsOpen(false)}
@@ -236,7 +210,7 @@ const LectureInfo = () => {
       ) : (
         <Modal
           isOpen={modalIsOpen}
-          style={모달스타일}
+          style={ModalStyle}
           // 오버레이나 esc를 누르면 핸들러 동작
           ariaHideApp={false}
           onRequestClose={() => setModalIsOpen(false)}

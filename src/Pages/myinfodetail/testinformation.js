@@ -1,37 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { deleteExamInfoApi, examPostApi } from '../../api/Api';
 import * as Styled from './testinformation.element';
-import EditTestInfo from './edittestinfo'
+import EditTestInfo from './edittestinfo';
 import Modal from 'react-modal';
 import Loader from '../../components/Loader';
-
-const 모달스타일 = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-    zIndex: 1100,
-  },
-  content: {
-    display: 'flex',
-    justifyContent: 'center',
-    background: '#ffffff',
-    overflow: 'auto',
-    maxWidth: '580px',
-    minWidth: '350px',
-    maxHeight: '800px',
-    left: '50%',
-    top: '0%',
-    transform: 'translate(-50%, 2%)',
-    WebkitOverflowScrolling: 'touch',
-    borderRadius: '14px',
-    outline: 'none',
-    zIndex: 1100,
-  },
-};
+import ModalStyle from '../../components/ModalStyle';
 
 const Testinformation = () => {
   const [db, setData] = useState({
@@ -67,7 +40,7 @@ const Testinformation = () => {
       }
     });
   };
-  
+
   useEffect(() => {
     let observer;
     if (target) {
@@ -124,9 +97,9 @@ export const Subject = (props) => {
 
   const examDifficulty = {
     '매우 쉬움': <Styled.DataColor id="cyan">매우 쉬움</Styled.DataColor>,
-    '쉬움': <Styled.DataColor id="cyan">쉬움</Styled.DataColor>,
-    '보통': <Styled.DataColor>보통</Styled.DataColor>,
-    '어려움': <Styled.DataColor id="purple">어려움</Styled.DataColor>,
+    쉬움: <Styled.DataColor id="cyan">쉬움</Styled.DataColor>,
+    보통: <Styled.DataColor>보통</Styled.DataColor>,
+    어려움: <Styled.DataColor id="purple">어려움</Styled.DataColor>,
     '매우 어려움': <Styled.DataColor id="purple">매우 어려움</Styled.DataColor>,
   };
 
@@ -135,18 +108,16 @@ export const Subject = (props) => {
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
           <Styled.DeleteButton
-              onClick={() => {
-                onDelete();
-              }}
-            >
-              삭제
-            </Styled.DeleteButton>
-            <Styled.EditButton onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
+            onClick={() => {
+              onDelete();
+            }}
+          >
+            삭제
+          </Styled.DeleteButton>
+          <Styled.EditButton onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
           <Styled.TitleWrapper>
             <Styled.YearText>{props.selectedSemester}</Styled.YearText>
-            <Styled.YearText>
-              {props.examType}
-            </Styled.YearText>
+            <Styled.YearText>{props.examType}</Styled.YearText>
             <Styled.Title>{title}</Styled.Title>
             <Styled.Major>{props.majorType}</Styled.Major>
             <Styled.Major id="border">|</Styled.Major>
@@ -156,30 +127,28 @@ export const Subject = (props) => {
         </Styled.MarginTop>
 
         <Styled.MobileMarginTop>
-          <div style={{marginBottom:"20px"}}>
+          <div style={{ marginBottom: '20px' }}>
+            <div>
+              <Styled.DeleteButton
+                onClick={() => {
+                  onDelete();
+                }}
+              >
+                삭제
+              </Styled.DeleteButton>
+              <Styled.EditButton onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
+            </div>
+            <div>
+              <Styled.YearText>{props.selectedSemester}</Styled.YearText>
+              <Styled.YearText>{props.examType}</Styled.YearText>
+            </div>
+          </div>
           <div>
-            <Styled.DeleteButton
-                  onClick={() => {
-                    onDelete();
-                  }}
-                >
-                  삭제
-            </Styled.DeleteButton>
-            <Styled.EditButton onClick={() => setModalIsOpen(true)}>수정</Styled.EditButton>
-            </div>
-            <div>
-            <Styled.YearText>{props.selectedSemester}</Styled.YearText>
-            <Styled.YearText>
-              {props.examType}
-            </Styled.YearText>
-            </div>
-            </div>
-            <div>
             <Styled.Title>{title}</Styled.Title>
             <Styled.Major>{props.majorType}</Styled.Major>
             <Styled.Major id="border">|</Styled.Major>
             <Styled.Professor>{props.professor}</Styled.Professor>
-            </div>
+          </div>
         </Styled.MobileMarginTop>
 
         <div>
@@ -192,7 +161,7 @@ export const Subject = (props) => {
             </Styled.FlexContainer>
             <Styled.FlexContainer id="col">
               <Styled.StarFlex id="between">
-                <div style={{minWidth:"45px"}}>시험유형</div>
+                <div style={{ minWidth: '45px' }}>시험유형</div>
                 <Styled.StarFlex id="black">{props.examInfo}</Styled.StarFlex>
               </Styled.StarFlex>
             </Styled.FlexContainer>
@@ -204,7 +173,7 @@ export const Subject = (props) => {
         </Styled.MarginTop>
         <Modal
           isOpen={modalIsOpen}
-          style={모달스타일}
+          style={ModalStyle}
           // 오버레이나 esc를 누르면 핸들러 동작
           ariaHideApp={false}
           onRequestClose={() => setModalIsOpen(false)}
