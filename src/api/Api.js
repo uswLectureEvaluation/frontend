@@ -21,7 +21,7 @@ const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 export const mainApi = async (lecture) => {
   return instance({
-    url: `/lecture/findAllList/?option=${lecture}&page=1`,
+    url: `/lecture/all/?option=${lecture}&page=1`,
     method: 'GET',
   });
 };
@@ -29,7 +29,7 @@ export const mainApi = async (lecture) => {
 //공지사항api 확인 필요
 export const noticeApi = async () => {
   return instance({
-    url: `/notice/findAllList`,
+    url: `/notice/all`,
     method: 'GET',
   });
 };
@@ -238,7 +238,7 @@ export const myInfoApi = () => {
 // 내가쓴글-강의평가Api
 export const evaluatePostApi = (page) => {
   return instance({
-    url: `/evaluate-posts/findByUserIdx/?page=${page}`,
+    url: `/evaluate-posts/written/?page=${page}`,
     method: 'GET',
   });
 };
@@ -246,7 +246,7 @@ export const evaluatePostApi = (page) => {
 // 내가쓴글-시험정보Api
 export const examPostApi = (page) => {
   return instance({
-    url: `/exam-posts/findByUserIdx/?page=${page}`,
+    url: `/exam-posts/written/?page=${page}`,
     method: 'GET',
   });
 };
@@ -264,7 +264,7 @@ export const evaluateUpdateApi = (
   content,
   id
 ) => {
-  const url = `/evaluate-posts/update/?evaluateIdx=${id}`;
+  const url = `/evaluate-posts/?evaluateIdx=${id}`;
 
   const data = {
     semester: semester,
@@ -277,7 +277,7 @@ export const evaluateUpdateApi = (
     content: content,
   };
   const options = {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       Authorization: getCookie('AccessToken'),
@@ -311,7 +311,7 @@ export const evaluateWriteApi = (
   homework,
   content
 ) => {
-  const url = `evaluate-posts/write/?lectureId=${selectId}`;
+  const url = `evaluate-posts/?lectureId=${selectId}`;
 
   const data = {
     lectureName: lectureName,
@@ -347,7 +347,7 @@ export const evaluateWriteApi = (
 
 // 강의 평가 삭제 api
 export const deleteEvaluateApi = (id) => {
-  const url = `/evaluate-posts/delete/?evaluateIdx=${id}`;
+  const url = `/evaluate-posts/?evaluateIdx=${id}`;
 
   const options = {
     method: 'DELETE',
@@ -444,7 +444,7 @@ export const examWriteApi = (
   examDifficulty,
   content
 ) => {
-  const url = `/exam-posts/write/?lectureId=${selectId}`;
+  const url = `/exam-posts/?lectureId=${selectId}`;
 
   const data = {
     lectureName: lectureName,
@@ -477,7 +477,7 @@ export const examWriteApi = (
 
 //시험정보수정 api 미완
 export const examUpdateApi = (setData, semester, examInfo, examType, examDifficulty, content, id) => {
-  const url = `/exam-posts/update/?examIdx=${id}`;
+  const url = `/exam-posts/?examIdx=${id}`;
 
   const data = {
     semester: semester,
@@ -487,7 +487,7 @@ export const examUpdateApi = (setData, semester, examInfo, examType, examDifficu
     content: content,
   };
   const options = {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       Authorization: getCookie('AccessToken'),
@@ -509,7 +509,7 @@ export const examUpdateApi = (setData, semester, examInfo, examType, examDifficu
 
 //시험정보 구매
 export const buyTestInfo = (selectId) => {
-  const url = `/exam-posts/buyExamInfo/?lectureId=${selectId}`;
+  const url = `/exam-posts/purchase/?lectureId=${selectId}`;
   const options = {
     method: 'POST',
     headers: {
@@ -532,7 +532,7 @@ export const buyTestInfo = (selectId) => {
 
 // 시험정보 삭제
 export const deleteExamInfoApi = (id) => {
-  const url = `/exam-posts/delete/?examIdx=${id}`;
+  const url = `/exam-posts/?examIdx=${id}`;
 
   const options = {
     method: 'DELETE',
@@ -557,7 +557,7 @@ export const deleteExamInfoApi = (id) => {
 //꿀강순[modifiedDate, lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg]
 export const searchApi = (search, lecutre) => {
   return instance({
-    url: `/lecture/findBySearchValue/?searchValue=${search}&option=${lecutre}&?page=1`,
+    url: `/lecture/search/?searchValue=${search}&option=${lecutre}&?page=1`,
     method: 'GET',
   });
 };
@@ -573,7 +573,7 @@ export const searchLectureApi = (selectId) => {
 // 검색 결과 자세히보기 (Evaluation)
 export const searchEvaluationApi = (selectId) => {
   return instance({
-    url: `/evaluate-posts/findByLectureId/?lectureId=${selectId}&page=1`,
+    url: `/evaluate-posts/?lectureId=${selectId}&page=1`,
     method: 'GET',
   });
 };
@@ -581,7 +581,7 @@ export const searchEvaluationApi = (selectId) => {
 // 검색 결과 자세히보기 (Exam)
 export const searchExamApi = (selectId) => {
   return instance({
-    url: `/exam-posts/findByLectureId/?lectureId=${selectId}&page=1`,
+    url: `/exam-posts/?lectureId=${selectId}&page=1`,
     method: 'GET',
   });
 };
@@ -590,7 +590,7 @@ export const searchExamApi = (selectId) => {
 //시험정보 구매이력
 export const historyTestInfo = () => {
   return instance({
-    url: `/exam-posts/purchase-history`,
+    url: `/exam-posts/purchase`,
     method: 'GET',
   });
 };
