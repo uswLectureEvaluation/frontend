@@ -269,7 +269,7 @@ const StyledButton = styled_mui('button')(
     border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
     border-radius: 10px;
     padding: 5px 10px;
-    margin-right: 30px;
+    margin-right: 10px;
     color: #346cfd;
     &:hover {
       background: ${theme.palette.mode === 'dark' ? '' : grey[100]};
@@ -277,6 +277,39 @@ const StyledButton = styled_mui('button')(
     }
     &::before {
       content: '정렬';
+      margin-right: 10px;
+      color: black;
+      font-size: 15px;
+      font-family: Pretendard-Regular;
+    }
+    &.${selectUnstyledClasses.expanded} {
+      &::after {
+        content: url('img/icon_up_arrow_solid_24.svg');
+        color: black;
+      }
+    }
+  
+    &::after {
+      content: url('img/icon_down_arrow_solid_24.svg');
+      float: right;
+      color: black;
+    }
+  }
+  &#major {
+    min-width: 150px;
+    min-height: calc(1.5em + 0px);
+    background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
+    border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    color: #346cfd;
+    &:hover {
+      background: ${theme.palette.mode === 'dark' ? '' : grey[100]};
+      border-color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
+    }
+    &::before {
+      content: '개설학과';
       margin-right: 10px;
       color: black;
       font-size: 15px;

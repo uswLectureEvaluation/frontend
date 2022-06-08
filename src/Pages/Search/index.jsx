@@ -5,6 +5,9 @@ import { useLocation } from 'react-router';
 import * as Styled from './styled';
 import MainList from '../../components/MainList';
 import { SortSelect, StyledOption, Soption } from '../Main/styled';
+import Modal from 'react-modal';
+import {MajorModalStyle} from '../../components/ModalStyle';
+import MajorSearch from '../../components/MajorSearch';
 
 const Search = () => {
   const detail = [
@@ -23,6 +26,7 @@ const Search = () => {
   const [search, setSearch] = useState('');
   const [option, setOption] = useState('lectureHoneyAvg');
   const [check, setCheck] = useState(search_option);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const onChange = (e) => {
     setSearch(e.currentTarget.value);
@@ -61,6 +65,7 @@ const Search = () => {
   };
 
   return (
+    <div>
     <Styled.Container>
       <Styled.SearchWrapper>
         <Styled.SearchTitle>강의평가 검색</Styled.SearchTitle>
@@ -72,6 +77,16 @@ const Search = () => {
       </Styled.SearchWrapper>
 
       <Styled.SearchResultWrapper>
+        <div style={{display:"flex"}}>
+        <Styled.FlexWrapper onClick={()=>setModalIsOpen(true)}>
+          <SortSelect id="major" defaultValue={`${check}`} onChange={onSelect}>
+            {detail.map((index) => (
+              <StyledOption id="semester" key={index.option} value={index.option}>
+                <Soption id="semester">{index.name}</Soption>
+              </StyledOption>
+            ))}
+          </SortSelect>
+        </Styled.FlexWrapper>
         <Styled.FlexWrapper>
           <SortSelect id="sort" defaultValue={`${check}`} onChange={onSelect}>
             {detail.map((index) => (
@@ -81,6 +96,7 @@ const Search = () => {
             ))}
           </SortSelect>
         </Styled.FlexWrapper>
+        </div>
 
         {win ? (
           <Styled.FlexWrapper>
@@ -99,6 +115,16 @@ const Search = () => {
         )}
       </Styled.HeadSelection>
     </Styled.Container>
+    <Modal
+          isOpen={modalIsOpen}
+          style={MajorModalStyle}
+          // 오버레이나 esc를 누르면 핸들러 동작
+          ariaHideApp={false}
+          onRequestClose={() => setModalIsOpen(false)}
+        >
+          <MajorSearch />
+        </Modal>
+    </div>
   );
 };
 
