@@ -19,6 +19,7 @@ export const TitleWrapper = styled.div`
 export const Title = styled.div`
     font-size: 20px;
     font-family: Pretendard;
+    cursor: pointer;
 `
 
 export const TitleLine = styled.div`
@@ -75,7 +76,7 @@ export const MajorBox = styled.div`
     padding: 5px;
 `
 
-export const MajorSelect = styled.div`
+export const MajorSelect = styled.span`
     display: flex;
     align-items: center;
     font-family: Pretendard;
@@ -94,9 +95,56 @@ export const SubmitButton = styled.div`
     padding: 14px 160px;
     border-radius: 15px;
     margin-top: 30px;
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 export const SearchIcon = styled.img`
     margin-right: 8px;
     color: #e0e0e0;
+    &:hover {
+        cursor: pointer;
+    }
 `
+
+// 라디오버튼 스타일
+export const FormLabel = styled.label`
+`
+
+export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
+  &:checked {
+    display: inline-block;
+    background: none;
+    padding: 0px 10px;
+    text-align: center;
+    height: 35px;
+    line-height: 33px;
+    font-weight: 500;
+    display: none;
+  }
+  &#difficult {
+    &:checked + ${MajorSelect} {
+      color: #7800ff;
+      font-weight: 600;
+    }  
+  }
+  &#normal {
+    &:checked + ${MajorSelect} {
+      color: #222222;
+      font-weight: 600;
+    }  
+  }
+  &#easy {
+    &:checked + ${MajorSelect} {
+      color: #346cfd;
+      background-color: #eeeeee;
+    }  
+  }
+  display: none;
+`;
+
+export const Content = styled.form`
+
+`
+// 여기까지

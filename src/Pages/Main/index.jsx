@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import MainList from '../../components/MainList';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
+import { majorTypeApi } from '../../api/Api';
 
 const Main = () => {
   const options = [
@@ -55,7 +56,9 @@ const Main = () => {
       });
     }
   };
-
+  if(window.localStorage.getItem("majorType")===null) {
+    majorTypeApi().then((data)=>window.localStorage.setItem("majorType", data.data));
+  }
   return (
     <>
       <Styled.Banner>

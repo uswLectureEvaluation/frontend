@@ -122,7 +122,7 @@ const Search = () => {
           ariaHideApp={false}
           onRequestClose={() => setModalIsOpen(false)}
         >
-          <MajorSearch />
+          <MajorSearch setModalIsOpen={setModalIsOpen} />
         </Modal>
     </div>
   );

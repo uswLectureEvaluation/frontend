@@ -64,9 +64,9 @@ const LectureInfo = () => {
     searchLectureApi(selectId).then((data) => lectureData(data));
   }, [selectId]);
 
-  const teamSet = db.data.lectureTeamAvg;
-  const homeworkSet = db.data.lectureHomeworkAvg;
-  const difficultySet = db.data.lectureDifficultyAvg;
+  const teamSet = parseFloat(db.data.lectureTeamAvg).toFixed(0);
+  const homeworkSet = parseFloat(db.data.lectureHomeworkAvg).toFixed(0);
+  const difficultySet = parseFloat(db.data.lectureDifficultyAvg).toFixed(0);
   const team = {
     0: <Styled.DataColor>없음</Styled.DataColor>,
     1: <Styled.DataColor id="purple">있음</Styled.DataColor>,
