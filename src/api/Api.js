@@ -26,6 +26,14 @@ export const mainApi = async (lecture) => {
   });
 };
 
+//개설학과 api 
+export const majorTypeApi = async () => {
+  return instance({
+    url: `/suwiki/majorType`,
+    method: 'GET',
+  });
+};
+
 //공지사항api 확인 필요
 export const noticeApi = async () => {
   return instance({

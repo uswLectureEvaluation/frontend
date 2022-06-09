@@ -71,6 +71,20 @@ export const MajorBox = styled.div`
     border-radius: 10px;
     border: 1px solid #e0e0e0;
     min-height: 220px;
+    overflow-y: scroll;
+    padding: 5px;
+`
+
+export const MajorSelect = styled.div`
+    display: flex;
+    align-items: center;
+    font-family: Pretendard;
+    font-size: 16px;
+    width: 100%;
+    padding: 5px;
+    &:hover {
+        background-color: #eeeeee;
+    }
 `
 
 export const SubmitButton = styled.div`
@@ -80,4 +94,9 @@ export const SubmitButton = styled.div`
     padding: 14px 160px;
     border-radius: 15px;
     margin-top: 30px;
+`
+
+export const SearchIcon = styled.img`
+    margin-right: 8px;
+    color: #e0e0e0;
 `
