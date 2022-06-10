@@ -26,13 +26,56 @@ export const mainApi = async (lecture) => {
   });
 };
 
-//개설학과 api 
+//개설학과조회 api 
 export const majorTypeApi = async () => {
   return instance({
     url: `/suwiki/majorType`,
     method: 'GET',
   });
 };
+
+//즐겨찾기 조회 api 
+export const searchFavoriteMajorApi = async () => {
+  return instance({
+    url: `/user/favorite-major`,
+    method: 'GET',
+  });
+};
+
+//전공 즐겨찾기 하기 api
+export const favoriteMajorApi = (setFavorite, majorType) => {
+  const url = `/user/favorite-major`;
+  const data = {
+    majorType: majorType
+  }
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: getCookie('AccessToken'),
+    },
+    data: data,
+    url,
+  };
+  axios(options).then(
+    (response) => {
+      setFavorite(response.data);
+      console.log(response.data);
+    },
+    (error) => {
+      alert(error.response);
+    }
+  );
+};
+
+//즐겨찾기 삭제 api 
+export const deleteFavoriteMajorApi = async (setFavorite ,majorType) => {
+  return instance({
+    url: `/user/favorite-major?majorType=${majorType}`,
+    method: 'delete',
+  }).then((data)=>setFavorite(data))
+};
+
 
 //공지사항api 확인 필요
 export const noticeApi = async () => {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { deleteFavoriteMajorApi, favoriteMajorApi, searchFavoriteMajorApi } from '../../api/Api';
 import * as Styled from './styled'
 
 const MajorSearch = (props) => {
@@ -6,14 +7,26 @@ const MajorSearch = (props) => {
     const [db, setData] = useState([]);
     const [selectedMajor, setSelectedMajor] = useState('');
     const [searchMajor, setSearchMajor] = useState('');
+    const [favorite, setFavorite] = useState('');
+    const [favoriteDb, setFavoriteDb] = useState([]);
 
     const majorChange = (e) => {
         setSelectedMajor(e.target.value);
         setSearchMajor(e.target.value);
       };
-    
     useEffect(()=>{
-        setData(window.localStorage.getItem('majorType').split(","))
+        searchFavoriteMajorApi().then((data)=>setFavoriteDb(data.data));
+    },[selectedMajor, favorite])
+    const onFavoriteMajor = (e) => {
+        setSelectedMajor(e.target.alt);
+        favoriteMajorApi(setFavorite, e.target.alt);
+      }
+    const onDeleteFavorite = (e) => {
+        setSelectedMajor(e.target.alt);
+        deleteFavoriteMajorApi(setFavorite, e.target.alt);
+      }
+    useEffect(()=>{
+        setData(window.localStorage.getItem('majorType').split(","));
     },[])
     return(
         <Styled.ModalWrapper>
@@ -38,18 +51,41 @@ const MajorSearch = (props) => {
                 <Styled.Content onChange={majorChange}>
                 {db.map((v,i)=>{
                     return(
-                            <Styled.FormLabel>
+                            <Styled.FormLabel key={i}>
                                 <Styled.FormCheckLeft
                                 name="majorType"
                                 id="easy"
                                 value={v}
                                 defaultChecked={selectedMajor === v}/>
-                                <Styled.MajorSelect><Styled.SearchIcon src='img/icon-emptystar-24.svg' width={20}/>{v}</Styled.MajorSelect>
+                                {favoriteDb.includes(v)===false?<Styled.MajorSelect>
+                                    <Styled.SearchIcon src='img/icon-emptystar-24.svg' 
+                                    width={20} alt={v} onClick={onFavoriteMajor}/>{v}</Styled.MajorSelect>:
+                                    <Styled.MajorSelect>
+                                    <Styled.SearchIcon src='img/icon_fullstar_24.svg' 
+                                    width={20} alt={v} onClick={onDeleteFavorite}/>{v}</Styled.MajorSelect>}
                             </Styled.FormLabel>
                     )
                 })}
                 </Styled.Content>
-                :<div></div>}
+                :<Styled.Content onChange={majorChange}>
+                {favoriteDb.map((v,i)=>{
+                    return(
+                            <Styled.FormLabel key={i}>
+                                <Styled.FormCheckLeft
+                                name="majorType"
+                                id="easy"
+                                value={v}
+                                defaultChecked={selectedMajor === v}/>
+                                {favoriteDb.includes(v)===false?<Styled.MajorSelect>
+                                    <Styled.SearchIcon src='img/icon-emptystar-24.svg' 
+                                width={20} alt={v} onClick={onFavoriteMajor}/>{v}</Styled.MajorSelect>:
+                                <Styled.MajorSelect>
+                                <Styled.SearchIcon src='img/icon_fullstar_24.svg' 
+                                width={20} alt={v} onClick={onDeleteFavorite}/>{v}</Styled.MajorSelect>}
+                            </Styled.FormLabel>
+                    )
+                })}
+                </Styled.Content>}
             </Styled.MajorBox>
             <Styled.SubmitButton>확인</Styled.SubmitButton>
         </Styled.ModalWrapper>
