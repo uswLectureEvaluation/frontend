@@ -10,7 +10,7 @@ export const Wrapper = styled.button`
   background: ${(props) => props.background};
   color: white;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   border-radius: 12px;
   cursor: pointer;

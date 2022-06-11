@@ -9,9 +9,11 @@ import { useSelector } from 'react-redux';
 import Modal from 'react-modal';
 import WriteExam from '../../components/WriteExam';
 import ModalStyle from '../../components/ModalStyle';
-
+import { Cookies } from 'react-cookie';
+import { Button } from '../../components';
 
 const LectureInfo = () => {
+  const cookies = new Cookies();
   const selectId = useSelector((state) => state.selectId.value);
   let navigate = useNavigate();
   const [check, setCheck] = useState('lecture');
@@ -82,7 +84,7 @@ const LectureInfo = () => {
     2: <Styled.DataColor id="purple">잘줌</Styled.DataColor>,
   };
 
-  console.log(db)
+  console.log(db);
   return (
     <Styled.Container>
       <Styled.SearchWrapper>
@@ -93,105 +95,116 @@ const LectureInfo = () => {
           onKeyPress={onKeypress}
         />
       </Styled.SearchWrapper>
-
-      <Styled.Wrapper>
-        <Styled.Content id="top">
-          <Styled.TitleWrapper id="top">
-            <div>
-            <Styled.SubWrapper>
-              <Styled.Title>{db.data.lectureName}</Styled.Title>
-              </Styled.SubWrapper>
-              <Styled.SubWrapper>
-                <Styled.Professor>
-                  {db.data.majorType} | {db.data.professor}
-                </Styled.Professor>
+      {cookies.get('AccessToken') ? (
+        <Styled.Wrapper>
+          <Styled.Content id="top">
+            <Styled.TitleWrapper id="top">
+              <div>
+                <Styled.SubWrapper>
+                  <Styled.Title>{db.data.lectureName}</Styled.Title>
                 </Styled.SubWrapper>
-              <Styled.TitleWrapper>
-                <Styled.Option> {db.data.semesterList} </Styled.Option>
-              </Styled.TitleWrapper>
-            </div>
-            <Styled.Option id="type">{db.data.lectureType}</Styled.Option>
-          </Styled.TitleWrapper>
-          <Styled.FlexContainer id="col">
-            <Styled.WidthContainer>
-              <Styled.FlexContainer>
-                <Styled.OptionTitle>꿀강지수</Styled.OptionTitle>
+                <Styled.SubWrapper>
+                  <Styled.Professor>
+                    {db.data.majorType} | {db.data.professor}
+                  </Styled.Professor>
+                </Styled.SubWrapper>
+                <Styled.TitleWrapper>
+                  <Styled.Option> {db.data.semesterList} </Styled.Option>
+                </Styled.TitleWrapper>
+              </div>
+              <Styled.Option id="type">{db.data.lectureType}</Styled.Option>
+            </Styled.TitleWrapper>
+            <Styled.FlexContainer id="col">
+              <Styled.WidthContainer>
                 <Styled.FlexContainer>
-                  <Styled.Color
-                    style={{
-                      color: '#346cfd',
-                      fontWeight: '500',
-                    }}
-                  >
-                    {Number(db.data.lectureHoneyAvg).toFixed(1)}
-                  </Styled.Color>
-                  /5
+                  <Styled.OptionTitle>꿀강지수</Styled.OptionTitle>
+                  <Styled.FlexContainer>
+                    <Styled.Color
+                      style={{
+                        color: '#346cfd',
+                        fontWeight: '500',
+                      }}
+                    >
+                      {Number(db.data.lectureHoneyAvg).toFixed(1)}
+                    </Styled.Color>
+                    /5
+                  </Styled.FlexContainer>
                 </Styled.FlexContainer>
-              </Styled.FlexContainer>
-              <Styled.FlexContainer>
-                <Styled.OptionTitle>조모임</Styled.OptionTitle>
                 <Styled.FlexContainer>
-                <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>{team[teamSet]}</Styled.Color>
+                  <Styled.OptionTitle>조모임</Styled.OptionTitle>
+                  <Styled.FlexContainer>
+                    <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>
+                      {team[teamSet]}
+                    </Styled.Color>
+                  </Styled.FlexContainer>
                 </Styled.FlexContainer>
-              </Styled.FlexContainer>
-            </Styled.WidthContainer>
-            <Styled.WidthContainer>
-              <Styled.FlexContainer>
-                <Styled.OptionTitle>배움지수</Styled.OptionTitle>
+              </Styled.WidthContainer>
+              <Styled.WidthContainer>
                 <Styled.FlexContainer>
-                  <Styled.Color
-                    style={{
-                      color: '#346cfd',
-                      fontWeight: '500',
-                    }}
-                  >
-                    {Number(db.data.lectureLearningAvg).toFixed(1)}
-                  </Styled.Color>
-                  /5
+                  <Styled.OptionTitle>배움지수</Styled.OptionTitle>
+                  <Styled.FlexContainer>
+                    <Styled.Color
+                      style={{
+                        color: '#346cfd',
+                        fontWeight: '500',
+                      }}
+                    >
+                      {Number(db.data.lectureLearningAvg).toFixed(1)}
+                    </Styled.Color>
+                    /5
+                  </Styled.FlexContainer>
                 </Styled.FlexContainer>
-              </Styled.FlexContainer>
-              <Styled.FlexContainer>
-                <Styled.OptionTitle>과제</Styled.OptionTitle>
                 <Styled.FlexContainer>
-                  <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>{homework[homeworkSet]}</Styled.Color>
+                  <Styled.OptionTitle>과제</Styled.OptionTitle>
+                  <Styled.FlexContainer>
+                    <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>
+                      {homework[homeworkSet]}
+                    </Styled.Color>
+                  </Styled.FlexContainer>
                 </Styled.FlexContainer>
-              </Styled.FlexContainer>
-            </Styled.WidthContainer>
-            <Styled.WidthContainer>
-              <Styled.FlexContainer>
-                <Styled.OptionTitle>만족도</Styled.OptionTitle>
+              </Styled.WidthContainer>
+              <Styled.WidthContainer>
                 <Styled.FlexContainer>
-                  <Styled.Color
-                    style={{
-                      color: '#346cfd',
-                      fontWeight: '500',
-                    }}
-                  >
-                    {Number(db.data.lectureSatisfactionAvg).toFixed(1)}
-                  </Styled.Color>
-                  /5
+                  <Styled.OptionTitle>만족도</Styled.OptionTitle>
+                  <Styled.FlexContainer>
+                    <Styled.Color
+                      style={{
+                        color: '#346cfd',
+                        fontWeight: '500',
+                      }}
+                    >
+                      {Number(db.data.lectureSatisfactionAvg).toFixed(1)}
+                    </Styled.Color>
+                    /5
+                  </Styled.FlexContainer>
                 </Styled.FlexContainer>
-              </Styled.FlexContainer>
-              <Styled.FlexContainer>
-                <Styled.OptionTitle>학점</Styled.OptionTitle>
                 <Styled.FlexContainer>
-                  <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>
-                    {difficulty[difficultySet]}
-                  </Styled.Color>
+                  <Styled.OptionTitle>학점</Styled.OptionTitle>
+                  <Styled.FlexContainer>
+                    <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>
+                      {difficulty[difficultySet]}
+                    </Styled.Color>
+                  </Styled.FlexContainer>
                 </Styled.FlexContainer>
-              </Styled.FlexContainer>
-            </Styled.WidthContainer>
-          </Styled.FlexContainer>
-        </Styled.Content>
+              </Styled.WidthContainer>
+            </Styled.FlexContainer>
+          </Styled.Content>
 
-        <Styled.Content>
-          <Styled.TitleWrapper id="top">
-            <Styled.TitleWrapper id="bottom">{menuList}</Styled.TitleWrapper>
-            <Styled.Writing src="img/btn_write.svg" onClick={() => setModalIsOpen(true)} />
-          </Styled.TitleWrapper>
-          {checkList[menuCheck]}
-        </Styled.Content>
-      </Styled.Wrapper>
+          <Styled.Content>
+            <Styled.TitleWrapper id="top">
+              <Styled.TitleWrapper id="bottom">{menuList}</Styled.TitleWrapper>
+              <Styled.Writing src="img/btn_write.svg" onClick={() => setModalIsOpen(true)} />
+            </Styled.TitleWrapper>
+            {checkList[menuCheck]}
+          </Styled.Content>
+        </Styled.Wrapper>
+      ) : (
+        <Styled.FlexContainer id="col">
+          <Button color="#346cfd" onClick={() => navigate('/login')}>
+            로그인하기
+          </Button>
+        </Styled.FlexContainer>
+      )}
       {menuCheck === 0 ? (
         <Modal
           isOpen={modalIsOpen}
