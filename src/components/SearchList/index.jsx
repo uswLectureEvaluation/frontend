@@ -48,6 +48,7 @@ const SearchList = ({ lecture }) => {
                 lectureSatisfactionAvg={row.lectureSatisfactionAvg}
                 lectureHoneyAvg={row.lectureHoneyAvg}
                 lectureLearningAvg={row.lectureLearningAvg}
+                majorType={row.majorType}
               />
             ))}
         </Styled.FlexWrapSub>
@@ -65,6 +66,7 @@ const SearchList = ({ lecture }) => {
                 lectureSatisfactionAvg={row.lectureSatisfactionAvg}
                 lectureHoneyAvg={row.lectureHoneyAvg}
                 lectureLearningAvg={row.lectureLearningAvg}
+                majorType={row.majorType}
               />
             ))}
         </Styled.FlexWrapSub>
@@ -83,6 +85,7 @@ const SearchList = ({ lecture }) => {
               lectureSatisfactionAvg={row.lectureSatisfactionAvg}
               lectureHoneyAvg={row.lectureHoneyAvg}
               lectureLearningAvg={row.lectureLearningAvg}
+              majorType={row.majorType}
             />
           ))}
         </Styled.FullWrapSub>
@@ -158,7 +161,7 @@ export const Subject = (props) => {
           <Styled.Title>{title}</Styled.Title>
           <Styled.Option>{props.lectureType}</Styled.Option>
         </Styled.TitleWrapper>
-        <Styled.Professor>{props.professor}</Styled.Professor>
+        <Styled.Professor>{props.majorType} | {props.professor}</Styled.Professor>
         {/* <Styled.MarginRight>평균지수</Styled.MarginRight> */}
         <Styled.RateWrapper>
           <StarRatings
