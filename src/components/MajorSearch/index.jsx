@@ -16,15 +16,18 @@ const MajorSearch = (props) => {
       };
     useEffect(()=>{
         searchFavoriteMajorApi().then((data)=>setFavoriteDb(data.data));
-    },[selectedMajor, favorite])
+    },[selectedMajor,favorite])
+    
     const onFavoriteMajor = (e) => {
         setSelectedMajor(e.target.alt);
-        favoriteMajorApi(setFavorite, e.target.alt);
+        if(!favoriteDb.includes(e.target.alt)) {
+            favoriteMajorApi(setFavorite, e.target.alt);
+        } else {
+            deleteFavoriteMajorApi(setFavorite, e.target.alt);
+        }
+        setFavorite('');
       }
-    const onDeleteFavorite = (e) => {
-        setSelectedMajor(e.target.alt);
-        deleteFavoriteMajorApi(setFavorite, e.target.alt);
-      }
+    
     useEffect(()=>{
         setData(window.localStorage.getItem('majorType').split(","));
     },[])
@@ -57,12 +60,9 @@ const MajorSearch = (props) => {
                                 id="easy"
                                 value={v}
                                 defaultChecked={selectedMajor === v}/>
-                                {favoriteDb.includes(v)===false?<Styled.MajorSelect>
-                                    <Styled.SearchIcon src='img/icon-emptystar-24.svg' 
-                                    width={20} alt={v} onClick={onFavoriteMajor}/>{v}</Styled.MajorSelect>:
-                                    <Styled.MajorSelect>
-                                    <Styled.SearchIcon src='img/icon_fullstar_24.svg' 
-                                    width={20} alt={v} onClick={onDeleteFavorite}/>{v}</Styled.MajorSelect>}
+                                <Styled.MajorSelect>
+                                    <Styled.SearchIcon src={!favoriteDb.includes(v)?'img/icon-emptystar-24.svg':'img/icon_fullstar_24.svg'}
+                                    width={20} alt={v} onClick={onFavoriteMajor}/>{v}</Styled.MajorSelect>
                             </Styled.FormLabel>
                     )
                 })}
@@ -76,12 +76,9 @@ const MajorSearch = (props) => {
                                 id="easy"
                                 value={v}
                                 defaultChecked={selectedMajor === v}/>
-                                {favoriteDb.includes(v)===false?<Styled.MajorSelect>
-                                    <Styled.SearchIcon src='img/icon-emptystar-24.svg' 
-                                width={20} alt={v} onClick={onFavoriteMajor}/>{v}</Styled.MajorSelect>:
                                 <Styled.MajorSelect>
-                                <Styled.SearchIcon src='img/icon_fullstar_24.svg' 
-                                width={20} alt={v} onClick={onDeleteFavorite}/>{v}</Styled.MajorSelect>}
+                                    <Styled.SearchIcon src={!favoriteDb.includes(v)?'img/icon-emptystar-24.svg':'img/icon_fullstar_24.svg'}
+                                    width={20} alt={v} onClick={onFavoriteMajor}/>{v}</Styled.MajorSelect>
                             </Styled.FormLabel>
                     )
                 })}
