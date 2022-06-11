@@ -93,13 +93,18 @@ export const MajorSelect = styled.span`
 
 export const SubmitButton = styled.div`
     background-color: #346cfd;
+    width: 65%;
     color: #fff;
     text-align: center;
-    padding: 14px 160px;
+    padding: 14px;
     border-radius: 15px;
     margin-top: 30px;
+    font-size: 16px;
     &:hover {
         cursor: pointer;
+    }
+    @media only screen and (max-width: 550px) {
+      width: 95%;
     }
 `
 
