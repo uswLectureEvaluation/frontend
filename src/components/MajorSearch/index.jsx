@@ -12,8 +12,8 @@ const MajorSearch = (props) => {
 
     const majorChange = (e) => {
         setSelectedMajor(e.target.value);
-        setSearchMajor(e.target.value);
       };
+
     useEffect(()=>{
         searchFavoriteMajorApi().then((data)=>setFavoriteDb(data.data));
     },[selectedMajor,favorite])
@@ -31,6 +31,7 @@ const MajorSearch = (props) => {
     useEffect(()=>{
         setData(window.localStorage.getItem('majorType').split(","));
     },[])
+    console.log(favoriteDb);
     return(
         <Styled.ModalWrapper>
             <Styled.TitleWrapper>
@@ -43,7 +44,7 @@ const MajorSearch = (props) => {
             </Styled.TitleWrapper>
             <Styled.TitleLine />
             <Styled.InputWrapper>
-                <Styled.CssTextField placeholder='개설학과를 검색하세요.' value={searchMajor} onChange={(e)=>{setSearchMajor(e.target.value)}}/>
+                <Styled.CssTextField placeholder='개설학과를 검색하세요.' value={searchMajor} onChange={(e)=>setSearchMajor(e.target.value)}/>
             </Styled.InputWrapper>
             <Styled.TabWrapper>
                 <Styled.TabMenu id={all?'selected':null} onClick={()=>setAll(true)}>전체</Styled.TabMenu>
@@ -52,23 +53,35 @@ const MajorSearch = (props) => {
             <Styled.MajorBox>
                 {all?
                 <Styled.Content onChange={majorChange}>
-                {db.map((v,i)=>{
-                    return(
-                            <Styled.FormLabel key={i}>
-                                <Styled.FormCheckLeft
-                                name="majorType"
-                                id="easy"
-                                value={v}
-                                defaultChecked={selectedMajor === v}/>
-                                <Styled.MajorSelect>
-                                    <Styled.SearchIcon src={!favoriteDb.includes(v)?'img/icon-emptystar-24.svg':'img/icon_fullstar_24.svg'}
-                                    width={20} alt={v} onClick={onFavoriteMajor}/>{v}</Styled.MajorSelect>
-                            </Styled.FormLabel>
-                    )
-                })}
+                    {db.filter((v,i)=>{
+                        if(searchMajor==='') {
+                            return v
+                        } else if(v.includes(searchMajor)) {
+                            return v
+                        }
+                    }).map((v,i)=>{
+                        return(
+                                <Styled.FormLabel key={i}>
+                                    <Styled.FormCheckLeft
+                                    name="majorType"
+                                    id="easy"
+                                    value={v}
+                                    defaultChecked={selectedMajor === v}/>
+                                    <Styled.MajorSelect>
+                                        <Styled.SearchIcon src={!favoriteDb.includes(v)?'img/icon-emptystar-24.svg':'img/icon_fullstar_24.svg'}
+                                        width={20} alt={v} onClick={onFavoriteMajor}/>{v}</Styled.MajorSelect>
+                                </Styled.FormLabel>
+                        )
+                    })}
                 </Styled.Content>
                 :<Styled.Content onChange={majorChange}>
-                {favoriteDb.map((v,i)=>{
+                {favoriteDb.filter((v,i)=>{
+                    if(searchMajor==='') {
+                        return v
+                    } else if(v.includes(searchMajor)) {
+                        return v
+                    }
+                }).map((v,i)=>{
                     return(
                             <Styled.FormLabel key={i}>
                                 <Styled.FormCheckLeft
