@@ -54,11 +54,7 @@ const MajorSearch = (props) => {
                 {all?
                 <Styled.Content onChange={majorChange}>
                     {db.filter((v,i)=>{
-                        if(searchMajor==='') {
-                            return v
-                        } else if(v.includes(searchMajor)) {
-                            return v
-                        }
+                        return searchMajor===''? v : v.includes(searchMajor) ? v : null
                     }).map((v,i)=>{
                         return(
                                 <Styled.FormLabel key={i}>
@@ -76,11 +72,7 @@ const MajorSearch = (props) => {
                 </Styled.Content>
                 :<Styled.Content onChange={majorChange}>
                 {favoriteDb.filter((v,i)=>{
-                    if(searchMajor==='') {
-                        return v
-                    } else if(v.includes(searchMajor)) {
-                        return v
-                    }
+                    return searchMajor===''? v : v.includes(searchMajor) ? v : null
                 }).map((v,i)=>{
                     return(
                             <Styled.FormLabel key={i}>
