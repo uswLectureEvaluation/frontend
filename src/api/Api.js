@@ -60,7 +60,6 @@ export const favoriteMajorApi = (setFavorite, majorType) => {
   axios(options).then(
     (response) => {
       setFavorite(response.data);
-      console.log(response.data);
     },
     (error) => {
       alert(error.response);
@@ -113,14 +112,11 @@ export const registerApi = (setData, setLoading, id, pw, email) => {
   };
   axios(options).then(
     (r) => {
-      console.log('connect');
-      console.log(r.data);
       setData(r.data);
       setLoading(true);
     },
     (error) => {
-      console.log(error.response.data);
-      console.log(data);
+      console.error(error);
     }
   );
 };
@@ -149,7 +145,7 @@ export const checkidApi = (setData, id) => {
       else alert('중복입니다.');
     },
     (error) => {
-      console.log(error);
+      console.error(error);
       alert('요청에 실패하였습니다.');
     }
   );
@@ -179,7 +175,7 @@ export const checkemailApi = (setData, email) => {
       else alert('중복입니다.');
     },
     (error) => {
-      console.log(error);
+      console.error(error);
       alert('요청에 실패하였습니다.');
     }
   );
@@ -202,7 +198,6 @@ export const loginApi = (setData, setLoading, id, pw) => {
   };
   axios(options).then(
     (r) => {
-      console.log('connect');
       setData(r.data);
       setLoading(true);
       setCookie('AccessToken', r.data['AccessToken'], {
@@ -217,8 +212,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
       });
     },
     (error) => {
-      console.log(error.response);
-      console.log(data);
+      console.error(error);
       alert('id 또는 pw 확인해주세요');
     }
   );
@@ -443,9 +437,7 @@ export const evaluateReportApi = (
       window.location.reload();
     },
     (error) => {
-      console.log(data)
       alert('error');
-      console.log(error)
     }
   );
 };
@@ -477,7 +469,6 @@ export const examReportApi = (
     },
     (error) => {
       alert('error');
-      console.log(error)
     }
   );
 };
