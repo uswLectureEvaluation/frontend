@@ -203,7 +203,6 @@ export const loginApi = (setData, setLoading, id, pw) => {
   axios(options).then(
     (r) => {
       console.log('connect');
-      console.log(r.data);
       setData(r.data);
       setLoading(true);
       setCookie('AccessToken', r.data['AccessToken'], {
