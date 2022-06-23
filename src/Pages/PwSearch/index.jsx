@@ -19,9 +19,7 @@ const PwSearch = () => {
     findPwApi(setData, username, email);
   };
 
-  useEffect(() => {
-    console.log(db.data);
-  }, [db.data]);
+  useEffect(() => {}, [db.data]);
   return (
     <Styled.Container>
       <Styled.Img src="img/signup.svg" width={450} />

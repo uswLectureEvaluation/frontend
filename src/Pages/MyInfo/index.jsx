@@ -63,7 +63,6 @@ const MyInfo = () => {
     showWin();
     myInfoApi().then((data) => setData(data));
   }, [win]);
-  console.log(db);
   return win ? (
     <Styled.Container>
       <Styled.InfoWrapper>
@@ -177,7 +176,9 @@ const MyInfo = () => {
           <Styled.Title>이용 안내</Styled.Title>
           {option.map((i) => (
             <Styled.FlexContainer key={i.title}>
-              <Styled.FlexContainer id="last" onClick={()=> navigate(`/${i.page}`)}>{i.title}</Styled.FlexContainer>
+              <Styled.FlexContainer id="last" onClick={() => navigate(`/${i.page}`)}>
+                {i.title}
+              </Styled.FlexContainer>
             </Styled.FlexContainer>
           ))}
         </Styled.Content>

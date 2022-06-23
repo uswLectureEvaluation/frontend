@@ -36,7 +36,6 @@ const MajorSearch = (props) => {
   useEffect(() => {
     setData(window.localStorage.getItem('majorType').split(','));
   }, []);
-  console.log(favoriteDb);
   return (
     <Styled.ModalWrapper>
       <Styled.TitleWrapper>

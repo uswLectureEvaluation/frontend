@@ -45,7 +45,6 @@ const LectureInfo = () => {
   };
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  console.log('여기', selectId);
   let setData;
 
   const onChange = (e) => {
@@ -84,7 +83,6 @@ const LectureInfo = () => {
     2: <Styled.DataColor id="purple">잘줌</Styled.DataColor>,
   };
 
-  console.log(db);
   return (
     <Styled.Container>
       <Styled.SearchWrapper>

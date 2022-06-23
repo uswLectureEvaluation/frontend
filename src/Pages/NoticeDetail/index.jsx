@@ -21,7 +21,6 @@ const NoticeDetail = () => {
       <Styled.Content>
         <Styled.Title>{db.data.title}</Styled.Title>
         <Styled.Date>
-          {console.log(typeof db.data.modifiedDate)}
           {/* {db.data.modifiedDate.slice(0, 10)}{" "}
                     {db.data.modifiedDate.slice(11)} */}
         </Styled.Date>

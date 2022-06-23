@@ -43,7 +43,6 @@ const Main = () => {
 
   const onChangeHandler = (e) => {
     setLecture(e);
-    //console.log(lecture)
   };
 
   const onKeypress = (e) => {
@@ -56,8 +55,8 @@ const Main = () => {
       });
     }
   };
-  if(window.localStorage.getItem("majorType")===null) {
-    majorTypeApi().then((data)=>window.localStorage.setItem("majorType", data.data));
+  if (window.localStorage.getItem('majorType') === null) {
+    majorTypeApi().then((data) => window.localStorage.setItem('majorType', data.data));
   }
   return (
     <>

@@ -40,7 +40,6 @@ const Login = () => {
   };
 
   useEffect(() => {
-    console.log(db);
     if (loading === true) {
       if (db != null) {
         navigate('/myinformation');

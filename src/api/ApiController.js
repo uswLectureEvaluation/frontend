@@ -43,7 +43,6 @@ instance.interceptors.response.use(
         },
         method: 'POST',
       });
-      console.log('새 토큰 반환 데이터ㅇ', data);
       const { AccessToken: newAccessToken, RefreshToken: newRefreshToken } = data;
       await cookies.set('AccessToken', newAccessToken, {
         path: '/',

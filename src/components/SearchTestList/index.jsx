@@ -5,8 +5,6 @@ import ReportExam from '../ReportExam';
 import ModalStyle from '../../components/ModalStyle';
 
 const SearchTestList = (props) => {
-  console.log(props);
-
   return (
     <Styled.Wrapper>
       {props.db.map((v, i) => (
