@@ -79,7 +79,7 @@ export const deleteFavoriteMajorApi = async (setFavorite ,majorType) => {
 //공지사항api 확인 필요
 export const noticeApi = async () => {
   return instance({
-    url: `/notice/all`,
+    url: `/notice/all?page=1`,
     method: 'GET',
   });
 };

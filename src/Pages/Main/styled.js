@@ -119,10 +119,10 @@ export const SearchInput = styled.input`
 
 export const HeadSelection = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   padding-bottom: 10px;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-start;
 `;
 
 export const Select = styled.select`
@@ -160,6 +160,10 @@ export const BannerImg = styled.img`
       pointer-events: none;
   }
  
+`;
+
+export const FlexWrapper = styled.div`
+  display: flex;
 `;
 
 export const Img = styled.img`
