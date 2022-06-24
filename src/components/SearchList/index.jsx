@@ -38,12 +38,12 @@ const SearchList = ({ lecture, setCount, checkClass }) => {
       <Styled.FlexWrap>
         <Styled.FlexWrapSub>
           {db.data
-            .filter((data)=> {
-              if(checkClass==='전체')
+            .filter((data, i)=> {
+              if(!(i % 2) && checkClass==='전체')
                 return true;
               else
                 {
-                  if(data.majorType===checkClass)
+                  if(!(i % 2) && data.majorType===checkClass)
                    return true;
                 }
                 return false;
@@ -65,12 +65,12 @@ const SearchList = ({ lecture, setCount, checkClass }) => {
         </Styled.FlexWrapSub>
         <Styled.FlexWrapSub>
           {db.data
-            .filter((data)=> {
-              if(checkClass==='전체')
+            .filter((data, i)=> {
+              if((i % 2) && checkClass==='전체')
                 return true;
               else
                 {
-                  if(data.majorType===checkClass)
+                  if((i % 2) && data.majorType===checkClass)
                    return true;
                 }
                 return false;

@@ -85,6 +85,15 @@ const MainList = ({ lecture, checkClass }) => {
     <Styled.FlexWrap>
       <Styled.FullWrapSub>
         {db.data
+        .filter((row, i) => {
+          if(checkClass==='전체'){
+            return true;
+          } else {
+            if(row.majorType === checkClass) {
+              return true;
+            }
+            return false;
+          }})
           .map((row, i) => (
             <Subject
               key={row.id}
