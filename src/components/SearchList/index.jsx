@@ -6,7 +6,7 @@ import StarRatings from 'react-star-ratings';
 import { selectIdState } from '../../features/selectIdSlice';
 import { useDispatch } from 'react-redux';
 
-const SearchList = ({ lecture, setCount }) => {
+const SearchList = ({ lecture, setCount, checkClass }) => {
   const [db, setData] = useState({
     data: [],
     count: '',
@@ -39,7 +39,16 @@ const SearchList = ({ lecture, setCount }) => {
       <Styled.FlexWrap>
         <Styled.FlexWrapSub>
           {db.data
-            .filter((row, i) => !(i % 2))
+            .filter((data)=> {
+              if(checkClass==='전체')
+                return true;
+              else
+                {
+                  if(data.majorType===checkClass)
+                   return true;
+                }
+                return false;
+            })
             .map((row, i) => (
               <Subject
                 key={row.id}
@@ -57,7 +66,16 @@ const SearchList = ({ lecture, setCount }) => {
         </Styled.FlexWrapSub>
         <Styled.FlexWrapSub>
           {db.data
-            .filter((row, i) => i % 2)
+            .filter((data)=> {
+              if(checkClass==='전체')
+                return true;
+              else
+                {
+                  if(data.majorType===checkClass)
+                   return true;
+                }
+                return false;
+            })
             .map((row, i) => (
               <Subject
                 key={row.id}
@@ -77,7 +95,18 @@ const SearchList = ({ lecture, setCount }) => {
     ) : (
       <Styled.FlexWrap>
         <Styled.FullWrapSub>
-          {db.data.map((row, i) => (
+          {db.data
+          .filter((data)=> {
+            if(checkClass==='전체')
+              return true;
+            else
+              {
+                if(data.majorType===checkClass)
+                 return true;
+              }
+              return false;
+          })
+          .map((row, i) => (
             <Subject
               key={row.id}
               id={row.id}

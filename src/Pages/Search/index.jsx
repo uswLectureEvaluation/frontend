@@ -114,7 +114,7 @@ const Search = () => {
         {search_value === 'all' ? (
           <MainList lecture={check} />
         ) : (
-          <SearchList lecture={location.state} setCount={setCount} />
+          <SearchList lecture={location.state} setCount={setCount} checkClass={checkClass} />
         )}
       </Styled.HeadSelection>
     </Styled.Container>
