@@ -25,6 +25,7 @@ const Search = () => {
 
   const [search, setSearch] = useState('');
   const [option, setOption] = useState('lectureHoneyAvg');
+  const [count, setCount] = useState(0);
   const [check, setCheck] = useState(search_option);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedMajor, setSelectedMajor] = useState('');
@@ -101,7 +102,7 @@ const Search = () => {
 
         {win ? (
           <Styled.FlexWrapper>
-            총 <Styled.Color> 777</Styled.Color>건
+            총 <Styled.Color> {count}</Styled.Color>건
           </Styled.FlexWrapper>
         ) : (
           ''
@@ -112,7 +113,7 @@ const Search = () => {
         {search_value === 'all' ? (
           <MainList lecture={check} />
         ) : (
-          <SearchList lecture={location.state} />
+          <SearchList lecture={location.state} setCount={setCount} />
         )}
       </Styled.HeadSelection>
     </Styled.Container>
