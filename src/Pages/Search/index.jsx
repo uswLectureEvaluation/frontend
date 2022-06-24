@@ -27,6 +27,7 @@ const Search = () => {
   const [option, setOption] = useState('lectureHoneyAvg');
   const [check, setCheck] = useState(search_option);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedMajor, setSelectedMajor] = useState('');
 
   const onChange = (e) => {
     setSearch(e.currentTarget.value);
@@ -63,7 +64,7 @@ const Search = () => {
     setCheck(e);
     setOption(e);
   };
-
+  console.log(selectedMajor);
   return (
     <div>
     <Styled.Container>
@@ -122,7 +123,7 @@ const Search = () => {
           ariaHideApp={false}
           onRequestClose={() => setModalIsOpen(false)}
         >
-          <MajorSearch setModalIsOpen={setModalIsOpen} />
+          <MajorSearch setModalIsOpen={setModalIsOpen} setSelectedMajor={setSelectedMajor} />
         </Modal>
     </div>
   );

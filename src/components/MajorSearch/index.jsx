@@ -1,34 +1,28 @@
 import { useEffect, useState } from 'react';
 import { deleteFavoriteMajorApi, favoriteMajorApi, searchFavoriteMajorApi } from '../../api/Api';
 import * as Styled from './styled';
-import { useDispatch } from 'react-redux';
-import { selectMajorState, unSelectMajorState } from '../../features/selectMajorSlice';
 
 const MajorSearch = (props) => {
   const [all, setAll] = useState(true);
   const [db, setData] = useState([]);
-  const [selectedMajor, setSelectedMajor] = useState('');
   const [searchMajor, setSearchMajor] = useState('');
   const [favorite, setFavorite] = useState('');
   const [favoriteDb, setFavoriteDb] = useState([]);
-  const dispatch = useDispatch();
 
   const majorChange = (e) => {
-    setSelectedMajor(e.target.value);
+    props.setSelectedMajor(e.target.value);
   };
 
   useEffect(() => {
     searchFavoriteMajorApi().then((data) => setFavoriteDb(data.data));
-  }, [selectedMajor, favorite]);
+  }, [props.selectedMajor, favorite]);
 
   const onFavoriteMajor = (e) => {
-    setSelectedMajor(e.target.alt);
+    props.setSelectedMajor(e.target.alt);
     if (!favoriteDb.includes(e.target.alt)) {
       favoriteMajorApi(setFavorite, e.target.alt);
-      dispatch(selectMajorState(e.target.alt));
     } else {
       deleteFavoriteMajorApi(setFavorite, e.target.alt);
-      dispatch(unSelectMajorState(e.target.alt));
     }
     setFavorite('');
   };
@@ -36,6 +30,7 @@ const MajorSearch = (props) => {
   useEffect(() => {
     setData(window.localStorage.getItem('majorType').split(','));
   }, []);
+  
   return (
     <Styled.ModalWrapper>
       <Styled.TitleWrapper>
@@ -72,7 +67,7 @@ const MajorSearch = (props) => {
                       name="majorType"
                       id="easy"
                       value={v}
-                      defaultChecked={selectedMajor === v}
+                      defaultChecked={props.selectedMajor === v}
                     />
                     <Styled.MajorSelect>
                       <Styled.SearchIcon
@@ -104,7 +99,7 @@ const MajorSearch = (props) => {
                       name="majorType"
                       id="easy"
                       value={v}
-                      defaultChecked={selectedMajor === v}
+                      defaultChecked={props.selectedMajor === v}
                     />
                     <Styled.MajorSelect>
                       <Styled.SearchIcon
