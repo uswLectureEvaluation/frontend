@@ -108,7 +108,7 @@ const Main = () => {
             </Styled.CustomSelect>
           </Styled.HeadSelection>
           <Styled.HeadSelection>
-            <MainList lecture={lecture} />
+            <MainList lecture={lecture} checkClass={checkClass}/>
           </Styled.HeadSelection>
         </Styled.SearchWrapper>
         <Styled.Button
