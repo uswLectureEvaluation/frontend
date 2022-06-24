@@ -23,7 +23,6 @@ const SearchList = ({ lecture, setCount, checkClass }) => {
   };
 
   window.addEventListener('resize', showWin);
-  console.log(db);
 
   useEffect(() => {
     showWin()

@@ -66,7 +66,7 @@ const Search = () => {
     setCheck(e);
     setOption(e);
   };
-  console.log(selectedMajor);
+  
   return (
     <div>
     <Styled.Container>
