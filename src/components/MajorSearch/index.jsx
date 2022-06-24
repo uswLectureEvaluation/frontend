@@ -30,7 +30,12 @@ const MajorSearch = (props) => {
   useEffect(() => {
     setData(window.localStorage.getItem('majorType').split(','));
   }, []);
-  
+
+  const clickSubmit = () => {
+    props.setCheckClass(props.selectedMajor)
+    props.setModalIsOpen(false)
+  }
+
   return (
     <Styled.ModalWrapper>
       <Styled.TitleWrapper>
@@ -57,7 +62,7 @@ const MajorSearch = (props) => {
         {all ? (
           <Styled.Content onChange={majorChange}>
             {db
-              .filter((v, i) => {
+              .filter((v) => {
                 return searchMajor === '' ? v : v.includes(searchMajor) ? v : null;
               })
               .map((v, i) => {
@@ -89,7 +94,7 @@ const MajorSearch = (props) => {
         ) : (
           <Styled.Content onChange={majorChange}>
             {favoriteDb
-              .filter((v, i) => {
+              .filter((v) => {
                 return searchMajor === '' ? v : v.includes(searchMajor) ? v : null;
               })
               .map((v, i) => {
@@ -120,7 +125,7 @@ const MajorSearch = (props) => {
           </Styled.Content>
         )}
       </Styled.MajorBox>
-      <Styled.SubmitButton>확인</Styled.SubmitButton>
+      <Styled.SubmitButton onClick={clickSubmit}>확인</Styled.SubmitButton>
     </Styled.ModalWrapper>
   );
 };

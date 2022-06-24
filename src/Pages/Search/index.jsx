@@ -29,6 +29,7 @@ const Search = () => {
   const [check, setCheck] = useState(search_option);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedMajor, setSelectedMajor] = useState('');
+  const [checkClass, setCheckClass] = useState('전체');
 
   const onChange = (e) => {
     setSearch(e.currentTarget.value);
@@ -83,8 +84,8 @@ const Search = () => {
         <Styled.FlexWrapper onClick={()=>setModalIsOpen(true)}>
           <SortSelect id="major" defaultValue={`${check}`} onChange={onSelect}>
             {detail.map((index) => (
-              <StyledOption id="semester" key={index.option} value={index.option}>
-                <Soption id="semester">{index.name}</Soption>
+              <StyledOption id="semester" key={checkClass} value={index.option}>
+                <Soption id="semester">{checkClass}</Soption>
               </StyledOption>
             ))}
           </SortSelect>
@@ -124,7 +125,7 @@ const Search = () => {
           ariaHideApp={false}
           onRequestClose={() => setModalIsOpen(false)}
         >
-          <MajorSearch setModalIsOpen={setModalIsOpen} setSelectedMajor={setSelectedMajor} />
+          <MajorSearch setModalIsOpen={setModalIsOpen} setSelectedMajor={setSelectedMajor} setCheckClass={setCheckClass} selectedMajor={selectedMajor} />
         </Modal>
     </div>
   );
