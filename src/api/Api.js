@@ -637,10 +637,11 @@ export const historyTestInfo = () => {
 };
 
 //SUWIKI 비밀번호 변경
-export const resetPasswordApi = (password) => {
+export const resetPasswordApi = (prePassword, newPassword) => {
   const url = `/user/reset-pw`;
   const data = {
-    password: password
+    prePassword: prePassword,
+    newPassword: newPassword
   };
   const options = {
     method: 'post',
