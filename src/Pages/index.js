@@ -8,3 +8,4 @@ export { default as Login } from './Login';
 export { default as IdSearch } from './IdSearch';
 export { default as PwSearch } from './PwSearch';
 export { default as HistoryTest } from './HistoryTest';
+export { default as Exit } from './Exit';

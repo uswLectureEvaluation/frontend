@@ -12,6 +12,7 @@ import {
   IdSearch,
   PwSearch,
   HistoryTest,
+  Exit
 } from './Pages';
 import Notice from './Pages/Notice';
 import NoticeDetail from './Pages/NoticeDetail';
@@ -39,6 +40,7 @@ const App = () => {
         <Route path="/noticedetail" element={<NoticeDetail />} />
         <Route path="/historytest" element={<HistoryTest />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
+        <Route path="/exit" element={<Exit />} />
       </Routes>
       <ScrollButton />
       <Footer />

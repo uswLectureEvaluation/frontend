@@ -156,3 +156,4 @@ export const ErrorText = styled.div`
   text-align: center;
   color: #a3a3a3;
 `;
+

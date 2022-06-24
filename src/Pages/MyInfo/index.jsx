@@ -40,7 +40,7 @@ const MyInfo = () => {
     },
     {
       title: '회원 탈퇴',
-      page: 'myinformation',
+      page: 'exit',
     },
   ];
   const [db, setData] = useState({

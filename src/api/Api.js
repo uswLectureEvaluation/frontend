@@ -661,3 +661,29 @@ export const resetPasswordApi = (password) => {
   );
 
 }
+
+//SUWIKI 회원 탈퇴
+export const quitApi = (id, pw) => {
+  const url = `/user/quit`;
+  const data = {
+    loginId : id,
+    password : pw
+  };
+  const options = {
+    method: 'post',
+    headers: {
+      Authorization: getCookie('AccessToken'),
+    },
+    data,
+    url
+  }
+  axios(options).then(
+    (response) => {
+      window.location.reload();
+    },
+    (error) => {
+      alert('error');
+    }
+  );
+
+}
