@@ -109,7 +109,7 @@ const Search = () => {
 
       <Styled.HeadSelection>
         {search_value === 'all' ? (
-          <Infinite />
+          <Infinite lecture={location.state} setCount={setCount} checkClass={checkClass} option={option} />
         ) : (
           <SearchList lecture={location.state} setCount={setCount} checkClass={checkClass} option={option} />
         )}

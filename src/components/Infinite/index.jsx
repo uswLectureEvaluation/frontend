@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import * as Styled from './styled';
 import { mainApi } from '../../api/Api';
@@ -7,7 +6,7 @@ import StarRatings from 'react-star-ratings';
 import { selectIdState } from '../../features/selectIdSlice';
 import { useDispatch } from 'react-redux';
 
-const Infinite = () => {
+const Infinite = ({ setCount, checkClass, option }) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
@@ -53,6 +52,7 @@ const Infinite = () => {
   const getDog = useCallback(async () => {
     setLoad(true); //로딩 시작
     const res = await mainApi('modifiedDate', page)
+    setCount(res.count)
     if (res.data) {
         setList(prev=> [...prev, ...res.data ]);
       preventRef.current = true;
@@ -61,14 +61,23 @@ const Infinite = () => {
     }
     setLoad(false); //로딩 종료
   }, [page]);
-
+  
   return (
     win ? 
     <>
     <Styled.FlexWrap>
       <Styled.FlexWrapSub>
         {list && list
-          .filter((row, i) => !(i % 2))
+          .filter((data, i)=> {
+            if(!(i % 2) && checkClass==='전체')
+              return true;
+            else
+              {
+                if(!(i % 2) && data.majorType===checkClass)
+                 return true;
+              }
+              return false;
+          })
           .map((row, i) => (
             <Subject
               key={Math.random()}
@@ -86,7 +95,16 @@ const Infinite = () => {
       </Styled.FlexWrapSub>
       <Styled.FlexWrapSub>
         {list
-          .filter((row, i) => i % 2)
+          .filter((data, i)=> {
+            if((i % 2) && checkClass==='전체')
+              return true;
+            else
+              {
+                if((i % 2) && data.majorType===checkClass)
+                 return true;
+              }
+              return false;
+          })
           .map((row, i) => (
             <Subject
               key={Math.random()}
@@ -109,7 +127,7 @@ const Infinite = () => {
       옵저버 Element
     </div>
     </>: 
-    <Styled.FlexWrap style={{height: '100vh', display: 'grid'}}>
+    <Styled.FlexWrap>
       <Styled.FullWrapSub>
         {list
           .map((row, i) => (
