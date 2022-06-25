@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Color } from '../../globalStyles';
 
 export const Minute = styled.span`
-  font-size: 12px;
+  font-size: 0.7rem;
   color: #515151;
   text-decoration: underline;
   padding-left: 6px;
@@ -45,15 +45,14 @@ export const TitleWrapper = styled.div`
 
 export const Title = styled.div`
   display: flex;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 1.1rem;
   margin-right: 0.7rem;
 `;
 
 export const Professor = styled.div`
   display: flex;
   color: #515151;
-  font-size: 14px;
+  font-size: 0.8rem;
   margin: 0.3rem 0;
 `;
 
@@ -62,8 +61,7 @@ export const Option = styled.div`
   border-radius: 10px;
   background-color: rgb(239, 239, 239);
   padding: 5px 10px;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 0.3rem;
 `;
 
 export const RateWrapper = styled.span`
@@ -74,10 +72,8 @@ export const RateWrapper = styled.span`
 
 export const Rate = styled.span`
   color: #346cfd;
-  font-family: Pretendard;
-  font-size: 18px;
-  font-weight: 500;
-  padding-left: 5px;
+  font-size: 1.2rem;
+  padding-left: 4px;
   &#modal {
     font-size: 16px;
     padding-left: 0px;
@@ -90,7 +86,6 @@ export const LectureWrapper = styled.div`
   border-radius: 10px;
   margin-bottom: 10px;
   cursor: pointer;
-  font-family: Pretendard;
 `;
 
 export const MarginTop = styled.div`
@@ -99,12 +94,6 @@ export const MarginTop = styled.div`
 export const MarginRight = styled.span`
   margin-right: 6px;
   font-size: 1rem;
-`;
-export const FlexContainer = styled.div`
-  display: flex;
-  &#col {
-    flex-direction: column;
-  }
 `;
 
 export const StarFlex = styled.div`
@@ -124,6 +113,13 @@ export const StarFlex = styled.div`
   }
 `;
 
+export const FlexContainer = styled.div`
+  display: flex;
+  &#col {
+    flex-direction: column;
+  }
+`;
+
 export const PaddingRight = styled.span`
   padding-right: 0.7rem;
 `;
@@ -132,32 +128,32 @@ export const FlexWrap = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-
-   @media screen and (max-width: 768px) {
-    width: 100%;
-  display: flex;
-
-  }
 `;
 
 export const FlexWrapSub = styled.div`
   width: 49%;
   display: flex;
   flex-direction: column;
-
 `;
 
 export const FullWrapSub = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-  display: flex;
-
-  }
- 
-
-  }
 `;
+
+export const ErrorText = styled.div`
+  margin: 0 auto;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #a3a3a3;
+`;
+
