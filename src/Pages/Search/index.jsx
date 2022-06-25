@@ -27,7 +27,6 @@ const Search = () => {
   const [search, setSearch] = useState('');
   const [option, setOption] = useState('lectureHoneyAvg');
   const [count, setCount] = useState(0);
-  const [check, setCheck] = useState(search_option);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedMajor, setSelectedMajor] = useState('');
   const [checkClass, setCheckClass] = useState('전체');
@@ -62,12 +61,9 @@ const Search = () => {
       });
     }
   };
-
   const onSelect = (e) => {
-    setCheck(e);
     setOption(e);
   };
-  
   return (
     <div>
     <Styled.Container>
@@ -83,7 +79,7 @@ const Search = () => {
       <Styled.SearchResultWrapper>
         <div style={{display:"flex"}}>
         <Styled.FlexWrapper onClick={()=>setModalIsOpen(true)}>
-          <SortSelect id="major" defaultValue={`${check}`} onChange={onSelect}>
+          <SortSelect id="major" defaultValue={`${option}`}>
             {detail.map((index) => (
               <StyledOption id="semester" key={index.name} value={index.option}>
                 <Soption id="semester">{checkClass}</Soption>
@@ -92,7 +88,7 @@ const Search = () => {
           </SortSelect>
         </Styled.FlexWrapper>
         <Styled.FlexWrapper>
-          <SortSelect id="sort" defaultValue={`${check}`} onChange={onSelect}>
+          <SortSelect id="sort" defaultValue={option} onChange={onSelect}>
             {detail.map((index) => (
               <StyledOption id="semester" key={index.option} value={index.option}>
                 <Soption id="semester">{index.name}</Soption>
@@ -115,7 +111,7 @@ const Search = () => {
         {search_value === 'all' ? (
           <Infinite />
         ) : (
-          <SearchList lecture={location.state} setCount={setCount} checkClass={checkClass} />
+          <SearchList lecture={location.state} setCount={setCount} checkClass={checkClass} option={option} />
         )}
       </Styled.HeadSelection>
     </Styled.Container>

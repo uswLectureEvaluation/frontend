@@ -6,7 +6,7 @@ import StarRatings from 'react-star-ratings';
 import { selectIdState } from '../../features/selectIdSlice';
 import { useDispatch } from 'react-redux';
 
-const SearchList = ({ lecture, setCount, checkClass }) => {
+const SearchList = ({ lecture, setCount, checkClass, option }) => {
   const [db, setData] = useState({
     data: [],
     count: '',
@@ -26,8 +26,8 @@ const SearchList = ({ lecture, setCount, checkClass }) => {
 
   useEffect(() => {
     showWin()
-    searchApi(lecture.search_value, lecture.search_option).then((data) => setData(data));
-  }, [win, lecture.search_value, lecture.search_option]);
+    searchApi(lecture.search_value, option).then((data) => setData(data));
+  }, [win, lecture.search_value, option]);
 
   useEffect(()=> {
     setCount(db.count)
