@@ -85,7 +85,7 @@ const Search = () => {
         <Styled.FlexWrapper onClick={()=>setModalIsOpen(true)}>
           <SortSelect id="major" defaultValue={`${check}`} onChange={onSelect}>
             {detail.map((index) => (
-              <StyledOption id="semester" key={checkClass} value={index.option}>
+              <StyledOption id="semester" key={index.name} value={index.option}>
                 <Soption id="semester">{checkClass}</Soption>
               </StyledOption>
             ))}

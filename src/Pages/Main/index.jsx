@@ -91,7 +91,7 @@ const Main = () => {
           <Styled.FlexWrapper onClick={()=>setModalIsOpen(true)}>
           <Styled.SortSelect id="major" defaultValue={'lectureHoneyAvg'} onChange={onChangeHandler}>
             {options.map((index) => (
-              <Styled.StyledOption id="semester" key={checkClass} value={index.lec}>
+              <Styled.StyledOption id="semester" key={index.name} value={index.lec}>
                 <Styled.Soption id="semester">{checkClass}</Styled.Soption>
               </Styled.StyledOption>
             ))}
