@@ -23,7 +23,7 @@ const MainList = ({ lecture }) => {
 
   useEffect(() => {
     showWin()
-    mainApi(lecture).then((data) => setData(data));
+    mainApi(lecture, 1).then((data) => setData(data));
   }, [win, lecture]);
 
   return db.length !== 0 ? (

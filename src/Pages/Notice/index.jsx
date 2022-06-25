@@ -2,13 +2,14 @@ import { memo, useEffect, useState } from 'react';
 import * as Styled from './styled';
 import NoticeItem from '../../components/NoticeItem';
 import { noticeApi } from '../../api/Api';
+import Infinite from '../../components/Infinite';
 
 const Notice = () => {
   const [db, setData] = useState({
     data: [],
   });
   useEffect(() => {
-    noticeApi().then((data) => setData(data));
+    noticeApi(1).then((data) => setData(data));
   }, []);
 
   return (

@@ -19,9 +19,9 @@ export const getCookie = (name) => {
 //lectureLearningAvg 배울게 많은 강의
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
-export const mainApi = async (lecture) => {
+export const mainApi = async (lecture, page) => {
   return instance({
-    url: `/lecture/all/?option=${lecture}&page=1`,
+    url: `/lecture/all/?option=${lecture}&page=${page}`,
     method: 'GET',
   });
 };
@@ -77,9 +77,9 @@ export const deleteFavoriteMajorApi = async (setFavorite ,majorType) => {
 
 
 //공지사항api 확인 필요
-export const noticeApi = async () => {
+export const noticeApi = async (page) => {
   return instance({
-    url: `/notice/all`,
+    url: `/notice/all?page=${page}`,
     method: 'GET',
   });
 };

@@ -8,6 +8,7 @@ import { SortSelect, StyledOption, Soption } from '../Main/styled';
 import Modal from 'react-modal';
 import {MajorModalStyle} from '../../components/ModalStyle';
 import MajorSearch from '../../components/MajorSearch';
+import Infinite from '../../components/Infinite';
 
 const Search = () => {
   const detail = [
@@ -112,7 +113,7 @@ const Search = () => {
 
       <Styled.HeadSelection>
         {search_value === 'all' ? (
-          <MainList lecture={check} />
+          <Infinite />
         ) : (
           <SearchList lecture={location.state} setCount={setCount} checkClass={checkClass} />
         )}
