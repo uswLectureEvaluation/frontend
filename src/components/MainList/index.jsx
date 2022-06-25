@@ -6,7 +6,7 @@ import StarRatings from 'react-star-ratings';
 import { selectIdState } from '../../features/selectIdSlice';
 import { useDispatch } from 'react-redux';
 
-const MainList = ({ lecture }) => {
+const MainList = ({ lecture, checkClass }) => {
   const [db, setData] = useState([]);
 
   const [win, setWin] = useState(true)
@@ -31,7 +31,15 @@ const MainList = ({ lecture }) => {
     <Styled.FlexWrap>
       <Styled.FlexWrapSub>
         {db.data
-          .filter((row, i) => !(i % 2))
+          .filter((row, i) => {
+            if(!(i % 2) && checkClass==='전체'){
+              return true;
+            } else {
+              if(!(i % 2) && row.majorType === checkClass) {
+                return true;
+              }
+              return false;
+            }})
           .map((row, i) => (
             <Subject
               key={row.id}
@@ -49,7 +57,15 @@ const MainList = ({ lecture }) => {
       </Styled.FlexWrapSub>
       <Styled.FlexWrapSub>
         {db.data
-          .filter((row, i) => i % 2)
+          .filter((row, i) => {
+            if((i % 2) && checkClass==='전체'){
+              return true;
+            } else {
+              if((i % 2) && row.majorType === checkClass) {
+                return true;
+              }
+              return false;
+            }})
           .map((row, i) => (
             <Subject
               key={row.id}
@@ -69,6 +85,15 @@ const MainList = ({ lecture }) => {
     <Styled.FlexWrap>
       <Styled.FullWrapSub>
         {db.data
+        .filter((row, i) => {
+          if(checkClass==='전체'){
+            return true;
+          } else {
+            if(row.majorType === checkClass) {
+              return true;
+            }
+            return false;
+          }})
           .map((row, i) => (
             <Subject
               key={row.id}

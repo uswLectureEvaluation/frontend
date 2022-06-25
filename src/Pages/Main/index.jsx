@@ -3,6 +3,9 @@ import MainList from '../../components/MainList';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
 import { majorTypeApi } from '../../api/Api';
+import Modal from 'react-modal';
+import {MajorModalStyle} from '../../components/ModalStyle';
+import MajorSearch from '../../components/MajorSearch';
 
 const Main = () => {
   const options = [
@@ -36,6 +39,9 @@ const Main = () => {
   let navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [lecture, setLecture] = useState('lectureHoneyAvg');
+  const [checkClass, setCheckClass] = useState('전체');
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedMajor, setSelectedMajor] = useState('');
 
   const onChange = (e) => {
     setSearch(e.currentTarget.value);
@@ -82,6 +88,15 @@ const Main = () => {
         </Styled.SearchWrapper>
         <Styled.SearchWrapper>
           <Styled.HeadSelection>
+          <Styled.FlexWrapper onClick={()=>setModalIsOpen(true)}>
+          <Styled.SortSelect id="major" defaultValue={'lectureHoneyAvg'} onChange={onChangeHandler}>
+            {options.map((index) => (
+              <Styled.StyledOption id="semester" key={checkClass} value={index.lec}>
+                <Styled.Soption id="semester">{checkClass}</Styled.Soption>
+              </Styled.StyledOption>
+            ))}
+          </Styled.SortSelect>
+        </Styled.FlexWrapper>
             <Styled.CustomSelect defaultValue={'lectureHoneyAvg'} onChange={onChangeHandler}>
               {options.map((index) => (
                 <Styled.StyledOption key={index.name} value={index.lec}>
@@ -93,7 +108,7 @@ const Main = () => {
             </Styled.CustomSelect>
           </Styled.HeadSelection>
           <Styled.HeadSelection>
-            <MainList lecture={lecture} />
+            <MainList lecture={lecture} checkClass={checkClass}/>
           </Styled.HeadSelection>
         </Styled.SearchWrapper>
         <Styled.Button
@@ -110,6 +125,15 @@ const Main = () => {
           더 보러 가기 →
         </Styled.Button>
       </Styled.Container>
+      <Modal
+          isOpen={modalIsOpen}
+          style={MajorModalStyle}
+          // 오버레이나 esc를 누르면 핸들러 동작
+          ariaHideApp={false}
+          onRequestClose={() => setModalIsOpen(false)}
+        >
+          <MajorSearch setModalIsOpen={setModalIsOpen} setSelectedMajor={setSelectedMajor} setCheckClass={setCheckClass} selectedMajor={selectedMajor} />
+        </Modal>
     </>
   );
 };
