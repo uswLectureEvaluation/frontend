@@ -30,6 +30,7 @@ const Nav = () => {
 
   const logoutClick = () => {
     cookies.remove('AccessToken');
+    cookies.remove('RefreshToken');
     navigate('/login');
   };
 
