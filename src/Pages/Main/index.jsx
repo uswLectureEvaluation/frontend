@@ -53,12 +53,16 @@ const Main = () => {
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
-      navigate(`/search`, {
-        state: {
-          search_value: search,
-          search_option: lecture,
-        },
-      });
+      if(e.currentTarget.value.length < 2) {
+        alert("두 글자 이상 입력해주세요");
+      } else {
+        navigate(`/search`, {
+          state: {
+            search_value: search,
+            search_option: lecture,
+          },
+        });  
+      }
     }
   };
   if (window.localStorage.getItem('majorType') === null) {
