@@ -62,7 +62,7 @@ const Main = () => {
     }
   };
   if (window.localStorage.getItem('majorType') === null) {
-    majorTypeApi().then((data) => window.localStorage.setItem('majorType', data.data));
+    majorTypeApi().then((data) => window.localStorage.setItem('majorType', ['전체', data.data]));
   }
   return (
     <>
