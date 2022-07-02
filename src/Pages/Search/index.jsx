@@ -77,6 +77,7 @@ const Search = () => {
           onChange={onChange}
           placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
           onKeyPress={onKeypress}
+          defaultValue={search_value}
         />
       </Styled.SearchWrapper>
 
