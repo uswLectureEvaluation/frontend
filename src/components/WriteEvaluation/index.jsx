@@ -61,8 +61,9 @@ const WriteEvaluation = (props) => {
   const difficultyChange = (e) => {
     setDifficulty(e.target.value);
   };
-  const options = ['선택','2021-1','2022-1'];
-    
+  const options = ['선택'];
+  const optionsValue = options.concat(props.semesterList.split(", "));
+
   return (
     <Styled.Wrapper>
       <Styled.TitleWrapper>
@@ -80,7 +81,7 @@ const WriteEvaluation = (props) => {
         <Styled.Content id="group">
           <Styled.ContentTitle>수강학기</Styled.ContentTitle>
           <SemesterSelect defaultValue='선택' id='semester' onChange={(e)=>{setSemester(e)}}>
-              {options.map((index) => (
+              {optionsValue.map((index) => (
                 <StyledOption id='semester' key={index} value={index}>
                   <Soption id='semester'>
                     {index}
@@ -92,7 +93,7 @@ const WriteEvaluation = (props) => {
         <Styled.MobileContent id='semester'>
           <Styled.ContentTitle id='mobile'>수강학기</Styled.ContentTitle>
             <SemesterSelect id='semester' defaultValue='선택' onChange={(e)=>{setSemester(e)}}>
-                {options.map((index) => (
+                {optionsValue.map((index) => (
                   <StyledOption id='semester' key={index} value={index}>
                     <Soption id='semester'>
                       {index}

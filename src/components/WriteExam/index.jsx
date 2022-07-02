@@ -39,7 +39,8 @@ const WriteExam = (props) => {
     props.setModalIsOpen(false);
   };
   }
-  const semesterOptions = ['선택','2021-1','2022-1'];
+  const options = ['선택'];
+  const optionsValue = options.concat(props.semesterList.split(", "));
   const examTypeOptions = ['선택','중간고사','기말고사','쪽지','기타']
 
   return (
@@ -59,7 +60,7 @@ const WriteExam = (props) => {
         <Styled.Content id="group">
           <Styled.ContentTitle>수강학기</Styled.ContentTitle>
           <SemesterSelect id='semester' defaultValue={'선택'} onChange={(e)=>{setSemester(e)}}>
-              {semesterOptions.map((index) => (
+              {optionsValue.map((index) => (
                 <StyledOption id='semester' key={index} value={index}>
                   <Soption id='semester'>
                     {index}
@@ -82,7 +83,7 @@ const WriteExam = (props) => {
         <Styled.MobileContent id='semester'>
         <Styled.ContentTitle id='mobile'>수강학기</Styled.ContentTitle>
           <SemesterSelect id='semester' defaultValue={'선택'} onChange={(e)=>{setSemester(e)}}>
-              {semesterOptions.map((index) => (
+              {optionsValue.map((index) => (
                 <StyledOption id='semester' key={index} value={index}>
                   <Soption id='semester'>
                     {index}

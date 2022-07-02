@@ -215,6 +215,7 @@ const LectureInfo = () => {
             selectId={selectId}
             lectureName={db.data.lectureName}
             professor={db.data.professor}
+            semesterList={db.data.semesterList}
             setModalIsOpen={setModalIsOpen}
           />
         </Modal>
@@ -230,6 +231,7 @@ const LectureInfo = () => {
             selectId={selectId}
             lectureName={db.data.lectureName}
             professor={db.data.professor}
+            semesterList={db.data.semesterList}
             setModalIsOpen={setModalIsOpen}
           />
         </Modal>
