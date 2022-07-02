@@ -199,11 +199,11 @@ const EditEvaluation = (props) => {
           <Styled.FormLabel>
             <Styled.FormCheckLeft
               name="score"
-              id="difficult"
-              value="0"
-              defaultChecked={difficulty === '0'}
+              id="easy"
+              value="2"
+              defaultChecked={difficulty === '2'}
             />
-            <Styled.FormCheckText>까다로움</Styled.FormCheckText>
+            <Styled.FormCheckText>너그러움</Styled.FormCheckText>
           </Styled.FormLabel>
           <Styled.FormLabel>
             <Styled.FormCheckLeft
@@ -217,11 +217,11 @@ const EditEvaluation = (props) => {
           <Styled.FormLabel>
             <Styled.FormCheckLeft
               name="score"
-              id="easy"
-              value="2"
-              defaultChecked={difficulty === '2'}
+              id="difficult"
+              value="0"
+              defaultChecked={difficulty === '0'}
             />
-            <Styled.FormCheckText>너그러움</Styled.FormCheckText>
+            <Styled.FormCheckText>까다로움</Styled.FormCheckText>
           </Styled.FormLabel>
         </Styled.Content>
       </Styled.ContentWrapper>
