@@ -1,8 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './styled.css';
 
-const RangeInput = ({ min = 0, max = 5, step = 0.5, defaultValue = 0, onChange = () => {} }) => {
+const RangeInput = ({ min = 0, max = 5, step = 0.5, defaultValue = 0, setSlide }) => {
   const inputRef = useRef();
+
+  const [wvalue, setValue] = useState(defaultValue);
+
   const [isChanging, setIsChanging] = useState(false);
 
   const getPercent = useMemo(() => (value) => ((value - min) / (max - min)) * 100, [max, min]);
@@ -39,16 +42,22 @@ const RangeInput = ({ min = 0, max = 5, step = 0.5, defaultValue = 0, onChange =
   }, [inputRef, changeInputProgressPercentStyle]);
 
   return (
-    <input
-      className="range"
-      type="range"
-      ref={inputRef}
-      min={min}
-      max={max}
-      step={step}
-      value={defaultValue}
-      onChange={(e) => onChange(e.currentTarget.value)}
-    />
+    <>
+      <input
+        className="range"
+        type="range"
+        ref={inputRef}
+        min={min}
+        max={max}
+        step={step}
+        value={wvalue}
+        onChange={(e) => {
+          setValue(e.target.value)
+        }}
+        onMouseUp={(e) => setSlide(e.target.value)}
+        onTouchEnd={() => setSlide(inputRef.current.value)}
+      />
+    </>
   );
 };
 

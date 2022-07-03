@@ -18,11 +18,13 @@
   margin: 0;
   padding: 0;
 }
+
 @media (max-width: 550px) {
-  .range{
+  .range {
     width: 90%;
   }
 }
+
 .range:focus {
   outline: none;
 }
@@ -40,6 +42,7 @@
   margin-top: calc(((var(--thumbSize) - var(--trackSize)) / 2) * -1);
   cursor: pointer;
 }
+
 .range::-moz-range-thumb {
   -moz-appearance: none;
   appearance: none;
@@ -52,6 +55,7 @@
   margin-top: calc(((var(--thumbSize) - var(--trackSize)) / 2) * -1);
   cursor: pointer;
 }
+
 .range::-ms-thumb {
   -ms-appearance: none;
   appearance: none;
@@ -68,18 +72,18 @@
 /* Track */
 .range::-webkit-slider-runnable-track {
   height: var(--trackSize);
-  background-image: linear-gradient(
-    90deg,
-    var(--progressBg) var(--webkitProgressPercent),
-    var(--trackBg) var(--webkitProgressPercent)
-  );
+  background-image: linear-gradient(90deg,
+      var(--progressBg) var(--webkitProgressPercent),
+      var(--trackBg) var(--webkitProgressPercent));
   border-radius: calc(var(--trackSize) / 2);
 }
+
 .range::-moz-range-track {
   height: var(--trackSize);
   background-color: var(--trackBg);
   border-radius: calc(var(--trackSize) / 2);
 }
+
 .range::-ms-track {
   height: var(--trackSize);
   background-color: var(--trackBg);
@@ -92,6 +96,7 @@
   background-color: var(--progressBg);
   border-radius: calc(var(--trackSize) / 2) 0 0 calc(var(--trackSize) / 2);
 }
+
 .range::-ms-fill-lower {
   height: var(--trackSize);
   background-color: var(--progressBg);
