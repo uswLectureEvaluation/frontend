@@ -16,7 +16,7 @@ export const Title = styled.div`
   padding-bottom: 1rem;
   font-weight: 500;
   @media only screen and (max-width: 550px) {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 `;
 
@@ -38,6 +38,7 @@ export const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #e0e0e0;
+  
 `;
 
 export const ContentWrapper = styled.div`
@@ -105,7 +106,7 @@ export const TextField = styled.textarea`
   border-radius: 15px;
   background-color: #f9f9f9;
   @media only screen and (max-width: 550px) {
-    min-height: 200px;
+    min-height: 30px;
   }
 `
 
