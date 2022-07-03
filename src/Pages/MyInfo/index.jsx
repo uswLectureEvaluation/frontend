@@ -14,25 +14,27 @@ const MyInfo = () => {
       title: '구매이력',
       page: 'historytest',
     },
+  ];
+  const urlOption = [
     {
       title: '피드백 전송',
-      page: 'myinformation',
+      page: 'https://forms.gle/tZByKoN6rJCysvNz6',
     },
     {
       title: '문의하기',
-      page: 'myinformation',
+      page: 'email',
     },
     {
       title: '이용약관',
-      page: 'myinformation',
+      page: 'https://sites.google.com/view/suwiki-policy-terms/',
     },
     {
       title: '개인정보 처리 방침',
-      page: 'myinformation',
+      page: 'https://sites.google.com/view/suwiki-policy-privacy',
     },
     {
       title: '오픈소스 라이선스',
-      page: 'myinformation',
+      page: '',
     },
     {
       title: '비밀번호 변경',
@@ -42,7 +44,8 @@ const MyInfo = () => {
       title: '회원 탈퇴',
       page: 'exit',
     },
-  ];
+
+  ]
   const [db, setData] = useState({
     data: [],
   });
@@ -181,6 +184,18 @@ const MyInfo = () => {
               </Styled.FlexContainer>
             </Styled.FlexContainer>
           ))}
+          {urlOption.map((i) => (
+            <Styled.FlexContainer key={i.title}>
+              <Styled.FlexContainer id="last" 
+              onClick={() => {i.page==='email'
+              ?window.location='mailto:suwikiask@gmail.com'
+              :i.page==='resetpassword' || i.page==='exit'
+              ?navigate(`/${i.page}`)
+              :window.open(i.page)}}>
+                {i.title}
+              </Styled.FlexContainer>
+            </Styled.FlexContainer>
+          ))}
         </Styled.Content>
       </Styled.Wrapper>
     </Styled.Container>
@@ -297,6 +312,18 @@ const MyInfo = () => {
           {option.map((i) => (
             <Styled.FlexContainer key={i.title}>
               <Styled.FlexContainer id="last" onClick={() => navigate(`${i.page}`)}>
+                {i.title}
+              </Styled.FlexContainer>
+            </Styled.FlexContainer>
+          ))}
+          {urlOption.map((i) => (
+            <Styled.FlexContainer key={i.title}>
+              <Styled.FlexContainer id="last" 
+              onClick={() => {i.page==='email'
+              ?window.location='mailto:suwikiask@gmail.com'
+              :i.page==='resetpassword' || i.page==='exit'
+              ?navigate(`/${i.page}`)
+              :window.open(i.page)}}>
                 {i.title}
               </Styled.FlexContainer>
             </Styled.FlexContainer>
