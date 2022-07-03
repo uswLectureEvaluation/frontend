@@ -3,7 +3,6 @@ import SearchList from '../../components/SearchList';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import * as Styled from './styled';
-import MainList from '../../components/MainList';
 import { SortSelect, StyledOption, Soption } from '../Main/styled';
 import Modal from 'react-modal';
 import {MajorModalStyle} from '../../components/ModalStyle';
@@ -20,7 +19,7 @@ const Search = () => {
   ];
 
   const location = useLocation();
-  const { search_value, search_option } = location.state;
+  const { search_value } = location.state;
 
   let navigate = useNavigate();
 
