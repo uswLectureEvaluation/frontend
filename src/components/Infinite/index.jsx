@@ -202,11 +202,11 @@ export const Subject = (props) => {
   //   }else{ return }
   // }
   return (
-    <Styled.LectureWrapper>
+    <Styled.LectureWrapper onClick={() => onClick(props.id)}>
       <Styled.MarginTop>
         {/* <BoxButton2 onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</BoxButton2>
           <BoxButton1 onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</BoxButton1> */}
-        <Styled.TitleWrapper onClick={() => onClick(props.id)}>
+        <Styled.TitleWrapper>
           <Styled.Title>{title}</Styled.Title>
           <Styled.Option>{props.lectureType}</Styled.Option>
         </Styled.TitleWrapper>
@@ -227,8 +227,9 @@ export const Subject = (props) => {
           />
           <Styled.Rate>{props.star.toFixed(1)}</Styled.Rate>
           <Styled.Minute
-            onClick={() => {
+            onClick={(e) => {
               setModal(!modal);
+              e.stopPropagation();
             }}
           >
             {modal === true ? '간략히' : '자세히'}
