@@ -34,6 +34,8 @@ const WriteExam = (props) => {
       alert('난이도(란)을 선택해주세요')
     } else if(exam.length===0){
       alert('시험유형(란)을 선택해주세요')
+    } else if (content.length < 1 || content.length > 1000) {
+      alert('최소 1자 이상 최대 1000자 이내로 입력해주세요')
     } else {
     examWriteApi(props.selectId, props.lectureName, props.professor, semester, examInfo, examType, examDifficulty, content);
     props.setModalIsOpen(false);
