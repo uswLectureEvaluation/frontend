@@ -235,7 +235,7 @@ const SignUp = () => {
             />
             이용약관 동의(필수)
           </Styled.InputWrapper>
-          <Styled.AgreeButton className="showMore">상세보기</Styled.AgreeButton>
+          <Styled.AgreeButton className="showMore" onClick={()=>window.open('https://sites.google.com/view/suwiki-policy-terms')}>상세보기</Styled.AgreeButton>
         </Styled.Label>
         <Styled.Label id="last">
           <Styled.InputWrapper>
@@ -247,7 +247,7 @@ const SignUp = () => {
             />
             개인정보처리방침 동의(필수)
           </Styled.InputWrapper>
-          <Styled.AgreeButton className="showMore">상세보기</Styled.AgreeButton>
+          <Styled.AgreeButton className="showMore" onClick={()=>window.open('https://sites.google.com/view/suwiki-policy-privacy')}>상세보기</Styled.AgreeButton>
         </Styled.Label>
         <Styled.Button
           disabled={
