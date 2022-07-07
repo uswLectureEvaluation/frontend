@@ -31,6 +31,8 @@ const EditEvaluation = (props) => {
       alert('과제(란)을 선택해주세요');
     } else if (difficulty === '') {
       alert('학점(란)을 선택해주세요');
+    } else if (content.length < 1 || content.length > 1000) {
+      alert('최소 1자 이상 최대 1000자 이내로 입력해주세요')
     } else {
       evaluateUpdateApi(
         setData,
