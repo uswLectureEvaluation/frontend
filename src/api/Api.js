@@ -26,7 +26,7 @@ export const mainApi = async (lecture, page) => {
   });
 };
 
-//개설학과조회 api 
+//개설학과조회 api
 export const majorTypeApi = async () => {
   return instance({
     url: `${PROXY_URL}/suwiki/majorType`,
@@ -34,7 +34,7 @@ export const majorTypeApi = async () => {
   });
 };
 
-//즐겨찾기 조회 api 
+//즐겨찾기 조회 api
 export const searchFavoriteMajorApi = async () => {
   return instance({
     url: `${PROXY_URL}/user/favorite-major`,
@@ -46,8 +46,8 @@ export const searchFavoriteMajorApi = async () => {
 export const favoriteMajorApi = (setFavorite, majorType) => {
   const url = `${PROXY_URL}/user/favorite-major`;
   const data = {
-    majorType: majorType
-  }
+    majorType: majorType,
+  };
   const options = {
     method: 'POST',
     headers: {
@@ -67,14 +67,13 @@ export const favoriteMajorApi = (setFavorite, majorType) => {
   );
 };
 
-//즐겨찾기 삭제 api 
-export const deleteFavoriteMajorApi = async (setFavorite ,majorType) => {
+//즐겨찾기 삭제 api
+export const deleteFavoriteMajorApi = async (setFavorite, majorType) => {
   return instance({
     url: `${PROXY_URL}/user/favorite-major?majorType=${majorType}`,
     method: 'delete',
-  }).then((data)=>setFavorite(data))
+  }).then((data) => setFavorite(data));
 };
-
 
 //공지사항api 확인 필요
 export const noticeApi = async (page) => {
@@ -99,7 +98,7 @@ export const registerApi = (setData, setLoading, id, pw, email) => {
   const data = {
     loginId: id,
     password: pw,
-    email: email,
+    email,
   };
 
   const options = {
@@ -156,7 +155,7 @@ export const checkemailApi = (setData, email) => {
   const url = `${PROXY_URL}/user/check-email`;
 
   const data = {
-    email: email,
+    email,
   };
 
   const options = {
@@ -193,7 +192,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    data: data,
+    data,
     url,
   };
   axios(options).then(
@@ -223,14 +222,14 @@ export const findIdApi = (setData, email) => {
   const url = `${PROXY_URL}/user/find-id`;
 
   const data = {
-    email: email,
+    email,
   };
   const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    data: data,
+    data,
     url,
   };
   axios(options).then(
@@ -250,14 +249,14 @@ export const findPwApi = (setData, id, email) => {
 
   const data = {
     loginId: id,
-    email: email,
+    email,
   };
   const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    data: data,
+    data,
     url,
   };
   axios(options).then(
@@ -311,14 +310,14 @@ export const evaluateUpdateApi = (
   const url = `${PROXY_URL}/evaluate-posts/?evaluateIdx=${id}`;
 
   const data = {
-    semester: semester,
-    satisfaction: satisfaction,
-    learning: learning,
-    honey: honey,
-    team: team,
-    difficulty: difficulty,
-    homework: homework,
-    content: content,
+    semester,
+    satisfaction,
+    learning,
+    honey,
+    team,
+    difficulty,
+    homework,
+    content,
   };
   const options = {
     method: 'PUT',
@@ -326,7 +325,7 @@ export const evaluateUpdateApi = (
       'Content-Type': 'application/json',
       Authorization: getCookie('AccessToken'),
     },
-    data: data,
+    data,
     url,
   };
   axios(options).then(
@@ -385,7 +384,7 @@ export const evaluateWriteApi = (
     },
     (error) => {
       alert('error');
-      console.log(error)
+      console.error(error);
     }
   );
 };
@@ -413,15 +412,12 @@ export const deleteEvaluateApi = (id) => {
 };
 
 //강의평가 신고 api
-export const evaluateReportApi = (
-  evaluateIdx,
-  content,
-) => {
+export const evaluateReportApi = (evaluateIdx, content) => {
   const url = `${PROXY_URL}/user/report/evaluate`;
 
   const data = {
-    evaluateIdx: evaluateIdx,
-    content: content
+    evaluateIdx,
+    content,
   };
   const options = {
     method: 'POST',
@@ -429,7 +425,7 @@ export const evaluateReportApi = (
       'Content-Type': 'application/json',
       Authorization: getCookie('AccessToken'),
     },
-    data: data,
+    data,
     url,
   };
   axios(options).then(
@@ -444,15 +440,12 @@ export const evaluateReportApi = (
 };
 
 //시험정보 신고 api
-export const examReportApi = (
-  examIdx,
-  content,
-) => {
+export const examReportApi = (examIdx, content) => {
   const url = `${PROXY_URL}/user/report/exam`;
 
   const data = {
-    examIdx: examIdx,
-    content: content
+    examIdx,
+    content,
   };
   const options = {
     method: 'POST',
@@ -460,7 +453,7 @@ export const examReportApi = (
       'Content-Type': 'application/json',
       Authorization: getCookie('AccessToken'),
     },
-    data: data,
+    data,
     url,
   };
   axios(options).then(
@@ -474,7 +467,6 @@ export const examReportApi = (
   );
 };
 
-
 //시험정보쓰기 api
 export const examWriteApi = ({
   selectId,
@@ -484,7 +476,7 @@ export const examWriteApi = ({
   examInfo,
   examType,
   examDifficulty,
-  content
+  content,
 }) => {
   const url = `${PROXY_URL}/exam-posts/?lectureId=${selectId}`;
 
@@ -518,15 +510,23 @@ export const examWriteApi = ({
 };
 
 //시험정보수정 api 미완
-export const examUpdateApi = (setData, semester, examInfo, examType, examDifficulty, content, id) => {
+export const examUpdateApi = (
+  setData,
+  semester,
+  examInfo,
+  examType,
+  examDifficulty,
+  content,
+  id
+) => {
   const url = `${PROXY_URL}/exam-posts/?examIdx=${id}`;
 
   const data = {
-    semester: semester,
-    examInfo: examInfo,
-    examType: examType,
-    examDifficulty: examDifficulty,
-    content: content,
+    semester,
+    examInfo,
+    examType,
+    examDifficulty,
+    content,
   };
   const options = {
     method: 'PUT',
@@ -534,7 +534,7 @@ export const examUpdateApi = (setData, semester, examInfo, examType, examDifficu
       'Content-Type': 'application/json',
       Authorization: getCookie('AccessToken'),
     },
-    data: data,
+    data,
     url,
   };
   axios(options).then(
@@ -594,7 +594,6 @@ export const deleteExamInfoApi = (id) => {
   );
 };
 
-
 // 통합검색결과Api
 //꿀강순[modifiedDate, lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg]
 export const searchApi = (search, lecutre) => {
@@ -628,7 +627,6 @@ export const searchExamApi = (selectId) => {
   });
 };
 
-
 //시험정보 구매이력
 export const historyTestInfo = () => {
   return instance({
@@ -641,8 +639,8 @@ export const historyTestInfo = () => {
 export const resetPasswordApi = (prePassword, newPassword) => {
   const url = `${PROXY_URL}/user/reset-pw`;
   const data = {
-    prePassword: prePassword,
-    newPassword: newPassword
+    prePassword,
+    newPassword,
   };
   const options = {
     method: 'post',
@@ -650,8 +648,8 @@ export const resetPasswordApi = (prePassword, newPassword) => {
       Authorization: getCookie('AccessToken'),
     },
     data,
-    url
-  }
+    url,
+  };
   axios(options).then(
     (response) => {
       alert('변경완료');
@@ -661,15 +659,14 @@ export const resetPasswordApi = (prePassword, newPassword) => {
       alert('error');
     }
   );
-
-}
+};
 
 //SUWIKI 회원 탈퇴
 export const quitApi = (id, pw) => {
   const url = `${PROXY_URL}/user/quit`;
   const data = {
-    loginId : id,
-    password : pw
+    loginId: id,
+    password: pw,
   };
   const options = {
     method: 'post',
@@ -677,8 +674,8 @@ export const quitApi = (id, pw) => {
       Authorization: getCookie('AccessToken'),
     },
     data,
-    url
-  }
+    url,
+  };
   axios(options).then(
     (response) => {
       window.location.reload();
@@ -687,5 +684,4 @@ export const quitApi = (id, pw) => {
       alert('error');
     }
   );
-
-}
+};
