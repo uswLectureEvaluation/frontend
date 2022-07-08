@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import { Color } from '../../globalStyles';
+import { Color } from '../../GlobalStyle';
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import SelectUnstyled, { selectUnstyledClasses } from '@mui/base/SelectUnstyled';
@@ -22,7 +22,7 @@ export const Banner = styled.div`
   background-color: #eeeeee;
   @media screen and (max-width: 480px) {
     display: none;
- }
+  }
 `;
 
 export const BannerWrapper = styled.div`
@@ -35,16 +35,15 @@ export const BannerWrapper = styled.div`
   font-size: 1.8rem;
   justify-content: space-between;
 
-    @media screen and (max-width: 960px) {
-     width: 80%;
-  margin: 0 auto;
-  height: 40vh;
-  display: flex;
-  align-items: center;
-  color: #000000;
-  font-size: 1.3rem;
-  justify-content: space-evenly;
-
+  @media screen and (max-width: 960px) {
+    width: 80%;
+    margin: 0 auto;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    font-size: 1.3rem;
+    justify-content: space-evenly;
   }
 `;
 
@@ -53,13 +52,11 @@ export const BannerSub = styled.div`
   margin-top: 1vh;
   font-family: 'Pretendard-Light';
 
-   @media screen and (max-width: 960px) {
-     font-size: 1rem;
-  margin-top: 1vh;
-  font-family: 'Pretendard-Light';
-
+  @media screen and (max-width: 960px) {
+    font-size: 1rem;
+    margin-top: 1vh;
+    font-family: 'Pretendard-Light';
   }
-  
 `;
 
 export const Container = styled.div`
@@ -71,15 +68,11 @@ export const Container = styled.div`
 
   @media screen and (max-width: 960px) {
     display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-  margin: 0 auto;
-
-
- }
-
-  
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+  }
 `;
 
 export const SearchContainer = styled.div`
@@ -154,12 +147,11 @@ export const More = styled.div`
 export const BannerImg = styled.img`
   vertical-align: bottom;
   pointer-events: none;
-   @media screen and (max-width: 960px) {
-      width: 400px;
-      vertical-align: bottom;
-      pointer-events: none;
+  @media screen and (max-width: 960px) {
+    width: 400px;
+    vertical-align: bottom;
+    pointer-events: none;
   }
- 
 `;
 
 export const FlexWrapper = styled.div`
@@ -169,11 +161,10 @@ export const FlexWrapper = styled.div`
 export const Img = styled.img`
   vertical-align: bottom;
   pointer-events: none;
-   @media screen and (max-width: 960px) {
-      vertical-align: bottom;
-      pointer-events: none;
+  @media screen and (max-width: 960px) {
+    vertical-align: bottom;
+    pointer-events: none;
   }
- 
 `;
 
 export const Soption = styled.span`
@@ -199,22 +190,22 @@ export const Button = styled.button`
   cursor: pointer;
   user-select: none;
   font-family: 'Pretendard-Medium';
-  
+
   @media screen and (max-width: 480px) {
     margin: 10px 0;
-  margin-bottom: 10vh;
-  width: 50%;
-  padding: 0.8rem 1rem;
-  border: none;
-  background: ${(props) => props.background};
-  color: white;
-  text-align: center;
-  font-size: 1.1rem;
-  border-radius: 12px;
-  cursor: pointer;
-  user-select: none;
-  font-family: 'Pretendard-Medium';
- }
+    margin-bottom: 10vh;
+    width: 50%;
+    padding: 0.8rem 1rem;
+    border: none;
+    background: ${(props) => props.background};
+    color: white;
+    text-align: center;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    user-select: none;
+    font-family: 'Pretendard-Medium';
+  }
 `;
 
 const blue = {

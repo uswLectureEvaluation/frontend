@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Footer, Nav } from './components';
-import GlobalStyle from './globalStyles';
+import GlobalStyle from './GlobalStyle';
 import {
   EmailSignUp,
   LectureInfo,

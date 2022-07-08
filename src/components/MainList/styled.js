@@ -1,6 +1,6 @@
 import { Button } from '@material-ui/core';
 import styled from 'styled-components';
-import { Color } from '../../globalStyles';
+import { Color } from '../../GlobalStyle';
 
 export const Minute = styled.span`
   font-size: 12px;
@@ -133,10 +133,9 @@ export const FlexWrap = styled.div`
   width: 100%;
   justify-content: space-between;
 
-   @media screen and (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
-  display: flex;
-
+    display: flex;
   }
 `;
 
@@ -144,7 +143,6 @@ export const FlexWrapSub = styled.div`
   width: 49%;
   display: flex;
   flex-direction: column;
-
 `;
 
 export const FullWrapSub = styled.div`

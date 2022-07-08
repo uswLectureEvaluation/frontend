@@ -1,6 +1,6 @@
 import { Button } from '@material-ui/core';
 import styled from 'styled-components';
-import { Color } from '../../globalStyles';
+import { Color } from '../../GlobalStyle';
 
 export const Minute = styled.span`
   font-size: 0.7rem;
@@ -156,4 +156,3 @@ export const ErrorText = styled.div`
   text-align: center;
   color: #a3a3a3;
 `;
-
