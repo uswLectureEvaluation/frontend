@@ -417,7 +417,7 @@ export const evaluateReportApi = (
   evaluateIdx,
   content,
 ) => {
-  const url = `/user/report/evaluate`;
+  const url = `${PROXY_URL}/user/report/evaluate`;
 
   const data = {
     evaluateIdx: evaluateIdx,
