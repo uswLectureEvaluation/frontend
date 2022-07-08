@@ -26,21 +26,21 @@ const WriteExam = (props) => {
     setContent(e.target.value);
   };
   const onTest = () => {
-    if(semester==='' || semester==='선택'){
-      alert('학기를 선택해주세요')
-    } else if(examType==='' || examType==='선택'){
-      alert('시험종류를 선택해주세요')
-    } else if(examDifficulty===''){
-      alert('난이도(란)을 선택해주세요')
-    } else if(exam.length===0){
-      alert('시험유형(란)을 선택해주세요')
-    } else if (content.length < 1 || content.length > 1000) {
-      alert('최소 1자 이상 최대 1000자 이내로 입력해주세요')
-    } else {
+    if(semester==='' || semester==='선택')
+      return alert('학기를 선택해주세요')
+    if(examType==='' || examType==='선택')
+      return alert('시험종류를 선택해주세요')
+    if(examDifficulty==='')
+      return alert('난이도(란)을 선택해주세요')
+    if(exam.length===0)
+      return alert('시험유형(란)을 선택해주세요')
+    if (content.length < 1 || content.length > 1000) 
+      return alert('최소 1자 이상 최대 1000자 이내로 입력해주세요')
+    
     examWriteApi(props.selectId, props.lectureName, props.professor, semester, examInfo, examType, examDifficulty, content);
     props.setModalIsOpen(false);
   };
-  }
+  
   const options = ['선택'];
   const optionsValue = options.concat(props.semesterList.split(", "));
   const examTypeOptions = ['선택','중간고사','기말고사','쪽지','기타']

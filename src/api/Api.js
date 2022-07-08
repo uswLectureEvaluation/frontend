@@ -358,16 +358,16 @@ export const evaluateWriteApi = (
   const url = `evaluate-posts/?lectureId=${selectId}`;
 
   const data = {
-    lectureName: lectureName,
+    lectureName,
+    professor,
     selectedSemester: semester,
-    professor: professor,
-    satisfaction: satisfaction,
-    learning: learning,
-    honey: honey,
-    team: team,
-    difficulty: difficulty,
-    homework: homework,
-    content: content,
+    satisfaction,
+    learning,
+    honey,
+    team,
+    difficulty,
+    homework,
+    content,
   };
   const options = {
     method: 'POST',
@@ -375,7 +375,7 @@ export const evaluateWriteApi = (
       'Content-Type': 'application/json',
       Authorization: getCookie('AccessToken'),
     },
-    data: data,
+    data,
     url,
   };
   axios(options).then(
@@ -385,6 +385,7 @@ export const evaluateWriteApi = (
     },
     (error) => {
       alert('error');
+      console.log(error)
     }
   );
 };
@@ -475,7 +476,7 @@ export const examReportApi = (
 
 
 //시험정보쓰기 api
-export const examWriteApi = (
+export const examWriteApi = ({
   selectId,
   lectureName,
   professor,
@@ -484,17 +485,17 @@ export const examWriteApi = (
   examType,
   examDifficulty,
   content
-) => {
+}) => {
   const url = `/exam-posts/?lectureId=${selectId}`;
 
   const data = {
-    lectureName: lectureName,
-    professor: professor,
+    lectureName,
+    professor,
     selectedSemester: semester,
-    examInfo: examInfo,
-    examType: examType,
-    examDifficulty: examDifficulty,
-    content: content,
+    examInfo,
+    examType,
+    examDifficulty,
+    content,
   };
   const options = {
     method: 'POST',
@@ -502,7 +503,7 @@ export const examWriteApi = (
       'Content-Type': 'application/json',
       Authorization: getCookie('AccessToken'),
     },
-    data: data,
+    data,
     url,
   };
   axios(options).then(

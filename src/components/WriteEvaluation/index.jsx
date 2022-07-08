@@ -22,34 +22,33 @@ const WriteEvaluation = (props) => {
   const [learning, LearingSlider] = useSlider(0.5, 5);
   const [satisfaction, SatisfactionSlider] = useSlider(0.5, 5);
   const onEvaluate = () => {
-    if (semester === '' || semester === '선택') {
-      alert('학기를 선택해주세요')
-    } else if (team === '') {
-      alert('조모임(란)을 선택해주세요')
-    } else if (homework === '') {
-      alert('과제(란)을 선택해주세요')
-    } else if (difficulty === '') {
-      alert('학점(란)을 선택해주세요')
-    } else if (content.length < 1 || content.length > 1000) {
-      alert('최소 1자 이상 최대 1000자 이내로 입력해주세요')
-    } else {
+    if (semester === '' || semester === '선택') 
+      return alert('학기를 선택해주세요')
+    if (team === '') 
+      return alert('조모임(란)을 선택해주세요')
+    if (homework === '') 
+      return alert('과제(란)을 선택해주세요')
+    if (difficulty === '') 
+      return alert('학점(란)을 선택해주세요')
+    if (content.length < 1 || content.length > 1000) 
+      return alert('최소 1자 이상 최대 1000자 이내로 입력해주세요')
+    
       evaluateWriteApi(
         props.selectId,
         props.lectureName,
         props.professor,
         semester,
-        satisfaction,
-        learning,
-        honey,
-        team,
-        difficulty,
-        homework,
+        Number(satisfaction),
+        Number(learning),
+        Number(honey),
+        Number(team),
+        Number(difficulty),
+        Number(homework),
         content,
       );
       props.setModalIsOpen(false);
-
     };
-  }
+  
 
   const [semester, setSemester] = useState(''); //학기
   const [team, setTeam] = useState(``); //조모임
