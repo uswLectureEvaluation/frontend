@@ -12,7 +12,7 @@ import {
   IdSearch,
   PwSearch,
   HistoryTest,
-  Exit
+  Exit,
 } from './Pages';
 import Notice from './Pages/Notice';
 import NoticeDetail from './Pages/NoticeDetail';
