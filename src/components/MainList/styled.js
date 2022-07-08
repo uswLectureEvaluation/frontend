@@ -74,7 +74,6 @@ export const RateWrapper = styled.span`
 
 export const Rate = styled.span`
   color: #346cfd;
-  font-family: Pretendard;
   font-size: 18px;
   font-weight: 500;
   padding-left: 5px;
@@ -90,7 +89,6 @@ export const LectureWrapper = styled.div`
   border-radius: 10px;
   margin-bottom: 10px;
   cursor: pointer;
-  font-family: Pretendard;
 `;
 
 export const MarginTop = styled.div`
@@ -112,7 +110,6 @@ export const StarFlex = styled.div`
   align-items: center;
   padding-right: 1rem;
   padding: 6px 12px;
-  font-family: Pretendard;
   font-size: 13px;
   &#top {
     border-top: 1px solid #e0e0e0;
