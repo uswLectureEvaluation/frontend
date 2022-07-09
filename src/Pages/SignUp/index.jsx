@@ -49,7 +49,7 @@ const SignUp = () => {
     const emailRegex =
       /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     const emailCurrent = e.target.value;
-    
+
     setEmail(emailCurrent);
 
     if (!emailRegex.test(emailCurrent)) {
@@ -59,10 +59,10 @@ const SignUp = () => {
       setEmailMessage('사용 가능한 이메일입니다.');
       setIsEmail(true);
     }
-    if(emailCurrent.includes('@suwon.ac.kr') == true){
+    if (emailCurrent.includes('@suwon.ac.kr')) {
       setEmailMessage('사용 가능한 이메일입니다.');
       setIsEmail(true);
-    }else {
+    } else {
       setEmailMessage('이메일 형식이 틀렸습니다.');
       setIsEmail(false);
     }
@@ -243,7 +243,12 @@ const SignUp = () => {
             />
             이용약관 동의(필수)
           </Styled.InputWrapper>
-          <Styled.AgreeButton className="showMore" onClick={()=>window.open('https://sites.google.com/view/suwiki-policy-terms')}>상세보기</Styled.AgreeButton>
+          <Styled.AgreeButton
+            className="showMore"
+            onClick={() => window.open('https://sites.google.com/view/suwiki-policy-terms')}
+          >
+            상세보기
+          </Styled.AgreeButton>
         </Styled.Label>
         <Styled.Label id="last">
           <Styled.InputWrapper>
@@ -255,7 +260,12 @@ const SignUp = () => {
             />
             개인정보처리방침 동의(필수)
           </Styled.InputWrapper>
-          <Styled.AgreeButton className="showMore" onClick={()=>window.open('https://sites.google.com/view/suwiki-policy-privacy')}>상세보기</Styled.AgreeButton>
+          <Styled.AgreeButton
+            className="showMore"
+            onClick={() => window.open('https://sites.google.com/view/suwiki-policy-privacy')}
+          >
+            상세보기
+          </Styled.AgreeButton>
         </Styled.Label>
         <Styled.Button
           disabled={
