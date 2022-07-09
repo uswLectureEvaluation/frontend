@@ -354,7 +354,7 @@ export const evaluateWriteApi = (
   homework,
   content
 ) => {
-  const url = `evaluate-posts/?lectureId=${selectId}`;
+  const url = `${PROXY_URL}/evaluate-posts/?lectureId=${selectId}`;
 
   const data = {
     lectureName,
