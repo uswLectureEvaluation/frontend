@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  font-family: Pretendard;
   flex-direction: column;
   width: 100%;
   &#button {
@@ -22,7 +21,6 @@ export const Title = styled.div`
 
 export const Score = styled.span`
   margin: 2px 0 1px 24px;
-  font-family: Pretendard;
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
@@ -38,7 +36,6 @@ export const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #e0e0e0;
-  
 `;
 
 export const ContentWrapper = styled.div`
@@ -81,7 +78,7 @@ export const MobileContent = styled.form`
       align-items: center;
     }
   }
-`
+`;
 
 export const ContentTitle = styled.div`
   width: 20%;
@@ -91,10 +88,10 @@ export const ContentTitle = styled.div`
 `;
 
 export const WriteButton = styled.button`
-font-size: 16px;
-font-weight: 500;
-color: #222;
-`
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+`;
 
 export const TextField = styled.textarea`
   margin-bottom: 20px;
@@ -108,9 +105,9 @@ export const TextField = styled.textarea`
   @media only screen and (max-width: 550px) {
     min-height: 30px;
   }
-`
+`;
 
-export const EditButton = styled.div`
+export const EditButton = styled.button`
   font-size: 16px;
   font-weight: 600;
   width: 350px;
@@ -119,18 +116,23 @@ export const EditButton = styled.div`
   color: #ffffff;
   background-color: #346cfd;
   border-radius: 15px;
+  border: none;
   &:hover {
     cursor: pointer;
+  }
+  &:disabled {
+    cursor: auto;
+    color: none;
+    background-color: #efefef;
   }
   @media only screen and (max-width: 550px) {
     width: 80%;
     margin-bottom: 20px;
   }
-`
+`;
 
 // 라디오버튼 스타일
-export const FormLabel = styled.label`
-`
+export const FormLabel = styled.label``;
 export const FormCheckText = styled.span`
   font-size: 16px;
   padding: 8px 15px;
@@ -164,19 +166,19 @@ export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
     &:checked + ${FormCheckText} {
       color: #7800ff;
       font-weight: 600;
-    }  
+    }
   }
   &#normal {
     &:checked + ${FormCheckText} {
       color: #222222;
       font-weight: 600;
-    }  
+    }
   }
   &#easy {
     &:checked + ${FormCheckText} {
       color: #346cfd;
       font-weight: 600;
-    }  
+    }
   }
   display: none;
 `;
