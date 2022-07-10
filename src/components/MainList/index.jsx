@@ -8,108 +8,106 @@ import { useDispatch } from 'react-redux';
 
 const MainList = ({ lecture, checkClass }) => {
   const [db, setData] = useState([]);
+  const [win, setWin] = useState(true);
 
-  const [win, setWin] = useState(true)
-
-  const showWin = () => {
-    if (window.innerWidth <= 960) {
-      setWin(false);
-    } else {
-      setWin(true);
-    }
-  };
+  const showWin = () => (window.innerWidth <= 960 ? setWin(false) : setWin(true));
 
   window.addEventListener('resize', showWin);
 
   useEffect(() => {
-    showWin()
+    showWin();
     mainApi(lecture, 1).then((data) => setData(data));
   }, [win, lecture]);
 
   return db.length !== 0 ? (
-    win ? 
-    <Styled.FlexWrap>
-      <Styled.FlexWrapSub>
-        {db.data
-          .filter((row, i) => {
-            if(!(i % 2) && checkClass==='전체'){
-              return true;
-            } else {
-              if(!(i % 2) && row.majorType === checkClass) {
+    win ? (
+      <Styled.FlexWrap>
+        <Styled.FlexWrapSub>
+          {db.data
+            .filter((row, i) => {
+              if (!(i % 2) && checkClass === '전체') {
                 return true;
+              } else {
+                if (!(i % 2) && row.majorType === checkClass) {
+                  return true;
+                }
+                return false;
               }
-              return false;
-            }})
-          .map((row, i) => (
-            <Subject
-              key={row.id}
-              id={row.id}
-              lectureName={row.lectureName}
-              professor={row.professor}
-              lectureType={row.lectureType}
-              star={row.lectureTotalAvg}
-              lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-              lectureHoneyAvg={row.lectureHoneyAvg}
-              lectureLearningAvg={row.lectureLearningAvg}
-              majorType={row.majorType}
-            />
-          ))}
-      </Styled.FlexWrapSub>
-      <Styled.FlexWrapSub>
-        {db.data
-          .filter((row, i) => {
-            if((i % 2) && checkClass==='전체'){
-              return true;
-            } else {
-              if((i % 2) && row.majorType === checkClass) {
+            })
+            .map((row, i) => (
+              <Subject
+                key={row.id}
+                id={row.id}
+                lectureName={row.lectureName}
+                professor={row.professor}
+                lectureType={row.lectureType}
+                star={row.lectureTotalAvg}
+                lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+                lectureHoneyAvg={row.lectureHoneyAvg}
+                lectureLearningAvg={row.lectureLearningAvg}
+                majorType={row.majorType}
+              />
+            ))}
+        </Styled.FlexWrapSub>
+        <Styled.FlexWrapSub>
+          {db.data
+            .filter((row, i) => {
+              if (i % 2 && checkClass === '전체') {
                 return true;
+              } else {
+                if (i % 2 && row.majorType === checkClass) {
+                  return true;
+                }
+                return false;
               }
-              return false;
-            }})
-          .map((row, i) => (
-            <Subject
-              key={row.id}
-              id={row.id}
-              lectureName={row.lectureName}
-              professor={row.professor}
-              lectureType={row.lectureType}
-              star={row.lectureTotalAvg}
-              lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-              lectureHoneyAvg={row.lectureHoneyAvg}
-              lectureLearningAvg={row.lectureLearningAvg}
-              majorType={row.majorType}
-            />
-          ))}
-      </Styled.FlexWrapSub>
-    </Styled.FlexWrap> : 
-    <Styled.FlexWrap>
-      <Styled.FullWrapSub>
-        {db.data
-        .filter((row, i) => {
-          if(checkClass==='전체'){
-            return true;
-          } else {
-            if(row.majorType === checkClass) {
-              return true;
-            }
-            return false;
-          }})
-          .map((row, i) => (
-            <Subject
-              key={row.id}
-              id={row.id}
-              lectureName={row.lectureName}
-              professor={row.professor}
-              lectureType={row.lectureType}
-              star={row.lectureTotalAvg}
-              lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-              lectureHoneyAvg={row.lectureHoneyAvg}
-              lectureLearningAvg={row.lectureLearningAvg}
-              majorType={row.majorType}
-            />
-          ))}
-      </Styled.FullWrapSub>
+            })
+            .map((row, i) => (
+              <Subject
+                key={row.id}
+                id={row.id}
+                lectureName={row.lectureName}
+                professor={row.professor}
+                lectureType={row.lectureType}
+                star={row.lectureTotalAvg}
+                lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+                lectureHoneyAvg={row.lectureHoneyAvg}
+                lectureLearningAvg={row.lectureLearningAvg}
+                majorType={row.majorType}
+              />
+            ))}
+        </Styled.FlexWrapSub>
       </Styled.FlexWrap>
+    ) : (
+      <Styled.FlexWrap>
+        <Styled.FullWrapSub>
+          {db.data
+            .filter((row, i) => {
+              if (checkClass === '전체') {
+                return true;
+              } else {
+                if (row.majorType === checkClass) {
+                  return true;
+                }
+                return false;
+              }
+            })
+            .map((row, i) => (
+              <Subject
+                key={row.id}
+                id={row.id}
+                lectureName={row.lectureName}
+                professor={row.professor}
+                lectureType={row.lectureType}
+                star={row.lectureTotalAvg}
+                lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+                lectureHoneyAvg={row.lectureHoneyAvg}
+                lectureLearningAvg={row.lectureLearningAvg}
+                majorType={row.majorType}
+              />
+            ))}
+        </Styled.FullWrapSub>
+      </Styled.FlexWrap>
+    )
   ) : (
     <div></div>
   );
@@ -178,7 +176,9 @@ export const Subject = (props) => {
           <Styled.Title>{title}</Styled.Title>
           <Styled.Option>{props.lectureType}</Styled.Option>
         </Styled.TitleWrapper>
-        <Styled.Professor>{props.majorType} | {props.professor}</Styled.Professor>
+        <Styled.Professor>
+          {props.majorType} | {props.professor}
+        </Styled.Professor>
         {/* <Styled.MarginRight>평균지수</Styled.MarginRight> */}
         <Styled.RateWrapper>
           <StarRatings

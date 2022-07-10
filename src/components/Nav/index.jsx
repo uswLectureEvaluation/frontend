@@ -3,30 +3,17 @@ import * as Styled from './styled';
 import { Cookies } from 'react-cookie';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { VscChromeClose } from 'react-icons/vsc';
-// import { useSelector, useDispatch } from "react-redux"
 import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
   let navigate = useNavigate();
-  // const dispatch = useDispatch()
-  // const loginState = useSelector((state) => state.login.value)
   const [button, setButton] = useState(true);
-
   const [click, setClick] = useState(false);
 
   const cookies = new Cookies();
 
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
-  };
-
-  const handleClick = () => {
-    setClick(!click);
-  };
+  const showButton = () => (window.innerWidth <= 960 ? setButton(false) : setButton(true));
+  const handleClick = () => setClick(!click);
 
   const logoutClick = () => {
     cookies.remove('AccessToken');

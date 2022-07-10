@@ -4,10 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 const NoticeItem = ({ id, title, modifiedDate }) => {
   const navigate = useNavigate();
+  const onClick = () => navigate('/noticedetail', { state: { id: id } });
 
-  const onClick = () => {
-    navigate('/noticedetail', { state: { id: id } });
-  };
   return (
     <Styled.NoticeWrap onClick={onClick}>
       <Styled.Title>{title}</Styled.Title>
