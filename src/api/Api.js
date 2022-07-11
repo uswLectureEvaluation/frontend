@@ -468,7 +468,7 @@ export const examReportApi = (examIdx, content) => {
 };
 
 //시험정보쓰기 api
-export const examWriteApi = ({
+export const examWriteApi = (
   selectId,
   lectureName,
   professor,
@@ -477,7 +477,7 @@ export const examWriteApi = ({
   examType,
   examDifficulty,
   content,
-}) => {
+) => {
   const url = `/exam-posts/?lectureId=${selectId}`;
 
   const data = {
