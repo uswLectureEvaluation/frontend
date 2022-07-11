@@ -35,6 +35,7 @@ const SearchList = ({ lecture, setCount, checkClass, option }) => {
 
   useEffect(()=> {
     setCount(db.count)
+    console.log(db)
   },[db.count, setCount])
 
   return db.count !== 0 ? (

@@ -1,23 +1,26 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import * as Styled from './styled';
-import { mainApi } from '../../api/Api';
+import { mainApi, searchApi } from '../../api/Api';
 import { useNavigate } from 'react-router-dom';
 import StarRatings from 'react-star-ratings';
 import { selectIdState } from '../../features/selectIdSlice';
 import { useDispatch } from 'react-redux';
 
-const Infinite = ({ setCount, checkClass, option }) => {
+const Infinite = ({ lecture, setCount, checkClass, option , wow }) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
-
+  const endRef = useRef(false);
   const [win, setWin] = useState(true);
+
   
   const getDog = useCallback(async () => {
+
     setLoad(true); //로딩 시작
+    if(wow == 'main' ){
     const res = checkClass==='전체'
-    ?await mainApi('modifiedDate', page, '')
-    :await mainApi('modifiedDate', page, checkClass);
+    ?await mainApi( option , page, '')
+    :await mainApi( option , page, checkClass);
     setCount(res.count);
     if (res.data) {
       setList((prev) => [...prev, ...res.data]);
@@ -25,6 +28,20 @@ const Infinite = ({ setCount, checkClass, option }) => {
     } else {
       console.log(res); //에러
     }
+  }else {
+    const res = checkClass==='전체'
+    ?await searchApi( lecture.search_value , page, option, '')
+    :await searchApi( lecture.search_value , page, option, checkClass);
+    setCount(res.count);
+
+    if (res.data) {
+     
+      setList((prev) => [...prev, ...res.data]);
+      preventRef.current = true;
+    } else {
+      console.log(res); //에러
+    }
+  }
     setLoad(false); //로딩 종료
   }, [page, setCount, checkClass]);
 
@@ -50,16 +67,17 @@ const Infinite = ({ setCount, checkClass, option }) => {
       observer.disconnect();
     };
     // eslint-disable-next-line no-use-before-define
-  }, [getDog]);
+  }, []);
 
   useEffect(() => {
     getDog();
     // eslint-disable-next-line no-use-before-define
-  }, [getDog, page]);
+  }, [page]);
 
   useEffect(() => {
     setPage(1);
-  },[checkClass])
+    setList([])
+  },[checkClass, lecture])
 
   const obsHandler = (entries) => {
     const target = entries[0];
@@ -122,10 +140,13 @@ const Infinite = ({ setCount, checkClass, option }) => {
             ))}
         </Styled.FlexWrapSub>
       </Styled.FlexWrap>
-      {load ? <div style={{ opacity: '0', width: '0%', height: '500px' }}>로딩 중</div> : <></>}
-      <div ref={obsRef} style={{ opacity: '0', width: '0%', height: '1000px' }}>
-        옵저버 Element
-      </div>
+      {
+                load ?
+                <div style={{ opacity: '0' , width: '0%'}}>로딩 중</div>
+                    :
+                <></>
+            }
+            <div ref={obsRef} style={{ opacity: '0', width: '0%'}}>옵저버 Element</div>
     </>
   ) : (
     <Styled.FlexWrap>
@@ -145,10 +166,13 @@ const Infinite = ({ setCount, checkClass, option }) => {
           />
         ))}
       </Styled.FullWrapSub>
-      {load ? <div style={{ opacity: '0', width: '0%', height: '500px' }}>로딩 중</div> : <></>}
-      <div ref={obsRef} style={{ opacity: '0', width: '0%', height: '1000px' }}>
-        옵저버 Element
-      </div>
+      {
+                load ?
+                <div style={{ opacity: '0' , width: '0%'}}>로딩 중</div>
+                    :
+                <></>
+            }
+            <div ref={obsRef} style={{ opacity: '0', width: '0%'}}>옵저버 Element</div>
     </Styled.FlexWrap>
   );
 };

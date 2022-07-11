@@ -596,9 +596,9 @@ export const deleteExamInfoApi = (id) => {
 
 // 통합검색결과Api
 //꿀강순[modifiedDate, lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg]
-export const searchApi = (search, lecture, majorType) => {
+export const searchApi = (search, page, lecture, majorType) => {
   return instance({
-    url: `/lecture/search/?searchValue=${search}&option=${lecture}&?page=1&majorType=${majorType}`,
+    url: `/lecture/search/?searchValue=${search}&option=${lecture}&page=${page}&majorType=${majorType}`,
     method: 'GET',
   });
 };
