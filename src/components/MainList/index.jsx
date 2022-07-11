@@ -16,8 +16,12 @@ const MainList = ({ lecture, checkClass }) => {
 
   useEffect(() => {
     showWin();
-    mainApi(lecture, 1).then((data) => setData(data));
-  }, [win, lecture]);
+    if(checkClass==='전체') {
+      mainApi(lecture, 1, '').then((data) => setData(data));
+    } else {
+      mainApi(lecture, 1, checkClass).then((data) => setData(data));
+    }
+  }, [win, lecture, checkClass]);
 
   return db.length !== 0 ? (
     win ? (

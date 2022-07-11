@@ -19,9 +19,9 @@ export const getCookie = (name) => {
 //lectureLearningAvg 배울게 많은 강의
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
-export const mainApi = async (lecture, page) => {
+export const mainApi = async (lecture, page, majorType) => {
   return instance({
-    url: `/lecture/all/?option=${lecture}&page=${page}`,
+    url: `/lecture/all/?option=${lecture}&page=${page}&majorType=${majorType}`,
     method: 'GET',
   });
 };
@@ -596,9 +596,9 @@ export const deleteExamInfoApi = (id) => {
 
 // 통합검색결과Api
 //꿀강순[modifiedDate, lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg]
-export const searchApi = (search, lecture) => {
+export const searchApi = (search, lecture, majorType) => {
   return instance({
-    url: `/lecture/search/?searchValue=${search}&option=${lecture}&?page=1`,
+    url: `/lecture/search/?searchValue=${search}&option=${lecture}&?page=1&majorType=${majorType}`,
     method: 'GET',
   });
 };

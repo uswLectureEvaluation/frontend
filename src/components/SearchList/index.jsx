@@ -26,8 +26,12 @@ const SearchList = ({ lecture, setCount, checkClass, option }) => {
 
   useEffect(() => {
     showWin()
-    searchApi(lecture.search_value, option).then((data) => setData(data));
-  }, [win, lecture.search_value, option]);
+    if(checkClass==='전체') {
+      searchApi(lecture.search_value, option, '').then((data) => setData(data));
+    } else {
+      searchApi(lecture.search_value, option, checkClass).then((data) => setData(data));
+    }
+  }, [win, lecture.search_value, option, checkClass]);
 
   useEffect(()=> {
     setCount(db.count)
