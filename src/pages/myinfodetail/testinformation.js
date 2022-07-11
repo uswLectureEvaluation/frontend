@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { deleteExamInfoApi, examPostApi } from '../../api/Api';
 import * as Styled from './testinformation.element';
-import EditTestInfo from './edittestinfo';
+import EditTestInfo from './Edittestinfo';
 import Modal from 'react-modal';
-import Loader from '../../components/Loader';
 import ModalStyle from '../../components/ModalStyle';
 
 const Testinformation = () => {
@@ -69,9 +68,7 @@ const Testinformation = () => {
           semesterList={v.semesterList}
         />
       ))}
-      <div ref={setTarget} className="Target-Element">
-        {isLoaded && <Loader />}
-      </div>
+     
     </Styled.Wrapper>
   );
 };

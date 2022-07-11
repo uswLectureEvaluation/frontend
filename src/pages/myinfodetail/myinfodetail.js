@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Myevaluation from '../myinfodetail/myevaluation';
-import Testinformation from '../myinfodetail/testinformation';
+import Myevaluation from '../Myinfodetail/Myevaluation';
+import Testinformation from '../Myinfodetail/Testinformation';
 import * as Styled from './myinfodetail.element';
 
 const Myinfodetail = () => {

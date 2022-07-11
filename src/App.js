@@ -16,7 +16,7 @@ import {
 } from './Pages';
 import Notice from './Pages/Notice';
 import NoticeDetail from './Pages/NoticeDetail';
-import Myinfodetial from './Pages/myinfodetail/myinfodetail';
+import Myinfodetial from './Pages/Myinfodetail/Myinfodetail';
 import ScrollButton from './components/ScrollButton';
 import ResetPassword from './Pages/ResetPassword';
 
