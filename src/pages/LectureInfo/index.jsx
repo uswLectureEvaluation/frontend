@@ -53,8 +53,16 @@ const LectureInfo = () => {
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
-      searchApi(setData, search);
-      navigate(`/search`);
+      if(e.currentTarget.value.length < 2) {
+        alert("두 글자 이상 입력해주세요");
+      } else {
+        navigate(`/search`, {
+          state: {
+            search_value: search,
+            search_option: 'lectureHoneyAvg',
+          },
+        });  
+      }
     }
   };
   const [db, lectureData] = useState({

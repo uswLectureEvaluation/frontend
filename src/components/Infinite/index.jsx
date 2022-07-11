@@ -59,7 +59,6 @@ const Infinite = ({ lecture, setCount, checkClass, option , wow }) => {
 
   useEffect(() => {
     showWin();
-    getDog();
     const observer = new IntersectionObserver(obsHandler, { threshold: 0.5 });
     if (obsRef.current) observer.observe(obsRef.current);
     return () => {
