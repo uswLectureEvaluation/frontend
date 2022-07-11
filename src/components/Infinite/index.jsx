@@ -12,6 +12,21 @@ const Infinite = ({ setCount, checkClass, option }) => {
   const [load, setLoad] = useState(1);
 
   const [win, setWin] = useState(true);
+  
+  const getDog = useCallback(async () => {
+    setLoad(true); //로딩 시작
+    const res = checkClass==='전체'
+    ?await mainApi('modifiedDate', page, '')
+    :await mainApi('modifiedDate', page, checkClass);
+    setCount(res.count);
+    if (res.data) {
+      setList((prev) => [...prev, ...res.data]);
+      preventRef.current = true;
+    } else {
+      console.log(res); //에러
+    }
+    setLoad(false); //로딩 종료
+  }, [page, setCount, checkClass]);
 
   const showWin = () => {
     if (window.innerWidth <= 960) {
@@ -42,6 +57,10 @@ const Infinite = ({ setCount, checkClass, option }) => {
     // eslint-disable-next-line no-use-before-define
   }, [getDog, page]);
 
+  useEffect(() => {
+    setPage(1);
+  },[checkClass])
+
   const obsHandler = (entries) => {
     const target = entries[0];
     if (target.isIntersecting && preventRef.current) {
@@ -49,19 +68,6 @@ const Infinite = ({ setCount, checkClass, option }) => {
       setPage((prev) => prev + 1);
     }
   };
-
-  const getDog = useCallback(async () => {
-    setLoad(true); //로딩 시작
-    const res = await mainApi('modifiedDate', page);
-    setCount(res.count);
-    if (res.data) {
-      setList((prev) => [...prev, ...res.data]);
-      preventRef.current = true;
-    } else {
-      console.log(res); //에러
-    }
-    setLoad(false); //로딩 종료
-  }, [page, setCount]);
 
   return win ? (
     <>
