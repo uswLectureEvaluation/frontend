@@ -60,13 +60,14 @@ export const DetailModal = (props) => {
 const SearchEvaluationList = (props) => {
   const [db, setData] = useState({
     data: [],
+    written: false
   });
 
   useEffect(() => {
     searchEvaluationApi(props.selectId).then((data) => setData(data));
   }, [props.selectId]);
 
-  return db.length !== 0 ? (
+  return db.written === true ? (
     <Styled.Wrapper>
       {db.data.map((v, i) => (
         <Subject
@@ -85,7 +86,7 @@ const SearchEvaluationList = (props) => {
       ))}
     </Styled.Wrapper>
   ) : (
-    <div></div>
+    <Styled.Wrapper><Styled.Content>등록된 강의평가가 없어요</Styled.Content></Styled.Wrapper>
   );
 };
 

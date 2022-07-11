@@ -12,7 +12,18 @@ export const ModalOpen = styled.span`
 `;
 
 export const Wrapper = styled.div`
+  width: 100%;
+  height: 40vh;
 `;
+
+export const Content = styled.div`
+  font-size: 1.5rem;
+  margin: 2rem 0;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10rem;
+`;
+
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
