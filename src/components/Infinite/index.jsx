@@ -10,7 +10,6 @@ const Infinite = ({ lecture, setCount, checkClass, option , wow }) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
-  const endRef = useRef(false);
   const [win, setWin] = useState(true);
 
   

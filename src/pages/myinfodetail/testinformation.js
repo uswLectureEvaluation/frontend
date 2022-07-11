@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { deleteExamInfoApi, examPostApi } from '../../api/Api';
 import * as Styled from './testinformation.element';
 import EditTestInfo from './Edittestinfo';
@@ -6,56 +6,52 @@ import Modal from 'react-modal';
 import ModalStyle from '../../components/ModalStyle';
 
 const Testinformation = () => {
-  const [db, setData] = useState({
-    data: [],
-  });
-  const [target, setTarget] = useState(null);
+  const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
+  const [load, setLoad] = useState(1);
+  
+  const getDog = useCallback(async () => {
 
-  const [itemLists, setItemLists] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  const getMoreItem = useCallback(async () => {
-    setIsLoaded(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    await examPostApi(page).then((data) => setData(data));
-    setItemLists(itemLists.concat(db.data));
-
-    setIsLoaded(false);
-  }, [db.data, itemLists, page]);
-
-  useEffect(() => {
-    getMoreItem();
-  }, [db.data, getMoreItem, itemLists, page]);
-
-  const onIntersect = async (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        //뷰포트에 마지막 이미지가 들어오고, page값에 1을 더하여 새 fetch 요청을 보내게됨 (useEffect의 dependency배열에 page가 있음)
-        setPage((prev) => prev + 1);
-        // 현재 타겟을 unobserve한다.
-        observer.unobserve(entry.target);
-      }
-    });
-  };
-
-  useEffect(() => {
-    let observer;
-    if (target) {
-      observer = new IntersectionObserver(onIntersect, {
-        threshold: 1,
-      });
-      observer.observe(target);
+    setLoad(true); //로딩 시작
+    const res = await examPostApi(page)
+    console.log(res)
+    if (res.data) {
+      setList((prev) => [...prev, ...res.data]);
+      preventRef.current = true;
+    } else {
+      console.log(res); //에러
     }
+     setLoad(false); //로딩 종료
+  }, [page]);
 
-    return () => observer && observer.disconnect();
-  }, [itemLists, target]);
+
+  const preventRef = useRef(true);
+  const obsRef = useRef(null);
+
+  useEffect(() => {
+    getDog();
+    const observer = new IntersectionObserver(obsHandler, { threshold: 0.5 });
+    if (obsRef.current) observer.observe(obsRef.current);
+    return () => {
+      observer.disconnect();
+    };
+    // eslint-disable-next-line no-use-before-define
+  }, []);
+
+
+  const obsHandler = (entries) => {
+    const target = entries[0];
+    if (target.isIntersecting && preventRef.current) {
+      preventRef.current = false;
+      setPage((prev) => prev + 1);
+    }
+  };
 
   return (
     <Styled.Wrapper>
-      {itemLists.map((v, i) => (
+      {list && list.map((v, i) => (
         <Subject
-          key={v.id}
+          key={Math.random()}
           content={v.content}
           examDifficulty={v.examDifficulty}
           examInfo={v.examInfo}
