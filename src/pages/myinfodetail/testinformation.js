@@ -33,8 +33,9 @@ const Testinformation = () => {
     return () => {
       observer.disconnect();
     };
-    // eslint-disable-next-line no-use-before-define
-  }, []);
+    // eslint-disable-next-line no-unreachable
+    console.log(load);
+  }, [getDog, load]);
 
   const obsHandler = (entries) => {
     const target = entries[0];
