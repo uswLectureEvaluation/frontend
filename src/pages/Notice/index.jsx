@@ -15,7 +15,6 @@ export const NoticeItem = ({ id, title, modifiedDate }) => {
   );
 };
 
-
 const Notice = () => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
@@ -45,7 +44,7 @@ const Notice = () => {
       observer.disconnect();
     };
     // eslint-disable-next-line no-use-before-define
-  }, []);
+  }, [getDog]);
 
   const obsHandler = (entries) => {
     const target = entries[0];
@@ -59,7 +58,7 @@ const Notice = () => {
     <Styled.AppContainer>
       <Styled.AppTitle>공지사항</Styled.AppTitle>
 
-      {list.map((i) => {
+      {list && list.map((i) => {
         return <NoticeItem id={i.id} title={i.title} modifiedDate={i.modifiedDate} key={i.id} />;
       })}
       {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
@@ -69,7 +68,5 @@ const Notice = () => {
     </Styled.AppContainer>
   );
 };
-
-
 
 export default Notice;

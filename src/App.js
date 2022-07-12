@@ -13,12 +13,12 @@ import {
   PwSearch,
   HistoryTest,
   Exit,
-} from './pages';
-import Notice from './pages/Notice';
-import NoticeDetail from './pages/NoticeDetail';
-import Myinfodetail from './pages/myinfodetail/myinfodetail';
+} from './Pages';
+import Notice from './Pages/Notice';
+import NoticeDetail from './Pages/NoticeDetail';
+import Myinfodetail from './Pages/Myinfodetail/myinfodetail';
 import ScrollButton from './components/ScrollButton';
-import ResetPassword from './pages/ResetPassword';
+import ResetPassword from './Pages/ResetPassword';
 
 const App = () => {
   return (

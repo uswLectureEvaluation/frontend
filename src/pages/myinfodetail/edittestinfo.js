@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { examUpdateApi } from '../../api/Api';
 import * as Styled from './edittestinfo.element';
-import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
+import { SemesterSelect, StyledOption, Soption } from '../../Pages/Main/styled';
 
 const Edittestinfo = (props) => {
   const [db, setData] = useState({

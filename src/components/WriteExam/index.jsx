@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { examWriteApi } from '../../api/Api';
 import * as Styled from './styled';
-import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
+import { SemesterSelect, StyledOption, Soption } from '../../Pages/Main/styled';
 
 const WriteExam = (props) => {
   const [semester, setSemester] = useState(''); //학기
