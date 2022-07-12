@@ -522,7 +522,7 @@ export const examUpdateApi = (
   const url = `/exam-posts/?examIdx=${id}`;
 
   const data = {
-    semester,
+    selectedSemester: semester,
     examInfo,
     examType,
     examDifficulty,
