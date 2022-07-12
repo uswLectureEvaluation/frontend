@@ -310,7 +310,7 @@ export const evaluateUpdateApi = (
   const url = `/evaluate-posts/?evaluateIdx=${id}`;
 
   const data = {
-    semester,
+    selectedSemester: semester,
     satisfaction,
     learning,
     honey,

@@ -7,7 +7,7 @@ import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
 const useSlider = (min, max, defaultState, id) => {
   const [state, setSlide] = useState(defaultState);
 
-  const Slider = () => <RangeInput onChange={setSlide} defaultValue={state} />;
+  const Slider = () => <RangeInput setSlide={setSlide} onChange={setSlide} defaultValue={state} />;
   return [state, Slider, setSlide];
 };
 
@@ -23,31 +23,26 @@ const EditEvaluation = (props) => {
   const [learning, LearingSlider] = useSlider(0.5, 5, props.learning);
   const [satisfaction, SatisfactionSlider] = useSlider(0.5, 5, props.satisfaction);
   const onEvaluate = () => {
-    if (semester === '' || semester === '선택') {
-      alert('학기를 선택해주세요');
-    } else if (team === '') {
-      alert('조모임(란)을 선택해주세요');
-    } else if (homework === '') {
-      alert('과제(란)을 선택해주세요');
-    } else if (difficulty === '') {
-      alert('학점(란)을 선택해주세요');
-    } else if (content.length < 1 || content.length > 1000) {
-      alert('최소 1자 이상 최대 1000자 이내로 입력해주세요');
-    } else {
-      evaluateUpdateApi(
+    if (semester === '' || semester === '선택') return alert('학기를 선택해주세요');
+    if (team === '') return alert('조모임(란)을 선택해주세요');
+    if (homework === '') return alert('과제(란)을 선택해주세요');
+    if (difficulty === '') return alert('학점(란)을 선택해주세요');
+    if (content.length < 30 || content.length > 1000)
+      return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
+    
+    evaluateUpdateApi(
         setData,
         semester,
-        satisfaction,
-        learning,
-        honey,
-        team,
-        difficulty,
-        homework,
+        Number(satisfaction),
+        Number(learning),
+        Number(honey),
+        Number(team),
+        Number(difficulty),
+        Number(homework),
         content,
         props.id
       );
       props.setModalIsOpen(false);
-    }
   };
   const [semester, setSemester] = useState(`${props.semester}`); //학기
   const [team, setTeam] = useState(`${props.team}`); //조모임
@@ -63,7 +58,8 @@ const EditEvaluation = (props) => {
   const difficultyChange = (e) => {
     setDifficulty(e.target.value);
   };
-  const options = ['선택', '2021-1', '2022-1'];
+  const options = ['선택'];
+  const optionsValue = options.concat(props.semesterList.split(', '));
 
   return (
     <Styled.Wrapper>
@@ -88,7 +84,7 @@ const EditEvaluation = (props) => {
               setSemester(e);
             }}
           >
-            {options.map((index) => (
+            {optionsValue.map((index) => (
               <StyledOption id="semester" key={index} value={index}>
                 <Soption id="semester">{index}</Soption>
               </StyledOption>
@@ -104,7 +100,7 @@ const EditEvaluation = (props) => {
               setSemester(e);
             }}
           >
-            {options.map((index) => (
+            {optionsValue.map((index) => (
               <StyledOption id="semester" key={index} value={index}>
                 <Soption id="semester">{index}</Soption>
               </StyledOption>
