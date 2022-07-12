@@ -61,21 +61,19 @@ const Myevaluation = () => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
-  
-  const getDog = useCallback(async () => {
 
+  const getDog = useCallback(async () => {
     setLoad(true); //로딩 시작
-    const res = await evaluatePostApi(page)
-    console.log(res)
+    const res = await evaluatePostApi(page);
+    console.log(res);
     if (res.data) {
       setList((prev) => [...prev, ...res.data]);
       preventRef.current = true;
     } else {
       console.log(res); //에러
     }
-     setLoad(false); //로딩 종료
+    setLoad(false); //로딩 종료
   }, [page]);
-
 
   const preventRef = useRef(true);
   const obsRef = useRef(null);
@@ -87,9 +85,7 @@ const Myevaluation = () => {
     return () => {
       observer.disconnect();
     };
-    // eslint-disable-next-line no-use-before-define
-  }, []);
-
+  }, [getDog]);
 
   const obsHandler = (entries) => {
     const target = entries[0];
@@ -101,34 +97,32 @@ const Myevaluation = () => {
 
   return (
     <Styled.Wrapper>
-      {list && list.map((v, i) => {
-        return (
-          <Subject
-            key={Math.random()}
-            lectureName={v.lectureName}
-            professor={v.professor}
-            majorType={v.majorType}
-            selectedSemester={v.selectedSemester}
-            totalAvg={v.totalAvg}
-            content={v.content}
-            satisfaction={v.satisfaction}
-            learning={v.learning}
-            honey={v.honey}
-            team={v.team}
-            difficulty={v.difficulty}
-            homework={v.homework}
-            semesterList={v.semesterList}
-            id={v.id}
-          />
-        );
-      })}
-      {
-                load ?
-                <div style={{ opacity: '0' , width: '0%'}}>로딩 중</div>
-                    :
-                <></>
-            }
-            <div ref={obsRef} style={{ opacity: '0', width: '0%'}}>옵저버 Element</div>
+      {list &&
+        list.map((v, i) => {
+          return (
+            <Subject
+              key={Math.random()}
+              lectureName={v.lectureName}
+              professor={v.professor}
+              majorType={v.majorType}
+              selectedSemester={v.selectedSemester}
+              totalAvg={v.totalAvg}
+              content={v.content}
+              satisfaction={v.satisfaction}
+              learning={v.learning}
+              honey={v.honey}
+              team={v.team}
+              difficulty={v.difficulty}
+              homework={v.homework}
+              semesterList={v.semesterList}
+              id={v.id}
+            />
+          );
+        })}
+      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+      <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
+        옵저버 Element
+      </div>
     </Styled.Wrapper>
   );
 };
