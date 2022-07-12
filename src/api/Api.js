@@ -10,7 +10,7 @@ export const setCookie = (name, value, option) => {
 export const getCookie = (name) => {
   return cookies.get(name);
 };
-
+axios.defaults.withCredentials = true;
 //메인페이지
 ///lecture/findAllList/?option=lectureSatisfactionAvg&page=1 데이터 받아옴
 //modifiedDate 최근강의
@@ -190,10 +190,14 @@ export const loginApi = (setData, setLoading, id, pw) => {
   const options = {
     method: 'POST',
     headers: {
+      Accept:'application/json',
       'Content-Type': 'application/json',
+      Cache:'no-cache',
+      withCredentials: true
     },
     data,
     url,
+    withCredentials: true
   };
   axios(options).then(
     (r) => {
@@ -203,6 +207,8 @@ export const loginApi = (setData, setLoading, id, pw) => {
         path: '/',
         secure: true,
         sameSite: false,
+        httpOnly: true
+
       });
       setCookie('RefreshToken', r.data['RefreshToken'], {
         path: '/',

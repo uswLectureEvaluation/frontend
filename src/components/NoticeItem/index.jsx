@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,4 +13,4 @@ const NoticeItem = ({ id, title, modifiedDate }) => {
   );
 };
 
-export default memo(NoticeItem);
+export default NoticeItem;

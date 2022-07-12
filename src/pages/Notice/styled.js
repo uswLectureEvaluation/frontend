@@ -5,7 +5,6 @@ export const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 60%;
-  padding-bottom: 25rem;
   margin: 0 auto;
 
   @media screen and (max-width: 960px) {
@@ -19,13 +18,7 @@ export const AppContainer = styled.div`
 
  }
 
- .Target-Element {
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-}
+
 `;
 
 export const AppTitle = styled.div`
@@ -37,8 +30,29 @@ export const AppTitle = styled.div`
   padding-bottom: 1rem;
 `;
 
-export const Targetelement = styled.div`
-  height: 150px;
+
+export const Title = styled.div`
   display: flex;
-  align-items: center;
+  font-size: 1rem;
+  margin-right: 0.7rem;
+`;
+
+export const Option = styled.div`
+  border-radius: 10px;
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+  color: #a3a3a3;
+  font-family: 'Pretendard-Light';
+`;
+
+export const NoticeWrap = styled.div`
+  width: 100%;
+  border: 1.5px solid #f1f1f1;
+  padding: 1.5rem 1.5rem;
+  border-radius: 10px;
+  margin-top: 2vh;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
