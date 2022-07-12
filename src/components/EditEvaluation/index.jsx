@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { evaluateUpdateApi } from '../../api/Api';
 import * as Styled from './styled';
 import RangeInput from '../RangeInput';
-import { SemesterSelect, StyledOption, Soption } from '../../Pages/Main/styled';
+import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
 
 const useSlider = (min, max, defaultState, id) => {
   const [state, setSlide] = useState(defaultState);
@@ -32,7 +32,7 @@ const EditEvaluation = (props) => {
     } else if (difficulty === '') {
       alert('학점(란)을 선택해주세요');
     } else if (content.length < 1 || content.length > 1000) {
-      alert('최소 1자 이상 최대 1000자 이내로 입력해주세요')
+      alert('최소 1자 이상 최대 1000자 이내로 입력해주세요');
     } else {
       evaluateUpdateApi(
         setData,
