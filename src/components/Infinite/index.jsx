@@ -6,42 +6,42 @@ import StarRatings from 'react-star-ratings';
 import { selectIdState } from '../../features/selectIdSlice';
 import { useDispatch } from 'react-redux';
 
-const Infinite = ({ lecture, setCount, checkClass, option , wow }) => {
+const Infinite = ({ lecture, setCount, checkClass, option, wow }) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
   const [win, setWin] = useState(true);
 
-  
   const getDog = useCallback(async () => {
-
     setLoad(true); //로딩 시작
-    if(wow == 'main' ){
-    const res = checkClass==='전체'
-    ?await mainApi( option , page, '')
-    :await mainApi( option , page, checkClass);
-    setCount(res.count);
-    if (res.data) {
-      setList((prev) => [...prev, ...res.data]);
-      preventRef.current = true;
+    if (wow === 'main') {
+      const res =
+        checkClass === '전체'
+          ? await mainApi(option, page, '')
+          : await mainApi(option, page, checkClass);
+      setCount(res.count);
+      if (res.data) {
+        setList((prev) => [...prev, ...res.data]);
+        preventRef.current = true;
+      } else {
+        console.log(res); //에러
+      }
     } else {
-      console.log(res); //에러
-    }
-  }else {
-    const res = checkClass==='전체'
-    ?await searchApi( lecture.search_value , page, option, '')
-    :await searchApi( lecture.search_value , page, option, checkClass);
-    setCount(res.count);
+      const res =
+        checkClass === '전체'
+          ? await searchApi(lecture.search_value, page, option, '')
+          : await searchApi(lecture.search_value, page, option, checkClass);
+      setCount(res.count);
 
-    if (res.data) {
-     
-      setList((prev) => [...prev, ...res.data]);
-      preventRef.current = true;
-    } else {
-      console.log(res); //에러
+      if (res.data) {
+        setList((prev) => [...prev, ...res.data]);
+        preventRef.current = true;
+      } else {
+        console.log(res); //에러
+      }
     }
-  }
     setLoad(false); //로딩 종료
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, setCount, checkClass]);
 
   const showWin = () => {
@@ -70,12 +70,12 @@ const Infinite = ({ lecture, setCount, checkClass, option , wow }) => {
   useEffect(() => {
     getDog();
     // eslint-disable-next-line no-use-before-define
-  }, [page]);
+  }, [getDog, page]);
 
   useEffect(() => {
     setPage(1);
-    setList([])
-  },[checkClass, lecture])
+    setList([]);
+  }, [checkClass, lecture]);
 
   const obsHandler = (entries) => {
     const target = entries[0];
@@ -138,13 +138,10 @@ const Infinite = ({ lecture, setCount, checkClass, option , wow }) => {
             ))}
         </Styled.FlexWrapSub>
       </Styled.FlexWrap>
-      {
-                load ?
-                <div style={{ opacity: '0' , width: '0%'}}>로딩 중</div>
-                    :
-                <></>
-            }
-            <div ref={obsRef} style={{ opacity: '0', width: '0%'}}>옵저버 Element</div>
+      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+      <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
+        옵저버 Element
+      </div>
     </>
   ) : (
     <Styled.FlexWrap>
@@ -164,13 +161,10 @@ const Infinite = ({ lecture, setCount, checkClass, option , wow }) => {
           />
         ))}
       </Styled.FullWrapSub>
-      {
-                load ?
-                <div style={{ opacity: '0' , width: '0%'}}>로딩 중</div>
-                    :
-                <></>
-            }
-            <div ref={obsRef} style={{ opacity: '0', width: '0%'}}>옵저버 Element</div>
+      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+      <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
+        옵저버 Element
+      </div>
     </Styled.FlexWrap>
   );
 };

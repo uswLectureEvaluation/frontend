@@ -316,7 +316,7 @@ export const evaluateUpdateApi = (
   const url = `/evaluate-posts/?evaluateIdx=${id}`;
 
   const data = {
-    semester,
+    selectedSemester: semester,
     satisfaction,
     learning,
     honey,
@@ -528,7 +528,7 @@ export const examUpdateApi = (
   const url = `/exam-posts/?examIdx=${id}`;
 
   const data = {
-    semester,
+    selectedSemester: semester,
     examInfo,
     examType,
     examDifficulty,

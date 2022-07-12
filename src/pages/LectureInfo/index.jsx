@@ -3,7 +3,7 @@ import * as Styled from './styled';
 import SearchEvaluationList from '../../components/SearchEvaluationList';
 import TestInfo from '../../components/TestInfo';
 import WriteEvaluation from '../../components/WriteEvaluation';
-import { searchApi, searchLectureApi } from '../../api/Api';
+import { searchLectureApi } from '../../api/Api';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Modal from 'react-modal';
@@ -45,23 +45,21 @@ const LectureInfo = () => {
   };
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  let setData;
-
   const onChange = (e) => {
     setSearch(e.currentTarget.value);
   };
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
-      if(e.currentTarget.value.length < 2) {
-        alert("두 글자 이상 입력해주세요");
+      if (e.currentTarget.value.length < 2) {
+        alert('두 글자 이상 입력해주세요');
       } else {
         navigate(`/search`, {
           state: {
             search_value: search,
             search_option: 'lectureHoneyAvg',
           },
-        });  
+        });
       }
     }
   };

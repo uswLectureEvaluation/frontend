@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { examUpdateApi } from '../../api/Api';
 import * as Styled from './edittestinfo.element';
-import { SemesterSelect, StyledOption, Soption } from '../../Pages/Main/styled';
+import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
 
 const Edittestinfo = (props) => {
   const [db, setData] = useState({
@@ -29,20 +29,15 @@ const Edittestinfo = (props) => {
     setContent(e.target.value);
   };
   const onTest = () => {
-    if (semester === '' || semester === '선택') {
-      alert('학기를 선택해주세요');
-    } else if (examType === '' || examType === '선택') {
-      alert('시험종류를 선택해주세요');
-    } else if (examDifficulty === '') {
-      alert('난이도(란)을 선택해주세요');
-    } else if (exam.length === 0) {
-      alert('시험유형(란)을 선택해주세요');
-    } else if (content.length < 30 || content.length > 1000) {
-      alert('최소 30자 이상 최대 1000자 이내로 입력해주세요')
-    } else {
-      examUpdateApi(setData, semester, examInfo, examType, examDifficulty, content, props.id);
-      props.setModalIsOpen(false);
-    }
+    if (semester === '' || semester === '선택') return alert('학기를 선택해주세요');
+    if (examType === '' || examType === '선택') return alert('시험종류를 선택해주세요');
+    if (examDifficulty === '') return alert('난이도(란)을 선택해주세요');
+    if (exam.length === 0) return alert('시험유형(란)을 선택해주세요');
+    if (content.length < 30 || content.length > 1000)
+      return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
+    
+    examUpdateApi(setData, semester, examInfo, examType, examDifficulty, content, props.id);
+    props.setModalIsOpen(false);
   };
 
   useEffect(() => {}, [db.data]);

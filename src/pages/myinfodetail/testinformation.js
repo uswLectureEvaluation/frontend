@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { deleteExamInfoApi, examPostApi } from '../../api/Api';
 import * as Styled from './testinformation.element';
-import EditTestInfo from './Edittestinfo';
+import EditTestInfo from './edittestinfo';
 import Modal from 'react-modal';
 import ModalStyle from '../../components/ModalStyle';
 
@@ -9,21 +9,19 @@ const Testinformation = () => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
-  
-  const getDog = useCallback(async () => {
 
+  const getDog = useCallback(async () => {
     setLoad(true); //로딩 시작
-    const res = await examPostApi(page)
-    console.log(res)
+    const res = await examPostApi(page);
+    console.log(res);
     if (res.data) {
       setList((prev) => [...prev, ...res.data]);
       preventRef.current = true;
     } else {
       console.log(res); //에러
     }
-     setLoad(false); //로딩 종료
+    setLoad(false); //로딩 종료
   }, [page]);
-
 
   const preventRef = useRef(true);
   const obsRef = useRef(null);
@@ -35,9 +33,9 @@ const Testinformation = () => {
     return () => {
       observer.disconnect();
     };
-    // eslint-disable-next-line no-use-before-define
-  }, []);
-
+    // eslint-disable-next-line no-unreachable
+    console.log(load);
+  }, [getDog, load]);
 
   const obsHandler = (entries) => {
     const target = entries[0];
@@ -49,22 +47,22 @@ const Testinformation = () => {
 
   return (
     <Styled.Wrapper>
-      {list && list.map((v, i) => (
-        <Subject
-          key={Math.random()}
-          content={v.content}
-          examDifficulty={v.examDifficulty}
-          examInfo={v.examInfo}
-          examType={v.examType}
-          majorType={v.majorType}
-          id={v.id}
-          lectureName={v.lectureName}
-          professor={v.professor}
-          selectedSemester={v.selectedSemester}
-          semesterList={v.semesterList}
-        />
-      ))}
-     
+      {list &&
+        list.map((v, i) => (
+          <Subject
+            key={Math.random()}
+            content={v.content}
+            examDifficulty={v.examDifficulty}
+            examInfo={v.examInfo}
+            examType={v.examType}
+            majorType={v.majorType}
+            id={v.id}
+            lectureName={v.lectureName}
+            professor={v.professor}
+            selectedSemester={v.selectedSemester}
+            semesterList={v.semesterList}
+          />
+        ))}
     </Styled.Wrapper>
   );
 };

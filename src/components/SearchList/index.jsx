@@ -12,7 +12,7 @@ const SearchList = ({ lecture, setCount, checkClass, option }) => {
     count: '',
   });
 
-  const [win, setWin] = useState(true)
+  const [win, setWin] = useState(true);
 
   const showWin = () => {
     if (window.innerWidth <= 960) {
@@ -25,33 +25,29 @@ const SearchList = ({ lecture, setCount, checkClass, option }) => {
   window.addEventListener('resize', showWin);
 
   useEffect(() => {
-    showWin()
-    if(checkClass==='전체') {
+    showWin();
+    if (checkClass === '전체') {
       searchApi(lecture.search_value, option, '').then((data) => setData(data));
     } else {
       searchApi(lecture.search_value, option, checkClass).then((data) => setData(data));
     }
   }, [win, lecture.search_value, option, checkClass]);
 
-  useEffect(()=> {
-    setCount(db.count)
-    console.log(db)
-  },[db.count, setCount])
+  useEffect(() => {
+    setCount(db.count);
+  }, [db.count, setCount]);
 
   return db.count !== 0 ? (
     win ? (
       <Styled.FlexWrap>
         <Styled.FlexWrapSub>
           {db.data
-            .filter((data, i)=> {
-              if(!(i % 2) && checkClass==='전체')
-                return true;
-              else
-                {
-                  if(!(i % 2) && data.majorType===checkClass)
-                   return true;
-                }
-                return false;
+            .filter((data, i) => {
+              if (!(i % 2) && checkClass === '전체') return true;
+              else {
+                if (!(i % 2) && data.majorType === checkClass) return true;
+              }
+              return false;
             })
             .map((row, i) => (
               <Subject
@@ -70,15 +66,12 @@ const SearchList = ({ lecture, setCount, checkClass, option }) => {
         </Styled.FlexWrapSub>
         <Styled.FlexWrapSub>
           {db.data
-            .filter((data, i)=> {
-              if((i % 2) && checkClass==='전체')
-                return true;
-              else
-                {
-                  if((i % 2) && data.majorType===checkClass)
-                   return true;
-                }
-                return false;
+            .filter((data, i) => {
+              if (i % 2 && checkClass === '전체') return true;
+              else {
+                if (i % 2 && data.majorType === checkClass) return true;
+              }
+              return false;
             })
             .map((row, i) => (
               <Subject
@@ -100,30 +93,27 @@ const SearchList = ({ lecture, setCount, checkClass, option }) => {
       <Styled.FlexWrap>
         <Styled.FullWrapSub>
           {db.data
-          .filter((data)=> {
-            if(checkClass==='전체')
-              return true;
-            else
-              {
-                if(data.majorType===checkClass)
-                 return true;
+            .filter((data) => {
+              if (checkClass === '전체') return true;
+              else {
+                if (data.majorType === checkClass) return true;
               }
               return false;
-          })
-          .map((row, i) => (
-            <Subject
-              key={row.id}
-              id={row.id}
-              lectureName={row.lectureName}
-              professor={row.professor}
-              lectureType={row.lectureType}
-              star={row.lectureTotalAvg}
-              lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-              lectureHoneyAvg={row.lectureHoneyAvg}
-              lectureLearningAvg={row.lectureLearningAvg}
-              majorType={row.majorType}
-            />
-          ))}
+            })
+            .map((row, i) => (
+              <Subject
+                key={row.id}
+                id={row.id}
+                lectureName={row.lectureName}
+                professor={row.professor}
+                lectureType={row.lectureType}
+                star={row.lectureTotalAvg}
+                lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+                lectureHoneyAvg={row.lectureHoneyAvg}
+                lectureLearningAvg={row.lectureLearningAvg}
+                majorType={row.majorType}
+              />
+            ))}
         </Styled.FullWrapSub>
       </Styled.FlexWrap>
     )
@@ -197,7 +187,9 @@ export const Subject = (props) => {
           <Styled.Title>{title}</Styled.Title>
           <Styled.Option>{props.lectureType}</Styled.Option>
         </Styled.TitleWrapper>
-        <Styled.Professor>{props.majorType} | {props.professor}</Styled.Professor>
+        <Styled.Professor>
+          {props.majorType} | {props.professor}
+        </Styled.Professor>
         {/* <Styled.MarginRight>평균지수</Styled.MarginRight> */}
         <Styled.RateWrapper>
           <StarRatings
