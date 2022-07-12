@@ -144,11 +144,12 @@ const Infinite = ({ lecture, setCount, checkClass, option, wow }) => {
       </div>
     </>
   ) : (
+    <>
     <Styled.FlexWrap>
       <Styled.FullWrapSub>
         {list.map((row, i) => (
           <Subject
-            key={row.id}
+            key={Math.random()}
             id={row.id}
             lectureName={row.lectureName}
             professor={row.professor}
@@ -161,11 +162,12 @@ const Infinite = ({ lecture, setCount, checkClass, option, wow }) => {
           />
         ))}
       </Styled.FullWrapSub>
-      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-      <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
-        옵저버 Element
-      </div>
     </Styled.FlexWrap>
+     {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+     <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
+       옵저버 Element
+     </div>
+     </>
   );
 };
 
