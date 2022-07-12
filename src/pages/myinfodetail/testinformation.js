@@ -34,8 +34,7 @@ const Testinformation = () => {
       observer.disconnect();
     };
     // eslint-disable-next-line no-unreachable
-    console.log(load);
-  }, [getDog, load]);
+  }, [getDog]);
 
   const obsHandler = (entries) => {
     const target = entries[0];
@@ -63,6 +62,11 @@ const Testinformation = () => {
             semesterList={v.semesterList}
           />
         ))}
+
+      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+      <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
+        옵저버 Element
+      </div>
     </Styled.Wrapper>
   );
 };
