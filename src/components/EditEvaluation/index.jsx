@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { evaluateUpdateApi } from '../../api/Api';
 import * as Styled from './styled';
 import RangeInput from '../RangeInput';
-import { SemesterSelect, StyledOption, Soption } from '../../Pages/Main/styled';
+import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
 
 const useSlider = (min, max, defaultState, id) => {
   const [state, setSlide] = useState(defaultState);
@@ -29,20 +29,20 @@ const EditEvaluation = (props) => {
     if (difficulty === '') return alert('학점(란)을 선택해주세요');
     if (content.length < 30 || content.length > 1000)
       return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
-    
+
     evaluateUpdateApi(
-        setData,
-        semester,
-        Number(satisfaction),
-        Number(learning),
-        Number(honey),
-        Number(team),
-        Number(difficulty),
-        Number(homework),
-        content,
-        props.id
-      );
-      props.setModalIsOpen(false);
+      setData,
+      semester,
+      Number(satisfaction),
+      Number(learning),
+      Number(honey),
+      Number(team),
+      Number(difficulty),
+      Number(homework),
+      content,
+      props.id
+    );
+    props.setModalIsOpen(false);
   };
   const [semester, setSemester] = useState(`${props.semester}`); //학기
   const [team, setTeam] = useState(`${props.team}`); //조모임
