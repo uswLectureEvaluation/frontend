@@ -208,14 +208,12 @@ export const loginApi = (setData, setLoading, id, pw) => {
         path: '/',
         secure: true,
         sameSite: false,
-        httpOnly: true
 
       });
       setCookie('RefreshToken', r.data['RefreshToken'], {
         path: '/',
         secure: true,
         sameSite: false,
-        httpOnly: true
       });
     },
     (error) => {
