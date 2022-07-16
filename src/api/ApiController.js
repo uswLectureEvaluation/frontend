@@ -3,7 +3,7 @@ import { Cookies } from 'react-cookie';
 
 const cookies = new Cookies();
 
-const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
+const PROXY_URL = window.location.hostname === 'localhost' ? '' : '';
 
 const instance = axios.create({
   baseURL: `${PROXY_URL}`,

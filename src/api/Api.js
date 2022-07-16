@@ -17,7 +17,7 @@ axios.defaults.withCredentials = true;
 //lectureSatisfactionAvg 만족도 강의
 //lectureHoneyAvg 꿀강의
 //lectureLearningAvg 배울게 많은 강의
-const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
+const PROXY_URL = window.location.hostname === 'localhost' ? '' : '';
 
 export const mainApi = async (lecture, page, majorType) => {
   return instance({
