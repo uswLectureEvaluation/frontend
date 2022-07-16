@@ -193,7 +193,8 @@ export const loginApi = (setData, setLoading, id, pw) => {
       Accept:'application/json',
       'Content-Type': 'application/json',
       Cache:'no-cache',
-      withCredentials: true
+      withCredentials: true,
+      'Access-Control-Allow-Origin': PROXY_URL
     },
     data,
     url,
@@ -214,6 +215,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
         path: '/',
         secure: true,
         sameSite: false,
+        httpOnly: true
       });
     },
     (error) => {
