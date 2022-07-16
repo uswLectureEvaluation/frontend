@@ -42,7 +42,9 @@ const Edittestinfo = (props) => {
 
   useEffect(() => {}, [db.data]);
 
-  const semesterOptions = ['선택', '2021-1', '2022-1'];
+  const options = ['선택'];
+  const optionsValue = options.concat(props.semesterList.split(', '));
+
   const examTypeOptions = ['선택', '중간고사', '기말고사', '쪽지', '기타'];
 
   return (
@@ -68,7 +70,7 @@ const Edittestinfo = (props) => {
               setSemester(e);
             }}
           >
-            {semesterOptions.map((index) => (
+            {optionsValue.map((index) => (
               <StyledOption id="semester" key={index} value={index}>
                 <Soption id="semester">{index}</Soption>
               </StyledOption>
@@ -99,7 +101,7 @@ const Edittestinfo = (props) => {
                 setSemester(e);
               }}
             >
-              {semesterOptions.map((index) => (
+              {optionsValue.map((index) => (
                 <StyledOption id="semester" key={index} value={index}>
                   <Soption id="semester">{index}</Soption>
                 </StyledOption>

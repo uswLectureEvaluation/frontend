@@ -181,6 +181,7 @@ export const Subject = (props) => {
             content={props.content}
             id={props.id}
             examType={props.examType}
+            semesterList={props.semesterList}
           />
         </Modal>
       </Styled.LectureWrapper>
