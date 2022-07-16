@@ -89,6 +89,7 @@ export const MobileMarginTop = styled.div`
     display: flex;
     flex-direction: column;
     padding: 14px 24px 0px 24px;
+    font-family: Pretendard;
   }
 `;
 
