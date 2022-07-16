@@ -18,6 +18,7 @@ export const TitleWrapper = styled.div`
   justify-content: center;
   float: left;
   align-items: center;
+  font-family: Pretendard;
 `;
 
 export const Title = styled.span`
@@ -103,6 +104,7 @@ export const DataColor = styled.div`
 
 export const StarFlex = styled.div`
   display: flex;
+  font-family: Pretendard;
   align-items: center;
   padding: 2px 11px;
   font-size: 13px;
@@ -144,11 +146,13 @@ export const EvaluationDetail = styled.div`
   font-size: 16px;
   font-size: 1rem;
   padding-top: 0.7rem;
+  font-family: Pretendard;
 `;
 export const PaddingRight = styled.span`
   padding-right: 0.7rem;
 `;
 export const EditButton = styled.span`
+  font-family: Pretendard;
   font-size: 12px;
   font-weight: 500;
   text-align: center;
@@ -160,6 +164,7 @@ export const EditButton = styled.span`
   }
 `;
 export const DeleteButton = styled.span`
+  font-family: Pretendard;
   font-size: 12px;
   font-weight: 500;
   text-align: center;
