@@ -169,6 +169,9 @@ export const Option = styled.div`
     height: 25px;
     margin-top: 0px;
   }
+  &#semester {
+    margin-right: 8px;
+  }
 `;
 
 export const Writing = styled.img`

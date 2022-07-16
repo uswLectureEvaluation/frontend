@@ -113,7 +113,13 @@ const LectureInfo = () => {
                   </Styled.Professor>
                 </Styled.SubWrapper>
                 <Styled.TitleWrapper>
-                  <Styled.Option> {db.data.semesterList} </Styled.Option>
+                  {db.data.semesterList && db.data.semesterList.split(", ").map((v)=>{
+                    return (
+                      <Styled.Option key={v} id="semester">
+                        {v}
+                      </Styled.Option>
+                    )
+                  })}
                 </Styled.TitleWrapper>
               </div>
               <Styled.Option id="type">{db.data.lectureType}</Styled.Option>
