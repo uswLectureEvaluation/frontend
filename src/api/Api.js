@@ -182,7 +182,7 @@ export const checkemailApi = (setData, email) => {
 
 //로그인api 0
 export const loginApi = (setData, setLoading, id, pw) => {
-  const url = `${PROXY_URL}/user/login`;
+  const url = `${PROXY_URL}/user/client-login`;
   const data = {
     loginId: id,
     password: pw,
@@ -205,12 +205,6 @@ export const loginApi = (setData, setLoading, id, pw) => {
       setData(r.data);
       setLoading(true);
       setCookie('AccessToken', r.data['AccessToken'], {
-        path: '/',
-        secure: true,
-        sameSite: false,
-
-      });
-      setCookie('RefreshToken', r.data['RefreshToken'], {
         path: '/',
         secure: true,
         sameSite: false,
