@@ -182,7 +182,7 @@ export const checkemailApi = (setData, email) => {
 
 //로그인api 0
 export const loginApi = (setData, setLoading, id, pw) => {
-  const url = `${PROXY_URL}/user/client-login`;
+  const url = `user/client-login`;
   const data = {
     loginId: id,
     password: pw,
