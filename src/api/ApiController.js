@@ -37,7 +37,7 @@ instance.interceptors.response.use(
       const RefreshToken = await cookies.get('RefreshToken');
 
       const { data } = await axios({
-        url: `/user/refresh`, // 토큰 재요청
+        url: `/user/client-refresh`, // 토큰 재요청
         headers: {
           Authorization: RefreshToken,
         },
