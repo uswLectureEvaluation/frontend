@@ -122,7 +122,7 @@ export const registerApi = (setData, setLoading, id, pw, email) => {
 
 //회원가입 아이디 중복확인 (완료)
 export const checkidApi = (setData, id) => {
-  const url = `${PROXY_URL}/user/check-id`;
+  const url = `user/check-id`;
 
   const data = {
     loginId: id,
@@ -152,7 +152,7 @@ export const checkidApi = (setData, id) => {
 
 //회원가입 이메일 중복확인 (완료)
 export const checkemailApi = (setData, email) => {
-  const url = `${PROXY_URL}/user/check-email`;
+  const url = `user/check-email`;
 
   const data = {
     email,
@@ -354,7 +354,7 @@ export const evaluateWriteApi = (
   homework,
   content
 ) => {
-  const url = `${PROXY_URL}/evaluate-posts/?lectureId=${selectId}`;
+  const url = `evaluate-posts/?lectureId=${selectId}`;
 
   const data = {
     lectureName,
