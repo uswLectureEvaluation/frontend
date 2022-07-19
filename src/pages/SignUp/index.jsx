@@ -41,6 +41,7 @@ const SignUp = () => {
     } else if (e.target.value.length > 6 || e.target.value.length < 20) {
       setNameMessage('아이디 중복확인해주세요.');
       setIsName(true);
+      setIdcheck(false);
     }
   }, []);
 
@@ -62,6 +63,7 @@ const SignUp = () => {
     if (emailCurrent.includes('@suwon.ac.kr')) {
       setEmailMessage('사용 가능한 이메일입니다.');
       setIsEmail(true);
+      setEmailcheck(false);
     } else {
       setEmailMessage('이메일 형식이 틀렸습니다.');
       setIsEmail(false);
@@ -156,7 +158,7 @@ const SignUp = () => {
             autoFocus
             onChange={onChangeName}
           />
-          <Styled.Button disabled={!isName} id="check" onClick={onCheck} background="#346cfd">
+          <Styled.Button disabled={!isName || idcheck} id="check" onClick={onCheck} background="#346cfd">
             중복확인
           </Styled.Button>
         </Styled.InputWrapper>
@@ -210,7 +212,7 @@ const SignUp = () => {
             autoComplete="current-email"
             onChange={onChangeEmail}
           />
-          <Styled.Button disabled={!isEmail} id="check" onClick={onEmail} background="#346cfd">
+          <Styled.Button disabled={!isEmail || emailcheck} id="check" onClick={onEmail} background="#346cfd">
             중복확인
           </Styled.Button>
         </Styled.InputWrapper>
@@ -279,7 +281,7 @@ const SignUp = () => {
               emailcheck
             )
           }
-          color="#346cfd"
+          background="#346cfd"
           onClick={onClick}
         >
           회원가입
