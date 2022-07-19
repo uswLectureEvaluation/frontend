@@ -119,7 +119,7 @@ const SignUp = () => {
 
   const onClick = () => {
     registerApi(setData, setLoading, name, password, email);
-    navigate('/emailsignup');
+    navigate('/emailsignup', {state: email});
   };
 
   const onCheck = () => {
