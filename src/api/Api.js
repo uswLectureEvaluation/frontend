@@ -93,7 +93,7 @@ export const noticeDetailApi = async (notice) => {
 
 //회원가입 api 0
 export const registerApi = (setData, setLoading, id, pw, email) => {
-  const url = `${PROXY_URL}/user/join`;
+  const url = `user/join`;
 
   const data = {
     loginId: id,
@@ -219,7 +219,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
 
 //아이디 찾기api (완료)
 export const findIdApi = (setData, email) => {
-  const url = `${PROXY_URL}/user/find-id`;
+  const url = `user/find-id`;
 
   const data = {
     email,
@@ -245,7 +245,7 @@ export const findIdApi = (setData, email) => {
 
 //비밀번호 찾기api (완료)
 export const findPwApi = (setData, id, email) => {
-  const url = `${PROXY_URL}/user/find-pw`;
+  const url = `user/find-pw`;
 
   const data = {
     loginId: id,
@@ -413,7 +413,7 @@ export const deleteEvaluateApi = (id) => {
 
 //강의평가 신고 api
 export const evaluateReportApi = (evaluateIdx, content) => {
-  const url = `${PROXY_URL}/user/report/evaluate`;
+  const url = `user/report/evaluate`;
 
   const data = {
     evaluateIdx,
