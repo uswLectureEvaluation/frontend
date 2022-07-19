@@ -34,22 +34,12 @@ instance.interceptors.response.use(
     const originalRequest = error.config;
 
     if (error.response.status === 401) {
-      const RefreshToken = await cookies.get('RefreshToken');
-
       const { data } = await axios({
         url: `/user/client-refresh`, // 토큰 재요청
-        headers: {
-          Authorization: RefreshToken,
-        },
         method: 'POST',
       });
-      const { AccessToken: newAccessToken, RefreshToken: newRefreshToken } = data;
+      const { AccessToken: newAccessToken } = data;
       await cookies.set('AccessToken', newAccessToken, {
-        path: '/',
-        secure: true,
-        sameSite: false,
-      });
-      await cookies.set('RefreshToken', newRefreshToken, {
         path: '/',
         secure: true,
         sameSite: false,
