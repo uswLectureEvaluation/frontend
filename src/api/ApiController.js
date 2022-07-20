@@ -12,7 +12,8 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   function (config) {
-    const accessToken = cookies.get('AccessToken');
+    console.log(config)
+    const accessToken = axios.defaults.headers.common['Authorization'];
     if (accessToken) {
       config.headers['Content-Type'] = 'application/json';
       config.headers['Authorization'] = accessToken;

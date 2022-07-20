@@ -4,20 +4,24 @@ import { Cookies } from 'react-cookie';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { VscChromeClose } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 const Nav = () => {
   let navigate = useNavigate();
   const [button, setButton] = useState(true);
   const [click, setClick] = useState(false);
 
+  const [type, setType] = useState(false);
+
   const cookies = new Cookies();
+
+  
+  const accessToken = axios.defaults.headers.common['Authorization'];
 
   const showButton = () => (window.innerWidth <= 960 ? setButton(false) : setButton(true));
   const handleClick = () => setClick(!click);
 
   const logoutClick = () => {
-    cookies.remove('AccessToken');
-    cookies.remove('RefreshToken');
     navigate('/login');
   };
 
@@ -36,12 +40,12 @@ const Nav = () => {
 
       <Styled.NavMenu onClick={handleClick} click={click}>
         <Styled.NavLinks onClick={() => navigate('notice')}>공지사항</Styled.NavLinks>
-        {cookies.get('AccessToken') == null ? (
+        {accessToken ? (
           <Styled.NavLinks onClick={() => navigate('login')}>로그인</Styled.NavLinks>
         ) : (
           <Styled.NavLinks onClick={logoutClick}>로그아웃</Styled.NavLinks>
-        )}
-        {cookies.get('AccessToken') == null ? (
+        )} 
+        {accessToken ? (
           <Styled.NavLinks id="signup" onClick={() => navigate('signup')}>
             회원가입
           </Styled.NavLinks>

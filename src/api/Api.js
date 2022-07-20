@@ -202,13 +202,18 @@ export const loginApi = (setData, setLoading, id, pw) => {
   };
   axios(options).then(
     (r) => {
+      console.log(r)
+      const accessToken  = r.data.AccessToken;
+
+		// API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
+		  axios.defaults.headers.common['Authorization'] = `${accessToken}`;
       setData(r.data);
       setLoading(true);
-      setCookie('AccessToken', r.data['AccessToken'], {
-        path: '/',
-        secure: true,
-        sameSite: false,
-      });
+      // setCookie('AccessToken', r.data['AccessToken'], {
+      //   path: '/',
+      //   secure: true,
+      //   sameSite: false,
+      // });
     },
     (error) => {
       console.error(error);
