@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
 import { loginApi } from '../../api/Api';
-import { useDispatch } from 'react-redux';
-import { loginState } from '../../features/loginSlice';
 import { FormControlLabel, Checkbox } from '@material-ui/core';
 
 const Login = () => {
-  const dispatch = useDispatch();
+
 
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
@@ -44,7 +42,6 @@ const Login = () => {
     if (loading === true) {
       if (db != null) {
         navigate('/myinformation');
-        dispatch(loginState(true));
       }
     }
   });

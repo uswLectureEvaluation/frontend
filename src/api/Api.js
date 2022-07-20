@@ -4,6 +4,8 @@ import instance from './ApiController';
 
 const cookies = new Cookies();
 
+
+
 export const setCookie = (name, value, option) => {
   return cookies.set(name, value, { ...option });
 };
@@ -52,7 +54,7 @@ export const favoriteMajorApi = (setFavorite, majorType) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: getCookie('AccessToken'),
+      Authorization: localStorage.getItem('access'),
     },
     data,
     url,
@@ -182,6 +184,7 @@ export const checkemailApi = (setData, email) => {
 
 //로그인api 0
 export const loginApi = (setData, setLoading, id, pw) => {
+  
   const url = `user/client-login`;
   const data = {
     loginId: id,
@@ -194,7 +197,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
       'Content-Type': 'application/json',
       Cache:'no-cache',
       withCredentials: true,
-      'Access-Control-Allow-Origin': PROXY_URL
+      'Access-Control-Allow-Origin': PROXY_URL,
     },
     data,
     url,
@@ -203,10 +206,14 @@ export const loginApi = (setData, setLoading, id, pw) => {
   axios(options).then(
     (r) => {
       console.log(r)
-      const accessToken  = r.data.AccessToken;
 
-		// API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
-		  axios.defaults.headers.common['Authorization'] = `${accessToken}`;
+      //const accessToken  = r.data.AccessToken;
+
+      localStorage.setItem('access', r.data.AccessToken)
+
+    // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
+    //instance.defaults.headers.common["Authorization"] = accessToken;
+		 // axios.defaults.headers.common['Authorization'] = `${accessToken}`;
       setData(r.data);
       setLoading(true);
       // setCookie('AccessToken', r.data['AccessToken'], {
@@ -328,7 +335,7 @@ export const evaluateUpdateApi = (
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: getCookie('AccessToken'),
+      Authorization: localStorage.getItem('access'),
     },
     data,
     url,
@@ -377,7 +384,7 @@ export const evaluateWriteApi = (
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: getCookie('AccessToken'),
+      Authorization: localStorage.getItem('access'),
     },
     data,
     url,
@@ -401,7 +408,7 @@ export const deleteEvaluateApi = (id) => {
   const options = {
     method: 'DELETE',
     headers: {
-      Authorization: getCookie('AccessToken'),
+      Authorization: localStorage.getItem('access'),
     },
     url,
   };
@@ -428,7 +435,7 @@ export const evaluateReportApi = (evaluateIdx, content) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: getCookie('AccessToken'),
+      Authorization: localStorage.getItem('access'),
     },
     data,
     url,
@@ -456,7 +463,7 @@ export const examReportApi = (examIdx, content) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: getCookie('AccessToken'),
+      Authorization: localStorage.getItem('access'),
     },
     data,
     url,
@@ -498,7 +505,7 @@ export const examWriteApi = (
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: getCookie('AccessToken'),
+      Authorization: localStorage.getItem('access'),
     },
     data,
     url,
@@ -537,7 +544,7 @@ export const examUpdateApi = (
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: getCookie('AccessToken'),
+      Authorization: localStorage.getItem('access'),
     },
     data,
     url,
@@ -561,7 +568,7 @@ export const buyTestInfo = (selectId) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: getCookie('AccessToken'),
+      Authorization: localStorage.getItem('access'),
     },
     url,
   };
@@ -584,7 +591,7 @@ export const deleteExamInfoApi = (id) => {
   const options = {
     method: 'DELETE',
     headers: {
-      Authorization: getCookie('AccessToken'),
+      Authorization: localStorage.getItem('access'),
     },
     url,
   };
@@ -650,7 +657,7 @@ export const resetPasswordApi = (prePassword, newPassword) => {
   const options = {
     method: 'post',
     headers: {
-      Authorization: getCookie('AccessToken'),
+      Authorization: localStorage.getItem('access'),
     },
     data,
     url,
@@ -676,7 +683,7 @@ export const quitApi = (id, pw) => {
   const options = {
     method: 'post',
     headers: {
-      Authorization: getCookie('AccessToken'),
+      Authorization: localStorage.getItem('access'),
     },
     data,
     url,

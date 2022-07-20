@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import * as Styled from './styled';
 import SearchEvaluationList from '../../components/SearchEvaluationList';
 import TestInfo from '../../components/TestInfo';
@@ -10,11 +9,9 @@ import { useSelector } from 'react-redux';
 import Modal from 'react-modal';
 import WriteExam from '../../components/WriteExam';
 import ModalStyle from '../../components/ModalStyle';
-import { Cookies } from 'react-cookie';
 import { Button } from '../../components';
 
 const LectureInfo = () => {
-  const cookies = new Cookies();
   const selectId = useSelector((state) => state.selectId.value);
   let navigate = useNavigate();
   const [check, setCheck] = useState('lecture');
@@ -39,8 +36,6 @@ const LectureInfo = () => {
   ));
 
   const [menuCheck, setMenuCheck] = useState(0);
-
-  const accessToken = axios.defaults.headers.common['Authorization'];
 
   const clickFunc = (e, index) => {
     setMenuCheck(index);
@@ -102,7 +97,7 @@ const LectureInfo = () => {
           onKeyPress={onKeypress}
         />
       </Styled.SearchWrapper>
-      {accessToken ? (
+      {localStorage.getItem('access') ? (
         <Styled.Wrapper>
           <Styled.Content id="top">
             <Styled.TitleWrapper id="top">

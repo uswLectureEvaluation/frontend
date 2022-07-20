@@ -1,9 +1,7 @@
 import axios from 'axios';
-import { Cookies } from 'react-cookie';
-
-const cookies = new Cookies();
 
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
+
 
 const instance = axios.create({
   baseURL: `${PROXY_URL}`,
@@ -12,8 +10,8 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   function (config) {
-    console.log(config)
-    const accessToken = axios.defaults.headers.common['Authorization'];
+    console.log(localStorage.getItem('access'))
+    const accessToken = localStorage.getItem('access');
     if (accessToken) {
       config.headers['Content-Type'] = 'application/json';
       config.headers['Authorization'] = accessToken;
@@ -40,11 +38,7 @@ instance.interceptors.response.use(
         method: 'POST',
       });
       const { AccessToken: newAccessToken } = data;
-      await cookies.set('AccessToken', newAccessToken, {
-        path: '/',
-        secure: true,
-        sameSite: false,
-      });
+      await localStorage.set('access', newAccessToken);
       originalRequest.headers['Authorization'] = newAccessToken;
 
       const retryOriginalRequest = new Promise((resolve) => {
