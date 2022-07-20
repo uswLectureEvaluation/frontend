@@ -8,7 +8,7 @@ const MyInfo = () => {
   const option = [
     {
       title: '이용 제한 내역',
-      page: 'myinformation',
+      page: 'banreason',
     },
     {
       title: '구매이력',

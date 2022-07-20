@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { Cookies } from 'react-cookie';
+const cookies = new Cookies();
 
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
@@ -38,7 +40,12 @@ instance.interceptors.response.use(
         method: 'POST',
       });
       const { AccessToken: newAccessToken } = data;
-      await localStorage.set('access', newAccessToken);
+      await cookies.set('AccessToken', newAccessToken, {
+        path: '/',
+        secure: true,
+        sameSite: false,
+      });
+
       originalRequest.headers['Authorization'] = newAccessToken;
 
       const retryOriginalRequest = new Promise((resolve) => {

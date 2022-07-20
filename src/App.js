@@ -19,6 +19,7 @@ import NoticeDetail from './pages/NoticeDetail';
 import Myinfodetail from './pages/myinfodetail/myinfodetail';
 import ScrollButton from './components/ScrollButton';
 import ResetPassword from './pages/ResetPassword';
+import BanReason from './pages/BanReason';
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
         <Route path="/historytest" element={<HistoryTest />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/exit" element={<Exit />} />
+        <Route path="/banreason" element={<BanReason />} />
       </Routes>
       <ScrollButton />
       <Footer />

@@ -690,10 +690,27 @@ export const quitApi = (id, pw) => {
   };
   axios(options).then(
     (response) => {
+      console.log(response)
       window.location.reload();
     },
     (error) => {
+      console.log(error)
+      console.log(id, pw)
       alert('error');
     }
   );
+};
+
+export const banListApi = () => {
+  return instance({
+    url: `user/blacklist-reason`,
+    method: 'GET',
+  });
+};
+
+export const resListApi = () => {
+  return instance({
+    url: `user/restricted-reason`,
+    method: 'GET',
+  });
 };
