@@ -10,8 +10,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   function (config) {
-    console.log(localStorage.getItem('access'))
-    const accessToken = localStorage.getItem('access');
+    const accessToken = localStorage.getItem('AccessToken');
     if (accessToken) {
       config.headers['Content-Type'] = 'application/json';
       config.headers['Authorization'] = accessToken;
