@@ -97,7 +97,7 @@ const LectureInfo = () => {
           onKeyPress={onKeypress}
         />
       </Styled.SearchWrapper>
-      {localStorage.getItem('access') ? (
+      {localStorage.getItem('AccessToken') ? (
         <Styled.Wrapper>
           <Styled.Content id="top">
             <Styled.TitleWrapper id="top">

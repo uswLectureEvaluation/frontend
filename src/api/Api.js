@@ -54,7 +54,7 @@ export const favoriteMajorApi = (setFavorite, majorType) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('access'),
+      Authorization: localStorage.getItem('AccessToken'),
     },
     data,
     url,
@@ -335,7 +335,7 @@ export const evaluateUpdateApi = (
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('access'),
+      Authorization: localStorage.getItem('AccessToken'),
     },
     data,
     url,
@@ -384,7 +384,7 @@ export const evaluateWriteApi = (
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('access'),
+      Authorization: localStorage.getItem('AccessToken'),
     },
     data,
     url,
@@ -408,7 +408,7 @@ export const deleteEvaluateApi = (id) => {
   const options = {
     method: 'DELETE',
     headers: {
-      Authorization: localStorage.getItem('access'),
+      Authorization: localStorage.getItem('AccessToken'),
     },
     url,
   };
@@ -435,7 +435,7 @@ export const evaluateReportApi = (evaluateIdx, content) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('access'),
+      Authorization: localStorage.getItem('AccessToken'),
     },
     data,
     url,
@@ -463,7 +463,7 @@ export const examReportApi = (examIdx, content) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('access'),
+      Authorization: localStorage.getItem('AccessToken'),
     },
     data,
     url,
@@ -505,7 +505,7 @@ export const examWriteApi = (
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('access'),
+      Authorization: localStorage.getItem('AccessToken'),
     },
     data,
     url,
@@ -544,7 +544,7 @@ export const examUpdateApi = (
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('access'),
+      Authorization: localStorage.getItem('AccessToken'),
     },
     data,
     url,
@@ -568,7 +568,7 @@ export const buyTestInfo = (selectId) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('access'),
+      Authorization: localStorage.getItem('AccessToken'),
     },
     url,
   };
@@ -591,7 +591,7 @@ export const deleteExamInfoApi = (id) => {
   const options = {
     method: 'DELETE',
     headers: {
-      Authorization: localStorage.getItem('access'),
+      Authorization: localStorage.getItem('AccessToken'),
     },
     url,
   };
@@ -657,7 +657,7 @@ export const resetPasswordApi = (prePassword, newPassword) => {
   const options = {
     method: 'post',
     headers: {
-      Authorization: localStorage.getItem('access'),
+      Authorization: localStorage.getItem('AccessToken'),
     },
     data,
     url,
@@ -683,7 +683,7 @@ export const quitApi = (id, pw) => {
   const options = {
     method: 'post',
     headers: {
-      Authorization: localStorage.getItem('access'),
+      Authorization: localStorage.getItem('AccessToken'),
     },
     data,
     url,
