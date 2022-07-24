@@ -15,7 +15,7 @@ const Nav = () => {
   const handleClick = () => setClick(!click);
 
   const logoutClick = () => {
-    localStorage.removeItem('access')
+    localStorage.removeItem('AccessToken')
     navigate('/login');
   };
 
@@ -34,12 +34,12 @@ const Nav = () => {
 
       <Styled.NavMenu onClick={handleClick} click={click}>
         <Styled.NavLinks onClick={() => navigate('notice')}>공지사항</Styled.NavLinks>
-        {localStorage.getItem('access') == null ? (
+        {localStorage.getItem('AccessToken') == null ? (
           <Styled.NavLinks onClick={() => navigate('login')}>로그인</Styled.NavLinks>
         ) : (
           <Styled.NavLinks onClick={logoutClick}>로그아웃</Styled.NavLinks>
         )} 
-        {localStorage.getItem('access') == null ? (
+        {localStorage.getItem('AccessToken') == null ? (
           <Styled.NavLinks id="signup" onClick={() => navigate('signup')}>
             회원가입
           </Styled.NavLinks>
