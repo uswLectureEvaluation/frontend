@@ -2,24 +2,22 @@ import axios from 'axios';
 
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
-
 const instance = axios.create({
   baseURL: `${PROXY_URL}`,
   timeout: 5000,
 });
 
 instance.interceptors.request.use(
+  async (config) => {
+    console.log(config);
 
-  function (config) {
-  console.log('ddd');
 
-    console.log(config)
-    
-    const { data } =  axios.post({
+    const { data } = await axios({
       url: `/user/client-refresh`, // 토큰 재요청
+      method: 'POST',
     });
-
     const { AccessToken: newAccessToken } = data;
+    await newAccessToken;
 
     if (newAccessToken) {
       config.headers['Content-Type'] = 'application/json';
