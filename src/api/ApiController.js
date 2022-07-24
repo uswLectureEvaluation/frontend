@@ -9,8 +9,6 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   async (config) => {
-    console.log(config.method);
-
 
     const { data } = await axios({
       url: `/user/client-refresh`, // 토큰 재요청
