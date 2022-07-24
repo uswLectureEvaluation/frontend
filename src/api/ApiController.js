@@ -22,15 +22,26 @@ instance.interceptors.request.use(
       config.headers['Authorization'] = newAccessToken;
     }
 
-    console.log(config.method)
-    if(config.method === 'post') {
-      alert('완료');
+    if((config.url.includes('evaluate-posts/?lectureId') || config.url.includes('exam-posts/?lectureId')) && config.method === 'post') {
+      alert('작성 완료');
       window.location.reload();
-    }else if(config.method === 'delete') {
-      alert('삭제완료');
+    } else if((config.url.includes('evaluate-posts/?evaluateIdx') || config.url.includes('exam-posts/?examIdx')) && config.method === 'put') {
+      alert('수정 완료');
       window.location.reload();
-    }else if(config.method === 'put') {
-      alert('수정완료');
+    } else if((config.url.includes('evaluate-posts/?evaluateIdx') || config.url.includes('exam-posts/?examIdx')) && config.method === 'delete') {
+      alert('삭제 완료');
+      window.location.reload();
+    } else if(config.url.includes('exam-posts/purchase/?lectureId') && config.method === 'POST') {
+      alert('구매 완료');
+      window.location.reload();
+    } else if(config.url.includes('user/report/evaluate') || config.url.includes('user/report/exam')) {
+      alert('신고 완료');
+      window.location.reload();
+    } else if(config.url.includes('user/reset-pw')) {
+      alert('변경 완료');
+      window.location.reload();
+    } else if(config.url.includes('user/quit')) {
+      alert('탈퇴 완료');
       window.location.reload();
     }
 

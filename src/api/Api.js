@@ -311,7 +311,7 @@ export const evaluateUpdateApi = (
 
   return instance({
     url: `/evaluate-posts/?evaluateIdx=${id}`,
-    method: 'POST',
+    method: 'PUT',
     data: data
   });
   

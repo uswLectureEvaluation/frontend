@@ -4,7 +4,8 @@ import { examReportApi } from "../../api/Api"
 const ReportExam = (props) => {
     const [content, setContent] = useState();
     const onReport = () => {
-        examReportApi(props.examIdx, content)
+        if (window.confirm('정말 신고하시겠어요? \n*허위 신고 시 제재가 가해질 수 있습니다!'))
+            examReportApi(props.examIdx, content)
     }
     return(
         <div>
