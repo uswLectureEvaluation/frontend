@@ -18,6 +18,7 @@ const Exit = () => {
     if (window.confirm('회원탈퇴 시 작성한 강의평가/시험정보는 전부 삭제됩니다. \n정말 탈퇴하시나요?')) {
         console.log(id, pw)
         quitApi(id, pw)
+        localStorage.removeItem('login')
       } else {
         alert('취소')
       }

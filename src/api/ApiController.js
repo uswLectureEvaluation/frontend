@@ -22,6 +22,7 @@ instance.interceptors.request.use(
       config.headers['Authorization'] = newAccessToken;
     }
 
+    console.log(config.method)
     if(config.method === 'post') {
       alert('완료');
       window.location.reload();
