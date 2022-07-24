@@ -44,27 +44,17 @@ export const searchFavoriteMajorApi = async () => {
 
 //전공 즐겨찾기 하기 api
 export const favoriteMajorApi = (setFavorite, majorType) => {
-  const url = `/user/favorite-major`;
+
   const data = {
     majorType,
   };
-  const options = {
+
+  return instance({
+    url: `/user/favorite-major`,
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('AccessToken'),
-    },
-    data,
-    url,
-  };
-  axios(options).then(
-    (response) => {
-      setFavorite(response.data);
-    },
-    (error) => {
-      alert(error.response);
-    }
-  );
+    data: data
+  });
+  
 };
 
 //즐겨찾기 삭제 api
@@ -297,7 +287,6 @@ export const examPostApi = (page) => {
 
 //강의평가수정 api 미완
 export const evaluateUpdateApi = (
-  setData,
   semester,
   satisfaction,
   learning,
@@ -308,7 +297,6 @@ export const evaluateUpdateApi = (
   content,
   id
 ) => {
-  const url = `/evaluate-posts/?evaluateIdx=${id}`;
 
   const data = {
     selectedSemester: semester,
@@ -320,26 +308,16 @@ export const evaluateUpdateApi = (
     homework,
     content,
   };
-  const options = {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('AccessToken'),
-    },
-    data,
-    url,
-  };
-  axios(options).then(
-    (response) => {
-      alert('수정완료');
-      setData(response.data);
-      window.location.reload();
-    },
-    (error) => {
-      alert('error');
-    }
-  );
+
+  return instance({
+    url: `/evaluate-posts/?evaluateIdx=${id}`,
+    method: 'POST',
+    data: data
+  });
+  
+ 
 };
+
 
 //강의평가작성 api
 export const evaluateWriteApi = (
@@ -355,8 +333,6 @@ export const evaluateWriteApi = (
   homework,
   content
 ) => {
-  const url = `evaluate-posts/?lectureId=${selectId}`;
-
   const data = {
     lectureName,
     professor,
@@ -369,103 +345,53 @@ export const evaluateWriteApi = (
     homework,
     content,
   };
-  const options = {
+  return instance({
+    url: `evaluate-posts/?lectureId=${selectId}`,
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('AccessToken'),
-    },
-    data,
-    url,
-  };
-  axios(options).then(
-    (response) => {
-      alert('작성완료');
-      window.location.reload();
-    },
-    (error) => {
-      alert('error');
-      console.log(error);
-    }
-  );
+    data: data
+  })
+  
 };
 
 // 강의 평가 삭제 api
 export const deleteEvaluateApi = (id) => {
-  const url = `/evaluate-posts/?evaluateIdx=${id}`;
 
-  const options = {
+  return instance({
+    url: `/evaluate-posts/?evaluateIdx=${id}`,
     method: 'DELETE',
-    headers: {
-      Authorization: localStorage.getItem('AccessToken'),
-    },
-    url,
-  };
-  axios(options).then(
-    (response) => {
-      alert('삭제완료');
-      window.location.reload();
-    },
-    (error) => {
-      alert('error');
-    }
-  );
+  });
 };
 
 //강의평가 신고 api
 export const evaluateReportApi = (evaluateIdx, content) => {
-  const url = `user/report/evaluate`;
 
   const data = {
     evaluateIdx,
     content,
   };
-  const options = {
+
+  return instance({
+    url: `/user/report/evaluate`,
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('AccessToken'),
-    },
-    data,
-    url,
-  };
-  axios(options).then(
-    (response) => {
-      alert('신고완료');
-      window.location.reload();
-    },
-    (error) => {
-      alert('error');
-    }
-  );
+    data: data
+  });
+  
 };
 
 //시험정보 신고 api
 export const examReportApi = (examIdx, content) => {
-  const url = `/user/report/exam`;
 
   const data = {
     examIdx,
     content,
   };
-  const options = {
+
+  return instance({
+    url: `/user/report/exam`,
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('AccessToken'),
-    },
-    data,
-    url,
-  };
-  axios(options).then(
-    (response) => {
-      alert('신고완료');
-      window.location.reload();
-    },
-    (error) => {
-      alert('error');
-    }
-  );
+    data: data
+  });
+  
 };
 
 //시험정보쓰기 api
@@ -479,7 +405,7 @@ export const examWriteApi = (
   examDifficulty,
   content,
 ) => {
-  const url = `/exam-posts/?lectureId=${selectId}`;
+
 
   const data = {
     lectureName,
@@ -490,24 +416,13 @@ export const examWriteApi = (
     examDifficulty,
     content,
   };
-  const options = {
+
+  return instance({
+    url: `/exam-posts/?lectureId=${selectId}`,
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('AccessToken'),
-    },
-    data,
-    url,
-  };
-  axios(options).then(
-    (response) => {
-      alert('작성완료');
-      window.location.reload();
-    },
-    (error) => {
-      alert('error');
-    }
-  );
+    data: data
+  });
+  
 };
 
 //시험정보수정 api 미완
@@ -520,8 +435,6 @@ export const examUpdateApi = (
   content,
   id
 ) => {
-  const url = `/exam-posts/?examIdx=${id}`;
-
   const data = {
     selectedSemester: semester,
     examInfo,
@@ -529,70 +442,30 @@ export const examUpdateApi = (
     examDifficulty,
     content,
   };
-  const options = {
+
+  return instance({
+    url: `/exam-posts/?examIdx=${id}`,
     method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('AccessToken'),
-    },
-    data,
-    url,
-  };
-  axios(options).then(
-    (response) => {
-      alert('수정완료');
-      setData(response.data);
-      window.location.reload();
-    },
-    (error) => {
-      alert('error');
-    }
-  );
+    data: data
+  });
 };
 
 //시험정보 구매
 export const buyTestInfo = (selectId) => {
-  const url = `/exam-posts/purchase/?lectureId=${selectId}`;
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('AccessToken'),
-    },
-    url,
-  };
-  axios(options).then(
-    (response) => {
-      alert('구매완료');
-      window.location.reload();
-    },
-    (error) => {
-      alert('포인트부족');
-      window.location.reload();
-    }
-  );
+
+  return instance({
+    url: `/exam-posts/purchase/?lectureId=${selectId}`,
+    method: 'POST'
+  });
 };
 
 // 시험정보 삭제
 export const deleteExamInfoApi = (id) => {
-  const url = `/exam-posts/?examIdx=${id}`;
 
-  const options = {
-    method: 'DELETE',
-    headers: {
-      Authorization: localStorage.getItem('AccessToken'),
-    },
-    url,
-  };
-  axios(options).then(
-    (response) => {
-      alert('삭제완료');
-      window.location.reload();
-    },
-    (error) => {
-      alert('error');
-    }
-  );
+  return instance({
+    url: `/exam-posts/?examIdx=${id}`,
+    method: 'DELETE'
+  });
 };
 
 // 통합검색결과Api
@@ -638,56 +511,32 @@ export const historyTestInfo = () => {
 
 //SUWIKI 비밀번호 변경
 export const resetPasswordApi = (prePassword, newPassword) => {
-  const url = `/user/reset-pw`;
   const data = {
     prePassword,
     newPassword,
   };
-  const options = {
-    method: 'post',
-    headers: {
-      Authorization: localStorage.getItem('AccessToken'),
-    },
-    data,
-    url,
-  };
-  axios(options).then(
-    (response) => {
-      alert('변경완료');
-      window.location.reload();
-    },
-    (error) => {
-      alert('error');
-    }
-  );
+
+  return instance({
+    url: `/user/reset-pw`,
+    method: 'POST',
+    data: data
+  });
+  
 };
 
 //SUWIKI 회원 탈퇴
 export const quitApi = (id, pw) => {
-  const url = `/user/quit`;
+
   const data = {
     loginId: id,
     password: pw,
   };
-  const options = {
-    method: 'post',
-    headers: {
-      Authorization: localStorage.getItem('AccessToken'),
-    },
-    data,
-    url,
-  };
-  axios(options).then(
-    (response) => {
-      console.log(response)
-      window.location.reload();
-    },
-    (error) => {
-      console.log(error)
-      console.log(id, pw)
-      alert('error');
-    }
-  );
+
+  return instance({
+    url: `/user/quit`,
+    method: 'POST',
+    data: data
+  });
 };
 
 export const banListApi = () => {

@@ -9,8 +9,6 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   async (config) => {
-    console.log(config);
-
 
     const { data } = await axios({
       url: `/user/client-refresh`, // 토큰 재요청
@@ -22,6 +20,17 @@ instance.interceptors.request.use(
     if (newAccessToken) {
       config.headers['Content-Type'] = 'application/json';
       config.headers['Authorization'] = newAccessToken;
+    }
+
+    if(config.method === 'post') {
+      alert('완료');
+      window.location.reload();
+    }else if(config.method === 'delete') {
+      alert('삭제완료');
+      window.location.reload();
+    }else if(config.method === 'put') {
+      alert('수정완료');
+      window.location.reload();
     }
 
     return config;

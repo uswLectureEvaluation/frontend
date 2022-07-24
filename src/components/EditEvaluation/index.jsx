@@ -16,9 +16,7 @@ const EditEvaluation = (props) => {
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
-  const [, setData] = useState({
-    data: [],
-  });
+
   const [honey, HoneySlider] = useSlider(0.5, 5, props.honey);
   const [learning, LearingSlider] = useSlider(0.5, 5, props.learning);
   const [satisfaction, SatisfactionSlider] = useSlider(0.5, 5, props.satisfaction);
@@ -31,7 +29,6 @@ const EditEvaluation = (props) => {
       return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
 
     evaluateUpdateApi(
-      setData,
       semester,
       Number(satisfaction),
       Number(learning),
