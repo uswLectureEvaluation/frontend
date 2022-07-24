@@ -61,7 +61,8 @@ export const Option = styled.div`
   border-radius: 10px;
   background-color: rgb(239, 239, 239);
   padding: 5px 10px;
-  font-size: 0.3rem;
+  font-size: 12px;
+  font-weight: 500;
 `;
 
 export const RateWrapper = styled.span`
