@@ -210,15 +210,6 @@ const WriteEvaluation = (props) => {
       />
       <Styled.Wrapper id="button">
         <Styled.EditButton
-          disabled={
-            semester === '' ||
-            semester === '선택' ||
-            team === '' ||
-            homework === '' ||
-            difficulty === '' ||
-            content.length < 30 ||
-            content.length > 1000
-          }
           onClick={onEvaluate}
         >
           작성하기 (+20P)
