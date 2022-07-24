@@ -27,14 +27,6 @@ export const AppTitle = styled.div`
   padding-bottom: 1rem;
 `;
 
-export const Targetelement = styled.div`
-  height: 150px;
-  display: flex;
-  align-items: center;
-`;
-
-
-
 export const Title = styled.div`
   display: flex;
   font-size: 1rem;
@@ -69,28 +61,6 @@ export const NoticeWrap = styled.div`
  }
 `;
 
-export const Button = styled.button`
-  margin: 0;
-  padding: 0 1rem;
-  padding-top: 1rem;
-  margin: 8px 0;
-  border: none;
-  padding-bottom: 1rem;
-  background: #346cfd;
-  color: white;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border-radius: 12px;
-  font-family: "Pretendard-Regular";
-  cursor: pointer;
-  user-select: none;
-  transition: 0.3s all;
-
-  @media only screen and (max-width: 480px) {
-    margin-top: 5rem;
-  }
-`;
-
 export const Professor = styled.div`
   display: flex;
   color: #222;
@@ -102,4 +72,23 @@ export const Professor = styled.div`
   line-height: normal;
   letter-spacing: normal;
   margin-left: 10px;
+  @media screen and (max-width: 480px) {
+    margin-left: 0px;
+    margin-bottom: 10px;
+  }
 `;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
+`
+
+export const MobileTitleWrapper = styled.div`
+  display: none;
+  @media screen and (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+  }
+`

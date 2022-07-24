@@ -40,12 +40,18 @@ export const NoticeItem = (props) => {
   return (
     <Styled.NoticeWrap>
       <Styled.Option>{props.createDate}</Styled.Option>
-      <div style={{display:"flex"}}>
+      <Styled.TitleWrapper>
         <Styled.Title>{props.title}</Styled.Title>
         <Styled.Professor>
           {props.major} | {props.professor}
         </Styled.Professor>
-      </div>
+      </Styled.TitleWrapper>
+      <Styled.MobileTitleWrapper>
+        <Styled.Professor>
+          {props.major} | {props.professor}
+        </Styled.Professor>
+        <Styled.Title>{props.title}</Styled.Title>
+      </Styled.MobileTitleWrapper>
     </Styled.NoticeWrap>
   );
 };
