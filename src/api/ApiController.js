@@ -9,11 +9,21 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(
+
   function (config) {
-    const accessToken = localStorage.getItem('AccessToken');
-    if (accessToken) {
+  console.log('ddd');
+
+    console.log(config)
+    
+    const { data } =  axios.post({
+      url: `/user/client-refresh`, // 토큰 재요청
+    });
+
+    const { AccessToken: newAccessToken } = data;
+
+    if (newAccessToken) {
       config.headers['Content-Type'] = 'application/json';
-      config.headers['Authorization'] = accessToken;
+      config.headers['Authorization'] = newAccessToken;
     }
 
     return config;
@@ -31,17 +41,13 @@ instance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    if (error.response.status === 401) {
+    if (error.response.status) {
       const { data } = await axios({
         url: `/user/client-refresh`, // 토큰 재요청
         method: 'POST',
       });
       const { AccessToken: newAccessToken } = data;
-      await localStorage.setItem('AccessToken', newAccessToken, {
-        path: '/',
-        secure: true,
-        sameSite: false,
-      });
+      await newAccessToken;
 
       originalRequest.headers['Authorization'] = newAccessToken;
 
@@ -51,7 +57,6 @@ instance.interceptors.response.use(
 
       return retryOriginalRequest;
     }
-
     return Promise.reject(error);
   }
 );

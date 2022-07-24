@@ -67,7 +67,7 @@ const SearchEvaluationList = (props) => {
     searchEvaluationApi(props.selectId).then((data) => setData(data));
   }, [props.selectId]);
 
-  return db.written === true ? (
+  return db.written === false ? (
     <Styled.Wrapper>
       {db.data.map((v, i) => (
         <Subject

@@ -4,8 +4,6 @@ import instance from './ApiController';
 
 const cookies = new Cookies();
 
-
-
 export const setCookie = (name, value, option) => {
   return cookies.set(name, value, { ...option });
 };
@@ -207,20 +205,11 @@ export const loginApi = (setData, setLoading, id, pw) => {
     (r) => {
       console.log(r)
 
-      //const accessToken  = r.data.AccessToken;
+      localStorage.setItem('login' , true);
 
-      localStorage.setItem('AccessToken', r.data.AccessToken)
-
-    // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
-    //instance.defaults.headers.common["Authorization"] = accessToken;
-		 // axios.defaults.headers.common['Authorization'] = `${accessToken}`;
       setData(r.data);
       setLoading(true);
-      // setCookie('AccessToken', r.data['AccessToken'], {
-      //   path: '/',
-      //   secure: true,
-      //   sameSite: false,
-      // });
+ 
     },
     (error) => {
       console.error(error);
