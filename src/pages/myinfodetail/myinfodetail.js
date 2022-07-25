@@ -10,7 +10,7 @@ const Myinfodetail = () => {
     <Styled.FlexContainer>
       <Styled.FlexBox>
         <Styled.TextLink
-          id={evaluation === true ? 'selected' : 'none'}
+          id={evaluation ? 'selected' : 'none'}
           onClick={() => {
             setEvaluation(true);
           }}
@@ -18,15 +18,14 @@ const Myinfodetail = () => {
           강의평가
         </Styled.TextLink>
         <Styled.TextLink
-          id={evaluation === true ? 'none' : 'selected'}
+          id={evaluation ? 'none' : 'selected'}
           onClick={() => {
             setEvaluation(false);
           }}
         >
           시험정보
         </Styled.TextLink>
-        <Styled.MarginBottom />
-        {evaluation === true ? <Myevaluation /> : <Testinformation />}
+        {evaluation ? <Myevaluation /> : <Testinformation />}
       </Styled.FlexBox>
     </Styled.FlexContainer>
   );

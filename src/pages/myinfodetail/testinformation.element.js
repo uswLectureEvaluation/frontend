@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ModalOpen = styled.span`
   font-size: 12px;
-  color: #222;
+  color: #222222;
   text-decoration: underline;
   margin-left: 11px;
   &:hover {
@@ -13,12 +13,19 @@ export const ModalOpen = styled.span`
 export const Wrapper = styled.div`
   margin: 0px 20px;
 `;
+
+export const NoEvaluation = styled.div`
+  display: flex;
+  height: 50vh;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
   float: left;
   align-items: center;
-  font-family: Pretendard;
 `;
 
 export const Title = styled.span`
@@ -89,7 +96,6 @@ export const MobileMarginTop = styled.div`
     display: flex;
     flex-direction: column;
     padding: 14px 24px 0px 24px;
-    font-family: Pretendard;
   }
 `;
 
@@ -105,7 +111,6 @@ export const DataColor = styled.div`
 
 export const StarFlex = styled.div`
   display: flex;
-  font-family: Pretendard;
   align-items: center;
   padding: 2px 11px;
   font-size: 13px;
@@ -147,13 +152,11 @@ export const EvaluationDetail = styled.div`
   font-size: 16px;
   font-size: 1rem;
   padding-top: 0.7rem;
-  font-family: Pretendard;
 `;
 export const PaddingRight = styled.span`
   padding-right: 0.7rem;
 `;
 export const EditButton = styled.span`
-  font-family: Pretendard;
   font-size: 12px;
   font-weight: 500;
   text-align: center;
@@ -165,7 +168,6 @@ export const EditButton = styled.span`
   }
 `;
 export const DeleteButton = styled.span`
-  font-family: Pretendard;
   font-size: 12px;
   font-weight: 500;
   text-align: center;

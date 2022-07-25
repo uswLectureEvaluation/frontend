@@ -97,7 +97,7 @@ const Myevaluation = () => {
 
   return (
     <Styled.Wrapper>
-      {list &&
+      {list === [] ? (
         list.map((v, i) => {
           return (
             <Subject
@@ -118,7 +118,10 @@ const Myevaluation = () => {
               id={v.id}
             />
           );
-        })}
+        })
+      ) : (
+        <Styled.NoEvaluation>아직 평가한 강의가 없어요.</Styled.NoEvaluation>
+      )}
       {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
       <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
         옵저버 Element

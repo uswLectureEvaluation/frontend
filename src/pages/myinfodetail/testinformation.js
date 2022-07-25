@@ -46,22 +46,27 @@ const Testinformation = () => {
 
   return (
     <Styled.Wrapper>
-      {list &&
-        list.map((v, i) => (
-          <Subject
-            key={Math.random()}
-            content={v.content}
-            examDifficulty={v.examDifficulty}
-            examInfo={v.examInfo}
-            examType={v.examType}
-            majorType={v.majorType}
-            id={v.id}
-            lectureName={v.lectureName}
-            professor={v.professor}
-            selectedSemester={v.selectedSemester}
-            semesterList={v.semesterList}
-          />
-        ))}
+      {list === [] ? (
+        list.map((v) => {
+          return (
+            <Subject
+              key={Math.random()}
+              content={v.content}
+              examDifficulty={v.examDifficulty}
+              examInfo={v.examInfo}
+              examType={v.examType}
+              majorType={v.majorType}
+              id={v.id}
+              lectureName={v.lectureName}
+              professor={v.professor}
+              selectedSemester={v.selectedSemester}
+              semesterList={v.semesterList}
+            />
+          );
+        })
+      ) : (
+        <Styled.NoEvaluation>아직 구매한 시험 정보가 없어요.</Styled.NoEvaluation>
+      )}
 
       {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
       <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
