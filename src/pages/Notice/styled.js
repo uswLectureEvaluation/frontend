@@ -14,11 +14,7 @@ export const AppContainer = styled.div`
     width: 90%;
     padding-bottom: 25rem;
     margin: 0 auto;
-
-
- }
-
-
+  }
 `;
 
 export const AppTitle = styled.div`
@@ -29,7 +25,6 @@ export const AppTitle = styled.div`
   padding-top: 5rem;
   padding-bottom: 1rem;
 `;
-
 
 export const Title = styled.div`
   display: flex;
@@ -55,4 +50,11 @@ export const NoticeWrap = styled.div`
   &:hover {
     cursor: pointer;
   }
+`;
+
+export const NoNotice = styled.div`
+  display: flex;
+  height: 50vh;
+  align-items: center;
+  justify-content: center;
 `;
