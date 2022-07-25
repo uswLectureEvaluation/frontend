@@ -19,6 +19,13 @@ axios.defaults.withCredentials = true;
 //lectureLearningAvg 배울게 많은 강의
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
+export const versionApi = async() => {
+  return instance({
+    url: `/suwiki/version`,
+    method: 'GET',
+  })
+}
+
 export const mainApi = async (lecture, page, majorType) => {
   return instance({
     url: `/lecture/all/?option=${lecture}&page=${page}&majorType=${majorType}`,

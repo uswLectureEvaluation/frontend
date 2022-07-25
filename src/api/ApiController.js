@@ -9,18 +9,22 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   async (config) => {
-
-    const { data } = await axios({
-      url: `/user/client-refresh`, // 토큰 재요청
-      method: 'POST',
-    });
-    const { AccessToken: newAccessToken } = data;
-    await newAccessToken;
-
-    if (newAccessToken) {
-      config.headers['Content-Type'] = 'application/json';
-      config.headers['Authorization'] = newAccessToken;
+    
+    if(!(config.url.includes('lecture/all/?option') || config.url.includes('suwiki/version') || config.url.includes('suwiki/majorType')
+    || config.url.includes('lecture/search/?searchValue') || config.url.includes('notice'))) {
+      const { data } = await axios({
+        url: `/user/client-refresh`, // 토큰 재요청
+        method: 'POST',
+      });
+      const { AccessToken: newAccessToken } = data;
+      await newAccessToken;
+  
+      if (newAccessToken) {
+        config.headers['Content-Type'] = 'application/json';
+        config.headers['Authorization'] = newAccessToken;
+      }  
     }
+    config.headers['Content-Type'] = 'application/json';
 
     if((config.url.includes('evaluate-posts/?lectureId') || config.url.includes('exam-posts/?lectureId')) && config.method === 'post') {
       alert('작성 완료');
@@ -31,7 +35,7 @@ instance.interceptors.request.use(
     } else if((config.url.includes('evaluate-posts/?evaluateIdx') || config.url.includes('exam-posts/?examIdx')) && config.method === 'delete') {
       alert('삭제 완료');
       window.location.reload();
-    } else if(config.url.includes('exam-posts/purchase/?lectureId') && config.method === 'POST') {
+    } else if(config.url.includes('exam-posts/purchase/?lectureId') && config.method === 'post') {
       alert('구매 완료');
       window.location.reload();
     } else if(config.url.includes('user/report/evaluate') || config.url.includes('user/report/exam')) {
