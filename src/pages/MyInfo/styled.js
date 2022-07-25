@@ -41,7 +41,11 @@ export const Content = styled.div`
 export const Title = styled.div`
   font-weight: bold;
   font-size: 1.2rem;
-  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+
+  &#top {
+    padding-bottom: 2rem;
+  }
 `;
 
 export const TitleFlex = styled.div`
@@ -60,10 +64,6 @@ export const OptionTitle = styled.div`
   &#text {
     width: 100%;
     margin-bottom: 10px;
-  }
-
-  &#point {
-    width: 110px;
   }
 
   &#points {
@@ -88,9 +88,13 @@ export const OptionPoint = styled.div`
 
 export const FlexContainer = styled.div`
   display: flex;
-  padding-bottom: 0.5rem;
   color: #a3a3a3;
-  
+  padding-bottom: 0.5rem;
+
+  &#use {
+    padding: 6px 0;
+  }
+
   &#col {
     flex-direction: column;
   }
@@ -101,6 +105,12 @@ export const FlexContainer = styled.div`
       cursor: pointer;
     }
   }
+`;
+
+export const FlexPointContainer = styled.div`
+  display: flex;
+  color: #515151;
+  padding-bottom: 0.5rem;
 `;
 
 export const Button = styled.button`
@@ -121,10 +131,9 @@ export const Button = styled.button`
   }
 
   @media only screen and (max-width: 480px) {
-  margin: 10px 0;
-  width: 100%;
-  height: 48px;
-  
+    margin: 10px 0;
+    width: 100%;
+    height: 48px;
   }
 `;
 
@@ -159,5 +168,4 @@ export const Color = styled.span`
     font-weight: normal;
     color: #6200ee;
   }
-
 `;
