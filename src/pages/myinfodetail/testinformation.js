@@ -60,7 +60,7 @@ const Testinformation = (props) => {
               professor={v.professor}
               selectedSemester={v.selectedSemester}
               semesterList={v.semesterList}
-              point={props.point}
+              point={props}
             />
           );
         })
@@ -83,13 +83,13 @@ export const Subject = (props) => {
   if (title.length >= 14) {
     title = props.lectureName.substr(0, 14) + '...';
   }
-
   const onDelete = () => {
     if (window.confirm('강의평가를 삭제하시겠습니까?') === true) {
-      if (props.point < 30) return alert('유저 포인트가 부족합니다');
-      deleteExamInfoApi(props.id);
-    } else {
-      return;
+      if (props.point.props < 30) {
+        alert('유저 포인트가 부족합니다');
+      } else {
+        deleteExamInfoApi(props.id);
+      }
     }
   };
 
