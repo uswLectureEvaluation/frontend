@@ -139,11 +139,13 @@ export const Subject = (props) => {
     title = props.lectureName.substr(0, 14) + '...';
   }
   const onDelete = () => {
+    console.log(props.point)
     if (window.confirm('강의평가를 삭제하시겠습니까?') === true) {
-      if (props.point < 30) return alert('유저 포인트가 부족합니다');
-      deleteEvaluateApi(props.id);
-    } else {
-      return;
+      if (props.point < 30) {
+        alert('유저 포인트가 부족합니다');
+      }else{
+        deleteEvaluateApi(props.id);
+      }
     }
   };
 

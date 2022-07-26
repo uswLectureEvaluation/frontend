@@ -64,6 +64,7 @@ const MyInfo = () => {
     myInfoApi().then((data) => setData(data));
   }, [win]);
 
+
   return win ? (
     <Styled.Container>
       <Styled.InfoWrapper>
@@ -82,7 +83,7 @@ const MyInfo = () => {
             <Styled.FlexContainer>{db.email}</Styled.FlexContainer>
           </Styled.FlexContainer>
         </Styled.Content>
-        <Styled.Button onClick={() => navigate('/myinfodetail')} background="#346cfd">
+        <Styled.Button onClick={() => navigate('/myinfodetail', { state: { props: db.point} } )} background="#346cfd">
           내가 쓴 글
         </Styled.Button>
       </Styled.Wrapper>
@@ -194,7 +195,7 @@ const MyInfo = () => {
       <Styled.InfoWrapper>
         <Styled.InfoTitle>내 정보</Styled.InfoTitle>
       </Styled.InfoWrapper>
-      <Styled.Button onClick={() => navigate('/myinfodetail', {state: db.point})} background="#346cfd">
+      <Styled.Button onClick={() => navigate("/myinfodetail", { state: { props: db.point} } ) } background="#346cfd">
         내가 쓴 글
       </Styled.Button>
       <Styled.Wrapper id="top">
