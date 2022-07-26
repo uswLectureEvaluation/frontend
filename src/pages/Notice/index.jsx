@@ -57,7 +57,7 @@ const Notice = () => {
     <Styled.AppContainer>
       <Styled.AppTitle>공지사항</Styled.AppTitle>
 
-      {list !== [] ? (
+      {list.length !== 0 ? (
         list.map((i) => {
           return <NoticeItem id={i.id} title={i.title} modifiedDate={i.modifiedDate} key={i.id} />;
         })
