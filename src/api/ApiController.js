@@ -48,7 +48,7 @@ instance.interceptors.request.use(
       alert('탈퇴 완료');
       window.location.reload();
     }
-
+    
     return config;
   },
   function (error) {
@@ -67,7 +67,6 @@ instance.interceptors.response.use(
       localStorage.removeItem('login');
       alert("로그인 시간이 만료되었습니다\n다시 로그인 해주세요");
    }
-
     if (error.response.status===401) {
       const { data } = await axios({
         url: `/user/client-refresh`, // 토큰 재요청

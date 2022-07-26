@@ -5,7 +5,7 @@ import EditTestInfo from './edittestinfo';
 import Modal from 'react-modal';
 import ModalStyle from '../../components/ModalStyle';
 
-const Testinformation = () => {
+const Testinformation = (props) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
@@ -60,6 +60,7 @@ const Testinformation = () => {
               professor={v.professor}
               selectedSemester={v.selectedSemester}
               semesterList={v.semesterList}
+              point={props.point}
             />
           );
         })
@@ -85,6 +86,7 @@ export const Subject = (props) => {
 
   const onDelete = () => {
     if (window.confirm('강의평가를 삭제하시겠습니까?') === true) {
+      if (props.point < 30) return alert('유저 포인트가 부족합니다');
       deleteExamInfoApi(props.id);
     } else {
       return;

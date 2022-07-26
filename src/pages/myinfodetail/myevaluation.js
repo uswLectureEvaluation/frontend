@@ -57,7 +57,7 @@ export const DetailModal = (props) => {
   );
 };
 
-const Myevaluation = () => {
+const Myevaluation = (props) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
@@ -115,6 +115,7 @@ const Myevaluation = () => {
               homework={v.homework}
               semesterList={v.semesterList}
               id={v.id}
+              point={props.point}
             />
           );
         })
@@ -139,6 +140,7 @@ export const Subject = (props) => {
   }
   const onDelete = () => {
     if (window.confirm('강의평가를 삭제하시겠습니까?') === true) {
+      if (props.point < 30) return alert('유저 포인트가 부족합니다');
       deleteEvaluateApi(props.id);
     } else {
       return;

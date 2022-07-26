@@ -194,7 +194,7 @@ const MyInfo = () => {
       <Styled.InfoWrapper>
         <Styled.InfoTitle>내 정보</Styled.InfoTitle>
       </Styled.InfoWrapper>
-      <Styled.Button onClick={() => navigate('/myinfodetail')} background="#346cfd">
+      <Styled.Button onClick={() => navigate('/myinfodetail', {state: db.point})} background="#346cfd">
         내가 쓴 글
       </Styled.Button>
       <Styled.Wrapper id="top">
