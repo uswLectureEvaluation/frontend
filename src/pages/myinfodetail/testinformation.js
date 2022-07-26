@@ -45,7 +45,7 @@ const Testinformation = () => {
 
   return (
     <Styled.Wrapper>
-      {list === [] ? (
+      {list !== [] ? (
         list.map((v) => {
           return (
             <Subject

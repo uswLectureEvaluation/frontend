@@ -96,7 +96,7 @@ const Myevaluation = () => {
 
   return (
     <Styled.Wrapper>
-      {list === [] ? (
+      {list !== [] ? (
         list.map((v, i) => {
           return (
             <Subject
