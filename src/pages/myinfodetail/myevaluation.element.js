@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
 
 export const NoEvaluation = styled.div`
   display: flex;
-  height: 50vh;
+  height: 80vh;
   align-items: center;
   justify-content: center;
 `;
