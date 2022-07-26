@@ -5,8 +5,6 @@ import { loginApi } from '../../api/Api';
 import { FormControlLabel, Checkbox } from '@material-ui/core';
 
 const Login = () => {
-
-
   const navigate = useNavigate();
   const [checked, setChecked] = useState(false);
   const [username, setUserName] = useState();
@@ -15,7 +13,6 @@ const Login = () => {
   const [db, setData] = useState({
     data: [],
   });
-
 
   const [loading, setLoading] = useState(false);
   // 체크박스 이벤트
@@ -76,7 +73,7 @@ const Login = () => {
         />
         <Styled.SearchWrapper>
           <FormControlLabel
-            control={<Checkbox checked={checked} onChange={onChangeCheckBox} color="#346cfd" />}
+            control={<Checkbox checked={checked} onChange={onChangeCheckBox} />}
             label="로그인 유지"
           />
           <div>
