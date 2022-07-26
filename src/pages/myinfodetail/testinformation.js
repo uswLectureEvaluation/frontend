@@ -13,12 +13,11 @@ const Testinformation = () => {
   const getDog = useCallback(async () => {
     setLoad(true); //로딩 시작
     const res = await examPostApi(page);
-    console.log(res);
     if (res.data) {
       setList((prev) => [...prev, ...res.data]);
       preventRef.current = true;
     } else {
-      console.log(res); //에러
+      console.error(res); //에러
     }
     setLoad(false); //로딩 종료
   }, [page]);

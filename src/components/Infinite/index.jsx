@@ -24,7 +24,7 @@ const Infinite = ({ lecture, setCount, checkClass, option, wow }) => {
         setList((prev) => [...prev, ...res.data]);
         preventRef.current = true;
       } else {
-        console.log(res); //에러
+        console.error(res); //에러
       }
     } else {
       const res =
@@ -37,7 +37,7 @@ const Infinite = ({ lecture, setCount, checkClass, option, wow }) => {
         setList((prev) => [...prev, ...res.data]);
         preventRef.current = true;
       } else {
-        console.log(res); //에러
+        console.error(res); //에러
       }
     }
     setLoad(false); //로딩 종료
@@ -145,29 +145,29 @@ const Infinite = ({ lecture, setCount, checkClass, option, wow }) => {
     </>
   ) : (
     <>
-    <Styled.FlexWrap>
-      <Styled.FullWrapSub>
-        {list.map((row, i) => (
-          <Subject
-            key={Math.random()}
-            id={row.id}
-            lectureName={row.lectureName}
-            professor={row.professor}
-            lectureType={row.lectureType}
-            star={row.lectureTotalAvg}
-            lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-            lectureHoneyAvg={row.lectureHoneyAvg}
-            lectureLearningAvg={row.lectureLearningAvg}
-            majorType={row.majorType}
-          />
-        ))}
-      </Styled.FullWrapSub>
-    </Styled.FlexWrap>
-     {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-     <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
-       옵저버 Element
-     </div>
-     </>
+      <Styled.FlexWrap>
+        <Styled.FullWrapSub>
+          {list.map((row, i) => (
+            <Subject
+              key={Math.random()}
+              id={row.id}
+              lectureName={row.lectureName}
+              professor={row.professor}
+              lectureType={row.lectureType}
+              star={row.lectureTotalAvg}
+              lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+              lectureHoneyAvg={row.lectureHoneyAvg}
+              lectureLearningAvg={row.lectureLearningAvg}
+              majorType={row.majorType}
+            />
+          ))}
+        </Styled.FullWrapSub>
+      </Styled.FlexWrap>
+      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+      <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
+        옵저버 Element
+      </div>
+    </>
   );
 };
 

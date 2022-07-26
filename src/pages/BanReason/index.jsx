@@ -11,7 +11,6 @@ const BanReason = () => {
     banListApi().then((data) => setData(data));
     resListApi().then((data) => setWow(data));
   }, []);
-  console.log(db, wow);
 
   return (
     <Styled.AppContainer>
@@ -30,23 +29,22 @@ const BanReason = () => {
             />
           );
         })}
-      
-        <Styled.AppTitle>이용제한 내역조회</Styled.AppTitle>
 
-        {wow &&
+      <Styled.AppTitle>이용제한 내역조회</Styled.AppTitle>
+
+      {wow &&
         wow.map((i) => {
-            return (
+          return (
             <Reason
-            key={Math.random()}
-            id={i.id}
-            title={i.restrictedReason}
-            judge={i.judgement}
-            cdate={i.createdAt}
-            edate={i.restrictingDate}
-          />
-            );
-         
-    })}
+              key={Math.random()}
+              id={i.id}
+              title={i.restrictedReason}
+              judge={i.judgement}
+              cdate={i.createdAt}
+              edate={i.restrictingDate}
+            />
+          );
+        })}
     </Styled.AppContainer>
   );
 };
