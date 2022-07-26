@@ -25,7 +25,6 @@ instance.interceptors.request.use(
       }  
     }
     config.headers['Content-Type'] = 'application/json';
-
     if((config.url.includes('evaluate-posts/?lectureId') || config.url.includes('exam-posts/?lectureId')) && config.method === 'post') {
       alert('작성 완료');
       window.location.reload();
