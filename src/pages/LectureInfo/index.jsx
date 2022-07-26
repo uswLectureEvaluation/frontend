@@ -61,17 +61,15 @@ const LectureInfo = () => {
       }
     }
   };
-  const [db, lectureData] = useState({
-    data: [],
-  });
+  const [db, setDB] = useState({});
 
   useEffect(() => {
-    searchLectureApi(selectId).then((data) => lectureData(data));
-  }, [selectId]);
+    searchLectureApi(selectId).then((data) => setDB(data));
+  }, [selectId, db]);
 
-  const teamSet = parseFloat(db.data.lectureTeamAvg).toFixed(0);
-  const homeworkSet = parseFloat(db.data.lectureHomeworkAvg).toFixed(0);
-  const difficultySet = parseFloat(db.data.lectureDifficultyAvg).toFixed(0);
+  const teamSet = parseFloat(db.lectureTeamAvg).toFixed(0);
+  const homeworkSet = parseFloat(db.lectureHomeworkAvg).toFixed(0);
+  const difficultySet = parseFloat(db.lectureDifficultyAvg).toFixed(0);
   const team = {
     0: <Styled.DataColor>없음</Styled.DataColor>,
     1: <Styled.DataColor id="purple">있음</Styled.DataColor>,
@@ -103,24 +101,25 @@ const LectureInfo = () => {
             <Styled.TitleWrapper id="top">
               <div>
                 <Styled.SubWrapper>
-                  <Styled.Title>{db.data.lectureName}</Styled.Title>
+                  <Styled.Title>{db.lectureName}</Styled.Title>
                 </Styled.SubWrapper>
                 <Styled.SubWrapper>
                   <Styled.Professor>
-                    {db.data.majorType} | {db.data.professor}
+                    {db.majorType} | {db.professor}
                   </Styled.Professor>
                 </Styled.SubWrapper>
                 <Styled.TitleWrapper>
-                  {db.data.semesterList && db.data.semesterList.split(", ").map((v)=>{
-                    return (
-                      <Styled.Option key={v} id="semester">
-                        {v}
-                      </Styled.Option>
-                    )
-                  })}
+                  {db.semesterList &&
+                    db.semesterList.split(', ').map((v) => {
+                      return (
+                        <Styled.Option key={v} id="semester">
+                          {v}
+                        </Styled.Option>
+                      );
+                    })}
                 </Styled.TitleWrapper>
               </div>
-              <Styled.Option id="type">{db.data.lectureType}</Styled.Option>
+              <Styled.Option id="type">{db.lectureType}</Styled.Option>
             </Styled.TitleWrapper>
             <Styled.FlexContainer id="col">
               <Styled.WidthContainer>
@@ -133,7 +132,7 @@ const LectureInfo = () => {
                         fontWeight: '500',
                       }}
                     >
-                      {Number(db.data.lectureHoneyAvg).toFixed(1)}
+                      {Number(db.lectureHoneyAvg).toFixed(1)}
                     </Styled.Color>
                     /5
                   </Styled.FlexContainer>
@@ -157,7 +156,7 @@ const LectureInfo = () => {
                         fontWeight: '500',
                       }}
                     >
-                      {Number(db.data.lectureLearningAvg).toFixed(1)}
+                      {Number(db.lectureLearningAvg).toFixed(1)}
                     </Styled.Color>
                     /5
                   </Styled.FlexContainer>
@@ -181,7 +180,7 @@ const LectureInfo = () => {
                         fontWeight: '500',
                       }}
                     >
-                      {Number(db.data.lectureSatisfactionAvg).toFixed(1)}
+                      {Number(db.lectureSatisfactionAvg).toFixed(1)}
                     </Styled.Color>
                     /5
                   </Styled.FlexContainer>
@@ -223,9 +222,9 @@ const LectureInfo = () => {
         >
           <WriteEvaluation
             selectId={selectId}
-            lectureName={db.data.lectureName}
-            professor={db.data.professor}
-            semesterList={db.data.semesterList}
+            lectureName={db.lectureName}
+            professor={db.professor}
+            semesterList={db.semesterList}
             setModalIsOpen={setModalIsOpen}
           />
         </Modal>
@@ -239,9 +238,9 @@ const LectureInfo = () => {
         >
           <WriteExam
             selectId={selectId}
-            lectureName={db.data.lectureName}
-            professor={db.data.professor}
-            semesterList={db.data.semesterList}
+            lectureName={db.lectureName}
+            professor={db.professor}
+            semesterList={db.semesterList}
             setModalIsOpen={setModalIsOpen}
           />
         </Modal>
