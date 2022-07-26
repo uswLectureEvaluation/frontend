@@ -66,10 +66,9 @@ instance.interceptors.response.use(
     if (error.response.status===403) {
       localStorage.removeItem('login');
       alert("로그인 시간이 만료되었습니다\n다시 로그인 해주세요");
-      window.location.href = '/';
-    }
+   }
 
-    if (error.response.status) {
+    if (error.response.status===401) {
       const { data } = await axios({
         url: `/user/client-refresh`, // 토큰 재요청
         method: 'POST',

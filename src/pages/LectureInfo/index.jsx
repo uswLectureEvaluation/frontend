@@ -65,7 +65,7 @@ const LectureInfo = () => {
 
   useEffect(() => {
     searchLectureApi(selectId).then((data) => setDB(data));
-  }, [selectId, db]);
+  }, [selectId]);
 
   const teamSet = parseFloat(db.lectureTeamAvg).toFixed(0);
   const homeworkSet = parseFloat(db.lectureHomeworkAvg).toFixed(0);
