@@ -10,7 +10,10 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   async (config) => {
-    if (
+    if (sessionStorage.getItem('AccessToken')) {
+      config.headers['Content-Type'] = 'application/json';
+      config.headers['Authorization'] = sessionStorage.getItem('AccessToken');
+    } else if (
       !(
         config.url.includes('lecture/all/?option') ||
         config.url.includes('suwiki/version') ||
@@ -75,7 +78,7 @@ instance.interceptors.response.use(
       alert('포인트가 부족해요.');
       window.location.reload();
     }
-
+    // 리프레시 토큰 만료
     if (error.response.status === 403) {
       logoutApi().then((data) => {
         if (data.Success) {
@@ -85,21 +88,11 @@ instance.interceptors.response.use(
         }
       });
     }
+    // 로그인 유지 X
     if (error.response.status === 401) {
-      const { data } = await axios({
-        url: `/user/client-refresh`, // 토큰 재요청
-        method: 'POST',
-      });
-      const { AccessToken: newAccessToken } = data;
-      await newAccessToken;
-
-      originalRequest.headers['Authorization'] = newAccessToken;
-
-      const retryOriginalRequest = new Promise((resolve) => {
-        resolve(instance(originalRequest));
-      });
-
-      return retryOriginalRequest;
+      sessionStorage.removeItem('AccessToken');
+      sessionStorage.removeItem('login');
+      alert('로그인 시간이 만료되었습니다\n다시 로그인 해주세요');
     }
     return Promise.reject(error);
   }

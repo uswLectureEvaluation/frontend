@@ -175,8 +175,8 @@ export const checkemailApi = (setData, email) => {
   );
 };
 
-//로그인api 0
-export const loginApi = (setData, setLoading, id, pw, checked) => {
+//로그인api (로그인유지)
+export const loginApi = (setData, setLoading, id, pw) => {
   const url = `user/client-login`;
   const data = {
     loginId: id,
@@ -198,7 +198,41 @@ export const loginApi = (setData, setLoading, id, pw, checked) => {
   axios(options).then(
     (r) => {
       localStorage.setItem('login', true);
-      console.log(checked);
+
+      setData(r.data);
+      setLoading(true);
+    },
+    (error) => {
+      console.error(error);
+      alert('id 또는 pw 확인해주세요');
+    }
+  );
+};
+
+//로그인api (로그인유지X)
+export const unCheckedLoginApi = (setData, setLoading, id, pw) => {
+  const url = `user/login`;
+  const data = {
+    loginId: id,
+    password: pw,
+  };
+  const options = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Cache: 'no-cache',
+      withCredentials: true,
+      'Access-Control-Allow-Origin': PROXY_URL,
+    },
+    data,
+    url,
+    withCredentials: true,
+  };
+  axios(options).then(
+    (r) => {
+      sessionStorage.setItem('login', true);
+      sessionStorage.setItem('AccessToken', r.data.AccessToken);
       setData(r.data);
       setLoading(true);
     },

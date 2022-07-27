@@ -97,7 +97,7 @@ const LectureInfo = () => {
           onKeyPress={onKeypress}
         />
       </Styled.SearchWrapper>
-      {!localStorage.getItem('login') ? (
+      {!(localStorage.getItem('login') || sessionStorage.getItem('login')) ? (
         <Styled.FlexContainer id="col">
           <Button color="#346cfd" onClick={() => navigate('/login')}>
             로그인하기

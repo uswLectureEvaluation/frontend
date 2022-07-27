@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
-import { loginApi } from '../../api/Api';
+import { loginApi, unCheckedLoginApi } from '../../api/Api';
 import { FormControlLabel, Checkbox } from '@material-ui/core';
 
 const Login = () => {
@@ -26,12 +26,16 @@ const Login = () => {
     setPassWord(e.target.value);
   };
   const onLogin = () => {
-    loginApi(setData, setLoading, username, password, checked);
+    checked
+      ? loginApi(setData, setLoading, username, password)
+      : unCheckedLoginApi(setData, setLoading, username, password);
   };
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
-      loginApi(setData, setLoading, username, password, checked);
+      checked
+        ? loginApi(setData, setLoading, username, password)
+        : unCheckedLoginApi(setData, setLoading, username, password);
     }
   };
 
