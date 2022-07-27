@@ -14,7 +14,7 @@ const MajorSearch = (props) => {
   };
 
   useEffect(() => {
-      searchFavoriteMajorApi().then((data) => setFavoriteDb(data.data));
+    searchFavoriteMajorApi().then((data) => setFavoriteDb(data.data));
   }, [props.selectedMajor, favorite]);
 
   const onFavoriteMajor = (e) => {
@@ -32,9 +32,9 @@ const MajorSearch = (props) => {
   }, []);
 
   const clickSubmit = () => {
-    props.setCheckClass(props.selectedMajor)
-    props.setModalIsOpen(false)
-  }
+    props.setCheckClass(props.selectedMajor);
+    props.setModalIsOpen(false);
+  };
 
   return (
     <Styled.ModalWrapper>

@@ -11,8 +11,7 @@ export const ModalOpen = styled.span`
   }
 `;
 
-export const Wrapper = styled.div`
-`;
+export const Wrapper = styled.div``;
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -53,8 +52,6 @@ export const Option = styled.div`
   font-size: 12px;
   font-weight: bold;
   color: gray;
-
-  
 `;
 
 export const Rate = styled.span`
@@ -78,8 +75,6 @@ export const LectureWrapper = styled.div`
 export const MarginTop = styled.div`
   &#top {
     padding: 14px 24px 0px 24px;
-
-    
   }
   &#bottom {
     padding: 0px 24px 14px 24px;
@@ -108,8 +103,6 @@ export const StarFlex = styled.div`
   }
   &#top {
     padding: 8px 12px 0px 12px;
-
-   
   }
   &#bottom {
     padding: 0px 12px 8px 12px;
@@ -177,7 +170,6 @@ export const DeleteButton = styled.span`
 `;
 
 export const ExamDetail = styled.div`
- 
   padding-right: 0.7rem;
   font-weight: bold;
   &#top {

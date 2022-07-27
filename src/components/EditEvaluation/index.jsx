@@ -23,8 +23,10 @@ const EditEvaluation = (props) => {
   const onEvaluate = () => {
     if (semester === '' || semester === '선택') return alert('학기를 선택해주세요');
     if (honey < 0.5 || honey === undefined) return alert('꿀강지수는 0.5점부터 선택 가능합니다');
-    if (learning < 0.5 || learning === undefined) return alert('배움지수는 0.5점부터 선택 가능합니다');
-    if (satisfaction < 0.5 || satisfaction === undefined) return alert('만족도는 0.5점부터 선택 가능합니다');
+    if (learning < 0.5 || learning === undefined)
+      return alert('배움지수는 0.5점부터 선택 가능합니다');
+    if (satisfaction < 0.5 || satisfaction === undefined)
+      return alert('만족도는 0.5점부터 선택 가능합니다');
     if (team === '') return alert('조모임(란)을 선택해주세요');
     if (homework === '') return alert('과제(란)을 선택해주세요');
     if (difficulty === '') return alert('학점(란)을 선택해주세요');

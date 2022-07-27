@@ -104,7 +104,7 @@ export const MobileWrapper = styled.div`
     padding: 14px 24px 0px 24px;
     flex-direction: column;
   }
-`
+`;
 export const DataColor = styled.div`
   padding-left: 0.7rem;
   font-weight: 500;

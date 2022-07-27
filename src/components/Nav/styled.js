@@ -20,7 +20,6 @@ export const Navbar = styled.nav`
     align-items: center;
     padding: 20px;
     justify-content: space-between;
-  
   }
 `;
 
@@ -36,20 +35,16 @@ export const NavLogo = styled.img`
   @media screen and (max-width: 480px) {
     font-size: var(--font-medium);
     font-weight: var(--weight-semi-bold);
-   
   }
 `;
 
 export const MobileIcon = styled.div`
-
   font-size: 2rem;
   align-items: center;
   color: #346cfd;
   display: none;
 
-
   @media screen and (max-width: 480px) {
-    
     display: block;
   }
 `;
@@ -69,7 +64,6 @@ export const NavMenu = styled.nav`
     transition: all 0.5s ease;
     background: #fff;
     z-index: 999;
-    
   }
 `;
 

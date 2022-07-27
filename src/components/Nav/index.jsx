@@ -11,18 +11,17 @@ const Nav = () => {
   const [click, setClick] = useState(false);
   const [logout, setLogout] = useState(false);
 
-
   const showButton = () => (window.innerWidth <= 960 ? setButton(false) : setButton(true));
   const handleClick = () => setClick(!click);
 
   const logoutClick = () => {
-    localStorage.removeItem('login')
-    localStorage.removeItem('AccessToken')
-    logoutApi().then((data)=>setLogout(data.Success));
+    localStorage.removeItem('login');
+    localStorage.removeItem('AccessToken');
+    logoutApi().then((data) => setLogout(data.Success));
   };
-  useEffect(()=>{
-    if(logout) {
-      window.location.href = "/";
+  useEffect(() => {
+    if (logout) {
+      window.location.href = '/';
     }
   }, [logout]);
 
@@ -45,7 +44,7 @@ const Nav = () => {
           <Styled.NavLinks onClick={() => navigate('login')}>로그인</Styled.NavLinks>
         ) : (
           <Styled.NavLinks onClick={logoutClick}>로그아웃</Styled.NavLinks>
-        )} 
+        )}
         {localStorage.getItem('login') == null ? (
           <Styled.NavLinks id="signup" onClick={() => navigate('signup')}>
             회원가입

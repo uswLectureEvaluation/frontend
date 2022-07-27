@@ -16,7 +16,7 @@ const MainList = ({ lecture, checkClass }) => {
 
   useEffect(() => {
     showWin();
-    if(checkClass==='전체') {
+    if (checkClass === '전체') {
       mainApi(lecture, 1, '').then((data) => setData(data));
     } else {
       mainApi(lecture, 1, checkClass).then((data) => setData(data));
