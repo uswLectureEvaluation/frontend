@@ -548,6 +548,15 @@ export const resetPasswordApi = (prePassword, newPassword) => {
     url: `/user/reset-pw`,
     method: 'POST',
     data: data,
+  }).then((data) => {
+    if (data.success) {
+      alert('비밀번호가 변경되었습니다\n다시 로그인 해주세요');
+      localStorage.removeItem('login');
+      localStorage.removeItem('AccessToken');
+      sessionStorage.removeItem('AccessToken');
+      sessionStorage.removeItem('login');
+      window.location.href = '/';
+    }
   });
 };
 
