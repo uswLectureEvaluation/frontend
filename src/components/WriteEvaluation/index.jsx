@@ -23,8 +23,10 @@ const WriteEvaluation = (props) => {
   const onEvaluate = () => {
     if (semester === '' || semester === '선택') return alert('학기를 선택해주세요');
     if (honey < 0.5 || honey === undefined) return alert('꿀강지수는 0.5점부터 선택 가능합니다');
-    if (learning < 0.5 || learning === undefined) return alert('배움지수는 0.5점부터 선택 가능합니다');
-    if (satisfaction < 0.5 || satisfaction === undefined) return alert('만족도는 0.5점부터 선택 가능합니다');
+    if (learning < 0.5 || learning === undefined)
+      return alert('배움지수는 0.5점부터 선택 가능합니다');
+    if (satisfaction < 0.5 || satisfaction === undefined)
+      return alert('만족도는 0.5점부터 선택 가능합니다');
     if (team === '') return alert('조모임(란)을 선택해주세요');
     if (homework === '') return alert('과제(란)을 선택해주세요');
     if (difficulty === '') return alert('학점(란)을 선택해주세요');
@@ -149,11 +151,11 @@ const WriteEvaluation = (props) => {
         <Styled.Content id="content" onChange={teamChange}>
           <Styled.ContentTitle>조모임</Styled.ContentTitle>
           <Styled.FormLabel>
-            <Styled.FormCheckLeft name="team" id="easy" value="0" checked={team === '0'} />
+            <Styled.FormCheckLeft name="team" id="easy" value="0" />
             <Styled.FormCheckText>없음</Styled.FormCheckText>
           </Styled.FormLabel>
           <Styled.FormLabel>
-            <Styled.FormCheckLeft name="team" id="difficult" value="1" checked={team === '1'} />
+            <Styled.FormCheckLeft name="team" id="difficult" value="1" />
             <Styled.FormCheckText>있음</Styled.FormCheckText>
           </Styled.FormLabel>
         </Styled.Content>
@@ -161,25 +163,15 @@ const WriteEvaluation = (props) => {
         <Styled.Content id="content" onChange={homeworkChange}>
           <Styled.ContentTitle>과제</Styled.ContentTitle>
           <Styled.FormLabel>
-            <Styled.FormCheckLeft name="homework" id="easy" value="0" checked={homework === '0'} />
+            <Styled.FormCheckLeft name="homework" id="easy" value="0" />
             <Styled.FormCheckText>없음</Styled.FormCheckText>
           </Styled.FormLabel>
           <Styled.FormLabel>
-            <Styled.FormCheckLeft
-              name="homework"
-              id="normal"
-              value="1"
-              checked={homework === '1'}
-            />
+            <Styled.FormCheckLeft name="homework" id="normal" value="1" />
             <Styled.FormCheckText>보통</Styled.FormCheckText>
           </Styled.FormLabel>
           <Styled.FormLabel>
-            <Styled.FormCheckLeft
-              name="homework"
-              id="difficult"
-              value="2"
-              checked={homework === '2'}
-            />
+            <Styled.FormCheckLeft name="homework" id="difficult" value="2" />
             <Styled.FormCheckText>많음</Styled.FormCheckText>
           </Styled.FormLabel>
         </Styled.Content>
@@ -187,20 +179,15 @@ const WriteEvaluation = (props) => {
         <Styled.Content id="content" onChange={difficultyChange}>
           <Styled.ContentTitle>학점</Styled.ContentTitle>
           <Styled.FormLabel>
-            <Styled.FormCheckLeft name="score" id="easy" value="2" checked={difficulty === '2'} />
+            <Styled.FormCheckLeft name="score" id="easy" value="2" />
             <Styled.FormCheckText>너그러움</Styled.FormCheckText>
           </Styled.FormLabel>
           <Styled.FormLabel>
-            <Styled.FormCheckLeft name="score" id="normal" value="1" checked={difficulty === '1'} />
+            <Styled.FormCheckLeft name="score" id="normal" value="1" />
             <Styled.FormCheckText>보통</Styled.FormCheckText>
           </Styled.FormLabel>
           <Styled.FormLabel>
-            <Styled.FormCheckLeft
-              name="score"
-              id="difficult"
-              value="0"
-              checked={difficulty === '0'}
-            />
+            <Styled.FormCheckLeft name="score" id="difficult" value="0" />
             <Styled.FormCheckText>까다로움</Styled.FormCheckText>
           </Styled.FormLabel>
         </Styled.Content>
@@ -211,11 +198,7 @@ const WriteEvaluation = (props) => {
         rows="15"
       />
       <Styled.Wrapper id="button">
-        <Styled.EditButton
-          onClick={onEvaluate}
-        >
-          작성하기 (+20P)
-        </Styled.EditButton>
+        <Styled.EditButton onClick={onEvaluate}>작성하기 (+20P)</Styled.EditButton>
       </Styled.Wrapper>
     </Styled.Wrapper>
   );
