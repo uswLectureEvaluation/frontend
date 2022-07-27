@@ -211,7 +211,9 @@ const LectureInfo = () => {
               <Styled.TitleWrapper id="bottom">{menuList}</Styled.TitleWrapper>
               <Styled.Writing
                 src="img/btn_write.svg"
-                onClick={() => (!written ? setModalIsOpen(true) : alert(`이미 쓴 ${check}입니다`))}
+                onClick={() =>
+                  !written ? setModalIsOpen(true) : alert(`이미 작성한 ${check}입니다`)
+                }
               />
             </Styled.TitleWrapper>
             {checkList[menuCheck]}
