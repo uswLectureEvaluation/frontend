@@ -7,8 +7,8 @@ import { useLocation } from 'react-router-dom';
 const Myinfodetail = () => {
   const [evaluation, setEvaluation] = useState(true);
   const location = useLocation();
-  const { props } = location.state
-  console.log(location)
+  const { props } = location.state;
+
   return (
     <Styled.FlexContainer>
       <Styled.FlexBox>
@@ -28,7 +28,7 @@ const Myinfodetail = () => {
         >
           시험정보
         </Styled.TextLink>
-        {evaluation ? <Myevaluation props={props}/> : <Testinformation props={props}/>}
+        {evaluation ? <Myevaluation props={props} /> : <Testinformation props={props} />}
       </Styled.FlexBox>
     </Styled.FlexContainer>
   );

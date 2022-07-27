@@ -40,8 +40,6 @@ export const SearchResultWrapper = styled.div`
   margin-top: 0.5rem;
   justify-content: space-between;
   align-items: center;
-  
-
 `;
 
 export const SearchResultMenu = styled.div`
@@ -75,17 +73,14 @@ export const SearchResultMenu = styled.div`
   }
 
   @media only screen and (max-width: 480px) {
-
-  display: flex;
-  align-items: center;
-  font-size: 1rem;
-  border-radius: 10px;
-  border: 1px solid #e0e0e0;
-  padding: 5px 5px;
-  cursor: pointer;
-
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    padding: 5px 5px;
+    cursor: pointer;
   }
-  
 `;
 
 export const MyEvaluationWrapper = styled.div`
