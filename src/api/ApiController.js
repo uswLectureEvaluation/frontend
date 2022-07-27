@@ -11,13 +11,13 @@ const instance = axios.create({
 instance.interceptors.request.use(
   async (config) => {
     if (
-      !(
-        config.url.includes('lecture/all/?option') ||
-        config.url.includes('suwiki/version') ||
-        config.url.includes('suwiki/majorType') ||
-        config.url.includes('lecture/search/?searchValue') ||
-        config.url.includes('notice') ||
-        config.url.includes('client-logout')
+      !config.url.includes(
+        'lecture/all/?option' ||
+          'suwiki/version' ||
+          'suwiki/majorType' ||
+          'lecture/search/?searchValue' ||
+          'notice' ||
+          'client-logout'
       )
     ) {
       const { data } = await axios({
