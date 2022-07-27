@@ -12,9 +12,19 @@ export const Wrapper = styled.div`
 
 export const Title = styled.div`
   font-size: 18px;
-  padding: 2rem;
-  padding-bottom: 1rem;
+  padding: 2rem 1.5rem 1rem;
   font-weight: 500;
+  @media only screen and (max-width: 550px) {
+    padding: 1rem;
+  }
+`;
+export const TitleButton = styled.button`
+  font-size: 18px;
+  padding: 2rem 1.5rem 1rem;
+  font-weight: 500;
+  border: none;
+  background-color: white;
+  cursor: pointer;
   @media only screen and (max-width: 550px) {
     padding: 1rem;
   }
@@ -22,7 +32,7 @@ export const Title = styled.div`
 
 export const Score = styled.span`
   margin: 2px 0 1px 24px;
-  font-family: Pretendard;
+  font-family: 'Pretendard';
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
@@ -40,8 +50,7 @@ export const TitleWrapper = styled.div`
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 1vw;
-  margin: 1.5rem 0;
+  margin: 1.5rem;
   border-bottom: 1px solid #e0e0e0;
   @media only screen and (max-width: 550px) {
     padding-left: 1rem;
@@ -80,11 +89,17 @@ export const MobileContent = styled.form`
 `;
 
 export const ContentTitle = styled.div`
-  padding-right: 1vw;
+  width: 25%;
+  &#title {
+    @media only screen and (max-width: 1100px) {
+      width: 100%;
+    }
+  }
 `;
 
 export const ContentTitleWrapper = styled.div`
   display: flex;
+  width: 100%;
   align-items: center;
 
   @media only screen and (max-width: 1100px) {
@@ -149,8 +164,8 @@ export const FormCheckText = styled.span`
   cursor: pointer;
   color: #777;
   margin-right: 8px;
-  @media only screen and (max-width: 550px) {
-    font-size: 16px;
+  @media only screen and (max-width: 1100px) {
+    font-size: 12px;
     padding: 6px 9px;
   }
 `;

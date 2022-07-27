@@ -54,19 +54,19 @@ const WriteExam = (props) => {
     <Styled.Wrapper>
       <Styled.TitleWrapper>
         <Styled.Title>{props.lectureName}</Styled.Title>
-        <Styled.Title
+        <Styled.TitleButton
           onClick={() => {
             props.setModalIsOpen(false);
           }}
         >
           X
-        </Styled.Title>
+        </Styled.TitleButton>
       </Styled.TitleWrapper>
 
       <Styled.ContentWrapper>
         <Styled.Content id="group">
           <Styled.ContentTitleWrapper>
-            <Styled.ContentTitle>수강학기</Styled.ContentTitle>
+            <Styled.ContentTitle id="title">수강학기</Styled.ContentTitle>
             <SemesterSelect
               id="semester"
               defaultValue={'선택'}
@@ -82,7 +82,7 @@ const WriteExam = (props) => {
             </SemesterSelect>
           </Styled.ContentTitleWrapper>
           <Styled.ContentTitleWrapper>
-            <Styled.ContentTitle>시험종류</Styled.ContentTitle>
+            <Styled.ContentTitle id="title">시험종류</Styled.ContentTitle>
             <SemesterSelect
               id="semester"
               defaultValue={'선택'}

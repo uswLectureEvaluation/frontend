@@ -20,6 +20,19 @@ export const Title = styled.div`
   }
 `;
 
+export const TitleButton = styled.button`
+  font-size: 18px;
+  padding: 2rem;
+  padding-bottom: 1rem;
+  font-weight: 500;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  @media only screen and (max-width: 550px) {
+    padding: 1rem;
+  }
+`;
+
 export const Score = styled.span`
   margin: 2px 0 1px 24px;
   font-size: 18px;
