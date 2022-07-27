@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { logoutApi } from './Api';
 
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
@@ -15,7 +16,8 @@ instance.interceptors.request.use(
         config.url.includes('suwiki/version') ||
         config.url.includes('suwiki/majorType') ||
         config.url.includes('lecture/search/?searchValue') ||
-        config.url.includes('notice')
+        config.url.includes('notice') ||
+        config.url.includes('client-logout')
       )
     ) {
       const { data } = await axios({
@@ -31,62 +33,43 @@ instance.interceptors.request.use(
       }
     }
     config.headers['Content-Type'] = 'application/json';
-    if (
-      (config.url.includes('evaluate-posts/?lectureId') ||
-        config.url.includes('exam-posts/?lectureId')) &&
-      config.method === 'post'
-    ) {
-      alert('작성 완료');
-      window.location.reload();
-    } else if (
-      (config.url.includes('evaluate-posts/?evaluateIdx') ||
-        config.url.includes('exam-posts/?examIdx')) &&
-      config.method === 'put'
-    ) {
-      alert('수정 완료');
-      window.location.reload();
-    } else if (
-      (config.url.includes('evaluate-posts/?evaluateIdx') ||
-        config.url.includes('exam-posts/?examIdx')) &&
-      config.method === 'delete'
-    ) {
-      alert('삭제 완료');
-      window.location.reload();
-    } else if (config.url.includes('exam-posts/purchase/?lectureId') && config.method === 'post') {
-      alert('구매 완료');
-      window.location.reload();
-    } else if (
-      config.url.includes('user/report/evaluate') ||
-      config.url.includes('user/report/exam')
-    ) {
-      alert('신고 완료');
-      window.location.reload();
-    } else if (config.url.includes('user/reset-pw')) {
-      alert('변경 완료');
-      window.location.reload();
-    } else if (config.url.includes('user/quit')) {
-      alert('탈퇴 완료');
-      window.location.reload();
-    }
 
     return config;
   },
   function (error) {
-    //request 에러
+    alert('해당 요청이 정상적으로 이루어지지 않았어요.\n 다시 시도해주세요.');
     return Promise.reject(error);
   }
 );
 
 instance.interceptors.response.use(
   function (response) {
+    const reloadHandler = (includesURL, methodType, alertText) => {
+      if (response.config.url.includes(includesURL) && response.config.method === methodType) {
+        alert(alertText);
+        window.location.reload();
+      }
+    };
+
+    reloadHandler('evaluate-posts/?lectureId' || 'exam-posts/?lectureId', 'post', '작성 완료');
+    reloadHandler('evaluate-posts/?evaluateIdx' || 'exam-posts/?examIdx', 'put', '수정 완료');
+    reloadHandler('evaluate-posts/?evaluateIdx' || 'exam-posts/?examIdx', 'delete', '삭제 완료');
+    reloadHandler('exam-posts/purchase/?lectureId', 'post', '구매 완료');
+    reloadHandler('user/report/evaluate' || 'user/report/exam', 'post', '신고 완료');
+    reloadHandler('user/quit', 'post', '탈퇴 완료');
+
     return response.data;
   },
   async (error) => {
     const originalRequest = error.config;
     if (error.response.status === 403) {
-      localStorage.removeItem('login');
-      alert('로그인 시간이 만료되었습니다\n다시 로그인 해주세요');
-      window.location.href = '/';
+      logoutApi().then((data) => {
+        if (data.Success) {
+          localStorage.removeItem('login');
+          alert('로그인 시간이 만료되었습니다\n다시 로그인 해주세요');
+          window.location.href = '/';
+        }
+      });
     }
     if (error.response.status === 401) {
       const { data } = await axios({
