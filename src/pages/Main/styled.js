@@ -147,6 +147,12 @@ export const More = styled.div`
 export const BannerImg = styled.img`
   vertical-align: bottom;
   pointer-events: none;
+  @media screen and (max-width: 1300px) {
+    width: 450px;
+    vertical-align: bottom;
+    pointer-events: none;
+  }
+
   @media screen and (max-width: 960px) {
     width: 400px;
     vertical-align: bottom;

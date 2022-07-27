@@ -4,7 +4,7 @@ import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
 import { majorTypeApi } from '../../api/Api';
 import Modal from 'react-modal';
-import {MajorModalStyle} from '../../components/ModalStyle';
+import { MajorModalStyle } from '../../components/ModalStyle';
 import MajorSearch from '../../components/MajorSearch';
 
 const Main = () => {
@@ -53,15 +53,15 @@ const Main = () => {
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
-      if(e.currentTarget.value.length < 2) {
-        alert("두 글자 이상 입력해주세요");
+      if (e.currentTarget.value.length < 2) {
+        alert('두 글자 이상 입력해주세요');
       } else {
         navigate(`/search`, {
           state: {
             search_value: search,
             search_option: lecture,
           },
-        });  
+        });
       }
     }
   };
@@ -92,15 +92,19 @@ const Main = () => {
         </Styled.SearchWrapper>
         <Styled.SearchWrapper>
           <Styled.HeadSelection>
-          <Styled.FlexWrapper onClick={()=>setModalIsOpen(true)}>
-          <Styled.SortSelect id="major" defaultValue={'lectureHoneyAvg'} onChange={onChangeHandler}>
-            {options.map((index) => (
-              <Styled.StyledOption id="semester" key={index.name} value={index.lec}>
-                <Styled.Soption id="semester">{checkClass}</Styled.Soption>
-              </Styled.StyledOption>
-            ))}
-          </Styled.SortSelect>
-        </Styled.FlexWrapper>
+            <Styled.FlexWrapper onClick={() => setModalIsOpen(true)}>
+              <Styled.SortSelect
+                id="major"
+                defaultValue={'lectureHoneyAvg'}
+                onChange={onChangeHandler}
+              >
+                {options.map((index) => (
+                  <Styled.StyledOption id="semester" key={index.name} value={index.lec}>
+                    <Styled.Soption id="semester">{checkClass}</Styled.Soption>
+                  </Styled.StyledOption>
+                ))}
+              </Styled.SortSelect>
+            </Styled.FlexWrapper>
             <Styled.CustomSelect defaultValue={'lectureHoneyAvg'} onChange={onChangeHandler}>
               {options.map((index) => (
                 <Styled.StyledOption key={index.name} value={index.lec}>
@@ -112,7 +116,7 @@ const Main = () => {
             </Styled.CustomSelect>
           </Styled.HeadSelection>
           <Styled.HeadSelection>
-            <MainList lecture={lecture} checkClass={checkClass}/>
+            <MainList lecture={lecture} checkClass={checkClass} />
           </Styled.HeadSelection>
         </Styled.SearchWrapper>
         <Styled.Button
@@ -130,14 +134,19 @@ const Main = () => {
         </Styled.Button>
       </Styled.Container>
       <Modal
-          isOpen={modalIsOpen}
-          style={MajorModalStyle}
-          // 오버레이나 esc를 누르면 핸들러 동작
-          ariaHideApp={false}
-          onRequestClose={() => setModalIsOpen(false)}
-        >
-          <MajorSearch setModalIsOpen={setModalIsOpen} setSelectedMajor={setSelectedMajor} setCheckClass={setCheckClass} selectedMajor={selectedMajor} />
-        </Modal>
+        isOpen={modalIsOpen}
+        style={MajorModalStyle}
+        // 오버레이나 esc를 누르면 핸들러 동작
+        ariaHideApp={false}
+        onRequestClose={() => setModalIsOpen(false)}
+      >
+        <MajorSearch
+          setModalIsOpen={setModalIsOpen}
+          setSelectedMajor={setSelectedMajor}
+          setCheckClass={setCheckClass}
+          selectedMajor={selectedMajor}
+        />
+      </Modal>
     </>
   );
 };
