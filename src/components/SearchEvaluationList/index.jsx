@@ -57,15 +57,18 @@ export const DetailModal = (props) => {
   );
 };
 
-const SearchEvaluationList = (props) => {
+const SearchEvaluationList = ({ selectId, setWritten }) => {
   const [db, setData] = useState({
     data: [],
-    written: false
+    written: false,
   });
 
   useEffect(() => {
-    searchEvaluationApi(props.selectId).then((data) => setData(data));
-  }, [props.selectId]);
+    searchEvaluationApi(selectId).then((data) => {
+      setData(data);
+      setWritten(data.written);
+    });
+  }, [selectId, setWritten]);
 
   return db.data.length !== 0 ? (
     <Styled.Wrapper>
@@ -86,7 +89,9 @@ const SearchEvaluationList = (props) => {
       ))}
     </Styled.Wrapper>
   ) : (
-    <Styled.Wrapper><Styled.Content>등록된 강의평가가 없어요</Styled.Content></Styled.Wrapper>
+    <Styled.Wrapper>
+      <Styled.Content>등록된 강의평가가 없어요</Styled.Content>
+    </Styled.Wrapper>
   );
 };
 

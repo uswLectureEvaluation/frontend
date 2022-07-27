@@ -14,15 +14,16 @@ import { Button } from '../../components';
 const LectureInfo = () => {
   const selectId = useSelector((state) => state.selectId.value);
   let navigate = useNavigate();
-  const [check, setCheck] = useState('lecture');
+  const [check, setCheck] = useState('강의평가');
   const [search, setSearch] = useState('');
+  const [written, setWritten] = useState(false);
   const menu = [
-    { name: '강의평가', option: 'lecture' },
-    { name: '시험정보', option: 'info' },
+    { name: '강의평가', option: '강의평가' },
+    { name: '시험정보', option: '시험정보' },
   ];
   const checkList = {
-    0: <SearchEvaluationList selectId={selectId} />,
-    1: <TestInfo selectId={selectId} />,
+    0: <SearchEvaluationList selectId={selectId} setWritten={setWritten} />,
+    1: <TestInfo selectId={selectId} setWritten={setWritten} />,
   };
   const menuList = menu.map((i, index) => (
     <Styled.MenuTitle
@@ -34,7 +35,6 @@ const LectureInfo = () => {
       {i.name}
     </Styled.MenuTitle>
   ));
-
   const [menuCheck, setMenuCheck] = useState(0);
 
   const clickFunc = (e, index) => {
@@ -209,7 +209,10 @@ const LectureInfo = () => {
           <Styled.Content>
             <Styled.TitleWrapper id="top">
               <Styled.TitleWrapper id="bottom">{menuList}</Styled.TitleWrapper>
-              <Styled.Writing src="img/btn_write.svg" onClick={() => setModalIsOpen(true)} />
+              <Styled.Writing
+                src="img/btn_write.svg"
+                onClick={() => (!written ? setModalIsOpen(true) : alert(`이미 쓴 ${check}입니다`))}
+              />
             </Styled.TitleWrapper>
             {checkList[menuCheck]}
           </Styled.Content>

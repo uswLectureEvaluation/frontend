@@ -25,16 +25,20 @@ export const NoTestInfo = () => (
   </Styled.Wrapper>
 );
 
-const TestInfo = (props) => {
+const TestInfo = ({ selectId, setWritten }) => {
   const [db, setData] = useState({
     data: [],
     examDataExist: false,
+    written: false,
   });
   useEffect(() => {
-    searchExamApi(props.selectId).then((data) => setData(data));
-  }, [props.selectId]);
+    searchExamApi(selectId).then((data) => {
+      setData(data);
+      setWritten(data.written);
+    });
+  }, [selectId, setWritten]);
   const unlock = () => {
-    if (window.confirm('시험정보를 열람하시겠습니까?')) buyTestInfo(props.selectId);
+    if (window.confirm('시험정보를 열람하시겠습니까?')) buyTestInfo(selectId);
   };
 
   if (db.data.length === 0 && db.examDataExist) {
