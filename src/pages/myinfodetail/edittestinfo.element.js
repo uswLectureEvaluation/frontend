@@ -31,6 +31,7 @@ export const Score = styled.span`
   letter-spacing: 0.32px;
   color: #346cfd;
 `;
+
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -40,8 +41,7 @@ export const TitleWrapper = styled.div`
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 2rem;
-  margin: 1.5rem 0;
+  margin: 1.5rem;
   border-bottom: 1px solid #e0e0e0;
   @media only screen and (max-width: 550px) {
     padding-left: 1rem;
@@ -77,24 +77,49 @@ export const MobileContent = styled.form`
       align-items: center;
     }
   }
-`
+`;
 
 export const ContentTitle = styled.div`
-  width: 17%;
-  &#mobile {
-    width: 25%;
+  width: 25%;
+  &#title {
+    @media only screen and (max-width: 1100px) {
+      width: 100%;
+    }
+  }
+`;
+
+export const TitleButton = styled.button`
+  font-size: 18px;
+  padding: 2rem 1.5rem 1rem;
+  font-weight: 500;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  @media only screen and (max-width: 550px) {
+    padding: 1rem;
+  }
+`;
+
+export const ContentTitleWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  @media only screen and (max-width: 1100px) {
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
 export const SmallTitle = styled.div`
   font-size: 12px;
-`
+`;
 
 export const WriteButton = styled.button`
-font-size: 16px;
-font-weight: 500;
-color: #222;
-`
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+`;
 
 export const TextField = styled.textarea`
   margin-bottom: 20px;
@@ -106,9 +131,9 @@ export const TextField = styled.textarea`
   border-radius: 15px;
   background-color: #f9f9f9;
   @media only screen and (max-width: 550px) {
-    min-height: 200px;
+    min-height: 150px;
   }
-`
+`;
 
 export const EditButton = styled.div`
   font-size: 16px;
@@ -126,13 +151,12 @@ export const EditButton = styled.div`
     width: 80%;
     margin-bottom: 20px;
   }
-`
+`;
 
 // 라디오버튼 스타일
-export const FormLabel = styled.label`
-`
+export const FormLabel = styled.label``;
 export const FormCheckText = styled.span`
-  font-size: 16px;
+  font-size: 1vw;
   padding: 8px 15px;
   background: #eee;
   border-radius: 10px;
@@ -143,8 +167,8 @@ export const FormCheckText = styled.span`
   cursor: pointer;
   color: #777;
   margin-right: 8px;
-  @media only screen and (max-width: 550px) {
-    font-size: 16px;
+  @media only screen and (max-width: 1100px) {
+    font-size: 12px;
     padding: 6px 9px;
   }
 `;
@@ -164,19 +188,19 @@ export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
     &:checked + ${FormCheckText} {
       color: #7800ff;
       font-weight: 600;
-    }  
+    }
   }
   &#normal {
     &:checked + ${FormCheckText} {
       color: #222222;
       font-weight: 600;
-    }  
+    }
   }
   &#easy {
     &:checked + ${FormCheckText} {
       color: #346cfd;
       font-weight: 600;
-    }  
+    }
   }
   display: none;
 `;
@@ -196,19 +220,19 @@ export const FormCheckMulti = styled.input.attrs({ type: 'checkbox' })`
     &:checked + ${FormCheckText} {
       color: #7800ff;
       font-weight: 600;
-    }  
+    }
   }
   &#normal {
     &:checked + ${FormCheckText} {
       color: #222222;
       font-weight: 600;
-    }  
+    }
   }
   &#easy {
     &:checked + ${FormCheckText} {
       color: #346cfd;
       font-weight: 600;
-    }  
+    }
   }
   display: none;
 `;

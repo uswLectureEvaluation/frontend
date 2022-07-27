@@ -51,45 +51,49 @@ const Edittestinfo = (props) => {
     <Styled.Wrapper>
       <Styled.TitleWrapper>
         <Styled.Title>{props.lectureName}</Styled.Title>
-        <Styled.Title
+        <Styled.TitleButton
           onClick={() => {
             props.setModalIsOpen(false);
           }}
         >
           X
-        </Styled.Title>
+        </Styled.TitleButton>
       </Styled.TitleWrapper>
 
       <Styled.ContentWrapper>
         <Styled.Content id="group">
-          <Styled.ContentTitle>수강학기</Styled.ContentTitle>
-          <SemesterSelect
-            id="semester"
-            defaultValue={`${props.semester}`}
-            onChange={(e) => {
-              setSemester(e);
-            }}
-          >
-            {optionsValue.map((index) => (
-              <StyledOption id="semester" key={index} value={index}>
-                <Soption id="semester">{index}</Soption>
-              </StyledOption>
-            ))}
-          </SemesterSelect>
-          <Styled.ContentTitle>시험종류</Styled.ContentTitle>
-          <SemesterSelect
-            id="semester"
-            defaultValue={`${props.examType}`}
-            onChange={(e) => {
-              setExamType(e);
-            }}
-          >
-            {examTypeOptions.map((index) => (
-              <StyledOption id="semester" key={index} value={index}>
-                <Soption id="semester">{index}</Soption>
-              </StyledOption>
-            ))}
-          </SemesterSelect>
+          <Styled.ContentTitleWrapper>
+            <Styled.ContentTitle id="title">수강학기</Styled.ContentTitle>
+            <SemesterSelect
+              id="semester"
+              defaultValue={`${props.semester}`}
+              onChange={(e) => {
+                setSemester(e);
+              }}
+            >
+              {optionsValue.map((index) => (
+                <StyledOption id="semester" key={index} value={index}>
+                  <Soption id="semester">{index}</Soption>
+                </StyledOption>
+              ))}
+            </SemesterSelect>
+          </Styled.ContentTitleWrapper>
+          <Styled.ContentTitleWrapper>
+            <Styled.ContentTitle id="title">시험종류</Styled.ContentTitle>
+            <SemesterSelect
+              id="semester"
+              defaultValue={`${props.examType}`}
+              onChange={(e) => {
+                setExamType(e);
+              }}
+            >
+              {examTypeOptions.map((index) => (
+                <StyledOption id="semester" key={index} value={index}>
+                  <Soption id="semester">{index}</Soption>
+                </StyledOption>
+              ))}
+            </SemesterSelect>
+          </Styled.ContentTitleWrapper>
         </Styled.Content>
         <Styled.MobileContent>
           <Styled.MobileContent id="semester">
