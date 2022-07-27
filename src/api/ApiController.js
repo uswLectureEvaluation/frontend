@@ -44,31 +44,33 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   function (response) {
-    const reloadHandler = (includesURL, methodType, alertText) => {
-      if (response.config.url.includes(includesURL) && response.config.method === methodType) {
+    const reloadHandler = (firstURL, secondURL, methodType, alertText) => {
+      if (
+        (response.config.url.includes(firstURL) || response.config.url.includes(secondURL)) &&
+        response.config.method === methodType
+      ) {
         alert(alertText);
         window.location.reload();
       }
     };
 
-    reloadHandler('evaluate-posts/?lectureId' || 'exam-posts/?lectureId', 'post', '작성 완료');
-    reloadHandler('evaluate-posts/?evaluateIdx' || 'exam-posts/?examIdx', 'put', '수정 완료');
-    reloadHandler('evaluate-posts/?evaluateIdx' || 'exam-posts/?examIdx', 'delete', '삭제 완료');
-    reloadHandler('exam-posts/purchase/?lectureId', 'post', '구매 완료');
-    reloadHandler('user/report/evaluate' || 'user/report/exam', 'post', '신고 완료');
-    reloadHandler('user/quit', 'post', '탈퇴 완료');
+    reloadHandler('evaluate-posts/?lectureId', 'exam-posts/?lectureId', 'post', '작성 완료');
+    reloadHandler('evaluate-posts/?evaluateIdx', 'exam-posts/?examIdx', 'put', '수정 완료');
+    reloadHandler('evaluate-posts/?evaluateIdx', 'exam-posts/?examIdx', 'delete', '삭제 완료');
+    reloadHandler('exam-posts/purchase/?lectureId', null, 'post', '구매 완료');
+    reloadHandler('user/report/evaluate', 'user/report/exam', 'post', '신고 완료');
+    reloadHandler('user/quit', null, 'post', '탈퇴 완료');
 
     return response.data;
   },
   async (error) => {
     const originalRequest = error.config;
-    if (error.response.status === 400 && originalRequest.url.includes('evaluate-posts')) {
-      alert('이미 작성한 강의 평가가 있어요.');
-      window.location.reload();
-    }
     if (
-      error.response.status === 400 &&
-      originalRequest.url.includes('exam-posts/purchase/?lectureId')
+      (error.response.status === 400 &&
+        originalRequest.url.includes('exam-posts/purchase/?lectureId')) ||
+      originalRequest.url.includes('exam-posts/?examIdx') ||
+      (originalRequest.url.includes('evaluate-posts/?evaluateIdx') &&
+        originalRequest.method === 'delete')
     ) {
       alert('포인트가 부족해요.');
       window.location.reload();
