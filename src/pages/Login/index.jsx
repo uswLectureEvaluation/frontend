@@ -26,12 +26,12 @@ const Login = () => {
     setPassWord(e.target.value);
   };
   const onLogin = () => {
-    loginApi(setData, setLoading, username, password);
+    loginApi(setData, setLoading, username, password, checked);
   };
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
-      loginApi(setData, setLoading, username, password);
+      loginApi(setData, setLoading, username, password, checked);
     }
   };
 

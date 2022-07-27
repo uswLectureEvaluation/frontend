@@ -176,7 +176,7 @@ export const checkemailApi = (setData, email) => {
 };
 
 //로그인api 0
-export const loginApi = (setData, setLoading, id, pw) => {
+export const loginApi = (setData, setLoading, id, pw, checked) => {
   const url = `user/client-login`;
   const data = {
     loginId: id,
@@ -198,7 +198,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
   axios(options).then(
     (r) => {
       localStorage.setItem('login', true);
-
+      console.log(checked);
       setData(r.data);
       setLoading(true);
     },
