@@ -63,6 +63,9 @@ instance.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
+    if (error.response.status===500) {
+      alert("로그인 후 이용해주세요");
+    }
     if (error.response.status===403) {
       logoutApi().then((data)=>{
         if(data.Success) {
