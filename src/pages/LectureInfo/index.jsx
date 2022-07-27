@@ -97,7 +97,15 @@ const LectureInfo = () => {
           onKeyPress={onKeypress}
         />
       </Styled.SearchWrapper>
-      {localStorage.getItem('login') ? (
+      {!localStorage.getItem('login') ? (
+        <Styled.FlexContainer id="col">
+          <Button color="#346cfd" onClick={() => navigate('/login')}>
+            로그인하기
+          </Button>
+        </Styled.FlexContainer>
+      ) : isNaN(db.data.lectureTeamAvg) ? (
+        <div>데이터를 불러오고 있어요.</div>
+      ) : (
         <Styled.Wrapper>
           <Styled.Content id="top">
             <Styled.TitleWrapper id="top">
@@ -198,7 +206,6 @@ const LectureInfo = () => {
               </Styled.WidthContainer>
             </Styled.FlexContainer>
           </Styled.Content>
-
           <Styled.Content>
             <Styled.TitleWrapper id="top">
               <Styled.TitleWrapper id="bottom">{menuList}</Styled.TitleWrapper>
@@ -207,12 +214,6 @@ const LectureInfo = () => {
             {checkList[menuCheck]}
           </Styled.Content>
         </Styled.Wrapper>
-      ) : (
-        <Styled.FlexContainer id="col">
-          <Button color="#346cfd" onClick={() => navigate('/login')}>
-            로그인하기
-          </Button>
-        </Styled.FlexContainer>
       )}
       {menuCheck === 0 ? (
         <Modal

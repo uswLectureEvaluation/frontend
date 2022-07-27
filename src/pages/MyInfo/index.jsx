@@ -64,7 +64,6 @@ const MyInfo = () => {
     myInfoApi().then((data) => setData(data));
   }, [win]);
 
-
   return win ? (
     <Styled.Container>
       <Styled.InfoWrapper>
@@ -83,7 +82,10 @@ const MyInfo = () => {
             <Styled.FlexContainer>{db.email}</Styled.FlexContainer>
           </Styled.FlexContainer>
         </Styled.Content>
-        <Styled.Button onClick={() => navigate('/myinfodetail', { state: { props: db.point} } )} background="#346cfd">
+        <Styled.Button
+          onClick={() => navigate('/myinfodetail', { state: { props: db.point } })}
+          background="#346cfd"
+        >
           내가 쓴 글
         </Styled.Button>
       </Styled.Wrapper>
@@ -100,21 +102,21 @@ const MyInfo = () => {
             <Styled.FlexContainer id="last">
               <Styled.Color>{db.writtenEvaluation ?? '0'}</Styled.Color>개
             </Styled.FlexContainer>
-            <Styled.OptionPoint id="plus">+{db.writtenEvaluation * 10 ?? '0'}</Styled.OptionPoint>
+            <Styled.OptionPoint id="plus">+{(db.writtenEvaluation ?? '0') * 10}</Styled.OptionPoint>
           </Styled.FlexContainer>
           <Styled.FlexContainer>
             <Styled.OptionTitle>작성한 시험정보</Styled.OptionTitle>
             <Styled.FlexContainer id="last">
               <Styled.Color>{db.writtenExam ?? '0'}</Styled.Color>개
             </Styled.FlexContainer>
-            <Styled.OptionPoint id="plus">+{db.writtenExam * 20 ?? '0'}</Styled.OptionPoint>
+            <Styled.OptionPoint id="plus">+{(db.writtenExam ?? '0') * 20}</Styled.OptionPoint>
           </Styled.FlexContainer>
           <Styled.FlexContainer>
             <Styled.OptionTitle>시험정보 열람 횟수</Styled.OptionTitle>
             <Styled.FlexContainer id="last">
               <Styled.Color id="p">{db.viewExam ?? '0'}</Styled.Color>개
             </Styled.FlexContainer>
-            <Styled.OptionPoint id="minus">-{db.viewExam * 20 ?? '0'}</Styled.OptionPoint>
+            <Styled.OptionPoint id="minus">-{(db.viewExam ?? '0') * 20}</Styled.OptionPoint>
           </Styled.FlexContainer>
         </Styled.Content>
       </Styled.Wrapper>
@@ -195,7 +197,10 @@ const MyInfo = () => {
       <Styled.InfoWrapper>
         <Styled.InfoTitle>내 정보</Styled.InfoTitle>
       </Styled.InfoWrapper>
-      <Styled.Button onClick={() => navigate("/myinfodetail", { state: { props: db.point} } ) } background="#346cfd">
+      <Styled.Button
+        onClick={() => navigate('/myinfodetail', { state: { props: db.point } })}
+        background="#346cfd"
+      >
         내가 쓴 글
       </Styled.Button>
       <Styled.Wrapper id="top">
