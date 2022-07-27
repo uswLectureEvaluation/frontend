@@ -133,7 +133,7 @@ const Myevaluation = (props) => {
 export const Subject = (props) => {
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  let title = '가나다라마가나다라마가나다라마';
+  let title = props.lectureName;
   let mobileTitle = props.lectureName;
   if (mobileTitle.length >= 8) {
     mobileTitle = props.lectureName.substr(0, 8) + '...';
@@ -145,7 +145,7 @@ export const Subject = (props) => {
     if (window.confirm('강의평가를 삭제하시겠습니까?') === true) {
       if (props.point.props < 30) {
         alert('유저 포인트가 부족합니다');
-      }else{
+      } else {
         deleteEvaluateApi(props.id);
       }
     }

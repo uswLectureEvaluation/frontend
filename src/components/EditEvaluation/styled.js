@@ -80,7 +80,7 @@ export const MobileContent = styled.form`
       align-items: center;
     }
   }
-`
+`;
 
 export const ContentTitle = styled.div`
   width: 20%;
@@ -90,10 +90,10 @@ export const ContentTitle = styled.div`
 `;
 
 export const WriteButton = styled.button`
-font-size: 16px;
-font-weight: 500;
-color: #222;
-`
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+`;
 
 export const TextField = styled.textarea`
   margin-bottom: 20px;
@@ -105,9 +105,9 @@ export const TextField = styled.textarea`
   border-radius: 15px;
   background-color: #f9f9f9;
   @media only screen and (max-width: 550px) {
-    min-height: 200px;
+    min-height: 30px;
   }
-`
+`;
 
 export const EditButton = styled.div`
   font-size: 16px;
@@ -125,13 +125,12 @@ export const EditButton = styled.div`
     width: 80%;
     margin-bottom: 20px;
   }
-`
+`;
 
 // 라디오버튼 스타일
-export const FormLabel = styled.label`
-`
+export const FormLabel = styled.label``;
 export const FormCheckText = styled.span`
-  font-size: 16px;
+  font-size: 1vw;
   padding: 8px 15px;
   background: #eee;
   border-radius: 10px;
@@ -163,19 +162,19 @@ export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
     &:checked + ${FormCheckText} {
       color: #7800ff;
       font-weight: 600;
-    }  
+    }
   }
   &#normal {
     &:checked + ${FormCheckText} {
       color: #222222;
       font-weight: 600;
-    }  
+    }
   }
   &#easy {
     &:checked + ${FormCheckText} {
       color: #346cfd;
       font-weight: 600;
-    }  
+    }
   }
   display: none;
 `;
