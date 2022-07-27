@@ -23,7 +23,8 @@ export const Container = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
-  font-family: Pretendard;
+  font-family: 'Pretendard';
+  padding-bottom: 25rem;
   @media screen and (max-width: 960px) {
     display: flex;
     flex-direction: column;
@@ -31,8 +32,6 @@ export const Container = styled.div`
     width: 90%;
     margin: 0 auto;
   }
-
-
 `;
 
 export const SearchContainer = styled.div`
@@ -108,7 +107,6 @@ export const SubWrapper = styled.div`
   margin-bottom: 0.5rem;
   align-items: flex-start;
   justify-content: flex-start;
- 
 `;
 
 export const Wrapper = styled.div`
@@ -190,7 +188,6 @@ export const OptionTitle = styled.div`
   @media screen and (max-width: 480px) {
     width: 100%;
   }
-  
 `;
 
 export const FlexContainer = styled.div`

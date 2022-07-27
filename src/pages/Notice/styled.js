@@ -6,13 +6,13 @@ export const AppContainer = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
+  padding-bottom: 25rem;
 
   @media screen and (max-width: 960px) {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 90%;
-    padding-bottom: 25rem;
     margin: 0 auto;
   }
 `;
