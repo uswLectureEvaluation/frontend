@@ -33,54 +33,57 @@ instance.interceptors.request.use(
       }
     }
     config.headers['Content-Type'] = 'application/json';
-    if (
-      (config.url.includes('evaluate-posts/?lectureId') ||
-        config.url.includes('exam-posts/?lectureId')) &&
-      config.method === 'post'
-    ) {
-      alert('작성 완료');
-      window.location.reload();
-    } else if (
-      (config.url.includes('evaluate-posts/?evaluateIdx') ||
-        config.url.includes('exam-posts/?examIdx')) &&
-      config.method === 'put'
-    ) {
-      alert('수정 완료');
-      window.location.reload();
-    } else if (
-      (config.url.includes('evaluate-posts/?evaluateIdx') ||
-        config.url.includes('exam-posts/?examIdx')) &&
-      config.method === 'delete'
-    ) {
-      alert('삭제 완료');
-      window.location.reload();
-    } else if (config.url.includes('exam-posts/purchase/?lectureId') && config.method === 'post') {
-      alert('구매 완료');
-      window.location.reload();
-    } else if (
-      config.url.includes('user/report/evaluate') ||
-      config.url.includes('user/report/exam')
-    ) {
-      alert('신고 완료');
-      window.location.reload();
-    } else if (config.url.includes('user/reset-pw')) {
-      alert('변경 완료');
-      window.location.reload();
-    } else if (config.url.includes('user/quit')) {
-      alert('탈퇴 완료');
-      window.location.reload();
-    }
 
     return config;
   },
   function (error) {
-    //request 에러
+    alert('해당 요청이 정상적으로 이루어지지 않았어요.\n 다시 시도해주세요.');
     return Promise.reject(error);
   }
 );
 
 instance.interceptors.response.use(
   function (response) {
+    if (
+      response.config.url.includes('evaluate-posts/?lectureId') ||
+      response.config.url.includes('exam-posts/?lectureId')
+    ) {
+      alert('작성 완료');
+      window.location.reload();
+    }
+    if (
+      response.config.url.includes('evaluate-posts/?evaluateIdx') ||
+      response.config.url.includes('exam-posts/?examIdx')
+    ) {
+      alert('수정 완료');
+      window.location.reload();
+    }
+    if (
+      response.config.url.includes('evaluate-posts/?evaluateIdx') ||
+      response.config.url.includes('exam-posts/?examIdx')
+    ) {
+      alert('삭제 완료');
+      window.location.reload();
+    }
+    if (response.config.url.includes('exam-posts/purchase/?lectureId')) {
+      alert('구매 완료');
+      window.location.reload();
+    }
+    if (
+      response.config.url.includes('user/report/evaluate') ||
+      response.config.url.includes('user/report/exam')
+    ) {
+      alert('신고 완료');
+      window.location.reload();
+    }
+    if (response.config.url.includes('user/reset-pw')) {
+      alert('변경 완료');
+      window.location.reload();
+    }
+    if (response.config.url.includes('user/quit')) {
+      alert('탈퇴 완료');
+      window.location.reload();
+    }
     return response.data;
   },
   async (error) => {
