@@ -142,6 +142,7 @@ export const YearText = styled.span`
 `;
 
 export const EvaluationDetail = styled.div`
+  word-break: break-all;
   display: flex;
   font-size: 16px;
   font-family: Pretendard;
