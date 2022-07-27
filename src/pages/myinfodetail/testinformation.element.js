@@ -153,7 +153,9 @@ export const EvaluationDetail = styled.div`
   font-size: 16px;
   font-size: 1rem;
   padding-top: 0.7rem;
+  word-break: break-all;
 `;
+
 export const PaddingRight = styled.span`
   padding-right: 0.7rem;
 `;

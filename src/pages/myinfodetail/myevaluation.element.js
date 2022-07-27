@@ -36,14 +36,14 @@ export const TitleWrapper = styled.div`
   justify-content: space-between;
   float: left;
   align-items: center;
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 600px) {
     display: none;
   }
 `;
 
 export const MobileWrapper = styled.div`
   display: none;
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 600px) {
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -162,6 +162,7 @@ export const EvaluationDetail = styled.div`
   font-size: 16px;
   font-size: 1rem;
   padding-top: 0.7rem;
+  word-break: break-all;
 `;
 export const PaddingRight = styled.span`
   padding-right: 0.7rem;
@@ -177,7 +178,7 @@ export const EditButton = styled.span`
     cursor: pointer;
   }
   &#pc {
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 600px) {
       display: none;
     }
   }
@@ -192,7 +193,7 @@ export const DeleteButton = styled.span`
     cursor: pointer;
   }
   &#pc {
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 600px) {
       display: none;
     }
   }

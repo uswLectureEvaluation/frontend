@@ -133,10 +133,13 @@ const Myevaluation = (props) => {
 export const Subject = (props) => {
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  let title = props.lectureName;
-
+  let title = '가나다라마가나다라마가나다라마';
+  let mobileTitle = props.lectureName;
+  if (mobileTitle.length >= 8) {
+    mobileTitle = props.lectureName.substr(0, 8) + '...';
+  }
   if (title.length >= 14) {
-    title = props.lectureName.substr(0, 14) + '...';
+    title = title.substr(0, 14) + '...';
   }
   const onDelete = () => {
     if (window.confirm('강의평가를 삭제하시겠습니까?') === true) {
@@ -166,7 +169,7 @@ export const Subject = (props) => {
             </div>
           </Styled.MobileWrapper>
           <Styled.MobileWrapper>
-            <Styled.Title>{title}</Styled.Title>
+            <Styled.Title>{mobileTitle}</Styled.Title>
             <Styled.Major>{props.majorType}</Styled.Major>
             <Styled.Major id="border">|</Styled.Major>
             <Styled.Professor>{props.professor}</Styled.Professor>

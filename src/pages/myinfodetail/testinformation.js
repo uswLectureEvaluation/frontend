@@ -79,7 +79,10 @@ const Testinformation = (props) => {
 export const Subject = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   let title = props.lectureName;
-
+  let mobileTitle = props.lectureName;
+  if (mobileTitle.length >= 8) {
+    mobileTitle = props.lectureName.substr(0, 8) + '...';
+  }
   if (title.length >= 14) {
     title = props.lectureName.substr(0, 14) + '...';
   }
@@ -144,7 +147,7 @@ export const Subject = (props) => {
             </div>
           </div>
           <div>
-            <Styled.Title>{title}</Styled.Title>
+            <Styled.Title>{mobileTitle}</Styled.Title>
             <Styled.Major>{props.majorType}</Styled.Major>
             <Styled.Major id="border">|</Styled.Major>
             <Styled.Professor>{props.professor}</Styled.Professor>
