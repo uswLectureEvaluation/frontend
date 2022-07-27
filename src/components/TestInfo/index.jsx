@@ -34,14 +34,10 @@ const TestInfo = (props) => {
     searchExamApi(props.selectId).then((data) => setData(data));
   }, [props.selectId]);
   const unlock = () => {
-    if (window.confirm('시험정보를 열람하시겠습니까?') === true) {
-      buyTestInfo(props.selectId);
-    } else {
-      return;
-    }
+    if (window.confirm('시험정보를 열람하시겠습니까?')) buyTestInfo(props.selectId);
   };
 
-  if (db.data.length === 0 && db.examDataExist === true) {
+  if (db.data.length === 0 && db.examDataExist) {
     return <NotUsePoint unlock={unlock} />;
   } else if (db.data.length === 0 && db.examDataExist === false) {
     return <NoTestInfo />;
