@@ -19,12 +19,12 @@ axios.defaults.withCredentials = true;
 //lectureLearningAvg 배울게 많은 강의
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
-export const versionApi = async() => {
+export const versionApi = async () => {
   return instance({
     url: `/suwiki/version`,
     method: 'GET',
-  })
-}
+  });
+};
 
 export const mainApi = async (lecture, page, majorType) => {
   return instance({
@@ -51,7 +51,6 @@ export const searchFavoriteMajorApi = async () => {
 
 //전공 즐겨찾기 하기 api
 export const favoriteMajorApi = (setFavorite, majorType) => {
-
   const data = {
     majorType,
   };
@@ -59,9 +58,8 @@ export const favoriteMajorApi = (setFavorite, majorType) => {
   return instance({
     url: `/user/favorite-major`,
     method: 'POST',
-    data: data
+    data: data,
   });
-  
 };
 
 //즐겨찾기 삭제 api
@@ -179,7 +177,6 @@ export const checkemailApi = (setData, email) => {
 
 //로그인api 0
 export const loginApi = (setData, setLoading, id, pw) => {
-  
   const url = `user/client-login`;
   const data = {
     loginId: id,
@@ -188,25 +185,22 @@ export const loginApi = (setData, setLoading, id, pw) => {
   const options = {
     method: 'POST',
     headers: {
-      Accept:'application/json',
+      Accept: 'application/json',
       'Content-Type': 'application/json',
-      Cache:'no-cache',
+      Cache: 'no-cache',
       withCredentials: true,
       'Access-Control-Allow-Origin': PROXY_URL,
     },
     data,
     url,
-    withCredentials: true
+    withCredentials: true,
   };
   axios(options).then(
     (r) => {
-      console.log(r)
-
-      localStorage.setItem('login' , true);
+      localStorage.setItem('login', true);
 
       setData(r.data);
       setLoading(true);
- 
     },
     (error) => {
       console.error(error);
@@ -221,7 +215,7 @@ export const logoutApi = () => {
     url: `/user/client-logout`,
     method: 'POST',
   });
-}
+};
 
 //아이디 찾기api (완료)
 export const findIdApi = (setData, email) => {
@@ -312,7 +306,6 @@ export const evaluateUpdateApi = (
   content,
   id
 ) => {
-
   const data = {
     selectedSemester: semester,
     satisfaction,
@@ -327,12 +320,9 @@ export const evaluateUpdateApi = (
   return instance({
     url: `/evaluate-posts/?evaluateIdx=${id}`,
     method: 'PUT',
-    data: data
+    data: data,
   });
-  
- 
 };
-
 
 //강의평가작성 api
 export const evaluateWriteApi = (
@@ -363,14 +353,12 @@ export const evaluateWriteApi = (
   return instance({
     url: `evaluate-posts/?lectureId=${selectId}`,
     method: 'POST',
-    data: data
-  })
-  
+    data: data,
+  });
 };
 
 // 강의 평가 삭제 api
 export const deleteEvaluateApi = (id) => {
-
   return instance({
     url: `/evaluate-posts/?evaluateIdx=${id}`,
     method: 'DELETE',
@@ -379,7 +367,6 @@ export const deleteEvaluateApi = (id) => {
 
 //강의평가 신고 api
 export const evaluateReportApi = (evaluateIdx, content) => {
-
   const data = {
     evaluateIdx,
     content,
@@ -388,14 +375,12 @@ export const evaluateReportApi = (evaluateIdx, content) => {
   return instance({
     url: `/user/report/evaluate`,
     method: 'POST',
-    data: data
+    data: data,
   });
-  
 };
 
 //시험정보 신고 api
 export const examReportApi = (examIdx, content) => {
-
   const data = {
     examIdx,
     content,
@@ -404,9 +389,8 @@ export const examReportApi = (examIdx, content) => {
   return instance({
     url: `/user/report/exam`,
     method: 'POST',
-    data: data
+    data: data,
   });
-  
 };
 
 //시험정보쓰기 api
@@ -418,10 +402,8 @@ export const examWriteApi = (
   examInfo,
   examType,
   examDifficulty,
-  content,
+  content
 ) => {
-
-
   const data = {
     lectureName,
     professor,
@@ -435,9 +417,8 @@ export const examWriteApi = (
   return instance({
     url: `/exam-posts/?lectureId=${selectId}`,
     method: 'POST',
-    data: data
+    data: data,
   });
-  
 };
 
 //시험정보수정 api 미완
@@ -461,25 +442,23 @@ export const examUpdateApi = (
   return instance({
     url: `/exam-posts/?examIdx=${id}`,
     method: 'PUT',
-    data: data
+    data: data,
   });
 };
 
 //시험정보 구매
 export const buyTestInfo = (selectId) => {
-
   return instance({
     url: `/exam-posts/purchase/?lectureId=${selectId}`,
-    method: 'POST'
+    method: 'POST',
   });
 };
 
 // 시험정보 삭제
 export const deleteExamInfoApi = (id) => {
-
   return instance({
     url: `/exam-posts/?examIdx=${id}`,
-    method: 'DELETE'
+    method: 'DELETE',
   });
 };
 
@@ -534,14 +513,12 @@ export const resetPasswordApi = (prePassword, newPassword) => {
   return instance({
     url: `/user/reset-pw`,
     method: 'POST',
-    data: data
+    data: data,
   });
-  
 };
 
 //SUWIKI 회원 탈퇴
 export const quitApi = (id, pw) => {
-
   const data = {
     loginId: id,
     password: pw,
@@ -550,7 +527,7 @@ export const quitApi = (id, pw) => {
   return instance({
     url: `/user/quit`,
     method: 'POST',
-    data: data
+    data: data,
   });
 };
 
