@@ -65,7 +65,7 @@ const Testinformation = (props) => {
           );
         })
       ) : (
-        <Styled.NoEvaluation>아직 구매한 시험 정보가 없어요.</Styled.NoEvaluation>
+        <Styled.NoEvaluation>아직 작성한 시험 정보가 없어요.</Styled.NoEvaluation>
       )}
 
       {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
