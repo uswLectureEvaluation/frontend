@@ -128,7 +128,7 @@ export const TextField = styled.textarea`
   border-radius: 15px;
   background-color: #f9f9f9;
   @media only screen and (max-width: 550px) {
-    min-height: 200px;
+    min-height: 150px;
   }
 `;
 
