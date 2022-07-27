@@ -135,7 +135,7 @@ export const EditButton = styled.button`
 // 라디오버튼 스타일
 export const FormLabel = styled.label``;
 export const FormCheckText = styled.span`
-  font-size: 16px;
+  font-size: 1vw;
   padding: 8px 15px;
   background: #eee;
   border-radius: 10px;
