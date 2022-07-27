@@ -53,7 +53,7 @@ export const ContentWrapper = styled.div`
   margin: 1.5rem;
   border-bottom: 1px solid #e0e0e0;
   @media only screen and (max-width: 550px) {
-    padding-left: 1rem;
+    padding-left: 0rem;
   }
 `;
 
