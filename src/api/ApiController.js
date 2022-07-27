@@ -62,6 +62,18 @@ instance.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
+    if (error.response.status === 400 && originalRequest.url.includes('evaluate-posts')) {
+      alert('이미 작성한 강의 평가가 있어요.');
+      window.location.reload();
+    }
+    if (
+      error.response.status === 400 &&
+      originalRequest.url.includes('exam-posts/purchase/?lectureId')
+    ) {
+      alert('포인트가 부족해요.');
+      window.location.reload();
+    }
+
     if (error.response.status === 403) {
       logoutApi().then((data) => {
         if (data.Success) {
