@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Styled from './styled';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { VscChromeClose } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
+import { logoutApi } from '../../api/Api';
 
 const Nav = () => {
   let navigate = useNavigate();
   const [button, setButton] = useState(true);
   const [click, setClick] = useState(false);
-
+  const [logout, setLogout] = useState(false);
 
 
   const showButton = () => (window.innerWidth <= 960 ? setButton(false) : setButton(true));
@@ -17,8 +18,13 @@ const Nav = () => {
   const logoutClick = () => {
     localStorage.removeItem('login')
     localStorage.removeItem('AccessToken')
-    navigate('/login');
+    logoutApi().then((data)=>setLogout(data.Success));
   };
+  useEffect(()=>{
+    if(logout) {
+      window.location.href = "/";
+    }
+  }, [logout]);
 
   window.addEventListener('resize', showButton);
 

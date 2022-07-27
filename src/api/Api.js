@@ -215,6 +215,14 @@ export const loginApi = (setData, setLoading, id, pw) => {
   );
 };
 
+// 로그아웃
+export const logoutApi = () => {
+  return instance({
+    url: `/user/client-logout`,
+    method: 'POST',
+  });
+}
+
 //아이디 찾기api (완료)
 export const findIdApi = (setData, email) => {
   const url = `user/find-id`;

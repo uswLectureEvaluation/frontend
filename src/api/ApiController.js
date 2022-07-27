@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { logoutApi } from './Api';
 
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
@@ -11,7 +12,7 @@ instance.interceptors.request.use(
   async (config) => {
     
     if(!(config.url.includes('lecture/all/?option') || config.url.includes('suwiki/version') || config.url.includes('suwiki/majorType')
-    || config.url.includes('lecture/search/?searchValue') || config.url.includes('notice'))) {
+    || config.url.includes('lecture/search/?searchValue') || config.url.includes('notice') || config.url.includes('client-logout'))) {
       const { data } = await axios({
         url: `/user/client-refresh`, // 토큰 재요청
         method: 'POST',
@@ -63,9 +64,13 @@ instance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
     if (error.response.status===403) {
-      localStorage.removeItem('login');
-      alert("로그인 시간이 만료되었습니다\n다시 로그인 해주세요");
-      window.location.href = '/';
+      logoutApi().then((data)=>{
+        if(data.Success) {
+          localStorage.removeItem('login');
+          alert("로그인 시간이 만료되었습니다\n다시 로그인 해주세요");
+          window.location.href = '/';
+        }
+      });
    }
     if (error.response.status===401) {
       const { data } = await axios({
