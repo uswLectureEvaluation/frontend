@@ -60,6 +60,7 @@ export const ContentWrapper = styled.div`
   border-bottom: 1px solid #e0e0e0;
   @media only screen and (max-width: 550px) {
     padding-left: 1rem;
+    margin-bottom: 0.7rem;
   }
 `;
 
@@ -117,7 +118,9 @@ export const TextField = styled.textarea`
   border-radius: 15px;
   background-color: #f9f9f9;
   @media only screen and (max-width: 550px) {
-    min-height: 30px;
+    min-height: 50px;
+    font-size: 16px;
+    transform: scale(0.9);
   }
 `;
 
