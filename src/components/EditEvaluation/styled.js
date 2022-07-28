@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  font-family: Pretendard;
   flex-direction: column;
   width: 100%;
+  font-family: Pretendard;
   &#button {
     align-items: center;
   }
@@ -16,13 +16,25 @@ export const Title = styled.div`
   padding-bottom: 1rem;
   font-weight: 500;
   @media only screen and (max-width: 550px) {
+    padding: 0.5rem;
+  }
+`;
+
+export const TitleButton = styled.button`
+  font-size: 18px;
+  padding: 2rem;
+  padding-bottom: 1rem;
+  font-weight: 500;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  @media only screen and (max-width: 550px) {
     padding: 1rem;
   }
 `;
 
 export const Score = styled.span`
   margin: 2px 0 1px 24px;
-  font-family: Pretendard;
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
@@ -48,6 +60,7 @@ export const ContentWrapper = styled.div`
   border-bottom: 1px solid #e0e0e0;
   @media only screen and (max-width: 550px) {
     padding-left: 1rem;
+    margin-bottom: 0.7rem;
   }
 `;
 
@@ -105,11 +118,13 @@ export const TextField = styled.textarea`
   border-radius: 15px;
   background-color: #f9f9f9;
   @media only screen and (max-width: 550px) {
-    min-height: 30px;
+    min-height: 50px;
+    font-size: 16px;
+    transform: scale(0.9);
   }
 `;
 
-export const EditButton = styled.div`
+export const EditButton = styled.button`
   font-size: 16px;
   font-weight: 600;
   width: 350px;
@@ -118,8 +133,14 @@ export const EditButton = styled.div`
   color: #ffffff;
   background-color: #346cfd;
   border-radius: 15px;
+  border: none;
   &:hover {
     cursor: pointer;
+  }
+  &:disabled {
+    cursor: auto;
+    color: none;
+    background-color: #efefef;
   }
   @media only screen and (max-width: 550px) {
     width: 80%;

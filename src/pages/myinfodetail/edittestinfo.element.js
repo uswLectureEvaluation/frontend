@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  font-family: Pretendard;
+  font-family: 'Pretendard';
   flex-direction: column;
   width: 100%;
   &#button {
@@ -12,9 +12,19 @@ export const Wrapper = styled.div`
 
 export const Title = styled.div`
   font-size: 18px;
-  padding: 2rem;
-  padding-bottom: 1rem;
+  padding: 2rem 1.5rem 1rem;
   font-weight: 500;
+  @media only screen and (max-width: 550px) {
+    padding: 1rem;
+  }
+`;
+export const TitleButton = styled.button`
+  font-size: 18px;
+  padding: 2rem 1.5rem 1rem;
+  font-weight: 500;
+  border: none;
+  background-color: white;
+  cursor: pointer;
   @media only screen and (max-width: 550px) {
     padding: 1rem;
   }
@@ -22,7 +32,7 @@ export const Title = styled.div`
 
 export const Score = styled.span`
   margin: 2px 0 1px 24px;
-  font-family: Pretendard;
+  font-family: 'Pretendard';
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
@@ -31,7 +41,6 @@ export const Score = styled.span`
   letter-spacing: 0.32px;
   color: #346cfd;
 `;
-
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -44,7 +53,8 @@ export const ContentWrapper = styled.div`
   margin: 1.5rem;
   border-bottom: 1px solid #e0e0e0;
   @media only screen and (max-width: 550px) {
-    padding-left: 1rem;
+    padding-left: 0rem;
+    margin-bottom: 0.7rem;
   }
 `;
 
@@ -88,18 +98,6 @@ export const ContentTitle = styled.div`
   }
 `;
 
-export const TitleButton = styled.button`
-  font-size: 18px;
-  padding: 2rem 1.5rem 1rem;
-  font-weight: 500;
-  border: none;
-  background-color: white;
-  cursor: pointer;
-  @media only screen and (max-width: 550px) {
-    padding: 1rem;
-  }
-`;
-
 export const ContentTitleWrapper = styled.div`
   display: flex;
   width: 100%;
@@ -132,6 +130,8 @@ export const TextField = styled.textarea`
   background-color: #f9f9f9;
   @media only screen and (max-width: 550px) {
     min-height: 150px;
+    font-size: 16px;
+    transform: scale(0.86);
   }
 `;
 
