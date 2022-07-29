@@ -198,7 +198,7 @@ const MyInfo = () => {
         <Styled.InfoTitle>내 정보</Styled.InfoTitle>
       </Styled.InfoWrapper>
       <Styled.Button
-        onClick={() => navigate('/myinfodetail', { state: { props: db.point } })}
+        onClick={() => navigate('/myposting', { state: { props: db.point } })}
         background="#346cfd"
       >
         내가 쓴 글
