@@ -19,6 +19,7 @@ const ResetPassword = () => {
           placeholder="기존 비밀번호 입력"
           margin="normal"
           required
+          type="password"
           id="outlined-basic"
           autoFocus
           onChange={(e) => {
@@ -32,6 +33,7 @@ const ResetPassword = () => {
           placeholder="새 비밀번호 입력"
           margin="normal"
           required
+          type="password"
           id="outlined-basic"
           autoFocus
           onChange={(e) => {
