@@ -5,21 +5,21 @@ import {
   EmailSignUp,
   LectureInfo,
   Main,
+  Notice,
+  NoticeDetail,
   MyInfo,
+  MyPosting,
   Search,
   SignUp,
   Login,
   IdSearch,
   PwSearch,
+  ResetPassword,
+  BanReason,
   HistoryTest,
   Exit,
-} from './pages';
-import Notice from './pages/Notice';
-import NoticeDetail from './pages/NoticeDetail';
-import MyPosting from './pages/MyPosting';
+} from './pages'; //페이지 목록
 import ScrollButton from './components/ScrollButton';
-import ResetPassword from './pages/ResetPassword';
-import BanReason from './pages/BanReason';
 
 const App = () => {
   return (

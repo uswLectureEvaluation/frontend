@@ -1,11 +1,16 @@
 export { default as EmailSignUp } from './EmailSignUp';
 export { default as LectureInfo } from './LectureInfo';
 export { default as Main } from './Main';
+export { default as Notice } from './Notice';
+export { default as NoticeDetail } from './NoticeDetail';
 export { default as MyInfo } from './MyInfo';
+export { default as MyPosting } from './MyPosting';
 export { default as Search } from './Search';
 export { default as SignUp } from './SignUp';
 export { default as Login } from './Login';
 export { default as IdSearch } from './IdSearch';
 export { default as PwSearch } from './PwSearch';
+export { default as ResetPassword } from './ResetPassword';
+export { default as BanReason } from './BanReason';
 export { default as HistoryTest } from './HistoryTest';
 export { default as Exit } from './Exit';
