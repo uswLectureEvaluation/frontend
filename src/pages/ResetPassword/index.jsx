@@ -1,13 +1,30 @@
-import { React, useState } from 'react';
+import { React, useState, useCallback } from 'react';
 import { resetPasswordApi } from '../../api/Api';
 import * as Styled from './styled';
 
 const ResetPassword = () => {
-  const [newPassword, setNewPassword] = useState();
-  const [prePassword, setPrePassword] = useState();
+  const [newPassword, setNewPassword] = useState('');
+  const [prePassword, setPrePassword] = useState('');
+  const [passwordMessage, setPasswordMessage] = useState('');
+  const [isPassword, setIsPassword] = useState(false);
+
   const handleChange = () => {
     resetPasswordApi(prePassword, newPassword);
   };
+
+  const onChangePassword = useCallback((e) => {
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+    const passwordCurrent = e.target.value;
+    setNewPassword(passwordCurrent);
+
+    if (!passwordRegex.test(passwordCurrent)) {
+      setPasswordMessage('숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!');
+      setIsPassword(false);
+    } else {
+      setPasswordMessage('사용 가능한 비밀번호입니다.');
+      setIsPassword(true);
+    }
+  }, []);
 
   return (
     <Styled.Container>
@@ -36,10 +53,13 @@ const ResetPassword = () => {
           type="password"
           id="outlined-basic"
           autoFocus
-          onChange={(e) => {
-            setNewPassword(e.target.value);
-          }}
+          onChange={onChangePassword}
         />
+        {newPassword.length > 0 && (
+          <Styled.Checking className={`message ${isPassword ? 'success' : 'error'}`}>
+            {passwordMessage}
+          </Styled.Checking>
+        )}
 
         <Styled.Button
           background="#346cfd"
@@ -47,6 +67,7 @@ const ResetPassword = () => {
           fullWidth
           variant="contained"
           onClick={handleChange}
+          disabled={!isPassword}
         >
           전송
         </Styled.Button>

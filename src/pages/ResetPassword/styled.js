@@ -11,6 +11,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
+export const Checking = styled.div`
+  font-size: 1.2vh;
+`;
+
 export const Container = styled.div`
   display: flex;
   align-items: center;
@@ -59,9 +63,12 @@ export const Button = styled.button`
   cursor: pointer;
   user-select: none;
   transition: 0.3s all;
-
+  &:disabled {
+    background-color: rgba(170, 170, 170);
+    cursor: auto;
+  }
   @media only screen and (max-width: 480px) {
-    margin-top : 10rem;
+    margin-top: 10rem;
   }
 `;
 
