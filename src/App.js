@@ -16,7 +16,7 @@ import {
 } from './pages';
 import Notice from './pages/Notice';
 import NoticeDetail from './pages/NoticeDetail';
-import Myinfodetail from './pages/myinfodetail/myinfodetail';
+import MyPosting from './pages/MyPosting';
 import ScrollButton from './components/ScrollButton';
 import ResetPassword from './pages/ResetPassword';
 import BanReason from './pages/BanReason';
@@ -34,7 +34,7 @@ const App = () => {
         <Route path="/idsearch" element={<IdSearch />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/myinformation" element={<MyInfo />} />
-        <Route path="/myinfodetail" element={<Myinfodetail />} />
+        <Route path="/myposting" element={<MyPosting />} />
         <Route path="/lectureinfo" element={<LectureInfo />} />
         <Route path="/search" element={<Search />} />
         <Route path="/emailsignup" element={<EmailSignUp />} />

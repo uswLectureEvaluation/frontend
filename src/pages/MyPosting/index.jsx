@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Myevaluation from './myevaluation';
-import Testinformation from './testinformation';
-import * as Styled from './myinfodetail.element';
+import Myevaluation from '../../components/MyEvaluation';
+import Testinformation from '../../components/MyTestInfo';
+import * as Styled from './styled';
 import { useLocation } from 'react-router-dom';
 
-const Myinfodetail = () => {
+const MyPosting = () => {
   const [evaluation, setEvaluation] = useState(true);
   const location = useLocation();
   const { props } = location.state;
@@ -33,4 +33,4 @@ const Myinfodetail = () => {
     </Styled.FlexContainer>
   );
 };
-export default Myinfodetail;
+export default MyPosting;
