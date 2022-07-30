@@ -571,8 +571,10 @@ export const resetPasswordApi = (prePassword, newPassword) => {
         window.location.href = '/';
       }
     })
-    .catch(() => {
-      alert('정보가 올바르지않습니다.\n다시 시도해 해주세요');
+    .catch((error) => {
+      if (error.response.data.code === 'USER005') return alert('비밀번호를 확인해주세요.');
+      else if (error.response.data.code === 'USER016')
+        return alert('이전 비밀번호와 동일하게 변경할 수 없습니다.');
     });
 };
 

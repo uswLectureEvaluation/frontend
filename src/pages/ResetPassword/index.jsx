@@ -38,7 +38,6 @@ const ResetPassword = () => {
           required
           type="password"
           id="outlined-basic"
-          autoFocus
           onChange={(e) => {
             setPrePassword(e.target.value);
           }}
@@ -52,7 +51,6 @@ const ResetPassword = () => {
           required
           type="password"
           id="outlined-basic"
-          autoFocus
           onChange={onChangePassword}
         />
         {newPassword.length > 0 && (
