@@ -20,6 +20,7 @@ const Exit = () => {
     ) {
       quitApi(id, pw);
       localStorage.removeItem('login');
+      sessionStorage.removeItem('login');
     } else {
       alert('취소');
     }
@@ -45,6 +46,7 @@ const Exit = () => {
           margin="normal"
           required
           id="outlined-basic"
+          type="password"
           label="pw"
           name="pw"
           autoComplete="pw"
