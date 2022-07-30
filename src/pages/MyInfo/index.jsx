@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
 import { myInfoApi } from '../../api/Api';
+import { Button } from '../../components';
 
 const MyInfo = () => {
   const navigate = useNavigate();
@@ -64,7 +65,15 @@ const MyInfo = () => {
     myInfoApi().then((data) => setData(data));
   }, [win]);
 
-  return win ? (
+  return !(localStorage.getItem('login') || sessionStorage.getItem('login')) ? (
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <Styled.FlexContainer id="col">
+        <Button color="#346cfd" onClick={() => navigate('/login')}>
+          로그인하기
+        </Button>
+      </Styled.FlexContainer>
+    </div>
+  ) : win ? (
     <Styled.Container>
       <Styled.InfoWrapper>
         <Styled.InfoTitle>내 정보</Styled.InfoTitle>
