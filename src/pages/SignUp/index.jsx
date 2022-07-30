@@ -119,7 +119,7 @@ const SignUp = () => {
 
   const onClick = () => {
     registerApi(setData, setLoading, name, password, email);
-    navigate('/emailsignup', {state: email});
+    navigate('/emailsignup', { state: email });
   };
 
   const onCheck = () => {
@@ -129,6 +129,14 @@ const SignUp = () => {
   const onEmail = () => {
     checkemailApi(setEmailcheck, email);
   };
+
+  useEffect(() => {
+    if (idcheck) return setNameMessage('아이디 중복확인 완료');
+  }, [idcheck]);
+
+  useEffect(() => {
+    if (emailcheck) return setEmailMessage('이메일 중복확인 완료');
+  }, [emailcheck]);
 
   useEffect(() => {
     if (loading) {
@@ -158,7 +166,12 @@ const SignUp = () => {
             autoFocus
             onChange={onChangeName}
           />
-          <Styled.Button disabled={!isName || idcheck} id="check" onClick={onCheck} background="#346cfd">
+          <Styled.Button
+            disabled={!isName || idcheck}
+            id="check"
+            onClick={onCheck}
+            background="#346cfd"
+          >
             중복확인
           </Styled.Button>
         </Styled.InputWrapper>
@@ -212,7 +225,12 @@ const SignUp = () => {
             autoComplete="current-email"
             onChange={onChangeEmail}
           />
-          <Styled.Button disabled={!isEmail || emailcheck} id="check" onClick={onEmail} background="#346cfd">
+          <Styled.Button
+            disabled={!isEmail || emailcheck}
+            id="check"
+            onClick={onEmail}
+            background="#346cfd"
+          >
             중복확인
           </Styled.Button>
         </Styled.InputWrapper>
