@@ -280,7 +280,7 @@ export const findIdApi = (setData, email) => {
   };
   axios(options).then(
     (r) => {
-      alert('해당 아이디가 존재합니다');
+      alert('해당 이메일로 아이디를 전송하였습니다');
       setData(r.data);
     },
     (error) => {
