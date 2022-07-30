@@ -306,7 +306,7 @@ const MyInfo = () => {
           <Styled.Title>이용 안내</Styled.Title>
           {option.map((i) => (
             <Styled.FlexContainer id="use" key={i.title}>
-              <Styled.FlexContainer id="last" onClick={() => navigate(`${i.page}`)}>
+              <Styled.FlexContainer id="last" onClick={() => navigate(`/${i.page}`)}>
                 {i.title}
               </Styled.FlexContainer>
             </Styled.FlexContainer>
