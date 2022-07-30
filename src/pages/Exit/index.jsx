@@ -50,7 +50,6 @@ const Exit = () => {
           label="pw"
           name="pw"
           autoComplete="pw"
-          autoFocus
           onChange={onChangePw}
         />
         <Styled.Button

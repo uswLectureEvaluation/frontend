@@ -36,6 +36,7 @@ const ResetPassword = () => {
           placeholder="기존 비밀번호 입력"
           margin="normal"
           required
+          autoFocus
           type="password"
           id="outlined-basic"
           onChange={(e) => {
