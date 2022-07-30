@@ -78,7 +78,7 @@ const Login = () => {
         />
         <Styled.SearchWrapper>
           <FormControlLabel
-            control={<Checkbox checked={checked} onChange={onChangeCheckBox} />}
+            control={<Checkbox checked={checked} color="primary" onChange={onChangeCheckBox} />}
             label="로그인 유지"
           />
           <div>
