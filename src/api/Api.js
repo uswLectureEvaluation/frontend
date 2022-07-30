@@ -59,7 +59,13 @@ export const favoriteMajorApi = (setFavorite, majorType) => {
     url: `/user/favorite-major`,
     method: 'POST',
     data: data,
-  });
+  })
+    .then((data) => setFavorite(data.success))
+    .catch((error) => {
+      if (error.response.status === 500) {
+        alert('로그인 후 이용해주세요');
+      }
+    });
 };
 
 //즐겨찾기 삭제 api
@@ -67,7 +73,13 @@ export const deleteFavoriteMajorApi = async (setFavorite, majorType) => {
   return instance({
     url: `/user/favorite-major?majorType=${majorType}`,
     method: 'delete',
-  }).then((data) => setFavorite(data));
+  })
+    .then((data) => setFavorite(data))
+    .catch((error) => {
+      if (error.response.status === 500) {
+        alert('로그인 후 이용해주세요');
+      }
+    });
 };
 
 //공지사항api 확인 필요

@@ -15,7 +15,8 @@ const MajorSearch = (props) => {
 
   useEffect(() => {
     searchFavoriteMajorApi().then((data) => setFavoriteDb(data.data));
-  }, [props.selectedMajor, favorite]);
+    setFavorite('');
+  }, [favorite]);
 
   const onFavoriteMajor = (e) => {
     props.setSelectedMajor(e.target.alt);
@@ -24,7 +25,6 @@ const MajorSearch = (props) => {
     } else {
       deleteFavoriteMajorApi(setFavorite, e.target.alt);
     }
-    setFavorite('');
   };
 
   useEffect(() => {
