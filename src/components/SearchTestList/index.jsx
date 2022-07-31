@@ -65,9 +65,9 @@ export const Subject = (props) => {
 
         <Styled.MarginTop id="bottom">
           <Styled.EvaluationDetail>
-            {props.content.split('\n').map((value) => {
+            {props.content.split('\n').map((value, index) => {
               return (
-                <div>
+                <div key={index}>
                   {value}
                   <br />
                 </div>
