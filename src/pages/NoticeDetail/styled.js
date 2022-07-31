@@ -7,6 +7,10 @@ export const AppContainer = styled.div`
   width: 60%;
   padding-bottom: 25rem;
   margin: 0 auto;
+
+  @media screen and (max-width: 550px) {
+    width: 90%;
+  }
 `;
 
 export const AppTitle = styled.div`
