@@ -98,12 +98,14 @@ export const SearchWrapper = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
+  align-items: center;
   padding: 1rem 0;
 `;
 
 export const SearchTitle = styled.div`
   display: flex;
   font-size: 1.5rem;
+  margin-right: auto;
   font-family: 'Pretendard-SemiBold';
   padding-top: 4rem;
 `;
@@ -117,6 +119,12 @@ export const SearchInput = styled.input`
   background-image: url('img/icon_search_24.svg');
   background-repeat: no-repeat;
   background-position: 99%;
+
+  @media screen and (max-width: 480px) {
+    font-size: 16px;
+    width: 123%;
+    transform: scale(0.8);
+  }
 
   &:focus {
     outline: none;
