@@ -150,7 +150,6 @@ export const Subject = (props) => {
       }
     }
   };
-
   return (
     <div style={{ marginTop: '15px' }}>
       <Styled.LectureWrapper>
@@ -225,7 +224,16 @@ export const Subject = (props) => {
           />
         ) : null}
         <Styled.MarginTop id="bottom">
-          <Styled.EvaluationDetail>{props.content}</Styled.EvaluationDetail>
+          <Styled.EvaluationDetail>
+            {props.content.split('\n').map((value) => {
+              return (
+                <div>
+                  {value}
+                  <br />
+                </div>
+              );
+            })}
+          </Styled.EvaluationDetail>
         </Styled.MarginTop>
         <Modal
           isOpen={modalIsOpen}
