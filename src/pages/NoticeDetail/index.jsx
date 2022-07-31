@@ -24,7 +24,15 @@ const NoticeDetail = () => {
           {/* {db.data.modifiedDate.slice(0, 10)}{" "}
                     {db.data.modifiedDate.slice(11)} */}
         </Styled.Date>
-        {db.data.content}
+        {db.data.content &&
+          db.data.content.split('\n').map((value, index) => {
+            return (
+              <div key={id + index}>
+                {value}
+                <br />
+              </div>
+            );
+          })}
       </Styled.Content>
       <Styled.BackWrapper onClick={() => navigate('/notice')}>
         <Styled.Back>
