@@ -198,7 +198,7 @@ const WriteEvaluation = (props) => {
         rows="15"
       />
       <Styled.Wrapper id="button">
-        <Styled.EditButton onClick={onEvaluate}>작성하기 (+20P)</Styled.EditButton>
+        <Styled.EditButton onClick={onEvaluate}>작성하기 (+10P)</Styled.EditButton>
       </Styled.Wrapper>
     </Styled.Wrapper>
   );
