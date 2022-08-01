@@ -73,18 +73,18 @@ const LectureInfo = () => {
   const homeworkSet = parseFloat(db.data.lectureHomeworkAvg).toFixed(0);
   const difficultySet = parseFloat(db.data.lectureDifficultyAvg).toFixed(0);
   const team = {
-    0: <Styled.DataColor>없음</Styled.DataColor>,
+    0: <Styled.DataColor id="cyan">없음</Styled.DataColor>,
     1: <Styled.DataColor id="purple">있음</Styled.DataColor>,
   };
   const homework = {
-    0: <Styled.DataColor>없음</Styled.DataColor>,
-    1: <Styled.DataColor id="cyan">보통</Styled.DataColor>,
+    0: <Styled.DataColor id="cyan">없음</Styled.DataColor>,
+    1: <Styled.DataColor id="black">보통</Styled.DataColor>,
     2: <Styled.DataColor id="purple">많음</Styled.DataColor>,
   };
   const difficulty = {
-    0: <Styled.DataColor>까다로움</Styled.DataColor>,
-    1: <Styled.DataColor id="cyan">보통</Styled.DataColor>,
-    2: <Styled.DataColor id="purple">잘줌</Styled.DataColor>,
+    0: <Styled.DataColor id="purple">까다로움</Styled.DataColor>,
+    1: <Styled.DataColor id="black">보통</Styled.DataColor>,
+    2: <Styled.DataColor id="cyan">너그러움</Styled.DataColor>,
   };
 
   return (

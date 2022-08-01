@@ -9,6 +9,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 export const DataColor = styled.div`
+  &#black {
+    color: black;
+  }
   &#cyan {
     color: #346cfd;
   }
