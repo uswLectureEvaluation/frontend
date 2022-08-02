@@ -122,6 +122,7 @@ const Search = () => {
           ) : (
             <Infinite
               lecture={location.state}
+              count={count}
               setCount={setCount}
               checkClass={checkClass}
               option={option}

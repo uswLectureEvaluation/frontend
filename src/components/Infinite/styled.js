@@ -132,6 +132,14 @@ export const FlexWrap = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+
+  &#none {
+    display: flex;
+    justify-content: center;
+    color: #a3a3a3;
+    font-size: 20px;
+    margin: 40px 0px;
+  }
 `;
 
 export const FlexWrapSub = styled.div`

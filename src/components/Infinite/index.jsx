@@ -6,7 +6,7 @@ import StarRatings from 'react-star-ratings';
 import { selectIdState } from '../../features/selectIdSlice';
 import { useDispatch } from 'react-redux';
 
-const Infinite = ({ lecture, setCount, checkClass, option, wow }) => {
+const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
@@ -42,7 +42,7 @@ const Infinite = ({ lecture, setCount, checkClass, option, wow }) => {
     }
     setLoad(false); //로딩 종료
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, setCount, checkClass, option]);
+  }, [page, setCount, checkClass, option, lecture]);
 
   const showWin = () => {
     if (window.innerWidth <= 960) {
@@ -85,16 +85,41 @@ const Infinite = ({ lecture, setCount, checkClass, option, wow }) => {
     }
   };
 
-  return win ? (
-    <>
-      <Styled.FlexWrap>
-        <Styled.FlexWrapSub>
-          {list &&
-            list
+  return count ? (
+    win ? (
+      <>
+        <Styled.FlexWrap>
+          <Styled.FlexWrapSub>
+            {list &&
+              list
+                .filter((data, i) => {
+                  if (!(i % 2) && checkClass === '전체') return true;
+                  else {
+                    if (!(i % 2) && data.majorType === checkClass) return true;
+                  }
+                  return false;
+                })
+                .map((row, i) => (
+                  <Subject
+                    key={Math.random()}
+                    id={row.id}
+                    lectureName={row.lectureName}
+                    professor={row.professor}
+                    lectureType={row.lectureType}
+                    star={row.lectureTotalAvg}
+                    lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+                    lectureHoneyAvg={row.lectureHoneyAvg}
+                    lectureLearningAvg={row.lectureLearningAvg}
+                    majorType={row.majorType}
+                  />
+                ))}
+          </Styled.FlexWrapSub>
+          <Styled.FlexWrapSub>
+            {list
               .filter((data, i) => {
-                if (!(i % 2) && checkClass === '전체') return true;
+                if (i % 2 && checkClass === '전체') return true;
                 else {
-                  if (!(i % 2) && data.majorType === checkClass) return true;
+                  if (i % 2 && data.majorType === checkClass) return true;
                 }
                 return false;
               })
@@ -112,17 +137,18 @@ const Infinite = ({ lecture, setCount, checkClass, option, wow }) => {
                   majorType={row.majorType}
                 />
               ))}
-        </Styled.FlexWrapSub>
-        <Styled.FlexWrapSub>
-          {list
-            .filter((data, i) => {
-              if (i % 2 && checkClass === '전체') return true;
-              else {
-                if (i % 2 && data.majorType === checkClass) return true;
-              }
-              return false;
-            })
-            .map((row, i) => (
+          </Styled.FlexWrapSub>
+        </Styled.FlexWrap>
+        {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+        <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
+          옵저버 Element
+        </div>
+      </>
+    ) : (
+      <>
+        <Styled.FlexWrap>
+          <Styled.FullWrapSub>
+            {list.map((row, i) => (
               <Subject
                 key={Math.random()}
                 id={row.id}
@@ -136,38 +162,16 @@ const Infinite = ({ lecture, setCount, checkClass, option, wow }) => {
                 majorType={row.majorType}
               />
             ))}
-        </Styled.FlexWrapSub>
-      </Styled.FlexWrap>
-      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-      <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
-        옵저버 Element
-      </div>
-    </>
+          </Styled.FullWrapSub>
+        </Styled.FlexWrap>
+        {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+        <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
+          옵저버 Element
+        </div>
+      </>
+    )
   ) : (
-    <>
-      <Styled.FlexWrap>
-        <Styled.FullWrapSub>
-          {list.map((row, i) => (
-            <Subject
-              key={Math.random()}
-              id={row.id}
-              lectureName={row.lectureName}
-              professor={row.professor}
-              lectureType={row.lectureType}
-              star={row.lectureTotalAvg}
-              lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-              lectureHoneyAvg={row.lectureHoneyAvg}
-              lectureLearningAvg={row.lectureLearningAvg}
-              majorType={row.majorType}
-            />
-          ))}
-        </Styled.FullWrapSub>
-      </Styled.FlexWrap>
-      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-      <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
-        옵저버 Element
-      </div>
-    </>
+    <Styled.FlexWrap id="none">'{lecture.search_value}'에 대한 검색결과가 없습니다</Styled.FlexWrap>
   );
 };
 
