@@ -71,7 +71,7 @@ const SearchEvaluationList = ({ selectId, setIsEmpty }) => {
       console.error(res); //에러
     }
     console.log(page, res.data);
-  }, [page, selectId]);
+  }, [page, selectId, setIsEmpty]);
 
   const preventRef = useRef(true);
 
