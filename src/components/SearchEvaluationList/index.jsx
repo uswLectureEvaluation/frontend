@@ -11,18 +11,18 @@ export const DetailModal = (props) => {
   const homeworkSet = props.homework;
   const difficultySet = props.difficulty;
   const team = {
-    0: <Styled.DataColor>없음</Styled.DataColor>,
+    0: <Styled.DataColor id="cyan">없음</Styled.DataColor>,
     1: <Styled.DataColor id="purple">있음</Styled.DataColor>,
   };
   const homework = {
-    0: <Styled.DataColor>없음</Styled.DataColor>,
-    1: <Styled.DataColor id="cyan">보통</Styled.DataColor>,
+    0: <Styled.DataColor id="cyan">없음</Styled.DataColor>,
+    1: <Styled.DataColor id="black">보통</Styled.DataColor>,
     2: <Styled.DataColor id="purple">많음</Styled.DataColor>,
   };
   const difficulty = {
     0: <Styled.DataColor id="purple">까다로움</Styled.DataColor>,
-    1: <Styled.DataColor id="cyan">보통</Styled.DataColor>,
-    2: <Styled.DataColor>너그러움</Styled.DataColor>,
+    1: <Styled.DataColor id="black">보통</Styled.DataColor>,
+    2: <Styled.DataColor id="cyan">너그러움</Styled.DataColor>,
   };
 
   return (
@@ -58,8 +58,6 @@ export const DetailModal = (props) => {
 };
 
 const SearchEvaluationList = ({ selectId }) => {
-
-
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -101,22 +99,22 @@ const SearchEvaluationList = ({ selectId }) => {
 
   return list.length !== 0 ? (
     <Styled.Wrapper>
-      {list && list.map((v, i) => (
-        <Subject
-          key={Math.random()}
-          semester={v.selectedSemester}
-          totalAvg={v.totalAvg}
-          content={v.content}
-          satisfaction={v.satisfaction}
-          learning={v.learning}
-          honey={v.honey}
-          team={v.team}
-          difficulty={v.difficulty}
-          homework={v.homework}
-          id={v.id}
-        />
-      ))}
-        
+      {list &&
+        list.map((v, i) => (
+          <Subject
+            key={Math.random()}
+            semester={v.selectedSemester}
+            totalAvg={v.totalAvg}
+            content={v.content}
+            satisfaction={v.satisfaction}
+            learning={v.learning}
+            honey={v.honey}
+            team={v.team}
+            difficulty={v.difficulty}
+            homework={v.homework}
+            id={v.id}
+          />
+        ))}
     </Styled.Wrapper>
   ) : (
     <Styled.Wrapper>
