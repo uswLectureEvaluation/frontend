@@ -114,6 +114,7 @@ const Search = () => {
           {search_value === 'all' ? (
             <Infinite
               lecture={location.state}
+              count={count}
               setCount={setCount}
               checkClass={checkClass}
               option={option}
