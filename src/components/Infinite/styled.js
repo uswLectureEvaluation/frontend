@@ -139,6 +139,9 @@ export const FlexWrap = styled.div`
     color: #a3a3a3;
     font-size: 20px;
     margin: 40px 0px;
+    @media screen and (max-width: 550px) {
+      font-size: 15px;
+    }
   }
 `;
 
