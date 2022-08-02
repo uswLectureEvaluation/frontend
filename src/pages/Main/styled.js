@@ -303,7 +303,7 @@ const StyledButton = styled_mui('button')(
   }
   &#major {
     min-width: 150px;
-    min-height: calc(1.5em + 0px);
+    min-height: calc(1.5em + 22px);
     background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
     border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
     border-radius: 10px;
