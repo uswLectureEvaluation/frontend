@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import * as Styled from './styled';
 import StarRatings from 'react-star-ratings';
 import { searchEvaluationApi } from '../../api/Api';
@@ -57,24 +57,58 @@ export const DetailModal = (props) => {
   );
 };
 
-const SearchEvaluationList = ({ selectId, setWritten }) => {
-  const [db, setData] = useState({
-    data: [],
-    written: false,
-  });
+const SearchEvaluationList = ({ selectId }) => {
+
+
+  const [list, setList] = useState([]);
+  const [page, setPage] = useState(1);
+  const [load, setLoad] = useState(1);
+
+  const getDog = useCallback(async () => {
+    setLoad(true); //로딩 시작
+    const res = await searchEvaluationApi(selectId, page);
+    if (res.data) {
+      setList((prev) => [...prev, ...res.data]);
+      preventRef.current = true;
+    } else {
+      console.error(res); //에러
+    }
+    setLoad(false); //로딩 종료
+    console.log(page, res.data);
+  }, [page, selectId]);
+
+  const preventRef = useRef(true);
+  const obsRef = useRef(null);
 
   useEffect(() => {
-    searchEvaluationApi(selectId).then((data) => {
-      setData(data);
-      setWritten(data.written);
-    });
-  }, [selectId, setWritten]);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
-  return db.data.length !== 0 ? (
+  useEffect(() => {
+    getDog();
+
+    // eslint-disable-next-line no-use-before-define
+  }, [getDog, page]);
+
+  const handleScroll = () => {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+
+    if (scrollTop + clientHeight >= scrollHeight) {
+      setPage((prev) => prev + 1);
+    }
+  };
+
+  return list.length !== 0 ? (
+    <>
     <Styled.Wrapper>
-      {db.data.map((v, i) => (
+      {list && list.map((v, i) => (
         <Subject
-          key={v.id}
+          key={Math.random()}
           semester={v.selectedSemester}
           totalAvg={v.totalAvg}
           content={v.content}
@@ -87,7 +121,13 @@ const SearchEvaluationList = ({ selectId, setWritten }) => {
           id={v.id}
         />
       ))}
+        
     </Styled.Wrapper>
+    {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+       <div ref={obsRef} style={{ opacity: '0', width: '0%'}}>
+         옵저버 Element
+       </div>
+       </>
   ) : (
     <Styled.Wrapper>
       <Styled.Content>등록된 강의평가가 없어요</Styled.Content>

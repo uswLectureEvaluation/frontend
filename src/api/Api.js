@@ -526,9 +526,9 @@ export const searchLectureApi = (selectId) => {
 };
 
 // 검색 결과 자세히보기 (Evaluation)
-export const searchEvaluationApi = (selectId) => {
+export const searchEvaluationApi = (selectId, page) => {
   return instance({
-    url: `/evaluate-posts/?lectureId=${selectId}&page=1`,
+    url: `/evaluate-posts/?lectureId=${selectId}&page=${page}`,
     method: 'GET',
   });
 };

@@ -27,7 +27,7 @@ export const Container = styled.div`
   width: 60%;
   margin: 0 auto;
   font-family: 'Pretendard';
-  padding-bottom: 25rem;
+  padding-bottom: 5rem;
   @media screen and (max-width: 960px) {
     display: flex;
     flex-direction: column;
