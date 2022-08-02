@@ -121,14 +121,13 @@ const Main = () => {
         </Styled.SearchWrapper>
         <Styled.Button
           background="#346cfd"
-          onClick={(e) => {
+          onClick={() => {
             navigate(`/search`, {
               state: {
                 search_value: 'all',
                 search_option: lecture,
               },
             });
-            return false;
           }}
         >
           더 보러 가기 →
