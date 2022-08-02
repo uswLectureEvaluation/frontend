@@ -90,7 +90,7 @@ const LectureInfo = () => {
   return (
     <Styled.Container>
       <Styled.SearchWrapper>
-        <Styled.SearchTitle>검색 결과</Styled.SearchTitle>
+        <Styled.SearchTitle>강의평가 검색</Styled.SearchTitle>
         <Styled.SearchInput
           onChange={onChange}
           placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
