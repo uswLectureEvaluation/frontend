@@ -493,10 +493,13 @@ export const examUpdateApi = (
 };
 
 //시험정보 구매
-export const buyTestInfo = (selectId) => {
+export const buyTestInfo = (selectId, setBuy) => {
   return instance({
     url: `/exam-posts/purchase/?lectureId=${selectId}`,
     method: 'POST',
+  }).then(() => {
+    setBuy(true);
+    alert('구매 완료');
   });
 };
 

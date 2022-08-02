@@ -31,16 +31,16 @@ const TestInfo = ({ selectId, setWritten }) => {
     examDataExist: false,
     written: false,
   });
+  const [buy, setBuy] = useState(false);
   useEffect(() => {
     searchExamApi(selectId, 1).then((data) => {
       setData(data);
       setWritten(data.written);
     });
-  }, [selectId, setWritten]);
+  }, [selectId, setWritten, buy]);
   const unlock = () => {
-    if (window.confirm('시험정보를 열람하시겠습니까?')) buyTestInfo(selectId);
+    if (window.confirm('시험정보를 열람하시겠습니까?')) buyTestInfo(selectId, setBuy);
   };
-
   if (db.data.length === 0 && db.examDataExist) {
     return <NotUsePoint unlock={unlock} />;
   } else if (db.data.length === 0 && db.examDataExist === false) {
