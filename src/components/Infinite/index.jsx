@@ -42,7 +42,7 @@ const Infinite = ({ lecture, setCount, checkClass, option, wow }) => {
     }
     setLoad(false); //로딩 종료
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, setCount, checkClass]);
+  }, [page, setCount, checkClass, option]);
 
   const showWin = () => {
     if (window.innerWidth <= 960) {
@@ -75,7 +75,7 @@ const Infinite = ({ lecture, setCount, checkClass, option, wow }) => {
   useEffect(() => {
     setPage(1);
     setList([]);
-  }, [checkClass, lecture]);
+  }, [checkClass, lecture, option]);
 
   const obsHandler = (entries) => {
     const target = entries[0];
