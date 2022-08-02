@@ -117,6 +117,9 @@ export const MarginTop = styled.div`
 export const DataColor = styled.div`
   padding-left: 0.7rem;
   font-weight: 500;
+  &#black {
+    color: black;
+  }
   &#cyan {
     color: #346cfd;
   }
