@@ -17,12 +17,13 @@ const LectureInfo = () => {
   const [check, setCheck] = useState('강의평가');
   const [search, setSearch] = useState('');
   const [written, setWritten] = useState(false);
+  const [isEmpty, setIsEmpty] = useState([]);
   const menu = [
     { name: '강의평가', option: '강의평가' },
     { name: '시험정보', option: '시험정보' },
   ];
   const checkList = {
-    0: <SearchEvaluationList selectId={selectId} setWritten={setWritten} />,
+    0: <SearchEvaluationList selectId={selectId} setWritten={setWritten} setIsEmpty={setIsEmpty} />,
     1: <TestInfo selectId={selectId} setWritten={setWritten} />,
   };
   const menuList = menu.map((i, index) => (
@@ -64,7 +65,6 @@ const LectureInfo = () => {
   const [db, setDB] = useState({
     data: [],
   });
-
   useEffect(() => {
     searchLectureApi(selectId).then((data) => setDB(data));
   }, [selectId]);
@@ -151,7 +151,11 @@ const LectureInfo = () => {
                   <Styled.OptionTitle>조모임</Styled.OptionTitle>
                   <Styled.FlexContainer>
                     <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>
-                      {team[teamSet]}
+                      {isEmpty.length !== 0 ? (
+                        team[teamSet]
+                      ) : (
+                        <Styled.DataColor id="black">-</Styled.DataColor>
+                      )}
                     </Styled.Color>
                   </Styled.FlexContainer>
                 </Styled.FlexContainer>
@@ -175,7 +179,11 @@ const LectureInfo = () => {
                   <Styled.OptionTitle>과제</Styled.OptionTitle>
                   <Styled.FlexContainer>
                     <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>
-                      {homework[homeworkSet]}
+                      {isEmpty.length !== 0 ? (
+                        homework[homeworkSet]
+                      ) : (
+                        <Styled.DataColor id="black">-</Styled.DataColor>
+                      )}
                     </Styled.Color>
                   </Styled.FlexContainer>
                 </Styled.FlexContainer>
@@ -199,7 +207,11 @@ const LectureInfo = () => {
                   <Styled.OptionTitle>학점</Styled.OptionTitle>
                   <Styled.FlexContainer>
                     <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>
-                      {difficulty[difficultySet]}
+                      {isEmpty.length !== 0 ? (
+                        difficulty[difficultySet]
+                      ) : (
+                        <Styled.DataColor id="black">-</Styled.DataColor>
+                      )}
                     </Styled.Color>
                   </Styled.FlexContainer>
                 </Styled.FlexContainer>

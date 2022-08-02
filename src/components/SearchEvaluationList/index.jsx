@@ -57,7 +57,7 @@ export const DetailModal = (props) => {
   );
 };
 
-const SearchEvaluationList = ({ selectId }) => {
+const SearchEvaluationList = ({ selectId, setIsEmpty }) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -65,6 +65,7 @@ const SearchEvaluationList = ({ selectId }) => {
     const res = await searchEvaluationApi(selectId, page);
     if (res.data) {
       setList((prev) => [...prev, ...res.data]);
+      setIsEmpty(res.data);
       preventRef.current = true;
     } else {
       console.error(res); //에러
