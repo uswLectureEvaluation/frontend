@@ -1,15 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback,useRef,useEffect } from 'react';
 import * as Styled from './styled';
 import Modal from 'react-modal';
 import ReportExam from '../ReportExam';
 import ModalStyle from '../../components/ModalStyle';
+import { searchExamApi} from '../../api/Api'
 
 const SearchTestList = (props) => {
+
+  const [list, setList] = useState([]);
+  const [page, setPage] = useState(1);
+
+  const getDog = useCallback(async () => {
+    const res = await searchExamApi(props.db, page);
+    if (res.data) {
+      setList((prev) => [...prev, ...res.data]);
+      preventRef.current = true;
+    } else {
+      console.error(res); //에러
+    }
+    console.log(page, res.data);
+  }, [page, props.db]);
+
+  const preventRef = useRef(true);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    getDog();
+
+    // eslint-disable-next-line no-use-before-define
+  }, [getDog, page]);
+
+  const handleScroll = () => {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+
+    if (scrollTop + clientHeight >= scrollHeight) {
+      setPage((prev) => prev + 1);
+    }
+  };
+
   return (
     <Styled.Wrapper>
-      {props.db.map((v, i) => (
+      {list && list.map((v, i) => (
         <Subject
-          key={v.id}
+          key={Math.random()}
           content={v.content}
           examDifficulty={v.examDifficulty}
           examInfo={v.examInfo}

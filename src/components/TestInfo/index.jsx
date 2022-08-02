@@ -32,7 +32,7 @@ const TestInfo = ({ selectId, setWritten }) => {
     written: false,
   });
   useEffect(() => {
-    searchExamApi(selectId).then((data) => {
+    searchExamApi(selectId, 1).then((data) => {
       setData(data);
       setWritten(data.written);
     });
@@ -46,7 +46,7 @@ const TestInfo = ({ selectId, setWritten }) => {
   } else if (db.data.length === 0 && db.examDataExist === false) {
     return <NoTestInfo />;
   } else {
-    return <SearchTestList db={db.data} />;
+    return <SearchTestList db={selectId} />;
   }
 };
 export default TestInfo;

@@ -62,10 +62,8 @@ const SearchEvaluationList = ({ selectId }) => {
 
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
-  const [load, setLoad] = useState(1);
 
   const getDog = useCallback(async () => {
-    setLoad(true); //로딩 시작
     const res = await searchEvaluationApi(selectId, page);
     if (res.data) {
       setList((prev) => [...prev, ...res.data]);
@@ -73,12 +71,10 @@ const SearchEvaluationList = ({ selectId }) => {
     } else {
       console.error(res); //에러
     }
-    setLoad(false); //로딩 종료
     console.log(page, res.data);
   }, [page, selectId]);
 
   const preventRef = useRef(true);
-  const obsRef = useRef(null);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -104,7 +100,6 @@ const SearchEvaluationList = ({ selectId }) => {
   };
 
   return list.length !== 0 ? (
-    <>
     <Styled.Wrapper>
       {list && list.map((v, i) => (
         <Subject
@@ -123,11 +118,6 @@ const SearchEvaluationList = ({ selectId }) => {
       ))}
         
     </Styled.Wrapper>
-    {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-       <div ref={obsRef} style={{ opacity: '0', width: '0%'}}>
-         옵저버 Element
-       </div>
-       </>
   ) : (
     <Styled.Wrapper>
       <Styled.Content>등록된 강의평가가 없어요</Styled.Content>

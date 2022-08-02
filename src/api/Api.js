@@ -534,9 +534,9 @@ export const searchEvaluationApi = (selectId, page) => {
 };
 
 // 검색 결과 자세히보기 (Exam)
-export const searchExamApi = (selectId) => {
+export const searchExamApi = (selectId, page) => {
   return instance({
-    url: `/exam-posts/?lectureId=${selectId}&page=1`,
+    url: `/exam-posts/?lectureId=${selectId}&page=${page}`,
     method: 'GET',
   });
 };
