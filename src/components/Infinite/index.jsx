@@ -12,6 +12,11 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
   const [load, setLoad] = useState(1);
   const [win, setWin] = useState(true);
 
+  useEffect(() => {
+    setPage(1);
+    setList([]);
+  }, [checkClass, lecture, option]);
+
   const getDog = useCallback(async () => {
     setLoad(true); //로딩 시작
     if (wow === 'main') {
@@ -72,11 +77,6 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
     // eslint-disable-next-line no-use-before-define
   }, [getDog, page]);
 
-  useEffect(() => {
-    setPage(1);
-    setList([]);
-  }, [checkClass, lecture, option]);
-
   const obsHandler = (entries) => {
     const target = entries[0];
     if (target.isIntersecting && preventRef.current) {
@@ -85,9 +85,9 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
     }
   };
 
-  return count ? (
-    win ? (
-      <>
+  return win ? (
+    <>
+      {count ? (
         <Styled.FlexWrap>
           <Styled.FlexWrapSub>
             {list &&
@@ -139,13 +139,19 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
               ))}
           </Styled.FlexWrapSub>
         </Styled.FlexWrap>
-        {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-        <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
-          옵저버 Element
-        </div>
-      </>
-    ) : (
-      <>
+      ) : (
+        <Styled.FlexWrap id="none">
+          '{lecture.search_value}'에 대한 검색결과가 없습니다
+        </Styled.FlexWrap>
+      )}
+      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+      <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
+        옵저버 Element
+      </div>
+    </>
+  ) : (
+    <>
+      {count ? (
         <Styled.FlexWrap>
           <Styled.FullWrapSub>
             {list.map((row, i) => (
@@ -164,14 +170,16 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
             ))}
           </Styled.FullWrapSub>
         </Styled.FlexWrap>
-        {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-        <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
-          옵저버 Element
-        </div>
-      </>
-    )
-  ) : (
-    <Styled.FlexWrap id="none">'{lecture.search_value}'에 대한 검색결과가 없습니다</Styled.FlexWrap>
+      ) : (
+        <Styled.FlexWrap id="none">
+          '{lecture.search_value}'에 대한 검색결과가 없습니다
+        </Styled.FlexWrap>
+      )}
+      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+      <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
+        옵저버 Element
+      </div>
+    </>
   );
 };
 
