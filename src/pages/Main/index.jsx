@@ -87,6 +87,7 @@ const Main = () => {
             onChange={onChange}
             placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
             onKeyPress={onKeypress}
+            onMouseLeave={() => document.activeElement.blur()}
           />
         </Styled.SearchWrapper>
         <Styled.SearchWrapper>
@@ -120,14 +121,15 @@ const Main = () => {
         </Styled.SearchWrapper>
         <Styled.Button
           background="#346cfd"
-          onClick={() =>
+          onClick={(e) => {
             navigate(`/search`, {
               state: {
                 search_value: 'all',
                 search_option: lecture,
               },
-            })
-          }
+            });
+            return false;
+          }}
         >
           더 보러 가기 →
         </Styled.Button>
