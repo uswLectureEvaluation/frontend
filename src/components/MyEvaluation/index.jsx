@@ -62,7 +62,6 @@ const Myevaluation = (props) => {
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
   const [refresh, setRefresh] = useState(false);
-
   const getDog = useCallback(async () => {
     setLoad(true); //로딩 시작
     const res = await evaluatePostApi(page);
@@ -97,9 +96,10 @@ const Myevaluation = (props) => {
 
   useEffect(() => {
     if (refresh) {
-      setPage(1);
-      setList([]);
-      setRefresh(false);
+      evaluatePostApi(1).then((res) => {
+        setList(res.data);
+        setRefresh(false);
+      });
     }
   }, [refresh]);
 

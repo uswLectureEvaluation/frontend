@@ -46,9 +46,10 @@ const Testinformation = (props) => {
 
   useEffect(() => {
     if (refresh) {
-      setPage(1);
-      setList([]);
-      setRefresh(false);
+      examPostApi(1).then((res) => {
+        setList(res.data);
+        setRefresh(false);
+      });
     }
   }, [refresh]);
 
