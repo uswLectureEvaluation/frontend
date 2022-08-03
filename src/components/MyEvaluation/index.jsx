@@ -61,6 +61,7 @@ const Myevaluation = (props) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
+  const [refresh, setRefresh] = useState(false);
 
   const getDog = useCallback(async () => {
     setLoad(true); //로딩 시작
@@ -94,6 +95,17 @@ const Myevaluation = (props) => {
     }
   };
 
+  useEffect(() => {
+    if (refresh) {
+      setPage(1);
+      setList([]);
+      evaluatePostApi(1).then((r) => {
+        setList(r.data);
+        setRefresh(false);
+      });
+    }
+  }, [refresh]);
+
   return (
     <Styled.Wrapper>
       {list.length !== 0 ? (
@@ -116,6 +128,7 @@ const Myevaluation = (props) => {
               semesterList={v.semesterList}
               id={v.id}
               point={props}
+              setRefresh={setRefresh}
             />
           );
         })
@@ -255,6 +268,7 @@ export const Subject = (props) => {
             semesterList={props.semesterList}
             lectureName={props.lectureName}
             id={props.id}
+            setRefresh={props.setRefresh}
           />
         </Modal>
       </Styled.LectureWrapper>

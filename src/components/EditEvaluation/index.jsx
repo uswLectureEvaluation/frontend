@@ -43,7 +43,10 @@ const EditEvaluation = (props) => {
       Number(homework),
       content,
       props.id
-    );
+    ).then(() => {
+      alert('수정 완료');
+      props.setRefresh(true);
+    });
     props.setModalIsOpen(false);
   };
   const [semester, setSemester] = useState(`${props.semester}`); //학기
