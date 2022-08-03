@@ -1,12 +1,8 @@
-import React, { useState, useCallback,useRef,useEffect } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import * as Styled from './styled';
-import Modal from 'react-modal';
-import ReportExam from '../ReportExam';
-import ModalStyle from '../../components/ModalStyle';
-import { searchExamApi} from '../../api/Api'
+import { examReportApi, searchExamApi } from '../../api/Api';
 
 const SearchTestList = (props) => {
-
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -48,25 +44,28 @@ const SearchTestList = (props) => {
 
   return (
     <Styled.Wrapper>
-      {list && list.map((v, i) => (
-        <Subject
-          key={Math.random()}
-          content={v.content}
-          examDifficulty={v.examDifficulty}
-          examInfo={v.examInfo}
-          examType={v.examType}
-          id={v.id}
-          semester={v.selectedSemester}
-        />
-      ))}
+      {list &&
+        list.map((v, i) => (
+          <Subject
+            key={Math.random()}
+            content={v.content}
+            examDifficulty={v.examDifficulty}
+            examInfo={v.examInfo}
+            examType={v.examType}
+            id={v.id}
+            semester={v.selectedSemester}
+          />
+        ))}
     </Styled.Wrapper>
   );
 };
 
 export const Subject = (props) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const examDifficultySet = props.examDifficulty;
-
+  const onReport = () => {
+    if (window.confirm('정말 신고하시겠어요? \n*허위 신고 시 제재가 가해질 수 있습니다!'))
+      examReportApi(props.id);
+  };
   const examDifficulty = {
     '매우 쉬움': <Styled.DataColor id="cyan">매우 쉬움</Styled.DataColor>,
     쉬움: <Styled.DataColor id="cyan">쉬움</Styled.DataColor>,
@@ -83,7 +82,7 @@ export const Subject = (props) => {
             <Styled.YearText>{props.semester}</Styled.YearText>
             <Styled.YearText>{props.examType}</Styled.YearText>
           </Styled.TitleWrapper>
-          <Styled.EditButton onClick={() => setModalIsOpen(true)}>신고</Styled.EditButton>
+          <Styled.EditButton onClick={onReport}>신고</Styled.EditButton>
           <div style={{ marginBottom: '35px' }} />
         </Styled.MarginTop>
 
@@ -116,15 +115,6 @@ export const Subject = (props) => {
             })}
           </Styled.EvaluationDetail>
         </Styled.MarginTop>
-        <Modal
-          isOpen={modalIsOpen}
-          style={ModalStyle}
-          // 오버레이나 esc를 누르면 핸들러 동작
-          ariaHideApp={false}
-          onRequestClose={() => setModalIsOpen(false)}
-        >
-          <ReportExam examIdx={props.id} />
-        </Modal>
       </Styled.LectureWrapper>
     </div>
   );

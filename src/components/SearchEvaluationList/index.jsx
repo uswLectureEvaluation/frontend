@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import * as Styled from './styled';
 import StarRatings from 'react-star-ratings';
-import { searchEvaluationApi } from '../../api/Api';
-import Modal from 'react-modal';
-import ReportEvaluation from '../ReportEvaluation';
-import ModalStyle from '../../components/ModalStyle';
+import { evaluateReportApi, searchEvaluationApi } from '../../api/Api';
 
 export const DetailModal = (props) => {
   const teamSet = props.team;
@@ -126,7 +123,10 @@ const SearchEvaluationList = ({ selectId, setIsEmpty }) => {
 
 export const Subject = (props) => {
   const [modal, setModal] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const onReport = () => {
+    if (window.confirm('정말 신고하시겠어요? \n*허위 신고 시 제재가 가해질 수 있습니다!'))
+      evaluateReportApi(props.id);
+  };
 
   return (
     <div style={{ marginTop: '15px' }}>
@@ -135,13 +135,7 @@ export const Subject = (props) => {
           <Styled.TitleWrapper>
             <Styled.YearText>{props.semester}</Styled.YearText>
           </Styled.TitleWrapper>
-          <Styled.EditButton
-            onClick={() => {
-              setModalIsOpen(true);
-            }}
-          >
-            신고
-          </Styled.EditButton>
+          <Styled.EditButton onClick={onReport}>신고</Styled.EditButton>
           <StarRatings
             rating={props.totalAvg}
             starRatedColor="#346cfd"
@@ -166,13 +160,7 @@ export const Subject = (props) => {
             <Styled.TitleWrapper>
               <Styled.YearText>{props.semester}</Styled.YearText>
             </Styled.TitleWrapper>
-            <Styled.EditButton
-              onClick={() => {
-                setModalIsOpen(true);
-              }}
-            >
-              신고
-            </Styled.EditButton>
+            <Styled.EditButton onClick={onReport}>신고</Styled.EditButton>
           </div>
           <div>
             <StarRatings
@@ -219,15 +207,6 @@ export const Subject = (props) => {
             })}
           </Styled.EvaluationDetail>
         </Styled.MarginTop>
-        <Modal
-          isOpen={modalIsOpen}
-          style={ModalStyle}
-          // 오버레이나 esc를 누르면 핸들러 동작
-          ariaHideApp={false}
-          onRequestClose={() => setModalIsOpen(false)}
-        >
-          <ReportEvaluation evaluateIdx={props.id} />
-        </Modal>
       </Styled.LectureWrapper>
     </div>
   );
