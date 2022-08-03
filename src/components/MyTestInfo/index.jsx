@@ -9,6 +9,7 @@ const Testinformation = (props) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
+  const [refresh, setRefresh] = useState(false);
 
   const getDog = useCallback(async () => {
     setLoad(true); //로딩 시작
@@ -43,6 +44,14 @@ const Testinformation = (props) => {
     }
   };
 
+  useEffect(() => {
+    if (refresh) {
+      setPage(1);
+      setList([]);
+      setRefresh(false);
+    }
+  }, [refresh]);
+
   return (
     <Styled.Wrapper>
       {list.length !== 0 ? (
@@ -61,6 +70,7 @@ const Testinformation = (props) => {
               selectedSemester={v.selectedSemester}
               semesterList={v.semesterList}
               point={props}
+              setRefresh={setRefresh}
             />
           );
         })
@@ -200,6 +210,7 @@ export const Subject = (props) => {
             id={props.id}
             examType={props.examType}
             semesterList={props.semesterList}
+            setRefresh={props.setRefresh}
           />
         </Modal>
       </Styled.LectureWrapper>

@@ -99,10 +99,7 @@ const Myevaluation = (props) => {
     if (refresh) {
       setPage(1);
       setList([]);
-      evaluatePostApi(1).then((r) => {
-        setList(r.data);
-        setRefresh(false);
-      });
+      setRefresh(false);
     }
   }, [refresh]);
 

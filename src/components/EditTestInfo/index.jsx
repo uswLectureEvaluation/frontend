@@ -36,7 +36,12 @@ const Edittestinfo = (props) => {
     if (content.length < 30 || content.length > 1000)
       return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
 
-    examUpdateApi(setData, semester, examInfo, examType, examDifficulty, content, props.id);
+    examUpdateApi(setData, semester, examInfo, examType, examDifficulty, content, props.id).then(
+      () => {
+        props.setRefresh(true);
+        alert('수정 완료');
+      }
+    );
     props.setModalIsOpen(false);
   };
 
