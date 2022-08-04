@@ -49,6 +49,7 @@ const Testinformation = (props) => {
       examPostApi(1).then((res) => {
         setList(res.data);
         setRefresh(false);
+        setPage(2);
       });
     }
   }, [refresh]);
