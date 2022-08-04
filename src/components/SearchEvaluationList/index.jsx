@@ -54,7 +54,7 @@ export const DetailModal = (props) => {
   );
 };
 
-const SearchEvaluationList = ({ selectId, setIsEmpty }) => {
+const SearchEvaluationList = ({ selectId, setWritten, setIsEmpty }) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const preventRef = useRef(true);
@@ -76,6 +76,7 @@ const SearchEvaluationList = ({ selectId, setIsEmpty }) => {
     if (res.data) {
       setList((prev) => [...prev, ...res.data]);
       setIsEmpty(res.data);
+      setWritten(res.written);
       preventRef.current = true;
     } else {
       console.error(res); //에러
