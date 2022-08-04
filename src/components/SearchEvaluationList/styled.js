@@ -13,7 +13,6 @@ export const ModalOpen = styled.span`
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 40vh;
 `;
 
 export const Content = styled.div`
