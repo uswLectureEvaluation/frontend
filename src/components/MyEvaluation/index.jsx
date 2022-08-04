@@ -65,11 +65,9 @@ const Myevaluation = (props) => {
   const getDog = useCallback(async () => {
     setLoad(true); //로딩 시작
     const res = await evaluatePostApi(page);
-    console.log('getdog', page);
     if (res.data) {
       setList((prev) => [...prev, ...res.data]);
       preventRef.current = true;
-      console.log(page, '성공');
     } else {
       console.error(res); //에러
     }
@@ -105,7 +103,6 @@ const Myevaluation = (props) => {
       });
     }
   }, [refresh]);
-  console.log('전체', page);
   return (
     <Styled.Wrapper>
       {list.length !== 0 ? (
