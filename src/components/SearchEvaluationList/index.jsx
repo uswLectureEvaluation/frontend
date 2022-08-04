@@ -55,7 +55,7 @@ export const DetailModal = (props) => {
 };
 
 const SearchEvaluationList = ({ selectId, setIsEmpty }) => {
-  
+
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const preventRef = useRef(true);
@@ -64,6 +64,8 @@ const SearchEvaluationList = ({ selectId, setIsEmpty }) => {
     const scrollHeight = document.documentElement.scrollHeight;
     const scrollTop = document.documentElement.scrollTop;
     const clientHeight = document.documentElement.clientHeight;
+
+    console.log(clientHeight, scrollHeight, scrollTop)
 
     if (scrollTop + clientHeight >= scrollHeight) {
       setPage((prev) => prev + 1);
