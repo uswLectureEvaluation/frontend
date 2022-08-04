@@ -55,7 +55,6 @@ export const DetailModal = (props) => {
 };
 
 const SearchEvaluationList = ({ selectId, setIsEmpty }) => {
-
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const preventRef = useRef(true);
@@ -65,7 +64,7 @@ const SearchEvaluationList = ({ selectId, setIsEmpty }) => {
     const scrollTop = document.documentElement.scrollTop;
     const clientHeight = document.documentElement.clientHeight;
 
-    console.log(clientHeight, scrollHeight, scrollTop)
+    console.log(clientHeight, scrollHeight, scrollTop);
 
     if (scrollTop + clientHeight >= scrollHeight) {
       setPage((prev) => prev + 1);
@@ -97,8 +96,6 @@ const SearchEvaluationList = ({ selectId, setIsEmpty }) => {
     // eslint-disable-next-line no-use-before-define
   }, [getDog, page]);
 
-  
-
   return list.length !== 0 ? (
     <Styled.Wrapper>
       {list &&
@@ -129,7 +126,7 @@ export const Subject = (props) => {
   const [modal, setModal] = useState(false);
   const onReport = () => {
     if (window.confirm('정말 신고하시겠어요? \n*허위 신고 시 제재가 가해질 수 있습니다!'))
-      evaluateReportApi(props.id);
+      evaluateReportApi(props.id).then(() => alert('신고 완료'));
   };
 
   return (

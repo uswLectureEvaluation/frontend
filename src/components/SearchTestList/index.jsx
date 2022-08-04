@@ -14,7 +14,6 @@ const SearchTestList = (props) => {
     } else {
       console.error(res); //에러
     }
-    console.log(page, res.data);
   }, [page, props.db]);
 
   const preventRef = useRef(true);
@@ -64,7 +63,7 @@ export const Subject = (props) => {
   const examDifficultySet = props.examDifficulty;
   const onReport = () => {
     if (window.confirm('정말 신고하시겠어요? \n*허위 신고 시 제재가 가해질 수 있습니다!'))
-      examReportApi(props.id);
+      examReportApi(props.id).then(() => alert('신고 완료'));
   };
   const examDifficulty = {
     '매우 쉬움': <Styled.DataColor id="cyan">매우 쉬움</Styled.DataColor>,

@@ -59,7 +59,6 @@ instance.interceptors.response.use(
 
     reloadHandler('evaluate-posts/?lectureId', 'exam-posts/?lectureId', 'post', '작성 완료');
     reloadHandler('evaluate-posts/?evaluateIdx', 'exam-posts/?examIdx', 'delete', '삭제 완료');
-    reloadHandler('user/report/evaluate', 'user/report/exam', 'post', '신고 완료');
     reloadHandler('user/quit', null, 'post', '탈퇴 완료');
 
     return response.data;
