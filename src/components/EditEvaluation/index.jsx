@@ -70,13 +70,13 @@ const EditEvaluation = (props) => {
     <Styled.Wrapper>
       <Styled.TitleWrapper>
         <Styled.Title>{props.lectureName}</Styled.Title>
-        <Styled.Title
+        <Styled.TitleButton
           onClick={() => {
             props.setModalIsOpen(false);
           }}
         >
           X
-        </Styled.Title>
+        </Styled.TitleButton>
       </Styled.TitleWrapper>
 
       <Styled.ContentWrapper>
