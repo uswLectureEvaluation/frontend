@@ -126,6 +126,7 @@ const Myevaluation = (props) => {
               id={v.id}
               point={props}
               setRefresh={setRefresh}
+              setPage={setPage}
             />
           );
         })
@@ -156,7 +157,11 @@ export const Subject = (props) => {
       if (props.point.props < 30) {
         alert('유저 포인트가 부족합니다');
       } else {
-        deleteEvaluateApi(props.id);
+        deleteEvaluateApi(props.id).then(() => {
+          alert('삭제 완료');
+          props.setRefresh(true);
+          props.setPage(2);
+        });
       }
     }
   };

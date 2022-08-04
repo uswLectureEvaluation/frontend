@@ -73,6 +73,7 @@ const Testinformation = (props) => {
               semesterList={v.semesterList}
               point={props}
               setRefresh={setRefresh}
+              setPage={setPage}
             />
           );
         })
@@ -103,7 +104,11 @@ export const Subject = (props) => {
       if (props.point.props < 30) {
         alert('유저 포인트가 부족합니다');
       } else {
-        deleteExamInfoApi(props.id);
+        deleteExamInfoApi(props.id).then(() => {
+          alert('삭제 완료');
+          props.setRefresh(true);
+          props.setPage(2);
+        });
       }
     }
   };
