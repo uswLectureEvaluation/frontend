@@ -55,8 +55,20 @@ export const DetailModal = (props) => {
 };
 
 const SearchEvaluationList = ({ selectId, setIsEmpty }) => {
+  
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
+  const preventRef = useRef(true);
+
+  const handleScroll = () => {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+
+    if (scrollTop + clientHeight >= scrollHeight) {
+      setPage((prev) => prev + 1);
+    }
+  };
 
   const getDog = useCallback(async () => {
     const res = await searchEvaluationApi(selectId, page);
@@ -69,8 +81,6 @@ const SearchEvaluationList = ({ selectId, setIsEmpty }) => {
     }
     console.log(page, res.data);
   }, [page, selectId, setIsEmpty]);
-
-  const preventRef = useRef(true);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -85,15 +95,7 @@ const SearchEvaluationList = ({ selectId, setIsEmpty }) => {
     // eslint-disable-next-line no-use-before-define
   }, [getDog, page]);
 
-  const handleScroll = () => {
-    const scrollHeight = document.documentElement.scrollHeight;
-    const scrollTop = document.documentElement.scrollTop;
-    const clientHeight = document.documentElement.clientHeight;
-
-    if (scrollTop + clientHeight >= scrollHeight) {
-      setPage((prev) => prev + 1);
-    }
-  };
+  
 
   return list.length !== 0 ? (
     <Styled.Wrapper>
