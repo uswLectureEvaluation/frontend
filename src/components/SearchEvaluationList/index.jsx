@@ -54,7 +54,7 @@ export const DetailModal = (props) => {
   );
 };
 
-const SearchEvaluationList = ({ selectId, setWritten, setIsEmpty }) => {
+const SearchEvaluationList = ({ selectId, setWritten }) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
@@ -66,8 +66,9 @@ const SearchEvaluationList = ({ selectId, setWritten, setIsEmpty }) => {
     const res = await searchEvaluationApi(selectId, page);
     setLoad(true); //로딩 시작
     if (res.data) {
+    //window.scroll(0,document.documentElement.scrollTop);
+
       setList((prev) => [...prev, ...res.data]);
-      setIsEmpty(res.data);
       setWritten(res.written);
       preventRef.current = true;
     } else {
@@ -75,10 +76,10 @@ const SearchEvaluationList = ({ selectId, setWritten, setIsEmpty }) => {
     }
     setLoad(false); //로딩 시작
     console.log(page, res.data);
-  }, [page, selectId, setIsEmpty, setWritten]);
+  }, [page, selectId, setWritten]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(obsHandler, { threshold: 0.5 });
+    const observer = new IntersectionObserver(obsHandler, { threshold: 1 });
     if (obsRef.current) observer.observe(obsRef.current);
     return () => {
       observer.disconnect();

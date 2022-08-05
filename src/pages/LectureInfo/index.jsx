@@ -17,13 +17,12 @@ const LectureInfo = () => {
   const [check, setCheck] = useState('강의평가');
   const [search, setSearch] = useState('');
   const [written, setWritten] = useState(false);
-  const [isEmpty, setIsEmpty] = useState([]);
   const menu = [
     { name: '강의평가', option: '강의평가' },
     { name: '시험정보', option: '시험정보' },
   ];
   const checkList = {
-    0: <SearchEvaluationList selectId={selectId} setWritten={setWritten} setIsEmpty={setIsEmpty} />,
+    0: <SearchEvaluationList selectId={selectId} setWritten={setWritten} />,
     1: <TestInfo selectId={selectId} setWritten={setWritten} />,
   };
   const menuList = menu.map((i, index) => (
@@ -151,7 +150,7 @@ const LectureInfo = () => {
                   <Styled.OptionTitle>조모임</Styled.OptionTitle>
                   <Styled.FlexContainer>
                     <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>
-                      {isEmpty.length !== 0 ? (
+                      {db.data.lectureHoneyAvg !== 0 ? (
                         team[teamSet]
                       ) : (
                         <Styled.DataColor id="black">-</Styled.DataColor>
@@ -179,7 +178,7 @@ const LectureInfo = () => {
                   <Styled.OptionTitle>과제</Styled.OptionTitle>
                   <Styled.FlexContainer>
                     <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>
-                      {isEmpty.length !== 0 ? (
+                      {db.data.lectureHoneyAvg !== 0  ? (
                         homework[homeworkSet]
                       ) : (
                         <Styled.DataColor id="black">-</Styled.DataColor>
@@ -207,7 +206,7 @@ const LectureInfo = () => {
                   <Styled.OptionTitle>학점</Styled.OptionTitle>
                   <Styled.FlexContainer>
                     <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>
-                      {isEmpty.length !== 0 ? (
+                      {db.data.lectureHoneyAvg !== 0  ? (
                         difficulty[difficultySet]
                       ) : (
                         <Styled.DataColor id="black">-</Styled.DataColor>
