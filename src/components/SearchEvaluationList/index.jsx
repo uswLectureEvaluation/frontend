@@ -57,22 +57,14 @@ export const DetailModal = (props) => {
 const SearchEvaluationList = ({ selectId, setWritten, setIsEmpty }) => {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
+  const [load, setLoad] = useState(1);
   const preventRef = useRef(true);
+  const obsRef = useRef(null);
 
-  const handleScroll = () => {
-    const scrollHeight = document.documentElement.scrollHeight;
-    const scrollTop = document.documentElement.scrollTop;
-    const clientHeight = document.documentElement.clientHeight;
-
-    console.log(clientHeight, scrollHeight, scrollTop);
-
-    if (scrollTop + clientHeight >= scrollHeight) {
-      setPage((prev) => prev + 1);
-    }
-  };
 
   const getDog = useCallback(async () => {
     const res = await searchEvaluationApi(selectId, page);
+    setLoad(true); //로딩 시작
     if (res.data) {
       setList((prev) => [...prev, ...res.data]);
       setIsEmpty(res.data);
@@ -81,21 +73,31 @@ const SearchEvaluationList = ({ selectId, setWritten, setIsEmpty }) => {
     } else {
       console.error(res); //에러
     }
+    setLoad(false); //로딩 시작
     console.log(page, res.data);
   }, [page, selectId, setIsEmpty, setWritten]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    const observer = new IntersectionObserver(obsHandler, { threshold: 0.5 });
+    if (obsRef.current) observer.observe(obsRef.current);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
     };
+    // eslint-disable-next-line no-use-before-define
   }, []);
 
   useEffect(() => {
     getDog();
-
     // eslint-disable-next-line no-use-before-define
   }, [getDog, page]);
+
+  const obsHandler = (entries) => {
+    const target = entries[0];
+    if (target.isIntersecting && preventRef.current) {
+      preventRef.current = false;
+      setPage((prev) => prev + 1);
+    }
+  };
 
   return list.length !== 0 ? (
     <Styled.Wrapper>
@@ -115,12 +117,21 @@ const SearchEvaluationList = ({ selectId, setWritten, setIsEmpty }) => {
             id={v.id}
           />
         ))}
+      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+      <div ref={obsRef} style={{width: '0%', opacity: '0'}}>
+        옵저버 Element
+      </div>
     </Styled.Wrapper>
   ) : (
     <Styled.Wrapper>
       <Styled.Content>등록된 강의평가가 없어요</Styled.Content>
+      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+      <div ref={obsRef} style={{width: '0%', opacity: '0'}}>
+        옵저버 Element
+      </div>
     </Styled.Wrapper>
-  );
+  )
+
 };
 
 export const Subject = (props) => {
