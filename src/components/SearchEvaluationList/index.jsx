@@ -82,7 +82,7 @@ const SearchEvaluationList = ({ selectId, setWritten, setIsEmpty }) => {
       console.error(res); //에러
     }
     console.log(page, res.data);
-  }, [page, selectId, setIsEmpty]);
+  }, [page, selectId, setIsEmpty, setWritten]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
