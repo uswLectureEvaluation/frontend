@@ -61,12 +61,11 @@ const SearchEvaluationList = ({ selectId, setWritten }) => {
   const preventRef = useRef(true);
   const obsRef = useRef(null);
 
-
   const getDog = useCallback(async () => {
     const res = await searchEvaluationApi(selectId, page);
     setLoad(true); //로딩 시작
     if (res.data) {
-    //window.scroll(0,document.documentElement.scrollTop);
+      //window.scroll(0,document.documentElement.scrollTop);
 
       setList((prev) => [...prev, ...res.data]);
       setWritten(res.written);
@@ -75,7 +74,6 @@ const SearchEvaluationList = ({ selectId, setWritten }) => {
       console.error(res); //에러
     }
     setLoad(false); //로딩 시작
-    console.log(page, res.data);
   }, [page, selectId, setWritten]);
 
   useEffect(() => {
@@ -119,7 +117,7 @@ const SearchEvaluationList = ({ selectId, setWritten }) => {
           />
         ))}
       {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-      <div ref={obsRef} style={{width: '0%', opacity: '0'}}>
+      <div ref={obsRef} style={{ width: '0%', opacity: '0' }}>
         옵저버 Element
       </div>
     </Styled.Wrapper>
@@ -127,12 +125,11 @@ const SearchEvaluationList = ({ selectId, setWritten }) => {
     <Styled.Wrapper>
       <Styled.Content>등록된 강의평가가 없어요</Styled.Content>
       {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-      <div ref={obsRef} style={{width: '0%', opacity: '0'}}>
+      <div ref={obsRef} style={{ width: '0%', opacity: '0' }}>
         옵저버 Element
       </div>
     </Styled.Wrapper>
-  )
-
+  );
 };
 
 export const Subject = (props) => {
