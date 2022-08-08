@@ -240,7 +240,13 @@ const SignUp = () => {
           </Styled.Checking>
         )}
 
-        <Styled.EmailWrapper>*수원대 이메일 인증 후 서비스 이용이 가능합니다.</Styled.EmailWrapper>
+        <Styled.EmailWrapper>
+          * 수원대 이메일 인증 후 서비스 이용이 가능합니다.
+          <br />
+          <br />* 이메일 인증 시 주의 사항
+          <br />- 웹메일이 휴면 상태인지 확인해주세요.
+          <br />- 웹메일 계정은 포털 계정과 다르니 이 부분 주의 바랍니다.
+        </Styled.EmailWrapper>
 
         <Styled.Label>
           <Styled.InputWrapper>
