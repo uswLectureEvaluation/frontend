@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '../../components/Button';
 import * as Styled from './styled';
 import { Positioner } from '../../components/Wrapper/styled';
@@ -15,7 +14,7 @@ const EmailSignUp = () => {
           <img src="img/email.png" alt="options" width={100} />
         </Styled.Img>
         <Styled.Content>
-          <Styled.Color>{ state }</Styled.Color>로<br />
+          <Styled.Color>{state}</Styled.Color>로<br />
           전송된 인증 메일을 확인해주세요
           <br />
           <br />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Modal from 'react-modal';
 import { evaluatePostApi, deleteEvaluateApi } from '../../api/Api';
 import * as Styled from './styled';

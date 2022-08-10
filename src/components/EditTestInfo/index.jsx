@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { examUpdateApi } from '../../api/Api';
 import * as Styled from './styled';
 import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';

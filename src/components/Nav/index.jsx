@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Styled from './styled';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { VscChromeClose } from 'react-icons/vsc';

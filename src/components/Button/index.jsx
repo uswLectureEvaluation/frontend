@@ -1,4 +1,3 @@
-import React from 'react';
 import * as Styled from './styled';
 
 const Button = ({ children, onClick, color, id, disabled }) => (

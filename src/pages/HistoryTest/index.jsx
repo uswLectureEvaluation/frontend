@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import * as Styled from './styled';
 import { historyTestInfo } from '../../api/Api';
 const HistoryTest = () => {
@@ -27,7 +27,7 @@ const HistoryTest = () => {
             title={i.lectureName}
             professor={i.professor}
             major={i.majorType}
-            createDate={i.createDate.slice(0,10)}
+            createDate={i.createDate.slice(0, 10)}
             key={i.id}
           />
         );

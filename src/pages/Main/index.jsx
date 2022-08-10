@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import MainList from '../../components/MainList';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';

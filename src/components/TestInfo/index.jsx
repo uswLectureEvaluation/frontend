@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Styled from './styled';
 import Button from '../Button';
 import { buyTestInfo, searchExamApi } from '../../api/Api';

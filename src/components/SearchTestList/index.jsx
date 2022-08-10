@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import * as Styled from './styled';
 import { examReportApi, searchExamApi } from '../../api/Api';
 
@@ -10,7 +10,7 @@ const SearchTestList = (props) => {
   const obsRef = useRef(null);
 
   const getDog = useCallback(async () => {
-    setLoad(true); 
+    setLoad(true);
     const res = await searchExamApi(props.db, page);
     if (res.data) {
       setList((prev) => [...prev, ...res.data]);
@@ -18,9 +18,8 @@ const SearchTestList = (props) => {
     } else {
       console.error(res); //에러
     }
-    setLoad(false); 
+    setLoad(false);
   }, [page, props.db]);
-
 
   useEffect(() => {
     const observer = new IntersectionObserver(obsHandler, { threshold: 0.5 });
@@ -58,8 +57,8 @@ const SearchTestList = (props) => {
             semester={v.selectedSemester}
           />
         ))}
-        {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-      <div ref={obsRef} style={{width: '0%', opacity: '0'}}>
+      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+      <div ref={obsRef} style={{ width: '0%', opacity: '0' }}>
         옵저버 Element
       </div>
     </Styled.Wrapper>

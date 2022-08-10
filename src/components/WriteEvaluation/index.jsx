@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { evaluateWriteApi } from '../../api/Api';
 import * as Styled from './styled';
 import RangeInput from '../RangeInput';

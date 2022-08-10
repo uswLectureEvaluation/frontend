@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import * as Styled from './styled';
 import SearchEvaluationList from '../../components/SearchEvaluationList';
 import TestInfo from '../../components/TestInfo';
@@ -178,7 +178,7 @@ const LectureInfo = () => {
                   <Styled.OptionTitle>과제</Styled.OptionTitle>
                   <Styled.FlexContainer>
                     <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>
-                      {db.data.lectureHoneyAvg !== 0  ? (
+                      {db.data.lectureHoneyAvg !== 0 ? (
                         homework[homeworkSet]
                       ) : (
                         <Styled.DataColor id="black">-</Styled.DataColor>
@@ -206,7 +206,7 @@ const LectureInfo = () => {
                   <Styled.OptionTitle>학점</Styled.OptionTitle>
                   <Styled.FlexContainer>
                     <Styled.Color style={{ color: '#6200ee', fontSize: '14px' }}>
-                      {db.data.lectureHoneyAvg !== 0  ? (
+                      {db.data.lectureHoneyAvg !== 0 ? (
                         difficulty[difficultySet]
                       ) : (
                         <Styled.DataColor id="black">-</Styled.DataColor>

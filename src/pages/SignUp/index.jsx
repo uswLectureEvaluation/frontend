@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import * as Styled from './styled';
 import { checkemailApi, checkidApi, registerApi } from '../../api/Api';
 import { useNavigate } from 'react-router-dom';

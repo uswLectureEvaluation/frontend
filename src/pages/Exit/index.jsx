@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as Styled from './styled';
 import { quitApi } from '../../api/Api';
 

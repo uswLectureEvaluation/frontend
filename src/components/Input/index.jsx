@@ -1,4 +1,3 @@
-import React from 'react';
 import TextField from '@mui/material/TextField';
 
 const Input = ({ onChange, placeholder, type }) => (

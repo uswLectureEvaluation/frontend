@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import * as Styled from './styled';
 import { useLocation } from 'react-router';
 import { noticeDetailApi } from '../../api/Api';

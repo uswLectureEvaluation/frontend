@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { banListApi, resListApi } from '../../api/Api';
 import * as Styled from './styled';
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
 import { loginApi, unCheckedLoginApi } from '../../api/Api';

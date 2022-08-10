@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { deleteExamInfoApi, examPostApi } from '../../api/Api';
 import * as Styled from './styled';
 import EditTestInfo from '../EditTestInfo';

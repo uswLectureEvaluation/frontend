@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import * as Styled from './styled';
 import StarRatings from 'react-star-ratings';
 import { evaluateReportApi, searchEvaluationApi } from '../../api/Api';

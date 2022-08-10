@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './styled.css';
 
 const RangeInput = ({ min = 0, max = 5, step = 0.5, defaultValue = 0, setSlide }) => {
