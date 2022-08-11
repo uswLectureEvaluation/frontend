@@ -7,13 +7,8 @@ const ScrollButton = () => {
 
   const handleFollow = () => {
     setScrollY(window.pageYOffset);
-    if (ScrollY > 100) {
-      // 100 이상이면 버튼이 보이게
-      setBtnStatus(true);
-    } else {
-      // 100 이하면 버튼이 사라지게
-      setBtnStatus(false);
-    }
+    if (ScrollY > 100) setBtnStatus(true);
+    else setBtnStatus(false);
   };
 
   const handleScroll = () => {
@@ -21,30 +16,25 @@ const ScrollButton = () => {
       top: 0,
       behavior: 'smooth',
     });
-    setScrollY(0); // ScrollY 의 값을 초기화
-    setBtnStatus(false); // BtnStatus의 값을 false로 바꿈 => 버튼 숨김
+    setScrollY(0);
+    setBtnStatus(false);
   };
 
   useEffect(() => {
-    const watch = () => {
-      window.addEventListener('scroll', handleFollow);
-    };
-    watch();
+    window.addEventListener('scroll', handleFollow);
     return () => {
       window.removeEventListener('scroll', handleFollow);
     };
   });
 
   return (
-    <div>
+    <>
       {btnStatus ? (
         <Styled.TopButton onClick={handleScroll}>
-          <Styled.Img src="img/icon_up_arrow_solid_24.svg" width="22" />
+          <img src="img/icon_up_arrow_solid_24.svg" alt="upArrow" width="22" />
         </Styled.TopButton>
-      ) : (
-        <></>
-      )}
-    </div>
+      ) : null}
+    </>
   );
 };
 
