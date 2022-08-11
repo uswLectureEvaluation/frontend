@@ -12,6 +12,7 @@ export const FlexBox = styled.div`
 export const TextLink = styled.span`
   font-size: 20px;
   color: #a3a3a3;
+  font-family: Pretendard;
   font-weight: 450;
   margin-left: 15px;
   &#selected {

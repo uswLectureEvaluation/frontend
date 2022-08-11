@@ -5,7 +5,7 @@ export const Title = styled.div`
   font-weight: 1000;
   margin: 3rem 0;
   text-align: center;
-  font-weight: 900;
+  font-family: 'Pretendard-Black';
 `;
 
 export const Img = styled.div`

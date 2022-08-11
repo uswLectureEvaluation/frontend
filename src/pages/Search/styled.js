@@ -106,7 +106,7 @@ export const SearchTitle = styled.div`
   display: flex;
   font-size: 1.5rem;
   margin-right: auto;
-  font-weight: 700;
+  font-family: 'Pretendard-SemiBold';
   padding-top: 4rem;
 `;
 

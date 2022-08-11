@@ -12,7 +12,7 @@ export const Foot = styled.div`
 `;
 
 export const Use = styled.div`
-  font-weight: 300;
+  font-family: 'Pretendard-Light';
   padding-right: 1rem;
   color: #222222;
 

@@ -9,4 +9,5 @@ export const Input = styled.input`
   padding: 10px 40px 10px 14px;
   width: 100%;
   margin-bottom: 1rem;
+  font-family: 'Pretendard-Medium';
 `;

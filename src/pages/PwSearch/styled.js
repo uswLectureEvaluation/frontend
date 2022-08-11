@@ -38,7 +38,7 @@ export const Title = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-family: 'Pretendard-SemiBold';
   padding-top: 1rem;
   padding-bottom: 0.6rem;
 `;
@@ -55,7 +55,7 @@ export const Button = styled.button`
   font-size: 1rem;
   font-weight: bold;
   border-radius: 12px;
-  font-weight: 400;
+  font-family: 'Pretendard-Regular';
   cursor: pointer;
   user-select: none;
   transition: 0.3s all;
@@ -88,5 +88,5 @@ export const CssTextField = styles.styled(TextField)({
 
 export const Sub = styled.div`
   font-size: 0.8rem;
-  font-weight: 700;
+  font-family: 'Pretendard-SemiBold';
 `;

@@ -21,7 +21,7 @@ export const AppTitle = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-family: 'Pretendard-SemiBold';
   padding-top: 5rem;
   padding-bottom: 1rem;
 `;
@@ -37,7 +37,7 @@ export const Option = styled.div`
   padding: 0.5rem 0;
   font-size: 0.8rem;
   color: #a3a3a3;
-  font-weight: 300;
+  font-family: 'Pretendard-Light';
 `;
 
 export const NoticeWrap = styled.div`

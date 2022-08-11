@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ModalOpen = styled.span`
+  font-family: Pretendard;
   font-size: 12px;
   color: #222;
   text-decoration: underline;
@@ -30,12 +31,14 @@ export const TitleWrapper = styled.div`
 `;
 
 export const Title = styled.span`
+  font-family: Pretendard;
   font-size: 16px;
   font-weight: 500;
   margin-right: 8px;
 `;
 
 export const Major = styled.span`
+  font-family: Pretendard;
   font-size: 14px;
   font-weight: normal;
   color: #515151;
@@ -46,6 +49,7 @@ export const Major = styled.span`
 `;
 
 export const Professor = styled.span`
+  font-family: Pretendard;
   font-size: 14px;
   font-weight: normal;
   color: #515151;
@@ -63,6 +67,7 @@ export const Option = styled.div`
 
 export const Rate = styled.span`
   color: #346cfd;
+  font-family: Pretendard;
   font-size: 18px;
   font-weight: 500;
   padding-left: 5px;
@@ -118,6 +123,7 @@ export const StarFlex = styled.div`
   align-items: center;
   padding-right: 1rem;
   padding: 5px 12px;
+  font-family: Pretendard;
   font-size: 13px;
   &#top {
     padding: 8px 12px 0px 12px;
@@ -138,6 +144,7 @@ export const FlexContainer = styled.div`
 `;
 
 export const YearText = styled.span`
+  font-family: Pretendard;
   font-size: 14px;
   padding: 4.5px 13px 4.5px 13px;
   border-radius: 12.5px;
@@ -149,6 +156,7 @@ export const EvaluationDetail = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 16px;
+  font-family: Pretendard;
   font-size: 1rem;
   padding-top: 0.7rem;
   word-break: break-all;
@@ -157,6 +165,7 @@ export const PaddingRight = styled.span`
   padding-right: 0.7rem;
 `;
 export const EditButton = styled.span`
+  font-family: Pretendard;
   font-size: 12px;
   font-weight: 500;
   text-align: center;
@@ -168,6 +177,7 @@ export const EditButton = styled.span`
   }
 `;
 export const DeleteButton = styled.span`
+  font-family: Pretendard;
   font-size: 12px;
   font-weight: 500;
   text-align: center;

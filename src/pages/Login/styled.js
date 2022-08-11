@@ -24,7 +24,7 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 480px) {
     width: 100%;
-    padding: 20px;
+    padding : 20px;
   }
 `;
 
@@ -38,11 +38,12 @@ export const Title = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-family: 'Pretendard-SemiBold';
   padding-top: 1rem;
   padding-bottom: 1rem;
 
   @media only screen and (max-width: 480px) {
+    font-family: 'Pretendard';
     font-size: 24px;
     font-weight: 600;
   }
@@ -60,7 +61,7 @@ export const Button = styled.button`
   font-size: 1.1rem;
   font-weight: bold;
   border-radius: 12px;
-  font-weight: 400;
+  font-family: 'Pretendard-Regular';
   cursor: pointer;
   user-select: none;
   transition: 0.3s all;
@@ -74,7 +75,7 @@ export const SearchButton = styled.button`
   border-bottom: 1px solid;
   padding: 0;
   margin-left: 10px;
-  font-weight: 300;
+  font-family: 'Pretendard-Light';
   background-color: white;
   &:hover {
     cursor: pointer;

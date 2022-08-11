@@ -6,11 +6,11 @@ export const Title = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-family: 'Pretendard-SemiBold';
   padding-top: 1rem;
   padding-bottom: 1rem;
   @media only screen and (max-width: 960px) {
-    font-weight: 700;
+    font-family: 'Pretendard-SemiBold';
   }
 `;
 
@@ -18,7 +18,7 @@ export const Text = styled.div`
   font-size: 2vw;
   margin-bottom: 1.5rem;
   text-align: center;
-  font-weight: 700;
+  font-family: 'Pretendard-SemiBold';
 `;
 
 export const Checking = styled.div`
@@ -46,7 +46,7 @@ export const EmailWrapper = styled.div`
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-family: 'Pretendard-SemiBold';
 `;
 
 export const AgreeButton = styled.button`
@@ -98,7 +98,7 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 480px) {
     width: 100%;
-    padding: 20px;
+    padding : 20px;
   }
 `;
 
@@ -129,10 +129,11 @@ export const Button = styled.button`
   font-size: 1rem;
   font-weight: bold;
   border-radius: 12px;
-  font-weight: 400;
+  font-family: 'Pretendard-Regular';
   cursor: pointer;
   user-select: none;
   transition: 0.3s all;
+
 
   &:disabled {
     background-color: rgba(170, 170, 170);
@@ -151,14 +152,18 @@ export const Button = styled.button`
       right: 27%;
     }
     @media only screen and (max-width: 480px) {
-      right: 5%;
+      right: 5%
     }
     :disabled {
       background: white;
       color: rgba(170, 170, 170);
       border: 1px solid rgba(170, 170, 170);
     }
+
+    
   }
+
+  
 `;
 export const CssTextField = styles.styled(TextField)({
   '& label.Mui-focused': {
