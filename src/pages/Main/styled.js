@@ -34,6 +34,7 @@ export const BannerWrapper = styled.div`
   color: #000000;
   font-size: 1.2rem;
   justify-content: space-between;
+  font-family: 'Pretendard-SemiBold';
 
   @media screen and (max-width: 960px) {
     width: 80%;
@@ -76,6 +77,7 @@ export const SearchTitle = styled.div`
   display: flex;
   font-size: 1.5rem;
   padding-top: 4rem;
+  font-family: 'Pretendard-SemiBold';
   width: 100%;
 `;
 
@@ -169,7 +171,7 @@ export const Img = styled.img`
 export const Soption = styled.span`
   font-weight: normal;
   &#semester {
-    font-family: Pretendard;
+    font-family: 'Pretendard';
     font-size: 16px;
     font-weight: normal;
   }
@@ -191,19 +193,7 @@ export const Button = styled.button`
   font-family: 'Pretendard-Medium';
 
   @media screen and (max-width: 480px) {
-    margin: 10px 0;
-    margin-bottom: 10vh;
     width: 50%;
-    padding: 0.8rem 1rem;
-    border: none;
-    background: ${(props) => props.background};
-    color: white;
-    text-align: center;
-    font-size: 1.1rem;
-    border-radius: 12px;
-    cursor: pointer;
-    user-select: none;
-    font-family: 'Pretendard-Medium';
   }
 `;
 

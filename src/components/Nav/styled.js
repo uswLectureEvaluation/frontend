@@ -10,6 +10,8 @@ export const Navbar = styled.nav`
   font-size: 1.2rem;
   top: 0;
   z-index: 999;
+
+  font-family: 'Pretendard-Medium';
   justify-content: space-around;
   border-bottom: 1.5px solid #e0e0e0;
 
