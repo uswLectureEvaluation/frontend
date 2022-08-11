@@ -31,8 +31,13 @@ const SignUp = () => {
   });
 
   const onChangeName = useCallback((e) => {
-    setName(e.target.value);
-    if (e.target.value.length < 6) {
+    const nameRegex = /^[a-z|0-9|]+$/;
+    const nameCurrent = e.target.value;
+    setName(nameCurrent);
+    if (!nameRegex.test(nameCurrent)) {
+      setNameMessage('아이디는 영소문자 및 숫자로 입력해주세요');
+      setIsName(false);
+    } else if (e.target.value.length < 6) {
       setNameMessage('아이디는 6자리 이상 입력해주세요.');
       setIsName(false);
     } else if (e.target.value.length > 20) {
@@ -53,20 +58,13 @@ const SignUp = () => {
 
     setEmail(emailCurrent);
 
-    if (!emailRegex.test(emailCurrent)) {
+    if (!emailRegex.test(emailCurrent) || !emailCurrent.endsWith('@suwon.ac.kr')) {
       setEmailMessage('이메일 형식이 틀렸습니다.');
       setIsEmail(false);
     } else {
-      setEmailMessage('사용 가능한 이메일입니다.');
-      setIsEmail(true);
-    }
-    if (emailCurrent.includes('@suwon.ac.kr')) {
       setEmailMessage('사용 가능한 이메일입니다.');
       setIsEmail(true);
       setEmailcheck(false);
-    } else {
-      setEmailMessage('이메일 형식이 틀렸습니다.');
-      setIsEmail(false);
     }
   }, []);
 
