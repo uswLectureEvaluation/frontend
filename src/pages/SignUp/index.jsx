@@ -48,7 +48,7 @@ const SignUp = () => {
   // 이메일
   const onChangeEmail = useCallback((e) => {
     const emailRegex =
-    /^(?=.[a-zA-Z])(?=.[!@#$%^+=-])(?=.[0-9].){8,25}$/;
+      /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     const emailCurrent = e.target.value;
 
     setEmail(emailCurrent);
@@ -71,7 +71,7 @@ const SignUp = () => {
   }, []);
 
   const onChangePassword = useCallback((e) => {
-    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^+=-])(?=.*[0-9]).{8,25}$/;
     const passwordCurrent = e.target.value;
     setPassword(passwordCurrent);
 

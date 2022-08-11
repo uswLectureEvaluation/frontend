@@ -13,7 +13,7 @@ const ResetPassword = () => {
   };
 
   const onChangePassword = useCallback((e) => {
-    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^+=-])(?=.*[0-9]).{8,25}$/;
     const passwordCurrent = e.target.value;
     setNewPassword(passwordCurrent);
 
