@@ -11,7 +11,6 @@ export const Wrapper = styled.button`
   color: white;
   text-align: center;
   font-size: 1.2rem;
-  font-weight: bold;
   border-radius: 12px;
   cursor: pointer;
   user-select: none;

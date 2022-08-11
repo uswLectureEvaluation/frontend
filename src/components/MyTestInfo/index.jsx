@@ -31,7 +31,6 @@ const Testinformation = (props) => {
     return () => {
       observer.disconnect();
     };
-    // eslint-disable-next-line no-unreachable
   }, [getDog]);
 
   const obsHandler = (entries) => {

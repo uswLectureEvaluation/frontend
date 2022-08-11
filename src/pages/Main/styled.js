@@ -214,7 +214,6 @@ const grey = {
 
 const StyledButton = styled_mui('button')(
   ({ theme }) => `
-  font-family: Pretendard-Regular;
   font-size: 0.875rem;
   box-sizing: border-box;
   min-height: calc(1.5em + 22px);
@@ -258,7 +257,6 @@ const StyledButton = styled_mui('button')(
       margin-right: 10px;
       color: black;
       font-size: 15px;
-      font-family: Pretendard-Regular;
     }
     &.${selectUnstyledClasses.expanded} {
       &::after {
@@ -291,7 +289,6 @@ const StyledButton = styled_mui('button')(
       margin-right: 10px;
       color: black;
       font-size: 15px;
-      font-family: Pretendard-Regular;
     }
     &.${selectUnstyledClasses.expanded} {
       &::after {
@@ -336,7 +333,6 @@ const StyledButton = styled_mui('button')(
 
 const StyledListbox = styled_mui('ul')(
   ({ theme }) => `
-  font-family: Pretendard-Regular;
   font-size: 0.875rem;
   box-sizing: border-box;
   padding: 5px;

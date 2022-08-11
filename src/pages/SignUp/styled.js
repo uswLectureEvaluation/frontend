@@ -64,6 +64,7 @@ export const AgreeButton = styled.button`
 export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
+  font-family: 'Pretendard-Medium';
 
   &#top {
     align-items: stretch;

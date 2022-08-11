@@ -21,6 +21,7 @@ export const Use = styled.div`
 `;
 
 export const Privacy = styled.div`
+  font-family: 'Pretendard-Medium';
   padding-left: 1rem;
   color: #222222;
 

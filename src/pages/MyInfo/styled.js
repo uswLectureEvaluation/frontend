@@ -92,6 +92,7 @@ export const OptionPoint = styled.div`
 
 export const FlexContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   color: #a3a3a3;
   padding-bottom: 0.5rem;
   @media screen and (max-width: 550px) {
