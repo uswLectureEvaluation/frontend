@@ -17,9 +17,9 @@ const WriteEvaluation = (props) => {
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
-  const [honey, HoneySlider] = useSlider(0.5, 5);
-  const [learning, LearingSlider] = useSlider(0.5, 5);
-  const [satisfaction, SatisfactionSlider] = useSlider(0.5, 5);
+  const [honey, HoneySlider] = useSlider(0.5);
+  const [learning, LearingSlider] = useSlider(0.5);
+  const [satisfaction, SatisfactionSlider] = useSlider(0.5);
   const onEvaluate = () => {
     if (semester === '' || semester === '선택') return alert('학기를 선택해주세요');
     if (honey < 0.5 || honey === undefined) return alert('꿀강지수는 0.5점부터 선택 가능합니다');
