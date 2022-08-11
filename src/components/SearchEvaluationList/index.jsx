@@ -70,8 +70,6 @@ const SearchEvaluationList = ({ selectId, setWritten }) => {
       setList((prev) => [...prev, ...res.data]);
       setWritten(res.written);
       preventRef.current = true;
-    } else {
-      console.error(res); //에러
     }
     setLoad(false); //로딩 시작
   }, [page, selectId, setWritten]);

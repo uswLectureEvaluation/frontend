@@ -28,11 +28,8 @@ const Notice = () => {
     if (res.data) {
       setList((prev) => [...prev, ...res.data]);
       preventRef.current = true;
-    } else {
-      console.error(res); //에러
     }
     setLoad(false);
-    console.log(page, res.data);
   }, [page]);
 
   useEffect(() => {
@@ -72,7 +69,7 @@ const Notice = () => {
                   key={Math.random()}
                 />
               ))}
-              {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
+            {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
             <div ref={obsRef} style={{ width: '0%', opacity: '0' }}>
               옵저버 Element
             </div>

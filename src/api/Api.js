@@ -116,15 +116,10 @@ export const registerApi = (setData, setLoading, id, pw, email) => {
     data,
     url,
   };
-  axios(options).then(
-    (r) => {
-      setData(r.data);
-      setLoading(true);
-    },
-    (error) => {
-      console.error(error);
-    }
-  );
+  axios(options).then((r) => {
+    setData(r.data);
+    setLoading(true);
+  });
 };
 
 //회원가입 아이디 중복확인 (완료)
@@ -144,17 +139,15 @@ export const checkidApi = (setData, id) => {
     url,
   };
 
-  axios(options).then(
-    (response) => {
+  axios(options)
+    .then((response) => {
       setData(!response.data.overlap);
       if (!response.data.overlap) alert('사용가능합니다.');
       else alert('중복입니다.');
-    },
-    (error) => {
-      console.error(error);
+    })
+    .catch((error) => {
       alert('요청에 실패하였습니다.');
-    }
-  );
+    });
 };
 
 //회원가입 이메일 중복확인 (완료)
@@ -174,17 +167,15 @@ export const checkemailApi = (setData, email) => {
     url,
   };
 
-  axios(options).then(
-    (response) => {
+  axios(options)
+    .then((response) => {
       setData(!response.data.overlap);
       if (!response.data.overlap) alert('사용가능합니다.');
       else alert('중복입니다.');
-    },
-    (error) => {
-      console.error(error);
+    })
+    .catch((error) => {
       alert('요청에 실패하였습니다.');
-    }
-  );
+    });
 };
 
 //로그인api (로그인유지)
@@ -207,18 +198,16 @@ export const loginApi = (setData, setLoading, id, pw) => {
     url,
     withCredentials: true,
   };
-  axios(options).then(
-    (r) => {
+  axios(options)
+    .then((r) => {
       localStorage.setItem('login', true);
 
       setData(r.data);
       setLoading(true);
-    },
-    (error) => {
-      console.error(error);
+    })
+    .catch((error) => {
       alert('id 또는 pw 확인해주세요');
-    }
-  );
+    });
 };
 
 //로그인api (로그인유지X)
@@ -241,18 +230,16 @@ export const unCheckedLoginApi = (setData, setLoading, id, pw) => {
     url,
     withCredentials: true,
   };
-  axios(options).then(
-    (r) => {
+  axios(options)
+    .then((r) => {
       sessionStorage.setItem('login', true);
       sessionStorage.setItem('AccessToken', r.data.AccessToken);
       setData(r.data);
       setLoading(true);
-    },
-    (error) => {
-      console.error(error);
+    })
+    .catch((error) => {
       alert('id 또는 pw 확인해주세요');
-    }
-  );
+    });
 };
 
 // 로그아웃

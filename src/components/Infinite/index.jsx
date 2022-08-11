@@ -28,8 +28,6 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
       if (res.data) {
         setList((prev) => [...prev, ...res.data]);
         preventRef.current = true;
-      } else {
-        console.error(res); //에러
       }
     } else {
       const res =
@@ -41,8 +39,6 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
       if (res.data) {
         setList((prev) => [...prev, ...res.data]);
         preventRef.current = true;
-      } else {
-        console.error(res); //에러
       }
     }
     setLoad(false); //로딩 종료

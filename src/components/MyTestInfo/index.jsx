@@ -17,8 +17,6 @@ const Testinformation = (props) => {
     if (res.data) {
       setList((prev) => [...prev, ...res.data]);
       preventRef.current = true;
-    } else {
-      console.error(res); //에러
     }
     setLoad(false); //로딩 종료
   }, [page]);
