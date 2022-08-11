@@ -28,7 +28,7 @@ const ResetPassword = () => {
 
   return (
     <Styled.Container>
-      <Styled.Img src="img/signup.svg" width={450} />
+      <Styled.Img loading="lazy" src="img/signup.svg" width={450} />
       <Styled.LoginWrapper>
         <Styled.Title>비밀번호 변경</Styled.Title>
         <Styled.Sub>기존 비밀번호를 입력하세요</Styled.Sub>

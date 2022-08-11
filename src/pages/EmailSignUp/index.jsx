@@ -11,7 +11,7 @@ const EmailSignUp = () => {
       <Styled.Wrapper>
         <Styled.Title>이메일 인증</Styled.Title>
         <Styled.Img>
-          <img src="img/email.png" alt="options" width={100} />
+          <img loading="lazy" src="img/email.png" alt="options" width={100} />
         </Styled.Img>
         <Styled.Content>
           <Styled.Color>{state}</Styled.Color>로<br />

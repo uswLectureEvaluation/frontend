@@ -76,6 +76,7 @@ const MajorSearch = (props) => {
                     />
                     <Styled.MajorSelect>
                       <Styled.SearchIcon
+                        loading="lazy"
                         src={
                           !favoriteDb.includes(v)
                             ? 'img/icon-emptystar-24.svg'
@@ -108,6 +109,7 @@ const MajorSearch = (props) => {
                     />
                     <Styled.MajorSelect>
                       <Styled.SearchIcon
+                        loading="lazy"
                         src={
                           !favoriteDb.includes(v)
                             ? 'img/icon-emptystar-24.svg'

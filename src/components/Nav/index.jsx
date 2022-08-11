@@ -31,6 +31,7 @@ const Nav = () => {
     <Styled.Navbar>
       {button ? (
         <Styled.NavLogo
+          loading="lazy"
           src="img/logo.png"
           alt="logo"
           width={110}
@@ -39,6 +40,7 @@ const Nav = () => {
         />
       ) : (
         <Styled.NavLogo
+          loading="lazy"
           src="img/tabletlogo.png"
           alt="logo"
           width={110}

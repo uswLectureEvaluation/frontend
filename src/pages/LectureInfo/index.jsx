@@ -221,6 +221,7 @@ const LectureInfo = () => {
             <Styled.TitleWrapper id="top">
               <Styled.TitleWrapper id="bottom">{menuList}</Styled.TitleWrapper>
               <Styled.Writing
+                loading="lazy"
                 src="img/btn_write.svg"
                 onClick={() =>
                   !written ? setModalIsOpen(true) : alert(`이미 작성한 ${check}가 있습니다`)

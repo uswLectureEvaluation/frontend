@@ -149,7 +149,7 @@ const SignUp = () => {
 
   return (
     <Styled.Container>
-      <Styled.Img src="img/signup.svg" width={450} />
+      <Styled.Img loading="lazy" src="img/signup.svg" width={450} />
       <Styled.SignUpWrapper>
         <Styled.Title>회원가입</Styled.Title>
         <Styled.InputWrapper id="top">

@@ -18,7 +18,7 @@ const IdSearch = () => {
   useEffect(() => {}, [db.data]);
   return (
     <Styled.Container>
-      <Styled.Img src="img/signup.svg" width={450} />
+      <Styled.Img loading="lazy" src="img/signup.svg" width={450} />
       <Styled.LoginWrapper>
         <Styled.Title>아이디 찾기</Styled.Title>
         <Styled.Sub>학교 계정을 입력하세요</Styled.Sub>
