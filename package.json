@@ -20,7 +20,8 @@
     "react-star-ratings": "^2.3.0",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "styled-reset": "^4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",

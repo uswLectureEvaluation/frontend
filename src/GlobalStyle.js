@@ -1,21 +1,21 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
-
-:root {
-    --main-color: '#346cfd',
-    --border-color: #e0e0e0;
-    --font-color: #222222;
-    --sub-font-color: #515151;
-
-    --hover-color: #76d6bc;
-    --accent-color: #ff7675;
-}
-
-* {
+  ${reset}
+  * {
+    outline: none;
     box-sizing: border-box;
-    margin: 0;
-}
+    font-family: 'Pretendard-Medium', sans-serif;
+  }
+  :root {
+      --main-color: '#346cfd',
+      --border-color: #e0e0e0;
+      --font-color: #222222;
+      --sub-font-color: #515151;
+      --hover-color: #76d6bc;
+      --accent-color: #ff7675;
+  }
 `;
 
 export const Color = (props) => {
@@ -33,15 +33,5 @@ export const Color = (props) => {
     return '#ff7675';
   }
 };
-
-export const Container = styled.div`
-  z-index: 1;
-  width: 100%;
-
-  @media screen and (max-width: 991px) {
-    padding-right: 30px;
-    padding-left: 30px;
-  }
-`;
 
 export default GlobalStyle;
