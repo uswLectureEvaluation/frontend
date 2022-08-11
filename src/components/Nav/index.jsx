@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
-import * as Styled from './styled';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { VscChromeClose } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
 import { logoutApi } from '../../api/Api';
+import * as Styled from './styled';
 
 const Nav = () => {
   let navigate = useNavigate();
@@ -49,7 +47,35 @@ const Nav = () => {
         />
       )}
       <Styled.MobileIcon onClick={handleClick}>
-        {click ? <VscChromeClose /> : <GiHamburgerMenu />}
+        {click ? (
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 16 16"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M7.116 8l-4.558 4.558.884.884L8 8.884l4.558 4.558.884-.884L8.884 8l4.558-4.558-.884-.884L8 7.116 3.442 2.558l-.884.884L7.116 8z"
+            ></path>
+          </svg>
+        ) : (
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"></path>
+          </svg>
+        )}
       </Styled.MobileIcon>
 
       <Styled.NavMenu onClick={handleClick} click={click}>
