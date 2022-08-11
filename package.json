@@ -46,5 +46,27 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1"
+  },
+  "description": "🧐이용방법\r -------------\r </br>\r 각자 본인이 적힌 폴더에 작업하신 컴포넌트만 PUSH 해주세요.\r </br></br>",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uswLectureEvaluation/Frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uswLectureEvaluation/Frontend/issues"
+  },
+  "homepage": "https://github.com/uswLectureEvaluation/Frontend#readme",
+  "keywords": []
 }
