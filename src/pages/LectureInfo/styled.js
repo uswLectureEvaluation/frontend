@@ -26,7 +26,7 @@ export const Container = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
-  font-family: 'Pretendard';
+  font-family: 'Pretendard-Medium';
   padding-bottom: 5rem;
   @media screen and (max-width: 960px) {
     display: flex;
@@ -133,7 +133,7 @@ export const MenuTitle = styled.li`
   font-size: 16px;
   margin-bottom: 1rem;
   text-align: center;
-  font-family: Pretendard;
+  font-family: 'Pretendard-Medium';
   display: flex;
   color: lightgray;
   padding-right: 1rem;
@@ -150,7 +150,7 @@ export const MenuTitle = styled.li`
 export const Professor = styled.div`
   display: flex;
   color: #222;
-  font-family: Pretendard;
+  font-family: 'Pretendard-Medium';
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;

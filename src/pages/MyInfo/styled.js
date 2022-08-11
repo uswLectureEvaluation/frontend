@@ -23,7 +23,7 @@ export const Container = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
-  font-family: Pretendard;
+  font-family: 'Pretendard-Medium';
   @media only screen and (max-width: 960px) {
     width: 90%;
   }

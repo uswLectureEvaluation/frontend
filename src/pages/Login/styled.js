@@ -24,7 +24,7 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 480px) {
     width: 100%;
-    padding : 20px;
+    padding: 20px;
   }
 `;
 
@@ -43,7 +43,7 @@ export const Title = styled.div`
   padding-bottom: 1rem;
 
   @media only screen and (max-width: 480px) {
-    font-family: 'Pretendard';
+    font-family: 'Pretendard-Medium';
     font-size: 24px;
     font-weight: 600;
   }

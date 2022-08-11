@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  font-family: 'Pretendard';
+  font-family: 'Pretendard-Medium';
   flex-direction: column;
   width: 100%;
   &#button {
@@ -32,7 +32,7 @@ export const TitleButton = styled.button`
 
 export const Score = styled.span`
   margin: 2px 0 1px 24px;
-  font-family: 'Pretendard';
+  font-family: 'Pretendard-Medium';
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;

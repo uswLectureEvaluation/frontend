@@ -166,7 +166,7 @@ export const Img = styled.img`
 export const Soption = styled.span`
   font-weight: normal;
   &#semester {
-    font-family: 'Pretendard';
+    font-family: 'Pretendard-Medium';
     font-size: 16px;
     font-weight: normal;
   }

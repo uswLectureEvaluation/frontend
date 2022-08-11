@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-family: Pretendard;
+  font-family: 'Pretendard-Medium';
   &#button {
     align-items: center;
   }

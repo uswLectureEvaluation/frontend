@@ -15,7 +15,7 @@ export const AppContainer = styled.div`
     width: 90%;
     padding-bottom: 25rem;
     margin: 0 auto;
- }
+  }
 `;
 
 export const AppTitle = styled.div`
@@ -39,7 +39,7 @@ export const Option = styled.div`
   margin-right: 1rem;
   font-size: 14px;
   color: #a3a3a3;
-  font-family: 'Pretendard';
+  font-family: 'Pretendard-Medium';
 `;
 
 export const NoticeWrap = styled.div`
@@ -48,7 +48,7 @@ export const NoticeWrap = styled.div`
   padding: 1.5rem 1.5rem;
   border-radius: 10px;
   margin-top: 2vh;
-  display : flex;
+  display: flex;
   align-items: center;
 
   &:hover {
@@ -58,13 +58,13 @@ export const NoticeWrap = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
- }
+  }
 `;
 
 export const Professor = styled.div`
   display: flex;
   color: #222;
-  font-family: Pretendard;
+  font-family: 'Pretendard-Medium';
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -83,7 +83,7 @@ export const TitleWrapper = styled.div`
   @media screen and (max-width: 480px) {
     display: none;
   }
-`
+`;
 
 export const MobileTitleWrapper = styled.div`
   display: none;
@@ -91,4 +91,4 @@ export const MobileTitleWrapper = styled.div`
     display: flex;
     flex-direction: column;
   }
-`
+`;

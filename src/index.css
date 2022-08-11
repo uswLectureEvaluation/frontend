@@ -1,5 +1,3 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-
 @font-face {
   font-family: 'Pretendard-Light';
   src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff')
@@ -38,8 +36,4 @@
     format('woff');
   font-weight: 900;
   font-style: normal;
-}
-
-body {
-  font-family: 'Pretendard-Medium';
 }

@@ -13,7 +13,7 @@ export const ModalOpen = styled.span`
 export const Wrapper = styled.div`
   margin: 0px 20px;
   height: 100%;
-  font-family: Pretendard;
+  font-family: 'Pretendard-Medium';
 
   .Target-Element {
     height: 150px;
