@@ -11,7 +11,6 @@ export const ModalOpen = styled.span`
 `;
 
 export const Wrapper = styled.div`
-  font-family: Pretendard;
   margin: 0px 20px;
 `;
 

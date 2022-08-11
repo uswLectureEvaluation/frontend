@@ -89,7 +89,6 @@ export const LectureWrapper = styled.div`
   border-radius: 10px;
   margin-bottom: 10px;
   cursor: pointer;
-  font-family: Pretendard;
 `;
 
 export const MarginTop = styled.div`
@@ -105,7 +104,6 @@ export const StarFlex = styled.div`
   align-items: center;
   padding-right: 1rem;
   padding: 6px 12px;
-  font-family: Pretendard;
   font-size: 13px;
   &#top {
     border-top: 1px solid #e0e0e0;
@@ -161,7 +159,6 @@ export const ErrorText = styled.div`
   margin: 0 auto;
   padding-top: 100px;
   padding-bottom: 50px;
-  font-family: Pretendard;
   font-size: 20px;
   font-weight: normal;
   font-stretch: normal;

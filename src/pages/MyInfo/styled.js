@@ -155,7 +155,7 @@ export const InfoWrapper = styled.div`
 export const InfoTitle = styled.div`
   display: flex;
   font-size: 1.5rem;
-  font-family: 'Pretendard-SemiBold';
+  font-weight: 700;
   padding-top: 4rem;
   padding-bottom: 1rem;
 `;

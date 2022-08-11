@@ -26,7 +26,6 @@ export const Container = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
-  font-family: 'Pretendard';
   padding-bottom: 5rem;
   @media screen and (max-width: 960px) {
     display: flex;
@@ -54,7 +53,7 @@ export const SearchTitle = styled.div`
   display: flex;
   font-size: 1.5rem;
   margin-right: auto;
-  font-family: 'Pretendard-SemiBold';
+  font-weight: 700;
   padding-top: 4rem;
 `;
 
@@ -67,14 +66,15 @@ export const SearchInput = styled.input`
   background-image: url('img/icon_search_24.svg');
   background-repeat: no-repeat;
   background-position: 99%;
-  
+
   @media screen and (max-width: 480px) {
     font-size: 16px;
     width: 123%;
     transform: scale(0.8);
 
-  &:focus {
-    outline: none;
+    &:focus {
+      outline: none;
+    }
   }
 `;
 
@@ -138,7 +138,6 @@ export const MenuTitle = styled.li`
   font-size: 16px;
   margin-bottom: 1rem;
   text-align: center;
-  font-family: Pretendard;
   display: flex;
   color: lightgray;
   padding-right: 1rem;
@@ -155,7 +154,6 @@ export const MenuTitle = styled.li`
 export const Professor = styled.div`
   display: flex;
   color: #222;
-  font-family: Pretendard;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;

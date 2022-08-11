@@ -44,7 +44,7 @@ export const BannerWrapper = styled.div`
 export const BannerSub = styled.div`
   font-size: 1rem;
   margin-top: 1vh;
-  font-family: 'Pretendard-Light';
+  font-weight: 300;
 `;
 
 export const Container = styled.div`
@@ -169,7 +169,6 @@ export const Img = styled.img`
 export const Soption = styled.span`
   font-weight: normal;
   &#semester {
-    font-family: Pretendard;
     font-size: 16px;
     font-weight: normal;
   }
@@ -188,22 +187,9 @@ export const Button = styled.button`
   border-radius: 12px;
   cursor: pointer;
   user-select: none;
-  font-family: 'Pretendard-Medium';
 
   @media screen and (max-width: 480px) {
-    margin: 10px 0;
-    margin-bottom: 10vh;
     width: 50%;
-    padding: 0.8rem 1rem;
-    border: none;
-    background: ${(props) => props.background};
-    color: white;
-    text-align: center;
-    font-size: 1.1rem;
-    border-radius: 12px;
-    cursor: pointer;
-    user-select: none;
-    font-family: 'Pretendard-Medium';
   }
 `;
 
@@ -230,7 +216,7 @@ const grey = {
 
 const StyledButton = styled_mui('button')(
   ({ theme }) => `
-  font-family: Pretendard-Regular;
+  font-weight: 400;
   font-size: 0.875rem;
   box-sizing: border-box;
   min-height: calc(1.5em + 22px);
@@ -274,7 +260,7 @@ const StyledButton = styled_mui('button')(
       margin-right: 10px;
       color: black;
       font-size: 15px;
-      font-family: Pretendard-Regular;
+      font-weight: 400;
     }
     &.${selectUnstyledClasses.expanded} {
       &::after {
@@ -307,7 +293,7 @@ const StyledButton = styled_mui('button')(
       margin-right: 10px;
       color: black;
       font-size: 15px;
-      font-family: Pretendard-Regular;
+      font-weight: 400;
     }
     &.${selectUnstyledClasses.expanded} {
       &::after {
@@ -352,7 +338,7 @@ const StyledButton = styled_mui('button')(
 
 const StyledListbox = styled_mui('ul')(
   ({ theme }) => `
-  font-family: Pretendard-Regular;
+  font-weight: 400;
   font-size: 0.875rem;
   box-sizing: border-box;
   padding: 5px;

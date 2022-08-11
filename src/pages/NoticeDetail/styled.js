@@ -17,7 +17,7 @@ export const AppTitle = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
-  font-family: 'Pretendard-SemiBold';
+  font-weight: 700;
   padding-top: 5rem;
   padding-bottom: 1rem;
 `;
