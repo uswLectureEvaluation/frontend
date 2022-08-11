@@ -120,12 +120,6 @@ export const SearchInput = styled.input`
   background-repeat: no-repeat;
   background-position: 99%;
 
-  @media screen and (max-width: 480px) {
-    font-size: 16px;
-    width: 123%;
-    transform: scale(0.8);
-  }
-
   &:focus {
     outline: none;
   }
