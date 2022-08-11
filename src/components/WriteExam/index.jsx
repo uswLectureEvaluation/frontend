@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { examWriteApi } from '../../api/Api';
+import { SemesterSelect, Soption, StyledOption } from '../../pages/Main/styled';
 import * as Styled from './styled';
-import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
 
 const WriteExam = (props) => {
   const [semester, setSemester] = useState(''); //학기
@@ -18,7 +18,6 @@ const WriteExam = (props) => {
     if (checked) {
       setExamInfo([...exam, value]);
     } else {
-      // 체크 해제
       setExamInfo(exam.filter((data) => data !== value));
     }
   };

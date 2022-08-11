@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import * as Styled from './styled';
+import { useEffect, useState } from 'react';
 import { findPwApi } from '../../api/Api';
+import * as Styled from './styled';
 
 const PwSearch = () => {
   const [username, setUserName] = useState();
@@ -33,7 +33,6 @@ const PwSearch = () => {
           label="아이디"
           name="id"
           autoComplete="id"
-          autoFocus
           onChange={onChangeID}
         />
         <Styled.CssTextField

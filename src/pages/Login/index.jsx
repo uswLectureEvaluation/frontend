@@ -60,7 +60,6 @@ const Login = () => {
           label="아이디"
           name="email"
           autoComplete="email"
-          autoFocus
           onChange={onChangeID}
           onKeyPress={onKeypress}
         />

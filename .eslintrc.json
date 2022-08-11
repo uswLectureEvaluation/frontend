@@ -1,9 +1,17 @@
 {
   "env": {
+    "node": true,
     "browser": true,
     "es2021": true
   },
-  // "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -14,6 +22,10 @@
   "plugins": ["react"],
   "rules": {
     "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "import/no-unresolved": "off",
+    "react/prop-types": "off",
+    "import/no-named-as-default": "off",
+    "jsx-a11y/label-has-associated-control": "off"
   }
 }

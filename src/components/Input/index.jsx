@@ -7,7 +7,6 @@ const Input = ({ onChange, placeholder, type }) => (
     id="outlined-basic"
     variant="outlined"
     type={type}
-    autoFocus
     fullWidth
     onChange={onChange}
     placeholder={placeholder}

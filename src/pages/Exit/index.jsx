@@ -38,7 +38,6 @@ const Exit = () => {
           label="id"
           name="id"
           autoComplete="id"
-          autoFocus
           onChange={onChangeId}
         />
         <Styled.Sub>비밀번호를 입력하세요</Styled.Sub>

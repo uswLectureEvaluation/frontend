@@ -161,7 +161,6 @@ const SignUp = () => {
             label="아이디"
             name="username"
             autoComplete="username"
-            autoFocus
             onChange={onChangeName}
           />
           <Styled.Button

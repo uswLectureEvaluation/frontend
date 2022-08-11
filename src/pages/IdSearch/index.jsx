@@ -29,7 +29,6 @@ const IdSearch = () => {
           label="학교 이메일 입력(@suwon.ac.kr)"
           name="email"
           autoComplete="email"
-          autoFocus
           onChange={onChangeEmail}
         />
         <Styled.Button

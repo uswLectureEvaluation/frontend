@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
-import * as Styled from './styled';
-import { mainApi, searchApi } from '../../api/Api';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import StarRatings from 'react-star-ratings';
+import { mainApi, searchApi } from '../../api/Api';
 import { selectIdState } from '../../features/selectIdSlice';
-import { useDispatch } from 'react-redux';
+import * as Styled from './styled';
 
 const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
   const [list, setList] = useState([]);
@@ -42,7 +42,7 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
       }
     }
     setLoad(false); //로딩 종료
-  }, [page, setCount, checkClass, option, lecture]);
+  }, [wow, checkClass, option, page, setCount, lecture.search_value]);
 
   const showWin = () => {
     if (window.innerWidth <= 960) {
@@ -64,12 +64,10 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
     return () => {
       observer.disconnect();
     };
-    // eslint-disable-next-line no-use-before-define
   }, []);
 
   useEffect(() => {
     getDog();
-    // eslint-disable-next-line no-use-before-define
   }, [getDog, page]);
 
   const obsHandler = (entries) => {
@@ -136,7 +134,7 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
         </Styled.FlexWrap>
       ) : (
         <Styled.FlexWrap id="none">
-          '{lecture.search_value}'에 대한 검색결과가 없습니다
+          {lecture.search_value}에 대한 검색결과가 없습니다
         </Styled.FlexWrap>
       )}
       {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
@@ -167,7 +165,7 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
         </Styled.FlexWrap>
       ) : (
         <Styled.FlexWrap id="none">
-          '{lecture.search_value}'에 대한 검색결과가 없습니다
+          {lecture.search_value}에 대한 검색결과가 없습니다
         </Styled.FlexWrap>
       )}
       {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}

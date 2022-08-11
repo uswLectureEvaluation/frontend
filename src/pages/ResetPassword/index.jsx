@@ -1,4 +1,4 @@
-import { React, useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { resetPasswordApi } from '../../api/Api';
 import * as Styled from './styled';
 
@@ -36,7 +36,6 @@ const ResetPassword = () => {
           placeholder="기존 비밀번호 입력"
           margin="normal"
           required
-          autoFocus
           type="password"
           id="outlined-basic"
           onChange={(e) => {
