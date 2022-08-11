@@ -32,17 +32,11 @@ export const BannerWrapper = styled.div`
   display: flex;
   align-items: center;
   color: #000000;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   justify-content: space-between;
 
   @media screen and (max-width: 960px) {
     width: 80%;
-    margin: 0 auto;
-    height: 40vh;
-    display: flex;
-    align-items: center;
-    color: #000000;
-    font-size: 1.3rem;
     justify-content: space-evenly;
   }
 `;
@@ -51,12 +45,6 @@ export const BannerSub = styled.div`
   font-size: 1rem;
   margin-top: 1vh;
   font-family: 'Pretendard-Light';
-
-  @media screen and (max-width: 960px) {
-    font-size: 1rem;
-    margin-top: 1vh;
-    font-family: 'Pretendard-Light';
-  }
 `;
 
 export const Container = styled.div`
@@ -67,11 +55,7 @@ export const Container = styled.div`
   margin: 0 auto;
 
   @media screen and (max-width: 960px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 90%;
-    margin: 0 auto;
   }
 `;
 
@@ -162,6 +146,10 @@ export const BannerImg = styled.img`
     width: 400px;
     vertical-align: bottom;
     pointer-events: none;
+  }
+
+  @media screen and (max-width: 480px) {
+    display: none;
   }
 `;
 
