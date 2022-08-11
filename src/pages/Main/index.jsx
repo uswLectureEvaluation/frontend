@@ -109,7 +109,14 @@ const Main = () => {
               {options.map((index) => (
                 <Styled.StyledOption key={index.name} value={index.lec}>
                   <Styled.Soption>
-                    <Styled.Img loading="lazy" width="22" src={index.imgs} /> {index.name}
+                    <Styled.Img
+                      loading="lazy"
+                      alt="option-icon"
+                      width="22"
+                      height="22"
+                      src={index.imgs}
+                    />{' '}
+                    {index.name}
                   </Styled.Soption>
                 </Styled.StyledOption>
               ))}

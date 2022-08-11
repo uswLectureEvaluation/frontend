@@ -32,9 +32,21 @@ const Nav = () => {
   return (
     <Styled.Navbar>
       {button ? (
-        <Styled.NavLogo src="img/logo.png" width={110} onClick={() => navigate('/')} />
+        <Styled.NavLogo
+          src="img/logo.png"
+          alt="logo"
+          width={110}
+          height={30}
+          onClick={() => navigate('/')}
+        />
       ) : (
-        <Styled.NavLogo src="img/tabletlogo.png" width={110} onClick={() => navigate('/')} />
+        <Styled.NavLogo
+          src="img/tabletlogo.png"
+          alt="logo"
+          width={110}
+          height={30}
+          onClick={() => navigate('/')}
+        />
       )}
       <Styled.MobileIcon onClick={handleClick}>
         {click ? <VscChromeClose /> : <GiHamburgerMenu />}

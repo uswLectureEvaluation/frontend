@@ -36,7 +36,7 @@ const NoticeDetail = () => {
       </Styled.Content>
       <Styled.BackWrapper onClick={() => navigate('/notice')}>
         <Styled.Back>
-          <Styled.Img loading="lazy" width="22" src="img/icon_list_line_24.svg" />
+          <Styled.Img loading="lazy" alt="list_icon" width="22" src="img/icon_list_line_24.svg" />
           목록
         </Styled.Back>
       </Styled.BackWrapper>

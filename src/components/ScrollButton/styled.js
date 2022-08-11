@@ -12,5 +12,3 @@ export const TopButton = styled.button`
   padding: 1rem;
   border-radius: 100%;
 `;
-
-export const Img = styled.img``;
