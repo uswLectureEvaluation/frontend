@@ -56,6 +56,9 @@ export const TitleFlex = styled.div`
 export const OptionTitle = styled.div`
   display: flex;
   width: 160px;
+  @media screen and (max-width: 550px) {
+    font-size: 0.9rem;
+  }
 
   &#my {
     color: #222222;
@@ -90,7 +93,9 @@ export const FlexContainer = styled.div`
   display: flex;
   color: #a3a3a3;
   padding-bottom: 0.5rem;
-
+  @media screen and (max-width: 550px) {
+    font-size: 0.9rem;
+  }
   &#use {
     padding: 6px 0;
   }
@@ -159,6 +164,10 @@ export const Color = styled.span`
   color: #346cfd;
   font-weight: bold;
   font-size: 1.2rem;
+  @media screen and (max-width: 550px) {
+    font-size: 0.9rem;
+  }
+
   &#p {
     color: #6200ee;
   }
