@@ -116,9 +116,6 @@ export const SearchIcon = styled.img`
   }
 `;
 
-// 라디오버튼 스타일
-export const FormLabel = styled.label``;
-
 export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
   &:checked {
     display: inline-block;
@@ -150,6 +147,3 @@ export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
   }
   display: none;
 `;
-
-export const Content = styled.form``;
-// 여기까지

@@ -11,7 +11,6 @@ export const ModalOpen = styled.span`
   }
 `;
 
-export const Wrapper = styled.div``;
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;

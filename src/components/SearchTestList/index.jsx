@@ -44,7 +44,7 @@ const SearchTestList = (props) => {
   };
 
   return (
-    <Styled.Wrapper>
+    <div>
       {list &&
         list.map((v, i) => (
           <Subject
@@ -61,7 +61,7 @@ const SearchTestList = (props) => {
       <div ref={obsRef} style={{ width: '0%', opacity: '0' }}>
         옵저버 Element
       </div>
-    </Styled.Wrapper>
+    </div>
   );
 };
 

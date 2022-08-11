@@ -60,14 +60,14 @@ const MajorSearch = (props) => {
       </Styled.TabWrapper>
       <Styled.MajorBox>
         {all ? (
-          <Styled.Content onChange={majorChange}>
+          <form onChange={majorChange}>
             {db
               .filter((v) => {
                 return searchMajor === '' ? v : v.includes(searchMajor) ? v : null;
               })
               .map((v, i) => {
                 return (
-                  <Styled.FormLabel key={i}>
+                  <label key={i}>
                     <Styled.FormCheckLeft
                       name="majorType"
                       id="easy"
@@ -87,19 +87,19 @@ const MajorSearch = (props) => {
                       />
                       {v}
                     </Styled.MajorSelect>
-                  </Styled.FormLabel>
+                  </label>
                 );
               })}
-          </Styled.Content>
+          </form>
         ) : (
-          <Styled.Content onChange={majorChange}>
+          <form onChange={majorChange}>
             {favoriteDb
               .filter((v) => {
                 return searchMajor === '' ? v : v.includes(searchMajor) ? v : null;
               })
               .map((v, i) => {
                 return (
-                  <Styled.FormLabel key={i}>
+                  <label key={i}>
                     <Styled.FormCheckLeft
                       name="majorType"
                       id="easy"
@@ -119,10 +119,10 @@ const MajorSearch = (props) => {
                       />
                       {v}
                     </Styled.MajorSelect>
-                  </Styled.FormLabel>
+                  </label>
                 );
               })}
-          </Styled.Content>
+          </form>
         )}
       </Styled.MajorBox>
       <Styled.SubmitButton onClick={clickSubmit}>확인</Styled.SubmitButton>

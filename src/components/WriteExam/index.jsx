@@ -135,55 +135,55 @@ const WriteExam = (props) => {
 
         <Styled.Content id="content" onChange={difficultyChange}>
           <Styled.ContentTitle id="mobile">난이도</Styled.ContentTitle>
-          <Styled.FormLabel>
+          <label>
             <Styled.FormCheckLeft name="examDifficulty" id="easy" value="쉬움" />
             <Styled.FormCheckText>쉬움</Styled.FormCheckText>
-          </Styled.FormLabel>
-          <Styled.FormLabel>
+          </label>
+          <label>
             <Styled.FormCheckLeft name="examDifficulty" id="normal" value="보통" />
             <Styled.FormCheckText>보통</Styled.FormCheckText>
-          </Styled.FormLabel>
-          <Styled.FormLabel>
+          </label>
+          <label>
             <Styled.FormCheckLeft name="examDifficulty" id="difficult" value="어려움" />
             <Styled.FormCheckText>어려움</Styled.FormCheckText>
-          </Styled.FormLabel>
+          </label>
         </Styled.Content>
 
         <Styled.Content id="content" onChange={(e) => handleExam(e.target.checked, e.target.value)}>
           <Styled.ContentTitle id="mobile">
             시험유형<Styled.SmallTitle>(복수선택)</Styled.SmallTitle>
           </Styled.ContentTitle>
-          <Styled.FormLabel>
+          <label>
             <Styled.FormCheckMulti name="examType" id="normal" value="족보" />
             <Styled.FormCheckText>족보</Styled.FormCheckText>
-          </Styled.FormLabel>
-          <Styled.FormLabel>
+          </label>
+          <label>
             <Styled.FormCheckMulti name="examType" id="normal" value="교재" />
             <Styled.FormCheckText>교재</Styled.FormCheckText>
-          </Styled.FormLabel>
-          <Styled.FormLabel>
+          </label>
+          <label>
             <Styled.FormCheckMulti name="examType" id="normal" value="PPT" />
             <Styled.FormCheckText>PPT</Styled.FormCheckText>
-          </Styled.FormLabel>
-          <Styled.FormLabel>
+          </label>
+          <label>
             <Styled.FormCheckMulti name="examType" id="normal" value="필기" />
             <Styled.FormCheckText>필기</Styled.FormCheckText>
-          </Styled.FormLabel>
+          </label>
         </Styled.Content>
         <Styled.Content id="content" onChange={(e) => handleExam(e.target.checked, e.target.value)}>
           <Styled.ContentTitle id="mobile" />
-          <Styled.FormLabel>
+          <label>
             <Styled.FormCheckMulti name="examType" id="normal" value="응용" />
             <Styled.FormCheckText>응용</Styled.FormCheckText>
-          </Styled.FormLabel>
-          <Styled.FormLabel>
+          </label>
+          <label>
             <Styled.FormCheckMulti name="examType" id="normal" value="실습" />
             <Styled.FormCheckText>실습</Styled.FormCheckText>
-          </Styled.FormLabel>
-          <Styled.FormLabel>
+          </label>
+          <label>
             <Styled.FormCheckMulti name="examType" id="normal" value="과제" />
             <Styled.FormCheckText>과제</Styled.FormCheckText>
-          </Styled.FormLabel>
+          </label>
         </Styled.Content>
       </Styled.ContentWrapper>
       <Styled.TextField

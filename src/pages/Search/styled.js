@@ -131,7 +131,6 @@ export const SearchInput = styled.input`
   }
 `;
 
-export const Img = styled.img``;
 export const HeadSelection = styled.div`
   display: flex;
   align-items: flex-end;

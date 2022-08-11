@@ -150,46 +150,46 @@ const WriteEvaluation = (props) => {
 
         <Styled.Content id="content" onChange={teamChange}>
           <Styled.ContentTitle>조모임</Styled.ContentTitle>
-          <Styled.FormLabel>
+          <label>
             <Styled.FormCheckLeft name="team" id="easy" value="0" />
             <Styled.FormCheckText>없음</Styled.FormCheckText>
-          </Styled.FormLabel>
-          <Styled.FormLabel>
+          </label>
+          <label>
             <Styled.FormCheckLeft name="team" id="difficult" value="1" />
             <Styled.FormCheckText>있음</Styled.FormCheckText>
-          </Styled.FormLabel>
+          </label>
         </Styled.Content>
 
         <Styled.Content id="content" onChange={homeworkChange}>
           <Styled.ContentTitle>과제</Styled.ContentTitle>
-          <Styled.FormLabel>
+          <label>
             <Styled.FormCheckLeft name="homework" id="easy" value="0" />
             <Styled.FormCheckText>없음</Styled.FormCheckText>
-          </Styled.FormLabel>
-          <Styled.FormLabel>
+          </label>
+          <label>
             <Styled.FormCheckLeft name="homework" id="normal" value="1" />
             <Styled.FormCheckText>보통</Styled.FormCheckText>
-          </Styled.FormLabel>
-          <Styled.FormLabel>
+          </label>
+          <label>
             <Styled.FormCheckLeft name="homework" id="difficult" value="2" />
             <Styled.FormCheckText>많음</Styled.FormCheckText>
-          </Styled.FormLabel>
+          </label>
         </Styled.Content>
 
         <Styled.Content id="content" onChange={difficultyChange}>
           <Styled.ContentTitle>학점</Styled.ContentTitle>
-          <Styled.FormLabel>
+          <label>
             <Styled.FormCheckLeft name="score" id="easy" value="0" />
             <Styled.FormCheckText>너그러움</Styled.FormCheckText>
-          </Styled.FormLabel>
-          <Styled.FormLabel>
+          </label>
+          <label>
             <Styled.FormCheckLeft name="score" id="normal" value="1" />
             <Styled.FormCheckText>보통</Styled.FormCheckText>
-          </Styled.FormLabel>
-          <Styled.FormLabel>
+          </label>
+          <label>
             <Styled.FormCheckLeft name="score" id="difficult" value="2" />
             <Styled.FormCheckText>까다로움</Styled.FormCheckText>
-          </Styled.FormLabel>
+          </label>
         </Styled.Content>
       </Styled.ContentWrapper>
       <Styled.TextField
