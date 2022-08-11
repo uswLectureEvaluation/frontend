@@ -24,10 +24,6 @@ export const Navbar = styled.nav`
 `;
 
 export const NavLogo = styled.img`
-  color: #346cfd;
-  display: flex;
-  font-size: 2rem;
-  font-weight: bold;
   &:hover {
     cursor: pointer;
   }
