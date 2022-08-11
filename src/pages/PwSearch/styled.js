@@ -53,9 +53,8 @@ export const Button = styled.button`
   background: ${(props) => props.background};
   color: white;
   font-size: 1rem;
-  font-weight: bold;
   border-radius: 12px;
-  font-family: 'Pretendard-Regular';
+  font-family: 'Pretendard-SemiBold';
   cursor: pointer;
   user-select: none;
   transition: 0.3s all;

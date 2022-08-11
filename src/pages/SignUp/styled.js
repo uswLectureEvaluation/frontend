@@ -98,7 +98,7 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 480px) {
     width: 100%;
-    padding : 20px;
+    padding: 20px;
   }
 `;
 
@@ -127,13 +127,11 @@ export const Button = styled.button`
   background: ${(props) => props.background};
   color: white;
   font-size: 1rem;
-  font-weight: bold;
   border-radius: 12px;
-  font-family: 'Pretendard-Regular';
+  font-family: 'Pretendard-SemiBold';
   cursor: pointer;
   user-select: none;
   transition: 0.3s all;
-
 
   &:disabled {
     background-color: rgba(170, 170, 170);
@@ -152,18 +150,14 @@ export const Button = styled.button`
       right: 27%;
     }
     @media only screen and (max-width: 480px) {
-      right: 5%
+      right: 5%;
     }
     :disabled {
       background: white;
       color: rgba(170, 170, 170);
       border: 1px solid rgba(170, 170, 170);
     }
-
-    
   }
-
-  
 `;
 export const CssTextField = styles.styled(TextField)({
   '& label.Mui-focused': {
