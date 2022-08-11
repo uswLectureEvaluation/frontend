@@ -7,6 +7,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
 import { store } from './app/store';
 import './index.css';
+import * as serviceWorker from './serviceWorker';
 
 let persistor = persistStore(store);
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
@@ -24,3 +25,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+serviceWorker.register();
