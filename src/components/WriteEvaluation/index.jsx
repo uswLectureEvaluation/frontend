@@ -179,7 +179,7 @@ const WriteEvaluation = (props) => {
         <Styled.Content id="content" onChange={difficultyChange}>
           <Styled.ContentTitle>학점</Styled.ContentTitle>
           <Styled.FormLabel>
-            <Styled.FormCheckLeft name="score" id="easy" value="2" />
+            <Styled.FormCheckLeft name="score" id="easy" value="0" />
             <Styled.FormCheckText>너그러움</Styled.FormCheckText>
           </Styled.FormLabel>
           <Styled.FormLabel>
@@ -187,7 +187,7 @@ const WriteEvaluation = (props) => {
             <Styled.FormCheckText>보통</Styled.FormCheckText>
           </Styled.FormLabel>
           <Styled.FormLabel>
-            <Styled.FormCheckLeft name="score" id="difficult" value="0" />
+            <Styled.FormCheckLeft name="score" id="difficult" value="2" />
             <Styled.FormCheckText>까다로움</Styled.FormCheckText>
           </Styled.FormLabel>
         </Styled.Content>

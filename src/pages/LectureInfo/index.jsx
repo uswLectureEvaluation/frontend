@@ -81,9 +81,9 @@ const LectureInfo = () => {
     2: <Styled.DataColor id="purple">많음</Styled.DataColor>,
   };
   const difficulty = {
-    0: <Styled.DataColor id="purple">까다로움</Styled.DataColor>,
+    0: <Styled.DataColor id="cyan">너그러움</Styled.DataColor>,
     1: <Styled.DataColor id="black">보통</Styled.DataColor>,
-    2: <Styled.DataColor id="cyan">너그러움</Styled.DataColor>,
+    2: <Styled.DataColor id="purple">까다로움</Styled.DataColor>,
   };
 
   return (
