@@ -145,7 +145,7 @@ export const checkidApi = (setData, id) => {
       if (!response.data.overlap) alert('사용가능합니다.');
       else alert('중복입니다.');
     })
-    .catch((error) => {
+    .catch(() => {
       alert('요청에 실패하였습니다.');
     });
 };
@@ -173,7 +173,7 @@ export const checkemailApi = (setData, email) => {
       if (!response.data.overlap) alert('사용가능합니다.');
       else alert('중복입니다.');
     })
-    .catch((error) => {
+    .catch(() => {
       alert('요청에 실패하였습니다.');
     });
 };
@@ -205,7 +205,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
       setData(r.data);
       setLoading(true);
     })
-    .catch((error) => {
+    .catch(() => {
       alert('id 또는 pw 확인해주세요');
     });
 };
@@ -237,7 +237,7 @@ export const unCheckedLoginApi = (setData, setLoading, id, pw) => {
       setData(r.data);
       setLoading(true);
     })
-    .catch((error) => {
+    .catch(() => {
       alert('id 또는 pw 확인해주세요');
     });
 };
@@ -270,7 +270,7 @@ export const findIdApi = (setData, email) => {
       alert('해당 이메일로 아이디를 전송하였습니다');
       setData(r.data);
     },
-    (error) => {
+    () => {
       alert('해당 아이디를 찾을 수 없습니다.');
     }
   );
@@ -297,7 +297,7 @@ export const findPwApi = (setData, id, email) => {
       alert('해당 이메일로 임시 비밀번호를 발송하였습니다.');
       setData(response.data);
     },
-    (error) => {
+    () => {
       alert('해당 아이디.이메일을 찾을 수 없습니다.');
     }
   );

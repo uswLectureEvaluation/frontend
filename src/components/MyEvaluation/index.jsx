@@ -104,7 +104,7 @@ const Myevaluation = (props) => {
   return (
     <Styled.Wrapper>
       {list.length !== 0 ? (
-        list.map((v, i) => {
+        list.map((v) => {
           return (
             <Subject
               key={Math.random()}

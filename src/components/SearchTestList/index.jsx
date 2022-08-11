@@ -44,7 +44,7 @@ const SearchTestList = (props) => {
   return (
     <div>
       {list &&
-        list.map((v, i) => (
+        list.map((v) => (
           <Subject
             key={Math.random()}
             content={v.content}

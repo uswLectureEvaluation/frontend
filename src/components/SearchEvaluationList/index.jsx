@@ -99,7 +99,7 @@ const SearchEvaluationList = ({ selectId, setWritten }) => {
   return list.length !== 0 ? (
     <Styled.Wrapper>
       {list &&
-        list.map((v, i) => (
+        list.map((v) => (
           <Subject
             key={Math.random()}
             semester={v.selectedSemester}

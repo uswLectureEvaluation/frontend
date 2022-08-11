@@ -42,7 +42,6 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
       }
     }
     setLoad(false); //로딩 종료
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, setCount, checkClass, option, lecture]);
 
   const showWin = () => {
@@ -95,7 +94,7 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
                   }
                   return false;
                 })
-                .map((row, i) => (
+                .map((row) => (
                   <Subject
                     key={Math.random()}
                     id={row.id}
@@ -119,7 +118,7 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
                 }
                 return false;
               })
-              .map((row, i) => (
+              .map((row) => (
                 <Subject
                   key={Math.random()}
                   id={row.id}
@@ -150,7 +149,7 @@ const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
       {count ? (
         <Styled.FlexWrap>
           <Styled.FullWrapSub>
-            {list.map((row, i) => (
+            {list.map((row) => (
               <Subject
                 key={Math.random()}
                 id={row.id}

@@ -4,7 +4,7 @@ import * as Styled from './styled';
 import RangeInput from '../RangeInput';
 import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
 
-const useSlider = (min, max, defaultState, id) => {
+const useSlider = (defaultState) => {
   const [state, setSlide] = useState(defaultState);
 
   const Slider = () => <RangeInput setSlide={setSlide} onChange={setSlide} defaultValue={state} />;

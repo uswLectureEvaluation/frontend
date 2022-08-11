@@ -38,7 +38,7 @@ const MainList = ({ lecture, checkClass }) => {
                 return false;
               }
             })
-            .map((row, i) => (
+            .map((row) => (
               <Subject
                 key={row.id}
                 id={row.id}
@@ -65,7 +65,7 @@ const MainList = ({ lecture, checkClass }) => {
                 return false;
               }
             })
-            .map((row, i) => (
+            .map((row) => (
               <Subject
                 key={row.id}
                 id={row.id}
@@ -85,7 +85,7 @@ const MainList = ({ lecture, checkClass }) => {
       <Styled.FlexWrap>
         <Styled.FullWrapSub>
           {db.data
-            .filter((row, i) => {
+            .filter((row) => {
               if (checkClass === '전체') {
                 return true;
               } else {
@@ -95,7 +95,7 @@ const MainList = ({ lecture, checkClass }) => {
                 return false;
               }
             })
-            .map((row, i) => (
+            .map((row) => (
               <Subject
                 key={row.id}
                 id={row.id}
