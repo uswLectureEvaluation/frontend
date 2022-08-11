@@ -89,7 +89,7 @@ export const Option = styled.div`
 `;
 
 export const Rate = styled.span`
-  color: #346cfd;
+  color: #336af8;
   font-size: 18px;
   font-weight: 500;
   padding-left: 5px;
@@ -121,7 +121,7 @@ export const DataColor = styled.div`
     color: black;
   }
   &#cyan {
-    color: #346cfd;
+    color: #336af8;
   }
   &#purple {
     color: #6200ee;

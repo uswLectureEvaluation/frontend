@@ -75,13 +75,13 @@ export const LoginWrapper = styled.div`
 
 export const CssTextField = styles.styled(TextField)({
   '& label.Mui-focused': {
-    color: '#346cfd',
+    color: '#336af8',
   },
   '& .MuiInput-underline:after': {
-    borderBottomColor: '#346cfd',
+    borderBottomColor: '#336af8',
   },
   '& .MuiInput-underline:before': {
-    borderBottomColor: '#346cfd',
+    borderBottomColor: '#336af8',
   },
 });
 

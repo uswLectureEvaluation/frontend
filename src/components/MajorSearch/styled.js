@@ -36,7 +36,7 @@ export const InputWrapper = styled.div`
 export const CssTextField = styles.styled(TextField)({
   width: '100%',
   '& label.Mui-focused': {
-    color: '#346cfd',
+    color: '#336af8',
   },
   '& .MuiInput-underline:after': {
     borderBottomColor: 'black',
@@ -92,7 +92,7 @@ export const MajorSelect = styled.span`
 `;
 
 export const SubmitButton = styled.div`
-  background-color: #346cfd;
+  background-color: #336af8;
   width: 65%;
   color: #fff;
   text-align: center;
@@ -141,7 +141,7 @@ export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
   }
   &#easy {
     &:checked + ${MajorSelect} {
-      color: #346cfd;
+      color: #336af8;
       background-color: #eeeeee;
     }
   }

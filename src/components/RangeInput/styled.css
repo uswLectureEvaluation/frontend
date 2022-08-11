@@ -1,9 +1,9 @@
 .range {
   --thumbSize: 24px;
   --trackSize: 8px;
-  --thumbBg: #346cfd;
+  --thumbBg: #336af8;
   --trackBg: #f2f2f2;
-  --progressBg: #346cfd;
+  --progressBg: #336af8;
 
   /* webkit progress workaround */
   --webkitProgressPercent: 0%;
@@ -72,9 +72,11 @@
 /* Track */
 .range::-webkit-slider-runnable-track {
   height: var(--trackSize);
-  background-image: linear-gradient(90deg,
-      var(--progressBg) var(--webkitProgressPercent),
-      var(--trackBg) var(--webkitProgressPercent));
+  background-image: linear-gradient(
+    90deg,
+    var(--progressBg) var(--webkitProgressPercent),
+    var(--trackBg) var(--webkitProgressPercent)
+  );
   border-radius: calc(var(--trackSize) / 2);
 }
 

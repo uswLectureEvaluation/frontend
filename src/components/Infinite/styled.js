@@ -73,7 +73,7 @@ export const RateWrapper = styled.span`
 `;
 
 export const Rate = styled.span`
-  color: #346cfd;
+  color: #336af8;
   font-size: 18px;
   font-weight: 500;
   padding-left: 4px;

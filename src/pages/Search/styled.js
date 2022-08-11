@@ -52,11 +52,11 @@ export const SearchResultMenu = styled.div`
   align-items: center;
 
   &:hover {
-    background-color: #346cfd;
+    background-color: #336af8;
     color: white;
   }
   &#${({ check }) => check} {
-    background-color: #346cfd;
+    background-color: #336af8;
     color: white;
   }
 
@@ -139,7 +139,7 @@ export const FlexWrapper = styled.div`
 `;
 
 export const Color = styled.span`
-  color: #346cfd;
+  color: #336af8;
   margin-left: 6px;
   text-align: center;
 `;

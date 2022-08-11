@@ -127,7 +127,7 @@ const Main = () => {
           </Styled.HeadSelection>
         </Styled.SearchWrapper>
         <Styled.Button
-          background="#346cfd"
+          background="#336af8"
           onClick={() => {
             navigate(`/search`, {
               state: {

@@ -98,7 +98,7 @@ const LectureInfo = () => {
       </Styled.SearchWrapper>
       {!(localStorage.getItem('login') || sessionStorage.getItem('login')) ? (
         <Styled.FlexContainer id="col">
-          <Button color="#346cfd" onClick={() => navigate('/login')}>
+          <Button color="#336af8" onClick={() => navigate('/login')}>
             로그인하기
           </Button>
         </Styled.FlexContainer>
@@ -137,7 +137,7 @@ const LectureInfo = () => {
                   <Styled.FlexContainer>
                     <Styled.Color
                       style={{
-                        color: '#346cfd',
+                        color: '#336af8',
                         fontWeight: '500',
                       }}
                     >
@@ -165,7 +165,7 @@ const LectureInfo = () => {
                   <Styled.FlexContainer>
                     <Styled.Color
                       style={{
-                        color: '#346cfd',
+                        color: '#336af8',
                         fontWeight: '500',
                       }}
                     >
@@ -193,7 +193,7 @@ const LectureInfo = () => {
                   <Styled.FlexContainer>
                     <Styled.Color
                       style={{
-                        color: '#346cfd',
+                        color: '#336af8',
                         fontWeight: '500',
                       }}
                     >

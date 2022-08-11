@@ -209,7 +209,7 @@ export const Subject = (props) => {
           <div style={{ marginBottom: '38px' }} />
           <StarRatings
             rating={props.totalAvg}
-            starRatedColor="#346cfd"
+            starRatedColor="#336af8"
             numberOfStars={5}
             name="rating"
             starDimension="18px"

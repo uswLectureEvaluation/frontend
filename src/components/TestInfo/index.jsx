@@ -12,7 +12,7 @@ export const NotUsePoint = (props) => (
       <Styled.Color> 20 포인트</Styled.Color>가 차감됩니다.
     </Styled.Content>
     <Styled.BtWidth>
-      <Button color="#346cfd" onClick={props.unlock}>
+      <Button color="#336af8" onClick={props.unlock}>
         포인트 사용하기 (-20P)
       </Button>
     </Styled.BtWidth>

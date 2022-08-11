@@ -68,7 +68,7 @@ const MyInfo = () => {
   return !(localStorage.getItem('login') || sessionStorage.getItem('login')) ? (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Styled.FlexContainer id="col">
-        <Button color="#346cfd" onClick={() => navigate('/login')}>
+        <Button color="#336af8" onClick={() => navigate('/login')}>
           로그인하기
         </Button>
       </Styled.FlexContainer>
@@ -93,7 +93,7 @@ const MyInfo = () => {
         </Styled.Content>
         <Styled.Button
           onClick={() => navigate('/myposting', { state: { props: db.point } })}
-          background="#346cfd"
+          background="#336af8"
         >
           내가 쓴 글
         </Styled.Button>
@@ -208,7 +208,7 @@ const MyInfo = () => {
       </Styled.InfoWrapper>
       <Styled.Button
         onClick={() => navigate('/myposting', { state: { props: db.point } })}
-        background="#346cfd"
+        background="#336af8"
       >
         내가 쓴 글
       </Styled.Button>

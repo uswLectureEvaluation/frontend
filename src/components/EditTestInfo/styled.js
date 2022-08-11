@@ -39,7 +39,7 @@ export const Score = styled.span`
   font-style: normal;
   line-height: 1.11;
   letter-spacing: 0.32px;
-  color: #346cfd;
+  color: #336af8;
 `;
 export const TitleWrapper = styled.div`
   display: flex;
@@ -124,7 +124,7 @@ export const TextField = styled.textarea`
   width: 100%;
   resize: none;
   padding: 22px;
-  outline-color: #346cfd;
+  outline-color: #336af8;
   border: solid 1px #e0e0e0;
   border-radius: 15px;
   background-color: #f9f9f9;
@@ -142,7 +142,7 @@ export const EditButton = styled.div`
   padding: 12px 20px;
   text-align: center;
   color: #ffffff;
-  background-color: #346cfd;
+  background-color: #336af8;
   border-radius: 15px;
   &:hover {
     cursor: pointer;
@@ -196,7 +196,7 @@ export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
   }
   &#easy {
     &:checked + ${FormCheckText} {
-      color: #346cfd;
+      color: #336af8;
       font-weight: 600;
     }
   }
@@ -228,7 +228,7 @@ export const FormCheckMulti = styled.input.attrs({ type: 'checkbox' })`
   }
   &#easy {
     &:checked + ${FormCheckText} {
-      color: #346cfd;
+      color: #336af8;
       font-weight: 600;
     }
   }

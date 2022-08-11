@@ -253,7 +253,7 @@ const StyledButton = styled_mui('button')(
     border-radius: 10px;
     padding: 5px 10px;
     margin-right: 10px;
-    color: #346cfd;
+    color: #336af8;
     &:hover {
       background: ${theme.palette.mode === 'dark' ? '' : grey[100]};
       border-color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
@@ -285,7 +285,7 @@ const StyledButton = styled_mui('button')(
     border-radius: 10px;
     padding: 5px 10px;
     margin-right: 10px;
-    color: #346cfd;
+    color: #336af8;
     &:hover {
       background: ${theme.palette.mode === 'dark' ? '' : grey[100]};
       border-color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};

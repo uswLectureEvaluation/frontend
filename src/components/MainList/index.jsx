@@ -187,7 +187,7 @@ export const Subject = (props) => {
         <Styled.RateWrapper>
           <StarRatings
             rating={props.star}
-            starRatedColor="#346cfd"
+            starRatedColor="#336af8"
             numberOfStars={5}
             name="rating"
             starDimension="20px"

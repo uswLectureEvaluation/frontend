@@ -147,7 +147,7 @@ export const Subject = (props) => {
           <Styled.EditButton onClick={onReport}>신고</Styled.EditButton>
           <StarRatings
             rating={props.totalAvg}
-            starRatedColor="#346cfd"
+            starRatedColor="#336af8"
             numberOfStars={5}
             name="rating"
             starDimension="18px"
@@ -174,7 +174,7 @@ export const Subject = (props) => {
           <div>
             <StarRatings
               rating={props.totalAvg}
-              starRatedColor="#346cfd"
+              starRatedColor="#336af8"
               numberOfStars={5}
               name="rating"
               starDimension="18px"

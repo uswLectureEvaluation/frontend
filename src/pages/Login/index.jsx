@@ -90,7 +90,7 @@ const Login = () => {
           </div>
         </Styled.SearchWrapper>
         <Styled.Button
-          background="#346cfd"
+          background="#336af8"
           type="submit"
           fullWidth
           variant="contained"

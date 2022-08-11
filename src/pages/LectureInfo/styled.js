@@ -13,7 +13,7 @@ export const DataColor = styled.div`
     color: black;
   }
   &#cyan {
-    color: #346cfd;
+    color: #336af8;
   }
   &#purple {
     color: #6200ee;

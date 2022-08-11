@@ -54,7 +54,7 @@ export const Option = styled.div`
 `;
 
 export const Rate = styled.span`
-  color: #346cfd;
+  color: #336af8;
   font-family: 'Pretendard-Medium';
   font-size: 18px;
   font-weight: 500;
@@ -83,7 +83,7 @@ export const MarginTop = styled.div`
 export const DataColor = styled.div`
   font-weight: 500;
   &#cyan {
-    color: #346cfd;
+    color: #336af8;
   }
   &#purple {
     color: #6200ee;

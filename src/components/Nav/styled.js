@@ -39,7 +39,7 @@ export const NavLogo = styled.img`
 export const MobileIcon = styled.div`
   font-size: 2rem;
   align-items: center;
-  color: #346cfd;
+  color: #336af8;
   display: none;
 
   @media screen and (max-width: 480px) {
@@ -73,7 +73,7 @@ export const NavLinks = styled.div`
     cursor: pointer;
   }
   &#signup {
-    color: #346cfd;
+    color: #336af8;
   }
 
   @media screen and (max-width: 480px) {

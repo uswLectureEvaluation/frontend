@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Pretendard-Medium', sans-serif;
   }
   :root {
-      --main-color: '#346cfd',
+      --main-color: '#336af8',
       --border-color: #e0e0e0;
       --font-color: #222222;
       --sub-font-color: #515151;
@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
 
 export const Color = (props) => {
   if (props === 'main') {
-    return '#346cfd';
+    return '#336af8';
   } else if (props === 'border') {
     return '#e0e0e0';
   } else if (props === 'font') {
