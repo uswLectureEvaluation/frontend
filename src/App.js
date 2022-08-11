@@ -1,25 +1,25 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Footer, Nav } from './components';
+import ScrollButton from './components/ScrollButton';
 import GlobalStyle from './GlobalStyle';
 import {
+  BanReason,
   EmailSignUp,
+  Exit,
+  HistoryTest,
+  IdSearch,
   LectureInfo,
+  Login,
   Main,
-  Notice,
-  NoticeDetail,
   MyInfo,
   MyPosting,
-  Search,
-  SignUp,
-  Login,
-  IdSearch,
+  Notice,
+  NoticeDetail,
   PwSearch,
   ResetPassword,
-  BanReason,
-  HistoryTest,
-  Exit,
+  Search,
+  SignUp,
 } from './pages'; //페이지 목록
-import ScrollButton from './components/ScrollButton';
 
 const App = () => {
   return (
