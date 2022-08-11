@@ -174,7 +174,6 @@ export const Soption = styled.span`
 
 export const Button = styled.button`
   margin: 10px 0;
-  margin-bottom: 10vh;
   width: 40%;
   padding: 0.8rem 1rem;
   border: none;
