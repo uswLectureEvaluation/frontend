@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
-import * as Styled from './styled';
+import { useEffect, useState } from 'react';
 import { findIdApi } from '../../api/Api';
+import { CssTextField } from '../../components/CssTextField';
+import * as Styled from './styled';
 
 const IdSearch = () => {
   const [email, setEmail] = useState();
@@ -22,7 +23,7 @@ const IdSearch = () => {
       <Styled.LoginWrapper>
         <Styled.Title>아이디 찾기</Styled.Title>
         <Styled.Sub>학교 계정을 입력하세요</Styled.Sub>
-        <Styled.CssTextField
+        <CssTextField
           margin="normal"
           required
           id="outlined-basic"

@@ -1,8 +1,9 @@
+import { Checkbox, FormControlLabel } from '@material-ui/core';
 import { useEffect, useState } from 'react';
-import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
 import { loginApi, unCheckedLoginApi } from '../../api/Api';
-import { FormControlLabel, Checkbox } from '@material-ui/core';
+import { CssTextField } from '../../components/CssTextField';
+import * as Styled from './styled';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const Login = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  // 체크박스 이벤트
+
   const onChangeCheckBox = (event) => {
     setChecked(event.target.checked);
   };
@@ -40,19 +41,17 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (loading === true) {
-      if (db != null) {
-        navigate('/myinformation');
-      }
+    if (loading && db !== null) {
+      navigate('/myinformation');
     }
-  });
+  }, [db, loading, navigate]);
 
   return (
     <Styled.Container>
       <Styled.Img loading="lazy" src="img/signup.svg" width={450} />
       <Styled.LoginWrapper>
         <Styled.Title>로그인</Styled.Title>
-        <Styled.CssTextField
+        <CssTextField
           margin="normal"
           required
           fullWidth
@@ -63,7 +62,7 @@ const Login = () => {
           onChange={onChangeID}
           onKeyPress={onKeypress}
         />
-        <Styled.CssTextField
+        <CssTextField
           margin="normal"
           required
           fullWidth

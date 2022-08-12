@@ -1,7 +1,8 @@
-import { useState, useCallback, useEffect } from 'react';
-import * as Styled from './styled';
-import { checkemailApi, checkidApi, registerApi } from '../../api/Api';
+import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { checkemailApi, checkidApi, registerApi } from '../../api/Api';
+import { CssTextField } from '../../components/CssTextField';
+import * as Styled from './styled';
 
 const SignUp = () => {
   //이름, 이메일, 비밀번호, 비밀번호 확인
@@ -153,7 +154,7 @@ const SignUp = () => {
       <Styled.SignUpWrapper>
         <Styled.Title>회원가입</Styled.Title>
         <Styled.InputWrapper id="top">
-          <Styled.CssTextField
+          <CssTextField
             margin="normal"
             required
             fullWidth
@@ -178,7 +179,7 @@ const SignUp = () => {
           </Styled.Checking>
         )}
 
-        <Styled.CssTextField
+        <CssTextField
           margin="normal"
           required
           fullWidth
@@ -194,7 +195,7 @@ const SignUp = () => {
             {passwordMessage}
           </Styled.Checking>
         )}
-        <Styled.CssTextField
+        <CssTextField
           margin="normal"
           required
           fullWidth
@@ -211,7 +212,7 @@ const SignUp = () => {
           </Styled.Checking>
         )}
         <Styled.InputWrapper id="top">
-          <Styled.CssTextField
+          <CssTextField
             margin="normal"
             required
             fullWidth

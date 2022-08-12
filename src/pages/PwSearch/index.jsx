@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { findPwApi } from '../../api/Api';
+import { CssTextField } from '../../components/CssTextField';
 import * as Styled from './styled';
 
 const PwSearch = () => {
@@ -26,7 +27,7 @@ const PwSearch = () => {
       <Styled.LoginWrapper>
         <Styled.Title>비밀번호 찾기</Styled.Title>
         <Styled.Sub>아이디에 해당하는 학교 이메일로 임시 비밀번호를 전송합니다</Styled.Sub>
-        <Styled.CssTextField
+        <CssTextField
           margin="normal"
           required
           id="id"
@@ -35,7 +36,7 @@ const PwSearch = () => {
           autoComplete="id"
           onChange={onChangeID}
         />
-        <Styled.CssTextField
+        <CssTextField
           margin="normal"
           required
           id="email"

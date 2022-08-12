@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import * as Styled from './styled';
 import { quitApi } from '../../api/Api';
+import { CssTextField } from '../../components/CssTextField';
+import * as Styled from './styled';
 
 const Exit = () => {
   const [id, setId] = useState();
@@ -31,7 +32,7 @@ const Exit = () => {
       <Styled.LoginWrapper>
         <Styled.Title>회원탈퇴</Styled.Title>
         <Styled.Sub>아이디를 입력하세요</Styled.Sub>
-        <Styled.CssTextField
+        <CssTextField
           margin="normal"
           required
           id="outlined-basic"
@@ -41,7 +42,7 @@ const Exit = () => {
           onChange={onChangeId}
         />
         <Styled.Sub>비밀번호를 입력하세요</Styled.Sub>
-        <Styled.CssTextField
+        <CssTextField
           margin="normal"
           required
           id="outlined-basic"

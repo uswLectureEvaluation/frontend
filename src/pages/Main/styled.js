@@ -77,6 +77,7 @@ export const SearchTitle = styled.div`
   display: flex;
   font-size: 1.5rem;
   padding-top: 4rem;
+  padding-bottom: 1.5rem;
   font-family: 'Pretendard-SemiBold';
   width: 100%;
 `;
@@ -86,7 +87,6 @@ export const SearchInput = styled.input`
   height: 50px;
   border: none;
   border-bottom: 1.5px solid #000000;
-  margin: 1.5rem 0;
   background-image: url('img/icon_search_24.svg');
   background-repeat: no-repeat;
   background-position: 99%;

@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { resetPasswordApi } from '../../api/Api';
+import { CssTextField } from '../../components/CssTextField';
 import * as Styled from './styled';
 
 const ResetPassword = () => {
@@ -32,7 +33,7 @@ const ResetPassword = () => {
       <Styled.LoginWrapper>
         <Styled.Title>비밀번호 변경</Styled.Title>
         <Styled.Sub>기존 비밀번호를 입력하세요</Styled.Sub>
-        <Styled.CssTextField
+        <CssTextField
           placeholder="기존 비밀번호 입력"
           margin="normal"
           required
@@ -45,7 +46,7 @@ const ResetPassword = () => {
 
         <Styled.Sub>새로운 비밀번호를 입력하세요</Styled.Sub>
 
-        <Styled.CssTextField
+        <CssTextField
           placeholder="새 비밀번호 입력"
           margin="normal"
           required
