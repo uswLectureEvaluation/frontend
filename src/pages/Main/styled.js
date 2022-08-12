@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import SelectUnstyled, { selectUnstyledClasses } from '@mui/base/SelectUnstyled';
 import OptionUnstyled, { optionUnstyledClasses } from '@mui/base/OptionUnstyled';
 import { styled as styled_mui } from '@mui/system';
-import { PopperUnstyled } from '@mui/base';
+import PopperUnstyled from '@mui/base/PopperUnstyled';
 
 export const GlobalStyle = createGlobalStyle`
   #root>div {

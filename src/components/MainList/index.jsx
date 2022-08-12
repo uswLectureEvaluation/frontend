@@ -164,18 +164,9 @@ export const Subject = (props) => {
     navigate('/lectureinfo');
   };
 
-  // const Delete = () => {
-  //   if(window.confirm("강의평가를 삭제하시겠습니까?")===true){
-  //     let arrayCopy = [...props.subjectName];
-  //     arrayCopy.shift();
-  //     props.setSubjectName(arrayCopy)
-  //   }else{ return }
-  // }
   return (
     <Styled.LectureWrapper onClick={() => onClick(props.id)}>
       <Styled.MarginTop>
-        {/* <BoxButton2 onClick={()=> {Delete()}} style={{ float: "right" }}>삭제</BoxButton2>
-        <BoxButton1 onClick={()=> setModalIsOpen(true)} style={{ float: "right" }}>수정</BoxButton1> */}
         <Styled.TitleWrapper>
           <Styled.Title>{title}</Styled.Title>
           <Styled.Option>{props.lectureType}</Styled.Option>
@@ -183,7 +174,6 @@ export const Subject = (props) => {
         <Styled.Professor>
           {props.majorType} | {props.professor}
         </Styled.Professor>
-        {/* <Styled.MarginRight>평균지수</Styled.MarginRight> */}
         <Styled.RateWrapper>
           <StarRatings
             rating={props.star}
