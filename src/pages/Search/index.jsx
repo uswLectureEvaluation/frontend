@@ -23,7 +23,7 @@ const Search = () => {
   let navigate = useNavigate();
 
   const [search, setSearch] = useState('');
-  const [option, setOption] = useState('lectureHoneyAvg');
+  const [option, setOption] = useState('modifiedDate');
   const [count, setCount] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedMajor, setSelectedMajor] = useState('');

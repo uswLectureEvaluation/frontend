@@ -38,7 +38,7 @@ const Main = () => {
 
   let navigate = useNavigate();
   const [search, setSearch] = useState('');
-  const [lecture, setLecture] = useState('lectureHoneyAvg');
+  const [lecture, setLecture] = useState('modifiedDate');
   const [checkClass, setCheckClass] = useState('전체');
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedMajor, setSelectedMajor] = useState('');
@@ -105,7 +105,7 @@ const Main = () => {
                 ))}
               </Styled.SortSelect>
             </Styled.FlexWrapper>
-            <Styled.CustomSelect defaultValue={'lectureHoneyAvg'} onChange={onChangeHandler}>
+            <Styled.CustomSelect defaultValue={'modifiedDate'} onChange={onChangeHandler}>
               {options.map((index) => (
                 <Styled.StyledOption key={index.name} value={index.lec}>
                   <Styled.Soption>
