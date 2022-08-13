@@ -340,6 +340,7 @@ const StyledButton = styled_mui('button')(
 const StyledListbox = styled_mui('ul')(
   ({ theme }) => `
   font-size: 0.875rem;
+  font-family: Pretendard-Medium;
   box-sizing: border-box;
   padding: 5px;
   margin: 10px 0;

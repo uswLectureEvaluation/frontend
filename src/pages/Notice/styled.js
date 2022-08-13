@@ -7,6 +7,7 @@ export const AppContainer = styled.div`
   width: 60%;
   margin: 0 auto;
   padding-bottom: 5rem;
+  font-family: Pretendard-Medium;
 
   @media screen and (max-width: 960px) {
     display: flex;

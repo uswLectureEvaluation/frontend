@@ -142,6 +142,7 @@ export const HeadSelection = styled.div`
 export const FlexWrapper = styled.div`
   display: flex;
   margin-bottom: 1rem;
+  font-family: Pretendard-Medium;
 `;
 
 export const Color = styled.span`
