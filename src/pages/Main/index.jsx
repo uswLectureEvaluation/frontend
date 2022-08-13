@@ -77,13 +77,7 @@ const Main = () => {
             <br />
             강의평가의 모든 것<Styled.BannerSub>강의평가의 모든 것 수위키</Styled.BannerSub>
           </div>
-          <Styled.BannerImg
-            loading="lazy"
-            src="img/banner.svg"
-            alt="banner"
-            width={450}
-            height={450}
-          />
+          <Styled.BannerImg src="img/banner.svg" alt="banner" width={450} height={450} />
         </Styled.BannerWrapper>
       </Styled.Banner>
       <Styled.Container>
@@ -115,13 +109,7 @@ const Main = () => {
               {options.map((index) => (
                 <Styled.StyledOption key={index.name} value={index.lec}>
                   <Styled.Soption>
-                    <Styled.Img
-                      loading="lazy"
-                      alt="option-icon"
-                      width="22"
-                      height="22"
-                      src={index.imgs}
-                    />{' '}
+                    <Styled.Img alt="option-icon" width="22" height="22" src={index.imgs} />{' '}
                     {index.name}
                   </Styled.Soption>
                 </Styled.StyledOption>
