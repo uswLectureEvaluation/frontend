@@ -14,9 +14,8 @@ export const Title = styled.div`
   font-size: 18px;
   padding: 2rem;
   padding-bottom: 1rem;
-  font-weight: 500;
   @media only screen and (max-width: 550px) {
-    padding: 0.5rem;
+    padding: 1rem;
   }
 `;
 
@@ -24,7 +23,6 @@ export const TitleButton = styled.button`
   font-size: 18px;
   padding: 2rem;
   padding-bottom: 1rem;
-  font-weight: 500;
   border: none;
   background-color: white;
   cursor: pointer;
@@ -36,7 +34,6 @@ export const TitleButton = styled.button`
 export const Score = styled.span`
   margin: 2px 0 1px 24px;
   font-size: 18px;
-  font-weight: 500;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.11;
@@ -104,7 +101,6 @@ export const ContentTitle = styled.div`
 
 export const WriteButton = styled.button`
   font-size: 16px;
-  font-weight: 500;
   color: #222;
 `;
 
@@ -174,7 +170,6 @@ export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
     text-align: center;
     height: 35px;
     line-height: 33px;
-    font-weight: 500;
     display: none;
   }
   &#difficult {
