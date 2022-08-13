@@ -123,6 +123,12 @@ export const SearchInput = styled.input`
   &:focus {
     outline: none;
   }
+
+  @media screen and (max-width: 480px) {
+    font-size: 16px;
+    width: 123%;
+    transform: scale(0.8);
+  }
 `;
 
 export const HeadSelection = styled.div`
