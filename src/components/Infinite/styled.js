@@ -23,7 +23,6 @@ export const TitleWrapper = styled.div`
 export const Title = styled.div`
   display: flex;
   font-size: 1.1rem;
-  margin-right: 0.7rem;
 `;
 
 export const Professor = styled.div`
@@ -71,10 +70,6 @@ export const LectureWrapper = styled.div`
 
 export const MarginTop = styled.div`
   padding: 14px 24px;
-`;
-export const MarginRight = styled.span`
-  margin-right: 6px;
-  font-size: 1rem;
 `;
 
 export const StarFlex = styled.div`

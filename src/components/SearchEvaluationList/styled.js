@@ -89,7 +89,7 @@ export const LectureWrapper = styled.div`
 export const MarginTop = styled.div`
   &#top {
     padding: 14px 24px 0px 24px;
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 550px) {
       display: none;
     }
   }
@@ -101,7 +101,7 @@ export const MarginTop = styled.div`
 
 export const MobileWrapper = styled.div`
   display: none;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 550px) {
     display: flex;
     padding: 14px 24px 0px 24px;
     flex-direction: column;

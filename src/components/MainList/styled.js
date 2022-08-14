@@ -103,11 +103,6 @@ export const FlexWrap = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    display: flex;
-  }
 `;
 
 export const FlexWrapSub = styled.div`
@@ -120,9 +115,4 @@ export const FullWrapSub = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    display: flex;
-  }
 `;

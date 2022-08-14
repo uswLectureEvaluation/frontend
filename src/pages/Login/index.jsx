@@ -48,7 +48,7 @@ const Login = () => {
 
   return (
     <Styled.Container>
-      <Styled.Img src="img/signup.svg" width={450} />
+      <Styled.Img src="img/signup.svg" width={400} />
       <Styled.LoginWrapper>
         <Styled.Title>로그인</Styled.Title>
         <CssTextField

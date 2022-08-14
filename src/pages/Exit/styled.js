@@ -20,7 +20,7 @@ export const Container = styled.div`
     justify-content: center;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 550px) {
     width: 100%;
     padding: 20px;
   }
@@ -57,7 +57,7 @@ export const Button = styled.button`
   user-select: none;
   transition: 0.3s all;
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 550px) {
     margin-top: 10rem;
   }
 `;

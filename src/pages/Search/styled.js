@@ -15,6 +15,7 @@ export const Container = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
+  overflow-x: hidden;
   @media only screen and (max-width: 960px) {
     width: 90%;
   }
