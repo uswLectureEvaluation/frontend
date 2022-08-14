@@ -94,7 +94,7 @@ export const StarFlex = styled.div`
   display: flex;
   align-items: center;
   padding: 2px 11px;
-  font-family: 'Pretendard-Medium';
+  font-family: 'Pretendard-Light';
   font-size: 13px;
   @media screen and (max-width: 480px) {
     font-size: 12px;
@@ -111,9 +111,11 @@ export const StarFlex = styled.div`
   }
   &#black {
     font-weight: 500;
+    font-family: 'Pretendard-Medium';
   }
   &#data {
     padding-right: 0px;
+    font-family: 'Pretendard-Medium';
   }
 `;
 
@@ -125,7 +127,7 @@ export const FlexContainer = styled.div`
 `;
 
 export const YearText = styled.span`
-  font-family: 'Pretendard-Medium';
+  font-family: 'Pretendard-Regular';
   font-size: 14px;
   padding: 4.5px 13px 4.5px 13px;
   border-radius: 12.5px;
@@ -137,8 +139,7 @@ export const EvaluationDetail = styled.div`
   word-break: break-all;
   display: flex;
   flex-direction: column;
-  font-size: 16px;
-  font-family: 'Pretendard-Medium';
+  font-family: 'Pretendard-Regular';
   font-size: 1rem;
   padding-top: 0.7rem;
 `;

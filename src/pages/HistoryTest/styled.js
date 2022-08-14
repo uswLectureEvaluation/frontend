@@ -31,6 +31,7 @@ export const Title = styled.div`
   display: flex;
   font-size: 1rem;
   margin-right: 0.7rem;
+  font-family: 'Pretendard-Medium';
 `;
 
 export const Option = styled.div`
@@ -39,7 +40,7 @@ export const Option = styled.div`
   margin-right: 1rem;
   font-size: 14px;
   color: #a3a3a3;
-  font-family: 'Pretendard-Medium';
+  font-family: 'Pretendard-Regular';
 `;
 
 export const NoticeWrap = styled.div`
@@ -64,7 +65,7 @@ export const NoticeWrap = styled.div`
 export const Professor = styled.div`
   display: flex;
   color: #222;
-  font-family: 'Pretendard-Medium';
+  font-family: 'Pretendard-Regular';
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;

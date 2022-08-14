@@ -122,7 +122,7 @@ export const TextField = styled.textarea`
 
 export const EditButton = styled.button`
   font-size: 16px;
-  font-weight: 600;
+  font-family: 'Pretendard-Semibold';
   width: 350px;
   padding: 12px 20px;
   text-align: center;
@@ -157,7 +157,7 @@ export const FormCheckText = styled.span`
   color: #777;
   margin-right: 8px;
   @media only screen and (max-width: 550px) {
-    font-size: 16px;
+    font-size: 12px;
     padding: 6px 9px;
   }
 `;
@@ -176,19 +176,19 @@ export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
   &#difficult {
     &:checked + ${FormCheckText} {
       color: #7800ff;
-      font-weight: 600;
+      font-family: 'Pretendard-Semibold';
     }
   }
   &#normal {
     &:checked + ${FormCheckText} {
       color: #222222;
-      font-weight: 600;
+      font-family: 'Pretendard-Semibold';
     }
   }
   &#easy {
     &:checked + ${FormCheckText} {
       color: #336af8;
-      font-weight: 600;
+      font-family: 'Pretendard-Semibold';
     }
   }
   display: none;

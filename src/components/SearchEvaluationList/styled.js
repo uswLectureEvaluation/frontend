@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ModalOpen = styled.span`
-  font-family: 'Pretendard-Medium';
+  font-family: 'Pretendard-Regular';
   font-size: 12px;
   color: #222;
   text-decoration: underline;
@@ -106,7 +106,7 @@ export const MobileWrapper = styled.div`
 `;
 export const DataColor = styled.div`
   padding-left: 0.7rem;
-  font-weight: 500;
+  font-family: 'Pretendard-Medium';
   &#black {
     color: black;
   }
@@ -120,7 +120,7 @@ export const DataColor = styled.div`
 
 export const StarFlex = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   padding-right: 1rem;
   padding: 5px 12px;
   font-family: 'Pretendard-Medium';
@@ -133,6 +133,7 @@ export const StarFlex = styled.div`
   }
   &#between {
     justify-content: space-between;
+    font-family: 'Pretendard-Light';
   }
 `;
 
@@ -144,7 +145,7 @@ export const FlexContainer = styled.div`
 `;
 
 export const YearText = styled.span`
-  font-family: 'Pretendard-Medium';
+  font-family: 'Pretendard-Regular';
   font-size: 14px;
   padding: 4.5px 13px 4.5px 13px;
   border-radius: 12.5px;
@@ -156,7 +157,7 @@ export const EvaluationDetail = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 16px;
-  font-family: 'Pretendard-Medium';
+  font-family: 'Pretendard-Regular';
   font-size: 1rem;
   padding-top: 0.7rem;
   word-break: break-all;

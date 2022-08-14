@@ -137,7 +137,7 @@ export const TextField = styled.textarea`
 
 export const EditButton = styled.div`
   font-size: 16px;
-  font-weight: 600;
+  font-family: 'Pretendard-Semibold';
   width: 350px;
   padding: 12px 20px;
   text-align: center;
@@ -185,19 +185,19 @@ export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
   &#difficult {
     &:checked + ${FormCheckText} {
       color: #7800ff;
-      font-weight: 600;
+      font-family: 'Pretendard-Semibold';
     }
   }
   &#normal {
     &:checked + ${FormCheckText} {
       color: #222222;
-      font-weight: 600;
+      font-family: 'Pretendard-Semibold';
     }
   }
   &#easy {
     &:checked + ${FormCheckText} {
       color: #336af8;
-      font-weight: 600;
+      font-family: 'Pretendard-Semibold';
     }
   }
   display: none;
@@ -217,19 +217,19 @@ export const FormCheckMulti = styled.input.attrs({ type: 'checkbox' })`
   &#difficult {
     &:checked + ${FormCheckText} {
       color: #7800ff;
-      font-weight: 600;
+      font-family: 'Pretendard-Semibold';
     }
   }
   &#normal {
     &:checked + ${FormCheckText} {
       color: #222222;
-      font-weight: 600;
+      font-family: 'Pretendard-Semibold';
     }
   }
   &#easy {
     &:checked + ${FormCheckText} {
       color: #336af8;
-      font-weight: 600;
+      font-family: 'Pretendard-Semibold';
     }
   }
   display: none;

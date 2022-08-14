@@ -67,6 +67,7 @@ export const SearchInput = styled.input`
   background-image: url('img/icon_search_24.svg');
   background-repeat: no-repeat;
   background-position: 99%;
+  font-family: 'Pretendard-Regular';
 
   &:focus {
     outline: none;
@@ -156,7 +157,7 @@ export const MenuTitle = styled.li`
 export const Professor = styled.div`
   display: flex;
   color: #222;
-  font-family: 'Pretendard-Medium';
+  font-family: 'Pretendard-Regular';
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -174,9 +175,11 @@ export const Option = styled.div`
   align-items: center;
   padding: 4.5px 12px;
   font-size: 14px;
+  font-family: 'Pretendard-Regular';
   &#type {
     height: 25px;
     margin-top: 0px;
+    font-family: 'Pretendard-Medium';
   }
   &#semester {
     margin-right: 8px;
@@ -196,6 +199,7 @@ export const OptionTitle = styled.div`
   margin-left: 5px;
   width: 80px;
   font-size: 14px;
+  font-family: 'Pretendard-Regular';
   @media screen and (max-width: 480px) {
     width: 100%;
   }

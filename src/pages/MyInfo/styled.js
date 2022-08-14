@@ -23,7 +23,7 @@ export const Container = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
-  font-family: 'Pretendard-Medium';
+  font-family: 'Pretendard-Regular';
   @media only screen and (max-width: 960px) {
     width: 90%;
   }
@@ -40,9 +40,9 @@ export const Content = styled.div`
   }
 `;
 export const Title = styled.div`
-  font-weight: bold;
   font-size: 1.2rem;
   padding-bottom: 1rem;
+  font-family: 'Pretendard-Semibold';
 
   &#top {
     padding-bottom: 2rem;
@@ -78,7 +78,7 @@ export const OptionTitle = styled.div`
 export const OptionPoint = styled.div`
   display: flex;
   width: 36px;
-  font-weight: bold;
+  font-family: 'Pretendard-Medium';
   justify-content: flex-end;
   margin-left: auto;
   color: #336af8;
@@ -132,7 +132,7 @@ export const Button = styled.button`
   color: white;
   text-align: center;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-family: 'Pretendard-Semibold';
   border-radius: 12px;
   cursor: pointer;
   user-select: none;
@@ -164,7 +164,7 @@ export const InfoTitle = styled.div`
 
 export const Color = styled.span`
   color: #336af8;
-  font-weight: bold;
+  font-family: 'Pretendard-Medium';
   font-size: 1.2rem;
   @media screen and (max-width: 550px) {
     font-size: 0.9rem;

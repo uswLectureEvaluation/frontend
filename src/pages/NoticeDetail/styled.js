@@ -26,6 +26,7 @@ export const AppTitle = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
+  font-family: 'Pretendard-Regular';
   width: 100%;
   border: 1.5px solid #f1f1f1;
   border-radius: 15px;
@@ -41,6 +42,7 @@ export const Title = styled.div`
   display: flex;
   font-size: 1.7rem;
   padding-bottom: 0.7rem;
+  font-family: 'Pretendard-Medium';
 `;
 export const Date = styled.div`
   display: flex;

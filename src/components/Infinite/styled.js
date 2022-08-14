@@ -6,6 +6,7 @@ export const Minute = styled.span`
   color: #515151;
   text-decoration: underline;
   padding-left: 6px;
+  font-family: 'Pretendard-Regular';
 
   &:hover {
     cursor: pointer;
@@ -30,6 +31,7 @@ export const Professor = styled.div`
   color: #515151;
   font-size: 14px;
   margin: 0.3rem 0;
+  font-family: 'Pretendard-Regular';
 `;
 
 export const Option = styled.div`

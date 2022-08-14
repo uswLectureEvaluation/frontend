@@ -37,7 +37,7 @@ export const Title = styled.span`
 
 export const Major = styled.span`
   font-size: 14px;
-  font-weight: normal;
+  font-family: 'Pretendard-Regular';
   color: #515151;
   &#border {
     color: #e0e0e0;
@@ -47,7 +47,7 @@ export const Major = styled.span`
 
 export const Professor = styled.span`
   font-size: 14px;
-  font-weight: normal;
+  font-family: 'Pretendard-Regular';
   color: #515151;
 `;
 
@@ -115,6 +115,7 @@ export const StarFlex = styled.div`
   align-items: center;
   padding: 2px 11px;
   font-size: 13px;
+  font-family: 'Pretendard-Light';
   &#top {
     padding: 8px 12px 0px 12px;
   }
@@ -126,9 +127,11 @@ export const StarFlex = styled.div`
   }
   &#black {
     font-weight: 500;
+    font-family: 'Pretendard-Medium';
   }
   &#data {
     padding-right: 0px;
+    font-family: 'Pretendard-Medium';
   }
 `;
 
@@ -142,6 +145,7 @@ export const FlexContainer = styled.div`
 
 export const YearText = styled.span`
   font-size: 14px;
+  font-family: 'Pretendard-Regular';
   padding: 4.5px 13px 4.5px 13px;
   border-radius: 12.5px;
   background-color: #eee;
@@ -151,8 +155,8 @@ export const YearText = styled.span`
 export const EvaluationDetail = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 16px;
   font-size: 1rem;
+  font-family: 'Pretendard-Regular';
   padding-top: 0.7rem;
   word-break: break-all;
 `;
@@ -162,7 +166,7 @@ export const PaddingRight = styled.span`
 `;
 export const EditButton = styled.span`
   font-size: 12px;
-  font-weight: 500;
+  font-family: 'Pretendard-Regular';
   text-align: center;
   color: #a3a3a3;
   float: right;
@@ -173,7 +177,7 @@ export const EditButton = styled.span`
 `;
 export const DeleteButton = styled.span`
   font-size: 12px;
-  font-weight: 500;
+  font-family: 'Pretendard-Regular';
   text-align: center;
   color: #a3a3a3;
   float: right;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ModalOpen = styled.span`
   font-size: 12px;
+  font-family: 'Pretendard-Regular';
   color: #222222;
   text-decoration: underline;
   margin-left: 11px;
@@ -64,7 +65,7 @@ export const Title = styled.span`
 
 export const Major = styled.span`
   font-size: 14px;
-  font-weight: normal;
+  font-family: 'Pretendard-Regular';
   color: #515151;
   &#border {
     color: #e0e0e0;
@@ -74,7 +75,7 @@ export const Major = styled.span`
 
 export const Professor = styled.span`
   font-size: 14px;
-  font-weight: normal;
+  font-family: 'Pretendard-Regular';
   color: #515151;
 `;
 
@@ -91,7 +92,7 @@ export const Option = styled.div`
 export const Rate = styled.span`
   color: #336af8;
   font-size: 18px;
-  font-weight: 500;
+  font-family: 'Pretendard-Medium';
   padding-left: 5px;
   &#modal {
     font-size: 16px;
@@ -116,7 +117,7 @@ export const MarginTop = styled.div`
 `;
 export const DataColor = styled.div`
   padding-left: 0.7rem;
-  font-weight: 500;
+  font-family: 'Pretendard-Medium';
   &#black {
     color: black;
   }
@@ -130,7 +131,7 @@ export const DataColor = styled.div`
 
 export const StarFlex = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   padding-right: 1rem;
   padding: 5px 12px;
   font-size: 13px;
@@ -142,6 +143,7 @@ export const StarFlex = styled.div`
   }
   &#between {
     justify-content: space-between;
+    font-family: 'Pretendard-Light';
   }
 `;
 
@@ -154,6 +156,7 @@ export const FlexContainer = styled.div`
 
 export const YearText = styled.span`
   font-size: 14px;
+  font-family: 'Pretendard-Regular';
   padding: 4.5px 13px 4.5px 13px;
   border-radius: 12.5px;
   background-color: #eee;
@@ -163,7 +166,7 @@ export const YearText = styled.span`
 export const EvaluationDetail = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 16px;
+  font-family: 'Pretendard-Regular';
   font-size: 1rem;
   padding-top: 0.7rem;
   word-break: break-all;
@@ -173,7 +176,7 @@ export const PaddingRight = styled.span`
 `;
 export const EditButton = styled.span`
   font-size: 12px;
-  font-weight: 500;
+  font-family: 'Pretendard-Regular';
   text-align: center;
   color: #a3a3a3;
   float: right;
@@ -189,7 +192,7 @@ export const EditButton = styled.span`
 `;
 export const DeleteButton = styled.span`
   font-size: 12px;
-  font-weight: 500;
+  font-family: 'Pretendard-Regular';
   text-align: center;
   color: #a3a3a3;
   float: right;

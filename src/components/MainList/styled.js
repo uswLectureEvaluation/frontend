@@ -6,7 +6,7 @@ export const Minute = styled.span`
   color: #515151;
   text-decoration: underline;
   padding-left: 6px;
-
+  font-family: 'Pretendard-Regular';
   &:hover {
     cursor: pointer;
   }
@@ -21,7 +21,6 @@ export const TitleWrapper = styled.div`
 export const Title = styled.div`
   display: flex;
   font-size: 18px;
-  font-weight: 500;
   margin-right: 0.7rem;
 `;
 
@@ -29,6 +28,7 @@ export const Professor = styled.div`
   display: flex;
   color: #515151;
   font-size: 14px;
+  font-family: 'Pretendard-Regular';
   margin: 0.3rem 0;
 `;
 
@@ -38,7 +38,6 @@ export const Option = styled.div`
   background-color: rgb(239, 239, 239);
   padding: 5px 10px;
   font-size: 12px;
-  font-weight: 500;
 `;
 
 export const RateWrapper = styled.span`
@@ -50,7 +49,6 @@ export const RateWrapper = styled.span`
 export const Rate = styled.span`
   color: #336af8;
   font-size: 18px;
-  font-weight: 500;
   padding-left: 5px;
   &#modal {
     font-size: 16px;
