@@ -20,7 +20,7 @@ export const Banner = styled.div`
   width: 100%;
   height: 40vh;
   background-color: #eeeeee;
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 550px) {
     display: none;
   }
 `;
@@ -96,7 +96,7 @@ export const SearchInput = styled.input`
     outline: none;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 550px) {
     font-size: 16px;
     width: 123%;
     transform: scale(0.8);
@@ -152,7 +152,7 @@ export const BannerImg = styled.img`
     pointer-events: none;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 550px) {
     display: none;
   }
 `;
@@ -193,7 +193,7 @@ export const Button = styled.button`
   user-select: none;
   font-family: 'Pretendard-Medium';
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 550px) {
     width: 50%;
   }
 `;

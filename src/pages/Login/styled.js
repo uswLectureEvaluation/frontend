@@ -20,7 +20,7 @@ export const Container = styled.div`
     justify-content: center;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 550px) {
     width: 100%;
     padding: 20px;
   }
@@ -40,7 +40,7 @@ export const Title = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 550px) {
     font-family: 'Pretendard-Medium';
     font-size: 24px;
     font-weight: 600;
@@ -63,7 +63,7 @@ export const Button = styled.button`
   user-select: none;
   transition: 0.3s all;
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 550px) {
     margin-top: 5rem;
   }
 `;

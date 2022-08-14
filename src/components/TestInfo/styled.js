@@ -24,7 +24,7 @@ export const BtWidth = styled.div`
   margin: 0 auto;
   width: 30%;
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 550px) {
     width: 70%;
   }
 `;

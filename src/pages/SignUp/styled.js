@@ -95,7 +95,7 @@ export const Container = styled.div`
     justify-content: center;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 550px) {
     width: 100%;
     padding: 20px;
   }
@@ -148,7 +148,7 @@ export const Button = styled.button`
     @media only screen and (max-width: 960px) {
       right: 27%;
     }
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 550px) {
       right: 5%;
     }
     :disabled {

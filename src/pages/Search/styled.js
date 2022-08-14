@@ -72,7 +72,7 @@ export const SearchResultMenu = styled.div`
     cursor: context-menu;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 550px) {
     display: flex;
     align-items: center;
     font-size: 1rem;
@@ -125,7 +125,7 @@ export const SearchInput = styled.input`
     outline: none;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 550px) {
     font-size: 16px;
     width: 123%;
     transform: scale(0.8);

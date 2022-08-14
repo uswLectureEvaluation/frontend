@@ -73,7 +73,7 @@ export const SearchInput = styled.input`
     outline: none;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 550px) {
     font-size: 16px;
     width: 123%;
     transform: scale(0.8);
@@ -90,7 +90,7 @@ export const Content = styled.div`
     border: 1px solid rgb(224, 224, 224);
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 550px) {
     width: 100%;
   }
 `;
@@ -196,7 +196,7 @@ export const OptionTitle = styled.div`
   width: 80px;
   font-size: 14px;
   font-family: 'Pretendard-Regular';
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 550px) {
     width: 100%;
   }
 `;
@@ -209,7 +209,7 @@ export const FlexContainer = styled.div`
     flex-direction: column;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 550px) {
     width: 100%;
   }
 `;

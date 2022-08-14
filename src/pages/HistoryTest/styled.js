@@ -73,7 +73,7 @@ export const Professor = styled.div`
   line-height: normal;
   letter-spacing: normal;
   margin-left: 10px;
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 550px) {
     margin-left: 0px;
     margin-bottom: 10px;
   }
@@ -81,14 +81,14 @@ export const Professor = styled.div`
 
 export const TitleWrapper = styled.div`
   display: flex;
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 550px) {
     display: none;
   }
 `;
 
 export const MobileTitleWrapper = styled.div`
   display: none;
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 550px) {
     display: flex;
     flex-direction: column;
   }

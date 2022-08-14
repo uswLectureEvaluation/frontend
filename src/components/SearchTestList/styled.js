@@ -96,7 +96,7 @@ export const StarFlex = styled.div`
   padding: 2px 11px;
   font-family: 'Pretendard-Light';
   font-size: 13px;
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 550px) {
     font-size: 12px;
     padding: 2px 10px;
   }

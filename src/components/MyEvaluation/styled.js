@@ -29,14 +29,14 @@ export const TitleWrapper = styled.div`
   justify-content: space-between;
   float: left;
   align-items: center;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 550px) {
     display: none;
   }
 `;
 
 export const MobileWrapper = styled.div`
   display: none;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 550px) {
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -166,7 +166,7 @@ export const EditButton = styled.span`
     cursor: pointer;
   }
   &#pc {
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 550px) {
       display: none;
     }
   }
@@ -181,7 +181,7 @@ export const DeleteButton = styled.span`
     cursor: pointer;
   }
   &#pc {
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 550px) {
       display: none;
     }
   }

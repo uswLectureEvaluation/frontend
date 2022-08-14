@@ -140,7 +140,7 @@ export const Button = styled.button`
     font-size: 1.3rem;
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 550px) {
     margin: 10px 0;
     width: 100%;
     height: 48px;
