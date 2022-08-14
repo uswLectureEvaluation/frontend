@@ -15,7 +15,6 @@ export const Container = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
-  overflow-x: hidden;
   @media only screen and (max-width: 960px) {
     width: 90%;
   }
@@ -134,11 +133,8 @@ export const SearchInput = styled.input`
 `;
 
 export const HeadSelection = styled.div`
-  display: flex;
-  align-items: flex-end;
   padding-bottom: 10px;
   width: 100%;
-  justify-content: space-between;
 `;
 
 export const FlexWrapper = styled.div`

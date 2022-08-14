@@ -105,6 +105,7 @@ export const FlexWrap = styled.div`
   width: 100%;
   justify-content: space-between;
   font-family: Pretendard-Medium;
+
   &#none {
     display: flex;
     justify-content: center;
