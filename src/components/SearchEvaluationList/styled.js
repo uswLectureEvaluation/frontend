@@ -18,9 +18,12 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   font-size: 1.5rem;
   margin: 2rem 0;
-  font-weight: bold;
+  font-family: 'Pretendard-Semibold';
   text-align: center;
   margin-top: 10rem;
+  @media screen and (max-width: 550px) {
+    font-size: 1rem;
+  }
 `;
 
 export const TitleWrapper = styled.div`

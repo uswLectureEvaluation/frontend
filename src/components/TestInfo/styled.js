@@ -12,9 +12,12 @@ export const Color = styled.span`
 export const Content = styled.div`
   font-size: 1.5rem;
   margin: 2rem 0;
-  font-weight: bold;
+  font-family: 'Pretendard-Semibold';
   text-align: center;
   margin-top: 10rem;
+  @media screen and (max-width: 550px) {
+    font-size: 1rem;
+  }
 `;
 
 export const BtWidth = styled.div`
@@ -22,6 +25,6 @@ export const BtWidth = styled.div`
   width: 30%;
 
   @media only screen and (max-width: 480px) {
-    width: 100%;
+    width: 70%;
   }
 `;

@@ -1,15 +1,5 @@
 import styled from 'styled-components';
 
-export const ModalOpen = styled.span`
-  font-size: 12px;
-  color: #222222;
-  text-decoration: underline;
-  margin-left: 11px;
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
 export const Wrapper = styled.div`
   font-family: 'Pretendard-Medium';
   margin: 0px 20px;
@@ -49,27 +39,6 @@ export const Professor = styled.span`
   font-size: 14px;
   font-family: 'Pretendard-Regular';
   color: #515151;
-`;
-
-export const Option = styled.div`
-  display: flex;
-  border-radius: 10px;
-  background-color: rgb(239, 239, 239);
-  padding: 5px 10px;
-  font-size: 12px;
-  font-weight: bold;
-  color: gray;
-`;
-
-export const Rate = styled.span`
-  color: #336af8;
-  font-size: 18px;
-  font-weight: 500;
-  padding-left: 5px;
-  &#modal {
-    font-size: 16px;
-    padding-left: 0px;
-  }
 `;
 
 export const LectureWrapper = styled.div`
@@ -161,9 +130,6 @@ export const EvaluationDetail = styled.div`
   word-break: break-all;
 `;
 
-export const PaddingRight = styled.span`
-  padding-right: 0.7rem;
-`;
 export const EditButton = styled.span`
   font-size: 12px;
   font-family: 'Pretendard-Regular';
@@ -183,21 +149,5 @@ export const DeleteButton = styled.span`
   float: right;
   &:hover {
     cursor: pointer;
-  }
-`;
-
-export const ExamDetail = styled.div`
-  padding-right: 0.7rem;
-  font-weight: bold;
-  &#top {
-    padding-top: 0.7rem;
-  }
-  &#bottom {
-    padding-top: 0.3rem;
-    padding-bottom: 0.7rem;
-  }
-  &#data {
-    font-size: 16px;
-    padding-left: 0px;
   }
 `;

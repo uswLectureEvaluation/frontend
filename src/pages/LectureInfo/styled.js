@@ -98,7 +98,6 @@ export const Content = styled.div`
 export const Color = styled.div`
   display: flex;
   font-size: 16px;
-  font-weight: 500;
 `;
 
 export const TitleWrapper = styled.div`
@@ -130,7 +129,6 @@ export const Title = styled.div`
   display: flex;
   font-size: 18px;
   text-align: center;
-  font-weight: 500;
   &#sub {
     font-size: 1.5rem;
   }
@@ -149,7 +147,6 @@ export const MenuTitle = styled.li`
     cursor: pointer;
   }
   &#${({ check }) => check} {
-    font-weight: 500;
     color: black;
   }
 `;
@@ -159,7 +156,6 @@ export const Professor = styled.div`
   color: #222;
   font-family: 'Pretendard-Regular';
   font-size: 14px;
-  font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;

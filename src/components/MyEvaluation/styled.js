@@ -15,14 +15,6 @@ export const Wrapper = styled.div`
   margin: 0px 20px;
   height: 100%;
   font-family: 'Pretendard-Medium';
-
-  .Target-Element {
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-  }
 `;
 
 export const NoEvaluation = styled.div`
@@ -59,7 +51,6 @@ export const MobileWrapper = styled.div`
 
 export const Title = styled.span`
   font-size: 16px;
-  font-weight: 500;
   margin-right: 8px;
 `;
 
@@ -77,16 +68,6 @@ export const Professor = styled.span`
   font-size: 14px;
   font-family: 'Pretendard-Regular';
   color: #515151;
-`;
-
-export const Option = styled.div`
-  display: flex;
-  border-radius: 10px;
-  background-color: rgb(239, 239, 239);
-  padding: 5px 10px;
-  font-size: 12px;
-  font-weight: bold;
-  color: gray;
 `;
 
 export const Rate = styled.span`

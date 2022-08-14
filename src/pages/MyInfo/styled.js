@@ -174,12 +174,7 @@ export const Color = styled.span`
     color: #6200ee;
   }
 
-  &#pp {
-    font-weight: normal;
-  }
-
   &#ppp {
-    font-weight: normal;
     color: #6200ee;
   }
 `;
