@@ -99,11 +99,6 @@ export const ContentTitle = styled.div`
   }
 `;
 
-export const WriteButton = styled.button`
-  font-size: 16px;
-  color: #222;
-`;
-
 export const TextField = styled.textarea`
   margin-bottom: 20px;
   width: 100%;

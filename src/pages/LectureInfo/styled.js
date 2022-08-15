@@ -37,11 +37,6 @@ export const Container = styled.div`
   }
 `;
 
-export const SearchContainer = styled.div`
-  display: flex;
-  width: 100%;
-`;
-
 export const SearchWrapper = styled.div`
   display: flex;
   width: 100%;

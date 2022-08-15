@@ -68,10 +68,7 @@ export const LectureWrapper = styled.div`
 export const MarginTop = styled.div`
   padding: 14px 24px;
 `;
-export const MarginRight = styled.span`
-  margin-right: 6px;
-  font-size: 1rem;
-`;
+
 export const FlexContainer = styled.div`
   display: flex;
   &#col {

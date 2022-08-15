@@ -1,68 +1,10 @@
 import styled from 'styled-components';
 
-export const ModalOpen = styled.span`
-  font-family: 'Pretendard-Medium';
-  font-size: 12px;
-  color: #222;
-  text-decoration: underline;
-  margin-left: 11px;
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
   float: left;
   align-items: center;
-`;
-
-export const Title = styled.span`
-  font-family: 'Pretendard-Medium';
-  font-size: 16px;
-  font-weight: 500;
-  margin-right: 8px;
-`;
-
-export const Major = styled.span`
-  font-family: 'Pretendard-Medium';
-  font-size: 14px;
-  font-weight: normal;
-  color: #515151;
-  &#border {
-    color: #e0e0e0;
-    padding: 0px 5px;
-  }
-`;
-
-export const Professor = styled.span`
-  font-family: 'Pretendard-Medium';
-  font-size: 14px;
-  font-weight: normal;
-  color: #515151;
-`;
-
-export const Option = styled.div`
-  display: flex;
-  border-radius: 10px;
-  background-color: rgb(239, 239, 239);
-  padding: 5px 10px;
-  font-size: 12px;
-  font-weight: bold;
-  color: gray;
-`;
-
-export const Rate = styled.span`
-  color: #336af8;
-  font-family: 'Pretendard-Medium';
-  font-size: 18px;
-  font-weight: 500;
-  padding-left: 5px;
-  &#modal {
-    font-size: 16px;
-    padding-left: 0px;
-  }
 `;
 
 export const LectureWrapper = styled.div`
@@ -143,9 +85,7 @@ export const EvaluationDetail = styled.div`
   font-size: 1rem;
   padding-top: 0.7rem;
 `;
-export const PaddingRight = styled.span`
-  padding-right: 0.7rem;
-`;
+
 export const EditButton = styled.span`
   font-family: 'Pretendard-Medium';
   font-size: 12px;
@@ -156,32 +96,5 @@ export const EditButton = styled.span`
   margin-right: 10px;
   &:hover {
     cursor: pointer;
-  }
-`;
-export const DeleteButton = styled.span`
-  font-family: 'Pretendard-Medium';
-  font-size: 12px;
-  font-weight: 500;
-  text-align: center;
-  color: #a3a3a3;
-  float: right;
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
-export const ExamDetail = styled.div`
-  padding-right: 0.7rem;
-  font-weight: bold;
-  &#top {
-    padding-top: 0.7rem;
-  }
-  &#bottom {
-    padding-top: 0.3rem;
-    padding-bottom: 0.7rem;
-  }
-  &#data {
-    font-size: 16px;
-    padding-left: 0px;
   }
 `;

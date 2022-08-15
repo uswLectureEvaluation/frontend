@@ -19,10 +19,3 @@ export const Content = styled.div`
   margin-bottom: 3rem;
   text-align: center;
 `;
-
-export const Title = styled.div`
-  font-size: 2rem;
-  font-weight: 1000;
-  margin-bottom: 1rem;
-  text-align: center;
-`;

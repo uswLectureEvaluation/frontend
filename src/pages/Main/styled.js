@@ -60,11 +60,6 @@ export const Container = styled.div`
   }
 `;
 
-export const SearchContainer = styled.div`
-  display: flex;
-  width: 100%;
-`;
-
 export const SearchWrapper = styled.div`
   display: flex;
   width: 100%;
@@ -109,32 +104,6 @@ export const HeadSelection = styled.div`
   padding-bottom: 10px;
   width: 100%;
   justify-content: flex-start;
-`;
-
-export const Select = styled.select`
-  height: 3rem;
-  margin-bottom: 1rem;
-  font-weight: bold;
-  background-color: white;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  border-radius: 10px;
-  font-size: 16px;
-  border-color: ${Color('border')};
-  &:focus-visible {
-    outline: white solid 2px;
-  }
-  option {
-    border-radius: 8px;
-    color: black;
-  }
-`;
-
-export const More = styled.div`
-  font-weight: bold;
-  cursor: pointer;
-  color: ${Color('main')};
-  padding-right: 5px;
 `;
 
 export const BannerImg = styled.img`

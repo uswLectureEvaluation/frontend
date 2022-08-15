@@ -30,17 +30,6 @@ export const TitleButton = styled.button`
   }
 `;
 
-export const Score = styled.span`
-  margin: 2px 0 1px 24px;
-  font-family: 'Pretendard-Medium';
-  font-size: 18px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.11;
-  letter-spacing: 0.32px;
-  color: #336af8;
-`;
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -111,12 +100,6 @@ export const ContentTitleWrapper = styled.div`
 
 export const SmallTitle = styled.div`
   font-size: 12px;
-`;
-
-export const WriteButton = styled.button`
-  font-size: 16px;
-  font-weight: 500;
-  color: #222;
 `;
 
 export const TextField = styled.textarea`

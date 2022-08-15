@@ -86,9 +86,3 @@ export const NavLinks = styled.div`
     }
   }
 `;
-
-export const Img = styled.img`
-  &:hover {
-    cursor: pointer;
-  }
-`;
