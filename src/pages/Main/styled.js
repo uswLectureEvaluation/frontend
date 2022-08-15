@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import { Color } from '../../GlobalStyle';
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import SelectUnstyled, { selectUnstyledClasses } from '@mui/base/SelectUnstyled';
