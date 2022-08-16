@@ -6,7 +6,6 @@ const MajorSearch = (props) => {
   const [all, setAll] = useState(true);
   const [db, setData] = useState([]);
   const [searchMajor, setSearchMajor] = useState('');
-  const [favorite, setFavorite] = useState('');
   const [favoriteDb, setFavoriteDb] = useState([]);
 
   const majorChange = (e) => {
@@ -15,15 +14,18 @@ const MajorSearch = (props) => {
 
   useEffect(() => {
     searchFavoriteMajorApi().then((data) => setFavoriteDb(data.data));
-    setFavorite('');
-  }, [favorite]);
+  }, []);
 
   const onFavoriteMajor = (e) => {
     props.setSelectedMajor(e.target.alt);
     if (!favoriteDb.includes(e.target.alt)) {
-      favoriteMajorApi(setFavorite, e.target.alt);
+      favoriteMajorApi(e.target.alt).then(() =>
+        searchFavoriteMajorApi().then((data) => setFavoriteDb(data.data))
+      );
     } else {
-      deleteFavoriteMajorApi(setFavorite, e.target.alt);
+      deleteFavoriteMajorApi(e.target.alt).then(() =>
+        searchFavoriteMajorApi().then((data) => setFavoriteDb(data.data))
+      );
     }
   };
 
