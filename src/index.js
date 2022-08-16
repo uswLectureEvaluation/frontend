@@ -6,9 +6,8 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
 import { store } from './app/store';
-import { initialize } from 'react-ga';
 import './index.css';
-initialize('UA-74092126-2');
+
 let persistor = persistStore(store);
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 

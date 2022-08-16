@@ -1,4 +1,3 @@
-import RouteChangeTracker from './RouteChangeTracker';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Footer, Nav } from './components';
 import ScrollButton from './components/ScrollButton';
@@ -25,7 +24,6 @@ import {
 const App = () => {
   return (
     <BrowserRouter>
-      <RouteChangeTracker />
       <GlobalStyle />
       <Nav style={{ zindex: 5 }} />
       <Routes>
