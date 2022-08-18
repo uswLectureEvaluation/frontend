@@ -14,6 +14,9 @@ const Footer = () => {
         >
           개인정보처리방침
         </Styled.Privacy>
+        <Styled.Contact onClick={() => window.open('mailto:suwikiask@gmail.com')}>
+          문의하기
+        </Styled.Contact>
       </Styled.Foot>
     </div>
   );

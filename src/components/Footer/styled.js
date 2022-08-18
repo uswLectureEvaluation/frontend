@@ -29,3 +29,13 @@ export const Privacy = styled.div`
     cursor: pointer;
   }
 `;
+
+export const Contact = styled.div`
+  font-family: 'Pretendard-Light';
+  padding-left: 2rem;
+  color: #222222;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
