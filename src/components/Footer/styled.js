@@ -10,32 +10,16 @@ export const Foot = styled.div`
   align-items: center;
 `;
 
-export const Use = styled.div`
-  font-family: 'Pretendard-Light';
-  padding-right: 1rem;
+export const FooterContent = styled.div`
+  font-family: ${(props) => props.font || 'Pretendard-Light'};
+  padding-left: ${(props) => props.left || '1rem'};
+  padding-right: ${(props) => props.right || '0rem'};
   color: #222222;
-
+  font-size: 1rem;
   &:hover {
     cursor: pointer;
   }
-`;
-
-export const Privacy = styled.div`
-  font-family: 'Pretendard-Medium';
-  padding-left: 1rem;
-  color: #222222;
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
-export const Contact = styled.div`
-  font-family: 'Pretendard-Light';
-  padding-left: 2rem;
-  color: #222222;
-
-  &:hover {
-    cursor: pointer;
+  @media screen and (max-width: 550px) {
+    font-size: 0.9rem;
   }
 `;

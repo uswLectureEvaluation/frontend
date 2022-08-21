@@ -4,19 +4,21 @@ const Footer = () => {
   return (
     <div style={{ paddingTop: '12vh' }}>
       <Styled.Foot>
-        <Styled.Use
+        <Styled.FooterContent
+          right="1rem"
           onClick={() => window.open('https://sites.google.com/view/suwiki-policy-terms/')}
         >
           이용약관
-        </Styled.Use>
-        <Styled.Privacy
+        </Styled.FooterContent>
+        <Styled.FooterContent
+          font="Pretendard-Medium"
           onClick={() => window.open('https://sites.google.com/view/suwiki-policy-privacy')}
         >
           개인정보처리방침
-        </Styled.Privacy>
-        <Styled.Contact onClick={() => window.open('mailto:suwikiask@gmail.com')}>
+        </Styled.FooterContent>
+        <Styled.FooterContent left="2rem" onClick={() => window.open('mailto:suwikiask@gmail.com')}>
           문의하기
-        </Styled.Contact>
+        </Styled.FooterContent>
       </Styled.Foot>
     </div>
   );
