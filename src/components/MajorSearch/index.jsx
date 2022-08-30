@@ -26,7 +26,7 @@ const MajorSearch = (props) => {
       setFavoriteDb(favoriteDb.filter((v) => v !== e.target.alt));
     }
   };
-  console.log(favoriteDb);
+
   useEffect(() => {
     setData(window.localStorage.getItem('majorType').split(','));
   }, []);
