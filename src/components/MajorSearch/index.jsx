@@ -19,16 +19,14 @@ const MajorSearch = (props) => {
   const onFavoriteMajor = (e) => {
     props.setSelectedMajor(e.target.alt);
     if (!favoriteDb.includes(e.target.alt)) {
-      favoriteMajorApi(e.target.alt).then(() =>
-        searchFavoriteMajorApi().then((data) => setFavoriteDb(data.data))
-      );
+      favoriteMajorApi(e.target.alt);
+      setFavoriteDb(favoriteDb.concat([e.target.alt]));
     } else {
-      deleteFavoriteMajorApi(e.target.alt).then(() =>
-        searchFavoriteMajorApi().then((data) => setFavoriteDb(data.data))
-      );
+      deleteFavoriteMajorApi(e.target.alt);
+      setFavoriteDb(favoriteDb.filter((v) => v !== e.target.alt));
     }
   };
-
+  console.log(favoriteDb);
   useEffect(() => {
     setData(window.localStorage.getItem('majorType').split(','));
   }, []);
