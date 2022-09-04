@@ -1,5 +1,5 @@
 import RouteChangeTracker from './RouteChangeTracker';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { Footer, Nav } from './components';
 import ScrollButton from './components/ScrollButton';
 import GlobalStyle from './GlobalStyle';
@@ -20,6 +20,7 @@ import {
   ResetPassword,
   Search,
   SignUp,
+  NotFound,
 } from './pages'; //페이지 목록
 
 const App = () => {
@@ -45,6 +46,8 @@ const App = () => {
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/exit" element={<Exit />} />
         <Route path="/banreason" element={<BanReason />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="/*" element={<Navigate replace to="/404" />} />
       </Routes>
       <ScrollButton />
       <Footer />
