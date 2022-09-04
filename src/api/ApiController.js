@@ -91,6 +91,9 @@ instance.interceptors.response.use(
       alert('로그인 시간이 만료되었습니다\n다시 로그인 해주세요');
       window.location.href = '/';
     }
+    if (error.response.status === 502) {
+      window.location.href = '/502';
+    }
     return Promise.reject(error);
   }
 );

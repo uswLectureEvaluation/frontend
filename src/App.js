@@ -1,9 +1,9 @@
-import RouteChangeTracker from './RouteChangeTracker';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Footer, Nav } from './components';
 import ScrollButton from './components/ScrollButton';
 import GlobalStyle from './GlobalStyle';
 import {
+  BadGateway,
   BanReason,
   EmailSignUp,
   Exit,
@@ -14,14 +14,15 @@ import {
   Main,
   MyInfo,
   MyPosting,
+  NotFound,
   Notice,
   NoticeDetail,
   PwSearch,
   ResetPassword,
   Search,
   SignUp,
-  NotFound,
 } from './pages'; //페이지 목록
+import RouteChangeTracker from './RouteChangeTracker';
 
 const App = () => {
   return (
@@ -47,6 +48,7 @@ const App = () => {
         <Route path="/exit" element={<Exit />} />
         <Route path="/banreason" element={<BanReason />} />
         <Route path="/404" element={<NotFound />} />
+        <Route path="/502" element={<BadGateway />} />
         <Route path="/*" element={<Navigate replace to="/404" />} />
       </Routes>
       <ScrollButton />
