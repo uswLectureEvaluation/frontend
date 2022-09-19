@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MainList from '../../components/MainList';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
-import { majorTypeApi } from '../../api/Api';
+import { majorTypeApi, versionApi } from '../../api/Api';
 import Modal from 'react-modal';
 import { MajorModalStyle } from '../../components/ModalStyle';
 import MajorSearch from '../../components/MajorSearch';
@@ -65,9 +65,34 @@ const Main = () => {
       }
     }
   };
-  if (window.localStorage.getItem('majorType') === null) {
-    majorTypeApi().then((data) => window.localStorage.setItem('majorType', ['전체', data.data]));
-  }
+  useEffect(() => {
+    if (!window.localStorage.getItem('version') || !window.localStorage.getItem('majorType')) {
+      versionApi().then((res) => {
+        // console.log('버전없어서 세팅');
+        window.localStorage.setItem('version', res.version.toFixed(1));
+      });
+      majorTypeApi().then((res) => {
+        // console.log('전공없어서 세팅');
+        window.localStorage.setItem('majorType', ['전체', res.data]);
+      });
+      window.sessionStorage.setItem('version-check', true);
+      // console.log('버전 체크 완료');
+    } else if (!window.sessionStorage.getItem('version-check')) {
+      versionApi().then((res) => {
+        if (window.localStorage.getItem('version') !== res.version.toFixed(1)) {
+          // console.log('버전 다름');
+          window.localStorage.setItem('version', res.version.toFixed(1));
+          // console.log('버전 최신화');
+          majorTypeApi().then((res) => {
+            window.localStorage.setItem('majorType', ['전체', res.data]);
+            // console.log('전공 최신화');
+          });
+        }
+        window.sessionStorage.setItem('version-check', true);
+        // console.log('버전 체크 완료');
+      });
+    }
+  }, []);
   return (
     <>
       <Styled.Banner>
