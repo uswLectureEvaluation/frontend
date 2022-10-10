@@ -32,7 +32,9 @@ const MajorSearch = (props) => {
   }, []);
 
   const clickSubmit = () => {
-    props.setCheckClass(props.selectedMajor);
+    if (props.selectedMajor !== '') {
+      props.setCheckClass(props.selectedMajor);
+    }
     props.setModalIsOpen(false);
   };
 
