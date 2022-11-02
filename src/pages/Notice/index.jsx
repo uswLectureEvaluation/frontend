@@ -58,31 +58,23 @@ const Notice = () => {
     <Styled.AppContainer>
       <Styled.AppTitle>공지사항</Styled.AppTitle>
       <>
-        {list.length !== 0 ? (
-          <>
-            {list &&
-              list.map((i) => (
-                <NoticeItem
-                  id={i.id}
-                  title={i.title}
-                  modifiedDate={i.modifiedDate}
-                  key={Math.random()}
-                />
-              ))}
-            {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-            <div ref={obsRef} style={{ width: '0%', opacity: '0' }}>
-              옵저버 Element
-            </div>
-          </>
+        {load ? (
+          <Styled.NoNotice>로딩 중</Styled.NoNotice>
+        ) : list ? (
+          list.map((i) => (
+            <NoticeItem
+              id={i.id}
+              title={i.title}
+              modifiedDate={i.modifiedDate}
+              key={Math.random()}
+            />
+          ))
         ) : (
-          <>
-            <Styled.NoNotice>아직 공지사항이 없어요.</Styled.NoNotice>
-            {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-            <div ref={obsRef} style={{ width: '0%', opacity: '0' }}>
-              옵저버 Element
-            </div>
-          </>
+          <Styled.NoNotice>아직 공지사항이 없어요.</Styled.NoNotice>
         )}
+        <div ref={obsRef} style={{ width: '0%', opacity: '0' }}>
+          옵저버 Element
+        </div>
       </>
     </Styled.AppContainer>
   );
