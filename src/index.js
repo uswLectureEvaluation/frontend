@@ -15,7 +15,6 @@ initialize('UA-74092126-2');
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnMount: false,
       refetchOnWindowFocus: false,
       cacheTime: 1000 * 60 * 5,
       staleTime: 1000 * 60 * 5,

@@ -13,25 +13,33 @@ const MainList = ({ lecture, checkClass }) => {
   const { data, isLoading } = useQuery(['mainList', lecture, major], () =>
     mainApi(lecture, 1, major)
   );
+
+  let oddList = data?.data.filter((row, i) => {
+    if (!(i % 2)) return row;
+  });
+  let evenList = data?.data.filter((row, i) => {
+    if (i % 2) return row;
+  });
   if (isLoading) return <Spinner />;
 
   return (
-    <Styled.GridWrap>
-      {data?.data.map((row) => (
-        <Subject
-          key={row.id}
-          id={row.id}
-          lectureName={row.lectureName}
-          professor={row.professor}
-          lectureType={row.lectureType}
-          star={row.lectureTotalAvg}
-          lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-          lectureHoneyAvg={row.lectureHoneyAvg}
-          lectureLearningAvg={row.lectureLearningAvg}
-          majorType={row.majorType}
-        />
-      ))}
-    </Styled.GridWrap>
+    <Styled.FlexWrap>
+      <Styled.FlexWrapSub>
+        {oddList.map((row) => (
+          <Subject key={row.id} row={row} />
+        ))}
+      </Styled.FlexWrapSub>
+      <Styled.FlexWrapSub>
+        {evenList.map((row) => (
+          <Subject key={row.id} row={row} />
+        ))}
+      </Styled.FlexWrapSub>
+      <Styled.FullWrapSub>
+        {data?.data.map((row) => (
+          <Subject key={row.id} row={row} />
+        ))}
+      </Styled.FullWrapSub>
+    </Styled.FlexWrap>
   );
 };
 
@@ -65,16 +73,16 @@ export const Detail = (props) => {
   );
 };
 
-export const Subject = (props) => {
+export const Subject = ({ row }) => {
   const [modal, setModal] = useState(false);
 
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
-  let title = props.lectureName;
+  let title = row.lectureName;
 
   if (title.length >= 14) {
-    title = props.lectureName.substr(0, 14) + '...';
+    title = row.lectureName.substr(0, 14) + '...';
   }
 
   const onClick = (id) => {
@@ -83,18 +91,18 @@ export const Subject = (props) => {
   };
 
   return (
-    <Styled.LectureWrapper onClick={() => onClick(props.id)}>
+    <Styled.LectureWrapper onClick={() => onClick(row.id)}>
       <Styled.MarginTop>
         <Styled.TitleWrapper>
           <Styled.Title>{title}</Styled.Title>
-          <Styled.Option>{props.lectureType}</Styled.Option>
+          <Styled.Option>{row.lectureType}</Styled.Option>
         </Styled.TitleWrapper>
         <Styled.Professor>
-          {props.majorType} | {props.professor}
+          {row.majorType} | {row.professor}
         </Styled.Professor>
         <Styled.RateWrapper>
           <StarRatings
-            rating={props.star}
+            rating={row.lectureTotalAvg}
             starRatedColor="#336af8"
             numberOfStars={5}
             name="rating"
@@ -103,7 +111,7 @@ export const Subject = (props) => {
             svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
             svgIconViewBox="0 0 24 24"
           />
-          <Styled.Rate>{props.star.toFixed(1)}</Styled.Rate>
+          <Styled.Rate>{row.lectureTotalAvg.toFixed(1)}</Styled.Rate>
           <Styled.Minute
             onClick={(e) => {
               setModal(!modal);
@@ -116,9 +124,9 @@ export const Subject = (props) => {
       </Styled.MarginTop>
       {modal === true ? (
         <Detail
-          lectureSatisfactionAvg={props.lectureSatisfactionAvg}
-          lectureHoneyAvg={props.lectureHoneyAvg}
-          lectureLearningAvg={props.lectureLearningAvg}
+          lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+          lectureHoneyAvg={row.lectureHoneyAvg}
+          lectureLearningAvg={row.lectureLearningAvg}
         />
       ) : null}
     </Styled.LectureWrapper>

@@ -56,13 +56,12 @@ export const Rate = styled.span`
   }
 `;
 
-export const LectureWrapper_2 = styled.div``;
-
 export const LectureWrapper = styled.div`
   width: 100%;
   border: 1px solid ${Color('border')};
   border-radius: 10px;
   cursor: pointer;
+  margin-bottom: 10px;
   font-family: 'Pretendard-Medium';
 `;
 
@@ -108,8 +107,27 @@ export const GridWrap = styled.div`
   }
 `;
 
+export const FlexWrap = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+export const FlexWrapSub = styled.div`
+  width: 49%;
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
+`;
+
 export const FullWrapSub = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  display: none;
+  @media screen and (max-width: 960px) {
+    display: block;
+  }
 `;
