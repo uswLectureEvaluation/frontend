@@ -23,7 +23,7 @@ const Search = () => {
   let navigate = useNavigate();
 
   const [search, setSearch] = useState('');
-  const [option, setOption] = useState('modifiedDate');
+  const [option, setOption] = useState('lectureTotalAvg');
   const [count, setCount] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedMajor, setSelectedMajor] = useState('');
@@ -111,25 +111,13 @@ const Search = () => {
         </Styled.SearchResultWrapper>
 
         <Styled.HeadSelection>
-          {search_value === 'all' ? (
-            <Infinite
-              lecture={location.state}
-              count={count}
-              setCount={setCount}
-              checkClass={checkClass}
-              option={option}
-              wow={'main'}
-            />
-          ) : (
-            <Infinite
-              lecture={location.state}
-              count={count}
-              setCount={setCount}
-              checkClass={checkClass}
-              option={option}
-              wow={'search'}
-            />
-          )}
+          <Infinite
+            lecture={location.state}
+            count={count}
+            setCount={setCount}
+            checkClass={checkClass}
+            option={option}
+          />
         </Styled.HeadSelection>
       </Styled.Container>
       <Modal

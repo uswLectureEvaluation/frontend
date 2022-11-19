@@ -1,268 +1,50 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import StarRatings from 'react-star-ratings';
-import { mainApi, searchApi } from '../../api/Api';
-import { selectIdState } from '../../features/selectIdSlice';
-import * as Styled from './styled';
+import { useEffect } from 'react';
+import { useInfiniteQuery } from 'react-query';
+import { searchApi } from '../../api/Api';
+import Spinner from '../Spinner';
+import { useInView } from 'react-intersection-observer';
+import LectureContainer, { FlexWrap } from '../LectureContainer';
 
-const Infinite = ({ lecture, count, setCount, checkClass, option, wow }) => {
-  const [list, setList] = useState([]);
-  const [page, setPage] = useState(1);
-  const [load, setLoad] = useState(1);
-  const [win, setWin] = useState(true);
+const Infinite = ({ lecture, checkClass, option, setCount }) => {
+  const { ref, inView } = useInView();
+
+  let major = checkClass === '전체' ? '' : checkClass;
+  let searchValue = lecture.search_value === 'all' ? '' : lecture.search_value;
+
+  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+    ['search', searchValue, option, major],
+    ({ pageParam = 1 }) => searchApi(searchValue, pageParam, option, major),
+    {
+      getNextPageParam: (lastPage) => {
+        if (!lastPage.isLast) return lastPage.nextPage;
+        return undefined;
+      },
+    }
+  );
 
   useEffect(() => {
-    setPage(1);
-    setList([]);
-  }, [checkClass, lecture, option]);
-
-  const getDog = useCallback(async () => {
-    setLoad(true); //로딩 시작
-    if (wow === 'main') {
-      const res =
-        checkClass === '전체'
-          ? await mainApi(option, page, '')
-          : await mainApi(option, page, checkClass);
-      setCount(res.count);
-      if (res.data) {
-        setList((prev) => [...prev, ...res.data]);
-        preventRef.current = true;
-      }
-    } else {
-      const res =
-        checkClass === '전체'
-          ? await searchApi(lecture.search_value, page, option, '')
-          : await searchApi(lecture.search_value, page, option, checkClass);
-      setCount(res.count);
-
-      if (res.data) {
-        setList((prev) => [...prev, ...res.data]);
-        preventRef.current = true;
-      }
+    if (inView) {
+      fetchNextPage();
     }
-    setLoad(false); //로딩 종료
-  }, [wow, checkClass, option, page, setCount, lecture.search_value]);
+  }, [inView, fetchNextPage]);
 
-  const showWin = () => {
-    if (window.innerWidth <= 960) {
-      setWin(false);
-    } else {
-      setWin(true);
-    }
-  };
-
-  window.addEventListener('resize', showWin);
-
-  const preventRef = useRef(true);
-  const obsRef = useRef(null);
-
+  const count = data?.pages[0].data.count;
   useEffect(() => {
-    showWin();
-    const observer = new IntersectionObserver(obsHandler, { threshold: 0.5 });
-    if (obsRef.current) observer.observe(obsRef.current);
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+    setCount(count);
+  }, [count, setCount]);
+  if (isLoading) return <Spinner />;
 
-  useEffect(() => {
-    getDog();
-  }, [getDog, page]);
-
-  const obsHandler = (entries) => {
-    const target = entries[0];
-    if (target.isIntersecting && preventRef.current) {
-      preventRef.current = false;
-      setPage((prev) => prev + 1);
-    }
-  };
-
-  return win ? (
+  return count ? (
     <>
-      {count ? (
-        <Styled.FlexWrap>
-          <Styled.FlexWrapSub>
-            {list &&
-              list
-                .filter((data, i) => {
-                  if (!(i % 2) && checkClass === '전체') return true;
-                  else {
-                    if (!(i % 2) && data.majorType === checkClass) return true;
-                  }
-                  return false;
-                })
-                .map((row) => (
-                  <Subject
-                    key={Math.random()}
-                    id={row.id}
-                    lectureName={row.lectureName}
-                    professor={row.professor}
-                    lectureType={row.lectureType}
-                    star={row.lectureTotalAvg}
-                    lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-                    lectureHoneyAvg={row.lectureHoneyAvg}
-                    lectureLearningAvg={row.lectureLearningAvg}
-                    majorType={row.majorType}
-                  />
-                ))}
-          </Styled.FlexWrapSub>
-          <Styled.FlexWrapSub>
-            {list
-              .filter((data, i) => {
-                if (i % 2 && checkClass === '전체') return true;
-                else {
-                  if (i % 2 && data.majorType === checkClass) return true;
-                }
-                return false;
-              })
-              .map((row) => (
-                <Subject
-                  key={Math.random()}
-                  id={row.id}
-                  lectureName={row.lectureName}
-                  professor={row.professor}
-                  lectureType={row.lectureType}
-                  star={row.lectureTotalAvg}
-                  lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-                  lectureHoneyAvg={row.lectureHoneyAvg}
-                  lectureLearningAvg={row.lectureLearningAvg}
-                  majorType={row.majorType}
-                />
-              ))}
-          </Styled.FlexWrapSub>
-        </Styled.FlexWrap>
-      ) : (
-        <Styled.FlexWrap id="none">
-          {lecture.search_value}에 대한 검색결과가 없습니다
-        </Styled.FlexWrap>
-      )}
-      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-      <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
-        옵저버 Element
+      {data.pages.map((page) => (
+        <LectureContainer key={page.data.count} data={page.data.data} />
+      ))}
+      <div ref={ref} style={{ marginBottom: '10px' }}>
+        {isFetchingNextPage ? <Spinner /> : null}
       </div>
     </>
   ) : (
-    <>
-      {count ? (
-        <Styled.FlexWrap>
-          <Styled.FullWrapSub>
-            {list.map((row) => (
-              <Subject
-                key={Math.random()}
-                id={row.id}
-                lectureName={row.lectureName}
-                professor={row.professor}
-                lectureType={row.lectureType}
-                star={row.lectureTotalAvg}
-                lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-                lectureHoneyAvg={row.lectureHoneyAvg}
-                lectureLearningAvg={row.lectureLearningAvg}
-                majorType={row.majorType}
-              />
-            ))}
-          </Styled.FullWrapSub>
-        </Styled.FlexWrap>
-      ) : (
-        <Styled.FlexWrap id="none">
-          {lecture.search_value}에 대한 검색결과가 없습니다
-        </Styled.FlexWrap>
-      )}
-      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-      <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
-        옵저버 Element
-      </div>
-    </>
-  );
-};
-
-export const Detail = (props) => {
-  return (
-    <div>
-      <Styled.StarFlex id="top">
-        <Styled.FlexContainer id="col">
-          <Styled.StarFlex id="between">
-            만족도
-            <Styled.PaddingRight />
-            <Styled.Rate id="modal">{props.lectureSatisfactionAvg.toFixed(1)}</Styled.Rate>
-          </Styled.StarFlex>
-        </Styled.FlexContainer>
-        <Styled.FlexContainer id="col">
-          <Styled.StarFlex id="between">
-            꿀강지수
-            <Styled.PaddingRight />
-            <Styled.Rate id="modal">{props.lectureHoneyAvg.toFixed(1)}</Styled.Rate>
-          </Styled.StarFlex>
-        </Styled.FlexContainer>
-        <Styled.FlexContainer id="col">
-          <Styled.StarFlex id="between">
-            배움지수
-            <Styled.PaddingRight />
-            <Styled.Rate id="modal">{props.lectureLearningAvg.toFixed(1)}</Styled.Rate>
-          </Styled.StarFlex>
-        </Styled.FlexContainer>
-      </Styled.StarFlex>
-    </div>
-  );
-};
-
-export const Subject = (props) => {
-  const [modal, setModal] = useState(false);
-
-  let navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  let title = props.lectureName;
-
-  if (title.length >= 14) {
-    title = props.lectureName.substr(0, 14) + '...';
-  }
-
-  const onClick = (id) => {
-    dispatch(selectIdState(id));
-    navigate('/lectureinfo');
-  };
-
-  return (
-    <Styled.LectureWrapper onClick={() => onClick(props.id)}>
-      <Styled.MarginTop>
-        <Styled.TitleWrapper>
-          <Styled.Title>{title}</Styled.Title>
-          <Styled.Option>{props.lectureType}</Styled.Option>
-        </Styled.TitleWrapper>
-        <Styled.Professor>
-          {props.majorType} | {props.professor}
-        </Styled.Professor>
-        <Styled.RateWrapper>
-          <StarRatings
-            rating={props.star}
-            starRatedColor="#336af8"
-            numberOfStars={5}
-            name="rating"
-            starDimension="20px"
-            starSpacing="0px"
-            svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
-            svgIconViewBox="0 0 24 24"
-          />
-          <Styled.Rate>{props.star.toFixed(1)}</Styled.Rate>
-          <Styled.Minute
-            onClick={(e) => {
-              setModal(!modal);
-              e.stopPropagation();
-            }}
-          >
-            {modal === true ? '간략히' : '자세히'}
-          </Styled.Minute>
-        </Styled.RateWrapper>
-      </Styled.MarginTop>
-      {modal === true ? (
-        <Detail
-          lectureSatisfactionAvg={props.lectureSatisfactionAvg}
-          lectureHoneyAvg={props.lectureHoneyAvg}
-          lectureLearningAvg={props.lectureLearningAvg}
-        />
-      ) : null}
-    </Styled.LectureWrapper>
+    <FlexWrap id="none">{lecture.search_value}에 대한 검색결과가 없습니다</FlexWrap>
   );
 };
 

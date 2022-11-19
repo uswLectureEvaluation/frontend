@@ -33,6 +33,18 @@ export const mainApi = async (lecture, page, majorType) => {
   });
 };
 
+export const mainInfinityApi = async (lecture, pageParam, majorType) => {
+  const result = await instance({
+    url: `/lecture/all/?option=${lecture}&page=${pageParam}&majorType=${majorType}`,
+    method: 'GET',
+  });
+  return {
+    data: result,
+    isLast: result.data.length < 10,
+    nextPage: pageParam + 1,
+  };
+};
+
 //개설학과조회 api
 export const majorTypeApi = async () => {
   return instance({
@@ -496,11 +508,16 @@ export const deleteExamInfoApi = (id) => {
 
 // 통합검색결과Api
 //꿀강순[modifiedDate, lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg]
-export const searchApi = (search, page, lecture, majorType) => {
-  return instance({
-    url: `/lecture/search/?searchValue=${search}&option=${lecture}&page=${page}&majorType=${majorType}`,
+export const searchApi = async (searchValue, pageParam, option, major) => {
+  const result = await instance({
+    url: `/lecture/search/?searchValue=${searchValue}&option=${option}&page=${pageParam}&majorType=${major}`,
     method: 'GET',
   });
+  return {
+    data: result,
+    isLast: result.data.length < 10,
+    nextPage: pageParam + 1,
+  };
 };
 
 // 검색 결과 자세히보기 (Lecture)

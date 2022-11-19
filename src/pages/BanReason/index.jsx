@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { banListApi, resListApi } from '../../api/Api';
 import * as Styled from './styled';
-import { FlexWrap } from '../../components/Infinite/styled';
+import { FlexWrap } from '../../components/LectureContainer';
 const BanReason = () => {
   const [db, setData] = useState([]);
 
