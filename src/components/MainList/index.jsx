@@ -1,119 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
 import { mainApi } from '../../api/Api';
 import StarRatings from 'react-star-ratings';
 import { selectIdState } from '../../features/selectIdSlice';
 import { useDispatch } from 'react-redux';
+import { useQuery } from 'react-query';
+import Spinner from '../Spinner';
 
 const MainList = ({ lecture, checkClass }) => {
-  const [db, setData] = useState([]);
-  const [win, setWin] = useState(true);
+  let major = checkClass === '전체' ? '' : checkClass;
+  const { data, isLoading } = useQuery(['mainList', lecture, major], () =>
+    mainApi(lecture, 1, major)
+  );
+  if (isLoading) return <Spinner />;
 
-  const showWin = () => (window.innerWidth <= 960 ? setWin(false) : setWin(true));
-
-  window.addEventListener('resize', showWin);
-
-  useEffect(() => {
-    showWin();
-    if (checkClass === '전체') {
-      mainApi(lecture, 1, '').then((data) => setData(data));
-    } else {
-      mainApi(lecture, 1, checkClass).then((data) => setData(data));
-    }
-  }, [win, lecture, checkClass]);
-
-  return db.length !== 0 ? (
-    win ? (
-      <Styled.FlexWrap>
-        <Styled.FlexWrapSub>
-          {db.data
-            .filter((row, i) => {
-              if (!(i % 2) && checkClass === '전체') {
-                return true;
-              } else {
-                if (!(i % 2) && row.majorType === checkClass) {
-                  return true;
-                }
-                return false;
-              }
-            })
-            .map((row) => (
-              <Subject
-                key={row.id}
-                id={row.id}
-                lectureName={row.lectureName}
-                professor={row.professor}
-                lectureType={row.lectureType}
-                star={row.lectureTotalAvg}
-                lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-                lectureHoneyAvg={row.lectureHoneyAvg}
-                lectureLearningAvg={row.lectureLearningAvg}
-                majorType={row.majorType}
-              />
-            ))}
-        </Styled.FlexWrapSub>
-        <Styled.FlexWrapSub>
-          {db.data
-            .filter((row, i) => {
-              if (i % 2 && checkClass === '전체') {
-                return true;
-              } else {
-                if (i % 2 && row.majorType === checkClass) {
-                  return true;
-                }
-                return false;
-              }
-            })
-            .map((row) => (
-              <Subject
-                key={row.id}
-                id={row.id}
-                lectureName={row.lectureName}
-                professor={row.professor}
-                lectureType={row.lectureType}
-                star={row.lectureTotalAvg}
-                lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-                lectureHoneyAvg={row.lectureHoneyAvg}
-                lectureLearningAvg={row.lectureLearningAvg}
-                majorType={row.majorType}
-              />
-            ))}
-        </Styled.FlexWrapSub>
-      </Styled.FlexWrap>
-    ) : (
-      <Styled.FlexWrap>
-        <Styled.FullWrapSub>
-          {db.data
-            .filter((row) => {
-              if (checkClass === '전체') {
-                return true;
-              } else {
-                if (row.majorType === checkClass) {
-                  return true;
-                }
-                return false;
-              }
-            })
-            .map((row) => (
-              <Subject
-                key={row.id}
-                id={row.id}
-                lectureName={row.lectureName}
-                professor={row.professor}
-                lectureType={row.lectureType}
-                star={row.lectureTotalAvg}
-                lectureSatisfactionAvg={row.lectureSatisfactionAvg}
-                lectureHoneyAvg={row.lectureHoneyAvg}
-                lectureLearningAvg={row.lectureLearningAvg}
-                majorType={row.majorType}
-              />
-            ))}
-        </Styled.FullWrapSub>
-      </Styled.FlexWrap>
-    )
-  ) : (
-    <div></div>
+  return (
+    <Styled.GridWrap>
+      {data?.data.map((row) => (
+        <Subject
+          key={row.id}
+          id={row.id}
+          lectureName={row.lectureName}
+          professor={row.professor}
+          lectureType={row.lectureType}
+          star={row.lectureTotalAvg}
+          lectureSatisfactionAvg={row.lectureSatisfactionAvg}
+          lectureHoneyAvg={row.lectureHoneyAvg}
+          lectureLearningAvg={row.lectureLearningAvg}
+          majorType={row.majorType}
+        />
+      ))}
+    </Styled.GridWrap>
   );
 };
 
