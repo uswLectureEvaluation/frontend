@@ -31,7 +31,7 @@ const ScrollButton = () => {
     <>
       {btnStatus ? (
         <Styled.TopButton onClick={handleScroll}>
-          <img src="img/icon_up_arrow_solid_24.svg" alt="upArrow" width="22" height="22" />
+          <img src="/img/icon_up_arrow_solid_24.svg" alt="upArrow" width="22" height="22" />
         </Styled.TopButton>
       ) : null}
     </>

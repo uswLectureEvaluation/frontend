@@ -85,7 +85,7 @@ const Search = () => {
             </Styled.FlexWrapper>
           </div>
 
-          <Styled.FlexWrapper>
+          <Styled.FlexWrapper id="count">
             총 <Styled.Color> {count}</Styled.Color>건
           </Styled.FlexWrapper>
         </Styled.SearchResultWrapper>

@@ -1,8 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 
-const Spinner = () => {
+const Spinner = ({ id }) => {
   return (
-    <Container>
+    <Container id={id}>
       <Loader />
     </Container>
   );
@@ -25,6 +25,12 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  &#nextPage {
+    height: 10vh;
+  }
+  &#notice {
+    height: 50vh;
+  }
 `;
 
 const Loader = styled.div`

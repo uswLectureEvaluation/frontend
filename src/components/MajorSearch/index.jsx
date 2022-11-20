@@ -13,7 +13,8 @@ const MajorSearch = (props) => {
   };
 
   useEffect(() => {
-    searchFavoriteMajorApi().then((data) => setFavoriteDb(data.data));
+    if (localStorage.getItem('login') != null || sessionStorage.getItem('login') != null)
+      searchFavoriteMajorApi().then((data) => setFavoriteDb(data.data));
   }, []);
 
   const onFavoriteMajor = (e) => {

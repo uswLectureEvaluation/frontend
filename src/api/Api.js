@@ -91,11 +91,16 @@ export const deleteFavoriteMajorApi = async (majorType) => {
 };
 
 //공지사항api 확인 필요
-export const noticeApi = async (page) => {
-  return instance({
-    url: `/notice/all?page=${page}`,
+export const noticeApi = async (pageParam) => {
+  const result = await instance({
+    url: `/notice/all?page=${pageParam}`,
     method: 'GET',
   });
+  return {
+    data: result,
+    nextPage: pageParam + 1,
+    isLast: result.data.length < 10,
+  };
 };
 
 //공지사항 자세히보기 api

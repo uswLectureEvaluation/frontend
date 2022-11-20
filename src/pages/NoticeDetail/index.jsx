@@ -1,42 +1,48 @@
-import { useState, useEffect } from 'react';
 import * as Styled from './styled';
-import { useLocation } from 'react-router';
 import { noticeDetailApi } from '../../api/Api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import Spinner from '../../components/Spinner';
+
+export const NoticeBox = () => {
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get('id');
+  const { data, isLoading } = useQuery(['notice_detail', id], () => noticeDetailApi(id), {
+    cacheTime: 1000 * 60 * 60,
+    staleTime: 1000 * 60 * 60,
+  });
+  if (isLoading) return <Spinner id="notice" />;
+
+  return (
+    <Styled.Content>
+      <Styled.Title>{data.data.title}</Styled.Title>
+      <Styled.Date>
+        {/* {data.data.modifiedDate.slice(0, 10)}{" "}
+                {data.data.modifiedDate.slice(11)} */}
+      </Styled.Date>
+      {data.data.content &&
+        data.data.content.split('\n').map((value, index) => {
+          return (
+            <div key={id + index}>
+              {value}
+              <br />
+            </div>
+          );
+        })}
+    </Styled.Content>
+  );
+};
 
 const NoticeDetail = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { id } = location.state;
-
-  const [db, setData] = useState({ data: {} });
-
-  useEffect(() => {
-    noticeDetailApi(id).then((data) => setData(data));
-  }, [id]);
 
   return (
     <Styled.AppContainer>
       <Styled.AppTitle>공지사항</Styled.AppTitle>
-      <Styled.Content>
-        <Styled.Title>{db.data.title}</Styled.Title>
-        <Styled.Date>
-          {/* {db.data.modifiedDate.slice(0, 10)}{" "}
-                    {db.data.modifiedDate.slice(11)} */}
-        </Styled.Date>
-        {db.data.content &&
-          db.data.content.split('\n').map((value, index) => {
-            return (
-              <div key={id + index}>
-                {value}
-                <br />
-              </div>
-            );
-          })}
-      </Styled.Content>
+      <NoticeBox />
       <Styled.BackWrapper onClick={() => navigate('/notice')}>
         <Styled.Back>
-          <Styled.Img alt="list_icon" width="22" src="img/icon_list_line_24.svg" />
+          <Styled.Img alt="list_icon" width="22" src="/img/icon_list_line_24.svg" />
           목록
         </Styled.Back>
       </Styled.BackWrapper>

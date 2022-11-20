@@ -45,7 +45,7 @@ const Infinite = ({ setCount }) => {
         <LectureContainer key={page.nextPage} data={page.data.data} />
       ))}
       <div ref={ref} style={{ marginBottom: '10px' }}>
-        {isFetchingNextPage ? <Spinner /> : null}
+        {isFetchingNextPage ? <Spinner id="nextPage" /> : null}
       </div>
     </>
   ) : (
