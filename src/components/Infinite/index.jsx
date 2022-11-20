@@ -4,12 +4,17 @@ import { searchApi } from '../../api/Api';
 import Spinner from '../Spinner';
 import { useInView } from 'react-intersection-observer';
 import LectureContainer, { FlexWrap } from '../LectureContainer';
+import { useSearchParams } from 'react-router-dom';
 
-const Infinite = ({ lecture, checkClass, option, setCount }) => {
+const Infinite = ({ setCount }) => {
   const { ref, inView } = useInView();
+  const [searchParams] = useSearchParams();
+  const value = searchParams.get('q');
+  const option = searchParams.get('option');
+  const checkClass = searchParams.get('majorType');
 
   let major = checkClass === '전체' ? '' : checkClass;
-  let searchValue = lecture.search_value === 'all' ? '' : lecture.search_value;
+  let searchValue = value === 'all' ? '' : value;
 
   const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
     ['search', searchValue, option, major],
@@ -37,14 +42,14 @@ const Infinite = ({ lecture, checkClass, option, setCount }) => {
   return count ? (
     <>
       {data.pages.map((page) => (
-        <LectureContainer key={page.data.count} data={page.data.data} />
+        <LectureContainer key={page.nextPage} data={page.data.data} />
       ))}
       <div ref={ref} style={{ marginBottom: '10px' }}>
         {isFetchingNextPage ? <Spinner /> : null}
       </div>
     </>
   ) : (
-    <FlexWrap id="none">{lecture.search_value}에 대한 검색결과가 없습니다</FlexWrap>
+    <FlexWrap id="none">{value}에 대한 검색결과가 없습니다</FlexWrap>
   );
 };
 

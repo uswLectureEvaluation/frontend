@@ -7,9 +7,9 @@ const MajorSearch = (props) => {
   const [db, setData] = useState([]);
   const [searchMajor, setSearchMajor] = useState('');
   const [favoriteDb, setFavoriteDb] = useState([]);
-
+  const [selectedMajor, setSelectedMajor] = useState('');
   const majorChange = (e) => {
-    props.setSelectedMajor(e.target.value);
+    setSelectedMajor(e.target.value);
   };
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const MajorSearch = (props) => {
   }, []);
 
   const onFavoriteMajor = (e) => {
-    props.setSelectedMajor(e.target.alt);
+    setSelectedMajor(e.target.alt);
     if (!favoriteDb.includes(e.target.alt)) {
       favoriteMajorApi(e.target.alt);
       setFavoriteDb(favoriteDb.concat([e.target.alt]));
@@ -32,8 +32,8 @@ const MajorSearch = (props) => {
   }, []);
 
   const clickSubmit = () => {
-    if (props.selectedMajor !== '') {
-      props.setCheckClass(props.selectedMajor);
+    if (selectedMajor !== '') {
+      props.setCheckClass(selectedMajor);
     }
     props.setModalIsOpen(false);
   };
@@ -74,7 +74,7 @@ const MajorSearch = (props) => {
                       name="majorType"
                       id="easy"
                       value={v}
-                      defaultChecked={props.selectedMajor === v}
+                      defaultChecked={props.checkClass === v}
                     />
                     <Styled.MajorSelect>
                       <Styled.SearchIcon
@@ -106,7 +106,7 @@ const MajorSearch = (props) => {
                       name="majorType"
                       id="easy"
                       value={v}
-                      defaultChecked={props.selectedMajor === v}
+                      defaultChecked={props.checkClass === v}
                     />
                     <Styled.MajorSelect>
                       <Styled.SearchIcon

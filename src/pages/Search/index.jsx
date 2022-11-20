@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router';
+import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import * as Styled from './styled';
 import { SortSelect, StyledOption, Soption } from '../Main/styled';
 import Modal from 'react-modal';
@@ -16,56 +15,41 @@ const Search = () => {
     { name: '날짜', option: 'modifiedDate' },
     { name: '종합', option: 'lectureTotalAvg' },
   ];
+  const majorList = window.localStorage.getItem('majorType').split(',');
+  const [searchParams] = useSearchParams();
 
-  const location = useLocation();
-  const { search_value } = location.state;
+  const searchValue = searchParams.get('q');
+  const majorType = searchParams.get('majorType');
+  const option = searchParams.get('option');
 
   let navigate = useNavigate();
 
   const [search, setSearch] = useState('');
-  const [option, setOption] = useState('lectureTotalAvg');
+  const [lecture, setLecture] = useState(option);
   const [count, setCount] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedMajor, setSelectedMajor] = useState('');
-  const [checkClass, setCheckClass] = useState('전체');
+  const [checkClass, setCheckClass] = useState(majorType);
 
   const onChange = (e) => {
     setSearch(e.currentTarget.value);
   };
-
-  const [win, setWin] = useState(true);
-
-  const showWin = () => {
-    if (window.innerWidth <= 960) {
-      setWin(false);
-    } else {
-      setWin(true);
-    }
-  };
-
-  window.addEventListener('resize', showWin);
-
-  useEffect(() => {
-    showWin();
-  }, [win]);
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
       if (e.currentTarget.value.length < 2) {
         alert('두 글자 이상 입력해주세요');
       } else {
-        navigate(`/search`, {
-          state: {
-            search_value: search,
-            search_option: option,
-          },
-        });
+        navigate(`/search?q=${search}&option=${lecture}&majorType=${checkClass}`);
       }
     }
   };
   const onSelect = (e) => {
-    setOption(e);
+    setLecture(e);
   };
+
+  useEffect(() => {
+    navigate(`/search?q=${searchValue}&option=${lecture}&majorType=${checkClass}`);
+  }, [lecture, checkClass, searchValue, navigate]);
   return (
     <div>
       <Styled.Container>
@@ -75,23 +59,23 @@ const Search = () => {
             onChange={onChange}
             placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
             onKeyPress={onKeypress}
-            defaultValue={search_value}
+            defaultValue={searchValue}
           />
         </Styled.SearchWrapper>
 
         <Styled.SearchResultWrapper>
           <div style={{ display: 'flex' }}>
             <Styled.FlexWrapper onClick={() => setModalIsOpen(true)}>
-              <SortSelect id="major" defaultValue={`${option}`}>
-                {detail.map((index) => (
-                  <StyledOption id="semester" key={index.name} value={index.option}>
+              <SortSelect id="major" defaultValue={checkClass}>
+                {majorList.map((index) => (
+                  <StyledOption id="semester" key={index} value={index}>
                     <Soption id="semester">{checkClass}</Soption>
                   </StyledOption>
                 ))}
               </SortSelect>
             </Styled.FlexWrapper>
             <Styled.FlexWrapper>
-              <SortSelect id="sort" defaultValue={option} onChange={onSelect}>
+              <SortSelect id="sort" defaultValue={lecture} onChange={onSelect}>
                 {detail.map((index) => (
                   <StyledOption id="semester" key={index.option} value={index.option}>
                     <Soption id="semester">{index.name}</Soption>
@@ -101,23 +85,13 @@ const Search = () => {
             </Styled.FlexWrapper>
           </div>
 
-          {win ? (
-            <Styled.FlexWrapper>
-              총 <Styled.Color> {count}</Styled.Color>건
-            </Styled.FlexWrapper>
-          ) : (
-            ''
-          )}
+          <Styled.FlexWrapper>
+            총 <Styled.Color> {count}</Styled.Color>건
+          </Styled.FlexWrapper>
         </Styled.SearchResultWrapper>
 
         <Styled.HeadSelection>
-          <Infinite
-            lecture={location.state}
-            count={count}
-            setCount={setCount}
-            checkClass={checkClass}
-            option={option}
-          />
+          <Infinite setCount={setCount} />
         </Styled.HeadSelection>
       </Styled.Container>
       <Modal
@@ -128,10 +102,9 @@ const Search = () => {
         onRequestClose={() => setModalIsOpen(false)}
       >
         <MajorSearch
+          checkClass={checkClass}
           setModalIsOpen={setModalIsOpen}
-          setSelectedMajor={setSelectedMajor}
           setCheckClass={setCheckClass}
-          selectedMajor={selectedMajor}
         />
       </Modal>
     </div>

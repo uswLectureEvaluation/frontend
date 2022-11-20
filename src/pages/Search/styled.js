@@ -75,6 +75,9 @@ export const FlexWrapper = styled.div`
   display: flex;
   margin-bottom: 1rem;
   font-family: Pretendard-Medium;
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
 `;
 
 export const Color = styled.span`

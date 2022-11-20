@@ -41,7 +41,6 @@ const Main = () => {
   const [lecture, setLecture] = useState('modifiedDate');
   const [checkClass, setCheckClass] = useState('전체');
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedMajor, setSelectedMajor] = useState('');
 
   const onChange = (e) => {
     setSearch(e.currentTarget.value);
@@ -56,12 +55,7 @@ const Main = () => {
       if (e.currentTarget.value.length < 2) {
         alert('두 글자 이상 입력해주세요');
       } else {
-        navigate(`/search`, {
-          state: {
-            search_value: search,
-            search_option: lecture,
-          },
-        });
+        navigate(`/search?q=${search}&option=lectureTotalAvg&majorType=전체`);
       }
     }
   };
@@ -148,12 +142,7 @@ const Main = () => {
         <Styled.Button
           background="#336af8"
           onClick={() => {
-            navigate(`/search`, {
-              state: {
-                search_value: 'all',
-                search_option: lecture,
-              },
-            });
+            navigate(`/search?q=&option=lectureTotalAvg&majorType=전체`);
           }}
         >
           더 보러 가기 →
@@ -167,10 +156,9 @@ const Main = () => {
         onRequestClose={() => setModalIsOpen(false)}
       >
         <MajorSearch
+          checkClass={checkClass}
           setModalIsOpen={setModalIsOpen}
-          setSelectedMajor={setSelectedMajor}
           setCheckClass={setCheckClass}
-          selectedMajor={selectedMajor}
         />
       </Modal>
     </>
