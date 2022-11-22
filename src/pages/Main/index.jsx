@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import MainList from '../../components/MainList';
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
-import { majorTypeApi, versionApi } from '../../api/Api';
 import Modal from 'react-modal';
 import { MajorModalStyle } from '../../components/ModalStyle';
 import MajorSearch from '../../components/MajorSearch';
+import { versionCheck } from '../../app/versionCheck';
+import { majorList } from '../Search';
 
 const Main = () => {
   const options = [
@@ -60,32 +61,7 @@ const Main = () => {
     }
   };
   useEffect(() => {
-    if (!window.localStorage.getItem('version') || !window.localStorage.getItem('majorType')) {
-      versionApi().then((res) => {
-        // console.log('버전없어서 세팅');
-        window.localStorage.setItem('version', res.version.toFixed(1));
-      });
-      majorTypeApi().then((res) => {
-        // console.log('전공없어서 세팅');
-        window.localStorage.setItem('majorType', ['전체', res.data]);
-      });
-      window.sessionStorage.setItem('version-check', true);
-      // console.log('버전 체크 완료');
-    } else if (!window.sessionStorage.getItem('version-check')) {
-      versionApi().then((res) => {
-        if (window.localStorage.getItem('version') !== res.version.toFixed(1)) {
-          // console.log('버전 다름');
-          window.localStorage.setItem('version', res.version.toFixed(1));
-          // console.log('버전 최신화');
-          majorTypeApi().then((res) => {
-            window.localStorage.setItem('majorType', ['전체', res.data]);
-            // console.log('전공 최신화');
-          });
-        }
-        window.sessionStorage.setItem('version-check', true);
-        // console.log('버전 체크 완료');
-      });
-    }
+    versionCheck();
   }, []);
   return (
     <>
@@ -112,13 +88,9 @@ const Main = () => {
         <Styled.SearchWrapper>
           <Styled.HeadSelection>
             <Styled.FlexWrapper onClick={() => setModalIsOpen(true)}>
-              <Styled.SortSelect
-                id="major"
-                defaultValue={'lectureHoneyAvg'}
-                onChange={onChangeHandler}
-              >
-                {options.map((index) => (
-                  <Styled.StyledOption id="semester" key={index.name} value={index.lec}>
+              <Styled.SortSelect id="major" defaultValue={checkClass}>
+                {majorList.map((index) => (
+                  <Styled.StyledOption id="semester" key={index} value={index}>
                     <Styled.Soption id="semester">{checkClass}</Styled.Soption>
                   </Styled.StyledOption>
                 ))}

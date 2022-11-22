@@ -7,6 +7,8 @@ import { MajorModalStyle } from '../../components/ModalStyle';
 import MajorSearch from '../../components/MajorSearch';
 import Infinite from '../../components/Infinite';
 
+export const majorList = window.localStorage.getItem('majorType').split(',');
+
 const Search = () => {
   const detail = [
     { name: '만족도', option: 'lectureSatisfactionAvg' },
@@ -15,7 +17,6 @@ const Search = () => {
     { name: '날짜', option: 'modifiedDate' },
     { name: '종합', option: 'lectureTotalAvg' },
   ];
-  const majorList = window.localStorage.getItem('majorType').split(',');
   const [searchParams] = useSearchParams();
 
   let searchValue = searchParams.get('q');
@@ -58,7 +59,7 @@ const Search = () => {
             onChange={onChange}
             placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
             onKeyPress={onKeypress}
-            value={search}
+            defaultValue={search}
           />
         </Styled.SearchWrapper>
 
