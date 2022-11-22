@@ -18,17 +18,15 @@ const Search = () => {
   const majorList = window.localStorage.getItem('majorType').split(',');
   const [searchParams] = useSearchParams();
 
-  const searchValue = searchParams.get('q');
-  const majorType = searchParams.get('majorType');
-  const option = searchParams.get('option');
+  let searchValue = searchParams.get('q');
+  let majorType = searchParams.get('majorType');
+  let option = searchParams.get('option');
 
   let navigate = useNavigate();
 
-  const [search, setSearch] = useState('');
-  const [lecture, setLecture] = useState(option);
+  const [search, setSearch] = useState(searchValue);
   const [count, setCount] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [checkClass, setCheckClass] = useState(majorType);
 
   const onChange = (e) => {
     setSearch(e.currentTarget.value);
@@ -39,17 +37,18 @@ const Search = () => {
       if (e.currentTarget.value.length < 2) {
         alert('두 글자 이상 입력해주세요');
       } else {
-        navigate(`/search?q=${search}&option=${lecture}&majorType=${checkClass}`);
+        navigate(`/search?q=${search}&option=${option}&majorType=${majorType}`);
       }
     }
   };
   const onSelect = (e) => {
-    setLecture(e);
+    navigate(`/search?q=${searchValue}&option=${e}&majorType=${majorType}`);
   };
 
   useEffect(() => {
-    navigate(`/search?q=${searchValue}&option=${lecture}&majorType=${checkClass}`);
-  }, [lecture, checkClass, searchValue, navigate]);
+    setSearch(searchValue);
+  }, [searchValue]);
+
   return (
     <div>
       <Styled.Container>
@@ -59,23 +58,23 @@ const Search = () => {
             onChange={onChange}
             placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
             onKeyPress={onKeypress}
-            defaultValue={searchValue}
+            value={search}
           />
         </Styled.SearchWrapper>
 
         <Styled.SearchResultWrapper>
           <div style={{ display: 'flex' }}>
             <Styled.FlexWrapper onClick={() => setModalIsOpen(true)}>
-              <SortSelect id="major" defaultValue={checkClass}>
+              <SortSelect id="major" defaultValue={majorType}>
                 {majorList.map((index) => (
                   <StyledOption id="semester" key={index} value={index}>
-                    <Soption id="semester">{checkClass}</Soption>
+                    <Soption id="semester">{majorType}</Soption>
                   </StyledOption>
                 ))}
               </SortSelect>
             </Styled.FlexWrapper>
             <Styled.FlexWrapper>
-              <SortSelect id="sort" defaultValue={lecture} onChange={onSelect}>
+              <SortSelect id="sort" value={option} onChange={onSelect}>
                 {detail.map((index) => (
                   <StyledOption id="semester" key={index.option} value={index.option}>
                     <Soption id="semester">{index.name}</Soption>
@@ -101,11 +100,7 @@ const Search = () => {
         ariaHideApp={false}
         onRequestClose={() => setModalIsOpen(false)}
       >
-        <MajorSearch
-          checkClass={checkClass}
-          setModalIsOpen={setModalIsOpen}
-          setCheckClass={setCheckClass}
-        />
+        <MajorSearch setModalIsOpen={setModalIsOpen} />
       </Modal>
     </div>
   );

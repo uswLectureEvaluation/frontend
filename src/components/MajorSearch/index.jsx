@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import { deleteFavoriteMajorApi, favoriteMajorApi, searchFavoriteMajorApi } from '../../api/Api';
 import * as Styled from './styled';
+import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 
 const MajorSearch = (props) => {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [all, setAll] = useState(true);
   const [db, setData] = useState([]);
   const [searchMajor, setSearchMajor] = useState('');
@@ -11,6 +15,11 @@ const MajorSearch = (props) => {
   const majorChange = (e) => {
     setSelectedMajor(e.target.value);
   };
+
+  let searchValue = searchParams.get('q');
+  let majorType = searchParams.get('majorType');
+  let option = searchParams.get('option');
+  let defaultMajor = location.pathname === '/search' ? majorType : props.checkClass;
 
   useEffect(() => {
     if (localStorage.getItem('login') != null || sessionStorage.getItem('login') != null)
@@ -34,7 +43,11 @@ const MajorSearch = (props) => {
 
   const clickSubmit = () => {
     if (selectedMajor !== '') {
-      props.setCheckClass(selectedMajor);
+      if (location.pathname === '/search') {
+        navigate(`/search?q=${searchValue}&option=${option}&majorType=${selectedMajor}`);
+      } else {
+        props.setCheckClass(selectedMajor);
+      }
     }
     props.setModalIsOpen(false);
   };
@@ -75,7 +88,7 @@ const MajorSearch = (props) => {
                       name="majorType"
                       id="easy"
                       value={v}
-                      defaultChecked={props.checkClass === v}
+                      defaultChecked={defaultMajor === v}
                     />
                     <Styled.MajorSelect>
                       <Styled.SearchIcon

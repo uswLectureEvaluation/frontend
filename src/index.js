@@ -9,7 +9,7 @@ import { store } from './app/store';
 import { initialize } from 'react-ga';
 import './index.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
-// import { ReactQueryDevtools } from 'react-query/devtools';
+import { ReactQueryDevtools } from 'react-query/devtools';
 initialize('UA-74092126-2');
 
 export const queryClient = new QueryClient({
@@ -35,7 +35,7 @@ ReactDOM.render(
           <App />
         </PersistGate>
       </Provider>
-      {/* <ReactQueryDevtools /> */}
+      <ReactQueryDevtools />
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')

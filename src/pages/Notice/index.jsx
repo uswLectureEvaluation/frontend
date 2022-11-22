@@ -39,12 +39,18 @@ export const NoticeContainer = () => {
 
   return (
     <>
-      {data.pages.map((page) =>
-        page.data.data.map((notice) => <NoticeItem notice={notice} key={notice.id} />)
+      {data.pages.length > 0 ? (
+        <>
+          {data.pages.map((page) =>
+            page.data.data.map((notice) => <NoticeItem notice={notice} key={notice.id} />)
+          )}
+          <div ref={ref} style={{ marginBottom: '10px' }}>
+            {isFetchingNextPage ? <Spinner /> : null}
+          </div>
+        </>
+      ) : (
+        <Styled.NoNotice>아직 공지사항이 없어요.</Styled.NoNotice>
       )}
-      <div ref={ref} style={{ marginBottom: '10px' }}>
-        {isFetchingNextPage ? <Spinner /> : null}
-      </div>
     </>
   );
 };
