@@ -6,8 +6,7 @@ import Modal from 'react-modal';
 import { MajorModalStyle } from '../../components/ModalStyle';
 import MajorSearch from '../../components/MajorSearch';
 import Infinite from '../../components/Infinite';
-
-export const majorList = window.localStorage.getItem('majorType').split(',');
+export const majorList = ['전체'];
 
 const Search = () => {
   const detail = [

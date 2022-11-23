@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { deleteFavoriteMajorApi, favoriteMajorApi, searchFavoriteMajorApi } from '../../api/Api';
+import {
+  deleteFavoriteMajorApi,
+  favoriteMajorApi,
+  majorTypeApi,
+  searchFavoriteMajorApi,
+} from '../../api/Api';
 import * as Styled from './styled';
 import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 
@@ -38,7 +43,12 @@ const MajorSearch = (props) => {
   };
 
   useEffect(() => {
-    setData(window.localStorage.getItem('majorType').split(','));
+    if (!window.localStorage.getItem('majorType')) {
+      majorTypeApi().then((res) => {
+        window.localStorage.setItem('majorType', ['전체', res.data]);
+        setData(['전체', ...res.data]);
+      });
+    } else setData(window.localStorage.getItem('majorType').split(','));
   }, []);
 
   const clickSubmit = () => {
