@@ -5,6 +5,9 @@ import { useQuery } from 'react-query';
 import Spinner from '../../components/Spinner';
 import { Button } from '../../components';
 
+export const isLogin =
+  localStorage.getItem('login') || sessionStorage.getItem('login') ? true : false;
+
 const MyInfo = () => {
   const navigate = useNavigate();
   const option = [
@@ -49,12 +52,14 @@ const MyInfo = () => {
   ];
 
   const { data, isLoading } = useQuery(['myInfo'], myInfoApi, {
-    enabled: localStorage.getItem('login') || sessionStorage.getItem('login') ? true : false,
+    enabled: isLogin,
+    cacheTime: 1000 * 60 * 30,
+    staleTime: 1000 * 60 * 30,
   });
   let user = data;
 
   if (isLoading) return <Spinner id="myInfo" />;
-  return !(localStorage.getItem('login') || sessionStorage.getItem('login')) ? (
+  return !isLogin ? (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Styled.FlexContainer id="col">
         <Button color="#336af8" onClick={() => navigate('/login')}>
@@ -68,11 +73,7 @@ const MyInfo = () => {
         <Styled.InfoTitle>내 정보</Styled.InfoTitle>
       </Styled.InfoWrapper>
       <Styled.Wrapper id="top">
-        <Styled.Button
-          id="mobile"
-          onClick={() => navigate('/myposting', { state: { props: user.point } })}
-          background="#336af8"
-        >
+        <Styled.Button id="mobile" onClick={() => navigate('/myposting')} background="#336af8">
           내가 쓴 글
         </Styled.Button>
         <Styled.Content id="top">
@@ -87,11 +88,7 @@ const MyInfo = () => {
             <Styled.FlexContainer>{user.email}</Styled.FlexContainer>
           </Styled.FlexContainer>
         </Styled.Content>
-        <Styled.Button
-          id="pc"
-          onClick={() => navigate('/myposting', { state: { props: user.point } })}
-          background="#336af8"
-        >
+        <Styled.Button id="pc" onClick={() => navigate('/myposting')} background="#336af8">
           내가 쓴 글
         </Styled.Button>
       </Styled.Wrapper>

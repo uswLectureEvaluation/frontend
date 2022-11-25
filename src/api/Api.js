@@ -325,19 +325,29 @@ export const myInfoApi = () => {
 };
 
 // 내가쓴글-강의평가Api
-export const evaluatePostApi = (page) => {
-  return instance({
-    url: `/evaluate-posts/written/?page=${page}`,
+export const evaluatePostApi = async (pageParam) => {
+  const result = await instance({
+    url: `/evaluate-posts/written/?page=${pageParam}`,
     method: 'GET',
   });
+  return {
+    data: result,
+    isLast: result.data.length < 10,
+    nextPage: pageParam + 1,
+  };
 };
 
 // 내가쓴글-시험정보Api
-export const examPostApi = (page) => {
-  return instance({
-    url: `/exam-posts/written/?page=${page}`,
+export const examPostApi = async (pageParam) => {
+  const result = await instance({
+    url: `/exam-posts/written/?page=${pageParam}`,
     method: 'GET',
   });
+  return {
+    data: result,
+    isLast: result.data.length < 10,
+    nextPage: pageParam + 1,
+  };
 };
 
 //강의평가수정 api 미완
@@ -468,15 +478,7 @@ export const examWriteApi = (
 };
 
 //시험정보수정 api 미완
-export const examUpdateApi = (
-  setData,
-  semester,
-  examInfo,
-  examType,
-  examDifficulty,
-  content,
-  id
-) => {
+export const examUpdateApi = (semester, examInfo, examType, examDifficulty, content, id) => {
   const data = {
     selectedSemester: semester,
     examInfo,

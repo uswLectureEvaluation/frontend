@@ -3,6 +3,8 @@ import { evaluateUpdateApi } from '../../api/Api';
 import * as Styled from './styled';
 import RangeInput from '../RangeInput';
 import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
+import { useMutation } from 'react-query';
+import { queryClient } from '../..';
 
 const useSlider = (defaultState) => {
   const [state, setSlide] = useState(defaultState);
@@ -11,15 +13,35 @@ const useSlider = (defaultState) => {
   return [state, Slider, setSlide];
 };
 
-const EditEvaluation = (props) => {
-  const [content, setContent] = useState(`${props.content}`);
+const EditEvaluation = ({ setModalIsOpen, row }) => {
+  const [content, setContent] = useState(`${row.content}`);
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
+  const evaluateUpdate = useMutation(
+    () =>
+      evaluateUpdateApi(
+        semester,
+        Number(satisfaction),
+        Number(learning),
+        Number(honey),
+        Number(team),
+        Number(difficulty),
+        Number(homework),
+        content,
+        row.id
+      ),
+    {
+      onSuccess: () => {
+        alert('수정 완료');
+        queryClient.invalidateQueries(['myInfo', 'myEvaluation']);
+      },
+    }
+  );
 
-  const [honey, HoneySlider] = useSlider(props.honey);
-  const [learning, LearingSlider] = useSlider(props.learning);
-  const [satisfaction, SatisfactionSlider] = useSlider(props.satisfaction);
+  const [honey, HoneySlider] = useSlider(row.honey);
+  const [learning, LearingSlider] = useSlider(row.learning);
+  const [satisfaction, SatisfactionSlider] = useSlider(row.satisfaction);
   const onEvaluate = () => {
     if (semester === '' || semester === '선택') return alert('학기를 선택해주세요');
     if (honey < 0.5 || honey === undefined) return alert('꿀강지수는 0.5점부터 선택 가능합니다');
@@ -32,27 +54,13 @@ const EditEvaluation = (props) => {
     if (difficulty === '') return alert('학점(란)을 선택해주세요');
     if (content.length < 30 || content.length > 1000)
       return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
-
-    evaluateUpdateApi(
-      semester,
-      Number(satisfaction),
-      Number(learning),
-      Number(honey),
-      Number(team),
-      Number(difficulty),
-      Number(homework),
-      content,
-      props.id
-    ).then(() => {
-      alert('수정 완료');
-      props.setRefresh(true);
-    });
-    props.setModalIsOpen(false);
+    evaluateUpdate.mutate();
+    setModalIsOpen(false);
   };
-  const [semester, setSemester] = useState(`${props.semester}`); //학기
-  const [team, setTeam] = useState(`${props.team}`); //조모임
-  const [homework, setHomework] = useState(`${props.homework}`); //과제
-  const [difficulty, setDifficulty] = useState(`${props.difficulty}`); //학점
+  const [semester, setSemester] = useState(`${row.selectedSemester}`); //학기
+  const [team, setTeam] = useState(`${row.team}`); //조모임
+  const [homework, setHomework] = useState(`${row.homework}`); //과제
+  const [difficulty, setDifficulty] = useState(`${row.difficulty}`); //학점
 
   const teamChange = (e) => {
     setTeam(e.target.value);
@@ -64,15 +72,15 @@ const EditEvaluation = (props) => {
     setDifficulty(e.target.value);
   };
   const options = ['선택'];
-  const optionsValue = options.concat(props.semesterList.split(', '));
+  const optionsValue = options.concat(row.semesterList.split(', '));
 
   return (
     <Styled.Wrapper>
       <Styled.TitleWrapper>
-        <Styled.Title>{props.lectureName}</Styled.Title>
+        <Styled.Title>{row.lectureName}</Styled.Title>
         <Styled.TitleButton
           onClick={() => {
-            props.setModalIsOpen(false);
+            setModalIsOpen(false);
           }}
         >
           X
@@ -84,7 +92,7 @@ const EditEvaluation = (props) => {
           <Styled.ContentTitle>수강학기</Styled.ContentTitle>
           <SemesterSelect
             id="semester"
-            defaultValue={`${props.semester}`}
+            defaultValue={`${row.selectedSemester}`}
             onChange={(e) => {
               setSemester(e);
             }}
@@ -100,7 +108,7 @@ const EditEvaluation = (props) => {
           <Styled.ContentTitle id="mobile">수강학기</Styled.ContentTitle>
           <SemesterSelect
             id="semester"
-            defaultValue={`${props.semester}`}
+            defaultValue={`${row.selectedSemester}`}
             onChange={(e) => {
               setSemester(e);
             }}
@@ -228,7 +236,7 @@ const EditEvaluation = (props) => {
           </label>
         </Styled.Content>
       </Styled.ContentWrapper>
-      <Styled.TextField defaultValue={props.content} onChange={onChangeContent} rows="15" />
+      <Styled.TextField defaultValue={row.content} onChange={onChangeContent} rows="15" />
       <Styled.Wrapper id="button">
         <Styled.EditButton onClick={onEvaluate}>수정하기</Styled.EditButton>
       </Styled.Wrapper>

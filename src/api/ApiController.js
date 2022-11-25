@@ -65,11 +65,8 @@ instance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
     if (
-      (error.response.status === 400 &&
-        originalRequest.url.includes('exam-posts/purchase/?lectureId')) ||
-      originalRequest.url.includes('exam-posts/?examIdx') ||
-      (originalRequest.url.includes('evaluate-posts/?evaluateIdx') &&
-        originalRequest.method === 'delete')
+      error.response.status === 400 &&
+      originalRequest.url.includes('exam-posts/purchase/?lectureId')
     ) {
       alert('포인트가 부족해요.');
       window.location.reload();

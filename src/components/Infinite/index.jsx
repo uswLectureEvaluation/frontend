@@ -34,6 +34,7 @@ const Infinite = ({ setCount }) => {
   }, [inView, fetchNextPage]);
 
   const count = data?.pages[0].data.count;
+
   useEffect(() => {
     setCount(count);
   }, [count, setCount]);

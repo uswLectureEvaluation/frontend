@@ -2,12 +2,9 @@ import { useState } from 'react';
 import Myevaluation from '../../components/MyEvaluation';
 import Testinformation from '../../components/MyTestInfo';
 import * as Styled from './styled';
-import { useLocation } from 'react-router-dom';
 
 const MyPosting = () => {
   const [evaluation, setEvaluation] = useState(true);
-  const location = useLocation();
-  const { props } = location.state;
 
   return (
     <Styled.FlexContainer>
@@ -28,7 +25,7 @@ const MyPosting = () => {
         >
           시험정보
         </Styled.TextLink>
-        {evaluation ? <Myevaluation props={props} /> : <Testinformation props={props} />}
+        {evaluation ? <Myevaluation /> : <Testinformation />}
       </Styled.FlexBox>
     </Styled.FlexContainer>
   );
