@@ -15,6 +15,9 @@ export const Wrapper = styled.div`
 
   &#top {
     display: flex;
+    @media screen and (max-width: 550px) {
+      flex-direction: column;
+    }
   }
 `;
 export const Container = styled.div`
@@ -136,14 +139,22 @@ export const Button = styled.button`
   border-radius: 12px;
   cursor: pointer;
   user-select: none;
+  &#mobile {
+    display: none;
+  }
   @media only screen and (max-width: 960px) {
     font-size: 1.3rem;
   }
-
   @media only screen and (max-width: 550px) {
     margin: 10px 0;
     width: 100%;
     height: 48px;
+    &#mobile {
+      display: block;
+    }
+    &#pc {
+      display: none;
+    }
   }
 `;
 

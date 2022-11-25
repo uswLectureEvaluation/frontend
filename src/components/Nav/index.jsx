@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { queryClient } from '../..';
 import { logoutApi } from '../../api/Api';
 import * as Styled from './styled';
 
@@ -7,7 +8,6 @@ const Nav = () => {
   let navigate = useNavigate();
   const [button, setButton] = useState(true);
   const [click, setClick] = useState(false);
-  const [logout, setLogout] = useState(false);
 
   const showButton = () => (window.innerWidth <= 960 ? setButton(false) : setButton(true));
   const handleClick = () => setClick(!click);
@@ -17,13 +17,15 @@ const Nav = () => {
     localStorage.removeItem('AccessToken');
     sessionStorage.removeItem('AccessToken');
     sessionStorage.removeItem('login');
-    logoutApi().then((data) => setLogout(data.Success));
+    logoutApi().then(async (data) => {
+      if (data.Success === true) {
+        navigate('/');
+        setTimeout(() => {
+          queryClient.invalidateQueries({ queryKey: ['myInfo'] });
+        }, 300);
+      }
+    });
   };
-  useEffect(() => {
-    if (logout) {
-      window.location.href = '/';
-    }
-  }, [logout]);
 
   window.addEventListener('resize', showButton);
 

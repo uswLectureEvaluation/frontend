@@ -31,6 +31,9 @@ const Container = styled.div`
   &#notice {
     height: 50vh;
   }
+  &#myInfo {
+    height: 80vh;
+  }
 `;
 
 const Loader = styled.div`
