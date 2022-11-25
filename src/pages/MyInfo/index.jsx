@@ -59,7 +59,7 @@ const MyInfo = () => {
   let user = data;
 
   if (isLoading) return <Spinner id="myInfo" />;
-  return !isLogin ? (
+  return !(localStorage.getItem('login') || sessionStorage.getItem('login')) ? (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Styled.FlexContainer id="col">
         <Button color="#336af8" onClick={() => navigate('/login')}>
