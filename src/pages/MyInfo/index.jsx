@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 import Spinner from '../../components/Spinner';
 import { Button } from '../../components';
 
-export const isLogin =
+export let isLogin =
   localStorage.getItem('login') || sessionStorage.getItem('login') ? true : false;
 
 const MyInfo = () => {
