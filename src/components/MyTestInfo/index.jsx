@@ -6,7 +6,6 @@ import Modal from 'react-modal';
 import ModalStyle from '../ModalStyle';
 import { useInView } from 'react-intersection-observer';
 import { useInfiniteQuery, useMutation } from 'react-query';
-import { isLogin } from '../../pages/MyInfo';
 import Spinner from '../Spinner';
 import { queryClient } from '../..';
 
@@ -20,7 +19,7 @@ const Testinformation = () => {
         if (!lastPage.isLast) return lastPage.nextPage;
         return undefined;
       },
-      enabled: isLogin,
+      enabled: (localStorage.getItem('login') || sessionStorage.getItem('login')) === 'true',
       cacheTime: 1000 * 60 * 30,
       staleTime: 1000 * 60 * 30,
     }

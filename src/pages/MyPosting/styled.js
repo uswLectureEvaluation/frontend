@@ -3,6 +3,12 @@ import styled from 'styled-components';
 export const FlexContainer = styled.div`
   display: flex;
   justify-content: center;
+  &#col {
+    width: 35%;
+    @media screen and (max-width: 550px) {
+      width: 90%;
+    }
+
 `;
 export const FlexBox = styled.div`
   width: 900px;

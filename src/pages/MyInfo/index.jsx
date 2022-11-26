@@ -5,9 +5,6 @@ import { useQuery } from 'react-query';
 import Spinner from '../../components/Spinner';
 import { Button } from '../../components';
 
-export let isLogin =
-  localStorage.getItem('login') || sessionStorage.getItem('login') ? true : false;
-
 const MyInfo = () => {
   const navigate = useNavigate();
   const option = [
@@ -52,7 +49,7 @@ const MyInfo = () => {
   ];
 
   const { data, isLoading } = useQuery(['myInfo'], myInfoApi, {
-    enabled: isLogin,
+    enabled: (localStorage.getItem('login') || sessionStorage.getItem('login')) === 'true',
     cacheTime: 1000 * 60 * 30,
     staleTime: 1000 * 60 * 30,
   });

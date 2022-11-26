@@ -9,7 +9,6 @@ import { useInfiniteQuery, useMutation } from 'react-query';
 import Spinner from '../Spinner';
 import { useInView } from 'react-intersection-observer';
 import { queryClient } from '../..';
-import { isLogin } from '../../pages/MyInfo';
 
 export const DetailModal = (props) => {
   const teamSet = props.team;
@@ -72,7 +71,7 @@ const Myevaluation = () => {
         if (!lastPage.isLast) return lastPage.nextPage;
         return undefined;
       },
-      enabled: isLogin,
+      enabled: (localStorage.getItem('login') || sessionStorage.getItem('login')) === 'true',
       cacheTime: 1000 * 60 * 30,
       staleTime: 1000 * 60 * 30,
     }
