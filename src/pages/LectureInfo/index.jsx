@@ -4,15 +4,15 @@ import SearchEvaluationList from '../../components/SearchEvaluationList';
 import TestInfo from '../../components/TestInfo';
 import WriteEvaluation from '../../components/WriteEvaluation';
 import { searchLectureApi } from '../../api/Api';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Modal from 'react-modal';
 import WriteExam from '../../components/WriteExam';
 import ModalStyle from '../../components/ModalStyle';
 import { Button } from '../../components';
 
 const LectureInfo = () => {
-  const selectId = useSelector((state) => state.selectId.value);
+  const [searchparams] = useSearchParams();
+  const selectId = searchparams.get('id');
   let navigate = useNavigate();
   const [check, setCheck] = useState('강의평가');
   const [search, setSearch] = useState('');

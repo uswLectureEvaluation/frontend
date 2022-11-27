@@ -1,9 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import styled from 'styled-components';
-import { selectIdState } from '../features/selectIdSlice';
 import { Color } from '../GlobalStyle';
 
 export const Detail = (props) => {
@@ -40,7 +38,6 @@ const Subject = ({ row }) => {
   const [modal, setModal] = useState(false);
 
   let navigate = useNavigate();
-  const dispatch = useDispatch();
 
   let title = row.lectureName;
 
@@ -49,8 +46,7 @@ const Subject = ({ row }) => {
   }
 
   const onClick = (id) => {
-    dispatch(selectIdState(id));
-    navigate('/lectureinfo');
+    navigate(`/lectureinfo?id=${id}`);
   };
 
   return (
