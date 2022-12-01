@@ -10,6 +10,7 @@ import { initialize } from 'react-ga';
 import './index.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { RecoilRoot } from 'recoil';
 initialize('UA-74092126-2');
 
 export const queryClient = new QueryClient({
@@ -30,12 +31,14 @@ axios.defaults.withCredentials = true;
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <App />
-        </PersistGate>
-      </Provider>
-      <ReactQueryDevtools />
+      <RecoilRoot>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <App />
+          </PersistGate>
+        </Provider>
+        <ReactQueryDevtools />
+      </RecoilRoot>
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')

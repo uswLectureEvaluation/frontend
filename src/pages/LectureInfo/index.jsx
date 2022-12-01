@@ -3,7 +3,6 @@ import * as Styled from './styled';
 import SearchEvaluationList from '../../components/SearchEvaluationList';
 import TestInfo from '../../components/TestInfo';
 import WriteEvaluation from '../../components/WriteEvaluation';
-import { searchLectureApi } from '../../api/Api';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Modal from 'react-modal';
 import WriteExam from '../../components/WriteExam';
@@ -20,10 +19,6 @@ const LectureInfo = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [searchparams] = useSearchParams();
   const selectId = searchparams.get('id');
-  const [db, setDB] = useState({
-    data: [],
-  });
-  const current = db.data;
   const menu = [
     { name: '강의평가', option: '강의평가' },
     { name: '시험정보', option: '시험정보' },
@@ -61,9 +56,6 @@ const LectureInfo = () => {
       }
     }
   };
-  useEffect(() => {
-    searchLectureApi(selectId).then((data) => setDB(data));
-  }, [selectId]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -87,7 +79,9 @@ const LectureInfo = () => {
         </Styled.FlexContainer>
       ) : (
         <Styled.Wrapper>
+          {/* 강의 정보 세부 */}
           <LectureDetail />
+          {/* 강의 평가 / 시험 정보 리스트 */}
           <Styled.Content>
             <Styled.TitleWrapper id="top">
               <Styled.TitleWrapper id="bottom">{menuList}</Styled.TitleWrapper>
@@ -105,26 +99,13 @@ const LectureInfo = () => {
       <Modal
         isOpen={modalIsOpen}
         style={ModalStyle}
-        // 오버레이나 esc를 누르면 핸들러 동작
         ariaHideApp={false}
         onRequestClose={() => setModalIsOpen(false)}
       >
         {menuCheck === 0 ? (
-          <WriteEvaluation
-            selectId={selectId}
-            lectureName={current.lectureName}
-            professor={current.professor}
-            semesterList={current.semesterList}
-            setModalIsOpen={setModalIsOpen}
-          />
+          <WriteEvaluation setModalIsOpen={setModalIsOpen} />
         ) : (
-          <WriteExam
-            selectId={selectId}
-            lectureName={current.lectureName}
-            professor={current.professor}
-            semesterList={current.semesterList}
-            setModalIsOpen={setModalIsOpen}
-          />
+          <WriteExam setModalIsOpen={setModalIsOpen} />
         )}
       </Modal>
     </Styled.Container>

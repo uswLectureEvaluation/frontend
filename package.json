@@ -21,6 +21,7 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-star-ratings": "^2.3.0",
+    "recoil": "^0.7.6",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.3",

@@ -1,14 +1,28 @@
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { searchLectureApi } from '../../api/Api';
+import { lectureState } from '../../app/recoilStore';
 import Spinner from '../Spinner';
 
 const LectureDetail = () => {
   const [searchparams] = useSearchParams();
   const selectId = searchparams.get('id');
-  const { data: lecture, isLoading } = useQuery(['lectureDetail', selectId], () =>
-    searchLectureApi(selectId)
+  const setLectureInfo = useSetRecoilState(lectureState);
+  const { data: lecture, isLoading } = useQuery(
+    ['lectureDetail', selectId],
+    () => searchLectureApi(selectId),
+    {
+      onSuccess: (lecture) => {
+        setLectureInfo({
+          selectId: selectId,
+          lectureName: lecture.data.lectureName,
+          professor: lecture.data.professor,
+          semesterList: lecture.data.semesterList,
+        });
+      },
+    }
   );
   const floatFix = (num, size) => {
     return parseFloat(num).toFixed(size);
@@ -39,7 +53,6 @@ const LectureDetail = () => {
     1: <DataColor id="black">보통</DataColor>,
     2: <DataColor id="purple">까다로움</DataColor>,
   };
-
   return (
     <Content id="top">
       <TitleWrapper id="top">

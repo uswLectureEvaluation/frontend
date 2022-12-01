@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import { examWriteApi } from '../../api/Api';
+import { lectureState } from '../../app/recoilStore';
 import { SemesterSelect, Soption, StyledOption } from '../../pages/Main/styled';
 import * as Styled from './styled';
 
-const WriteExam = (props) => {
+const WriteExam = ({ setModalIsOpen }) => {
+  const current = useRecoilValue(lectureState);
   const [semester, setSemester] = useState(''); //학기
   const [examType, setExamType] = useState(''); //중간,기말
   const [examDifficulty, setDifficulty] = useState(``); //난이도
@@ -33,29 +36,29 @@ const WriteExam = (props) => {
       return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
 
     examWriteApi(
-      props.selectId,
-      props.lectureName,
-      props.professor,
+      current.selectId,
+      current.lectureName,
+      current.professor,
       semester,
       examInfo,
       examType,
       examDifficulty,
       content
     );
-    props.setModalIsOpen(false);
+    setModalIsOpen(false);
   };
 
   const options = ['선택'];
-  const optionsValue = options.concat(props.semesterList.split(', '));
+  const optionsValue = options.concat(current.semesterList.split(', '));
   const examTypeOptions = ['선택', '중간고사', '기말고사', '쪽지', '기타'];
 
   return (
     <Styled.Wrapper>
       <Styled.TitleWrapper>
-        <Styled.Title>{props.lectureName}</Styled.Title>
+        <Styled.Title>{current.lectureName}</Styled.Title>
         <Styled.TitleButton
           onClick={() => {
-            props.setModalIsOpen(false);
+            setModalIsOpen(false);
           }}
         >
           X

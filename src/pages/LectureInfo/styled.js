@@ -8,17 +8,6 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 `;
-export const DataColor = styled.div`
-  &#black {
-    color: black;
-  }
-  &#cyan {
-    color: #336af8;
-  }
-  &#purple {
-    color: #6200ee;
-  }
-`;
 
 export const Container = styled.div`
   display: flex;
@@ -90,11 +79,6 @@ export const Content = styled.div`
   }
 `;
 
-export const Color = styled.div`
-  display: flex;
-  font-size: 16px;
-`;
-
 export const TitleWrapper = styled.div`
   display: flex;
   margin-bottom: 0.5rem;
@@ -108,25 +92,10 @@ export const TitleWrapper = styled.div`
     margin-top: 1rem;
   }
 `;
-export const SubWrapper = styled.div`
-  display: flex;
-  margin-bottom: 0.5rem;
-  align-items: flex-start;
-  justify-content: flex-start;
-`;
 
 export const Wrapper = styled.div`
   width: 100%;
   margin: 0 auto;
-`;
-
-export const Title = styled.div`
-  display: flex;
-  font-size: 18px;
-  text-align: center;
-  &#sub {
-    font-size: 1.5rem;
-  }
 `;
 
 export const MenuTitle = styled.li`
@@ -146,53 +115,9 @@ export const MenuTitle = styled.li`
   }
 `;
 
-export const Professor = styled.div`
-  display: flex;
-  color: #222;
-  font-family: 'Pretendard-Regular';
-  font-size: 14px;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-`;
-
-export const Option = styled.div`
-  border-radius: 12px;
-  background-color: #eeeeee;
-  text-align: center;
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  padding: 4.5px 12px;
-  font-size: 14px;
-  font-family: 'Pretendard-Regular';
-  &#type {
-    height: 25px;
-    margin-top: 0px;
-    font-family: 'Pretendard-Medium';
-  }
-  &#semester {
-    margin-right: 8px;
-  }
-`;
-
 export const Writing = styled.img`
   &:hover {
     cursor: pointer;
-  }
-`;
-
-export const OptionTitle = styled.div`
-  display: flex;
-  color: #222222;
-  align-items: flex-end;
-  margin-left: 5px;
-  width: 80px;
-  font-size: 14px;
-  font-family: 'Pretendard-Regular';
-  @media screen and (max-width: 550px) {
-    width: 100%;
   }
 `;
 
@@ -207,11 +132,4 @@ export const FlexContainer = styled.div`
   @media screen and (max-width: 550px) {
     width: 100%;
   }
-`;
-
-export const WidthContainer = styled.div`
-  align-items: flex-end;
-  display: flex;
-  margin: 10px;
-  margin-left: 0px;
 `;

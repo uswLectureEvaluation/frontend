@@ -3,6 +3,8 @@ import { evaluateWriteApi } from '../../api/Api';
 import * as Styled from './styled';
 import RangeInput from '../RangeInput';
 import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
+import { useRecoilValue } from 'recoil';
+import { lectureState } from '../../app/recoilStore';
 
 const useSlider = (defaultState) => {
   const [state, setSlide] = useState(defaultState);
@@ -12,8 +14,9 @@ const useSlider = (defaultState) => {
   return [state, Slider, setSlide];
 };
 
-const WriteEvaluation = (props) => {
+const WriteEvaluation = ({ setModalIsOpen }) => {
   const [content, setContent] = useState('');
+  const current = useRecoilValue(lectureState);
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
@@ -34,9 +37,9 @@ const WriteEvaluation = (props) => {
       return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
 
     evaluateWriteApi(
-      props.selectId,
-      props.lectureName,
-      props.professor,
+      current.selectId,
+      current.lectureName,
+      current.professor,
       semester,
       Number(satisfaction),
       Number(learning),
@@ -46,7 +49,7 @@ const WriteEvaluation = (props) => {
       Number(homework),
       content
     );
-    props.setModalIsOpen(false);
+    setModalIsOpen(false);
   };
 
   const [semester, setSemester] = useState(''); //학기
@@ -63,15 +66,15 @@ const WriteEvaluation = (props) => {
     setDifficulty(e.target.value);
   };
   const options = ['선택'];
-  const optionsValue = options.concat(props.semesterList.split(', '));
+  const optionsValue = options.concat(current.semesterList.split(', '));
 
   return (
     <Styled.Wrapper>
       <Styled.TitleWrapper>
-        <Styled.Title>{props.lectureName}</Styled.Title>
+        <Styled.Title>{current.lectureName}</Styled.Title>
         <Styled.TitleButton
           onClick={() => {
-            props.setModalIsOpen(false);
+            setModalIsOpen(false);
           }}
         >
           X
