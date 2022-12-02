@@ -46,7 +46,7 @@ const TestInfo = ({ selectId, setWritten }) => {
   } else if (db.data.length === 0 && db.examDataExist === false) {
     return <NoTestInfo />;
   } else {
-    return <SearchTestList db={selectId} />;
+    return <SearchTestList selectId={selectId} />;
   }
 };
 export default TestInfo;

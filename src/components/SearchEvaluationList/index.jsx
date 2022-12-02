@@ -1,12 +1,17 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import * as Styled from './styled';
 import StarRatings from 'react-star-ratings';
 import { evaluateReportApi, searchEvaluationApi } from '../../api/Api';
+import { useInfiniteQuery } from 'react-query';
+import Spinner from '../Spinner';
+import { useRecoilValue } from 'recoil';
+import { lectureState } from '../../app/recoilStore';
 
-export const DetailModal = (props) => {
-  const teamSet = props.team;
-  const homeworkSet = props.homework;
-  const difficultySet = props.difficulty;
+export const DetailModal = ({ lecture }) => {
+  const teamSet = lecture.team;
+  const homeworkSet = lecture.homework;
+  const difficultySet = lecture.difficulty;
   const team = {
     0: <Styled.DataColor id="cyan">없음</Styled.DataColor>,
     1: <Styled.DataColor id="purple">있음</Styled.DataColor>,
@@ -29,7 +34,7 @@ export const DetailModal = (props) => {
           <Styled.StarFlex id="between">
             만족도
             <Styled.PaddingRight />
-            <Styled.Rate id="modal">{props.satisfaction.toFixed(1)}</Styled.Rate>
+            <Styled.Rate id="modal">{lecture.satisfaction.toFixed(1)}</Styled.Rate>
           </Styled.StarFlex>
           <Styled.StarFlex id="between">조모임 {team[teamSet]}</Styled.StarFlex>
         </Styled.FlexContainer>
@@ -37,7 +42,7 @@ export const DetailModal = (props) => {
           <Styled.StarFlex id="between">
             꿀강 지수
             <Styled.PaddingRight />
-            <Styled.Rate id="modal">{props.honey.toFixed(1)}</Styled.Rate>
+            <Styled.Rate id="modal">{lecture.honey.toFixed(1)}</Styled.Rate>
           </Styled.StarFlex>
           <Styled.StarFlex id="between">과제 {homework[homeworkSet]}</Styled.StarFlex>
         </Styled.FlexContainer>
@@ -45,7 +50,7 @@ export const DetailModal = (props) => {
           <Styled.StarFlex id="between">
             배움 지수
             <Styled.PaddingRight />
-            <Styled.Rate id="modal">{props.learning.toFixed(1)}</Styled.Rate>
+            <Styled.Rate id="modal">{lecture.learning.toFixed(1)}</Styled.Rate>
           </Styled.StarFlex>
           <Styled.StarFlex id="between">학점 {difficulty[difficultySet]}</Styled.StarFlex>
         </Styled.FlexContainer>
@@ -55,86 +60,54 @@ export const DetailModal = (props) => {
 };
 
 const SearchEvaluationList = ({ selectId, setWritten }) => {
-  const [list, setList] = useState([]);
-  const [page, setPage] = useState(1);
-  const [load, setLoad] = useState(1);
-  const preventRef = useRef(true);
-  const obsRef = useRef(null);
-
-  const getDog = useCallback(async () => {
-    const res = await searchEvaluationApi(selectId, page);
-    setLoad(true); //로딩 시작
-    if (res.data) {
-      //window.scroll(0,document.documentElement.scrollTop);
-
-      setList((prev) => [...prev, ...res.data]);
-      setWritten(res.written);
-      preventRef.current = true;
+  const lectureInfo = useRecoilValue(lectureState);
+  const { ref, inView } = useInView();
+  const { data, isFetchingNextPage, isLoading, fetchNextPage } = useInfiniteQuery(
+    ['lectureEvaluationList', selectId],
+    ({ pageParam = 1 }) => searchEvaluationApi(selectId, pageParam),
+    {
+      getNextPageParam: (lastPage) => {
+        if (!lastPage.isLast) return lastPage.nextPage;
+        return undefined;
+      },
+      onSuccess: (data) => setWritten(data.pages[0].data.written),
+      cacheTime: 1000 * 60 * 10,
+      staleTime: 1000 * 60 * 10,
+      enabled: selectId === lectureInfo?.selectId,
     }
-    setLoad(false); //로딩 시작
-  }, [page, selectId, setWritten]);
+  );
 
   useEffect(() => {
-    const observer = new IntersectionObserver(obsHandler, { threshold: 1 });
-    if (obsRef.current) observer.observe(obsRef.current);
-    return () => {
-      observer.disconnect();
-    };
-    // eslint-disable-next-line no-use-before-define
-  }, []);
-
-  useEffect(() => {
-    getDog();
-    // eslint-disable-next-line no-use-before-define
-  }, [getDog, page]);
-
-  const obsHandler = (entries) => {
-    const target = entries[0];
-    if (target.isIntersecting && preventRef.current) {
-      preventRef.current = false;
-      setPage((prev) => prev + 1);
+    if (inView) {
+      fetchNextPage();
     }
-  };
+  }, [inView, fetchNextPage]);
 
-  return list.length !== 0 ? (
+  if (isLoading) return <></>;
+  const pages = data?.pages;
+  const count = data?.pages[0].data.data.length;
+
+  return count !== 0 ? (
     <Styled.Wrapper>
-      {list &&
-        list.map((v) => (
-          <Subject
-            key={Math.random()}
-            semester={v.selectedSemester}
-            totalAvg={v.totalAvg}
-            content={v.content}
-            satisfaction={v.satisfaction}
-            learning={v.learning}
-            honey={v.honey}
-            team={v.team}
-            difficulty={v.difficulty}
-            homework={v.homework}
-            id={v.id}
-          />
-        ))}
-      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-      <div ref={obsRef} style={{ width: '0%', opacity: '0' }}>
-        옵저버 Element
+      {pages?.map((page) =>
+        page.data.data.map((lecture) => <Subject key={Math.random()} lecture={lecture} />)
+      )}
+      <div ref={ref} style={{ marginBottom: '10px' }}>
+        {isFetchingNextPage ? <Spinner id="nextPage" /> : null}
       </div>
     </Styled.Wrapper>
   ) : (
     <Styled.Wrapper>
       <Styled.Content>등록된 강의평가가 없어요</Styled.Content>
-      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-      <div ref={obsRef} style={{ width: '0%', opacity: '0' }}>
-        옵저버 Element
-      </div>
     </Styled.Wrapper>
   );
 };
 
-export const Subject = (props) => {
+export const Subject = ({ lecture }) => {
   const [modal, setModal] = useState(false);
   const onReport = () => {
     if (window.confirm('정말 신고하시겠어요? \n*허위 신고 시 제재가 가해질 수 있습니다!'))
-      evaluateReportApi(props.id).then(() => alert('신고 완료'));
+      evaluateReportApi(lecture.id).then(() => alert('신고 완료'));
   };
 
   return (
@@ -142,11 +115,11 @@ export const Subject = (props) => {
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
           <Styled.TitleWrapper>
-            <Styled.YearText>{props.semester}</Styled.YearText>
+            <Styled.YearText>{lecture.selectedSemester}</Styled.YearText>
           </Styled.TitleWrapper>
           <Styled.EditButton onClick={onReport}>신고</Styled.EditButton>
           <StarRatings
-            rating={props.totalAvg}
+            rating={lecture.totalAvg}
             starRatedColor="#336af8"
             numberOfStars={5}
             name="rating"
@@ -155,7 +128,7 @@ export const Subject = (props) => {
             svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
             svgIconViewBox="0 0 24 24"
           />
-          <Styled.Rate>{props.totalAvg.toFixed(1)}</Styled.Rate>
+          <Styled.Rate>{lecture.totalAvg.toFixed(1)}</Styled.Rate>
           <Styled.ModalOpen
             onClick={() => {
               setModal(!modal);
@@ -167,13 +140,13 @@ export const Subject = (props) => {
         <Styled.MobileWrapper>
           <div style={{ marginBottom: '15px' }}>
             <Styled.TitleWrapper>
-              <Styled.YearText>{props.semester}</Styled.YearText>
+              <Styled.YearText>{lecture.selectedSemester}</Styled.YearText>
             </Styled.TitleWrapper>
             <Styled.EditButton onClick={onReport}>신고</Styled.EditButton>
           </div>
           <div>
             <StarRatings
-              rating={props.totalAvg}
+              rating={lecture.totalAvg}
               starRatedColor="#336af8"
               numberOfStars={5}
               name="rating"
@@ -182,7 +155,7 @@ export const Subject = (props) => {
               svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
               svgIconViewBox="0 0 24 24"
             />
-            <Styled.Rate>{props.totalAvg.toFixed(1)}</Styled.Rate>
+            <Styled.Rate>{lecture.totalAvg.toFixed(1)}</Styled.Rate>
             <Styled.ModalOpen
               onClick={() => {
                 setModal(!modal);
@@ -194,19 +167,10 @@ export const Subject = (props) => {
         </Styled.MobileWrapper>
 
         <div style={{ marginBottom: '5px' }} />
-        {modal === true ? (
-          <DetailModal
-            satisfaction={props.satisfaction}
-            honey={props.honey}
-            learning={props.learning}
-            team={props.team}
-            homework={props.homework}
-            difficulty={props.difficulty}
-          />
-        ) : null}
+        {modal === true ? <DetailModal lecture={lecture} /> : null}
         <Styled.MarginTop id="bottom">
           <Styled.EvaluationDetail>
-            {props.content.split('\n').map((value, index) => {
+            {lecture.content.split('\n').map((value, index) => {
               return (
                 <div key={index}>
                   {value}

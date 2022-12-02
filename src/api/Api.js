@@ -536,11 +536,16 @@ export const searchLectureApi = (selectId) => {
 };
 
 // 검색 결과 자세히보기 (Evaluation)
-export const searchEvaluationApi = (selectId, page) => {
-  return instance({
-    url: `/evaluate-posts/?lectureId=${selectId}&page=${page}`,
+export const searchEvaluationApi = async (selectId, pageParam) => {
+  const result = await instance({
+    url: `/evaluate-posts/?lectureId=${selectId}&page=${pageParam}`,
     method: 'GET',
   });
+  return {
+    data: result,
+    isLast: result.data.length < 10,
+    nextPage: pageParam + 1,
+  };
 };
 
 // 검색 결과 자세히보기 (Exam)

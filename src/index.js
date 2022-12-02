@@ -1,11 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { persistStore } from 'redux-persist';
-import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
-import { store } from './app/store';
 import { initialize } from 'react-ga';
 import './index.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -22,7 +18,6 @@ export const queryClient = new QueryClient({
     },
   },
 });
-let persistor = persistStore(store);
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 axios.defaults.baseURL = PROXY_URL;
@@ -32,11 +27,7 @@ ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            <App />
-          </PersistGate>
-        </Provider>
+        <App />
         <ReactQueryDevtools />
       </RecoilRoot>
     </QueryClientProvider>

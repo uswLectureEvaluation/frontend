@@ -5,6 +5,8 @@ import RangeInput from '../RangeInput';
 import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from '../../app/recoilStore';
+import { useMutation } from 'react-query';
+import { queryClient } from '../..';
 
 const useSlider = (defaultState) => {
   const [state, setSlide] = useState(defaultState);
@@ -17,12 +19,43 @@ const useSlider = (defaultState) => {
 const WriteEvaluation = ({ setModalIsOpen }) => {
   const [content, setContent] = useState('');
   const current = useRecoilValue(lectureState);
-  const onChangeContent = (e) => {
-    setContent(e.target.value);
-  };
   const [honey, HoneySlider] = useSlider(0.5);
   const [learning, LearingSlider] = useSlider(0.5);
   const [satisfaction, SatisfactionSlider] = useSlider(0.5);
+  const [semester, setSemester] = useState(''); //학기
+  const [team, setTeam] = useState(``); //조모임
+  const [homework, setHomework] = useState(``); //과제
+  const [difficulty, setDifficulty] = useState(``); //학점
+
+  const evaluateWriting = useMutation(
+    () =>
+      evaluateWriteApi(
+        current.selectId,
+        current.lectureName,
+        current.professor,
+        semester,
+        Number(satisfaction),
+        Number(learning),
+        Number(honey),
+        Number(team),
+        Number(difficulty),
+        Number(homework),
+        content
+      ),
+    {
+      onSuccess: () => {
+        alert('작성 완료');
+        queryClient.invalidateQueries(['lectureEvaluationList', current.selectId]);
+        queryClient.invalidateQueries(['lectureDetail', current.selectId]);
+        queryClient.invalidateQueries(['myInfo']);
+      },
+    }
+  );
+
+  const onChangeContent = (e) => {
+    setContent(e.target.value);
+  };
+
   const onEvaluate = () => {
     if (semester === '' || semester === '선택') return alert('학기를 선택해주세요');
     if (honey < 0.5 || honey === undefined) return alert('꿀강지수는 0.5점부터 선택 가능합니다');
@@ -36,26 +69,9 @@ const WriteEvaluation = ({ setModalIsOpen }) => {
     if (content.length < 30 || content.length > 1000)
       return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
 
-    evaluateWriteApi(
-      current.selectId,
-      current.lectureName,
-      current.professor,
-      semester,
-      Number(satisfaction),
-      Number(learning),
-      Number(honey),
-      Number(team),
-      Number(difficulty),
-      Number(homework),
-      content
-    );
+    evaluateWriting.mutate();
     setModalIsOpen(false);
   };
-
-  const [semester, setSemester] = useState(''); //학기
-  const [team, setTeam] = useState(``); //조모임
-  const [homework, setHomework] = useState(``); //과제
-  const [difficulty, setDifficulty] = useState(``); //학점
   const teamChange = (e) => {
     setTeam(e.target.value);
   };

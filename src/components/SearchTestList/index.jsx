@@ -2,7 +2,7 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import * as Styled from './styled';
 import { examReportApi, searchExamApi } from '../../api/Api';
 
-const SearchTestList = (props) => {
+const SearchTestList = ({ selectId }) => {
   const [list, setList] = useState([]);
   const [load, setLoad] = useState(1);
   const [page, setPage] = useState(1);
@@ -11,13 +11,13 @@ const SearchTestList = (props) => {
 
   const getDog = useCallback(async () => {
     setLoad(true);
-    const res = await searchExamApi(props.db, page);
+    const res = await searchExamApi(selectId, page);
     if (res.data) {
       setList((prev) => [...prev, ...res.data]);
       preventRef.current = true;
     }
     setLoad(false);
-  }, [page, props.db]);
+  }, [page, selectId]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(obsHandler, { threshold: 0.5 });
