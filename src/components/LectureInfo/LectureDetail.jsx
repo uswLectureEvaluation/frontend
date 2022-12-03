@@ -66,37 +66,37 @@ const LectureDetail = () => {
             </Professor>
           </SubWrapper>
           <TitleWrapper>
-            {current.semesterList &&
-              current.semesterList.split(', ').map((v) => {
-                return (
-                  <Option key={v} id="semester">
-                    {v}
-                  </Option>
-                );
-              })}
+            {current.semesterList.split(', ').map((v) => {
+              return (
+                <Option key={v} id="semester">
+                  {v}
+                </Option>
+              );
+            })}
           </TitleWrapper>
         </div>
         <Option id="type">{current.lectureType}</Option>
       </TitleWrapper>
       <FlexContainer id="col">
         <WidthContainer>
-          <FlexContainer>
+          <FlexContainer id="between">
             <OptionTitle>꿀강지수</OptionTitle>
-            <FlexContainer>
+            <FlexContainer id="score">
               <Color
+                id="score"
                 style={{
                   color: '#336af8',
                   fontWeight: '500',
                 }}
               >
                 {Number(current.lectureHoneyAvg).toFixed(1)}
+                <span style={{ color: '#a3a3a3' }}>/5</span>
               </Color>
-              /5
             </FlexContainer>
           </FlexContainer>
-          <FlexContainer>
+          <FlexContainer id="between">
             <OptionTitle>조모임</OptionTitle>
-            <FlexContainer>
+            <FlexContainer id="score">
               <Color style={{ color: '#6200ee', fontSize: '14px' }}>
                 {current.lectureHoneyAvg !== 0 ? (
                   team[teamSet]
@@ -108,23 +108,24 @@ const LectureDetail = () => {
           </FlexContainer>
         </WidthContainer>
         <WidthContainer>
-          <FlexContainer>
+          <FlexContainer id="between">
             <OptionTitle>배움지수</OptionTitle>
-            <FlexContainer>
+            <FlexContainer id="score">
               <Color
+                id="score"
                 style={{
                   color: '#336af8',
                   fontWeight: '500',
                 }}
               >
                 {Number(current.lectureLearningAvg).toFixed(1)}
+                <span style={{ color: '#a3a3a3' }}>/5</span>
               </Color>
-              /5
             </FlexContainer>
           </FlexContainer>
-          <FlexContainer>
+          <FlexContainer id="between">
             <OptionTitle>과제</OptionTitle>
-            <FlexContainer>
+            <FlexContainer id="score">
               <Color style={{ color: '#6200ee', fontSize: '14px' }}>
                 {current.lectureHoneyAvg !== 0 ? (
                   homework[homeworkSet]
@@ -136,23 +137,24 @@ const LectureDetail = () => {
           </FlexContainer>
         </WidthContainer>
         <WidthContainer>
-          <FlexContainer>
+          <FlexContainer id="between">
             <OptionTitle>만족도</OptionTitle>
-            <FlexContainer>
+            <FlexContainer id="score">
               <Color
+                id="score"
                 style={{
                   color: '#336af8',
                   fontWeight: '500',
                 }}
               >
                 {Number(current.lectureSatisfactionAvg).toFixed(1)}
+                <span style={{ color: '#a3a3a3' }}>/5</span>
               </Color>
-              /5
             </FlexContainer>
           </FlexContainer>
-          <FlexContainer>
+          <FlexContainer id="between">
             <OptionTitle>학점</OptionTitle>
-            <FlexContainer>
+            <FlexContainer id="score">
               <Color style={{ color: '#6200ee', fontSize: '14px' }}>
                 {current.lectureHoneyAvg !== 0 ? (
                   difficulty[difficultySet]
@@ -177,6 +179,9 @@ const Content = styled.div`
   &#top {
     padding: 1rem 2rem;
     border: 1px solid rgb(224, 224, 224);
+    @media screen and (max-width: 550px) {
+      padding: 1rem 1.5rem;
+    }
   }
   &#loading {
     padding: 6rem 2rem;
@@ -188,8 +193,11 @@ const Content = styled.div`
 `;
 
 const Color = styled.div`
-  display: flex;
   font-size: 16px;
+  &#score {
+    width: 60%;
+    text-align: right;
+  }
 `;
 
 const TitleWrapper = styled.div`

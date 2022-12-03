@@ -82,6 +82,7 @@ export const EvaluationDetail = styled.div`
   display: flex;
   flex-direction: column;
   font-family: 'Pretendard-Regular';
+  line-height: 1.3;
   font-size: 1rem;
   padding-top: 0.7rem;
 `;

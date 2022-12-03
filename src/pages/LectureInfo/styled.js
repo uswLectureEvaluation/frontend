@@ -31,7 +31,6 @@ export const SearchWrapper = styled.div`
   width: 100%;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 0;
 `;
 
 export const SearchTitle = styled.div`
