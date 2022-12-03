@@ -1,73 +1,15 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
 import * as Styled from './styled';
-import { examReportApi, searchExamApi } from '../../api/Api';
+import { examReportApi } from '../../api/Api';
 
-const SearchTestList = ({ selectId }) => {
-  const [list, setList] = useState([]);
-  const [load, setLoad] = useState(1);
-  const [page, setPage] = useState(1);
-  const preventRef = useRef(true);
-  const obsRef = useRef(null);
-
-  const getDog = useCallback(async () => {
-    setLoad(true);
-    const res = await searchExamApi(selectId, page);
-    if (res.data) {
-      setList((prev) => [...prev, ...res.data]);
-      preventRef.current = true;
-    }
-    setLoad(false);
-  }, [page, selectId]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(obsHandler, { threshold: 0.5 });
-    if (obsRef.current) observer.observe(obsRef.current);
-    return () => {
-      observer.disconnect();
-    };
-    // eslint-disable-next-line no-use-before-define
-  }, []);
-
-  useEffect(() => {
-    getDog();
-    // eslint-disable-next-line no-use-before-define
-  }, [getDog, page]);
-
-  const obsHandler = (entries) => {
-    const target = entries[0];
-    if (target.isIntersecting && preventRef.current) {
-      preventRef.current = false;
-      setPage((prev) => prev + 1);
-    }
-  };
-
-  return (
-    <div>
-      {list &&
-        list.map((v) => (
-          <Subject
-            key={Math.random()}
-            content={v.content}
-            examDifficulty={v.examDifficulty}
-            examInfo={v.examInfo}
-            examType={v.examType}
-            id={v.id}
-            semester={v.selectedSemester}
-          />
-        ))}
-      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
-      <div ref={obsRef} style={{ width: '0%', opacity: '0' }}>
-        옵저버 Element
-      </div>
-    </div>
-  );
+const SearchTestList = ({ page }) => {
+  return page.map((lecture) => <Subject key={Math.random()} lecture={lecture} />);
 };
 
-export const Subject = (props) => {
-  const examDifficultySet = props.examDifficulty;
+export const Subject = ({ lecture }) => {
+  const examDifficultySet = lecture.examDifficulty;
   const onReport = () => {
     if (window.confirm('정말 신고하시겠어요? \n*허위 신고 시 제재가 가해질 수 있습니다!'))
-      examReportApi(props.id).then(() => alert('신고 완료'));
+      examReportApi(lecture.id).then(() => alert('신고 완료'));
   };
   const examDifficulty = {
     '매우 쉬움': <Styled.DataColor id="cyan">매우 쉬움</Styled.DataColor>,
@@ -82,8 +24,8 @@ export const Subject = (props) => {
       <Styled.LectureWrapper>
         <Styled.MarginTop id="top">
           <Styled.TitleWrapper>
-            <Styled.YearText>{props.semester}</Styled.YearText>
-            <Styled.YearText>{props.examType}</Styled.YearText>
+            <Styled.YearText>{lecture.selectedSemester}</Styled.YearText>
+            <Styled.YearText>{lecture.examType}</Styled.YearText>
           </Styled.TitleWrapper>
           <Styled.EditButton onClick={onReport}>신고</Styled.EditButton>
           <div style={{ marginBottom: '35px' }} />
@@ -100,7 +42,7 @@ export const Subject = (props) => {
             <Styled.FlexContainer id="col">
               <Styled.StarFlex id="between">
                 시험유형
-                <Styled.StarFlex id="black">{props.examInfo}</Styled.StarFlex>
+                <Styled.StarFlex id="black">{lecture.examInfo}</Styled.StarFlex>
               </Styled.StarFlex>
             </Styled.FlexContainer>
           </Styled.StarFlex>
@@ -108,7 +50,7 @@ export const Subject = (props) => {
 
         <Styled.MarginTop id="bottom">
           <Styled.EvaluationDetail>
-            {props.content.split('\n').map((value, index) => {
+            {lecture.content.split('\n').map((value, index) => {
               return (
                 <div key={index}>
                   {value}

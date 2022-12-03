@@ -57,7 +57,6 @@ instance.interceptors.response.use(
       }
     };
 
-    reloadHandler(null, 'exam-posts/?lectureId', 'post', '작성 완료');
     reloadHandler('user/quit', null, 'post', '탈퇴 완료');
 
     return response.data;
@@ -69,7 +68,6 @@ instance.interceptors.response.use(
       originalRequest.url.includes('exam-posts/purchase/?lectureId')
     ) {
       alert('포인트가 부족해요.');
-      window.location.reload();
     }
     // 리프레시 토큰 만료
     if (error.response.status === 403) {

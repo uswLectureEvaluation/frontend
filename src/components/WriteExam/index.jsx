@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useMutation } from 'react-query';
 import { useRecoilValue } from 'recoil';
+import { queryClient } from '../..';
 import { examWriteApi } from '../../api/Api';
 import { lectureState } from '../../app/recoilStore';
 import { SemesterSelect, Soption, StyledOption } from '../../pages/Main/styled';
@@ -13,6 +15,27 @@ const WriteExam = ({ setModalIsOpen }) => {
   const [content, setContent] = useState(); //글쓰기
   const [exam, setExamInfo] = useState([]); //시험내용
   const examInfo = exam.join(', ');
+  const examWriting = useMutation(
+    () =>
+      examWriteApi(
+        current.selectId,
+        current.lectureName,
+        current.professor,
+        semester,
+        examInfo,
+        examType,
+        examDifficulty,
+        content
+      ),
+    {
+      onSuccess: () => {
+        alert('작성 완료');
+        queryClient.invalidateQueries(['lectureExamList', current.selectId]);
+        queryClient.invalidateQueries(['lectureDetail', current.selectId]);
+        queryClient.invalidateQueries(['myInfo']);
+      },
+    }
+  );
 
   const difficultyChange = (e) => {
     setDifficulty(e.target.value);
@@ -34,17 +57,7 @@ const WriteExam = ({ setModalIsOpen }) => {
     if (exam.length === 0) return alert('시험유형(란)을 선택해주세요');
     if (content.length < 30 || content.length > 1000)
       return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
-
-    examWriteApi(
-      current.selectId,
-      current.lectureName,
-      current.professor,
-      semester,
-      examInfo,
-      examType,
-      examDifficulty,
-      content
-    );
+    examWriting.mutate();
     setModalIsOpen(false);
   };
 

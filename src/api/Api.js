@@ -495,13 +495,10 @@ export const examUpdateApi = (semester, examInfo, examType, examDifficulty, cont
 };
 
 //시험정보 구매
-export const buyTestInfo = (selectId, setBuy) => {
+export const buyTestInfo = (selectId) => {
   return instance({
     url: `/exam-posts/purchase/?lectureId=${selectId}`,
     method: 'POST',
-  }).then(() => {
-    setBuy(true);
-    alert('구매 완료');
   });
 };
 
@@ -549,11 +546,16 @@ export const searchEvaluationApi = async (selectId, pageParam) => {
 };
 
 // 검색 결과 자세히보기 (Exam)
-export const searchExamApi = (selectId, page) => {
-  return instance({
-    url: `/exam-posts/?lectureId=${selectId}&page=${page}`,
+export const searchExamApi = async (selectId, pageParam) => {
+  const result = await instance({
+    url: `/exam-posts/?lectureId=${selectId}&page=${pageParam}`,
     method: 'GET',
   });
+  return {
+    data: result,
+    isLast: result.data.length < 10,
+    nextPage: pageParam + 1,
+  };
 };
 
 //시험정보 구매이력
