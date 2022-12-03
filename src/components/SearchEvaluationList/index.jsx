@@ -76,7 +76,6 @@ const SearchEvaluationList = ({ selectId, setWritten }) => {
       enabled: selectId === lectureInfo?.selectId,
     }
   );
-
   useEffect(() => {
     if (inView) {
       fetchNextPage();

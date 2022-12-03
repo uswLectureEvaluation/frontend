@@ -126,6 +126,7 @@ export const EvaluationDetail = styled.div`
   flex-direction: column;
   font-size: 1rem;
   font-family: 'Pretendard-Regular';
+  line-height: 1.3;
   padding-top: 0.7rem;
   word-break: break-all;
 `;
