@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { logoutApi } from './Api';
-
+import User from './User';
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 const instance = axios.create({
@@ -15,6 +14,7 @@ instance.interceptors.request.use(
       config.headers['Authorization'] = sessionStorage.getItem('AccessToken');
     } else if (
       !(
+        config.url.includes('login') ||
         config.url.includes('lecture/all/?option') ||
         config.url.includes('suwiki/version') ||
         config.url.includes('suwiki/majorType') ||
@@ -62,6 +62,7 @@ instance.interceptors.response.use(
     return response.data;
   },
   async (error) => {
+    const user = User();
     const originalRequest = error.config;
     if (
       error.response.status === 400 &&
@@ -71,7 +72,7 @@ instance.interceptors.response.use(
     }
     // 리프레시 토큰 만료
     if (error.response.status === 403) {
-      logoutApi().then((data) => {
+      user.logout().then((data) => {
         if (data.Success) {
           localStorage.removeItem('login');
           alert('로그인 시간이 만료되었습니다\n다시 로그인 해주세요');
@@ -89,6 +90,7 @@ instance.interceptors.response.use(
     if (error.response.status === 502) {
       window.location.href = '/502';
     }
+
     return Promise.reject(error);
   }
 );

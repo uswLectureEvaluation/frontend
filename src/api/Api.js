@@ -17,7 +17,6 @@ axios.defaults.withCredentials = true;
 //lectureSatisfactionAvg 만족도 강의
 //lectureHoneyAvg 꿀강의
 //lectureLearningAvg 배울게 많은 강의
-const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 export const versionApi = async () => {
   return instance({
@@ -189,78 +188,6 @@ export const checkemailApi = (setData, email) => {
     .catch(() => {
       alert('요청에 실패하였습니다.');
     });
-};
-
-//로그인api (로그인유지)
-export const loginApi = (setData, setLoading, id, pw) => {
-  const url = `user/client-login`;
-  const data = {
-    loginId: id,
-    password: pw,
-  };
-  const options = {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Cache: 'no-cache',
-      withCredentials: true,
-      'Access-Control-Allow-Origin': PROXY_URL,
-    },
-    data,
-    url,
-    withCredentials: true,
-  };
-  axios(options)
-    .then((r) => {
-      localStorage.setItem('login', true);
-
-      setData(r.data);
-      setLoading(true);
-    })
-    .catch(() => {
-      alert('id 또는 pw 확인해주세요');
-    });
-};
-
-//로그인api (로그인유지X)
-export const unCheckedLoginApi = (setData, setLoading, id, pw) => {
-  const url = `user/login`;
-  const data = {
-    loginId: id,
-    password: pw,
-  };
-  const options = {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      Cache: 'no-cache',
-      withCredentials: true,
-      'Access-Control-Allow-Origin': PROXY_URL,
-    },
-    data,
-    url,
-    withCredentials: true,
-  };
-  axios(options)
-    .then((r) => {
-      sessionStorage.setItem('login', true);
-      sessionStorage.setItem('AccessToken', r.data.AccessToken);
-      setData(r.data);
-      setLoading(true);
-    })
-    .catch(() => {
-      alert('id 또는 pw 확인해주세요');
-    });
-};
-
-// 로그아웃
-export const logoutApi = () => {
-  return instance({
-    url: `/user/client-logout`,
-    method: 'POST',
-  });
 };
 
 //아이디 찾기api (완료)

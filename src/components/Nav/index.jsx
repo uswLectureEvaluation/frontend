@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { queryClient } from '../..';
-import { logoutApi } from '../../api/Api';
+import User from '../../api/User';
 import * as Styled from './styled';
 
 const Nav = () => {
   let navigate = useNavigate();
+  const user = User();
   const [button, setButton] = useState(true);
   const [click, setClick] = useState(false);
 
@@ -17,7 +18,7 @@ const Nav = () => {
     localStorage.removeItem('AccessToken');
     sessionStorage.removeItem('AccessToken');
     sessionStorage.removeItem('login');
-    logoutApi().then(async (data) => {
+    user.logout().then(async (data) => {
       if (data.Success === true) {
         navigate('/');
         setTimeout(() => {

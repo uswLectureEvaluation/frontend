@@ -9,3 +9,8 @@ export const lectureState = atom({
     semesterList: '',
   },
 });
+
+export const tokenState = atom({
+  key: 'tokenState',
+  default: null,
+});
