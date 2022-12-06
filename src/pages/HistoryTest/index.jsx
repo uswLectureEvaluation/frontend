@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import Spinner from '../../components/Spinner';
 const HistoryTest = () => {
   const user = User();
-  const { data: db, isLoading } = useQuery(['purchasedTestInfo'], user.purchasedTestInfo);
+  const { data: db, isLoading } = useQuery(['myInfo', 'purchasedTestInfo'], user.purchasedTestInfo);
   /*
        "id" : Long, //구매한 시험정보의 인조키
             "lectureName" : String, //과목 이름
