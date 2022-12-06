@@ -25,12 +25,12 @@ axios.defaults.withCredentials = true;
 
 ReactDOM.render(
   <React.StrictMode>
-    <RecoilRoot>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
         <App />
         <ReactQueryDevtools />
-      </QueryClientProvider>
-    </RecoilRoot>
+      </RecoilRoot>
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

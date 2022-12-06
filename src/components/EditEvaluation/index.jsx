@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { evaluateUpdateApi } from '../../api/Api';
 import * as Styled from './styled';
 import RangeInput from '../RangeInput';
 import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
 import { useMutation } from 'react-query';
 import { queryClient } from '../..';
+import User from '../../api/User';
 
 const useSlider = (defaultState) => {
   const [state, setSlide] = useState(defaultState);
@@ -14,13 +14,14 @@ const useSlider = (defaultState) => {
 };
 
 const EditEvaluation = ({ setModalIsOpen, row }) => {
+  const user = User();
   const [content, setContent] = useState(`${row.content}`);
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
   const evaluateUpdate = useMutation(
     () =>
-      evaluateUpdateApi(
+      user.updateEvaluation(
         semester,
         Number(satisfaction),
         Number(learning),

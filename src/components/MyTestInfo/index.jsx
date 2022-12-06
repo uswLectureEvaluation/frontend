@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { deleteExamInfoApi, examPostApi } from '../../api/Api';
 import * as Styled from './styled';
 import EditTestInfo from '../EditTestInfo';
 import Modal from 'react-modal';
@@ -8,12 +7,14 @@ import { useInView } from 'react-intersection-observer';
 import { useInfiniteQuery, useMutation } from 'react-query';
 import Spinner from '../Spinner';
 import { queryClient } from '../..';
+import User from '../../api/User';
 
 const Testinformation = () => {
   const { ref, inView } = useInView();
+  const user = User();
   const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
     ['myInfo', 'myExamInfo'],
-    ({ pageParam = 1 }) => examPostApi(pageParam),
+    ({ pageParam = 1 }) => user.examInfoList(pageParam),
     {
       getNextPageParam: (lastPage) => {
         if (!lastPage.isLast) return lastPage.nextPage;
@@ -58,6 +59,8 @@ const Testinformation = () => {
 };
 
 export const Subject = ({ row }) => {
+  const user = User();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   let title = row.lectureName;
   let mobileTitle = row.lectureName;
@@ -68,7 +71,7 @@ export const Subject = ({ row }) => {
     title = row.lectureName.substr(0, 14) + '...';
   }
 
-  const deleteExamInfo = useMutation(() => deleteExamInfoApi(row.id), {
+  const deleteExamInfo = useMutation(() => user.deleteExamInfo(row.id), {
     onSuccess: () => {
       alert('삭제 완료');
       queryClient.invalidateQueries({ queryKey: ['myInfo'] });

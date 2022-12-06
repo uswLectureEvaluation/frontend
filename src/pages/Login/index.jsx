@@ -1,13 +1,13 @@
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import User from '../../api/User';
+import Auth from '../../api/Auth';
 import { CssTextField } from '../../components/CssTextField';
 import * as Styled from './styled';
 
 const Login = () => {
   const navigate = useNavigate();
-  const user = User();
+  const auth = Auth();
   const [checked, setChecked] = useState(false);
   const [username, setUserName] = useState();
   const [password, setPassWord] = useState();
@@ -29,21 +29,21 @@ const Login = () => {
   };
   const onLogin = () => {
     checked
-      ? user.login(setData, setLoading, username, password)
-      : user.unCheckedLogin(setData, setLoading, username, password);
+      ? auth.login(setData, setLoading, username, password)
+      : auth.unCheckedLogin(setData, setLoading, username, password);
   };
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
       checked
-        ? user.login(setData, setLoading, username, password)
-        : user.unCheckedLogin(setData, setLoading, username, password);
+        ? auth.login(setData, setLoading, username, password)
+        : auth.unCheckedLogin(setData, setLoading, username, password);
     }
   };
 
   useEffect(() => {
     if (loading && db !== null) {
-      navigate('/myinformation');
+      navigate(-1) || navigate('/myinformation');
     }
   }, [db, loading, navigate]);
 

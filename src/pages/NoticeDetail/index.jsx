@@ -1,13 +1,14 @@
 import * as Styled from './styled';
-import { noticeDetailApi } from '../../api/Api';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Spinner from '../../components/Spinner';
+import Notices from '../../api/Notice';
 
 export const NoticeBox = () => {
+  const notice = Notices();
   const [searchParams] = useSearchParams();
   const id = searchParams.get('id');
-  const { data, isLoading } = useQuery(['notice_detail', id], () => noticeDetailApi(id), {
+  const { data, isLoading } = useQuery(['notice_detail', id], () => notice.detail(id), {
     cacheTime: 1000 * 60 * 60,
     staleTime: 1000 * 60 * 60,
   });

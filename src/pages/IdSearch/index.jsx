@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { findIdApi } from '../../api/Api';
+import Auth from '../../api/Auth';
 import { CssTextField } from '../../components/CssTextField';
 import * as Styled from './styled';
 
 const IdSearch = () => {
+  const auth = Auth();
   const [email, setEmail] = useState();
   const [db, setData] = useState({
     data: [],
@@ -13,7 +14,7 @@ const IdSearch = () => {
     setEmail(e.target.value);
   };
   const emailSubmit = () => {
-    findIdApi(setData, email);
+    auth.findId(setData, email);
   };
 
   useEffect(() => {}, [db.data]);

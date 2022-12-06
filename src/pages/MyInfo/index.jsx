@@ -1,11 +1,12 @@
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
-import { myInfoApi } from '../../api/Api';
 import { useQuery } from 'react-query';
 import Spinner from '../../components/Spinner';
 import { Button } from '../../components';
+import User from '../../api/User';
 
 const MyInfo = () => {
+  const user = User();
   const navigate = useNavigate();
   const option = [
     {
@@ -48,12 +49,12 @@ const MyInfo = () => {
     },
   ];
 
-  const { data, isLoading } = useQuery(['myInfo'], myInfoApi, {
+  const { data, isLoading } = useQuery(['myInfo'], user.info, {
     enabled: (localStorage.getItem('login') || sessionStorage.getItem('login')) === 'true',
     cacheTime: 1000 * 60 * 30,
     staleTime: 1000 * 60 * 30,
   });
-  let user = data;
+  let my = data;
 
   if (isLoading) return <Spinner id="myInfo" />;
   return !(localStorage.getItem('login') || sessionStorage.getItem('login')) ? (
@@ -78,11 +79,11 @@ const MyInfo = () => {
 
           <Styled.FlexContainer>
             <Styled.OptionTitle id="my">로그인 아이디</Styled.OptionTitle>
-            <Styled.FlexContainer>{user.loginId}</Styled.FlexContainer>
+            <Styled.FlexContainer>{my.loginId}</Styled.FlexContainer>
           </Styled.FlexContainer>
           <Styled.FlexContainer>
             <Styled.OptionTitle id="my">학교 인증 메일</Styled.OptionTitle>
-            <Styled.FlexContainer>{user.email}</Styled.FlexContainer>
+            <Styled.FlexContainer>{my.email}</Styled.FlexContainer>
           </Styled.FlexContainer>
         </Styled.Content>
         <Styled.Button id="pc" onClick={() => navigate('/myposting')} background="#336af8">
@@ -94,31 +95,29 @@ const MyInfo = () => {
         <Styled.Content>
           <Styled.TitleFlex>
             <Styled.Title id="top">현재 보유 포인트</Styled.Title>
-            <Styled.OptionPoint id="mypoint">{user.point ?? '0'}p</Styled.OptionPoint>
+            <Styled.OptionPoint id="mypoint">{my.point ?? '0'}p</Styled.OptionPoint>
           </Styled.TitleFlex>
 
           <Styled.FlexContainer>
             <Styled.OptionTitle>작성한 강의평가</Styled.OptionTitle>
             <Styled.FlexContainer id="last">
-              <Styled.Color>{user.writtenEvaluation ?? '0'}</Styled.Color>개
+              <Styled.Color>{my.writtenEvaluation ?? '0'}</Styled.Color>개
             </Styled.FlexContainer>
-            <Styled.OptionPoint id="plus">
-              +{(user.writtenEvaluation ?? '0') * 10}
-            </Styled.OptionPoint>
+            <Styled.OptionPoint id="plus">+{(my.writtenEvaluation ?? '0') * 10}</Styled.OptionPoint>
           </Styled.FlexContainer>
           <Styled.FlexContainer>
             <Styled.OptionTitle>작성한 시험정보</Styled.OptionTitle>
             <Styled.FlexContainer id="last">
-              <Styled.Color>{user.writtenExam ?? '0'}</Styled.Color>개
+              <Styled.Color>{my.writtenExam ?? '0'}</Styled.Color>개
             </Styled.FlexContainer>
-            <Styled.OptionPoint id="plus">+{(user.writtenExam ?? '0') * 20}</Styled.OptionPoint>
+            <Styled.OptionPoint id="plus">+{(my.writtenExam ?? '0') * 20}</Styled.OptionPoint>
           </Styled.FlexContainer>
           <Styled.FlexContainer>
             <Styled.OptionTitle>시험정보 열람 횟수</Styled.OptionTitle>
             <Styled.FlexContainer id="last">
-              <Styled.Color id="p">{user.viewExam ?? '0'}</Styled.Color>개
+              <Styled.Color id="p">{my.viewExam ?? '0'}</Styled.Color>개
             </Styled.FlexContainer>
-            <Styled.OptionPoint id="minus">-{(user.viewExam ?? '0') * 20}</Styled.OptionPoint>
+            <Styled.OptionPoint id="minus">-{(my.viewExam ?? '0') * 20}</Styled.OptionPoint>
           </Styled.FlexContainer>
         </Styled.Content>
       </Styled.Wrapper>

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { findPwApi } from '../../api/Api';
+import Auth from '../../api/Auth';
 import { CssTextField } from '../../components/CssTextField';
 import * as Styled from './styled';
 
 const PwSearch = () => {
+  const auth = Auth();
   const [username, setUserName] = useState();
   const [email, setEmail] = useState();
   const [db, setData] = useState({
@@ -17,7 +18,7 @@ const PwSearch = () => {
     setUserName(e.target.value);
   };
   const handleSubmit = () => {
-    findPwApi(setData, username, email);
+    auth.findPw(setData, username, email);
   };
 
   useEffect(() => {}, [db.data]);

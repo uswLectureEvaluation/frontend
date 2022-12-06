@@ -1,16 +1,15 @@
-import { useEffect, useState } from 'react';
-import { banListApi, resListApi } from '../../api/Api';
 import * as Styled from './styled';
 import { FlexWrap } from '../../components/LectureContainer';
+import User from '../../api/User';
+import { useQuery } from 'react-query';
+import Spinner from '../../components/Spinner';
 const BanReason = () => {
-  const [db, setData] = useState([]);
+  const user = User();
+  const { data: db, isLoading: banLoad } = useQuery(['myInfo', 'banList'], user.banList);
+  const { data: wow, isLoading: resLoad } = useQuery(['myInfo', 'resList'], user.resList);
 
-  const [wow, setWow] = useState([]);
-
-  useEffect(() => {
-    banListApi().then((data) => setData(data));
-    resListApi().then((data) => setWow(data));
-  }, []);
+  if (banLoad) return <Spinner id="myInfo" />;
+  if (resLoad) return null;
 
   return (
     <Styled.AppContainer>

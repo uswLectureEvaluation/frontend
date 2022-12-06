@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import * as Styled from './styled';
 import StarRatings from 'react-star-ratings';
-import { evaluateReportApi, searchEvaluationApi } from '../../api/Api';
 import { useInfiniteQuery } from 'react-query';
 import Spinner from '../Spinner';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from '../../app/recoilStore';
+import Lecture from '../../api/Lecture';
+import User from '../../api/User';
 
 export const DetailModal = ({ lecture }) => {
   const teamSet = lecture.team;
@@ -60,11 +61,12 @@ export const DetailModal = ({ lecture }) => {
 };
 
 const SearchEvaluationList = ({ selectId, setWritten }) => {
+  const lectures = Lecture();
   const lectureInfo = useRecoilValue(lectureState);
   const { ref, inView } = useInView();
   const { data, isFetchingNextPage, isLoading, fetchNextPage } = useInfiniteQuery(
-    ['lectureEvaluationList', selectId],
-    ({ pageParam = 1 }) => searchEvaluationApi(selectId, pageParam),
+    ['lecture', 'evaluationList', selectId],
+    ({ pageParam = 1 }) => lectures.evaluation(selectId, pageParam),
     {
       getNextPageParam: (lastPage) => {
         if (!lastPage.isLast) return lastPage.nextPage;
@@ -103,10 +105,11 @@ const SearchEvaluationList = ({ selectId, setWritten }) => {
 };
 
 export const Subject = ({ lecture }) => {
+  const user = User();
   const [modal, setModal] = useState(false);
   const onReport = () => {
     if (window.confirm('정말 신고하시겠어요? \n*허위 신고 시 제재가 가해질 수 있습니다!'))
-      evaluateReportApi(lecture.id).then(() => alert('신고 완료'));
+      user.reportEvaluation(lecture.id).then(() => alert('신고 완료'));
   };
 
   return (

@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useInfiniteQuery } from 'react-query';
-import { searchApi } from '../../api/Api';
 import Spinner from '../Spinner';
 import { useInView } from 'react-intersection-observer';
 import LectureContainer, { FlexWrap } from '../LectureContainer';
 import { useSearchParams } from 'react-router-dom';
+import Lecture from '../../api/Lecture';
 
 const Infinite = ({ setCount }) => {
+  const lectures = Lecture();
   const { ref, inView } = useInView();
   const [searchParams] = useSearchParams();
   const value = searchParams.get('q');
@@ -18,7 +19,7 @@ const Infinite = ({ setCount }) => {
 
   const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
     ['search', searchValue, option, major],
-    ({ pageParam = 1 }) => searchApi(searchValue, pageParam, option, major),
+    ({ pageParam = 1 }) => lectures.search(searchValue, pageParam, option, major),
     {
       getNextPageParam: (lastPage) => {
         if (!lastPage.isLast) return lastPage.nextPage;

@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { checkemailApi, checkidApi, registerApi } from '../../api/Api';
+import Auth from '../../api/Auth';
 import { CssTextField } from '../../components/CssTextField';
 import * as Styled from './styled';
 
 const SignUp = () => {
+  const auth = Auth();
   //이름, 이메일, 비밀번호, 비밀번호 확인
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -117,16 +118,16 @@ const SignUp = () => {
   };
 
   const onClick = () => {
-    registerApi(setData, setLoading, name, password, email);
+    auth.register(setData, setLoading, name, password, email);
     navigate('/emailsignup', { state: email });
   };
 
   const onCheck = () => {
-    checkidApi(setIdcheck, name);
+    auth.checkId(setIdcheck, name);
   };
 
   const onEmail = () => {
-    checkemailApi(setEmailcheck, email);
+    auth.checkEmail(setEmailcheck, email);
   };
 
   useEffect(() => {

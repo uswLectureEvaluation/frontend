@@ -1,14 +1,10 @@
-import { useState, useEffect } from 'react';
 import * as Styled from './styled';
-import { historyTestInfo } from '../../api/Api';
+import User from '../../api/User';
+import { useQuery } from 'react-query';
+import Spinner from '../../components/Spinner';
 const HistoryTest = () => {
-  const [db, setData] = useState({
-    data: [],
-  });
-
-  useEffect(() => {
-    historyTestInfo().then((data) => setData(data));
-  }, []);
+  const user = User();
+  const { data: db, isLoading } = useQuery(['purchasedTestInfo'], user.purchasedTestInfo);
   /*
        "id" : Long, //구매한 시험정보의 인조키
             "lectureName" : String, //과목 이름
@@ -16,6 +12,7 @@ const HistoryTest = () => {
             "majorType" : String, //개설학과
             "createDate" : LocalDateTime, //작성 날짜
       */
+  if (isLoading) return <Spinner id="myInfo" />;
   return (
     <Styled.AppContainer>
       <Styled.AppTitle>구매이력</Styled.AppTitle>

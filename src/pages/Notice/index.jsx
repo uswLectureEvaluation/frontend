@@ -1,10 +1,10 @@
 import * as Styled from './styled';
 import { useNavigate } from 'react-router-dom';
-import { noticeApi } from '../../api/Api';
 import { useInfiniteQuery } from 'react-query';
 import Spinner from '../../components/Spinner';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
+import Notices from '../../api/Notice';
 
 export const NoticeItem = ({ notice }) => {
   const navigate = useNavigate();
@@ -19,10 +19,11 @@ export const NoticeItem = ({ notice }) => {
 };
 
 export const NoticeContainer = () => {
+  const notice = Notices();
   const { ref, inView } = useInView();
   const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
     ['notice'],
-    ({ pageParam = 1 }) => noticeApi(pageParam),
+    ({ pageParam = 1 }) => notice.list(pageParam),
     {
       getNextPageParam: (lastPage) => {
         if (!lastPage.isLast) return lastPage.nextPage;

@@ -1,81 +1,243 @@
-import jwtDecode from 'jwt-decode';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { tokenState } from '../app/recoilStore';
-import instance from './ApiController';
-const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
+import JwtInterceptors from './ApiController';
 
 const User = () => {
-  const token = useRecoilValue(tokenState);
-  const headers = {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    Cache: 'no-cache',
-    'Access-Control-Allow-Origin': PROXY_URL,
+  const [token, setToken] = useRecoilState(tokenState);
+  const instance = JwtInterceptors(token, setToken).instance;
+  // 내정보Api
+  const info = () => {
+    return instance({
+      url: `/user/my-page`,
+      method: 'GET',
+    });
   };
 
-  //액세스토큰 유효성 검사
-  const isAccessTokenValid = () => {
-    if (!token) return false;
-    const tokenInfo = jwtDecode(token);
-    if (tokenInfo.exp <= Date.now() / 1000) return false;
-    return true;
+  // 내가쓴글-강의평가Api
+  const evaluateList = async (pageParam) => {
+    const result = await instance({
+      url: `/evaluate-posts/written/?page=${pageParam}`,
+      method: 'GET',
+    });
+    return {
+      data: result,
+      isLast: result.data.length < 10,
+      nextPage: pageParam + 1,
+    };
   };
 
-  //로그인api (로그인유지)
-  const login = async (setData, setLoading, id, pw) => {
+  // 내가쓴글-시험정보Api
+  const examInfoList = async (pageParam) => {
+    const result = await instance({
+      url: `/exam-posts/written/?page=${pageParam}`,
+      method: 'GET',
+    });
+    return {
+      data: result,
+      isLast: result.data.length < 10,
+      nextPage: pageParam + 1,
+    };
+  };
+
+  //강의평가수정 api 미완
+  const updateEvaluation = (
+    semester,
+    satisfaction,
+    learning,
+    honey,
+    team,
+    difficulty,
+    homework,
+    content,
+    id
+  ) => {
     const data = {
-      loginId: id,
-      password: pw,
+      selectedSemester: semester,
+      satisfaction,
+      learning,
+      honey,
+      team,
+      difficulty,
+      homework,
+      content,
+    };
+
+    return instance({
+      url: `/evaluate-posts/?evaluateIdx=${id}`,
+      method: 'PUT',
+      data: data,
+    });
+  };
+
+  //강의평가작성 api
+  const writeEvaluation = (
+    selectId,
+    lectureName,
+    professor,
+    semester,
+    satisfaction,
+    learning,
+    honey,
+    team,
+    difficulty,
+    homework,
+    content
+  ) => {
+    const data = {
+      lectureName,
+      professor,
+      selectedSemester: semester,
+      satisfaction,
+      learning,
+      honey,
+      team,
+      difficulty,
+      homework,
+      content,
     };
     return instance({
-      url: `user/client-login`,
+      url: `evaluate-posts/?lectureId=${selectId}`,
       method: 'POST',
       data: data,
-      headers: headers,
-      withCredentials: true,
-    })
-      .then((r) => {
-        localStorage.setItem('login', true);
-        setData(r.data);
-        setLoading(true);
-      })
-      .catch(() => {
-        alert('id 또는 pw 확인해주세요');
-      });
+    });
   };
 
-  //로그인api (로그인유지X)
-  const unCheckedLogin = async (setData, setLoading, id, pw) => {
+  // 강의 평가 삭제 api
+  const deleteEvaluation = (id) => {
+    return instance({
+      url: `/evaluate-posts/?evaluateIdx=${id}`,
+      method: 'DELETE',
+    });
+  };
+
+  //강의평가 신고 api
+  const reportEvaluation = (evaluateIdx, content) => {
     const data = {
-      loginId: id,
-      password: pw,
+      evaluateIdx,
+      content,
     };
+
     return instance({
-      url: `user/login`,
+      url: `/user/report/evaluate`,
       method: 'POST',
       data: data,
-      headers: headers,
-      withCredentials: true,
-    })
-      .then((r) => {
-        sessionStorage.setItem('login', true);
-        sessionStorage.setItem('AccessToken', r.AccessToken);
-        setData(r.data);
-        setLoading(true);
-      })
-      .catch(() => {
-        alert('id 또는 pw 확인해주세요');
-      });
+    });
   };
 
-  // 로그아웃
-  const logout = () => {
+  //시험정보 신고 api
+  const reportExamInfo = (examIdx, content) => {
+    const data = {
+      examIdx,
+      content,
+    };
+
     return instance({
-      url: `/user/client-logout`,
+      url: `/user/report/exam`,
+      method: 'POST',
+      data: data,
+    });
+  };
+
+  //시험정보쓰기 api
+  const writeExamInfo = (
+    selectId,
+    lectureName,
+    professor,
+    semester,
+    examInfo,
+    examType,
+    examDifficulty,
+    content
+  ) => {
+    const data = {
+      lectureName,
+      professor,
+      selectedSemester: semester,
+      examInfo,
+      examType,
+      examDifficulty,
+      content,
+    };
+
+    return instance({
+      url: `/exam-posts/?lectureId=${selectId}`,
+      method: 'POST',
+      data: data,
+    });
+  };
+
+  //시험정보 구매
+  const buyTestInfo = (selectId) => {
+    return instance({
+      url: `/exam-posts/purchase/?lectureId=${selectId}`,
       method: 'POST',
     });
   };
 
-  return { isAccessTokenValid, login, unCheckedLogin, logout };
+  //시험정보수정 api 미완
+  const UpdateExamInfo = (semester, examInfo, examType, examDifficulty, content, id) => {
+    const data = {
+      selectedSemester: semester,
+      examInfo,
+      examType,
+      examDifficulty,
+      content,
+    };
+
+    return instance({
+      url: `/exam-posts/?examIdx=${id}`,
+      method: 'PUT',
+      data: data,
+    });
+  };
+
+  // 시험정보 삭제
+  const deleteExamInfo = (id) => {
+    return instance({
+      url: `/exam-posts/?examIdx=${id}`,
+      method: 'DELETE',
+    });
+  };
+
+  //시험정보 구매이력
+  const purchasedTestInfo = () => {
+    return instance({
+      url: `/exam-posts/purchase`,
+      method: 'GET',
+    });
+  };
+
+  const banList = () => {
+    return instance({
+      url: `user/blacklist-reason`,
+      method: 'GET',
+    });
+  };
+
+  const resList = () => {
+    return instance({
+      url: `user/restricted-reason`,
+      method: 'GET',
+    });
+  };
+
+  return {
+    info,
+    evaluateList,
+    examInfoList,
+    updateEvaluation,
+    UpdateExamInfo,
+    reportEvaluation,
+    reportExamInfo,
+    deleteEvaluation,
+    deleteExamInfo,
+    writeEvaluation,
+    writeExamInfo,
+    purchasedTestInfo,
+    banList,
+    resList,
+    buyTestInfo,
+  };
 };
+
 export default User;

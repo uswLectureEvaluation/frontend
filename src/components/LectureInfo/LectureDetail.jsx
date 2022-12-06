@@ -2,17 +2,18 @@ import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { searchLectureApi } from '../../api/Api';
+import Lecture from '../../api/Lecture';
 import { lectureState } from '../../app/recoilStore';
 import Spinner from '../Spinner';
 
 const LectureDetail = () => {
+  const lectures = Lecture();
   const [searchparams] = useSearchParams();
   const selectId = searchparams.get('id');
   const setLectureInfo = useSetRecoilState(lectureState);
   const { data: lecture, isLoading } = useQuery(
-    ['lectureDetail', selectId],
-    () => searchLectureApi(selectId),
+    ['lecture', 'detail', selectId],
+    () => lectures.detail(selectId),
     {
       onSuccess: (lecture) => {
         setLectureInfo({

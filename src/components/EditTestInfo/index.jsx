@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { examUpdateApi } from '../../api/Api';
 import * as Styled from './styled';
 import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
 import { useMutation } from 'react-query';
 import { queryClient } from '../..';
+import User from '../../api/User';
 
 const Edittestinfo = ({ setModalIsOpen, row }) => {
+  const user = User();
   const [semester, setSemester] = useState(`${row.selectedSemester}`); //학기
   const [examType, setExamType] = useState(`${row.examType}`); //중간,기말
   const [examDifficulty, setDifficulty] = useState(`${row.examDifficulty}`); //난이도
@@ -28,7 +29,7 @@ const Edittestinfo = ({ setModalIsOpen, row }) => {
     setContent(e.target.value);
   };
   const examInfoUpdate = useMutation(
-    () => examUpdateApi(semester, examInfo, examType, examDifficulty, content, row.id),
+    () => user.UpdateExamInfo(semester, examInfo, examType, examDifficulty, content, row.id),
     {
       onSuccess: () => {
         alert('수정 완료');

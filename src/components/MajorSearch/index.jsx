@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
-import {
-  deleteFavoriteMajorApi,
-  favoriteMajorApi,
-  majorTypeApi,
-  searchFavoriteMajorApi,
-} from '../../api/Api';
 import * as Styled from './styled';
 import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
+import Major from '../../api/Major';
+import { searchFavorite, type } from '../../api/etc';
 
 const MajorSearch = (props) => {
+  const major = Major();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,23 +25,28 @@ const MajorSearch = (props) => {
 
   useEffect(() => {
     if (localStorage.getItem('login') != null || sessionStorage.getItem('login') != null)
-      searchFavoriteMajorApi().then((data) => setFavoriteDb(data.data));
+      searchFavorite().then((data) => setFavoriteDb(data.data));
   }, []);
 
   const onFavoriteMajor = (e) => {
-    setSelectedMajor(e.target.alt);
-    if (!favoriteDb.includes(e.target.alt)) {
-      favoriteMajorApi(e.target.alt);
-      setFavoriteDb(favoriteDb.concat([e.target.alt]));
+    if (localStorage.getItem('login') != null || sessionStorage.getItem('login') != null) {
+      setSelectedMajor(e.target.alt);
+      if (!favoriteDb.includes(e.target.alt)) {
+        major.favoriting(e.target.alt);
+        setFavoriteDb(favoriteDb.concat([e.target.alt]));
+      } else {
+        major.unfavoriting(e.target.alt);
+        setFavoriteDb(favoriteDb.filter((v) => v !== e.target.alt));
+      }
     } else {
-      deleteFavoriteMajorApi(e.target.alt);
-      setFavoriteDb(favoriteDb.filter((v) => v !== e.target.alt));
+      alert('로그인 후 이용해주세요');
+      navigate('/login');
     }
   };
 
   useEffect(() => {
     if (!window.localStorage.getItem('majorType')) {
-      majorTypeApi().then((res) => {
+      type().then((res) => {
         window.localStorage.setItem('majorType', ['전체', res.data]);
         setData(['전체', ...res.data]);
       });

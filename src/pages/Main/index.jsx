@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import { MajorModalStyle } from '../../components/ModalStyle';
 import MajorSearch from '../../components/MajorSearch';
-import { versionCheck } from '../../app/versionCheck';
 import { majorList } from '../Search';
+import { versionCheck } from '../../app/versionCheck';
+import Major from '../../api/Major';
 
 const Main = () => {
   const options = [
@@ -42,7 +43,7 @@ const Main = () => {
   const [lecture, setLecture] = useState('modifiedDate');
   const [checkClass, setCheckClass] = useState('전체');
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
+  const major = Major();
   const onChange = (e) => {
     setSearch(e.currentTarget.value);
   };
@@ -61,8 +62,8 @@ const Main = () => {
     }
   };
   useEffect(() => {
-    versionCheck();
-  }, []);
+    versionCheck(major);
+  }, [major]);
   return (
     <>
       <Styled.Banner>

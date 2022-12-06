@@ -1,16 +1,17 @@
 import { useCallback, useState } from 'react';
-import { resetPasswordApi } from '../../api/Api';
+import Auth from '../../api/Auth';
 import { CssTextField } from '../../components/CssTextField';
 import * as Styled from './styled';
 
 const ResetPassword = () => {
+  const auth = Auth();
   const [newPassword, setNewPassword] = useState('');
   const [prePassword, setPrePassword] = useState('');
   const [passwordMessage, setPasswordMessage] = useState('');
   const [isPassword, setIsPassword] = useState(false);
 
   const handleChange = () => {
-    resetPasswordApi(prePassword, newPassword);
+    auth.resetPassword(prePassword, newPassword);
   };
 
   const onChangePassword = useCallback((e) => {

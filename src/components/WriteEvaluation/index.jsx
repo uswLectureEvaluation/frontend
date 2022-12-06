@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { evaluateWriteApi } from '../../api/Api';
 import * as Styled from './styled';
 import RangeInput from '../RangeInput';
 import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
@@ -7,6 +6,7 @@ import { useRecoilValue } from 'recoil';
 import { lectureState } from '../../app/recoilStore';
 import { useMutation } from 'react-query';
 import { queryClient } from '../..';
+import User from '../../api/User';
 
 const useSlider = (defaultState) => {
   const [state, setSlide] = useState(defaultState);
@@ -17,6 +17,7 @@ const useSlider = (defaultState) => {
 };
 
 const WriteEvaluation = ({ setModalIsOpen }) => {
+  const user = User();
   const [content, setContent] = useState('');
   const current = useRecoilValue(lectureState);
   const [honey, HoneySlider] = useSlider(0.5);
@@ -29,7 +30,7 @@ const WriteEvaluation = ({ setModalIsOpen }) => {
 
   const evaluateWriting = useMutation(
     () =>
-      evaluateWriteApi(
+      user.writeEvaluation(
         current.selectId,
         current.lectureName,
         current.professor,
@@ -45,8 +46,8 @@ const WriteEvaluation = ({ setModalIsOpen }) => {
     {
       onSuccess: () => {
         alert('작성 완료');
-        queryClient.invalidateQueries(['lectureEvaluationList', current.selectId]);
-        queryClient.invalidateQueries(['lectureDetail', current.selectId]);
+        queryClient.invalidateQueries(['lecture', 'evaluationList', current.selectId]);
+        queryClient.invalidateQueries(['lecture', 'detail', current.selectId]);
         queryClient.invalidateQueries(['myInfo']);
       },
     }

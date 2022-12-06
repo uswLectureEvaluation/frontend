@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { queryClient } from '../..';
-import User from '../../api/User';
+import Auth from '../../api/Auth';
 import * as Styled from './styled';
 
 const Nav = () => {
   let navigate = useNavigate();
-  const user = User();
+  const auth = Auth();
   const [button, setButton] = useState(true);
   const [click, setClick] = useState(false);
 
@@ -18,11 +18,12 @@ const Nav = () => {
     localStorage.removeItem('AccessToken');
     sessionStorage.removeItem('AccessToken');
     sessionStorage.removeItem('login');
-    user.logout().then(async (data) => {
+    auth.logout().then(async (data) => {
       if (data.Success === true) {
         navigate('/');
         setTimeout(() => {
           queryClient.invalidateQueries({ queryKey: ['myInfo'] });
+          queryClient.invalidateQueries({ queryKey: ['lecture'] });
         }, 300);
       }
     });

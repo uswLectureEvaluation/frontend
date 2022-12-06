@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { useRecoilValue } from 'recoil';
 import { queryClient } from '../..';
-import { examWriteApi } from '../../api/Api';
+import User from '../../api/User';
 import { lectureState } from '../../app/recoilStore';
 import { SemesterSelect, Soption, StyledOption } from '../../pages/Main/styled';
 import * as Styled from './styled';
 
 const WriteExam = ({ setModalIsOpen }) => {
+  const user = User();
   const current = useRecoilValue(lectureState);
   const [semester, setSemester] = useState(''); //학기
   const [examType, setExamType] = useState(''); //중간,기말
@@ -17,7 +18,7 @@ const WriteExam = ({ setModalIsOpen }) => {
   const examInfo = exam.join(', ');
   const examWriting = useMutation(
     () =>
-      examWriteApi(
+      user.writeExamInfo(
         current.selectId,
         current.lectureName,
         current.professor,
@@ -30,8 +31,8 @@ const WriteExam = ({ setModalIsOpen }) => {
     {
       onSuccess: () => {
         alert('작성 완료');
-        queryClient.invalidateQueries(['lectureExamList', current.selectId]);
-        queryClient.invalidateQueries(['lectureDetail', current.selectId]);
+        queryClient.invalidateQueries(['lecture', 'examList', current.selectId]);
+        queryClient.invalidateQueries(['lecture', 'detail', current.selectId]);
         queryClient.invalidateQueries(['myInfo']);
       },
     }

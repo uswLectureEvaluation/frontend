@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import * as Styled from './styled';
 import Button from '../Button';
-import { buyTestInfo, searchExamApi } from '../../api/Api';
 import SearchTestList from '../../components/SearchTestList';
 import { useRecoilValue } from 'recoil';
 import { useInView } from 'react-intersection-observer';
@@ -9,12 +8,15 @@ import { useInfiniteQuery, useMutation } from 'react-query';
 import Spinner from '../Spinner';
 import { lectureState } from '../../app/recoilStore';
 import { queryClient } from '../..';
+import Lecture from '../../api/Lecture';
+import User from '../../api/User';
 
 export const NotUsePoint = ({ selectId }) => {
-  const purchaseTestInfo = useMutation(() => buyTestInfo(selectId), {
+  const user = User();
+  const purchaseTestInfo = useMutation(() => user.buyTestInfo(selectId), {
     onSuccess: () => {
       alert('구매 완료');
-      queryClient.invalidateQueries(['lectureExamList', selectId]);
+      queryClient.invalidateQueries(['lecture', 'examList', selectId]);
     },
   });
   const unlock = () => {
@@ -44,11 +46,12 @@ export const NoTestInfo = () => (
 );
 
 const TestInfo = ({ selectId, setWritten }) => {
+  const lectures = Lecture();
   const lectureInfo = useRecoilValue(lectureState);
   const { ref, inView } = useInView();
   const { data, isFetchingNextPage, isLoading, fetchNextPage } = useInfiniteQuery(
-    ['lectureExamList', selectId],
-    ({ pageParam = 1 }) => searchExamApi(selectId, pageParam),
+    ['lecture', 'examList', selectId],
+    ({ pageParam = 1 }) => lectures.examInfo(selectId, pageParam),
     {
       getNextPageParam: (lastPage) => {
         if (!lastPage.isLast) return lastPage.nextPage;

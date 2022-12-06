@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { quitApi } from '../../api/Api';
+import Auth from '../../api/Auth';
 import { CssTextField } from '../../components/CssTextField';
 import * as Styled from './styled';
 
 const Exit = () => {
+  const auth = Auth();
   const [id, setId] = useState();
   const [pw, setPw] = useState();
 
@@ -19,7 +20,7 @@ const Exit = () => {
     if (
       window.confirm('회원탈퇴 시 작성한 강의평가/시험정보는 전부 삭제됩니다. \n정말 탈퇴하시나요?')
     ) {
-      quitApi(id, pw);
+      auth.quit(id, pw);
       localStorage.removeItem('login');
       sessionStorage.removeItem('login');
     } else {

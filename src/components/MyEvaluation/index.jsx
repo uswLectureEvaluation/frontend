@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import { evaluatePostApi, deleteEvaluateApi } from '../../api/Api';
 import * as Styled from './styled';
 import StarRatings from 'react-star-ratings';
 import EditEvaluation from '../EditEvaluation';
@@ -9,6 +8,7 @@ import { useInfiniteQuery, useMutation } from 'react-query';
 import Spinner from '../Spinner';
 import { useInView } from 'react-intersection-observer';
 import { queryClient } from '../..';
+import User from '../../api/User';
 
 export const DetailModal = (props) => {
   const teamSet = props.team;
@@ -62,10 +62,12 @@ export const DetailModal = (props) => {
 };
 
 const Myevaluation = () => {
+  const user = User();
+
   const { ref, inView } = useInView();
   const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
     ['myInfo', 'myEvaluation'],
-    ({ pageParam = 1 }) => evaluatePostApi(pageParam),
+    ({ pageParam = 1 }) => user.evaluateList(pageParam),
     {
       getNextPageParam: (lastPage) => {
         if (!lastPage.isLast) return lastPage.nextPage;
@@ -109,6 +111,7 @@ const Myevaluation = () => {
 };
 
 export const Subject = ({ row }) => {
+  const user = User();
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   let title = row.lectureName;
@@ -119,7 +122,7 @@ export const Subject = ({ row }) => {
   if (title.length >= 14) {
     title = title.substr(0, 14) + '...';
   }
-  const deleteEvaluate = useMutation(() => deleteEvaluateApi(row.id), {
+  const deleteEvaluate = useMutation(() => user.deleteEvaluation(row.id), {
     onSuccess: () => {
       alert('삭제 완료');
       queryClient.invalidateQueries({ queryKey: ['myInfo'] });
