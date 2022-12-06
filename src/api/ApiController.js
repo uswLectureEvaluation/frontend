@@ -66,7 +66,7 @@ const JwtInterceptors = (token, setToken) => {
         config.url.includes('suwiki/majorType') ||
         config.url.includes('lecture/search/?searchValue') ||
         config.url.includes('notice') ||
-        config.url.includes('majorType')
+        config.url.includes('suwiki/majorType')
       ) {
         // 액세스 토큰 필요없는 페이지
         config.headers['Content-Type'] = 'application/json';

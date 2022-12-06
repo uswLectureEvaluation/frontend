@@ -3,9 +3,12 @@ import * as Styled from './styled';
 import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import Major from '../../api/Major';
 import { searchFavorite, type } from '../../api/etc';
+import { useRecoilState } from 'recoil';
+import { tokenState } from '../../app/recoilStore';
 
 const MajorSearch = (props) => {
   const major = Major();
+  const [token, setToken] = useRecoilState(tokenState);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,8 +28,8 @@ const MajorSearch = (props) => {
 
   useEffect(() => {
     if (localStorage.getItem('login') != null || sessionStorage.getItem('login') != null)
-      searchFavorite().then((data) => setFavoriteDb(data.data));
-  }, []);
+      searchFavorite(token, setToken).then((data) => setFavoriteDb(data.data));
+  }, [token, setToken]);
 
   const onFavoriteMajor = (e) => {
     if (localStorage.getItem('login') != null || sessionStorage.getItem('login') != null) {
@@ -46,12 +49,12 @@ const MajorSearch = (props) => {
 
   useEffect(() => {
     if (!window.localStorage.getItem('majorType')) {
-      type().then((res) => {
+      type(token, setToken).then((res) => {
         window.localStorage.setItem('majorType', ['전체', res.data]);
         setData(['전체', ...res.data]);
       });
     } else setData(window.localStorage.getItem('majorType').split(','));
-  }, []);
+  }, [token, setToken]);
 
   const clickSubmit = () => {
     if (selectedMajor !== '') {
