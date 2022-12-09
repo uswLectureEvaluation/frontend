@@ -12,7 +12,6 @@ export const AppContainer = styled.div`
     flex-direction: column;
     align-items: center;
     width: 90%;
-    padding-bottom: 25rem;
     margin: 0 auto;
   }
 `;

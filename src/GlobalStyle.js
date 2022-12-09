@@ -16,6 +16,10 @@ const GlobalStyle = createGlobalStyle`
       --hover-color: #76d6bc;
       --accent-color: #ff7675;
   }
+
+  #root{
+    min-height: 60vh;
+  }
 `;
 
 export const Color = (props) => {

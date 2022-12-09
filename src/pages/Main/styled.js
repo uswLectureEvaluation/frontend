@@ -17,7 +17,6 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Banner = styled.div`
   width: 100%;
-  height: 40vh;
   background-color: #eeeeee;
   @media screen and (max-width: 550px) {
     display: none;
@@ -27,7 +26,6 @@ export const Banner = styled.div`
 export const BannerWrapper = styled.div`
   width: 60%;
   margin: 0 auto;
-  height: 40vh;
   display: flex;
   align-items: center;
   color: #000000;

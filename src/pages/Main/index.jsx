@@ -65,7 +65,7 @@ const Main = () => {
     versionCheck(major);
   }, [major]);
   return (
-    <>
+    <div>
       <Styled.Banner>
         <Styled.BannerWrapper>
           <div>
@@ -134,7 +134,7 @@ const Main = () => {
           setCheckClass={setCheckClass}
         />
       </Modal>
-    </>
+    </div>
   );
 };
 

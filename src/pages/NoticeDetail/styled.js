@@ -5,7 +5,6 @@ export const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 60%;
-  padding-bottom: 25rem;
   margin: 0 auto;
   font-family: Pretendard-Medium;
 

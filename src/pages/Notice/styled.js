@@ -55,7 +55,6 @@ export const NoticeWrap = styled.div`
 
 export const NoNotice = styled.div`
   display: flex;
-  height: 50vh;
   align-items: center;
   justify-content: center;
 `;
