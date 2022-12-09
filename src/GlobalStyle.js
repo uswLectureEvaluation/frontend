@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
       --accent-color: #ff7675;
   }
 
-  #root{
+  #root > div{
     min-height: 60vh;
   }
 `;
