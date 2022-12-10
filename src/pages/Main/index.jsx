@@ -38,7 +38,7 @@ const Main = () => {
     },
   ];
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [lecture, setLecture] = useState('modifiedDate');
   const [checkClass, setCheckClass] = useState('전체');

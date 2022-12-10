@@ -37,7 +37,7 @@ export const Detail = (props) => {
 const Subject = ({ row }) => {
   const [modal, setModal] = useState(false);
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   let title = row.lectureName;
 

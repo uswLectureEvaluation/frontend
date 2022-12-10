@@ -3,7 +3,7 @@ import * as Styled from '../SignUp/styled';
 import styled from 'styled-components';
 
 const BadGateway = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <Styled.Container>
       <Styled.Img src="img/signup.svg" width={400} />

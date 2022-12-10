@@ -22,7 +22,7 @@ const Search = () => {
   let majorType = searchParams.get('majorType');
   let option = searchParams.get('option');
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [search, setSearch] = useState(searchValue);
   const [count, setCount] = useState(0);

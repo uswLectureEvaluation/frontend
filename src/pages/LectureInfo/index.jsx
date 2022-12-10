@@ -11,7 +11,7 @@ import { Button } from '../../components';
 import LectureDetail from '../../components/LectureInfo/LectureDetail';
 
 const LectureInfo = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const [check, setCheck] = useState('강의평가');
   const [search, setSearch] = useState('');
   const [written, setWritten] = useState(false);

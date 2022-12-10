@@ -5,7 +5,7 @@ import Auth from '../../api/Auth';
 import * as Styled from './styled';
 
 const Nav = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const auth = Auth();
   const [button, setButton] = useState(true);
   const [click, setClick] = useState(false);
