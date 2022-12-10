@@ -1,7 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { Footer, Nav } from './components';
-import ScrollButton from './components/ScrollButton';
-import GlobalStyle from './GlobalStyle';
+import { Footer, Nav, ScrollButton } from './components';
 import {
   BadGateway,
   BanReason,
@@ -21,8 +19,9 @@ import {
   ResetPassword,
   Search,
   SignUp,
-} from './pages'; //페이지 목록
-import RouteChangeTracker from './RouteChangeTracker';
+} from './pages';
+import RouteChangeTracker from './RouteChangeTracker.js';
+import GlobalStyle from './styles/GlobalStyle.js';
 
 const App = () => {
   return (

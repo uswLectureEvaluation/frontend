@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import styled from 'styled-components';
-import { Color } from '../GlobalStyle';
+import { Color } from '../styles/GlobalStyle';
 
 export const Detail = (props) => {
   return (
