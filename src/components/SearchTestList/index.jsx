@@ -2,7 +2,7 @@ import * as Styled from './styled';
 import User from '../../api/User';
 
 const SearchTestList = ({ page }) => {
-  return page.map((lecture) => <Subject key={Math.random()} lecture={lecture} />);
+  return page.map((lecture) => <Subject key={lecture.id} lecture={lecture} />);
 };
 
 export const Subject = ({ lecture }) => {

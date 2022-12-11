@@ -83,7 +83,7 @@ const TestInfo = ({ selectId, setWritten }) => {
     return (
       <>
         {pages.map((page) => (
-          <SearchTestList key={Math.random()} page={page.data.data} />
+          <SearchTestList key={page.nextPage} page={page.data.data} />
         ))}
         <div ref={ref} style={{ marginBottom: '10px' }}>
           {isFetchingNextPage ? <Spinner id="nextPage" /> : null}

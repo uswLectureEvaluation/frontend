@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { useInView } from 'react-intersection-observer';
 import * as Styled from './styled';
 import StarRatings from 'react-star-ratings';
@@ -90,9 +90,13 @@ const SearchEvaluationList = ({ selectId, setWritten }) => {
 
   return count !== 0 ? (
     <Styled.Wrapper>
-      {pages?.map((page) =>
-        page.data.data.map((lecture) => <Subject key={Math.random()} lecture={lecture} />)
-      )}
+      {pages?.map((page) => (
+        <Fragment key={page.nextPage}>
+          {page.data.data.map((lecture) => (
+            <Subject key={lecture.id} lecture={lecture} />
+          ))}
+        </Fragment>
+      ))}
       <div ref={ref} style={{ marginBottom: '10px' }}>
         {isFetchingNextPage ? <Spinner id="nextPage" /> : null}
       </div>

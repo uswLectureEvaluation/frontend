@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useInfiniteQuery } from 'react-query';
 import Spinner from '../../components/Spinner';
 import { useInView } from 'react-intersection-observer';
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import Notices from '../../api/Notice';
 
 export const NoticeItem = ({ notice }) => {
@@ -42,9 +42,13 @@ export const NoticeContainer = () => {
     <>
       {data.pages.length > 0 ? (
         <>
-          {data.pages.map((page) =>
-            page.data.data.map((notice) => <NoticeItem notice={notice} key={notice.id} />)
-          )}
+          {data.pages.map((page) => (
+            <Fragment key={page.nextPage}>
+              {page.data.data.map((notice) => (
+                <NoticeItem notice={notice} key={notice.id} />
+              ))}
+            </Fragment>
+          ))}
           <div ref={ref} style={{ marginBottom: '10px' }}>
             {isFetchingNextPage ? <Spinner /> : null}
           </div>

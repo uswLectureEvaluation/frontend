@@ -97,7 +97,7 @@ const Myevaluation = () => {
           return (
             <Styled.Wrapper key={page.nextPage}>
               {data.map((row) => (
-                <Subject key={Math.random()} row={row} />
+                <Subject key={row.id} row={row} />
               ))}
             </Styled.Wrapper>
           );
