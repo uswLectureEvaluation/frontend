@@ -43,12 +43,6 @@ export const Title = styled.div`
   padding-bottom: 0.7rem;
   font-family: 'Pretendard-Medium';
 `;
-export const Date = styled.div`
-  display: flex;
-  font-size: 0.9rem;
-  padding-bottom: 3rem;
-  color: #a3a3a3;
-`;
 
 export const BackWrapper = styled.div`
   display: flex;

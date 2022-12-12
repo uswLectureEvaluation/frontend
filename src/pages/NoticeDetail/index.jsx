@@ -1,8 +1,8 @@
-import * as Styled from './styled';
-import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import Spinner from '../../components/Spinner';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Notices from '../../api/Notice';
+import Spinner from '../../components/Spinner';
+import * as Styled from './styled';
 
 export const NoticeBox = () => {
   const notice = Notices();
@@ -17,10 +17,6 @@ export const NoticeBox = () => {
   return (
     <Styled.Content>
       <Styled.Title>{data.data.title}</Styled.Title>
-      <Styled.Date>
-        {/* {data.data.modifiedDate.slice(0, 10)}{" "}
-                {data.data.modifiedDate.slice(11)} */}
-      </Styled.Date>
       {data.data.content &&
         data.data.content.split('\n').map((value, index) => {
           return (

@@ -40,7 +40,7 @@ export const NoticeContainer = () => {
 
   return (
     <>
-      {data.pages.length > 0 ? (
+      {data.pages.length ? (
         <>
           {data.pages.map((page) => (
             <Fragment key={page.nextPage}>
