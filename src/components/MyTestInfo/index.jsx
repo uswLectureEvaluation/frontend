@@ -20,7 +20,7 @@ const Testinformation = () => {
         if (!lastPage.isLast) return lastPage.nextPage;
         return undefined;
       },
-      enabled: (localStorage.getItem('login') || sessionStorage.getItem('login')) === 'true',
+      enabled: isLoginStorage() === 'true',
       cacheTime: 1000 * 60 * 30,
       staleTime: 1000 * 60 * 30,
     }

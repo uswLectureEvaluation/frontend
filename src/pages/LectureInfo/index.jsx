@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react';
-import * as Styled from './styled';
+import { useEffect, useState } from 'react';
+import Modal from 'react-modal';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Button } from '../../components';
+import LectureDetail from '../../components/LectureInfo/LectureDetail';
+import ModalStyle from '../../components/ModalStyle';
 import SearchEvaluationList from '../../components/SearchEvaluationList';
 import TestInfo from '../../components/TestInfo';
 import WriteEvaluation from '../../components/WriteEvaluation';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import Modal from 'react-modal';
 import WriteExam from '../../components/WriteExam';
-import ModalStyle from '../../components/ModalStyle';
-import { Button } from '../../components';
-import LectureDetail from '../../components/LectureInfo/LectureDetail';
+import { isLoginStorage } from '../../utils/loginStorage.js';
+import * as Styled from './styled';
 
 const LectureInfo = () => {
   const navigate = useNavigate();
@@ -71,7 +72,7 @@ const LectureInfo = () => {
           onKeyPress={onKeypress}
         />
       </Styled.SearchWrapper>
-      {!(localStorage.getItem('login') || sessionStorage.getItem('login')) ? (
+      {!isLoginStorage() ? (
         <Styled.FlexContainer id="col">
           <Button color="#336af8" onClick={() => navigate('/login')}>
             로그인하기

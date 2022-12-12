@@ -1,9 +1,10 @@
-import * as Styled from './styled';
-import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import Spinner from '../../components/Spinner';
-import { Button } from '../../components';
+import { useNavigate } from 'react-router-dom';
 import User from '../../api/User';
+import { Button } from '../../components';
+import Spinner from '../../components/Spinner';
+import { isLoginStorage } from '../../utils/loginStorage.js';
+import * as Styled from './styled';
 
 const MyInfo = () => {
   const user = User();
@@ -50,14 +51,14 @@ const MyInfo = () => {
   ];
 
   const { data, isLoading } = useQuery(['myInfo'], user.info, {
-    enabled: (localStorage.getItem('login') || sessionStorage.getItem('login')) === 'true',
+    enabled: isLoginStorage() === 'true',
     cacheTime: 1000 * 60 * 30,
     staleTime: 1000 * 60 * 30,
   });
   let my = data;
 
   if (isLoading) return <Spinner id="myInfo" />;
-  return !(localStorage.getItem('login') || sessionStorage.getItem('login')) ? (
+  return !isLoginStorage() ? (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Styled.FlexContainer id="col">
         <Button color="#336af8" onClick={() => navigate('/login')}>

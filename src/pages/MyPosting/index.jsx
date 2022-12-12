@@ -1,15 +1,16 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components';
 import Myevaluation from '../../components/MyEvaluation';
 import Testinformation from '../../components/MyTestInfo';
-import { useNavigate } from 'react-router-dom';
+import { isLoginStorage } from '../../utils/loginStorage.js';
 import * as Styled from './styled';
 
 const MyPosting = () => {
   const [evaluation, setEvaluation] = useState(true);
   const navigte = useNavigate();
 
-  return !(localStorage.getItem('login') || sessionStorage.getItem('login')) ? (
+  return !isLoginStorage() ? (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Styled.FlexContainer id="col">
         <Button color="#336af8" onClick={() => navigte('/login')}>

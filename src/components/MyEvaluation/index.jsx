@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
-import Modal from 'react-modal';
-import * as Styled from './styled';
-import StarRatings from 'react-star-ratings';
-import EditEvaluation from '../EditEvaluation';
-import ModalStyle from '../ModalStyle';
-import { useInfiniteQuery, useMutation } from 'react-query';
-import Spinner from '../Spinner';
 import { useInView } from 'react-intersection-observer';
+import Modal from 'react-modal';
+import { useInfiniteQuery, useMutation } from 'react-query';
+import StarRatings from 'react-star-ratings';
 import { queryClient } from '../..';
 import User from '../../api/User';
+import { isLoginStorage } from '../../utils/loginStorage.js';
+import EditEvaluation from '../EditEvaluation';
+import ModalStyle from '../ModalStyle';
+import Spinner from '../Spinner';
+import * as Styled from './styled';
 
 export const DetailModal = (props) => {
   const teamSet = props.team;
@@ -73,7 +74,7 @@ const Myevaluation = () => {
         if (!lastPage.isLast) return lastPage.nextPage;
         return undefined;
       },
-      enabled: (localStorage.getItem('login') || sessionStorage.getItem('login')) === 'true',
+      enabled: isLoginStorage(),
       cacheTime: 1000 * 60 * 30,
       staleTime: 1000 * 60 * 30,
     }
