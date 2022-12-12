@@ -1,19 +1,19 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components';
-import Myevaluation from '../../components/MyEvaluation';
-import Testinformation from '../../components/MyTestInfo';
+import MyEvaluation from '../../components/MyEvaluation';
+import TestInformation from '../../components/MyTestInfo';
 import { isLoginStorage } from '../../utils/loginStorage.js';
 import * as Styled from './styled';
 
 const MyPosting = () => {
   const [evaluation, setEvaluation] = useState(true);
-  const navigte = useNavigate();
+  const navigate = useNavigate();
 
   return !isLoginStorage() ? (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Styled.FlexContainer id="col">
-        <Button color="#336af8" onClick={() => navigte('/login')}>
+        <Button color="#336af8" onClick={() => navigate('/login')}>
           로그인하기
         </Button>
       </Styled.FlexContainer>
@@ -37,7 +37,7 @@ const MyPosting = () => {
         >
           시험정보
         </Styled.TextLink>
-        {evaluation ? <Myevaluation /> : <Testinformation />}
+        {evaluation ? <MyEvaluation /> : <TestInformation />}
       </Styled.FlexBox>
     </Styled.FlexContainer>
   );

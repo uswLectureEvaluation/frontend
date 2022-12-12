@@ -25,8 +25,8 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
-  const [idcheck, setIdcheck] = useState(false);
-  const [emailcheck, setEmailcheck] = useState(false);
+  const [idCheck, setIdCheck] = useState(false);
+  const [emailCheck, setEmailCheck] = useState(false);
 
   const [db, setData] = useState({
     data: '',
@@ -48,7 +48,7 @@ const SignUp = () => {
     } else if (e.target.value.length > 6 || e.target.value.length < 20) {
       setNameMessage('아이디 중복확인해주세요.');
       setIsName(true);
-      setIdcheck(false);
+      setIdCheck(false);
     }
   }, []);
 
@@ -66,7 +66,7 @@ const SignUp = () => {
     } else {
       setEmailMessage('사용 가능한 이메일입니다.');
       setIsEmail(true);
-      setEmailcheck(false);
+      setEmailCheck(false);
     }
   }, []);
 
@@ -123,20 +123,20 @@ const SignUp = () => {
   };
 
   const onCheck = () => {
-    auth.checkId(setIdcheck, name);
+    auth.checkId(setIdCheck, name);
   };
 
   const onEmail = () => {
-    auth.checkEmail(setEmailcheck, email);
+    auth.checkEmail(setEmailCheck, email);
   };
 
   useEffect(() => {
-    if (idcheck) return setNameMessage('아이디 중복확인 완료');
-  }, [idcheck]);
+    if (idCheck) return setNameMessage('아이디 중복확인 완료');
+  }, [idCheck]);
 
   useEffect(() => {
-    if (emailcheck) return setEmailMessage('이메일 중복확인 완료');
-  }, [emailcheck]);
+    if (emailCheck) return setEmailMessage('이메일 중복확인 완료');
+  }, [emailCheck]);
 
   useEffect(() => {
     if (loading) {
@@ -166,7 +166,7 @@ const SignUp = () => {
             onChange={onChangeName}
           />
           <Styled.Button
-            disabled={!isName || idcheck}
+            disabled={!isName || idCheck}
             id="check"
             onClick={onCheck}
             background="#336af8"
@@ -225,7 +225,7 @@ const SignUp = () => {
             onChange={onChangeEmail}
           />
           <Styled.Button
-            disabled={!isEmail || emailcheck}
+            disabled={!isEmail || emailCheck}
             id="check"
             onClick={onEmail}
             background="#336af8"
@@ -300,8 +300,8 @@ const SignUp = () => {
               isPassword &&
               isPasswordConfirm &&
               checkList.length === 2 &&
-              idcheck &&
-              emailcheck
+              idCheck &&
+              emailCheck
             )
           }
           background="#336af8"

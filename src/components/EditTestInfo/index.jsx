@@ -5,7 +5,7 @@ import { useMutation } from 'react-query';
 import { queryClient } from '../..';
 import User from '../../api/User';
 
-const Edittestinfo = ({ setModalIsOpen, row }) => {
+const EditTestInfo = ({ setModalIsOpen, row }) => {
   const user = User();
   const [semester, setSemester] = useState(`${row.selectedSemester}`); //학기
   const [examType, setExamType] = useState(`${row.examType}`); //중간,기말
@@ -248,4 +248,4 @@ const Edittestinfo = ({ setModalIsOpen, row }) => {
     </Styled.Wrapper>
   );
 };
-export default Edittestinfo;
+export default EditTestInfo;
