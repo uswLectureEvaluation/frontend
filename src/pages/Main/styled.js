@@ -18,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
 export const Banner = styled.div`
   width: 100%;
   background-color: #eeeeee;
+  cursor: default;
   @media screen and (max-width: 550px) {
     display: none;
   }
@@ -83,6 +84,7 @@ export const SearchInput = styled.input`
   background-repeat: no-repeat;
   background-position: 99%;
   font-family: 'Pretendard-Regular';
+  cursor: pointer;
 
   &:focus {
     outline: none;

@@ -50,6 +50,7 @@ export const SearchInput = styled.input`
   background-repeat: no-repeat;
   background-position: 99%;
   font-family: 'Pretendard-Regular';
+  cursor: pointer;
 
   &:focus {
     outline: none;

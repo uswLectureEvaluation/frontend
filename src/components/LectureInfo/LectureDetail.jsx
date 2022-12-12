@@ -251,6 +251,7 @@ const Option = styled.div`
   padding: 4.5px 12px;
   font-size: 14px;
   font-family: 'Pretendard-Regular';
+  cursor: default;
   &#type {
     height: 25px;
     margin-top: 0px;
