@@ -10,7 +10,7 @@ import ModalStyle from '../ModalStyle';
 import Spinner from '../Spinner';
 import * as Styled from './styled';
 
-const Testinformation = () => {
+const TestInformation = () => {
   const { ref, inView } = useInView();
   const user = User();
   const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
@@ -21,7 +21,7 @@ const Testinformation = () => {
         if (!lastPage.isLast) return lastPage.nextPage;
         return undefined;
       },
-      enabled: isLoginStorage() === 'true',
+      enabled: isLoginStorage(),
       cacheTime: 1000 * 60 * 30,
       staleTime: 1000 * 60 * 30,
     }
@@ -187,4 +187,4 @@ export const Subject = ({ row }) => {
   );
 };
 
-export default Testinformation;
+export default TestInformation;

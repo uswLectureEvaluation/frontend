@@ -51,7 +51,7 @@ const MyInfo = () => {
   ];
 
   const { data, isLoading } = useQuery(['myInfo'], user.info, {
-    enabled: isLoginStorage() === 'true',
+    enabled: isLoginStorage(),
     cacheTime: 1000 * 60 * 30,
     staleTime: 1000 * 60 * 30,
   });
