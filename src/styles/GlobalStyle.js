@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
   * {
     outline: none;
     box-sizing: border-box;
-    font-family: 'Pretendard', sans-serif;
+    font-family: 'Pretendard Variable', sans-serif;
     font-weight: 500;
   }
   :root {
@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Pretendard', sans-serif;
+    font-family: 'Pretendard Variable', sans-serif;
     font-weight: 500;
   }
 
