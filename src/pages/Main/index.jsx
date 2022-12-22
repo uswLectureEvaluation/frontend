@@ -73,8 +73,8 @@ const Main = () => {
             <br />
             강의평가의 모든 것<Styled.BannerSub>강의평가의 모든 것 수위키</Styled.BannerSub>
           </div>
-
           <picture>
+            <source srcSet="/img/resize_banner.webp" type="image/webp" />
             <source srcSet="/img/banner.webp" type="image/webp" />
             <source srcSet="/img/banner.svg" type="image/png" />
             <Styled.BannerImg src="img/banner.svg" alt="banner" width={450} height={450} />
