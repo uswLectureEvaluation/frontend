@@ -35,6 +35,7 @@ export default LectureContainer;
 export const FlexWrap = styled.div`
   display: flex;
   width: 100%;
+  min-height: 690px;
   justify-content: space-between;
 
   &#none {
