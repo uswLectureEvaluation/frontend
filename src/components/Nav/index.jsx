@@ -33,13 +33,17 @@ const Nav = () => {
 
   return (
     <Styled.Navbar>
-      <Styled.NavLogo
-        src="/img/logo.png"
-        alt="logo"
-        width={110}
-        height={30}
-        onClick={() => navigate('/')}
-      />
+      <picture>
+        <source srcSet="/img/logo.webp" type="image/webp" />
+        <source srcSet="/img/logo.png" type="image/png" />
+        <Styled.NavLogo
+          src="/img/logo.png"
+          alt="logo"
+          width={110}
+          height={30}
+          onClick={() => navigate('/')}
+        />
+      </picture>
       {!button && (
         <Styled.MobileIcon onClick={handleClick}>
           {click ? (
