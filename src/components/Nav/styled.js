@@ -63,7 +63,7 @@ export const NavMenu = styled.nav`
   }
 `;
 
-export const NavLinks = styled.a`
+export const NavLinks = styled.div`
   font-size: 1rem;
   &:hover {
     cursor: pointer;
