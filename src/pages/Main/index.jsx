@@ -9,35 +9,34 @@ import { MajorModalStyle } from '../../components/ModalStyle';
 import { majorList } from '../Search';
 import * as Styled from './styled';
 
+const options = [
+  {
+    name: '최근 올라온 강의',
+    lec: 'modifiedDate',
+    imgs: 'img/icon_color_fire_36.svg',
+  },
+  {
+    name: '꿀 강의',
+    lec: 'lectureHoneyAvg',
+    imgs: 'img/icon_color_bee_36.svg',
+  },
+  {
+    name: '만족도가 높은 강의',
+    lec: 'lectureSatisfactionAvg',
+    imgs: 'img/icon_color_thumbs_36.svg',
+  },
+  {
+    name: '배울게 많은 강의',
+    lec: 'lectureLearningAvg',
+    imgs: 'img/icon_color_book_36.svg',
+  },
+  {
+    name: 'BEST 강의',
+    lec: 'lectureTotalAvg',
+    imgs: 'img/icon_color_best_36.svg',
+  },
+];
 const Main = () => {
-  const options = [
-    {
-      name: '최근 올라온 강의',
-      lec: 'modifiedDate',
-      imgs: 'img/icon_color_fire_36.svg',
-    },
-    {
-      name: '꿀 강의',
-      lec: 'lectureHoneyAvg',
-      imgs: 'img/icon_color_bee_36.svg',
-    },
-    {
-      name: '만족도가 높은 강의',
-      lec: 'lectureSatisfactionAvg',
-      imgs: 'img/icon_color_thumbs_36.svg',
-    },
-    {
-      name: '배울게 많은 강의',
-      lec: 'lectureLearningAvg',
-      imgs: 'img/icon_color_book_36.svg',
-    },
-    {
-      name: 'BEST 강의',
-      lec: 'lectureTotalAvg',
-      imgs: 'img/icon_color_best_36.svg',
-    },
-  ];
-
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [lecture, setLecture] = useState('modifiedDate');
