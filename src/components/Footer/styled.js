@@ -1,18 +1,20 @@
 import styled from 'styled-components';
 
+export const FootWrapper = styled.footer`
+  padding-top: 100px;
+`;
+
 export const Foot = styled.div`
   margin: 0 auto;
   background-color: rgb(237, 237, 237);
   display: flex;
+  gap: 1.4rem;
   height: 170px;
-  padding: 3rem;
   justify-content: center;
   align-items: center;
 `;
 
 export const FooterContent = styled.div`
-  padding-left: ${(props) => props.left || '1rem'};
-  padding-right: ${(props) => props.right || '0rem'};
   color: #222222;
   font-size: 1rem;
   &:hover {

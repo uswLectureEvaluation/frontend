@@ -2,7 +2,7 @@ import * as Styled from './styled';
 
 const Footer = () => {
   return (
-    <footer style={{ paddingTop: '100px' }}>
+    <Styled.FootWrapper>
       <Styled.Foot>
         <Styled.FooterContent
           right="1rem"
@@ -19,7 +19,7 @@ const Footer = () => {
           문의하기
         </Styled.FooterContent>
       </Styled.Foot>
-    </footer>
+    </Styled.FootWrapper>
   );
 };
 
