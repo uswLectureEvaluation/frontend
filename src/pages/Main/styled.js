@@ -114,6 +114,7 @@ export const BannerImg = styled.img`
   pointer-events: none;
   @media screen and (max-width: 1300px) {
     width: 450px;
+    height: 450px;
     vertical-align: bottom;
     pointer-events: none;
   }
