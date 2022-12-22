@@ -2,7 +2,7 @@ import * as Styled from './styled';
 
 const Footer = () => {
   return (
-    <footer style={{ paddingTop: '12vh' }}>
+    <footer style={{ paddingTop: '100px' }}>
       <Styled.Foot>
         <Styled.FooterContent
           right="1rem"

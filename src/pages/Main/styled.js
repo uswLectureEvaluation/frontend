@@ -29,22 +29,18 @@ export const BannerWrapper = styled.div`
   margin: 0 auto;
   display: flex;
   align-items: center;
-  color: #000000;
   font-size: 1.2rem;
   justify-content: space-between;
-
   font-weight: 600;
 
   @media screen and (max-width: 960px) {
     width: 80%;
-    justify-content: space-evenly;
   }
 `;
 
 export const BannerSub = styled.div`
   font-size: 1rem;
-  margin-top: 1vh;
-
+  padding-top: 0.4rem;
   font-weight: 300;
 `;
 
@@ -155,7 +151,6 @@ export const Soption = styled.span`
 export const Button = styled.button`
   width: 40%;
   height: 50px;
-  padding: 0.8rem 1rem;
   border: none;
   background: ${(props) => props.background};
   color: white;
