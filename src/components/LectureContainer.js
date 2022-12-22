@@ -36,7 +36,6 @@ export const FlexWrap = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-  font-family: Pretendard-Medium;
 
   &#none {
     display: flex;

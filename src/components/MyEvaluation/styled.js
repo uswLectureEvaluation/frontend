@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const ModalOpen = styled.span`
   font-size: 12px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   color: #222222;
   text-decoration: underline;
   margin-left: 11px;
@@ -13,7 +14,6 @@ export const ModalOpen = styled.span`
 
 export const Wrapper = styled.div`
   margin: 0px 20px;
-  font-family: 'Pretendard-Medium';
 `;
 
 export const NoEvaluation = styled.div`
@@ -55,7 +55,8 @@ export const Title = styled.span`
 
 export const Major = styled.span`
   font-size: 14px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   color: #515151;
   &#border {
     color: #e0e0e0;
@@ -65,14 +66,15 @@ export const Major = styled.span`
 
 export const Professor = styled.span`
   font-size: 14px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   color: #515151;
 `;
 
 export const Rate = styled.span`
   color: #336af8;
   font-size: 18px;
-  font-family: 'Pretendard-Medium';
+
   padding-left: 5px;
   &#modal {
     font-size: 16px;
@@ -97,7 +99,7 @@ export const MarginTop = styled.div`
 `;
 export const DataColor = styled.div`
   padding-left: 0.7rem;
-  font-family: 'Pretendard-Medium';
+
   &#black {
     color: black;
   }
@@ -123,7 +125,8 @@ export const StarFlex = styled.div`
   }
   &#between {
     justify-content: space-between;
-    font-family: 'Pretendard-Light';
+
+    font-weight: 300;
   }
 `;
 
@@ -136,7 +139,8 @@ export const FlexContainer = styled.div`
 
 export const YearText = styled.span`
   font-size: 14px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   padding: 4.5px 13px 4.5px 13px;
   border-radius: 12.5px;
   background-color: #eee;
@@ -146,7 +150,8 @@ export const YearText = styled.span`
 export const EvaluationDetail = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   line-height: 1.3;
   font-size: 1rem;
   padding-top: 0.7rem;
@@ -157,7 +162,8 @@ export const PaddingRight = styled.span`
 `;
 export const EditButton = styled.span`
   font-size: 12px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   text-align: center;
   color: #a3a3a3;
   float: right;
@@ -173,7 +179,8 @@ export const EditButton = styled.span`
 `;
 export const DeleteButton = styled.span`
   font-size: 12px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   text-align: center;
   color: #a3a3a3;
   float: right;

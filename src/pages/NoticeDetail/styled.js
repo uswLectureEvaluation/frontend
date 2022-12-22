@@ -6,7 +6,6 @@ export const AppContainer = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto;
-  font-family: Pretendard-Medium;
 
   @media screen and (max-width: 550px) {
     width: 90%;
@@ -17,7 +16,8 @@ export const AppTitle = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
-  font-family: 'Pretendard-SemiBold';
+
+  font-weight: 600;
   padding-top: 5rem;
   padding-bottom: 1rem;
 `;
@@ -25,7 +25,8 @@ export const AppTitle = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   width: 100%;
   border: 1.5px solid #f1f1f1;
   border-radius: 15px;
@@ -41,7 +42,6 @@ export const Title = styled.div`
   display: flex;
   font-size: 1.7rem;
   padding-bottom: 0.7rem;
-  font-family: 'Pretendard-Medium';
 `;
 
 export const BackWrapper = styled.div`

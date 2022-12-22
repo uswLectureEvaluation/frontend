@@ -11,7 +11,8 @@ export const Option = styled.div`
   padding: 0.5rem 0;
   font-size: 0.8rem;
   color: #a3a3a3;
-  font-family: 'Pretendard-Light';
+
+  font-weight: 300;
 `;
 
 export const NoticeWrap = styled.div`

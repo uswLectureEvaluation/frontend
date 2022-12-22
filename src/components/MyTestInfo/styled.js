@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  font-family: 'Pretendard-Medium';
   margin: 0px 20px;
 `;
 
@@ -27,7 +26,8 @@ export const Title = styled.span`
 
 export const Major = styled.span`
   font-size: 14px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   color: #515151;
   &#border {
     color: #e0e0e0;
@@ -37,7 +37,8 @@ export const Major = styled.span`
 
 export const Professor = styled.span`
   font-size: 14px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   color: #515151;
 `;
 
@@ -84,7 +85,8 @@ export const StarFlex = styled.div`
   align-items: center;
   padding: 2px 11px;
   font-size: 13px;
-  font-family: 'Pretendard-Light';
+
+  font-weight: 300;
   &#top {
     padding: 8px 12px 0px 12px;
   }
@@ -96,11 +98,9 @@ export const StarFlex = styled.div`
   }
   &#black {
     font-weight: 500;
-    font-family: 'Pretendard-Medium';
   }
   &#data {
     padding-right: 0px;
-    font-family: 'Pretendard-Medium';
   }
 `;
 
@@ -114,7 +114,8 @@ export const FlexContainer = styled.div`
 
 export const YearText = styled.span`
   font-size: 14px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   padding: 4.5px 13px 4.5px 13px;
   border-radius: 12.5px;
   background-color: #eee;
@@ -125,7 +126,8 @@ export const EvaluationDetail = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 1rem;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   line-height: 1.3;
   padding-top: 0.7rem;
   word-break: break-all;
@@ -133,7 +135,8 @@ export const EvaluationDetail = styled.div`
 
 export const EditButton = styled.span`
   font-size: 12px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   text-align: center;
   color: #a3a3a3;
   float: right;
@@ -144,7 +147,8 @@ export const EditButton = styled.span`
 `;
 export const DeleteButton = styled.span`
   font-size: 12px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   text-align: center;
   color: #a3a3a3;
   float: right;

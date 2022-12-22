@@ -11,7 +11,6 @@ export const Foot = styled.div`
 `;
 
 export const FooterContent = styled.div`
-  font-family: ${(props) => props.font || 'Pretendard-Light'};
   padding-left: ${(props) => props.left || '1rem'};
   padding-right: ${(props) => props.right || '0rem'};
   color: #222222;

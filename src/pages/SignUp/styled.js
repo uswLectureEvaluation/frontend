@@ -4,11 +4,12 @@ export const Title = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
-  font-family: 'Pretendard-SemiBold';
+
+  font-weight: 600;
   padding-top: 1rem;
   padding-bottom: 1rem;
   @media only screen and (max-width: 960px) {
-    font-family: 'Pretendard-SemiBold';
+    font-weight: 600;
   }
 `;
 
@@ -37,7 +38,8 @@ export const EmailWrapper = styled.div`
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
-  font-family: 'Pretendard-SemiBold';
+
+  font-weight: 600;
 `;
 
 export const AgreeButton = styled.button`
@@ -55,7 +57,6 @@ export const AgreeButton = styled.button`
 export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
-  font-family: 'Pretendard-Medium';
 
   &#top {
     align-items: stretch;
@@ -105,7 +106,8 @@ export const Button = styled.button`
   color: white;
   font-size: 1rem;
   border-radius: 12px;
-  font-family: 'Pretendard-SemiBold';
+
+  font-weight: 600;
   cursor: pointer;
   user-select: none;
   transition: 0.3s all;

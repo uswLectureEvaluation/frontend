@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import MainList from '../../components/MainList';
-import * as Styled from './styled';
-import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
-import { MajorModalStyle } from '../../components/ModalStyle';
-import MajorSearch from '../../components/MajorSearch';
-import { majorList } from '../Search';
-import { versionCheck } from '../../app/versionCheck';
+import { useNavigate } from 'react-router-dom';
 import Major from '../../api/Major';
+import { versionCheck } from '../../app/versionCheck';
+import MainList from '../../components/MainList';
+import MajorSearch from '../../components/MajorSearch';
+import { MajorModalStyle } from '../../components/ModalStyle';
+import { majorList } from '../Search';
+import * as Styled from './styled';
 
 const Main = () => {
   const options = [

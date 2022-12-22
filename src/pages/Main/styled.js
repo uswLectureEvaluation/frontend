@@ -32,7 +32,8 @@ export const BannerWrapper = styled.div`
   color: #000000;
   font-size: 1.2rem;
   justify-content: space-between;
-  font-family: 'Pretendard-SemiBold';
+
+  font-weight: 600;
 
   @media screen and (max-width: 960px) {
     width: 80%;
@@ -43,7 +44,8 @@ export const BannerWrapper = styled.div`
 export const BannerSub = styled.div`
   font-size: 1rem;
   margin-top: 1vh;
-  font-family: 'Pretendard-Light';
+
+  font-weight: 300;
 `;
 
 export const Container = styled.div`
@@ -71,7 +73,8 @@ export const SearchTitle = styled.div`
   font-size: 1.5rem;
   padding-top: 4rem;
   padding-bottom: 1.5rem;
-  font-family: 'Pretendard-SemiBold';
+
+  font-weight: 600;
   width: 100%;
 `;
 
@@ -83,7 +86,8 @@ export const SearchInput = styled.input`
   background-image: url('img/icon_search_24.svg');
   background-repeat: no-repeat;
   background-position: 99%;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   cursor: pointer;
 
   &:focus {
@@ -141,7 +145,6 @@ export const Img = styled.img`
 export const Soption = styled.span`
   font-weight: normal;
   &#semester {
-    font-family: 'Pretendard-Medium';
     font-size: 16px;
     font-weight: normal;
   }
@@ -158,7 +161,6 @@ export const Button = styled.button`
   border-radius: 12px;
   cursor: pointer;
   user-select: none;
-  font-family: 'Pretendard-Medium';
 
   @media screen and (max-width: 550px) {
     width: 50%;
@@ -308,7 +310,7 @@ const StyledButton = styled_mui('button')(
 const StyledListbox = styled_mui('ul')(
   ({ theme }) => `
   font-size: 0.875rem;
-  font-family: Pretendard-Medium;
+   
   box-sizing: border-box;
   padding: 5px;
   margin: 10px 0;

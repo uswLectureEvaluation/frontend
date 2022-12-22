@@ -36,12 +36,12 @@ export const Title = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
-  font-family: 'Pretendard-SemiBold';
+
+  font-weight: 600;
   padding-top: 1rem;
   padding-bottom: 1rem;
 
   @media only screen and (max-width: 550px) {
-    font-family: 'Pretendard-Medium';
     font-size: 24px;
     font-weight: 600;
   }
@@ -58,7 +58,8 @@ export const Button = styled.button`
   color: white;
   font-size: 1.1rem;
   border-radius: 12px;
-  font-family: 'Pretendard-SemiBold';
+
+  font-weight: 600;
   cursor: pointer;
   user-select: none;
   transition: 0.3s all;
@@ -72,7 +73,8 @@ export const SearchButton = styled.button`
   border-bottom: 1px solid;
   padding: 0;
   margin-left: 10px;
-  font-family: 'Pretendard-Light';
+
+  font-weight: 300;
   background-color: white;
   &:hover {
     cursor: pointer;

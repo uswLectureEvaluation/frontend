@@ -23,7 +23,8 @@ export default NotFound;
 const StyledText = styled.div`
   text-align: center;
   padding-bottom: 2rem;
-  font-family: 'Pretendard-SemiBold';
+
+  font-weight: 600;
 
   &#top {
     padding-top: 2rem;

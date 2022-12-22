@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-family: 'Pretendard-Medium';
+
   &#button {
     align-items: center;
   }
@@ -117,7 +117,8 @@ export const TextField = styled.textarea`
 
 export const EditButton = styled.button`
   font-size: 16px;
-  font-family: 'Pretendard-Semibold';
+
+  font-weight: 600;
   width: 350px;
   padding: 12px 20px;
   text-align: center;
@@ -170,19 +171,22 @@ export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
   &#difficult {
     &:checked + ${FormCheckText} {
       color: #7800ff;
-      font-family: 'Pretendard-Semibold';
+
+      font-weight: 600;
     }
   }
   &#normal {
     &:checked + ${FormCheckText} {
       color: #222222;
-      font-family: 'Pretendard-Semibold';
+
+      font-weight: 600;
     }
   }
   &#easy {
     &:checked + ${FormCheckText} {
       color: #336af8;
-      font-family: 'Pretendard-Semibold';
+
+      font-weight: 600;
     }
   }
   display: none;

@@ -11,7 +11,8 @@ export const Color = styled.span`
 export const Content = styled.div`
   font-size: 1.5rem;
   margin: 2rem 0;
-  font-family: 'Pretendard-Semibold';
+
+  font-weight: 600;
   text-align: center;
   margin-top: 10rem;
   @media screen and (max-width: 550px) {

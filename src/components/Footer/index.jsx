@@ -11,7 +11,6 @@ const Footer = () => {
           이용약관
         </Styled.FooterContent>
         <Styled.FooterContent
-          font="Pretendard-Medium"
           onClick={() => window.open('https://sites.google.com/view/suwiki-policy-privacy')}
         >
           개인정보처리방침

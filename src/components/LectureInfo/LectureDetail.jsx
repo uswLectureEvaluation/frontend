@@ -233,7 +233,8 @@ const Title = styled.div`
 const Professor = styled.div`
   display: flex;
   color: #222;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   font-size: 14px;
   font-stretch: normal;
   font-style: normal;
@@ -250,12 +251,12 @@ const Option = styled.div`
   align-items: center;
   padding: 4.5px 12px;
   font-size: 14px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   cursor: default;
   &#type {
     height: 25px;
     margin-top: 0px;
-    font-family: 'Pretendard-Medium';
   }
   &#semester {
     margin-right: 8px;
@@ -269,7 +270,8 @@ const OptionTitle = styled.div`
   margin-left: 5px;
   width: 80px;
   font-size: 14px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   @media screen and (max-width: 550px) {
     width: 100%;
   }

@@ -40,7 +40,8 @@ export const SearchTitle = styled.div`
   display: flex;
   font-size: 1.5rem;
   margin-right: auto;
-  font-family: 'Pretendard-SemiBold';
+
+  font-weight: 600;
   padding-top: 4rem;
 `;
 
@@ -53,7 +54,8 @@ export const SearchInput = styled.input`
   background-image: url('img/icon_search_24.svg');
   background-repeat: no-repeat;
   background-position: 99%;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   cursor: pointer;
 
   &:focus {
@@ -75,7 +77,7 @@ export const HeadSelection = styled.div`
 export const FlexWrapper = styled.div`
   display: flex;
   margin-bottom: 1rem;
-  font-family: Pretendard-Medium;
+
   &#count {
     @media screen and (max-width: 960px) {
       display: none;

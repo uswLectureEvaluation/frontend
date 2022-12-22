@@ -18,7 +18,7 @@ export const TitleWrapper = styled.div`
 
 export const Title = styled.div`
   font-size: 20px;
-  font-family: 'Pretendard-Medium';
+
   cursor: pointer;
 `;
 
@@ -58,7 +58,7 @@ export const TabWrapper = styled.div`
 export const TabMenu = styled.div`
   font-size: 16px;
   color: #a3a3a3;
-  font-family: 'Pretendard-Medium';
+
   font-weight: 400;
   margin-right: 15px;
   &#selected {
@@ -82,7 +82,7 @@ export const MajorBox = styled.div`
 export const MajorSelect = styled.span`
   display: flex;
   align-items: center;
-  font-family: 'Pretendard-Medium';
+
   font-size: 16px;
   width: 100%;
   padding: 5px;

@@ -6,7 +6,8 @@ const GlobalStyle = createGlobalStyle`
   * {
     outline: none;
     box-sizing: border-box;
-    font-family: 'Pretendard-Medium', sans-serif;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
   }
   :root {
       --main-color: '#336af8',
@@ -15,6 +16,11 @@ const GlobalStyle = createGlobalStyle`
       --sub-font-color: #515151;
       --hover-color: #76d6bc;
       --accent-color: #ff7675;
+  }
+
+  body {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
   }
 
   #root > div{

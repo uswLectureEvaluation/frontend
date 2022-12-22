@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ModalOpen = styled.span`
-  font-family: 'Pretendard-Regular';
+  font-weight: 400;
   font-size: 12px;
   color: #222;
   text-decoration: underline;
@@ -18,7 +18,8 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
   font-size: 1.5rem;
   margin: 2rem 0;
-  font-family: 'Pretendard-Semibold';
+
+  font-weight: 600;
   text-align: center;
   margin-top: 10rem;
   @media screen and (max-width: 550px) {
@@ -35,7 +36,7 @@ export const TitleWrapper = styled.div`
 
 export const Rate = styled.span`
   color: #336af8;
-  font-family: 'Pretendard-Medium';
+
   font-size: 18px;
   font-weight: 500;
   padding-left: 5px;
@@ -74,7 +75,7 @@ export const MobileWrapper = styled.div`
 `;
 export const DataColor = styled.div`
   padding-left: 0.7rem;
-  font-family: 'Pretendard-Medium';
+
   &#black {
     color: black;
   }
@@ -91,7 +92,7 @@ export const StarFlex = styled.div`
   align-items: flex-end;
   padding-right: 1rem;
   padding: 5px 12px;
-  font-family: 'Pretendard-Medium';
+
   font-size: 13px;
   &#top {
     padding: 8px 12px 0px 12px;
@@ -101,7 +102,8 @@ export const StarFlex = styled.div`
   }
   &#between {
     justify-content: space-between;
-    font-family: 'Pretendard-Light';
+
+    font-weight: 300;
   }
 `;
 
@@ -113,7 +115,7 @@ export const FlexContainer = styled.div`
 `;
 
 export const YearText = styled.span`
-  font-family: 'Pretendard-Regular';
+  font-weight: 400;
   font-size: 14px;
   padding: 4.5px 13px 4.5px 13px;
   border-radius: 12.5px;
@@ -125,7 +127,8 @@ export const EvaluationDetail = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 16px;
-  font-family: 'Pretendard-Regular';
+
+  font-weight: 400;
   line-height: 1.3;
   font-size: 1rem;
   padding-top: 0.7rem;
@@ -135,7 +138,6 @@ export const PaddingRight = styled.span`
   padding-right: 0.7rem;
 `;
 export const EditButton = styled.span`
-  font-family: 'Pretendard-Medium';
   font-size: 12px;
   font-weight: 500;
   text-align: center;

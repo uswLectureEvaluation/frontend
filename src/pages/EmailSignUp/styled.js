@@ -5,7 +5,7 @@ export const Title = styled.div`
   font-weight: 1000;
   margin: 3rem 0;
   text-align: center;
-  font-family: 'Pretendard-Medium';
+
   font-weight: 700;
 `;
 
