@@ -49,25 +49,22 @@ export const MobileIcon = styled.div`
 
 export const NavMenu = styled.nav`
   display: flex;
-  padding-top: 3vh;
+  gap: 2rem;
 
   @media screen and (max-width: 550px) {
     flex-direction: column;
     width: 100%;
     height: 90vh;
     position: absolute;
-    top: 80px;
+    top: 120px;
     left: ${({ click }) => (click ? 0 : '-100%')};
-    opacity: 1;
     transition: all 0.5s ease;
-    background: #fff;
+    background: #ffffff;
     z-index: 999;
   }
 `;
 
-export const NavLinks = styled.div`
-  display: flex;
-  padding: 0.5rem 1rem;
+export const NavLinks = styled.a`
   font-size: 1rem;
   &:hover {
     cursor: pointer;
