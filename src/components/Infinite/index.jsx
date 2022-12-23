@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useInfiniteQuery } from 'react-query';
-import Spinner from '../Spinner';
 import { useInView } from 'react-intersection-observer';
 import LectureContainer, { FlexWrap } from '../LectureContainer';
 import { useSearchParams } from 'react-router-dom';
 import Lecture from '../../api/Lecture';
+import { fakeLectureList } from '../placeholderData';
 
 const Infinite = ({ setCount }) => {
   const lectures = Lecture();
@@ -25,6 +25,7 @@ const Infinite = ({ setCount }) => {
         if (!lastPage.isLast) return lastPage.nextPage;
         return undefined;
       },
+      keepPreviousData: true,
     }
   );
 
@@ -39,7 +40,7 @@ const Infinite = ({ setCount }) => {
   useEffect(() => {
     setCount(count);
   }, [count, setCount]);
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <LectureContainer data={fakeLectureList} />;
 
   return count ? (
     <>
@@ -47,7 +48,7 @@ const Infinite = ({ setCount }) => {
         <LectureContainer key={page.nextPage} data={page.data.data} />
       ))}
       <div ref={ref} style={{ marginBottom: '10px' }}>
-        {isFetchingNextPage ? <Spinner id="nextPage" /> : null}
+        {isFetchingNextPage ? <LectureContainer data={fakeLectureList} id="nextPage" /> : null}
       </div>
     </>
   ) : (

@@ -46,7 +46,7 @@ const Subject = ({ row }) => {
   }
 
   const onClick = (id) => {
-    navigate(`/lectureinfo?id=${id}`);
+    !isNaN(id) ? navigate(`/lectureinfo?id=${id}`) : null;
   };
 
   return (
@@ -99,7 +99,6 @@ export const Minute = styled.span`
   color: #515151;
   text-decoration: underline;
   padding-left: 6px;
-
   font-weight: 400;
 
   &:hover {
