@@ -29,7 +29,7 @@ const LectureInfoBox = ({ current, isLogin }) => {
 
   return (
     <Content id="top">
-      <div style={{ filter: !isLogin ? 'blur(5px)' : null }}>
+      <div style={{ filter: current.id === 'fake' ? 'blur(5px)' : null }}>
         <TitleWrapper id="top">
           <div>
             <SubWrapper>
@@ -142,7 +142,7 @@ const LectureInfoBox = ({ current, isLogin }) => {
           </WidthContainer>
         </FlexContainer>
       </div>
-      {!isLogin ? (
+      {!isLogin && current.id ? (
         <FlexContainer id="needLogin">
           <div style={{ marginBottom: '10px' }}>
             강의정보 및 평가를 <br />
@@ -284,7 +284,7 @@ const FlexContainer = styled.div`
     @media screen and (max-width: 550px) {
       left: 0%;
     }
-
+  }
   @media screen and (max-width: 550px) {
     width: 100%;
   }

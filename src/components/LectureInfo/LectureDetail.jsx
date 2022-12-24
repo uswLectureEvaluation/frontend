@@ -19,7 +19,7 @@ const LectureDetail = () => {
     {
       cacheTime: 0,
       staleTime: 0,
-      enabled: isLoginStorage(),
+      enabled: isLogin,
       onSuccess: (lecture) => {
         setLectureInfo({
           selectId: selectId,
@@ -42,7 +42,7 @@ const LectureDetail = () => {
     }
   );
 
-  if (isLoading) return <LectureInfoBox isLogin={false} current={fakeLectureInfo} />;
+  if (isLoading) return <LectureInfoBox isLogin={true} current={fakeLectureInfo} />;
   return isLogin ? (
     <LectureInfoBox isLogin={isLogin} current={lecture.data} />
   ) : (
