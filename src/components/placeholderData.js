@@ -32,7 +32,9 @@ for (let i = 0; i < fakeLectureList.length; i++) {
 
 export const fakeUserInfo = {
   email: '-',
+  blurEmail: 'suwiki@suwiki.kr',
   loginId: '-',
+  blurLoginId: 'suwki',
   point: 0,
   viewExam: 0,
   writtenEvaluation: 0,

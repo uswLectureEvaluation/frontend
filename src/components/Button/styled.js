@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.button`
   margin: 0;
-  width: 100%;
+  width: ${(props) => props.width || '100%'};
   padding: 0 1rem;
   padding-top: 0.6rem;
   border: none;

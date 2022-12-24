@@ -1,8 +1,13 @@
 import * as Styled from '../../pages/MyInfo/styled';
 import { useNavigate } from 'react-router-dom';
+import { isLoginStorage } from '../../utils/loginStorage';
+import UserAccount from './UserAccount';
+import { fakeUserInfo } from '../placeholderData';
+import UserPoint from './UserPoint';
 
 const UserInfo = ({ my }) => {
   const navigate = useNavigate();
+  const isLogin = isLoginStorage();
   const option = [
     {
       title: '이용 제한 내역',
@@ -11,6 +16,14 @@ const UserInfo = ({ my }) => {
     {
       title: '구매이력',
       page: 'historytest',
+    },
+    {
+      title: '비밀번호 변경',
+      page: 'resetpassword',
+    },
+    {
+      title: '회원 탈퇴',
+      page: 'exit',
     },
   ];
   const urlOption = [
@@ -34,71 +47,37 @@ const UserInfo = ({ my }) => {
       title: '오픈소스 라이선스',
       page: '',
     },
-    {
-      title: '비밀번호 변경',
-      page: 'resetpassword',
-    },
-    {
-      title: '회원 탈퇴',
-      page: 'exit',
-    },
   ];
-
+  const handleNavigate = () => {
+    isLogin ? navigate('/myposting') : navigate('/login');
+  };
   return (
     <Styled.Container>
       <Styled.InfoWrapper>
         <Styled.InfoTitle>내 정보</Styled.InfoTitle>
       </Styled.InfoWrapper>
+
       <Styled.Wrapper id="top">
         <Styled.Button id="mobile" onClick={() => navigate('/myposting')} background="#336af8">
-          내가 쓴 글
+          {isLogin ? '내가 쓴 글' : '로그인하기'}
         </Styled.Button>
-        <Styled.Content id="top">
-          <Styled.Title id="top">내 계정</Styled.Title>
+        {!isLogin ? (
+          <UserAccount
+            isLogin={isLogin}
+            loginId={fakeUserInfo.blurLoginId}
+            email={fakeUserInfo.blurEmail}
+          />
+        ) : (
+          <UserAccount isLogin={isLogin} loginId={my.loginId} email={my.email} />
+        )}
 
-          <Styled.FlexContainer>
-            <Styled.OptionTitle id="my">로그인 아이디</Styled.OptionTitle>
-            <Styled.FlexContainer>{my.loginId}</Styled.FlexContainer>
-          </Styled.FlexContainer>
-          <Styled.FlexContainer>
-            <Styled.OptionTitle id="my">학교 인증 메일</Styled.OptionTitle>
-            <Styled.FlexContainer>{my.email}</Styled.FlexContainer>
-          </Styled.FlexContainer>
-        </Styled.Content>
-        <Styled.Button id="pc" onClick={() => navigate('/myposting')} background="#336af8">
-          내가 쓴 글
+        <Styled.Button id="pc" onClick={handleNavigate} background="#336af8">
+          {isLogin ? '내가 쓴 글' : '로그인하기'}
         </Styled.Button>
       </Styled.Wrapper>
 
       <Styled.Wrapper>
-        <Styled.Content>
-          <Styled.TitleFlex>
-            <Styled.Title id="top">현재 보유 포인트</Styled.Title>
-            <Styled.OptionPoint id="mypoint">{my.point}p</Styled.OptionPoint>
-          </Styled.TitleFlex>
-
-          <Styled.FlexContainer>
-            <Styled.OptionTitle>작성한 강의평가</Styled.OptionTitle>
-            <Styled.FlexContainer id="last">
-              <Styled.Color>{my.writtenEvaluation}</Styled.Color>개
-            </Styled.FlexContainer>
-            <Styled.OptionPoint id="plus">+{my.writtenEvaluation * 10}</Styled.OptionPoint>
-          </Styled.FlexContainer>
-          <Styled.FlexContainer>
-            <Styled.OptionTitle>작성한 시험정보</Styled.OptionTitle>
-            <Styled.FlexContainer id="last">
-              <Styled.Color>{my.writtenExam}</Styled.Color>개
-            </Styled.FlexContainer>
-            <Styled.OptionPoint id="plus">+{my.writtenExam * 20}</Styled.OptionPoint>
-          </Styled.FlexContainer>
-          <Styled.FlexContainer>
-            <Styled.OptionTitle>시험정보 열람 횟수</Styled.OptionTitle>
-            <Styled.FlexContainer id="last">
-              <Styled.Color id="p">{my.viewExam}</Styled.Color>개
-            </Styled.FlexContainer>
-            <Styled.OptionPoint id="minus">-{my.viewExam * 20}</Styled.OptionPoint>
-          </Styled.FlexContainer>
-        </Styled.Content>
+        {!isLogin ? <UserPoint my={fakeUserInfo} isLogin={isLogin} /> : <UserPoint my={my} />}
       </Styled.Wrapper>
 
       <Styled.Wrapper>
@@ -142,17 +121,18 @@ const UserInfo = ({ my }) => {
           </Styled.FlexPointContainer>
         </Styled.Content>
       </Styled.Wrapper>
-
       <Styled.Wrapper>
         <Styled.Content>
           <Styled.Title>이용 안내</Styled.Title>
-          {option.map((i) => (
-            <Styled.FlexContainer id="use" key={i.title}>
-              <Styled.FlexContainer id="last" onClick={() => navigate(`/${i.page}`)}>
-                {i.title}
-              </Styled.FlexContainer>
-            </Styled.FlexContainer>
-          ))}
+          {isLogin
+            ? option.slice(0, 2).map((i) => (
+                <Styled.FlexContainer id="use" key={i.title}>
+                  <Styled.FlexContainer id="last" onClick={() => navigate(`/${i.page}`)}>
+                    {i.title}
+                  </Styled.FlexContainer>
+                </Styled.FlexContainer>
+              ))
+            : null}
           {urlOption.map((i) => (
             <Styled.FlexContainer id="use" key={i.title}>
               <Styled.FlexContainer
@@ -160,8 +140,6 @@ const UserInfo = ({ my }) => {
                 onClick={() => {
                   i.page === 'email'
                     ? (window.location = 'mailto:suwikiask@gmail.com')
-                    : i.page === 'resetpassword' || i.page === 'exit'
-                    ? navigate(`/${i.page}`)
                     : window.open(i.page);
                 }}
               >
@@ -169,6 +147,15 @@ const UserInfo = ({ my }) => {
               </Styled.FlexContainer>
             </Styled.FlexContainer>
           ))}
+          {isLogin
+            ? option.slice(2, 4).map((i) => (
+                <Styled.FlexContainer id="use" key={i.title}>
+                  <Styled.FlexContainer id="last" onClick={() => navigate(`/${i.page}`)}>
+                    {i.title}
+                  </Styled.FlexContainer>
+                </Styled.FlexContainer>
+              ))
+            : null}
         </Styled.Content>
       </Styled.Wrapper>
     </Styled.Container>

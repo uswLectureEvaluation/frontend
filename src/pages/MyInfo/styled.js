@@ -37,7 +37,7 @@ export const Content = styled.div`
   border: 1px solid rgb(224, 224, 224);
   padding: 1rem 1.8rem;
   margin: 10px 0;
-
+  position: relative;
   &#top {
     width: 100%;
     margin-right: 2rem;
@@ -100,15 +100,28 @@ export const FlexContainer = styled.div`
   justify-content: space-between;
   color: #a3a3a3;
   padding-bottom: 0.5rem;
+
   @media screen and (max-width: 550px) {
     font-size: 0.9rem;
   }
   &#use {
     padding: 6px 0;
   }
-
+  &#needLogin {
+    color: #222222;
+    position: absolute;
+    top: 45%;
+    left: 40%;
+    text-align: center;
+    line-height: 1.3;
+    font-weight: 500;
+    @media screen and (max-width: 550px) {
+      left: 30%;
+    }
+  }
   &#col {
-    width: 35%;
+    display: flex;
+    justify-content: center;
     @media screen and (max-width: 550px) {
       width: 90%;
     }
