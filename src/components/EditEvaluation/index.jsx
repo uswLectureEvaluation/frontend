@@ -1,17 +1,10 @@
 import { useState } from 'react';
 import * as Styled from './styled';
-import RangeInput from '../RangeInput';
 import { SemesterSelect, StyledOption, Soption } from '../../pages/Main/styled';
 import { useMutation } from 'react-query';
 import { queryClient } from '../..';
 import User from '../../api/User';
-
-const useSlider = (defaultState) => {
-  const [state, setSlide] = useState(defaultState);
-
-  const Slider = () => <RangeInput setSlide={setSlide} onChange={setSlide} defaultValue={state} />;
-  return [state, Slider, setSlide];
-};
+import useSlider from '../RangeInput';
 
 const EditEvaluation = ({ setModalIsOpen, row }) => {
   const user = User();
