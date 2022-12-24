@@ -169,21 +169,18 @@ export const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
   &#difficult {
     &:checked + ${FormCheckText} {
       color: #7800ff;
-
       font-weight: 600;
     }
   }
   &#normal {
     &:checked + ${FormCheckText} {
       color: #222222;
-
       font-weight: 600;
     }
   }
   &#easy {
     &:checked + ${FormCheckText} {
       color: #336af8;
-
       font-weight: 600;
     }
   }

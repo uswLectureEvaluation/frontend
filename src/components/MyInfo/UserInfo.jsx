@@ -58,7 +58,7 @@ const UserInfo = ({ my }) => {
       </Styled.InfoWrapper>
 
       <Styled.Wrapper id="top">
-        <Styled.Button id="mobile" onClick={() => navigate('/myposting')} background="#336af8">
+        <Styled.Button id="mobile" onClick={handleNavigate} background="#336af8">
           {isLogin ? '내가 쓴 글' : '로그인하기'}
         </Styled.Button>
         {!isLogin ? (
