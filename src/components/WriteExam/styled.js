@@ -64,7 +64,7 @@ export const Content = styled.form`
   }
 `;
 
-export const MobileContent = styled.form`
+export const MobileContent = styled.div`
   display: none;
   @media only screen and (max-width: 550px) {
     display: flex;

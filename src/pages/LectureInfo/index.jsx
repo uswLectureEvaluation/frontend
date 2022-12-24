@@ -109,7 +109,7 @@ const LectureInfo = () => {
         {menuCheck === 0 ? (
           <WriteEvaluation row={lectureInfo} type="write" setModalIsOpen={setModalIsOpen} />
         ) : (
-          <WriteExam setModalIsOpen={setModalIsOpen} />
+          <WriteExam row={lectureInfo} type="write" setModalIsOpen={setModalIsOpen} />
         )}
       </Modal>
     </Styled.Container>

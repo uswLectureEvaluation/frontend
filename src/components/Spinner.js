@@ -24,10 +24,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 690px;
-  @media screen and (max-width: 960px) {
-    min-height: 1170px;
-  }
+  min-height: 200px;
   &#nextPage {
     height: 10vh;
   }

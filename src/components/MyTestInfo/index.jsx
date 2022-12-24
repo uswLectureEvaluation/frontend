@@ -5,9 +5,9 @@ import { useInfiniteQuery, useMutation } from 'react-query';
 import { queryClient } from '../..';
 import User from '../../api/User';
 import { isLoginStorage } from '../../utils/loginStorage';
-import EditTestInfo from '../EditTestInfo';
 import ModalStyle from '../ModalStyle';
 import Spinner from '../Spinner';
+import WriteExam from '../WriteExam';
 import * as Styled from './styled';
 
 const TestInformation = () => {
@@ -180,7 +180,7 @@ export const Subject = ({ row }) => {
           ariaHideApp={false}
           onRequestClose={() => setModalIsOpen(false)}
         >
-          <EditTestInfo setModalIsOpen={setModalIsOpen} row={row} />
+          <WriteExam setModalIsOpen={setModalIsOpen} type="update" row={row} />
         </Modal>
       </Styled.LectureWrapper>
     </div>

@@ -58,8 +58,8 @@ const TestInfo = ({ selectId, setWritten }) => {
         return undefined;
       },
       onSuccess: (data) => setWritten(data.pages[0].data.written),
-      cacheTime: 1000 * 60 * 10,
-      staleTime: 1000 * 60 * 10,
+      cacheTime: 0,
+      staleTime: 0,
       enabled: selectId === lectureInfo?.selectId,
     }
   );
@@ -70,7 +70,7 @@ const TestInfo = ({ selectId, setWritten }) => {
     }
   }, [inView, fetchNextPage]);
 
-  if (isLoading) return <></>;
+  if (isLoading) return <Spinner id="nextPage" />;
   const pages = data?.pages;
   const listLength = data?.pages[0].data.data.length;
   const examDataExist = data?.pages[0].data.examDataExist;

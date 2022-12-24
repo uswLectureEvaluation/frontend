@@ -30,6 +30,9 @@ const LectureDetail = () => {
           team: undefined,
           homework: undefined,
           difficulty: undefined,
+          examInfo: '',
+          examType: '선택',
+          examDifficulty: '',
           content: '',
         });
       },

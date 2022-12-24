@@ -43,7 +43,6 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
       },
     }
   );
-  console.log(honey, learning, satisfaction);
   const evaluateUpdate = useMutation(
     () =>
       user.updateEvaluation(

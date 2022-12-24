@@ -1,27 +1,24 @@
 import { useState } from 'react';
 import { useMutation } from 'react-query';
-import { useRecoilValue } from 'recoil';
 import { queryClient } from '../..';
 import User from '../../api/User';
-import { lectureState } from '../../app/recoilStore';
 import { SemesterSelect, Soption, StyledOption } from '../../pages/Main/styled';
 import * as Styled from './styled';
 
-const WriteExam = ({ setModalIsOpen }) => {
+const WriteExam = ({ setModalIsOpen, row, type }) => {
   const user = User();
-  const current = useRecoilValue(lectureState);
-  const [semester, setSemester] = useState(''); //학기
-  const [examType, setExamType] = useState(''); //중간,기말
-  const [examDifficulty, setDifficulty] = useState(``); //난이도
-  const [content, setContent] = useState(); //글쓰기
-  const [exam, setExamInfo] = useState([]); //시험내용
+  const [semester, setSemester] = useState(row.selectedSemester); //학기
+  const [examType, setExamType] = useState(row.examType); //중간,기말
+  const [examDifficulty, setDifficulty] = useState(row.examDifficulty); //난이도
+  const [content, setContent] = useState(row.content); //글쓰기
+  const [exam, setExamInfo] = useState(() => row.examInfo.split(', ')); //시험내용
   const examInfo = exam.join(', ');
   const examWriting = useMutation(
     () =>
       user.writeExamInfo(
-        current.selectId,
-        current.lectureName,
-        current.professor,
+        row.selectId,
+        row.lectureName,
+        row.professor,
         semester,
         examInfo,
         examType,
@@ -31,9 +28,19 @@ const WriteExam = ({ setModalIsOpen }) => {
     {
       onSuccess: () => {
         alert('작성 완료');
-        queryClient.invalidateQueries(['lecture', 'examList', current.selectId]);
-        queryClient.invalidateQueries(['lecture', 'detail', current.selectId]);
+        queryClient.invalidateQueries(['lecture', 'examList', row.selectId]);
+        queryClient.invalidateQueries(['lecture', 'detail', row.selectId]);
         queryClient.invalidateQueries(['myInfo']);
+      },
+    }
+  );
+
+  const examInfoUpdate = useMutation(
+    () => user.UpdateExamInfo(semester, examInfo, examType, examDifficulty, content, row.id),
+    {
+      onSuccess: () => {
+        alert('수정 완료');
+        queryClient.invalidateQueries(['myInfo', 'myExamInfo']);
       },
     }
   );
@@ -58,18 +65,18 @@ const WriteExam = ({ setModalIsOpen }) => {
     if (exam.length === 0) return alert('시험유형(란)을 선택해주세요');
     if (content.length < 30 || content.length > 1000)
       return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
-    examWriting.mutate();
+    type === 'update' ? examInfoUpdate.mutate() : examWriting.mutate();
     setModalIsOpen(false);
   };
 
   const options = ['선택'];
-  const optionsValue = options.concat(current.semesterList.split(', '));
+  const optionsValue = options.concat(row.semesterList.split(', '));
   const examTypeOptions = ['선택', '중간고사', '기말고사', '쪽지', '기타'];
 
   return (
     <Styled.Wrapper>
       <Styled.TitleWrapper>
-        <Styled.Title>{current.lectureName}</Styled.Title>
+        <Styled.Title>{row.lectureName}</Styled.Title>
         <Styled.TitleButton
           onClick={() => {
             setModalIsOpen(false);
@@ -85,7 +92,7 @@ const WriteExam = ({ setModalIsOpen }) => {
             <Styled.ContentTitle id="title">수강학기</Styled.ContentTitle>
             <SemesterSelect
               id="semester"
-              defaultValue={'선택'}
+              defaultValue={row.selectedSemester}
               onChange={(e) => {
                 setSemester(e);
               }}
@@ -101,7 +108,7 @@ const WriteExam = ({ setModalIsOpen }) => {
             <Styled.ContentTitle id="title">시험종류</Styled.ContentTitle>
             <SemesterSelect
               id="semester"
-              defaultValue={'선택'}
+              defaultValue={row.examType}
               onChange={(e) => {
                 setExamType(e);
               }}
@@ -119,7 +126,7 @@ const WriteExam = ({ setModalIsOpen }) => {
             <Styled.ContentTitle id="mobile">수강학기</Styled.ContentTitle>
             <SemesterSelect
               id="semester"
-              defaultValue={'선택'}
+              defaultValue={row.selectedSemester}
               onChange={(e) => {
                 setSemester(e);
               }}
@@ -135,7 +142,7 @@ const WriteExam = ({ setModalIsOpen }) => {
             <Styled.ContentTitle id="mobile">시험종류</Styled.ContentTitle>
             <SemesterSelect
               id="semester"
-              defaultValue={'선택'}
+              defaultValue={row.examType}
               onChange={(e) => {
                 setExamType(e);
               }}
@@ -152,15 +159,30 @@ const WriteExam = ({ setModalIsOpen }) => {
         <Styled.Content id="content" onChange={difficultyChange}>
           <Styled.ContentTitle id="mobile">난이도</Styled.ContentTitle>
           <label>
-            <Styled.FormCheckLeft name="examDifficulty" id="easy" value="쉬움" />
+            <Styled.FormCheckLeft
+              name="examDifficulty"
+              id="easy"
+              value="쉬움"
+              defaultChecked={examDifficulty === '쉬움'}
+            />
             <Styled.FormCheckText>쉬움</Styled.FormCheckText>
           </label>
           <label>
-            <Styled.FormCheckLeft name="examDifficulty" id="normal" value="보통" />
+            <Styled.FormCheckLeft
+              name="examDifficulty"
+              id="normal"
+              value="보통"
+              defaultChecked={examDifficulty === '보통'}
+            />
             <Styled.FormCheckText>보통</Styled.FormCheckText>
           </label>
           <label>
-            <Styled.FormCheckLeft name="examDifficulty" id="difficult" value="어려움" />
+            <Styled.FormCheckLeft
+              name="examDifficulty"
+              id="difficult"
+              value="어려움"
+              defaultChecked={examDifficulty === '어려움'}
+            />
             <Styled.FormCheckText>어려움</Styled.FormCheckText>
           </label>
         </Styled.Content>
@@ -170,40 +192,76 @@ const WriteExam = ({ setModalIsOpen }) => {
             시험유형<Styled.SmallTitle>(복수선택)</Styled.SmallTitle>
           </Styled.ContentTitle>
           <label>
-            <Styled.FormCheckMulti name="examType" id="normal" value="족보" />
+            <Styled.FormCheckMulti
+              name="examType"
+              id="normal"
+              value="족보"
+              defaultChecked={exam.includes('족보') === true}
+            />
             <Styled.FormCheckText>족보</Styled.FormCheckText>
           </label>
           <label>
-            <Styled.FormCheckMulti name="examType" id="normal" value="교재" />
+            <Styled.FormCheckMulti
+              name="examType"
+              id="normal"
+              value="교재"
+              defaultChecked={exam.includes('교재') === true}
+            />
             <Styled.FormCheckText>교재</Styled.FormCheckText>
           </label>
           <label>
-            <Styled.FormCheckMulti name="examType" id="normal" value="PPT" />
+            <Styled.FormCheckMulti
+              name="examType"
+              id="normal"
+              value="PPT"
+              defaultChecked={exam.includes('PPT') === true}
+            />
             <Styled.FormCheckText>PPT</Styled.FormCheckText>
           </label>
           <label>
-            <Styled.FormCheckMulti name="examType" id="normal" value="필기" />
+            <Styled.FormCheckMulti
+              name="examType"
+              id="normal"
+              value="필기"
+              defaultChecked={exam.includes('필기') === true}
+            />
             <Styled.FormCheckText>필기</Styled.FormCheckText>
           </label>
         </Styled.Content>
         <Styled.Content id="content" onChange={(e) => handleExam(e.target.checked, e.target.value)}>
           <Styled.ContentTitle id="mobile" />
           <label>
-            <Styled.FormCheckMulti name="examType" id="normal" value="응용" />
+            <Styled.FormCheckMulti
+              name="examType"
+              id="normal"
+              value="응용"
+              defaultChecked={exam.includes('응용') === true}
+            />
             <Styled.FormCheckText>응용</Styled.FormCheckText>
           </label>
           <label>
-            <Styled.FormCheckMulti name="examType" id="normal" value="실습" />
+            <Styled.FormCheckMulti
+              name="examType"
+              id="normal"
+              value="실습"
+              defaultChecked={exam.includes('실습') === true}
+            />
             <Styled.FormCheckText>실습</Styled.FormCheckText>
           </label>
           <label>
-            <Styled.FormCheckMulti name="examType" id="normal" value="과제" />
+            <Styled.FormCheckMulti
+              name="examType"
+              id="normal"
+              value="과제"
+              defaultChecked={exam.includes('과제') === true}
+            />
             <Styled.FormCheckText>과제</Styled.FormCheckText>
           </label>
         </Styled.Content>
       </Styled.ContentWrapper>
       <Styled.TextField
         placeholder="시험에 대한 정보, 공부법, 문제유형 등을 자유롭게 작성해주세요 :)"
+        defaultValue={row.content}
         onChange={onChangeContent}
         rows="15"
       />
