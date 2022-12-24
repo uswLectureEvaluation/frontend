@@ -1,5 +1,4 @@
 export { default as Button } from './Button';
-export { default as EditEvaluation } from './EditEvaluation';
 export { default as Footer } from './Footer';
 export { default as Input } from './Input';
 export { default as MainList } from './MainList';

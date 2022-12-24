@@ -6,9 +6,9 @@ import StarRatings from 'react-star-ratings';
 import { queryClient } from '../..';
 import User from '../../api/User';
 import { isLoginStorage } from '../../utils/loginStorage.js';
-import EditEvaluation from '../EditEvaluation';
 import ModalStyle from '../ModalStyle';
 import Spinner from '../Spinner';
+import WriteEvaluation from '../WriteEvaluation';
 import * as Styled from './styled';
 
 export const DetailModal = (props) => {
@@ -227,7 +227,7 @@ export const Subject = ({ row }) => {
           ariaHideApp={false}
           onRequestClose={() => setModalIsOpen(false)}
         >
-          <EditEvaluation setModalIsOpen={setModalIsOpen} row={row} />
+          <WriteEvaluation type="update" setModalIsOpen={setModalIsOpen} row={row} />
         </Modal>
       </Styled.LectureWrapper>
     </div>

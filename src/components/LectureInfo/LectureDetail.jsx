@@ -15,12 +15,22 @@ const LectureDetail = () => {
     ['lecture', 'detail', selectId],
     () => lectures.detail(selectId),
     {
+      cacheTime: 0,
+      staleTime: 0,
       onSuccess: (lecture) => {
         setLectureInfo({
           selectId: selectId,
           lectureName: lecture.data.lectureName,
           professor: lecture.data.professor,
           semesterList: lecture.data.semesterList,
+          selectedSemester: '선택',
+          satisfaction: 0.5,
+          honey: 0.5,
+          learning: 0.5,
+          team: undefined,
+          homework: undefined,
+          difficulty: undefined,
+          content: '',
         });
       },
     }

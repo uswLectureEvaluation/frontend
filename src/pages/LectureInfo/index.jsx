@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { lectureState } from '../../app/recoilStore';
 import { Button } from '../../components';
 import LectureDetail from '../../components/LectureInfo/LectureDetail';
 import ModalStyle from '../../components/ModalStyle';
@@ -18,6 +20,7 @@ const LectureInfo = () => {
   const [written, setWritten] = useState(false);
   const [menuCheck, setMenuCheck] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const lectureInfo = useRecoilValue(lectureState);
   const [searchparams] = useSearchParams();
   const selectId = searchparams.get('id');
   const menu = [
@@ -104,7 +107,7 @@ const LectureInfo = () => {
         onRequestClose={() => setModalIsOpen(false)}
       >
         {menuCheck === 0 ? (
-          <WriteEvaluation setModalIsOpen={setModalIsOpen} />
+          <WriteEvaluation row={lectureInfo} type="write" setModalIsOpen={setModalIsOpen} />
         ) : (
           <WriteExam setModalIsOpen={setModalIsOpen} />
         )}

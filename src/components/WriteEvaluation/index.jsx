@@ -8,31 +8,30 @@ import { queryClient } from '../..';
 import User from '../../api/User';
 import useSlider from '../RangeInput';
 
-const WriteEvaluation = ({ setModalIsOpen }) => {
+const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
   const user = User();
-  const [content, setContent] = useState('');
   const current = useRecoilValue(lectureState);
-  const [honey, HoneySlider] = useSlider(0.5);
-  const [learning, LearingSlider] = useSlider(0.5);
-  const [satisfaction, SatisfactionSlider] = useSlider(0.5);
-  const [semester, setSemester] = useState(''); //학기
-  const [team, setTeam] = useState(``); //조모임
-  const [homework, setHomework] = useState(``); //과제
-  const [difficulty, setDifficulty] = useState(``); //학점
-
+  const [content, setContent] = useState(row.content);
+  const [honey, HoneySlider] = useSlider(row.honey);
+  const [learning, LearingSlider] = useSlider(row.learning);
+  const [satisfaction, SatisfactionSlider] = useSlider(row.satisfaction);
+  const [semester, setSemester] = useState(row.selectedSemester); //학기
+  const [team, setTeam] = useState(row.team); //조모임
+  const [homework, setHomework] = useState(row.homework); //과제
+  const [difficulty, setDifficulty] = useState(row.difficulty); //학점
   const evaluateWriting = useMutation(
     () =>
       user.writeEvaluation(
-        current.selectId,
-        current.lectureName,
-        current.professor,
+        row.selectId,
+        row.lectureName,
+        row.professor,
         semester,
-        Number(satisfaction),
-        Number(learning),
-        Number(honey),
-        Number(team),
-        Number(difficulty),
-        Number(homework),
+        satisfaction,
+        learning,
+        honey,
+        team,
+        difficulty,
+        homework,
         content
       ),
     {
@@ -41,6 +40,27 @@ const WriteEvaluation = ({ setModalIsOpen }) => {
         queryClient.invalidateQueries(['lecture', 'evaluationList', current.selectId]);
         queryClient.invalidateQueries(['lecture', 'detail', current.selectId]);
         queryClient.invalidateQueries(['myInfo']);
+      },
+    }
+  );
+  console.log(honey, learning, satisfaction);
+  const evaluateUpdate = useMutation(
+    () =>
+      user.updateEvaluation(
+        semester,
+        satisfaction,
+        learning,
+        honey,
+        team,
+        difficulty,
+        homework,
+        content,
+        row.id
+      ),
+    {
+      onSuccess: () => {
+        alert('수정 완료');
+        queryClient.invalidateQueries(['myInfo', 'myEvaluation']);
       },
     }
   );
@@ -61,8 +81,7 @@ const WriteEvaluation = ({ setModalIsOpen }) => {
     if (difficulty === '') return alert('학점(란)을 선택해주세요');
     if (content.length < 30 || content.length > 1000)
       return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
-
-    evaluateWriting.mutate();
+    type === 'update' ? evaluateUpdate.mutate() : evaluateWriting.mutate();
     setModalIsOpen(false);
   };
   const teamChange = (e) => {
@@ -75,12 +94,12 @@ const WriteEvaluation = ({ setModalIsOpen }) => {
     setDifficulty(e.target.value);
   };
   const options = ['선택'];
-  const optionsValue = options.concat(current.semesterList.split(', '));
+  const optionsValue = options.concat(row.semesterList.split(', '));
 
   return (
     <Styled.Wrapper>
       <Styled.TitleWrapper>
-        <Styled.Title>{current.lectureName}</Styled.Title>
+        <Styled.Title>{row.lectureName}</Styled.Title>
         <Styled.TitleButton
           onClick={() => {
             setModalIsOpen(false);
@@ -94,7 +113,7 @@ const WriteEvaluation = ({ setModalIsOpen }) => {
         <Styled.Content id="group">
           <Styled.ContentTitle>수강학기</Styled.ContentTitle>
           <SemesterSelect
-            defaultValue="선택"
+            defaultValue={row.selectedSemester || '선택'}
             id="semester"
             onChange={(e) => {
               setSemester(e);
@@ -111,7 +130,7 @@ const WriteEvaluation = ({ setModalIsOpen }) => {
           <Styled.ContentTitle id="mobile">수강학기</Styled.ContentTitle>
           <SemesterSelect
             id="semester"
-            defaultValue="선택"
+            defaultValue={row.selectedSemester || '선택'}
             onChange={(e) => {
               setSemester(e);
             }}
@@ -163,11 +182,16 @@ const WriteEvaluation = ({ setModalIsOpen }) => {
         <Styled.Content id="content" onChange={teamChange}>
           <Styled.ContentTitle>조모임</Styled.ContentTitle>
           <label>
-            <Styled.FormCheckLeft name="team" id="easy" value="0" />
+            <Styled.FormCheckLeft name="team" id="easy" value={0} defaultChecked={team === 0} />
             <Styled.FormCheckText>없음</Styled.FormCheckText>
           </label>
           <label>
-            <Styled.FormCheckLeft name="team" id="difficult" value="1" />
+            <Styled.FormCheckLeft
+              name="team"
+              id="difficult"
+              value={1}
+              defaultChecked={team === 1}
+            />
             <Styled.FormCheckText>있음</Styled.FormCheckText>
           </label>
         </Styled.Content>
@@ -175,15 +199,30 @@ const WriteEvaluation = ({ setModalIsOpen }) => {
         <Styled.Content id="content" onChange={homeworkChange}>
           <Styled.ContentTitle>과제</Styled.ContentTitle>
           <label>
-            <Styled.FormCheckLeft name="homework" id="easy" value="0" />
+            <Styled.FormCheckLeft
+              name="homework"
+              id="easy"
+              value={0}
+              defaultChecked={homework === 0}
+            />
             <Styled.FormCheckText>없음</Styled.FormCheckText>
           </label>
           <label>
-            <Styled.FormCheckLeft name="homework" id="normal" value="1" />
+            <Styled.FormCheckLeft
+              name="homework"
+              id="normal"
+              value={1}
+              defaultChecked={homework === 1}
+            />
             <Styled.FormCheckText>보통</Styled.FormCheckText>
           </label>
           <label>
-            <Styled.FormCheckLeft name="homework" id="difficult" value="2" />
+            <Styled.FormCheckLeft
+              name="homework"
+              id="difficult"
+              value={2}
+              defaultChecked={homework === 2}
+            />
             <Styled.FormCheckText>많음</Styled.FormCheckText>
           </label>
         </Styled.Content>
@@ -191,21 +230,37 @@ const WriteEvaluation = ({ setModalIsOpen }) => {
         <Styled.Content id="content" onChange={difficultyChange}>
           <Styled.ContentTitle>학점</Styled.ContentTitle>
           <label>
-            <Styled.FormCheckLeft name="score" id="easy" value="0" />
+            <Styled.FormCheckLeft
+              name="score"
+              id="easy"
+              value={0}
+              defaultChecked={difficulty === 0}
+            />
             <Styled.FormCheckText>너그러움</Styled.FormCheckText>
           </label>
           <label>
-            <Styled.FormCheckLeft name="score" id="normal" value="1" />
+            <Styled.FormCheckLeft
+              name="score"
+              id="normal"
+              value={1}
+              defaultChecked={difficulty === 1}
+            />
             <Styled.FormCheckText>보통</Styled.FormCheckText>
           </label>
           <label>
-            <Styled.FormCheckLeft name="score" id="difficult" value="2" />
+            <Styled.FormCheckLeft
+              name="score"
+              id="difficult"
+              value={2}
+              defaultChecked={difficulty === 2}
+            />
             <Styled.FormCheckText>까다로움</Styled.FormCheckText>
           </label>
         </Styled.Content>
       </Styled.ContentWrapper>
       <Styled.TextField
         placeholder="강의평가를 작성해주세요 :)"
+        defaultValue={content}
         onChange={onChangeContent}
         rows="15"
       />

@@ -52,10 +52,10 @@ const RangeInput = ({ min = 0, max = 5, step = 0.5, defaultValue = 0, setSlide }
         step={step}
         value={wvalue}
         onChange={(e) => {
-          setValue(e.target.value);
+          setValue(Number(e.target.value));
         }}
-        onMouseUp={(e) => setSlide(e.target.value)}
-        onTouchEnd={() => setSlide(inputRef.current.value)}
+        onMouseUp={(e) => setSlide(Number(e.target.value))}
+        onTouchEnd={() => setSlide(Number(inputRef.current.value))}
       />
     </>
   );
