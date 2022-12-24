@@ -2,14 +2,14 @@ import { useEffect } from 'react';
 import * as Styled from './styled';
 import Button from '../Button';
 import SearchTestList from '../../components/SearchTestList';
-import { useRecoilValue } from 'recoil';
 import { useInView } from 'react-intersection-observer';
 import { useInfiniteQuery, useMutation } from 'react-query';
 import Spinner from '../Spinner';
-import { lectureState } from '../../app/recoilStore';
 import { queryClient } from '../..';
 import Lecture from '../../api/Lecture';
 import User from '../../api/User';
+import { isLoginStorage } from '../../utils/loginStorage';
+import { fakeEvaluationList } from '../placeholderData';
 
 export const NotUsePoint = ({ selectId }) => {
   const user = User();
@@ -47,7 +47,7 @@ export const NoTestInfo = () => (
 
 const TestInfo = ({ selectId, setWritten }) => {
   const lectures = Lecture();
-  const lectureInfo = useRecoilValue(lectureState);
+  const isLogin = isLoginStorage();
   const { ref, inView } = useInView();
   const { data, isFetchingNextPage, isLoading, fetchNextPage } = useInfiniteQuery(
     ['lecture', 'examList', selectId],
@@ -60,22 +60,23 @@ const TestInfo = ({ selectId, setWritten }) => {
       onSuccess: (data) => setWritten(data.pages[0].data.written),
       cacheTime: 0,
       staleTime: 0,
-      enabled: selectId === lectureInfo?.selectId,
+      enabled: isLogin,
     }
   );
 
   useEffect(() => {
-    if (inView) {
+    if (inView && isLogin) {
       fetchNextPage();
     }
-  }, [inView, fetchNextPage]);
+  }, [inView, fetchNextPage, isLogin]);
 
-  if (isLoading) return <Spinner id="nextPage" />;
+  if (isLoading) return <Spinner />;
   const pages = data?.pages;
   const listLength = data?.pages[0].data.data.length;
   const examDataExist = data?.pages[0].data.examDataExist;
-
-  if (listLength === 0 && examDataExist) {
+  if (!isLogin) {
+    return <SearchTestList page={fakeEvaluationList} />;
+  } else if (listLength === 0 && examDataExist) {
     return <NotUsePoint selectId={selectId} />;
   } else if (listLength === 0 && !examDataExist) {
     return <NoTestInfo />;
@@ -83,7 +84,7 @@ const TestInfo = ({ selectId, setWritten }) => {
     return (
       <>
         {pages.map((page) => (
-          <SearchTestList key={page.nextPage} page={page.data.data} />
+          <SearchTestList isLogin={isLogin} key={page.nextPage} page={page.data.data} />
         ))}
         <div ref={ref} style={{ marginBottom: '10px' }}>
           {isFetchingNextPage ? <Spinner id="nextPage" /> : null}

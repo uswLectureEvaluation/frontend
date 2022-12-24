@@ -3,14 +3,13 @@ import Modal from 'react-modal';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from '../../app/recoilStore';
-import { Button } from '../../components';
 import LectureDetail from '../../components/LectureInfo/LectureDetail';
 import ModalStyle from '../../components/ModalStyle';
 import SearchEvaluationList from '../../components/SearchEvaluationList';
 import TestInfo from '../../components/TestInfo';
 import WriteEvaluation from '../../components/WriteEvaluation';
 import WriteExam from '../../components/WriteExam';
-import { isLoginStorage } from '../../utils/loginStorage.js';
+import { isLoginStorage } from '../../utils/loginStorage';
 import * as Styled from './styled';
 
 const LectureInfo = () => {
@@ -23,12 +22,13 @@ const LectureInfo = () => {
   const lectureInfo = useRecoilValue(lectureState);
   const [searchparams] = useSearchParams();
   const selectId = searchparams.get('id');
+  const isLogin = isLoginStorage();
   const menu = [
     { name: '강의평가', option: '강의평가' },
     { name: '시험정보', option: '시험정보' },
   ];
   const checkList = {
-    0: <SearchEvaluationList selectId={selectId} setWritten={setWritten} />,
+    0: <SearchEvaluationList isLogin={isLogin} selectId={selectId} setWritten={setWritten} />,
     1: <TestInfo selectId={selectId} setWritten={setWritten} />,
   };
   const menuList = menu.map((i, index) => (
@@ -75,31 +75,29 @@ const LectureInfo = () => {
           onKeyPress={onKeypress}
         />
       </Styled.SearchWrapper>
-      {!isLoginStorage() ? (
-        <Styled.FlexContainer id="col">
-          <Button color="#336af8" onClick={() => navigate('/login')}>
-            로그인하기
-          </Button>
-        </Styled.FlexContainer>
-      ) : (
-        <Styled.Wrapper>
-          {/* 강의 정보 세부 */}
-          <LectureDetail />
-          {/* 강의 평가 / 시험 정보 리스트 */}
-          <Styled.Content>
-            <Styled.TitleWrapper id="top">
-              <Styled.TitleWrapper id="bottom">{menuList}</Styled.TitleWrapper>
-              <Styled.Writing
-                src="img/btn_write.svg"
-                onClick={() =>
-                  !written ? setModalIsOpen(true) : alert(`이미 작성한 ${check}가 있습니다`)
-                }
-              />
-            </Styled.TitleWrapper>
-            {checkList[menuCheck]}
-          </Styled.Content>
-        </Styled.Wrapper>
-      )}
+
+      <Styled.Wrapper>
+        {/* 강의 정보 세부 */}
+        <LectureDetail />
+        {/* 강의 평가 / 시험 정보 리스트 */}
+        <Styled.Content>
+          <Styled.TitleWrapper id="top">
+            <Styled.TitleWrapper id="bottom">{menuList}</Styled.TitleWrapper>
+            <Styled.Writing
+              src="img/btn_write.svg"
+              onClick={() =>
+                !isLogin
+                  ? null
+                  : !written
+                  ? setModalIsOpen(true)
+                  : alert(`이미 작성한 ${check}가 있습니다`)
+              }
+            />
+          </Styled.TitleWrapper>
+          {checkList[menuCheck]}
+        </Styled.Content>
+      </Styled.Wrapper>
+
       <Modal
         isOpen={modalIsOpen}
         style={ModalStyle}

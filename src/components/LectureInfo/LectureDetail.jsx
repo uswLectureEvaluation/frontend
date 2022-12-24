@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import Lecture from '../../api/Lecture';
 import { lectureState } from '../../app/recoilStore';
+import { isLoginStorage } from '../../utils/loginStorage';
 import LectureInfoBox from '../LectureInfoBox';
 import { fakeLectureInfo } from '../placeholderData';
 
@@ -11,12 +12,14 @@ const LectureDetail = () => {
   const [searchparams] = useSearchParams();
   const selectId = searchparams.get('id');
   const setLectureInfo = useSetRecoilState(lectureState);
+  const isLogin = isLoginStorage();
   const { data: lecture, isLoading } = useQuery(
     ['lecture', 'detail', selectId],
     () => lectures.detail(selectId),
     {
       cacheTime: 0,
       staleTime: 0,
+      enabled: isLoginStorage(),
       onSuccess: (lecture) => {
         setLectureInfo({
           selectId: selectId,
@@ -39,8 +42,12 @@ const LectureDetail = () => {
     }
   );
 
-  if (isLoading) return <LectureInfoBox current={fakeLectureInfo} />;
-  return <LectureInfoBox current={lecture.data} />;
+  if (isLoading) return <LectureInfoBox isLogin={false} current={fakeLectureInfo} />;
+  return isLogin ? (
+    <LectureInfoBox isLogin={isLogin} current={lecture.data} />
+  ) : (
+    <LectureInfoBox isLogin={isLogin} current={fakeLectureInfo} />
+  );
 };
 
 export default LectureDetail;

@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import Button from './Button';
 
-const LectureInfoBox = ({ current }) => {
+const LectureInfoBox = ({ current, isLogin }) => {
+  const navigate = useNavigate();
   const floatFix = (num, size) => {
     return parseFloat(num).toFixed(size);
   };
@@ -26,117 +29,130 @@ const LectureInfoBox = ({ current }) => {
 
   return (
     <Content id="top">
-      <TitleWrapper id="top">
-        <div>
-          <SubWrapper>
-            <Title>{current.lectureName}</Title>
-          </SubWrapper>
-          <SubWrapper>
-            <Professor>
-              {current.majorType} | {current.professor}
-            </Professor>
-          </SubWrapper>
-          <TitleWrapper>
-            {current.semesterList.split(', ').map((v) => {
-              return (
-                <Option key={v} id="semester">
-                  {v}
-                </Option>
-              );
-            })}
-          </TitleWrapper>
-        </div>
-        <Option id="type">{current.lectureType}</Option>
-      </TitleWrapper>
-      <FlexContainer id="col">
-        <WidthContainer>
-          <FlexContainer id="between">
-            <OptionTitle>꿀강지수</OptionTitle>
-            <FlexContainer id="score">
-              <Color
-                id="score"
-                style={{
-                  color: '#336af8',
-                  fontWeight: '500',
-                }}
-              >
-                {Number(current.lectureHoneyAvg).toFixed(1)}
-                <span style={{ color: '#a3a3a3' }}>/5</span>
-              </Color>
+      <div style={{ filter: !isLogin ? 'blur(5px)' : null }}>
+        <TitleWrapper id="top">
+          <div>
+            <SubWrapper>
+              <Title>{current.lectureName}</Title>
+            </SubWrapper>
+            <SubWrapper>
+              <Professor>
+                {current.majorType} | {current.professor}
+              </Professor>
+            </SubWrapper>
+            <TitleWrapper>
+              {current.semesterList.split(', ').map((v) => {
+                return (
+                  <Option key={v} id="semester">
+                    {v}
+                  </Option>
+                );
+              })}
+            </TitleWrapper>
+          </div>
+          <Option id="type">{current.lectureType}</Option>
+        </TitleWrapper>
+        <FlexContainer id="col">
+          <WidthContainer>
+            <FlexContainer id="between">
+              <OptionTitle>꿀강지수</OptionTitle>
+              <FlexContainer id="score">
+                <Color
+                  id="score"
+                  style={{
+                    color: '#336af8',
+                    fontWeight: '500',
+                  }}
+                >
+                  {Number(current.lectureHoneyAvg).toFixed(1)}
+                  <span style={{ color: '#a3a3a3' }}>/5</span>
+                </Color>
+              </FlexContainer>
             </FlexContainer>
-          </FlexContainer>
-          <FlexContainer id="between">
-            <OptionTitle>조모임</OptionTitle>
-            <FlexContainer id="score">
-              <Color style={{ color: '#6200ee', fontSize: '14px' }}>
-                {current.lectureHoneyAvg !== 0 ? (
-                  team[teamSet]
-                ) : (
-                  <DataColor id="black">-</DataColor>
-                )}
-              </Color>
+            <FlexContainer id="between">
+              <OptionTitle>조모임</OptionTitle>
+              <FlexContainer id="score">
+                <Color style={{ color: '#6200ee', fontSize: '14px' }}>
+                  {current.lectureHoneyAvg !== 0 ? (
+                    team[teamSet]
+                  ) : (
+                    <DataColor id="black">-</DataColor>
+                  )}
+                </Color>
+              </FlexContainer>
             </FlexContainer>
-          </FlexContainer>
-        </WidthContainer>
-        <WidthContainer>
-          <FlexContainer id="between">
-            <OptionTitle>배움지수</OptionTitle>
-            <FlexContainer id="score">
-              <Color
-                id="score"
-                style={{
-                  color: '#336af8',
-                  fontWeight: '500',
-                }}
-              >
-                {Number(current.lectureLearningAvg).toFixed(1)}
-                <span style={{ color: '#a3a3a3' }}>/5</span>
-              </Color>
+          </WidthContainer>
+          <WidthContainer>
+            <FlexContainer id="between">
+              <OptionTitle>배움지수</OptionTitle>
+              <FlexContainer id="score">
+                <Color
+                  id="score"
+                  style={{
+                    color: '#336af8',
+                    fontWeight: '500',
+                  }}
+                >
+                  {Number(current.lectureLearningAvg).toFixed(1)}
+                  <span style={{ color: '#a3a3a3' }}>/5</span>
+                </Color>
+              </FlexContainer>
             </FlexContainer>
-          </FlexContainer>
-          <FlexContainer id="between">
-            <OptionTitle>과제</OptionTitle>
-            <FlexContainer id="score">
-              <Color style={{ color: '#6200ee', fontSize: '14px' }}>
-                {current.lectureHoneyAvg !== 0 ? (
-                  homework[homeworkSet]
-                ) : (
-                  <DataColor id="black">-</DataColor>
-                )}
-              </Color>
+            <FlexContainer id="between">
+              <OptionTitle>과제</OptionTitle>
+              <FlexContainer id="score">
+                <Color style={{ color: '#6200ee', fontSize: '14px' }}>
+                  {current.lectureHoneyAvg !== 0 ? (
+                    homework[homeworkSet]
+                  ) : (
+                    <DataColor id="black">-</DataColor>
+                  )}
+                </Color>
+              </FlexContainer>
             </FlexContainer>
-          </FlexContainer>
-        </WidthContainer>
-        <WidthContainer>
-          <FlexContainer id="between">
-            <OptionTitle>만족도</OptionTitle>
-            <FlexContainer id="score">
-              <Color
-                id="score"
-                style={{
-                  color: '#336af8',
-                  fontWeight: '500',
-                }}
-              >
-                {Number(current.lectureSatisfactionAvg).toFixed(1)}
-                <span style={{ color: '#a3a3a3' }}>/5</span>
-              </Color>
+          </WidthContainer>
+          <WidthContainer>
+            <FlexContainer id="between">
+              <OptionTitle>만족도</OptionTitle>
+              <FlexContainer id="score">
+                <Color
+                  id="score"
+                  style={{
+                    color: '#336af8',
+                    fontWeight: '500',
+                  }}
+                >
+                  {Number(current.lectureSatisfactionAvg).toFixed(1)}
+                  <span style={{ color: '#a3a3a3' }}>/5</span>
+                </Color>
+              </FlexContainer>
             </FlexContainer>
-          </FlexContainer>
-          <FlexContainer id="between">
-            <OptionTitle>학점</OptionTitle>
-            <FlexContainer id="score">
-              <Color style={{ color: '#6200ee', fontSize: '14px' }}>
-                {current.lectureHoneyAvg !== 0 ? (
-                  difficulty[difficultySet]
-                ) : (
-                  <DataColor id="black">-</DataColor>
-                )}
-              </Color>
+            <FlexContainer id="between">
+              <OptionTitle>학점</OptionTitle>
+              <FlexContainer id="score">
+                <Color style={{ color: '#6200ee', fontSize: '14px' }}>
+                  {current.lectureHoneyAvg !== 0 ? (
+                    difficulty[difficultySet]
+                  ) : (
+                    <DataColor id="black">-</DataColor>
+                  )}
+                </Color>
+              </FlexContainer>
             </FlexContainer>
-          </FlexContainer>
-        </WidthContainer>
-      </FlexContainer>
+          </WidthContainer>
+        </FlexContainer>
+      </div>
+      {!isLogin ? (
+        <FlexContainer id="needLogin">
+          <div style={{ marginBottom: '10px' }}>
+            강의정보 및 평가를 <br />
+            확인하려면 로그인하세요.
+          </div>
+          <Button width="50%" color="#336af8" onClick={() => navigate('/login')}>
+            로그인하기
+          </Button>
+        </FlexContainer>
+      ) : null}
     </Content>
   );
 };
@@ -147,6 +163,7 @@ const Content = styled.div`
   border-radius: 10px;
   margin: 10px 0;
   margin-bottom: 3rem;
+  position: relative;
   &#top {
     padding: 1rem 2rem;
     border: 1px solid rgb(224, 224, 224);
@@ -254,6 +271,19 @@ const FlexContainer = styled.div`
   &#col {
     flex-direction: column;
   }
+  &#needLogin {
+    color: #222222;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 35%;
+    left: 27%;
+    text-align: center;
+    line-height: 1.3;
+    font-weight: 500;
+    @media screen and (max-width: 550px) {
+      left: 0%;
+    }
 
   @media screen and (max-width: 550px) {
     width: 100%;

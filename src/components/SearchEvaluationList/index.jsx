@@ -4,10 +4,22 @@ import * as Styled from './styled';
 import StarRatings from 'react-star-ratings';
 import { useInfiniteQuery } from 'react-query';
 import Spinner from '../Spinner';
-import { useRecoilValue } from 'recoil';
-import { lectureState } from '../../app/recoilStore';
 import Lecture from '../../api/Lecture';
 import User from '../../api/User';
+import { fakeEvaluationList } from '../placeholderData';
+// import { fakeEvaluationList } from '../placeholderData';
+
+export const FakeList = () => {
+  return (
+    <Styled.Wrapper>
+      <div style={{ filter: 'blur(10px)' }}>
+        {fakeEvaluationList.slice(0, 3).map((lecture) => (
+          <Subject key={lecture.id} lecture={lecture} />
+        ))}
+      </div>
+    </Styled.Wrapper>
+  );
+};
 
 export const DetailModal = ({ lecture }) => {
   const teamSet = lecture.team;
@@ -60,9 +72,8 @@ export const DetailModal = ({ lecture }) => {
   );
 };
 
-const SearchEvaluationList = ({ selectId, setWritten }) => {
+const SearchEvaluationList = ({ selectId, setWritten, isLogin }) => {
   const lectures = Lecture();
-  const lectureInfo = useRecoilValue(lectureState);
   const { ref, inView } = useInView();
   const { data, isFetchingNextPage, isLoading, fetchNextPage } = useInfiniteQuery(
     ['lecture', 'evaluationList', selectId],
@@ -75,30 +86,34 @@ const SearchEvaluationList = ({ selectId, setWritten }) => {
       onSuccess: (data) => setWritten(data.pages[0].data.written),
       cacheTime: 0,
       staleTime: 0,
-      enabled: selectId === lectureInfo?.selectId,
+      enabled: isLogin,
     }
   );
   useEffect(() => {
-    if (inView) {
+    if (inView && isLogin) {
       fetchNextPage();
     }
-  }, [inView, fetchNextPage]);
+  }, [inView, fetchNextPage, isLogin]);
 
   if (isLoading) return <Spinner id="nextPage" />;
   const pages = data?.pages;
   const count = data?.pages[0].data.data.length;
 
-  return count !== 0 ? (
+  return !isLogin ? (
+    <FakeList />
+  ) : count !== 0 ? (
     <Styled.Wrapper>
-      {pages?.map((page) => (
-        <Fragment key={page.nextPage}>
-          {page.data.data.map((lecture) => (
-            <Subject key={lecture.id} lecture={lecture} />
-          ))}
-        </Fragment>
-      ))}
-      <div ref={ref} style={{ marginBottom: '10px' }}>
-        {isFetchingNextPage ? <Spinner id="nextPage" /> : null}
+      <div style={{ filter: !isLogin ? 'blur(10px)' : null }}>
+        {pages?.map((page) => (
+          <Fragment key={page.nextPage}>
+            {page.data.data.map((lecture) => (
+              <Subject key={lecture.id} lecture={lecture} />
+            ))}
+          </Fragment>
+        ))}
+        <div ref={ref} style={{ marginBottom: '10px' }}>
+          {isFetchingNextPage ? <Spinner id="nextPage" /> : null}
+        </div>
       </div>
     </Styled.Wrapper>
   ) : (

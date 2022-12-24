@@ -80,7 +80,7 @@ const JwtInterceptors = (token, setToken) => {
           logout().then((res) => {
             if (res.data.Success) {
               localStorage.removeItem('login');
-              window.location.href = '/';
+              window.location.href = '/login';
             }
           });
         }
@@ -126,7 +126,7 @@ const JwtInterceptors = (token, setToken) => {
         sessionStorage.removeItem('AccessToken');
         sessionStorage.removeItem('login');
         alert('로그인 시간이 만료되었습니다\n다시 로그인 해주세요');
-        window.location.href = '/';
+        window.location.href = '/login';
       }
       if (error.response.status === 502) {
         window.location.href = '/502';

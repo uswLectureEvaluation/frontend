@@ -1,8 +1,12 @@
 import * as Styled from './styled';
 import User from '../../api/User';
 
-const SearchTestList = ({ page }) => {
-  return page.map((lecture) => <Subject key={lecture.id} lecture={lecture} />);
+const SearchTestList = ({ page, isLogin }) => {
+  return page.map((lecture) => (
+    <div key={lecture.id} style={{ filter: !isLogin ? 'blur(10px)' : null }}>
+      <Subject lecture={lecture} />
+    </div>
+  ));
 };
 
 export const Subject = ({ lecture }) => {
