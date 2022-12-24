@@ -77,7 +77,11 @@ const UserInfo = ({ my }) => {
       </Styled.Wrapper>
 
       <Styled.Wrapper>
-        {!isLogin ? <UserPoint my={fakeUserInfo} isLogin={isLogin} /> : <UserPoint my={my} />}
+        {!isLogin ? (
+          <UserPoint my={fakeUserInfo} isLogin={isLogin} />
+        ) : (
+          <UserPoint my={my} isLogin={isLogin} />
+        )}
       </Styled.Wrapper>
 
       <Styled.Wrapper>
