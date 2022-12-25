@@ -6,7 +6,7 @@ const NotFound = () => {
   const navigate = useNavigate();
   return (
     <Styled.Container>
-      <Styled.Img src="img/signup.svg" width={400} />
+      <Styled.Img src="images/signup.svg" width={400} />
       <Styled.SignUpWrapper>
         <StyledText id="top">요청하신 페이지를 찾을 수 없어요.</StyledText>
         <StyledText>올바른 주소로 접속하셨나요?</StyledText>

@@ -6,7 +6,7 @@ const BadGateway = () => {
   const navigate = useNavigate();
   return (
     <Styled.Container>
-      <Styled.Img src="img/signup.svg" width={400} />
+      <Styled.Img src="images/signup.svg" width={400} />
       <Styled.SignUpWrapper>
         <StyledText id="top">502 Bad Gateway</StyledText>
         <StyledText>문제를 해결하고 있어요. 다시 한번 시도해주세요.</StyledText>

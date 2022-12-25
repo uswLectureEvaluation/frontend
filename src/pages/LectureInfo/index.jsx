@@ -84,7 +84,7 @@ const LectureInfo = () => {
           <Styled.TitleWrapper id="top">
             <Styled.TitleWrapper id="bottom">{menuList}</Styled.TitleWrapper>
             <Styled.Writing
-              src="img/btn_write.svg"
+              src="images/btn_write.svg"
               onClick={() =>
                 !isLogin
                   ? null

@@ -109,8 +109,8 @@ const MajorSearch = (props) => {
                       <Styled.SearchIcon
                         src={
                           !favoriteDb.includes(v)
-                            ? 'img/icon-emptystar-24.svg'
-                            : 'img/icon_fullstar_24.svg'
+                            ? 'images/icon-emptystar-24.svg'
+                            : 'images/icon_fullstar_24.svg'
                         }
                         width={20}
                         alt={v}
@@ -141,8 +141,8 @@ const MajorSearch = (props) => {
                       <Styled.SearchIcon
                         src={
                           !favoriteDb.includes(v)
-                            ? 'img/icon-emptystar-24.svg'
-                            : 'img/icon_fullstar_24.svg'
+                            ? 'images/icon-emptystar-24.svg'
+                            : 'images/icon_fullstar_24.svg'
                         }
                         width={20}
                         alt={v}

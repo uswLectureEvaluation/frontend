@@ -13,27 +13,27 @@ const options = [
   {
     name: '최근 올라온 강의',
     lec: 'modifiedDate',
-    imgs: 'img/icon_color_fire_36.svg',
+    imgs: 'images/icon_color_fire_36.svg',
   },
   {
     name: '꿀 강의',
     lec: 'lectureHoneyAvg',
-    imgs: 'img/icon_color_bee_36.svg',
+    imgs: 'images/icon_color_bee_36.svg',
   },
   {
     name: '만족도가 높은 강의',
     lec: 'lectureSatisfactionAvg',
-    imgs: 'img/icon_color_thumbs_36.svg',
+    imgs: 'images/icon_color_thumbs_36.svg',
   },
   {
     name: '배울게 많은 강의',
     lec: 'lectureLearningAvg',
-    imgs: 'img/icon_color_book_36.svg',
+    imgs: 'images/icon_color_book_36.svg',
   },
   {
     name: 'BEST 강의',
     lec: 'lectureTotalAvg',
-    imgs: 'img/icon_color_best_36.svg',
+    imgs: 'images/icon_color_best_36.svg',
   },
 ];
 const Main = () => {
@@ -73,10 +73,10 @@ const Main = () => {
             강의평가의 모든 것<Styled.BannerSub>강의평가의 모든 것 수위키</Styled.BannerSub>
           </div>
           <picture>
-            <source srcSet="/img/resize_banner.webp" type="image/webp" />
-            <source srcSet="/img/banner.webp" type="image/webp" />
-            <source srcSet="/img/banner.svg" type="image/png" />
-            <Styled.BannerImg src="img/banner.svg" alt="banner" width={450} height={450} />
+            <source srcSet="/images/resize_banner.webp" type="image/webp" />
+            <source srcSet="/images/banner.webp" type="image/webp" />
+            <source srcSet="/images/banner.svg" type="image/png" />
+            <Styled.BannerImg src="images/banner.svg" alt="banner" width={450} height={450} />
           </picture>
         </Styled.BannerWrapper>
       </Styled.Banner>

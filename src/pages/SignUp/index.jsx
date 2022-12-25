@@ -152,9 +152,9 @@ const SignUp = () => {
   return (
     <Styled.Container>
       <picture>
-        <source srcSet="/img/signup.webp" type="image/webp" />
-        <source srcSet="/img/signup.png" type="image/png" />
-        <Styled.Img src="img/signup.svg" alt="signup" width={400} height={350} />
+        <source srcSet="/images/signup.webp" type="image/webp" />
+        <source srcSet="/images/signup.png" type="image/png" />
+        <Styled.Img src="images/signup.svg" alt="signup" width={400} height={350} />
       </picture>
       <Styled.SignUpWrapper>
         <Styled.Title>회원가입</Styled.Title>

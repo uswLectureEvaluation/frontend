@@ -51,7 +51,7 @@ export const SearchInput = styled.input`
   border: none;
   border-bottom: 1.5px solid #000000;
   margin: 1.5rem 0;
-  background-image: url('img/icon_search_24.svg');
+  background-image: url('images/icon_search_24.svg');
   background-repeat: no-repeat;
   background-position: 99%;
 

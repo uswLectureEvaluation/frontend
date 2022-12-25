@@ -29,7 +29,7 @@ const Exit = () => {
   };
   return (
     <Styled.Container>
-      <Styled.Img src="img/signup.svg" width={400} />
+      <Styled.Img src="images/signup.svg" width={400} />
       <Styled.LoginWrapper>
         <Styled.Title>회원탈퇴</Styled.Title>
         <Styled.Sub>아이디를 입력하세요</Styled.Sub>

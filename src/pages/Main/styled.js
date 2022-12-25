@@ -79,7 +79,7 @@ export const SearchInput = styled.input`
   height: 50px;
   border: none;
   border-bottom: 1.5px solid #000000;
-  background-image: url('img/icon_search_24.svg');
+  background-image: url('images/icon_search_24.svg');
   background-repeat: no-repeat;
   background-position: 99%;
 
@@ -233,13 +233,13 @@ const StyledButton = styled_mui('button')(
     }
     &.${selectUnstyledClasses.expanded} {
       &::after {
-        content: url('img/icon_up_arrow_solid_24.svg');
+        content: url('images/icon_up_arrow_solid_24.svg');
         color: black;
       }
     }
   
     &::after {
-      content: url('img/icon_down_arrow_solid_24.svg');
+      content: url('images/icon_down_arrow_solid_24.svg');
       float: right;
       color: black;
     }
@@ -265,13 +265,13 @@ const StyledButton = styled_mui('button')(
     }
     &.${selectUnstyledClasses.expanded} {
       &::after {
-        content: url('img/icon_up_arrow_solid_24.svg');
+        content: url('images/icon_up_arrow_solid_24.svg');
         color: black;
       }
     }
   
     &::after {
-      content: url('img/icon_down_arrow_solid_24.svg');
+      content: url('images/icon_down_arrow_solid_24.svg');
       float: right;
       color: black;
     }
@@ -287,13 +287,13 @@ const StyledButton = styled_mui('button')(
 
   &.${selectUnstyledClasses.expanded} {
     &::after {
-      content: url('img/icon_up_arrow_solid_24.svg');
+      content: url('images/icon_up_arrow_solid_24.svg');
       color: black;
     }
   }
 
   &::after {
-    content: url('img/icon_down_arrow_solid_24.svg');
+    content: url('images/icon_down_arrow_solid_24.svg');
       float: right;
       color: black;
   }

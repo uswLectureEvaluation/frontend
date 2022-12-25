@@ -44,7 +44,7 @@ export const CssTextField = styles.styled(TextField)({
   '& .MuiInput-underline:before': {
     borderBottomColor: 'black',
   },
-  backgroundImage: `url('img/icon_search_24.svg')`,
+  backgroundImage: `url('images/icon_search_24.svg')`,
   backgroundRepeat: `no-repeat`,
   backgroundPosition: `99% -10%`,
 });
