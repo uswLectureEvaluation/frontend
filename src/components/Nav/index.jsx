@@ -29,6 +29,7 @@ const Nav = () => {
   return (
     <Styled.Navbar>
       <picture>
+        <source srcSet="/images/logo.avif" type="image/avif" />
         <source srcSet="/images/logo.webp" type="image/webp" />
         <source srcSet="/images/logo.png" type="image/png" />
         <Styled.NavLogo

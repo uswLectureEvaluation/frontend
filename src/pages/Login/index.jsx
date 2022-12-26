@@ -50,6 +50,7 @@ const Login = () => {
   return (
     <Styled.Container>
       <picture>
+        <source srcSet="/images/signup.avif" type="image/avif" />
         <source srcSet="/images/signup.webp" type="image/webp" />
         <source srcSet="/images/signup.png" type="image/png" />
         <Styled.Img src="images/signup.svg" alt="signup" width={400} height={350} />
