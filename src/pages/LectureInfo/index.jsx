@@ -84,6 +84,8 @@ const LectureInfo = () => {
           <Styled.TitleWrapper id="top">
             <Styled.TitleWrapper id="bottom">{menuList}</Styled.TitleWrapper>
             <Styled.Writing
+              width={78}
+              height={34}
               src="images/btn_write.svg"
               onClick={() =>
                 !isLogin
