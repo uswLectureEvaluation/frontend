@@ -1,10 +1,9 @@
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import StarRatings from 'react-star-ratings';
 import styled from 'styled-components';
-import { Color } from '../styles/GlobalStyle';
 
-export const Detail = (props) => {
+const Detail = (props) => {
   return (
     <div>
       <StarFlex id="top">
@@ -96,7 +95,7 @@ const Subject = ({ row }) => {
 
 export default Subject;
 
-export const Minute = styled.span`
+const Minute = styled.span`
   font-size: 12px;
   color: #515151;
   text-decoration: underline;
@@ -108,19 +107,19 @@ export const Minute = styled.span`
   }
 `;
 
-export const TitleWrapper = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   font-weight: 500;
 `;
 
-export const Title = styled.div`
+const Title = styled.div`
   display: flex;
   font-size: 1.1rem;
 `;
 
-export const Professor = styled.div`
+const Professor = styled.div`
   display: flex;
   color: #515151;
   font-size: 14px;
@@ -129,7 +128,7 @@ export const Professor = styled.div`
   font-weight: 400;
 `;
 
-export const Option = styled.div`
+const Option = styled.div`
   display: flex;
   border-radius: 10px;
   background-color: rgb(239, 239, 239);
@@ -138,13 +137,13 @@ export const Option = styled.div`
   font-weight: 500;
 `;
 
-export const RateWrapper = styled.span`
+const RateWrapper = styled.span`
   display: flex;
   align-items: center;
   margin-top: 14px;
 `;
 
-export const Rate = styled.span`
+const Rate = styled.span`
   color: #336af8;
   font-size: 18px;
   font-weight: 500;
@@ -155,19 +154,19 @@ export const Rate = styled.span`
   }
 `;
 
-export const LectureWrapper = styled.div`
+const LectureWrapper = styled.div`
   width: 100%;
-  border: 1px solid ${Color('border')};
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
   margin-bottom: 10px;
   cursor: pointer;
 `;
 
-export const MarginTop = styled.div`
+const MarginTop = styled.div`
   padding: 14px 24px;
 `;
 
-export const StarFlex = styled.div`
+const StarFlex = styled.div`
   display: flex;
   align-items: center;
   padding-right: 1rem;
@@ -183,13 +182,13 @@ export const StarFlex = styled.div`
   }
 `;
 
-export const FlexContainer = styled.div`
+const FlexContainer = styled.div`
   display: flex;
   &#col {
     flex-direction: column;
   }
 `;
 
-export const PaddingRight = styled.span`
+const PaddingRight = styled.span`
   padding-right: 0.7rem;
 `;
