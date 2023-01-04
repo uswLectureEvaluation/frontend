@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import * as Styled from '../SignUp/styled';
 import styled from 'styled-components';
+import Meta from '../../components/Meta';
 
 const NotFound = () => {
   const navigate = useNavigate();
   return (
     <Styled.Container>
+      <Meta title="SUWIKI : 404" />
       <Styled.Img src="images/signup.svg" width={400} />
       <Styled.SignUpWrapper>
         <StyledText id="top">요청하신 페이지를 찾을 수 없어요.</StyledText>
