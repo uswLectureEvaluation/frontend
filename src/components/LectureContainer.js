@@ -2,27 +2,27 @@ import styled from 'styled-components';
 import Subject from './LectureBox';
 
 const LectureContainer = ({ data }) => {
-  let oddList = data.filter((row, i) => {
+  let oddList = data?.filter((row, i) => {
     if (!(i % 2)) return row;
   });
-  let evenList = data.filter((row, i) => {
+  let evenList = data?.filter((row, i) => {
     if (i % 2) return row;
   });
 
   return (
     <FlexWrap>
       <FlexWrapSub>
-        {oddList.map((row) => (
+        {oddList?.map((row) => (
           <Subject key={row.id} row={row} />
         ))}
       </FlexWrapSub>
       <FlexWrapSub>
-        {evenList.map((row) => (
+        {evenList?.map((row) => (
           <Subject key={row.id} row={row} />
         ))}
       </FlexWrapSub>
       <FullWrapSub>
-        {data.map((row) => (
+        {data?.map((row) => (
           <Subject key={row.id} row={row} />
         ))}
       </FullWrapSub>
