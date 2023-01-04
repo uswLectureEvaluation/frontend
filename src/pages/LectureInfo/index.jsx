@@ -4,6 +4,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from '../../app/recoilStore';
 import LectureDetail from '../../components/LectureInfo/LectureDetail';
+import Meta from '../../components/Meta';
 import ModalStyle from '../../components/ModalStyle';
 import SearchEvaluationList from '../../components/SearchEvaluationList';
 import TestInfo from '../../components/TestInfo';
@@ -67,6 +68,7 @@ const LectureInfo = () => {
 
   return (
     <Styled.Container>
+      <Meta title="SUWIKI : 검색" />
       <Styled.SearchWrapper>
         <Styled.SearchTitle>강의평가 검색</Styled.SearchTitle>
         <Styled.SearchInput

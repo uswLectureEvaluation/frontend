@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Auth from '../../api/Auth';
 import { CssTextField } from '../../components/CssTextField';
+import Meta from '../../components/Meta';
 import * as Styled from './styled';
 
 const Exit = () => {
@@ -29,6 +30,7 @@ const Exit = () => {
   };
   return (
     <Styled.Container>
+      <Meta title="SUWIKI : 회원탈퇴" />
       <Styled.Img src="images/signup.svg" width={400} />
       <Styled.LoginWrapper>
         <Styled.Title>회원탈퇴</Styled.Title>

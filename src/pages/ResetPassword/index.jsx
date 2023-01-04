@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import Auth from '../../api/Auth';
 import { CssTextField } from '../../components/CssTextField';
+import Meta from '../../components/Meta';
 import * as Styled from './styled';
 
 const ResetPassword = () => {
@@ -30,6 +31,7 @@ const ResetPassword = () => {
 
   return (
     <Styled.Container>
+      <Meta title="SUWIKI : 비밀번호 변경" />
       <Styled.Img src="images/signup.svg" width={400} />
       <Styled.LoginWrapper>
         <Styled.Title>비밀번호 변경</Styled.Title>

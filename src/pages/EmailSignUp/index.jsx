@@ -1,13 +1,15 @@
+import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
-import * as Styled from './styled';
+import Meta from '../../components/Meta';
 import { Positioner } from '../../components/Wrapper/styled';
-import { useNavigate, useLocation } from 'react-router-dom';
+import * as Styled from './styled';
 
 const EmailSignUp = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   return (
     <Positioner>
+      <Meta title="SUWIKI : 이메일 인증" />
       <Styled.Wrapper>
         <Styled.Title>이메일 인증</Styled.Title>
         <Styled.Img>

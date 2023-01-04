@@ -1,10 +1,11 @@
-import * as Styled from './styled';
-import { useNavigate } from 'react-router-dom';
-import { useInfiniteQuery } from 'react-query';
-import Spinner from '../../components/Spinner';
-import { useInView } from 'react-intersection-observer';
 import { Fragment, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
+import { useInfiniteQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import Notices from '../../api/Notice';
+import Meta from '../../components/Meta';
+import Spinner from '../../components/Spinner';
+import * as Styled from './styled';
 
 export const NoticeItem = ({ notice }) => {
   const navigate = useNavigate();
@@ -63,6 +64,7 @@ export const NoticeContainer = () => {
 const Notice = () => {
   return (
     <Styled.AppContainer>
+      <Meta title="SUWIKI : 공지사항" />
       <Styled.AppTitle>공지사항</Styled.AppTitle>
       <NoticeContainer />
     </Styled.AppContainer>

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../../api/Auth';
 import { CssTextField } from '../../components/CssTextField';
+import Meta from '../../components/Meta';
 import * as Styled from './styled';
 
 const SignUp = () => {
@@ -151,6 +152,7 @@ const SignUp = () => {
 
   return (
     <Styled.Container>
+      <Meta title="SUWIKI : 회원가입" />
       <picture>
         <source srcSet="/images/signup.avif" type="image/avif" />
         <source srcSet="/images/signup.webp" type="image/webp" />

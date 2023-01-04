@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Notices from '../../api/Notice';
+import Meta from '../../components/Meta';
 import Spinner from '../../components/Spinner';
 import * as Styled from './styled';
 
@@ -16,6 +17,7 @@ export const NoticeBox = () => {
 
   return (
     <Styled.Content>
+      <Meta title={data.data.title} />
       <Styled.Title>{data.data.title}</Styled.Title>
       {data.data.content &&
         data.data.content.split('\n').map((value, index) => {

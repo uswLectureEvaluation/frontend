@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Auth from '../../api/Auth';
 import { CssTextField } from '../../components/CssTextField';
+import Meta from '../../components/Meta';
 import * as Styled from './styled';
 
 const IdSearch = () => {
@@ -20,6 +21,7 @@ const IdSearch = () => {
   useEffect(() => {}, [db.data]);
   return (
     <Styled.Container>
+      <Meta title="SUWIKI : 아이디 찾기" />
       <Styled.Img src="images/signup.svg" width={400} />
       <Styled.LoginWrapper>
         <Styled.Title>아이디 찾기</Styled.Title>

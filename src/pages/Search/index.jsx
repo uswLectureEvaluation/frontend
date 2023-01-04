@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import * as Styled from './styled';
-import { SortSelect, StyledOption, Soption } from '../Main/styled';
 import Modal from 'react-modal';
-import { MajorModalStyle } from '../../components/ModalStyle';
-import MajorSearch from '../../components/MajorSearch';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Infinite from '../../components/Infinite';
+import MajorSearch from '../../components/MajorSearch';
+import Meta from '../../components/Meta';
+import { MajorModalStyle } from '../../components/ModalStyle';
+import { Soption, SortSelect, StyledOption } from '../Main/styled';
+import * as Styled from './styled';
 export const majorList = ['전체'];
 
 const Search = () => {
@@ -55,6 +56,7 @@ const Search = () => {
 
   return (
     <div>
+      <Meta title="SUWIKI : 검색" />
       <Styled.Container>
         <Styled.SearchWrapper>
           <Styled.SearchTitle>강의평가 검색</Styled.SearchTitle>
