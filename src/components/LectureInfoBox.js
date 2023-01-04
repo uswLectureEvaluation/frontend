@@ -5,7 +5,7 @@ import Button from './Button';
 const LectureInfoBox = ({ current, isLogin }) => {
   const navigate = useNavigate();
   const floatFix = (num, size) => {
-    return parseFloat(num).toFixed(size);
+    return parseFloat(num)?.toFixed(size);
   };
 
   const teamSet = floatFix(current.lectureTeamAvg, 0);
@@ -64,7 +64,7 @@ const LectureInfoBox = ({ current, isLogin }) => {
                     fontWeight: '500',
                   }}
                 >
-                  {Number(current.lectureHoneyAvg).toFixed(1)}
+                  {Number(current.lectureHoneyAvg)?.toFixed(1)}
                   <span style={{ color: '#a3a3a3' }}>/5</span>
                 </Color>
               </FlexContainer>
@@ -93,7 +93,7 @@ const LectureInfoBox = ({ current, isLogin }) => {
                     fontWeight: '500',
                   }}
                 >
-                  {Number(current.lectureLearningAvg).toFixed(1)}
+                  {Number(current.lectureLearningAvg)?.toFixed(1)}
                   <span style={{ color: '#a3a3a3' }}>/5</span>
                 </Color>
               </FlexContainer>
@@ -122,7 +122,7 @@ const LectureInfoBox = ({ current, isLogin }) => {
                     fontWeight: '500',
                   }}
                 >
-                  {Number(current.lectureSatisfactionAvg).toFixed(1)}
+                  {Number(current.lectureSatisfactionAvg)?.toFixed(1)}
                   <span style={{ color: '#a3a3a3' }}>/5</span>
                 </Color>
               </FlexContainer>

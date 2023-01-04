@@ -37,7 +37,7 @@ export const DetailModal = (props) => {
           <Styled.StarFlex id="between">
             만족도
             <Styled.PaddingRight />
-            <Styled.Rate id="modal">{props.satisfaction.toFixed(1)}</Styled.Rate>
+            <Styled.Rate id="modal">{props.satisfaction?.toFixed(1)}</Styled.Rate>
           </Styled.StarFlex>
           <Styled.StarFlex id="between">조모임 {team[teamSet]}</Styled.StarFlex>
         </Styled.FlexContainer>
@@ -45,7 +45,7 @@ export const DetailModal = (props) => {
           <Styled.StarFlex id="between">
             꿀강 지수
             <Styled.PaddingRight />
-            <Styled.Rate id="modal">{props.honey.toFixed(1)}</Styled.Rate>
+            <Styled.Rate id="modal">{props.honey?.toFixed(1)}</Styled.Rate>
           </Styled.StarFlex>
           <Styled.StarFlex id="between">과제 {homework[homeworkSet]}</Styled.StarFlex>
         </Styled.FlexContainer>
@@ -53,7 +53,7 @@ export const DetailModal = (props) => {
           <Styled.StarFlex id="between">
             배움 지수
             <Styled.PaddingRight />
-            <Styled.Rate id="modal">{props.learning.toFixed(1)}</Styled.Rate>
+            <Styled.Rate id="modal">{props.learning?.toFixed(1)}</Styled.Rate>
           </Styled.StarFlex>
           <Styled.StarFlex id="between">학점 {difficulty[difficultySet]}</Styled.StarFlex>
         </Styled.FlexContainer>
@@ -190,7 +190,7 @@ export const Subject = ({ row }) => {
             svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
             svgIconViewBox="0 0 24 24"
           />
-          <Styled.Rate>{row.totalAvg.toFixed(1)}</Styled.Rate>
+          <Styled.Rate>{row.totalAvg?.toFixed(1)}</Styled.Rate>
           <Styled.ModalOpen
             onClick={() => {
               setModal(!modal);
