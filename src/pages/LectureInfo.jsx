@@ -3,15 +3,15 @@ import Modal from 'react-modal';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from '../app/recoilStore';
-import LectureDetail from '../components/LectureDetail';
+import LectureDetail from '../components/Lecture/LectureDetail';
 import Meta from '../components/Meta';
-import ModalStyle from '../components/ModalStyle';
-import SearchEvaluationList from '../components/SearchEvaluationList';
-import IsTestInfo from '../components/IsTestInfo';
-import WriteEvaluation from '../components/WriteEvaluation';
-import WriteExam from '../components/WriteTestInfo';
+import ModalStyle from '../components/Etc/ModalStyle';
+import SearchEvaluationList from '../components/List/SearchEvaluationList';
+import IsTestInfo from '../components/Lecture/IsTestInfo';
+import WriteEvaluation from '../components/Write/WriteEvaluation';
+import WriteExam from '../components/Write/WriteTestInfo';
 import { isLoginStorage } from '../utils/loginStorage';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from '@emotion/styled';
 
 const LectureInfo = () => {
   const navigate = useNavigate();
@@ -115,16 +115,7 @@ const LectureInfo = () => {
 
 export default LectureInfo;
 
-export const GlobalStyle = createGlobalStyle`
-  #root>div {
-      width: 90%;
-      @media only screen and (min-width: 768px) {
-        width: 90%;
-    }
-  }
-`;
-
-export const Container = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,14 +131,14 @@ export const Container = styled.div`
   }
 `;
 
-export const SearchWrapper = styled.div`
+const SearchWrapper = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: center;
 `;
 
-export const SearchTitle = styled.div`
+const SearchTitle = styled.div`
   display: flex;
   font-size: 1.5rem;
   margin-right: auto;
@@ -156,7 +147,7 @@ export const SearchTitle = styled.div`
   padding-top: 4rem;
 `;
 
-export const SearchInput = styled.input`
+const SearchInput = styled.input`
   width: 100%;
   height: 50px;
   border: none;
@@ -180,7 +171,7 @@ export const SearchInput = styled.input`
   }
 `;
 
-export const Content = styled.div`
+const Content = styled.div`
   border-radius: 10px;
   margin: 10px 0;
   margin-bottom: 3rem;
@@ -195,7 +186,7 @@ export const Content = styled.div`
   }
 `;
 
-export const TitleWrapper = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
   margin-bottom: 0.5rem;
   align-items: flex-end;
@@ -209,12 +200,12 @@ export const TitleWrapper = styled.div`
   }
 `;
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   margin: 0 auto;
 `;
 
-export const MenuTitle = styled.li`
+const MenuTitle = styled.li`
   font-size: 16px;
   margin-bottom: 1rem;
   text-align: center;
@@ -231,21 +222,8 @@ export const MenuTitle = styled.li`
   }
 `;
 
-export const Writing = styled.img`
+const Writing = styled.img`
   &:hover {
     cursor: pointer;
-  }
-`;
-
-export const FlexContainer = styled.div`
-  display: flex;
-  color: #a3a3a3;
-  width: 45%;
-  &#col {
-    flex-direction: column;
-  }
-
-  @media screen and (max-width: 550px) {
-    width: 100%;
   }
 `;

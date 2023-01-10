@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components';
-import EvaluationList from '../components/EvaluationList';
-import TestInfoList from '../components/TestInfoList';
+import EvaluationList from '../components/List/EvaluationList';
+import TestInfoList from '../components/List/TestInfoList';
 import { isLoginStorage } from '../utils/loginStorage.js';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const MyPosting = () => {
   const [evaluation, setEvaluation] = useState(true);

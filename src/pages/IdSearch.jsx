@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import Auth from '../api/Auth';
-import { CssTextField } from '../components/CssTextField';
+import { CssTextField } from '../components/Etc/CssTextField';
 import Meta from '../components/Meta';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from '@emotion/styled';
 
 const IdSearch = () => {
   const auth = Auth();
@@ -51,16 +51,7 @@ const IdSearch = () => {
 
 export default IdSearch;
 
-export const GlobalStyle = createGlobalStyle`
-  #root>div {
-      width: 90%;
-      @media only screen and (min-width: 768px) {
-        width: 90%;
-    }
-  }
-`;
-
-export const Container = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: center;
   width: 60%;
@@ -77,13 +68,13 @@ export const Container = styled.div`
   }
 `;
 
-export const Img = styled.img`
+const Img = styled.img`
   @media only screen and (max-width: 960px) {
     display: none;
   }
 `;
 
-export const Title = styled.div`
+const Title = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
@@ -93,7 +84,7 @@ export const Title = styled.div`
   padding-bottom: 0.6rem;
 `;
 
-export const Button = styled.button`
+const Button = styled.button`
   margin: 0;
   padding: 0 1rem;
   padding-top: 1rem;
@@ -115,7 +106,7 @@ export const Button = styled.button`
   }
 `;
 
-export const LoginWrapper = styled.div`
+const LoginWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 405px;
@@ -124,7 +115,7 @@ export const LoginWrapper = styled.div`
   }
 `;
 
-export const Sub = styled.div`
+const Sub = styled.div`
   font-size: 0.8rem;
 
   font-weight: 600;

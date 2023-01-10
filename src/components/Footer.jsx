@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const Footer = () => {
   return (
@@ -25,11 +25,11 @@ const Footer = () => {
 
 export default Footer;
 
-export const FootWrapper = styled.footer`
+const FootWrapper = styled.footer`
   padding-top: 100px;
 `;
 
-export const Foot = styled.div`
+const Foot = styled.div`
   margin: 0 auto;
   background-color: rgb(237, 237, 237);
   display: flex;
@@ -39,7 +39,7 @@ export const Foot = styled.div`
   align-items: center;
 `;
 
-export const FooterContent = styled.div`
+const FooterContent = styled.div`
   color: #222222;
   font-size: 1rem;
   &:hover {

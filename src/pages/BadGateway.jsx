@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Button, Container, Img, SignUpWrapper } from './SignUp';
 
 const BadGateway = () => {

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import User from '../api/User';
+import styled from '@emotion/styled';
+import User from '../../api/User';
 
 const SearchTestInfoList = ({ page, isLogin }) => {
   return page.map((lecture) => (

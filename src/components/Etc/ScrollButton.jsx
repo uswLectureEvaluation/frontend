@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const ScrollButton = () => {
   const [ScrollY, setScrollY] = useState(0);
@@ -40,7 +40,7 @@ const ScrollButton = () => {
 
 export default ScrollButton;
 
-export const TopButton = styled.button`
+const TopButton = styled.button`
   position: fixed;
   bottom: 30px;
   right: 30px;

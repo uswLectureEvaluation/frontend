@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import { FlexWrap } from '../components/LectureContainer';
+import styled from '@emotion/styled';
+import { FlexWrap } from '../components/Lecture/LectureContainer';
 import User from '../api/User';
 import { useQuery } from 'react-query';
-import Spinner from '../components/Spinner';
+import Spinner from '../components/Etc/Spinner';
 const BanReason = () => {
   const user = User();
   const { data: db, isLoading: banLoad } = useQuery(['myInfo', 'banList'], user.banList);
@@ -67,7 +67,7 @@ export const Reason = (props) => {
 
 export default BanReason;
 
-export const AppContainer = styled.div`
+const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,7 +83,7 @@ export const AppContainer = styled.div`
   }
 `;
 
-export const AppTitle = styled.div`
+const AppTitle = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
@@ -93,13 +93,13 @@ export const AppTitle = styled.div`
   padding-bottom: 1rem;
 `;
 
-export const Title = styled.div`
+const Title = styled.div`
   display: flex;
   font-size: 1rem;
   margin-right: 0.7rem;
 `;
 
-export const Option = styled.div`
+const Option = styled.div`
   border-radius: 10px;
   padding: 0.5rem 0;
   font-size: 0.8rem;
@@ -108,7 +108,7 @@ export const Option = styled.div`
   font-weight: 300;
 `;
 
-export const NoticeWrap = styled.div`
+const NoticeWrap = styled.div`
   width: 100%;
   border: 1.5px solid #f1f1f1;
   padding: 1.5rem 1.5rem;

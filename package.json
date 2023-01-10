@@ -4,6 +4,8 @@
   "private": true,
   "proxy": "https://api.suwiki.kr",
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@material-ui/core": "^4.12.3",
     "@mui/base": "^5.0.0-alpha.113",
     "@mui/material": "^5.11.4",
@@ -20,9 +22,7 @@
     "react-router-dom": "^6.6.2",
     "react-scripts": "5.0.1",
     "react-star-ratings": "^2.3.0",
-    "recoil": "^0.7.6",
-    "styled-components": "^5.3.6",
-    "styled-reset": "^4.4.5"
+    "recoil": "^0.7.6"
   },
   "scripts": {
     "start": "react-scripts start",

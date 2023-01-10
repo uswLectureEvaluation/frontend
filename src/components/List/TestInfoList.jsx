@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Modal from 'react-modal';
 import { useInfiniteQuery, useMutation } from 'react-query';
-import { queryClient } from '..';
-import User from '../api/User';
-import { isLoginStorage } from '../utils/loginStorage';
-import ModalStyle from './ModalStyle';
-import Spinner from './Spinner';
-import WriteExam from './WriteTestInfo';
-import styled from 'styled-components';
+import { queryClient } from '../..';
+import User from '../../api/User';
+import { isLoginStorage } from '../../utils/loginStorage';
+import ModalStyle from '../Etc/ModalStyle';
+import Spinner from '../Etc/Spinner';
+import WriteExam from '../Write/WriteTestInfo';
+import styled from '@emotion/styled';
 
 const TestInfoList = () => {
   const { ref, inView } = useInView();
@@ -189,31 +189,31 @@ export const TestInfoCard = ({ row }) => {
 
 export default TestInfoList;
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   margin: 0px 20px;
 `;
 
-export const NoEvaluation = styled.div`
+const NoEvaluation = styled.div`
   display: flex;
   height: 80vh;
   align-items: center;
   justify-content: center;
 `;
 
-export const TitleWrapper = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
   float: left;
   align-items: center;
 `;
 
-export const Title = styled.span`
+const Title = styled.span`
   font-size: 16px;
   font-weight: 500;
   margin-right: 8px;
 `;
 
-export const Major = styled.span`
+const Major = styled.span`
   font-size: 14px;
 
   font-weight: 400;
@@ -224,20 +224,20 @@ export const Major = styled.span`
   }
 `;
 
-export const Professor = styled.span`
+const Professor = styled.span`
   font-size: 14px;
 
   font-weight: 400;
   color: #515151;
 `;
 
-export const LectureWrapper = styled.div`
+const LectureWrapper = styled.div`
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   margin-bottom: 10px;
 `;
 
-export const MarginTop = styled.div`
+const MarginTop = styled.div`
   &#top {
     padding: 14px 24px 0px 24px;
     @media only screen and (max-width: 550px) {
@@ -250,7 +250,7 @@ export const MarginTop = styled.div`
   }
 `;
 
-export const MobileMarginTop = styled.div`
+const MobileMarginTop = styled.div`
   display: none;
   @media only screen and (max-width: 550px) {
     display: flex;
@@ -259,7 +259,7 @@ export const MobileMarginTop = styled.div`
   }
 `;
 
-export const DataColor = styled.div`
+const DataColor = styled.div`
   font-weight: 500;
   &#cyan {
     color: #336af8;
@@ -269,7 +269,7 @@ export const DataColor = styled.div`
   }
 `;
 
-export const StarFlex = styled.div`
+const StarFlex = styled.div`
   display: flex;
   align-items: center;
   padding: 2px 11px;
@@ -293,7 +293,7 @@ export const StarFlex = styled.div`
   }
 `;
 
-export const FlexContainer = styled.div`
+const FlexContainer = styled.div`
   display: flex;
   min-width: 90px;
   &#col {
@@ -301,7 +301,7 @@ export const FlexContainer = styled.div`
   }
 `;
 
-export const YearText = styled.span`
+const YearText = styled.span`
   font-size: 14px;
 
   font-weight: 400;
@@ -311,7 +311,7 @@ export const YearText = styled.span`
   margin-right: 12px;
 `;
 
-export const EvaluationDetail = styled.div`
+const EvaluationDetail = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 1rem;
@@ -322,7 +322,7 @@ export const EvaluationDetail = styled.div`
   word-break: break-all;
 `;
 
-export const EditButton = styled.span`
+const EditButton = styled.span`
   font-size: 12px;
 
   font-weight: 400;
@@ -334,7 +334,7 @@ export const EditButton = styled.span`
     cursor: pointer;
   }
 `;
-export const DeleteButton = styled.span`
+const DeleteButton = styled.span`
   font-size: 12px;
 
   font-weight: 400;

@@ -3,11 +3,11 @@ import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import Major from '../api/Major';
 import { versionCheck } from '../app/versionCheck';
-import MainList from '../components/MainList';
+import MainList from '../components/List/MainList';
 import MajorSearch from '../components/MajorSearch';
-import { MajorModalStyle } from '../components/ModalStyle';
+import { MajorModalStyle } from '../components/Etc/ModalStyle';
 import { majorList } from './Search';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from '@emotion/styled';
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import SelectUnstyled, { selectUnstyledClasses } from '@mui/base/SelectUnstyled';
@@ -150,16 +150,7 @@ const Main = () => {
 
 export default Main;
 
-export const GlobalStyle = createGlobalStyle`
-  #root>div {
-      width: 90%;
-      @media only screen and (min-width: 768px) {
-        width: 90%;
-    }
-  }
-`;
-
-export const Banner = styled.div`
+const Banner = styled.div`
   width: 100%;
   background-color: #eeeeee;
   cursor: default;
@@ -168,7 +159,7 @@ export const Banner = styled.div`
   }
 `;
 
-export const BannerWrapper = styled.div`
+const BannerWrapper = styled.div`
   width: 60%;
   margin: 0 auto;
   display: flex;
@@ -182,13 +173,13 @@ export const BannerWrapper = styled.div`
   }
 `;
 
-export const BannerSub = styled.div`
+const BannerSub = styled.div`
   font-size: 1rem;
   padding-top: 0.4rem;
   font-weight: 300;
 `;
 
-export const Container = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -200,7 +191,7 @@ export const Container = styled.div`
   }
 `;
 
-export const SearchWrapper = styled.div`
+const SearchWrapper = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -208,7 +199,7 @@ export const SearchWrapper = styled.div`
   padding: 1rem 0;
 `;
 
-export const SearchTitle = styled.div`
+const SearchTitle = styled.div`
   display: flex;
   font-size: 1.5rem;
   padding-top: 4rem;
@@ -218,7 +209,7 @@ export const SearchTitle = styled.div`
   width: 100%;
 `;
 
-export const SearchInput = styled.input`
+const SearchInput = styled.input`
   width: 100%;
   height: 50px;
   border: none;
@@ -241,7 +232,7 @@ export const SearchInput = styled.input`
   }
 `;
 
-export const HeadSelection = styled.div`
+const HeadSelection = styled.div`
   display: flex;
   align-items: flex-start;
   padding-bottom: 10px;
@@ -249,7 +240,7 @@ export const HeadSelection = styled.div`
   justify-content: flex-start;
 `;
 
-export const BannerImg = styled.img`
+const BannerImg = styled.img`
   vertical-align: bottom;
   pointer-events: none;
   @media screen and (max-width: 1300px) {
@@ -271,11 +262,11 @@ export const BannerImg = styled.img`
   }
 `;
 
-export const FlexWrapper = styled.div`
+const FlexWrapper = styled.div`
   display: flex;
 `;
 
-export const Img = styled.img`
+const Img = styled.img`
   vertical-align: bottom;
   pointer-events: none;
   @media screen and (max-width: 960px) {
@@ -292,7 +283,7 @@ export const Soption = styled.span`
   }
 `;
 
-export const Button = styled.button`
+const Button = styled.button`
   width: 40%;
   height: 50px;
   border: none;
@@ -546,7 +537,7 @@ const StyledPopper = styled_mui(PopperUnstyled)`
     z-index: 1;
 `;
 
-export const CustomSelect = React.forwardRef(function CustomSelect(props, ref) {
+const CustomSelect = React.forwardRef(function CustomSelect(props, ref) {
   const components = {
     Root: StyledButton,
     Listbox: StyledListbox,

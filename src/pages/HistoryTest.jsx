@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import User from '../api/User';
 import { useQuery } from 'react-query';
-import Spinner from '../components/Spinner';
+import Spinner from '../components/Etc/Spinner';
 const HistoryTest = () => {
   const user = User();
   const { data: db, isLoading } = useQuery(['myInfo', 'purchasedTestInfo'], user.purchasedTestInfo);
@@ -55,7 +55,7 @@ export const NoticeItem = (props) => {
 
 export default HistoryTest;
 
-export const AppContainer = styled.div`
+const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,7 +71,7 @@ export const AppContainer = styled.div`
   }
 `;
 
-export const AppTitle = styled.div`
+const AppTitle = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
@@ -81,13 +81,13 @@ export const AppTitle = styled.div`
   padding-bottom: 1rem;
 `;
 
-export const Title = styled.div`
+const Title = styled.div`
   display: flex;
   font-size: 1rem;
   margin-right: 0.7rem;
 `;
 
-export const Option = styled.div`
+const Option = styled.div`
   border-radius: 10px;
   padding: 0.5rem 0;
   margin-right: 1rem;
@@ -97,7 +97,7 @@ export const Option = styled.div`
   font-weight: 400;
 `;
 
-export const NoticeWrap = styled.div`
+const NoticeWrap = styled.div`
   width: 100%;
   border: 1.5px solid #f1f1f1;
   padding: 1.5rem 1.5rem;
@@ -116,7 +116,7 @@ export const NoticeWrap = styled.div`
   }
 `;
 
-export const Professor = styled.div`
+const Professor = styled.div`
   display: flex;
   color: #222;
 
@@ -134,14 +134,14 @@ export const Professor = styled.div`
   }
 `;
 
-export const TitleWrapper = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
   @media screen and (max-width: 550px) {
     display: none;
   }
 `;
 
-export const MobileTitleWrapper = styled.div`
+const MobileTitleWrapper = styled.div`
   display: none;
   @media screen and (max-width: 550px) {
     display: flex;

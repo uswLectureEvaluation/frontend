@@ -3,13 +3,13 @@ import { useInView } from 'react-intersection-observer';
 import Modal from 'react-modal';
 import { useInfiniteQuery, useMutation } from 'react-query';
 import StarRatings from 'react-star-ratings';
-import User from '../api/User';
-import { isLoginStorage } from '../utils/loginStorage.js';
-import ModalStyle from './ModalStyle';
-import Spinner from './Spinner';
-import WriteEvaluation from './WriteEvaluation';
-import styled from 'styled-components';
-import { queryClient } from '..';
+import User from '../../api/User';
+import { isLoginStorage } from '../../utils/loginStorage.js';
+import ModalStyle from '../Etc/ModalStyle';
+import Spinner from '../Etc/Spinner';
+import WriteEvaluation from '../Write/WriteEvaluation';
+import styled from '@emotion/styled';
+import { queryClient } from '../..';
 
 export const DetailModal = (props) => {
   const teamSet = props.team;
@@ -234,7 +234,7 @@ export const EvaluationCard = ({ row }) => {
 
 export default EvaluationList;
 
-export const ModalOpen = styled.span`
+const ModalOpen = styled.span`
   font-size: 12px;
 
   font-weight: 400;
@@ -246,18 +246,18 @@ export const ModalOpen = styled.span`
   }
 `;
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   margin: 0px 20px;
 `;
 
-export const NoEvaluation = styled.div`
+const NoEvaluation = styled.div`
   display: flex;
   height: 80vh;
   align-items: center;
   justify-content: center;
 `;
 
-export const TitleWrapper = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   float: left;
@@ -267,7 +267,7 @@ export const TitleWrapper = styled.div`
   }
 `;
 
-export const MobileWrapper = styled.div`
+const MobileWrapper = styled.div`
   display: none;
   @media only screen and (max-width: 550px) {
     width: 100%;
@@ -282,12 +282,12 @@ export const MobileWrapper = styled.div`
   }
 `;
 
-export const Title = styled.span`
+const Title = styled.span`
   font-size: 16px;
   margin-right: 8px;
 `;
 
-export const Major = styled.span`
+const Major = styled.span`
   font-size: 14px;
 
   font-weight: 400;
@@ -298,14 +298,14 @@ export const Major = styled.span`
   }
 `;
 
-export const Professor = styled.span`
+const Professor = styled.span`
   font-size: 14px;
 
   font-weight: 400;
   color: #515151;
 `;
 
-export const Rate = styled.span`
+const Rate = styled.span`
   color: #336af8;
   font-size: 18px;
 
@@ -316,13 +316,13 @@ export const Rate = styled.span`
   }
 `;
 
-export const LectureWrapper = styled.div`
+const LectureWrapper = styled.div`
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   margin-bottom: 10px;
 `;
 
-export const MarginTop = styled.div`
+const MarginTop = styled.div`
   &#top {
     padding: 14px 24px 0px 24px;
   }
@@ -331,7 +331,7 @@ export const MarginTop = styled.div`
     margin-top: 5px;
   }
 `;
-export const DataColor = styled.div`
+const DataColor = styled.div`
   padding-left: 0.7rem;
 
   &#black {
@@ -345,7 +345,7 @@ export const DataColor = styled.div`
   }
 `;
 
-export const StarFlex = styled.div`
+const StarFlex = styled.div`
   display: flex;
   align-items: flex-end;
   padding-right: 1rem;
@@ -364,14 +364,14 @@ export const StarFlex = styled.div`
   }
 `;
 
-export const FlexContainer = styled.div`
+const FlexContainer = styled.div`
   display: flex;
   &#col {
     flex-direction: column;
   }
 `;
 
-export const YearText = styled.span`
+const YearText = styled.span`
   font-size: 14px;
 
   font-weight: 400;
@@ -381,7 +381,7 @@ export const YearText = styled.span`
   margin-right: 12px;
 `;
 
-export const EvaluationDetail = styled.div`
+const EvaluationDetail = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -391,10 +391,10 @@ export const EvaluationDetail = styled.div`
   padding-top: 0.7rem;
   word-break: break-all;
 `;
-export const PaddingRight = styled.span`
+const PaddingRight = styled.span`
   padding-right: 0.7rem;
 `;
-export const EditButton = styled.span`
+const EditButton = styled.span`
   font-size: 12px;
 
   font-weight: 400;
@@ -411,7 +411,7 @@ export const EditButton = styled.span`
     }
   }
 `;
-export const DeleteButton = styled.span`
+const DeleteButton = styled.span`
   font-size: 12px;
 
   font-weight: 400;

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import Auth from '../api/Auth';
-import { CssTextField } from '../components/CssTextField';
+import { CssTextField } from '../components/Etc/CssTextField';
 import Meta from '../components/Meta';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const PwSearch = () => {
   const auth = Auth();

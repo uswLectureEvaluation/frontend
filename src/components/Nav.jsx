@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { queryClient } from '..';
 import Auth from '../api/Auth';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const Nav = () => {
   const navigate = useNavigate();

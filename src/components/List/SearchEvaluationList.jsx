@@ -2,11 +2,11 @@ import { useState, useEffect, Fragment } from 'react';
 import { useInView } from 'react-intersection-observer';
 import StarRatings from 'react-star-ratings';
 import { useInfiniteQuery } from 'react-query';
-import Spinner from './Spinner';
-import Lecture from '../api/Lecture';
-import User from '../api/User';
-import { fakeEvaluationList } from './placeholderData';
-import styled from 'styled-components';
+import Spinner from '../Etc/Spinner';
+import Lecture from '../../api/Lecture';
+import User from '../../api/User';
+import { fakeEvaluationList } from '../placeholderData';
+import styled from '@emotion/styled';
 // import { fakeEvaluationList } from '../placeholderData';
 
 export const FakeList = () => {
@@ -208,7 +208,7 @@ export const Subject = ({ lecture }) => {
 
 export default SearchEvaluationList;
 
-export const ModalOpen = styled.span`
+const ModalOpen = styled.span`
   font-weight: 400;
   font-size: 12px;
   color: #222;
@@ -219,11 +219,11 @@ export const ModalOpen = styled.span`
   }
 `;
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   width: 100%;
 `;
 
-export const Content = styled.div`
+const Content = styled.div`
   font-size: 1.5rem;
   margin: 2rem 0;
 
@@ -235,14 +235,14 @@ export const Content = styled.div`
   }
 `;
 
-export const TitleWrapper = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
   float: left;
   align-items: center;
 `;
 
-export const Rate = styled.span`
+const Rate = styled.span`
   color: #336af8;
 
   font-size: 18px;
@@ -254,13 +254,13 @@ export const Rate = styled.span`
   }
 `;
 
-export const LectureWrapper = styled.div`
+const LectureWrapper = styled.div`
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   margin-bottom: 10px;
 `;
 
-export const MarginTop = styled.div`
+const MarginTop = styled.div`
   &#top {
     padding: 14px 24px 0px 24px;
     @media only screen and (max-width: 550px) {
@@ -273,7 +273,7 @@ export const MarginTop = styled.div`
   }
 `;
 
-export const MobileWrapper = styled.div`
+const MobileWrapper = styled.div`
   display: none;
   @media only screen and (max-width: 550px) {
     display: flex;
@@ -281,7 +281,7 @@ export const MobileWrapper = styled.div`
     flex-direction: column;
   }
 `;
-export const DataColor = styled.div`
+const DataColor = styled.div`
   padding-left: 0.7rem;
 
   &#black {
@@ -295,7 +295,7 @@ export const DataColor = styled.div`
   }
 `;
 
-export const StarFlex = styled.div`
+const StarFlex = styled.div`
   display: flex;
   align-items: flex-end;
   padding-right: 1rem;
@@ -315,14 +315,14 @@ export const StarFlex = styled.div`
   }
 `;
 
-export const FlexContainer = styled.div`
+const FlexContainer = styled.div`
   display: flex;
   &#col {
     flex-direction: column;
   }
 `;
 
-export const YearText = styled.span`
+const YearText = styled.span`
   font-weight: 400;
   font-size: 14px;
   padding: 4.5px 13px 4.5px 13px;
@@ -331,7 +331,7 @@ export const YearText = styled.span`
   margin-right: 12px;
 `;
 
-export const EvaluationDetail = styled.div`
+const EvaluationDetail = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 16px;
@@ -342,10 +342,10 @@ export const EvaluationDetail = styled.div`
   padding-top: 0.7rem;
   word-break: break-all;
 `;
-export const PaddingRight = styled.span`
+const PaddingRight = styled.span`
   padding-right: 0.7rem;
 `;
-export const EditButton = styled.span`
+const EditButton = styled.span`
   font-size: 12px;
   font-weight: 500;
   text-align: center;

@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
-import styled from 'styled-components';
-import Button from './Button';
-import SearchTestInfoList from './SearchTestInfoList';
+import styled from '@emotion/styled';
+import Button from '../Etc/Button';
+import SearchTestInfoList from '../List/SearchTestInfoList';
 import { useInView } from 'react-intersection-observer';
 import { useInfiniteQuery, useMutation } from 'react-query';
-import Spinner from './Spinner';
-import { queryClient } from '..';
-import Lecture from '../api/Lecture';
-import User from '../api/User';
-import { isLoginStorage } from '../utils/loginStorage';
-import { fakeEvaluationList } from './placeholderData';
+import Spinner from '../Etc/Spinner';
+import { queryClient } from '../..';
+import Lecture from '../../api/Lecture';
+import User from '../../api/User';
+import { isLoginStorage } from '../../utils/loginStorage';
+import { fakeEvaluationList } from '../placeholderData';
 
 export const NotUsePoint = ({ selectId }) => {
   const user = User();
@@ -95,15 +95,15 @@ const IsTestInfo = ({ selectId, setWritten }) => {
 };
 export default IsTestInfo;
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   width: 100%;
 `;
 
-export const Color = styled.span`
+const Color = styled.span`
   color: #336af8;
 `;
 
-export const Content = styled.div`
+const Content = styled.div`
   font-size: 1.5rem;
   margin: 2rem 0;
 
@@ -115,7 +115,7 @@ export const Content = styled.div`
   }
 `;
 
-export const BtWidth = styled.div`
+const BtWidth = styled.div`
   margin: 0 auto;
   width: 30%;
 

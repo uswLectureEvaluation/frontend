@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import styled from 'styled-components';
-import { SemesterSelect, StyledOption, Soption } from '../pages/Main';
+import styled from '@emotion/styled';
+import { SemesterSelect, StyledOption, Soption } from '../../pages/Main';
 import { useRecoilValue } from 'recoil';
-import { lectureState } from '../app/recoilStore';
+import { lectureState } from '../../app/recoilStore';
 import { useMutation } from 'react-query';
-import { queryClient } from '..';
-import User from '../api/User';
-import useSlider from './RangeInput';
+import { queryClient } from '../..';
+import User from '../../api/User';
+import useSlider from '../Etc/RangeInput';
 
 const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
   const user = User();
@@ -181,11 +181,23 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
         <Content id="content" onChange={teamChange}>
           <ContentTitle>조모임</ContentTitle>
           <label>
-            <FormCheckLeft name="team" id="easy" value={0} defaultChecked={team === 0} />
+            <FormCheckLeft
+              type="radio"
+              name="team"
+              id="easy"
+              value={0}
+              defaultChecked={team === 0}
+            />
             <FormCheckText>없음</FormCheckText>
           </label>
           <label>
-            <FormCheckLeft name="team" id="difficult" value={1} defaultChecked={team === 1} />
+            <FormCheckLeft
+              type="radio"
+              name="team"
+              id="difficult"
+              value={1}
+              defaultChecked={team === 1}
+            />
             <FormCheckText>있음</FormCheckText>
           </label>
         </Content>
@@ -193,15 +205,28 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
         <Content id="content" onChange={homeworkChange}>
           <ContentTitle>과제</ContentTitle>
           <label>
-            <FormCheckLeft name="homework" id="easy" value={0} defaultChecked={homework === 0} />
+            <FormCheckLeft
+              type="radio"
+              name="homework"
+              id="easy"
+              value={0}
+              defaultChecked={homework === 0}
+            />
             <FormCheckText>없음</FormCheckText>
           </label>
           <label>
-            <FormCheckLeft name="homework" id="normal" value={1} defaultChecked={homework === 1} />
+            <FormCheckLeft
+              type="radio"
+              name="homework"
+              id="normal"
+              value={1}
+              defaultChecked={homework === 1}
+            />
             <FormCheckText>보통</FormCheckText>
           </label>
           <label>
             <FormCheckLeft
+              type="radio"
               name="homework"
               id="difficult"
               value={2}
@@ -214,15 +239,28 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
         <Content id="content" onChange={difficultyChange}>
           <ContentTitle>학점</ContentTitle>
           <label>
-            <FormCheckLeft name="score" id="easy" value={0} defaultChecked={difficulty === 0} />
+            <FormCheckLeft
+              type="radio"
+              name="score"
+              id="easy"
+              value={0}
+              defaultChecked={difficulty === 0}
+            />
             <FormCheckText>너그러움</FormCheckText>
           </label>
           <label>
-            <FormCheckLeft name="score" id="normal" value={1} defaultChecked={difficulty === 1} />
+            <FormCheckLeft
+              type="radio"
+              name="score"
+              id="normal"
+              value={1}
+              defaultChecked={difficulty === 1}
+            />
             <FormCheckText>보통</FormCheckText>
           </label>
           <label>
             <FormCheckLeft
+              type="radio"
               name="score"
               id="difficult"
               value={2}
@@ -405,7 +443,7 @@ const FormCheckText = styled.span`
   }
 `;
 
-const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
+const FormCheckLeft = styled.input`
   &:checked {
     display: inline-block;
     background: none;

@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useInfiniteQuery } from 'react-query';
 import { useInView } from 'react-intersection-observer';
-import LectureContainer, { FlexWrap } from './LectureContainer';
+import LectureContainer, { FlexWrap } from '../Lecture/LectureContainer';
 import { useSearchParams } from 'react-router-dom';
-import Lecture from '../api/Lecture';
-import { fakeLectureList } from './placeholderData';
+import Lecture from '../../api/Lecture';
+import { fakeLectureList } from '../placeholderData';
 
 const LectureList = ({ setCount }) => {
   const lectures = Lecture();

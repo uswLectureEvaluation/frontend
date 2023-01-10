@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 const RangeInput = ({ min = 0, max = 5, step = 0.5, defaultValue = 0, setSlide }) => {
   const inputRef = useRef();
 

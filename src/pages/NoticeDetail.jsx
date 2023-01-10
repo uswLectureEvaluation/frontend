@@ -2,8 +2,8 @@ import { useQuery } from 'react-query';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Notices from '../api/Notice';
 import Meta from '../components/Meta';
-import Spinner from '../components/Spinner';
-import styled from 'styled-components';
+import Spinner from '../components/Etc/Spinner';
+import styled from '@emotion/styled';
 
 export const NoticeBox = () => {
   const notice = Notices();

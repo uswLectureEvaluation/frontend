@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import LectureCard from './LectureCard';
 
 const LectureContainer = ({ data }) => {
@@ -49,7 +49,7 @@ export const FlexWrap = styled.div`
   }
 `;
 
-export const FlexWrapSub = styled.div`
+const FlexWrapSub = styled.div`
   width: 49%;
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@ export const FlexWrapSub = styled.div`
   }
 `;
 
-export const FullWrapSub = styled.div`
+const FullWrapSub = styled.div`
   display: none;
   @media screen and (max-width: 960px) {
     width: 100%;

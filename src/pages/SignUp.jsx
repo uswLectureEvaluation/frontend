@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../api/Auth';
-import { CssTextField } from '../components/CssTextField';
+import { CssTextField } from '../components/Etc/CssTextField';
 import Meta from '../components/Meta';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const SignUp = () => {
   const auth = Auth();
@@ -314,7 +314,7 @@ const SignUp = () => {
 
 export default SignUp;
 
-export const Title = styled.div`
+const Title = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
@@ -327,11 +327,11 @@ export const Title = styled.div`
   }
 `;
 
-export const Checking = styled.div`
+const Checking = styled.div`
   font-size: 1.2vh;
 `;
 
-export const Label = styled.label`
+const Label = styled.label`
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -348,7 +348,7 @@ export const Label = styled.label`
   }
 `;
 
-export const EmailWrapper = styled.div`
+const EmailWrapper = styled.div`
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
@@ -356,7 +356,7 @@ export const EmailWrapper = styled.div`
   font-weight: 600;
 `;
 
-export const AgreeButton = styled.button`
+const AgreeButton = styled.button`
   border: 0;
   background: 0 0;
   cursor: pointer;
@@ -368,7 +368,7 @@ export const AgreeButton = styled.button`
   font-size: 12px;
 `;
 
-export const InputWrapper = styled.div`
+const InputWrapper = styled.div`
   display: flex;
   align-items: center;
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import * as styles from '@mui/material/styles';
 import Major from '../api/Major';
 import { searchFavorite, type } from '../api/etc';
@@ -134,6 +134,7 @@ const MajorSearch = (props) => {
                 return (
                   <label key={i}>
                     <FormCheckLeft
+                      type="radio"
                       name="majorType"
                       id="easy"
                       value={v}
@@ -279,7 +280,7 @@ const SearchIcon = styled.img`
   }
 `;
 
-const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
+const FormCheckLeft = styled.input`
   &:checked {
     display: inline-block;
     background: none;

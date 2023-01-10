@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import LectureList from '../components/LectureList';
+import LectureList from '../components/List/LectureList';
 import MajorSearch from '../components/MajorSearch';
 import Meta from '../components/Meta';
-import { MajorModalStyle } from '../components/ModalStyle';
+import { MajorModalStyle } from '../components/Etc/ModalStyle';
 import { Soption, SortSelect, StyledOption } from './Main';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 export const majorList = ['전체'];
 
 const Search = () => {

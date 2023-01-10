@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const Wrapper = ({ children }) => (
   <Positioner>
@@ -10,7 +10,7 @@ const Wrapper = ({ children }) => (
 
 export default Wrapper;
 
-export const Positioner = styled.div`
+const Positioner = styled.div`
   position: relative;
 `;
 

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import Button from './Button';
+import styled from '@emotion/styled';
+import Button from '../Etc/Button';
 
 const LectureInfoBox = ({ current, isLogin }) => {
   const navigate = useNavigate();

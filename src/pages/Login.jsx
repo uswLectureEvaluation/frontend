@@ -2,9 +2,9 @@ import { Checkbox, FormControlLabel } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../api/Auth';
-import { CssTextField } from '../components/CssTextField';
+import { CssTextField } from '../components/Etc/CssTextField';
 import Meta from '../components/Meta';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from '@emotion/styled';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -105,16 +105,7 @@ const Login = () => {
 
 export default Login;
 
-export const GlobalStyle = createGlobalStyle`
-  #root>div {
-      width: 90%;
-      @media only screen and (min-width: 768px) {
-        width: 90%;
-    }
-  }
-`;
-
-export const Container = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: center;
   width: 60%;
@@ -131,13 +122,13 @@ export const Container = styled.div`
   }
 `;
 
-export const Img = styled.img`
+const Img = styled.img`
   @media only screen and (max-width: 960px) {
     display: none;
   }
 `;
 
-export const Title = styled.div`
+const Title = styled.div`
   display: flex;
   width: 100%;
   font-size: 1.5rem;
@@ -152,7 +143,7 @@ export const Title = styled.div`
   }
 `;
 
-export const Button = styled.button`
+const Button = styled.button`
   margin: 0;
   padding: 0 1rem;
   padding-top: 1rem;
@@ -173,7 +164,7 @@ export const Button = styled.button`
     margin-top: 5rem;
   }
 `;
-export const SearchButton = styled.button`
+const SearchButton = styled.button`
   border: none;
   border-bottom: 1px solid;
   padding: 0;
@@ -186,7 +177,7 @@ export const SearchButton = styled.button`
   }
 `;
 
-export const SearchWrapper = styled.div`
+const SearchWrapper = styled.div`
   font-size: 0.8rem;
   display: flex;
   justify-content: space-between;
@@ -194,7 +185,7 @@ export const SearchWrapper = styled.div`
   align-items: center;
 `;
 
-export const LoginWrapper = styled.div`
+const LoginWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 405px;

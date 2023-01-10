@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useMutation } from 'react-query';
-import { queryClient } from '..';
-import User from '../api/User';
-import { SemesterSelect, Soption, StyledOption } from '../pages/Main';
-import styled from 'styled-components';
+import { queryClient } from '../..';
+import User from '../../api/User';
+import { SemesterSelect, Soption, StyledOption } from '../../pages/Main';
+import styled from '@emotion/styled';
 
 const WriteExam = ({ setModalIsOpen, row, type }) => {
   const user = User();
@@ -160,6 +160,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
           <ContentTitle id="mobile">난이도</ContentTitle>
           <label>
             <FormCheckLeft
+              type="radio"
               name="examDifficulty"
               id="easy"
               value="쉬움"
@@ -169,6 +170,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
           </label>
           <label>
             <FormCheckLeft
+              type="radio"
               name="examDifficulty"
               id="normal"
               value="보통"
@@ -178,6 +180,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
           </label>
           <label>
             <FormCheckLeft
+              type="radio"
               name="examDifficulty"
               id="difficult"
               value="어려움"
@@ -193,6 +196,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
           </ContentTitle>
           <label>
             <FormCheckMulti
+              type="checkbox"
               name="examType"
               id="normal"
               value="족보"
@@ -202,6 +206,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
           </label>
           <label>
             <FormCheckMulti
+              type="checkbox"
               name="examType"
               id="normal"
               value="교재"
@@ -211,6 +216,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
           </label>
           <label>
             <FormCheckMulti
+              type="checkbox"
               name="examType"
               id="normal"
               value="PPT"
@@ -220,6 +226,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
           </label>
           <label>
             <FormCheckMulti
+              type="checkbox"
               name="examType"
               id="normal"
               value="필기"
@@ -232,6 +239,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
           <ContentTitle id="mobile" />
           <label>
             <FormCheckMulti
+              type="checkbox"
               name="examType"
               id="normal"
               value="응용"
@@ -241,6 +249,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
           </label>
           <label>
             <FormCheckMulti
+              type="checkbox"
               name="examType"
               id="normal"
               value="실습"
@@ -250,6 +259,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
           </label>
           <label>
             <FormCheckMulti
+              type="checkbox"
               name="examType"
               id="normal"
               value="과제"
@@ -428,7 +438,7 @@ const FormCheckText = styled.span`
   }
 `;
 
-const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
+const FormCheckLeft = styled.input`
   &:checked {
     display: inline-block;
     background: none;
@@ -460,7 +470,7 @@ const FormCheckLeft = styled.input.attrs({ type: 'radio' })`
   display: none;
 `;
 
-const FormCheckMulti = styled.input.attrs({ type: 'checkbox' })`
+const FormCheckMulti = styled.input`
   &:checked {
     display: inline-block;
     background: none;

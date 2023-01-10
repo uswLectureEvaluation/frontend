@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
-import LectureContainer from './LectureContainer';
-import Lecture from '../api/Lecture';
-import { fakeLectureList } from './placeholderData';
+import LectureContainer from '../Lecture/LectureContainer';
+import Lecture from '../../api/Lecture';
+import { fakeLectureList } from '../placeholderData';
 
 const MainList = ({ lecture, checkClass }) => {
   // 메인 강의 리스트 API
