@@ -1,4 +1,4 @@
-export { default as BadGateway } from './BadGateway';
+export { default as BadGateway } from './BadGateway.jsx';
 export { default as BanReason } from './BanReason';
 export { default as EmailSignUp } from './EmailSignUp';
 export { default as Exit } from './Exit';

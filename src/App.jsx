@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { Footer, Nav, ScrollButton } from './components';
+import { Footer, Nav } from './components';
+import ScrollButton from './components/Etc/ScrollButton';
 import {
   BadGateway,
   BanReason,
@@ -21,13 +22,13 @@ import {
   SignUp,
 } from './pages';
 import RouteChangeTracker from './RouteChangeTracker.js';
-import GlobalStyle from './styles/GlobalStyle.js';
+import { global } from './styles/GlobalStyle';
 
 const App = () => {
   return (
     <BrowserRouter>
       <RouteChangeTracker />
-      <GlobalStyle />
+      {global}
       <Nav style={{ zindex: 5 }} />
       <Routes>
         <Route path="/" element={<Main />} />
