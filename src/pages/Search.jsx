@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import LectureList from '../../components/LectureList';
-import MajorSearch from '../../components/MajorSearch';
-import Meta from '../../components/Meta';
-import { MajorModalStyle } from '../../components/ModalStyle';
-import { Soption, SortSelect, StyledOption } from '../Main/styled';
-import * as Styled from './styled';
+import LectureList from '../components/LectureList';
+import MajorSearch from '../components/MajorSearch';
+import Meta from '../components/Meta';
+import { MajorModalStyle } from '../components/ModalStyle';
+import { Soption, SortSelect, StyledOption } from './Main';
+import styled from 'styled-components';
 export const majorList = ['전체'];
 
 const Search = () => {
@@ -57,20 +57,20 @@ const Search = () => {
   return (
     <div>
       <Meta title="SUWIKI : 검색" />
-      <Styled.Container>
-        <Styled.SearchWrapper>
-          <Styled.SearchTitle>강의평가 검색</Styled.SearchTitle>
-          <Styled.SearchInput
+      <Container>
+        <SearchWrapper>
+          <SearchTitle>강의평가 검색</SearchTitle>
+          <SearchInput
             onChange={onChange}
             placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
             onKeyPress={onKeypress}
             value={search}
           />
-        </Styled.SearchWrapper>
+        </SearchWrapper>
 
-        <Styled.SearchResultWrapper>
+        <SearchResultWrapper>
           <div style={{ display: 'flex' }}>
-            <Styled.FlexWrapper onClick={() => setModalIsOpen(true)}>
+            <FlexWrapper onClick={() => setModalIsOpen(true)}>
               <SortSelect id="major" defaultValue={majorType}>
                 {majorList.map((index) => (
                   <StyledOption id="semester" key={index} value={index}>
@@ -78,8 +78,8 @@ const Search = () => {
                   </StyledOption>
                 ))}
               </SortSelect>
-            </Styled.FlexWrapper>
-            <Styled.FlexWrapper>
+            </FlexWrapper>
+            <FlexWrapper>
               <SortSelect id="sort" value={option} onChange={onSelect}>
                 {detail.map((index) => (
                   <StyledOption id="semester" key={index.option} value={index.option}>
@@ -87,18 +87,18 @@ const Search = () => {
                   </StyledOption>
                 ))}
               </SortSelect>
-            </Styled.FlexWrapper>
+            </FlexWrapper>
           </div>
 
-          <Styled.FlexWrapper id="count">
-            총 <Styled.Color> {count}</Styled.Color>건
-          </Styled.FlexWrapper>
-        </Styled.SearchResultWrapper>
+          <FlexWrapper id="count">
+            총 <Color> {count}</Color>건
+          </FlexWrapper>
+        </SearchResultWrapper>
 
-        <Styled.HeadSelection>
+        <HeadSelection>
           <LectureList setCount={setCount} />
-        </Styled.HeadSelection>
-      </Styled.Container>
+        </HeadSelection>
+      </Container>
       <Modal
         isOpen={modalIsOpen}
         style={MajorModalStyle}
@@ -113,3 +113,85 @@ const Search = () => {
 };
 
 export default Search;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  @media only screen and (max-width: 960px) {
+    width: 90%;
+  }
+`;
+
+const SearchResultWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const SearchWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+`;
+
+const SearchTitle = styled.div`
+  display: flex;
+  font-size: 1.5rem;
+  margin-right: auto;
+
+  font-weight: 600;
+  padding-top: 4rem;
+`;
+
+const SearchInput = styled.input`
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-bottom: 1.5px solid #000000;
+  margin: 1.5rem 0;
+  background-image: url('images/icon_search_24.svg');
+  background-repeat: no-repeat;
+  background-position: 99%;
+
+  font-weight: 400;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media screen and (max-width: 550px) {
+    font-size: 16px;
+    width: 123%;
+    transform: scale(0.8);
+  }
+`;
+
+const HeadSelection = styled.div`
+  padding-bottom: 10px;
+  width: 100%;
+`;
+
+const FlexWrapper = styled.div`
+  display: flex;
+  margin-bottom: 1rem;
+
+  &#count {
+    @media screen and (max-width: 960px) {
+      display: none;
+    }
+  }
+`;
+
+const Color = styled.span`
+  color: #336af8;
+  margin-left: 6px;
+  text-align: center;
+`;

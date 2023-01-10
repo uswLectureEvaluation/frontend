@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { SemesterSelect, StyledOption, Soption } from '../pages/Main/styled';
+import { SemesterSelect, StyledOption, Soption } from '../pages/Main';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from '../app/recoilStore';
 import { useMutation } from 'react-query';

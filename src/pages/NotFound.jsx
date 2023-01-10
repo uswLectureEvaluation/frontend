@@ -1,22 +1,22 @@
 import { useNavigate } from 'react-router-dom';
-import * as Styled from '../SignUp/styled';
 import styled from 'styled-components';
-import Meta from '../../components/Meta';
+import Meta from '../components/Meta';
+import { Button, Container, Img, SignUpWrapper } from './SignUp';
 
 const NotFound = () => {
   const navigate = useNavigate();
   return (
-    <Styled.Container>
+    <Container>
       <Meta title="SUWIKI : 404" />
-      <Styled.Img src="images/signup.svg" width={400} />
-      <Styled.SignUpWrapper>
+      <Img src="images/signup.svg" width={400} />
+      <SignUpWrapper>
         <StyledText id="top">요청하신 페이지를 찾을 수 없어요.</StyledText>
         <StyledText>올바른 주소로 접속하셨나요?</StyledText>
-        <Styled.Button background="#336af8" onClick={() => navigate('/')}>
+        <Button background="#336af8" onClick={() => navigate('/')}>
           홈으로 돌아가기
-        </Styled.Button>
-      </Styled.SignUpWrapper>
-    </Styled.Container>
+        </Button>
+      </SignUpWrapper>
+    </Container>
   );
 };
 

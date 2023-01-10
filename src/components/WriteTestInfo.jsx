@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { queryClient } from '..';
 import User from '../api/User';
-import { SemesterSelect, Soption, StyledOption } from '../pages/Main/styled';
+import { SemesterSelect, Soption, StyledOption } from '../pages/Main';
 import styled from 'styled-components';
 
 const WriteExam = ({ setModalIsOpen, row, type }) => {

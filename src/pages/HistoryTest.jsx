@@ -1,4 +1,59 @@
 import styled from 'styled-components';
+import User from '../api/User';
+import { useQuery } from 'react-query';
+import Spinner from '../components/Spinner';
+const HistoryTest = () => {
+  const user = User();
+  const { data: db, isLoading } = useQuery(['myInfo', 'purchasedTestInfo'], user.purchasedTestInfo);
+  /*
+       "id" : Long, //구매한 시험정보의 인조키
+            "lectureName" : String, //과목 이름
+            "professor" : String, //교수이름
+            "majorType" : String, //개설학과
+            "createDate" : LocalDateTime, //작성 날짜
+      */
+  if (isLoading) return <Spinner id="myInfo" />;
+  return (
+    <AppContainer>
+      <AppTitle>구매이력</AppTitle>
+
+      {db.data.map((i) => {
+        return (
+          <NoticeItem
+            id={i.id}
+            title={i.lectureName}
+            professor={i.professor}
+            major={i.majorType}
+            createDate={i.createDate.slice(0, 10)}
+            key={i.id}
+          />
+        );
+      })}
+    </AppContainer>
+  );
+};
+
+export const NoticeItem = (props) => {
+  return (
+    <NoticeWrap>
+      <Option>{props.createDate}</Option>
+      <TitleWrapper>
+        <Title>{props.title}</Title>
+        <Professor>
+          {props.major} | {props.professor}
+        </Professor>
+      </TitleWrapper>
+      <MobileTitleWrapper>
+        <Professor>
+          {props.major} | {props.professor}
+        </Professor>
+        <Title>{props.title}</Title>
+      </MobileTitleWrapper>
+    </NoticeWrap>
+  );
+};
+
+export default HistoryTest;
 
 export const AppContainer = styled.div`
   display: flex;

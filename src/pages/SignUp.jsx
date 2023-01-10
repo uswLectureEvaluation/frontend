@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Auth from '../../api/Auth';
-import { CssTextField } from '../../components/CssTextField';
-import Meta from '../../components/Meta';
-import * as Styled from './styled';
+import Auth from '../api/Auth';
+import { CssTextField } from '../components/CssTextField';
+import Meta from '../components/Meta';
+import styled from 'styled-components';
 
 const SignUp = () => {
   const auth = Auth();
@@ -151,17 +151,17 @@ const SignUp = () => {
   });
 
   return (
-    <Styled.Container>
+    <Container>
       <Meta title="SUWIKI : 회원가입" />
       <picture>
         <source srcSet="/images/signup.avif" type="image/avif" />
         <source srcSet="/images/signup.webp" type="image/webp" />
         <source srcSet="/images/signup.png" type="image/png" />
-        <Styled.Img src="images/signup.svg" alt="signup" width={400} height={350} />
+        <Img src="images/signup.svg" alt="signup" width={400} height={350} />
       </picture>
-      <Styled.SignUpWrapper>
-        <Styled.Title>회원가입</Styled.Title>
-        <Styled.InputWrapper id="top">
+      <SignUpWrapper>
+        <Title>회원가입</Title>
+        <InputWrapper id="top">
           <CssTextField
             margin="normal"
             required
@@ -172,19 +172,12 @@ const SignUp = () => {
             autoComplete="username"
             onChange={onChangeName}
           />
-          <Styled.Button
-            disabled={!isName || idCheck}
-            id="check"
-            onClick={onCheck}
-            background="#336af8"
-          >
+          <Button disabled={!isName || idCheck} id="check" onClick={onCheck} background="#336af8">
             중복확인
-          </Styled.Button>
-        </Styled.InputWrapper>
+          </Button>
+        </InputWrapper>
         {name.length > 0 && (
-          <Styled.Checking className={`message ${isName ? 'success' : 'error'}`}>
-            {nameMessage}
-          </Styled.Checking>
+          <Checking className={`message ${isName ? 'success' : 'error'}`}>{nameMessage}</Checking>
         )}
 
         <CssTextField
@@ -199,9 +192,9 @@ const SignUp = () => {
           onChange={onChangePassword}
         />
         {password.length > 0 && (
-          <Styled.Checking className={`message ${isPassword ? 'success' : 'error'}`}>
+          <Checking className={`message ${isPassword ? 'success' : 'error'}`}>
             {passwordMessage}
-          </Styled.Checking>
+          </Checking>
         )}
         <CssTextField
           margin="normal"
@@ -215,11 +208,11 @@ const SignUp = () => {
           onChange={onChangePasswordConfirm}
         />
         {passwordConfirm.length > 0 && (
-          <Styled.Checking className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>
+          <Checking className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>
             {passwordConfirmMessage}
-          </Styled.Checking>
+          </Checking>
         )}
-        <Styled.InputWrapper id="top">
+        <InputWrapper id="top">
           <CssTextField
             margin="normal"
             required
@@ -231,31 +224,29 @@ const SignUp = () => {
             autoComplete="current-email"
             onChange={onChangeEmail}
           />
-          <Styled.Button
+          <Button
             disabled={!isEmail || emailCheck}
             id="check"
             onClick={onEmail}
             background="#336af8"
           >
             중복확인
-          </Styled.Button>
-        </Styled.InputWrapper>
+          </Button>
+        </InputWrapper>
         {email.length > 0 && (
-          <Styled.Checking className={`message ${isEmail ? 'success' : 'error'}`}>
-            {emailMessage}
-          </Styled.Checking>
+          <Checking className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</Checking>
         )}
 
-        <Styled.EmailWrapper>
+        <EmailWrapper>
           * 수원대 이메일 인증 후 서비스 이용이 가능합니다.
           <br />
           <br />* 이메일 인증 시 주의 사항
           <br />- 웹메일이 휴면 상태인지 확인해주세요.
           <br />- 웹메일 계정은 포털 계정과 다르니 이 부분 주의 바랍니다.
-        </Styled.EmailWrapper>
+        </EmailWrapper>
 
-        <Styled.Label>
-          <Styled.InputWrapper>
+        <Label>
+          <InputWrapper>
             <input
               type="checkbox"
               name="checkAll"
@@ -263,10 +254,10 @@ const SignUp = () => {
               checked={checkList.length === 2 ? true : false}
             />
             아래 내용에 모두 동의합니다.
-          </Styled.InputWrapper>
-        </Styled.Label>
-        <Styled.Label>
-          <Styled.InputWrapper>
+          </InputWrapper>
+        </Label>
+        <Label>
+          <InputWrapper>
             <input
               type="checkbox"
               name="terms"
@@ -274,16 +265,16 @@ const SignUp = () => {
               checked={checkList.includes('terms') ? true : false}
             />
             이용약관 동의(필수)
-          </Styled.InputWrapper>
-          <Styled.AgreeButton
+          </InputWrapper>
+          <AgreeButton
             className="showMore"
             onClick={() => window.open('https://sites.google.com/view/suwiki-policy-terms')}
           >
             상세보기
-          </Styled.AgreeButton>
-        </Styled.Label>
-        <Styled.Label id="last">
-          <Styled.InputWrapper>
+          </AgreeButton>
+        </Label>
+        <Label id="last">
+          <InputWrapper>
             <input
               type="checkbox"
               name="privacy"
@@ -291,15 +282,15 @@ const SignUp = () => {
               checked={checkList.includes('privacy') ? true : false}
             />
             개인정보처리방침 동의(필수)
-          </Styled.InputWrapper>
-          <Styled.AgreeButton
+          </InputWrapper>
+          <AgreeButton
             className="showMore"
             onClick={() => window.open('https://sites.google.com/view/suwiki-policy-privacy')}
           >
             상세보기
-          </Styled.AgreeButton>
-        </Styled.Label>
-        <Styled.Button
+          </AgreeButton>
+        </Label>
+        <Button
           disabled={
             !(
               isName &&
@@ -315,10 +306,149 @@ const SignUp = () => {
           onClick={onClick}
         >
           회원가입
-        </Styled.Button>
-      </Styled.SignUpWrapper>
-    </Styled.Container>
+        </Button>
+      </SignUpWrapper>
+    </Container>
   );
 };
 
 export default SignUp;
+
+export const Title = styled.div`
+  display: flex;
+  width: 100%;
+  font-size: 1.5rem;
+
+  font-weight: 600;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  @media only screen and (max-width: 960px) {
+    font-weight: 600;
+  }
+`;
+
+export const Checking = styled.div`
+  font-size: 1.2vh;
+`;
+
+export const Label = styled.label`
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  font-size: 0.8rem;
+  input {
+    margin: 0 10px 0 0;
+  }
+  &#last {
+    padding-top: 8px;
+    padding-bottom: 3vh;
+  }
+`;
+
+export const EmailWrapper = styled.div`
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+
+  font-weight: 600;
+`;
+
+export const AgreeButton = styled.button`
+  border: 0;
+  background: 0 0;
+  cursor: pointer;
+  text-decoration: underline;
+  color: gray;
+  line-height: 1.5;
+  display: block;
+  float: right;
+  font-size: 12px;
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  &#top {
+    align-items: stretch;
+  }
+`;
+
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  padding: 8rem 0;
+  justify-content: space-between;
+  @media only screen and (max-width: 960px) {
+    justify-content: center;
+  }
+
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+    padding: 20px;
+  }
+`;
+
+export const SignUpWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 405px;
+  @media only screen and (max-width: 960px) {
+    width: 350px;
+  }
+`;
+
+export const Img = styled.img`
+  @media only screen and (max-width: 960px) {
+    display: none;
+  }
+`;
+
+export const Button = styled.button`
+  margin: 0;
+  padding: 0 1rem;
+  padding-top: 1rem;
+  margin: 8px 0;
+  border: none;
+  padding-bottom: 1rem;
+  background: ${(props) => props.background};
+  color: white;
+  font-size: 1rem;
+  border-radius: 12px;
+
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.3s all;
+
+  &:disabled {
+    background-color: rgba(170, 170, 170);
+    cursor: auto;
+  }
+
+  &#check {
+    position: absolute;
+    right: 20%;
+    margin-top: 28px;
+    font-weight: 100;
+    font-size: 0.9rem;
+    border-radius: 14px;
+    padding: 0.2rem 0.8rem;
+    @media only screen and (max-width: 960px) {
+      right: 27%;
+    }
+    @media only screen and (max-width: 550px) {
+      right: 5%;
+    }
+    :disabled {
+      background: white;
+      color: rgba(170, 170, 170);
+      border: 1px solid rgba(170, 170, 170);
+    }
+  }
+`;

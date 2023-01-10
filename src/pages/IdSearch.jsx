@@ -1,4 +1,55 @@
+import { useEffect, useState } from 'react';
+import Auth from '../api/Auth';
+import { CssTextField } from '../components/CssTextField';
+import Meta from '../components/Meta';
 import styled, { createGlobalStyle } from 'styled-components';
+
+const IdSearch = () => {
+  const auth = Auth();
+  const [email, setEmail] = useState();
+  const [db, setData] = useState({
+    data: [],
+  });
+
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const emailSubmit = () => {
+    auth.findId(setData, email);
+  };
+
+  useEffect(() => {}, [db.data]);
+  return (
+    <Container>
+      <Meta title="SUWIKI : 아이디 찾기" />
+      <Img src="images/signup.svg" width={400} />
+      <LoginWrapper>
+        <Title>아이디 찾기</Title>
+        <Sub>학교 계정을 입력하세요</Sub>
+        <CssTextField
+          margin="normal"
+          required
+          id="outlined-basic"
+          label="학교 이메일 입력(@suwon.ac.kr)"
+          name="email"
+          autoComplete="email"
+          onChange={onChangeEmail}
+        />
+        <Button
+          background="#336af8"
+          type="submit"
+          fullWidth
+          variant="contained"
+          onClick={emailSubmit}
+        >
+          전송
+        </Button>
+      </LoginWrapper>
+    </Container>
+  );
+};
+
+export default IdSearch;
 
 export const GlobalStyle = createGlobalStyle`
   #root>div {
@@ -7,10 +58,6 @@ export const GlobalStyle = createGlobalStyle`
         width: 90%;
     }
   }
-`;
-
-export const Checking = styled.div`
-  font-size: 1.2vh;
 `;
 
 export const Container = styled.div`
@@ -62,10 +109,7 @@ export const Button = styled.button`
   cursor: pointer;
   user-select: none;
   transition: 0.3s all;
-  &:disabled {
-    background-color: rgba(170, 170, 170);
-    cursor: auto;
-  }
+
   @media only screen and (max-width: 550px) {
     margin-top: 10rem;
   }
