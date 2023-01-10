@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import { SemesterSelect, StyledOption, Soption } from '../../pages/Main';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from '../../app/recoilStore';
 import { useMutation } from 'react-query';
@@ -15,7 +14,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
   const [honey, HoneySlider] = useSlider(row.honey);
   const [learning, LearingSlider] = useSlider(row.learning);
   const [satisfaction, SatisfactionSlider] = useSlider(row.satisfaction);
-  const [semester, setSemester] = useState(row.selectedSemester); //학기
+  const [semester] = useState(row.selectedSemester); //학기
   const [team, setTeam] = useState(row.team); //조모임
   const [homework, setHomework] = useState(row.homework); //과제
   const [difficulty, setDifficulty] = useState(row.difficulty); //학점
@@ -92,8 +91,6 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
   const difficultyChange = (e) => {
     setDifficulty(e.target.value);
   };
-  const options = ['선택'];
-  const optionsValue = options.concat(row.semesterList.split(', '));
 
   return (
     <Wrapper>
@@ -111,7 +108,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
       <ContentWrapper>
         <Content id="group">
           <ContentTitle>수강학기</ContentTitle>
-          <SemesterSelect
+          {/* <SemesterSelect
             defaultValue={row.selectedSemester || '선택'}
             id="semester"
             onChange={(e) => {
@@ -123,11 +120,11 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
                 <Soption id="semester">{index}</Soption>
               </StyledOption>
             ))}
-          </SemesterSelect>
+          </SemesterSelect> */}
         </Content>
         <MobileContent id="semester">
           <ContentTitle id="mobile">수강학기</ContentTitle>
-          <SemesterSelect
+          {/* <SemesterSelect
             id="semester"
             defaultValue={row.selectedSemester || '선택'}
             onChange={(e) => {
@@ -139,7 +136,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
                 <Soption id="semester">{index}</Soption>
               </StyledOption>
             ))}
-          </SemesterSelect>
+          </SemesterSelect> */}
         </MobileContent>
 
         <Content>
@@ -477,4 +474,3 @@ const FormCheckLeft = styled.input`
   }
   display: none;
 `;
-// 여기까지

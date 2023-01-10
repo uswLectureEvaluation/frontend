@@ -6,7 +6,7 @@ import Major from '../api/Major';
 import { searchFavorite, type } from '../api/etc';
 import { useRecoilState } from 'recoil';
 import { tokenState } from '../app/recoilStore';
-import { TextField } from '@material-ui/core';
+import { TextField } from '@mui/material';
 
 const MajorSearch = (props) => {
   const major = Major();

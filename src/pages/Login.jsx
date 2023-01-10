@@ -1,4 +1,3 @@
-import { Checkbox, FormControlLabel } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../api/Auth';
@@ -9,7 +8,7 @@ import styled from '@emotion/styled';
 const Login = () => {
   const navigate = useNavigate();
   const auth = Auth();
-  const [checked, setChecked] = useState(false);
+  const [checked] = useState(false);
   const [username, setUserName] = useState();
   const [password, setPassWord] = useState();
 
@@ -19,9 +18,6 @@ const Login = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const onChangeCheckBox = (event) => {
-    setChecked(event.target.checked);
-  };
   const onChangeID = (e) => {
     setUserName(e.target.value);
   };
@@ -86,8 +82,8 @@ const Login = () => {
           onKeyPress={onKeypress}
         />
         <SearchWrapper>
-          <FormControlLabel
-            control={<Checkbox checked={checked} color="primary" onChange={onChangeCheckBox} />}
+          <label
+            // control={<Checkbox checked={checked} color="primary" onChange={onChangeCheckBox} />}
             label="로그인 유지"
           />
           <div>

@@ -2,13 +2,12 @@ import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { queryClient } from '../..';
 import User from '../../api/User';
-import { SemesterSelect, Soption, StyledOption } from '../../pages/Main';
 import styled from '@emotion/styled';
 
 const WriteExam = ({ setModalIsOpen, row, type }) => {
   const user = User();
-  const [semester, setSemester] = useState(row.selectedSemester); //학기
-  const [examType, setExamType] = useState(row.examType); //중간,기말
+  const [semester] = useState(row.selectedSemester); //학기
+  const [examType] = useState(row.examType); //중간,기말
   const [examDifficulty, setDifficulty] = useState(row.examDifficulty); //난이도
   const [content, setContent] = useState(row.content); //글쓰기
   const [exam, setExamInfo] = useState(() => row.examInfo.split(', ')); //시험내용
@@ -69,10 +68,6 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
     setModalIsOpen(false);
   };
 
-  const options = ['선택'];
-  const optionsValue = options.concat(row.semesterList.split(', '));
-  const examTypeOptions = ['선택', '중간고사', '기말고사', '쪽지', '기타'];
-
   return (
     <Wrapper>
       <TitleWrapper>
@@ -90,7 +85,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
         <Content id="group">
           <ContentTitleWrapper>
             <ContentTitle id="title">수강학기</ContentTitle>
-            <SemesterSelect
+            {/* <SemesterSelect
               id="semester"
               defaultValue={row.selectedSemester}
               onChange={(e) => {
@@ -102,11 +97,11 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
                   <Soption id="semester">{index}</Soption>
                 </StyledOption>
               ))}
-            </SemesterSelect>
+            </SemesterSelect> */}
           </ContentTitleWrapper>
           <ContentTitleWrapper>
             <ContentTitle id="title">시험종류</ContentTitle>
-            <SemesterSelect
+            {/* <SemesterSelect
               id="semester"
               defaultValue={row.examType}
               onChange={(e) => {
@@ -118,13 +113,13 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
                   <Soption id="semester">{index}</Soption>
                 </StyledOption>
               ))}
-            </SemesterSelect>
+            </SemesterSelect> */}
           </ContentTitleWrapper>
         </Content>
         <MobileContent>
           <MobileContent id="semester">
             <ContentTitle id="mobile">수강학기</ContentTitle>
-            <SemesterSelect
+            {/* <SemesterSelect
               id="semester"
               defaultValue={row.selectedSemester}
               onChange={(e) => {
@@ -136,11 +131,11 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
                   <Soption id="semester">{index}</Soption>
                 </StyledOption>
               ))}
-            </SemesterSelect>
+            </SemesterSelect> */}
           </MobileContent>
           <MobileContent id="semester">
             <ContentTitle id="mobile">시험종류</ContentTitle>
-            <SemesterSelect
+            {/* <SemesterSelect
               id="semester"
               defaultValue={row.examType}
               onChange={(e) => {
@@ -152,7 +147,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
                   <Soption id="semester">{index}</Soption>
                 </StyledOption>
               ))}
-            </SemesterSelect>
+            </SemesterSelect> */}
           </MobileContent>
         </MobileContent>
 

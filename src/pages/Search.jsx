@@ -5,18 +5,17 @@ import LectureList from '../components/List/LectureList';
 import MajorSearch from '../components/MajorSearch';
 import Meta from '../components/Meta';
 import { MajorModalStyle } from '../components/Etc/ModalStyle';
-import { Soption, SortSelect, StyledOption } from './Main';
 import styled from '@emotion/styled';
 export const majorList = ['전체'];
 
 const Search = () => {
-  const detail = [
-    { name: '만족도', option: 'lectureSatisfactionAvg' },
-    { name: '꿀강', option: 'lectureHoneyAvg' },
-    { name: '배움', option: 'lectureLearningAvg' },
-    { name: '날짜', option: 'modifiedDate' },
-    { name: '종합', option: 'lectureTotalAvg' },
-  ];
+  // const detail = [
+  //   { name: '만족도', option: 'lectureSatisfactionAvg' },
+  //   { name: '꿀강', option: 'lectureHoneyAvg' },
+  //   { name: '배움', option: 'lectureLearningAvg' },
+  //   { name: '날짜', option: 'modifiedDate' },
+  //   { name: '종합', option: 'lectureTotalAvg' },
+  // ];
   const [searchParams] = useSearchParams();
 
   let searchValue = searchParams.get('q');
@@ -42,9 +41,9 @@ const Search = () => {
       }
     }
   };
-  const onSelect = (e) => {
-    navigate(`/search?q=${searchValue}&option=${e}&majorType=${majorType}`);
-  };
+  // const onSelect = (e) => {
+  //   navigate(`/search?q=${searchValue}&option=${e}&majorType=${majorType}`);
+  // };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -71,22 +70,22 @@ const Search = () => {
         <SearchResultWrapper>
           <div style={{ display: 'flex' }}>
             <FlexWrapper onClick={() => setModalIsOpen(true)}>
-              <SortSelect id="major" defaultValue={majorType}>
+              {/* <SortSelect id="major" defaultValue={majorType}>
                 {majorList.map((index) => (
                   <StyledOption id="semester" key={index} value={index}>
                     <Soption id="semester">{majorType}</Soption>
                   </StyledOption>
                 ))}
-              </SortSelect>
+              </SortSelect> */}
             </FlexWrapper>
             <FlexWrapper>
-              <SortSelect id="sort" value={option} onChange={onSelect}>
+              {/* <SortSelect id="sort" value={option} onChange={onSelect}>
                 {detail.map((index) => (
                   <StyledOption id="semester" key={index.option} value={index.option}>
                     <Soption id="semester">{index.name}</Soption>
                   </StyledOption>
                 ))}
-              </SortSelect>
+              </SortSelect> */}
             </FlexWrapper>
           </div>
 

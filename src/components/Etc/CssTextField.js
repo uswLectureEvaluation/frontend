@@ -1,4 +1,4 @@
-import { TextField } from '@material-ui/core';
+import { TextField } from '@mui/material';
 import * as styles from '@mui/material/styles';
 
 export const CssTextField = styles.styled(TextField)({
