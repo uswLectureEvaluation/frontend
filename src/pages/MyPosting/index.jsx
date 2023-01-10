@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components';
-import MyEvaluation from '../../components/MyEvaluation';
-import TestInformation from '../../components/MyTestInfo';
+import EvaluationList from '../../components/EvaluationList';
+import TestInfoList from '../../components/TestInfoList';
 import { isLoginStorage } from '../../utils/loginStorage.js';
 import * as Styled from './styled';
 
@@ -37,7 +37,7 @@ const MyPosting = () => {
         >
           시험정보
         </Styled.TextLink>
-        {evaluation ? <MyEvaluation /> : <TestInformation />}
+        {evaluation ? <EvaluationList /> : <TestInfoList />}
       </Styled.FlexBox>
     </Styled.FlexContainer>
   );

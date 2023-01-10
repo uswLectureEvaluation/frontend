@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Meta from '../../components/Meta';
-import { Positioner } from '../../components/Wrapper/styled';
+import { Positioner } from '../../components/Wrapper';
 import * as Styled from './styled';
 
 const EmailSignUp = () => {

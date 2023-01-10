@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import Infinite from '../../components/Infinite';
+import LectureList from '../../components/LectureList';
 import MajorSearch from '../../components/MajorSearch';
 import Meta from '../../components/Meta';
 import { MajorModalStyle } from '../../components/ModalStyle';
@@ -96,7 +96,7 @@ const Search = () => {
         </Styled.SearchResultWrapper>
 
         <Styled.HeadSelection>
-          <Infinite setCount={setCount} />
+          <LectureList setCount={setCount} />
         </Styled.HeadSelection>
       </Styled.Container>
       <Modal

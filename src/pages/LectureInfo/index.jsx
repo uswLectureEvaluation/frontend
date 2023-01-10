@@ -3,13 +3,13 @@ import Modal from 'react-modal';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from '../../app/recoilStore';
-import LectureDetail from '../../components/LectureInfo/LectureDetail';
+import LectureDetail from '../../components/LectureDetail';
 import Meta from '../../components/Meta';
 import ModalStyle from '../../components/ModalStyle';
 import SearchEvaluationList from '../../components/SearchEvaluationList';
-import TestInfo from '../../components/TestInfo';
+import IsTestInfo from '../../components/IsTestInfo';
 import WriteEvaluation from '../../components/WriteEvaluation';
-import WriteExam from '../../components/WriteExam';
+import WriteExam from '../../components/WriteTestInfo';
 import { isLoginStorage } from '../../utils/loginStorage';
 import * as Styled from './styled';
 
@@ -30,7 +30,7 @@ const LectureInfo = () => {
   ];
   const checkList = {
     0: <SearchEvaluationList isLogin={isLogin} selectId={selectId} setWritten={setWritten} />,
-    1: <TestInfo selectId={selectId} setWritten={setWritten} />,
+    1: <IsTestInfo selectId={selectId} setWritten={setWritten} />,
   };
   const menuList = menu.map((i, index) => (
     <Styled.MenuTitle
