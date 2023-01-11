@@ -1,7 +1,14 @@
 import styled from '@emotion/styled';
 
-const Button = ({ children, onClick, color, id, disabled, width }) => (
-  <Wrapper width={width} disabled={disabled} onClick={onClick} background={color} id={id}>
+const Button = ({ children, onClick, color, id, disabled, width, type }) => (
+  <Wrapper
+    type={type || 'button'}
+    disabled={disabled || false}
+    onClick={onClick}
+    background={color}
+    width={width}
+    id={id}
+  >
     {children}
   </Wrapper>
 );
@@ -9,16 +16,14 @@ const Button = ({ children, onClick, color, id, disabled, width }) => (
 export default Button;
 
 const Wrapper = styled.button`
-  margin: 0;
+  margin: 8px 0;
   width: ${({ width }) => width || '100%'};
-  padding: 0 1rem;
-  padding-top: 0.6rem;
+  padding: 1rem;
   border: none;
-  padding-bottom: 0.5rem;
-  background: ${({ background }) => background};
+  background: ${({ background }) => background || '#336af8'};
   color: white;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-radius: 12px;
   cursor: pointer;
   user-select: none;
@@ -37,5 +42,10 @@ const Wrapper = styled.button`
     margin: 16px 0 8px 8px;
     font-size: 0.9rem;
     background-color: skyblue;
+  }
+  &#auth {
+    @media only screen and (max-width: 550px) {
+      margin-top: 10rem;
+    }
   }
 `;

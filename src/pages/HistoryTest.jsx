@@ -2,30 +2,28 @@ import styled from '@emotion/styled';
 import User from '../api/User';
 import { useQuery } from 'react-query';
 import Spinner from '../components/Etc/Spinner';
+
 const HistoryTest = () => {
   const user = User();
-  const { data: db, isLoading } = useQuery(['myInfo', 'purchasedTestInfo'], user.purchasedTestInfo);
-  /*
-       "id" : Long, //구매한 시험정보의 인조키
-            "lectureName" : String, //과목 이름
-            "professor" : String, //교수이름
-            "majorType" : String, //개설학과
-            "createDate" : LocalDateTime, //작성 날짜
-      */
+  const { data: purchased, isLoading } = useQuery(
+    ['myInfo', 'purchasedTestInfo'],
+    user.purchasedTestInfo
+  );
   if (isLoading) return <Spinner id="myInfo" />;
+  const purchasedTestInfo = purchased.data;
+
   return (
     <AppContainer>
       <AppTitle>구매이력</AppTitle>
 
-      {db.data.map((i) => {
+      {purchasedTestInfo.map((item) => {
         return (
           <NoticeItem
-            id={i.id}
-            title={i.lectureName}
-            professor={i.professor}
-            major={i.majorType}
-            createDate={i.createDate.slice(0, 10)}
-            key={i.id}
+            title={item.lectureName}
+            professor={item.professor}
+            major={item.majorType}
+            createDate={item.createDate.slice(0, 10)}
+            key={item.id}
           />
         );
       })}
@@ -33,21 +31,21 @@ const HistoryTest = () => {
   );
 };
 
-export const NoticeItem = (props) => {
+const NoticeItem = ({ title, professor, major, createDate }) => {
   return (
     <NoticeWrap>
-      <Option>{props.createDate}</Option>
+      <Option>{createDate}</Option>
       <TitleWrapper>
-        <Title>{props.title}</Title>
+        <Title>{title}</Title>
         <Professor>
-          {props.major} | {props.professor}
+          {major} | {professor}
         </Professor>
       </TitleWrapper>
       <MobileTitleWrapper>
         <Professor>
-          {props.major} | {props.professor}
+          {major} | {professor}
         </Professor>
-        <Title>{props.title}</Title>
+        <Title>{title}</Title>
       </MobileTitleWrapper>
     </NoticeWrap>
   );

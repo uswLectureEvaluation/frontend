@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Positioner } from '../../styles/Common';
 
 const Wrapper = ({ children }) => (
   <Positioner>
@@ -9,10 +10,6 @@ const Wrapper = ({ children }) => (
 );
 
 export default Wrapper;
-
-const Positioner = styled.div`
-  position: relative;
-`;
 
 const Contents = styled.div`
   background: rgba(0, 0, 0, 0.1);

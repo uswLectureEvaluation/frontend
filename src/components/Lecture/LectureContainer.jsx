@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { FlexWrap } from '../../styles/Common';
 import LectureCard from './LectureCard';
 
 const LectureContainer = ({ data }) => {
@@ -31,23 +32,6 @@ const LectureContainer = ({ data }) => {
 };
 
 export default LectureContainer;
-
-export const FlexWrap = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-
-  &#none {
-    display: flex;
-    justify-content: center;
-    color: #a3a3a3;
-    font-size: 20px;
-    margin: 40px 0px;
-    @media screen and (max-width: 550px) {
-      font-size: 15px;
-    }
-  }
-`;
 
 const FlexWrapSub = styled.div`
   width: 49%;
