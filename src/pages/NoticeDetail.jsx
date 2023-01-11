@@ -9,37 +9,37 @@ export const NoticeBox = () => {
   const notice = Notices();
   const [searchParams] = useSearchParams();
   const id = searchParams.get('id');
-  const { data, isLoading } = useQuery(['notice_detail', id], () => notice.detail(id), {
+  const { data: detail, isLoading } = useQuery(['notice_detail', id], () => notice.detail(id), {
     cacheTime: 1000 * 60 * 60,
     staleTime: 1000 * 60 * 60,
   });
   if (isLoading) return <Spinner id="notice" />;
+  const { data: item } = detail;
+  const content = item.content.split('\n');
 
   return (
     <Content>
-      <Meta title={data.data.title} />
-      <Title>{data.data.title}</Title>
-      {data.data.content &&
-        data.data.content.split('\n').map((value, index) => {
-          return (
-            <div key={id + index}>
-              {value}
-              <br />
-            </div>
-          );
-        })}
+      <Meta title={item.title} />
+      <Title>{item.title}</Title>
+      {content.map((row, index) => (
+        <div key={id + index}>
+          {row}
+          <br />
+        </div>
+      ))}
     </Content>
   );
 };
 
 const NoticeDetail = () => {
   const navigate = useNavigate();
+  const toNotice = () => navigate('/notice');
 
   return (
     <AppContainer>
       <AppTitle>공지사항</AppTitle>
       <NoticeBox />
-      <BackWrapper onClick={() => navigate('/notice')}>
+      <BackWrapper onClick={toNotice}>
         <Back>
           <Img alt="list_icon" width="22" src="/images/icon_list_line_24.svg" />
           목록

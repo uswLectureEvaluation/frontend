@@ -17,7 +17,7 @@ export const Container = styled.div`
   }
 `;
 
-export const SignUpWrapper = styled.div`
+export const AuthWrapper = styled.form`
   display: flex;
   flex-direction: column;
   width: 405px;
@@ -26,10 +26,30 @@ export const SignUpWrapper = styled.div`
   }
 `;
 
+export const Title = styled.div`
+  display: flex;
+  width: 100%;
+  font-size: 1.5rem;
+
+  font-weight: 600;
+  padding-top: 1rem;
+  padding-bottom: 0.6rem;
+`;
+
 export const Img = styled.img`
   @media only screen and (max-width: 960px) {
     display: none;
   }
+`;
+
+export const Sub = styled.div`
+  font-size: 0.8rem;
+
+  font-weight: 600;
+`;
+
+export const Checking = styled.div`
+  font-size: 1.2vh;
 `;
 
 export const Button = styled.button`

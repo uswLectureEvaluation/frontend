@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../api/Auth';
 import { CssTextField } from '../components/Etc/CssTextField';
-import { Container, SignUpWrapper, Img, Button } from '../styles/Common';
+import { Container, AuthWrapper, Img, Button, Checking } from '../styles/Common';
 import Meta from '../components/Meta';
 import styled from '@emotion/styled';
 
@@ -160,7 +160,7 @@ const SignUp = () => {
         <source srcSet="/images/signup.png" type="image/png" />
         <Img src="images/signup.svg" alt="signup" width={400} height={350} />
       </picture>
-      <SignUpWrapper>
+      <AuthWrapper>
         <Title>회원가입</Title>
         <InputWrapper id="top">
           <CssTextField
@@ -308,7 +308,7 @@ const SignUp = () => {
         >
           회원가입
         </Button>
-      </SignUpWrapper>
+      </AuthWrapper>
     </Container>
   );
 };
@@ -326,10 +326,6 @@ const Title = styled.div`
   @media only screen and (max-width: 960px) {
     font-weight: 600;
   }
-`;
-
-const Checking = styled.div`
-  font-size: 1.2vh;
 `;
 
 const Label = styled.label`
