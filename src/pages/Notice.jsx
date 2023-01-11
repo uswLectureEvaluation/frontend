@@ -9,10 +9,10 @@ import styled from '@emotion/styled';
 
 export const NoticeItem = ({ notice }) => {
   const navigate = useNavigate();
-  const onClick = () => navigate(`/notice/detail?id=${notice.id}`);
+  const toDetail = () => navigate(`/notice/detail?id=${notice.id}`);
 
   return (
-    <NoticeWrap onClick={onClick}>
+    <NoticeWrap onClick={toDetail}>
       <Title>{notice.title}</Title>
       <Option>{notice.modifiedDate.slice(0, 10)}</Option>
     </NoticeWrap>
@@ -22,28 +22,31 @@ export const NoticeItem = ({ notice }) => {
 export const NoticeContainer = () => {
   const notice = Notices();
   const { ref, inView } = useInView();
-  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-    ['notice'],
-    ({ pageParam = 1 }) => notice.list(pageParam),
-    {
-      getNextPageParam: (lastPage) => {
-        if (!lastPage.isLast) return lastPage.nextPage;
-        return undefined;
-      },
-    }
-  );
+  const {
+    data: notices,
+    isLoading,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery(['notice'], ({ pageParam = 1 }) => notice.list(pageParam), {
+    getNextPageParam: (lastPage) => {
+      if (!lastPage.isLast) return lastPage.nextPage;
+      return undefined;
+    },
+  });
   useEffect(() => {
     if (inView) {
       fetchNextPage();
     }
   }, [inView, fetchNextPage]);
   if (isLoading) return <Spinner id="notice" />;
+  const { pages } = notices;
+  const isPages = pages.length;
 
   return (
     <>
-      {data.pages.length ? (
+      {isPages ? (
         <>
-          {data.pages.map((page) => (
+          {pages.map((page) => (
             <Fragment key={page.nextPage}>
               {page.data.data.map((notice) => (
                 <NoticeItem notice={notice} key={notice.id} />

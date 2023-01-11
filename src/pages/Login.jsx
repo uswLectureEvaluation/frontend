@@ -4,6 +4,7 @@ import Auth from '../api/Auth';
 import { CssTextField } from '../components/Etc/CssTextField';
 import Meta from '../components/Meta';
 import styled from '@emotion/styled';
+import { Container, AuthWrapper, Img } from '../styles/Common';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ const Login = () => {
         <source srcSet="/images/signup.png" type="image/png" />
         <Img src="images/signup.svg" alt="signup" width={400} height={350} />
       </picture>
-      <LoginWrapper>
+      <AuthWrapper>
         <Title>로그인</Title>
         <CssTextField
           margin="normal"
@@ -94,35 +95,12 @@ const Login = () => {
         <Button background="#336af8" type="submit" fullWidth variant="contained" onClick={onLogin}>
           로그인
         </Button>
-      </LoginWrapper>
+      </AuthWrapper>
     </Container>
   );
 };
 
 export default Login;
-
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  width: 60%;
-  margin: 0 auto;
-  padding: 8rem 0;
-  justify-content: space-between;
-  @media only screen and (max-width: 960px) {
-    justify-content: center;
-  }
-
-  @media only screen and (max-width: 550px) {
-    width: 100%;
-    padding: 20px;
-  }
-`;
-
-const Img = styled.img`
-  @media only screen and (max-width: 960px) {
-    display: none;
-  }
-`;
 
 const Title = styled.div`
   display: flex;
@@ -179,13 +157,4 @@ const SearchWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: center;
-`;
-
-const LoginWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 405px;
-  @media only screen and (max-width: 960px) {
-    width: 350px;
-  }
 `;
