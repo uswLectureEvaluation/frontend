@@ -92,3 +92,7 @@ export const FlexWrap = styled.div`
     }
   }
 `;
+
+export const Positioner = styled.div`
+  position: relative;
+`;

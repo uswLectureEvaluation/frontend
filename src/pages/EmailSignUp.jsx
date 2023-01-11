@@ -2,10 +2,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '../components/Etc/Button';
 import Meta from '../components/Meta';
 import styled from '@emotion/styled';
+import { Positioner } from '../styles/Common';
 
 const EmailSignUp = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
+
   return (
     <Positioner>
       <Meta title="SUWIKI : 이메일 인증" />
@@ -32,10 +34,6 @@ const EmailSignUp = () => {
 };
 
 export default EmailSignUp;
-
-const Positioner = styled.div`
-  position: relative;
-`;
 
 const Title = styled.div`
   font-size: 4vh;

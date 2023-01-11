@@ -203,7 +203,13 @@ const Auth = () => {
       url: `/user/quit`,
       method: 'POST',
       data: data,
-    }).catch((error) => alert(error.response.data.message));
+    })
+      .then(() => {
+        localStorage.removeItem('login');
+        sessionStorage.removeItem('login');
+        window.location.href = '/';
+      })
+      .catch((error) => alert(error.response.data.message));
   };
 
   return {
