@@ -1,17 +1,18 @@
-import { useState, useRef } from 'react';
+import styled from '@emotion/styled';
+import { useRef, useState } from 'react';
 import Modal from 'react-modal';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from '../app/recoilStore';
-import LectureDetail from '../components/Lecture/LectureDetail';
-import Meta from '../components/Meta';
 import ModalStyle from '../components/Etc/ModalStyle';
-import SearchEvaluationList from '../components/List/SearchEvaluationList';
 import IsTestInfo from '../components/Lecture/IsTestInfo';
+import LectureDetail from '../components/Lecture/LectureDetail';
+import SearchEvaluationList from '../components/List/SearchEvaluationList';
+import Meta from '../components/Meta';
 import WriteEvaluation from '../components/Write/WriteEvaluation';
 import WriteExam from '../components/Write/WriteTestInfo';
+import { AppContainer } from '../styles/Common';
 import { isLoginStorage } from '../utils/loginStorage';
-import styled from '@emotion/styled';
 
 const menu = [
   { name: '강의평가', option: '강의평가' },
@@ -56,7 +57,7 @@ const LectureInfo = () => {
   };
 
   return (
-    <Container>
+    <AppContainer>
       <Meta title="SUWIKI : 검색" />
       <SearchWrapper>
         <SearchTitle>강의평가 검색</SearchTitle>
@@ -103,27 +104,11 @@ const LectureInfo = () => {
           <WriteExam row={lectureInfo} type="write" setModalIsOpen={setModalIsOpen} />
         )}
       </Modal>
-    </Container>
+    </AppContainer>
   );
 };
 
 export default LectureInfo;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 60%;
-  margin: 0 auto;
-
-  @media screen and (max-width: 960px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    margin: 0 auto;
-  }
-`;
 
 const SearchWrapper = styled.div`
   display: flex;

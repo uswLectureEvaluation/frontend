@@ -17,6 +17,22 @@ export const Container = styled.div`
   }
 `;
 
+export const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+
+  @media screen and (max-width: 960px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+  }
+`;
+
 export const SignUpWrapper = styled.div`
   display: flex;
   flex-direction: column;
