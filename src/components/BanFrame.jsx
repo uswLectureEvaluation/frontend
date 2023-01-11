@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import { FlexWrap } from '../styles/Common';
 
+const noDataMsg = {
+  ban: '블랙리스트 대상이 아닙니다',
+  res: '이용제한 내역이 없습니다',
+};
+
 const BanFrame = ({ type, list }) => {
   const isData = list.length !== 0;
-  const noDataMsg = {
-    ban: '블랙리스트 대상이 아닙니다',
-    res: '이용제한 내역이 없습니다',
-  };
-
   return (
     <>
       {isData ? (
