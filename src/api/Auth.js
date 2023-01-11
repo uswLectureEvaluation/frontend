@@ -72,7 +72,7 @@ const Auth = () => {
   };
 
   //아이디 찾기api
-  const findId = async (setData, email) => {
+  const findId = async (email) => {
     const data = {
       email,
     };
@@ -81,9 +81,8 @@ const Auth = () => {
       method: 'POST',
       data: data,
     })
-      .then((r) => {
+      .then(() => {
         alert('해당 이메일로 아이디를 전송하였습니다');
-        setData(r);
       })
       .catch(() => {
         alert('해당 아이디를 찾을 수 없습니다.');

@@ -3,10 +3,16 @@ import Meta from '../components/Meta';
 import styled from '@emotion/styled';
 import { CssTextField } from '../components/Etc/CssTextField';
 import { useForm } from 'react-hook-form';
+import Button from '../components/Etc/Button';
 
 const Exit = () => {
   const auth = Auth();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { isValid },
+  } = useForm();
+
   const onSubmit = ({ id, pw }) => {
     if (confirm('회원탈퇴 시 작성한 강의평가/시험정보는 전부 삭제됩니다. \n정말 탈퇴하시나요?')) {
       auth.quit(id, pw);
@@ -14,6 +20,7 @@ const Exit = () => {
       alert('취소');
     }
   };
+
   return (
     <Container>
       <Meta title="SUWIKI : 회원탈퇴" />
@@ -22,7 +29,6 @@ const Exit = () => {
         <Title>회원탈퇴</Title>
         <Sub>아이디를 입력하세요</Sub>
         <CssTextField
-          id="standard-basic"
           variant="standard"
           margin="normal"
           label="id"
@@ -30,14 +36,13 @@ const Exit = () => {
         />
         <Sub>비밀번호를 입력하세요</Sub>
         <CssTextField
-          id="standard-basic"
           variant="standard"
           margin="normal"
           type="password"
           label="pw"
           {...register('pw', { required: true })}
         />
-        <Button background="#336af8" type="submit" variant="contained">
+        <Button id="auth" type="submit" disabled={!isValid}>
           탈퇴
         </Button>
       </LoginWrapper>
@@ -78,28 +83,6 @@ const Title = styled.div`
   font-weight: 600;
   padding-top: 1rem;
   padding-bottom: 0.6rem;
-`;
-
-const Button = styled.button`
-  margin: 0;
-  padding: 0 1rem;
-  padding-top: 1rem;
-  margin: 8px 0;
-  border: none;
-  padding-bottom: 1rem;
-  background: ${(props) => props.background};
-  color: white;
-  font-size: 1rem;
-  border-radius: 12px;
-
-  font-weight: 600;
-  cursor: pointer;
-  user-select: none;
-  transition: 0.3s all;
-
-  @media only screen and (max-width: 550px) {
-    margin-top: 10rem;
-  }
 `;
 
 const LoginWrapper = styled.form`

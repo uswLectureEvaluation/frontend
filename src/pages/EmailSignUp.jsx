@@ -25,9 +25,7 @@ const EmailSignUp = () => {
           메일 인증 후 수위키 서비스 이용이 가능합니다.
         </Content>
 
-        <Button color="blue" onClick={() => navigate('/')}>
-          메인으로
-        </Button>
+        <Button onClick={() => navigate('/')}>메인으로</Button>
       </Wrapper>
     </Positioner>
   );
@@ -37,7 +35,6 @@ export default EmailSignUp;
 
 const Title = styled.div`
   font-size: 4vh;
-  font-weight: 1000;
   margin: 3rem 0;
   text-align: center;
 
