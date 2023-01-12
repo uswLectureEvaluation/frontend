@@ -1,23 +1,23 @@
+import styled from '@emotion/styled';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components';
 import EvaluationList from '../components/List/EvaluationList';
 import TestInfoList from '../components/List/TestInfoList';
 import { isLoginStorage } from '../utils/loginStorage.js';
-import styled from '@emotion/styled';
 
 const MyPosting = () => {
   const [evaluation, setEvaluation] = useState(true);
   const navigate = useNavigate();
 
   return !isLoginStorage() ? (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <FlexContainer>
       <FlexContainer id="col">
         <Button color="#336af8" onClick={() => navigate('/login')}>
           로그인하기
         </Button>
       </FlexContainer>
-    </div>
+    </FlexContainer>
   ) : (
     <FlexContainer>
       <FlexBox>
