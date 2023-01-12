@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { hydrate, render } from 'react-dom';
+import { hydrateRoot, createRoot } from 'react-dom/client';
 import { initialize } from 'react-ga';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -21,9 +21,11 @@ const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 axios.defaults.baseURL = PROXY_URL;
 axios.defaults.withCredentials = true;
+const container = document.getElementById('root');
 
 if (document.getElementById('root').hasChildNodes()) {
-  hydrate(
+  hydrateRoot(
+    container,
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
@@ -31,11 +33,11 @@ if (document.getElementById('root').hasChildNodes()) {
           <ReactQueryDevtools />
         </RecoilRoot>
       </QueryClientProvider>
-    </React.StrictMode>,
-    document.getElementById('root')
+    </React.StrictMode>
   );
 } else {
-  render(
+  const root = createRoot(container);
+  root.render(
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
@@ -43,7 +45,6 @@ if (document.getElementById('root').hasChildNodes()) {
           <ReactQueryDevtools />
         </RecoilRoot>
       </QueryClientProvider>
-    </React.StrictMode>,
-    document.getElementById('root')
+    </React.StrictMode>
   );
 }

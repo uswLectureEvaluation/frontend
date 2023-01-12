@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import styled from '@emotion/styled';
+import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../api/Auth';
 import { CssTextField } from '../components/Etc/CssTextField';
@@ -9,41 +10,18 @@ import { Container, AuthWrapper, Img } from '../styles/Common';
 const Login = () => {
   const navigate = useNavigate();
   const auth = Auth();
-  const [checked] = useState(false);
-  const [username, setUserName] = useState();
-  const [password, setPassWord] = useState();
+  const userId = useRef(null);
+  const password = useRef(null);
 
-  const [db, setData] = useState({
-    data: [],
-  });
-
-  const [loading, setLoading] = useState(false);
-
-  const onChangeID = (e) => {
-    setUserName(e.target.value);
-  };
-  const onChangePW = (e) => {
-    setPassWord(e.target.value);
-  };
-  const onLogin = () => {
-    checked
-      ? auth.login(setData, setLoading, username, password)
-      : auth.unCheckedLogin(setData, setLoading, username, password);
+  const loginAttempt = () => {
+    auth.login(userId.current.value, password.current.value).then(() => navigate('/'));
   };
 
   const onKeypress = (e) => {
-    if (e.key === 'Enter') {
-      checked
-        ? auth.login(setData, setLoading, username, password)
-        : auth.unCheckedLogin(setData, setLoading, username, password);
-    }
-  };
+    if (e.key !== 'Enter') return;
 
-  useEffect(() => {
-    if (loading && db !== null) {
-      navigate(-1) || navigate('/myinformation');
-    }
-  }, [db, loading, navigate]);
+    loginAttempt();
+  };
 
   return (
     <Container>
@@ -67,7 +45,7 @@ const Login = () => {
           label="아이디"
           name="email"
           autoComplete="email"
-          onChange={onChangeID}
+          inputRef={userId}
           onKeyPress={onKeypress}
         />
         <CssTextField
@@ -79,20 +57,22 @@ const Login = () => {
           type="password"
           id="password"
           autoComplete="current-password"
-          onChange={onChangePW}
+          inputRef={password}
           onKeyPress={onKeypress}
         />
         <SearchWrapper>
-          <label
-            // control={<Checkbox checked={checked} color="primary" onChange={onChangeCheckBox} />}
-            label="로그인 유지"
-          />
           <div>
             <SearchButton onClick={() => navigate('/idsearch')}>아이디 찾기</SearchButton>
             <SearchButton onClick={() => navigate('/pwsearch')}>비밀번호 찾기</SearchButton>
           </div>
         </SearchWrapper>
-        <Button background="#336af8" type="submit" fullWidth variant="contained" onClick={onLogin}>
+        <Button
+          background="#336af8"
+          type="submit"
+          fullWidth
+          variant="contained"
+          onClick={loginAttempt}
+        >
           로그인
         </Button>
       </AuthWrapper>

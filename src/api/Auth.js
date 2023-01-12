@@ -109,7 +109,7 @@ const Auth = () => {
   };
 
   //로그인api (로그인유지)
-  const login = async (setData, setLoading, id, pw) => {
+  const login = async (id, pw) => {
     const data = {
       loginId: id,
       password: pw,
@@ -117,15 +117,13 @@ const Auth = () => {
     return instance({
       url: `user/client-login`,
       method: 'POST',
-      data: data,
-      headers: headers,
+      data,
+      headers,
       withCredentials: true,
     })
       .then((r) => {
         localStorage.setItem('login', true);
-        setData(r.data);
         setToken(r.AccessToken);
-        setLoading(true);
       })
       .catch(() => {
         alert('id 또는 pw 확인해주세요');
