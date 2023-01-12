@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import Major from '../api/Major';
@@ -7,6 +7,7 @@ import { versionCheck } from '../app/versionCheck';
 import { MajorModalStyle } from '../components/Etc/ModalStyle';
 import MainList from '../components/List/MainList';
 import MajorSearch from '../components/MajorSearch';
+import LectureSearch from '../components/LectureSearch';
 
 // const options = [
 //   {
@@ -38,22 +39,11 @@ import MajorSearch from '../components/MajorSearch';
 
 const Main = () => {
   const navigate = useNavigate();
-  const search = useRef(null);
-  // const [search, setSearch] = useState('');
   const [lecture] = useState('modifiedDate');
   const [checkClass, setCheckClass] = useState('전체');
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const major = Major();
 
-  const onKeypress = (e) => {
-    if (e.key === 'Enter') {
-      if (search.current.value.length < 2) {
-        alert('두 글자 이상 입력해주세요');
-      } else {
-        navigate(`/search?q=${search.current.value}&option=lectureTotalAvg&majorType=전체`);
-      }
-    }
-  };
   useEffect(() => {
     versionCheck(major);
   }, [major]);
@@ -76,15 +66,7 @@ const Main = () => {
         </BannerWrapper>
       </Banner>
       <Container>
-        <SearchWrapper>
-          <SearchTitle>강의평가 검색</SearchTitle>
-          <SearchInput
-            ref={search}
-            placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
-            onKeyPress={onKeypress}
-            onMouseLeave={() => document.activeElement.blur()}
-          />
-        </SearchWrapper>
+        <LectureSearch />
         <SearchWrapper>
           <HeadSelection>
             <FlexWrapper onClick={() => setModalIsOpen(true)}>
@@ -184,39 +166,6 @@ const SearchWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 1rem 0;
-`;
-
-const SearchTitle = styled.div`
-  display: flex;
-  font-size: 1.5rem;
-  padding-top: 4rem;
-  padding-bottom: 1.5rem;
-
-  font-weight: 600;
-  width: 100%;
-`;
-
-const SearchInput = styled.input`
-  width: 100%;
-  height: 50px;
-  border: none;
-  border-bottom: 1.5px solid #000000;
-  background-image: url('images/icon_search_24.svg');
-  background-repeat: no-repeat;
-  background-position: 99%;
-
-  font-weight: 400;
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
-
-  @media screen and (max-width: 550px) {
-    font-size: 16px;
-    width: 123%;
-    transform: scale(0.8);
-  }
 `;
 
 const HeadSelection = styled.div`
