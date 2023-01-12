@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from '../app/recoilStore';
 import ModalStyle from '../components/Etc/ModalStyle';
@@ -13,6 +13,7 @@ import WriteEvaluation from '../components/Write/WriteEvaluation';
 import WriteExam from '../components/Write/WriteTestInfo';
 import { AppContainer } from '../styles/Common';
 import { isLoginStorage } from '../utils/loginStorage';
+import LectureSearch from '../components/LectureSearch';
 
 const menu = [
   { name: '강의평가', option: '강의평가' },
@@ -20,8 +21,6 @@ const menu = [
 ];
 
 const LectureInfo = () => {
-  const input = useRef(null);
-  const navigate = useNavigate();
   const [check, setCheck] = useState('강의평가');
   const [written, setWritten] = useState(false);
   const [menuCheck, setMenuCheck] = useState(0);
@@ -46,27 +45,10 @@ const LectureInfo = () => {
     setCheck(e.target.id);
   };
 
-  const onKeypress = (e) => {
-    if (e.key !== 'Enter') return;
-    if (input.current.value.length < 2) {
-      alert('두 글자 이상 입력해주세요');
-      return;
-    }
-
-    navigate(`/search?q=${input.current.value}&option=lectureTotalAvg&majorType=전체`);
-  };
-
   return (
     <AppContainer>
       <Meta title="SUWIKI : 검색" />
-      <SearchWrapper>
-        <SearchTitle>강의평가 검색</SearchTitle>
-        <SearchInput
-          ref={input}
-          placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
-          onKeyPress={onKeypress}
-        />
-      </SearchWrapper>
+      <LectureSearch />
 
       <Wrapper>
         {/* 강의 정보 세부 */}
@@ -109,46 +91,6 @@ const LectureInfo = () => {
 };
 
 export default LectureInfo;
-
-const SearchWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const SearchTitle = styled.div`
-  display: flex;
-  font-size: 1.5rem;
-  margin-right: auto;
-
-  font-weight: 600;
-  padding-top: 4rem;
-`;
-
-const SearchInput = styled.input`
-  width: 100%;
-  height: 50px;
-  border: none;
-  border-bottom: 1.5px solid #000000;
-  margin: 1.5rem 0;
-  background-image: url('images/icon_search_24.svg');
-  background-repeat: no-repeat;
-  background-position: 99%;
-
-  font-weight: 400;
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
-
-  @media screen and (max-width: 550px) {
-    font-size: 16px;
-    width: 123%;
-    transform: scale(0.8);
-  }
-`;
 
 const Content = styled.div`
   border-radius: 10px;
