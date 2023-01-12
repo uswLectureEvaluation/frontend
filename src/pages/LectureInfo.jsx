@@ -1,22 +1,28 @@
-import { useEffect, useState } from 'react';
+import styled from '@emotion/styled';
+import { useRef, useState } from 'react';
 import Modal from 'react-modal';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from '../app/recoilStore';
-import LectureDetail from '../components/Lecture/LectureDetail';
-import Meta from '../components/Meta';
 import ModalStyle from '../components/Etc/ModalStyle';
-import SearchEvaluationList from '../components/List/SearchEvaluationList';
 import IsTestInfo from '../components/Lecture/IsTestInfo';
+import LectureDetail from '../components/Lecture/LectureDetail';
+import SearchEvaluationList from '../components/List/SearchEvaluationList';
+import Meta from '../components/Meta';
 import WriteEvaluation from '../components/Write/WriteEvaluation';
 import WriteExam from '../components/Write/WriteTestInfo';
+import { AppContainer } from '../styles/Common';
 import { isLoginStorage } from '../utils/loginStorage';
-import styled from '@emotion/styled';
+
+const menu = [
+  { name: '강의평가', option: '강의평가' },
+  { name: '시험정보', option: '시험정보' },
+];
 
 const LectureInfo = () => {
+  const input = useRef(null);
   const navigate = useNavigate();
   const [check, setCheck] = useState('강의평가');
-  const [search, setSearch] = useState('');
   const [written, setWritten] = useState(false);
   const [menuCheck, setMenuCheck] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -24,10 +30,7 @@ const LectureInfo = () => {
   const [searchparams] = useSearchParams();
   const selectId = searchparams.get('id');
   const isLogin = isLoginStorage();
-  const menu = [
-    { name: '강의평가', option: '강의평가' },
-    { name: '시험정보', option: '시험정보' },
-  ];
+
   const checkList = {
     0: <SearchEvaluationList isLogin={isLogin} selectId={selectId} setWritten={setWritten} />,
     1: <IsTestInfo selectId={selectId} setWritten={setWritten} />,
@@ -43,31 +46,23 @@ const LectureInfo = () => {
     setCheck(e.target.id);
   };
 
-  const onChange = (e) => {
-    setSearch(e.currentTarget.value);
-  };
-
   const onKeypress = (e) => {
-    if (e.key === 'Enter') {
-      if (e.currentTarget.value.length < 2) {
-        alert('두 글자 이상 입력해주세요');
-      } else {
-        navigate(`/search?q=${search}&option=lectureTotalAvg&majorType=전체`);
-      }
+    if (e.key !== 'Enter') return;
+    if (input.current.value.length < 2) {
+      alert('두 글자 이상 입력해주세요');
+      return;
     }
-  };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    navigate(`/search?q=${input.current.value}&option=lectureTotalAvg&majorType=전체`);
+  };
 
   return (
-    <Container>
+    <AppContainer>
       <Meta title="SUWIKI : 검색" />
       <SearchWrapper>
         <SearchTitle>강의평가 검색</SearchTitle>
         <SearchInput
-          onChange={onChange}
+          ref={input}
           placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
           onKeyPress={onKeypress}
         />
@@ -86,7 +81,7 @@ const LectureInfo = () => {
               src="images/btn_write.svg"
               onClick={() =>
                 !isLogin
-                  ? null
+                  ? alert('로그인해 주세요')
                   : !written
                   ? setModalIsOpen(true)
                   : alert(`이미 작성한 ${check}가 있습니다`)
@@ -109,27 +104,11 @@ const LectureInfo = () => {
           <WriteExam row={lectureInfo} type="write" setModalIsOpen={setModalIsOpen} />
         )}
       </Modal>
-    </Container>
+    </AppContainer>
   );
 };
 
 export default LectureInfo;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 60%;
-  margin: 0 auto;
-
-  @media screen and (max-width: 960px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    margin: 0 auto;
-  }
-`;
 
 const SearchWrapper = styled.div`
   display: flex;

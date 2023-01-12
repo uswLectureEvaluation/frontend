@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
-import User from '../api/User';
 import { useQuery } from 'react-query';
+import User from '../api/User';
 import Spinner from '../components/Etc/Spinner';
+import { AppContainer } from '../styles/Common';
 
 const HistoryTest = () => {
   const user = User();
@@ -52,22 +53,6 @@ const NoticeItem = ({ title, professor, major, createDate }) => {
 };
 
 export default HistoryTest;
-
-const AppContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 60%;
-  margin: 0 auto;
-
-  @media screen and (max-width: 960px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    margin: 0 auto;
-  }
-`;
 
 const AppTitle = styled.div`
   display: flex;
