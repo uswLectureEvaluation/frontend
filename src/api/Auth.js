@@ -15,7 +15,7 @@ const Auth = () => {
   };
 
   //회원가입 api
-  const register = async (setData, setLoading, id, pw, email) => {
+  const register = async (id, pw, email) => {
     const data = {
       loginId: id,
       password: pw,
@@ -25,9 +25,8 @@ const Auth = () => {
       url: `user/join`,
       method: 'POST',
       data: data,
-    }).then((r) => {
-      setData(r);
-      setLoading(true);
+    }).catch((error) => {
+      alert(error.response.data.message);
     });
   };
 
