@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import Auth from '../api/Auth';
 import { CssTextField } from '../components/Etc/CssTextField';
 import Meta from '../components/Meta';
-import styled from '@emotion/styled';
 import { Container, AuthWrapper, Img } from '../styles/Common';
 
 const Login = () => {
