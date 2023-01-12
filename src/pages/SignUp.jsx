@@ -1,111 +1,33 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../api/Auth';
 import { CssTextField } from '../components/Etc/CssTextField';
 import { Container, AuthWrapper, Img, Button, Checking } from '../styles/Common';
 import Meta from '../components/Meta';
 import styled from '@emotion/styled';
+import { useForm } from 'react-hook-form';
+import {
+  validateEmail,
+  validateId,
+  validatePassword,
+  validatePasswordConfirm,
+} from '../utils/validate';
 
 const SignUp = () => {
   const auth = Auth();
-  //이름, 이메일, 비밀번호, 비밀번호 확인
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
-  //오류메시지 상태저장
-  const [nameMessage, setNameMessage] = useState('');
-  const [emailMessage, setEmailMessage] = useState('');
-  const [passwordMessage, setPasswordMessage] = useState('');
-  const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('');
-
-  // 유효성 검사
-  const [isName, setIsName] = useState(false);
-  const [isEmail, setIsEmail] = useState(false);
-  const [isPassword, setIsPassword] = useState(false);
-  const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
-
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isValid },
+  } = useForm({ mode: 'onChange' });
+  const formValues = watch();
 
+  // 아이디, 이메일 중복확인, 체크리스트 상태
   const [idCheck, setIdCheck] = useState(false);
   const [emailCheck, setEmailCheck] = useState(false);
-
-  const [db, setData] = useState({
-    data: '',
-  });
-
-  const onChangeName = useCallback((e) => {
-    const nameRegex = /^[a-z|0-9|]+$/;
-    const nameCurrent = e.target.value;
-    setName(nameCurrent);
-    if (!nameRegex.test(nameCurrent)) {
-      setNameMessage('아이디는 영소문자 및 숫자로 입력해주세요');
-      setIsName(false);
-    } else if (e.target.value.length < 6) {
-      setNameMessage('아이디는 6자리 이상 입력해주세요.');
-      setIsName(false);
-    } else if (e.target.value.length > 20) {
-      setNameMessage('아이디는 20자리 이하로 입력해주세요.');
-      setIsName(false);
-    } else if (e.target.value.length > 6 || e.target.value.length < 20) {
-      setNameMessage('아이디 중복확인해주세요.');
-      setIsName(true);
-      setIdCheck(false);
-    }
-  }, []);
-
-  // 이메일
-  const onChangeEmail = useCallback((e) => {
-    const emailRegex =
-      /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-    const emailCurrent = e.target.value;
-
-    setEmail(emailCurrent);
-
-    if (!emailRegex.test(emailCurrent) || !emailCurrent.endsWith('@suwon.ac.kr')) {
-      setEmailMessage('이메일 형식이 틀렸습니다.');
-      setIsEmail(false);
-    } else {
-      setEmailMessage('사용 가능한 이메일입니다.');
-      setIsEmail(true);
-      setEmailCheck(false);
-    }
-  }, []);
-
-  const onChangePassword = useCallback((e) => {
-    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^+=-])(?=.*[0-9]).{8,25}$/;
-    const passwordCurrent = e.target.value;
-    setPassword(passwordCurrent);
-
-    if (!passwordRegex.test(passwordCurrent)) {
-      setPasswordMessage('숫자+영문자+특수문자(!@#$%^+=-) 조합으로 8자리 이상 입력해주세요!');
-      setIsPassword(false);
-    } else {
-      setPasswordMessage('사용 가능한 비밀번호입니다.');
-      setIsPassword(true);
-    }
-  }, []);
-
-  // 비밀번호 확인
-  const onChangePasswordConfirm = useCallback(
-    (e) => {
-      const passwordConfirmCurrent = e.target.value;
-      setPasswordConfirm(passwordConfirmCurrent);
-
-      if (password === passwordConfirmCurrent) {
-        setPasswordConfirmMessage('비밀번호가 일치합니다.');
-        setIsPasswordConfirm(true);
-      } else {
-        setPasswordConfirmMessage('비밀번호가 일치하지 않습니다.');
-        setIsPasswordConfirm(false);
-      }
-    },
-    [password]
-  );
-
-  //체크박스
   const [checkList, setCheckList] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   // 체크박스 전체선택시 모두선택 체크박스 활성화시키기
   const handleCheck = (e) => {
@@ -118,38 +40,28 @@ const SignUp = () => {
   const checkAll = (e) => {
     e.target.checked ? setCheckList(['terms', 'privacy']) : setCheckList([]);
   };
-
-  const onClick = () => {
-    auth.register(setData, setLoading, name, password, email);
-    navigate('/emailsignup', { state: email });
-  };
-
+  // 아이디 중복확인
   const onCheck = () => {
-    auth.checkId(setIdCheck, name);
+    auth.checkId(setIdCheck, formValues.loginId);
   };
-
+  // 이메일 중복확인
   const onEmail = () => {
-    auth.checkEmail(setEmailCheck, email);
+    auth.checkEmail(setEmailCheck, formValues.email);
+  };
+  // 폼 제출
+  const onSubmit = ({ loginId, password, email }) => {
+    auth.register(loginId, password, email).then((res) => {
+      res.success && navigate('/emailsignup', { state: email });
+    });
   };
 
+  // 중복확인 이후 값 변경 시 상태 초기화
   useEffect(() => {
-    if (idCheck) return setNameMessage('아이디 중복확인 완료');
-  }, [idCheck]);
-
+    setIdCheck((prev) => prev && false);
+  }, [formValues.loginId]);
   useEffect(() => {
-    if (emailCheck) return setEmailMessage('이메일 중복확인 완료');
-  }, [emailCheck]);
-
-  useEffect(() => {
-    if (loading) {
-      if (db.data !== null) {
-        alert('회원가입 성공');
-        navigate('/');
-      } else {
-        alert('회원가입 실패');
-      }
-    }
-  });
+    setEmailCheck((prev) => prev && false);
+  }, [formValues.email]);
 
   return (
     <Container>
@@ -160,83 +72,64 @@ const SignUp = () => {
         <source srcSet="/images/signup.png" type="image/png" />
         <Img src="images/signup.svg" alt="signup" width={400} height={350} />
       </picture>
-      <AuthWrapper>
+      <AuthWrapper onSubmit={handleSubmit(onSubmit)}>
         <Title>회원가입</Title>
         <InputWrapper id="top">
           <CssTextField
+            variant="standard"
             margin="normal"
-            required
-            fullWidth
-            id="username"
             label="아이디"
-            name="username"
-            autoComplete="username"
-            onChange={onChangeName}
-          />
-          <Button disabled={!isName || idCheck} id="check" onClick={onCheck} background="#336af8">
-            중복확인
-          </Button>
-        </InputWrapper>
-        {name.length > 0 && (
-          <Checking className={`message ${isName ? 'success' : 'error'}`}>{nameMessage}</Checking>
-        )}
-
-        <CssTextField
-          margin="normal"
-          required
-          fullWidth
-          name="password"
-          label="비밀번호"
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          onChange={onChangePassword}
-        />
-        {password.length > 0 && (
-          <Checking className={`message ${isPassword ? 'success' : 'error'}`}>
-            {passwordMessage}
-          </Checking>
-        )}
-        <CssTextField
-          margin="normal"
-          required
-          fullWidth
-          name="passwordConfirm"
-          label="비밀번호 확인"
-          type="password"
-          id="passwordConfirm"
-          autoComplete="current-password"
-          onChange={onChangePasswordConfirm}
-        />
-        {passwordConfirm.length > 0 && (
-          <Checking className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>
-            {passwordConfirmMessage}
-          </Checking>
-        )}
-        <InputWrapper id="top">
-          <CssTextField
-            margin="normal"
-            required
             fullWidth
-            name="email"
-            label="학교 이메일(@suwon.ac.kr)"
-            type="email"
-            id="email"
-            autoComplete="current-email"
-            onChange={onChangeEmail}
+            {...register('loginId', validateId)}
           />
           <Button
-            disabled={!isEmail || emailCheck}
             id="check"
+            type="button"
+            disabled={errors.loginId || !formValues.loginId || idCheck}
+            onClick={onCheck}
+            background="#336af8"
+          >
+            {idCheck ? '확인완료' : '중복확인'}
+          </Button>
+        </InputWrapper>
+        {errors.loginId && <Checking>{errors.loginId.message}</Checking>}
+
+        <CssTextField
+          variant="standard"
+          type="password"
+          margin="normal"
+          label="비밀번호"
+          {...register('password', validatePassword)}
+        />
+        {errors.password && <Checking>{errors.password.message}</Checking>}
+        <CssTextField
+          variant="standard"
+          type="password"
+          margin="normal"
+          label="비밀번호 확인"
+          {...register('passwordConfirm', validatePasswordConfirm(formValues.password))}
+        />
+        {errors.passwordConfirm && <Checking>{errors.passwordConfirm.message}</Checking>}
+        <InputWrapper id="top">
+          <CssTextField
+            variant="standard"
+            type="email"
+            margin="normal"
+            label="학교 이메일(@suwon.ac.kr)"
+            fullWidth
+            {...register('email', validateEmail)}
+          />
+          <Button
+            disabled={errors.email || !formValues.email || emailCheck}
+            id="check"
+            type="button"
             onClick={onEmail}
             background="#336af8"
           >
-            중복확인
+            {emailCheck ? '확인완료' : '중복확인'}
           </Button>
         </InputWrapper>
-        {email.length > 0 && (
-          <Checking className={`message ${isEmail ? 'success' : 'error'}`}>{emailMessage}</Checking>
-        )}
+        {errors.email && <Checking>{errors.email.message}</Checking>}
 
         <EmailWrapper>
           * 수원대 이메일 인증 후 서비스 이용이 가능합니다.
@@ -252,7 +145,7 @@ const SignUp = () => {
               type="checkbox"
               name="checkAll"
               onChange={checkAll}
-              checked={checkList.length === 2 ? true : false}
+              checked={checkList.length === 2}
             />
             아래 내용에 모두 동의합니다.
           </InputWrapper>
@@ -263,7 +156,7 @@ const SignUp = () => {
               type="checkbox"
               name="terms"
               onChange={handleCheck}
-              checked={checkList.includes('terms') ? true : false}
+              checked={checkList.includes('terms')}
             />
             이용약관 동의(필수)
           </InputWrapper>
@@ -280,7 +173,7 @@ const SignUp = () => {
               type="checkbox"
               name="privacy"
               onChange={handleCheck}
-              checked={checkList.includes('privacy') ? true : false}
+              checked={checkList.includes('privacy')}
             />
             개인정보처리방침 동의(필수)
           </InputWrapper>
@@ -291,21 +184,7 @@ const SignUp = () => {
             상세보기
           </AgreeButton>
         </Label>
-        <Button
-          disabled={
-            !(
-              isName &&
-              isEmail &&
-              isPassword &&
-              isPasswordConfirm &&
-              checkList.length === 2 &&
-              idCheck &&
-              emailCheck
-            )
-          }
-          background="#336af8"
-          onClick={onClick}
-        >
+        <Button disabled={!isValid || !emailCheck || checkList.length !== 2} background="#336af8">
           회원가입
         </Button>
       </AuthWrapper>
