@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import styled from '@emotion/styled';
+import { useEffect, useRef, useState } from 'react';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import Major from '../api/Major';
 import { versionCheck } from '../app/versionCheck';
+import { MajorModalStyle } from '../components/Etc/ModalStyle';
 import MainList from '../components/List/MainList';
 import MajorSearch from '../components/MajorSearch';
-import { MajorModalStyle } from '../components/Etc/ModalStyle';
-import styled from '@emotion/styled';
 
 // const options = [
 //   {
@@ -38,21 +38,19 @@ import styled from '@emotion/styled';
 
 const Main = () => {
   const navigate = useNavigate();
-  const [search, setSearch] = useState('');
+  const search = useRef(null);
+  // const [search, setSearch] = useState('');
   const [lecture] = useState('modifiedDate');
   const [checkClass, setCheckClass] = useState('전체');
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const major = Major();
-  const onChange = (e) => {
-    setSearch(e.currentTarget.value);
-  };
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
-      if (e.currentTarget.value.length < 2) {
+      if (search.current.value.length < 2) {
         alert('두 글자 이상 입력해주세요');
       } else {
-        navigate(`/search?q=${search}&option=lectureTotalAvg&majorType=전체`);
+        navigate(`/search?q=${search.current.value}&option=lectureTotalAvg&majorType=전체`);
       }
     }
   };
@@ -81,7 +79,7 @@ const Main = () => {
         <SearchWrapper>
           <SearchTitle>강의평가 검색</SearchTitle>
           <SearchInput
-            onChange={onChange}
+            ref={search}
             placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
             onKeyPress={onKeypress}
             onMouseLeave={() => document.activeElement.blur()}
