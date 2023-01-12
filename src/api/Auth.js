@@ -90,7 +90,7 @@ const Auth = () => {
   };
 
   //비밀번호 찾기api
-  const findPw = async (setData, id, email) => {
+  const findPw = async (id, email) => {
     const data = {
       loginId: id,
       email,
@@ -100,9 +100,8 @@ const Auth = () => {
       method: 'POST',
       data: data,
     })
-      .then((response) => {
+      .then(() => {
         alert('해당 이메일로 임시 비밀번호를 발송하였습니다.');
-        setData(response);
       })
       .catch(() => {
         alert('해당 아이디.이메일을 찾을 수 없습니다.');
