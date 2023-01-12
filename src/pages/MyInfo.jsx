@@ -12,10 +12,9 @@ const MyInfo = () => {
     cacheTime: 1000 * 60 * 30,
     staleTime: 1000 * 60 * 30,
   });
-  let my = data;
 
   if (isLoading) return <UserInfo my={fakeUserInfo} />;
-  return <UserInfo my={my} />;
+  return <UserInfo my={data} />;
 };
 
 export default MyInfo;
