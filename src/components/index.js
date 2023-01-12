@@ -5,4 +5,3 @@ export { default as MainList } from './List/MainList';
 export { default as Nav } from './Nav';
 export { default as ScrollButton } from './Etc/ScrollButton';
 export { default as IsTestInfo } from './Lecture/IsTestInfo';
-export { default as Wrapper } from './Etc/Wrapper';
