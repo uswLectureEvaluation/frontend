@@ -5,7 +5,7 @@ import LectureList from '../components/List/LectureList';
 import Meta from '../components/Meta';
 import OptionSelect from '../components/OptionSelect';
 import { sortOptions } from '../components/placeholderData';
-import MajorSelect from '../components/MajorSelect';
+import MajorSelect from '../components/Major/MajorSelect';
 // const majorList = ['전체'];
 
 const Search = () => {

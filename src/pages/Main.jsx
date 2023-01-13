@@ -7,7 +7,7 @@ import MainList from '../components/List/MainList';
 import LectureSearch from '../components/LectureSearch';
 import OptionSelect from '../components/OptionSelect';
 import { sortOptions } from '../components/placeholderData';
-import MajorSelect from '../components/MajorSelect';
+import MajorSelect from '../components/Major/MajorSelect';
 
 const Main = () => {
   const navigate = useNavigate();

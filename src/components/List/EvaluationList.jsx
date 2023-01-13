@@ -5,7 +5,7 @@ import { useInfiniteQuery, useMutation } from 'react-query';
 import StarRatings from 'react-star-ratings';
 import User from '../../api/User';
 import { isLoginStorage } from '../../utils/loginStorage.js';
-import ModalStyle from '../Etc/ModalStyle';
+import { ModalStyle } from '../Etc/ModalStyle';
 import Spinner from '../Etc/Spinner';
 import WriteEvaluation from '../Write/WriteEvaluation';
 import styled from '@emotion/styled';

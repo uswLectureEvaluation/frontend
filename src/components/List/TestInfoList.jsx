@@ -5,7 +5,7 @@ import { useInfiniteQuery, useMutation } from 'react-query';
 import { queryClient } from '../..';
 import User from '../../api/User';
 import { isLoginStorage } from '../../utils/loginStorage';
-import ModalStyle from '../Etc/ModalStyle';
+import { ModalStyle } from '../Etc/ModalStyle';
 import Spinner from '../Etc/Spinner';
 import WriteExam from '../Write/WriteTestInfo';
 import styled from '@emotion/styled';

@@ -2,10 +2,10 @@ import { Fragment, useEffect, useState } from 'react';
 import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import styled from '@emotion/styled/macro';
 import * as styles from '@mui/material/styles';
-import Major from '../api/Major';
-import { searchFavorite, type } from '../api/etc';
+import Major from '../../api/Major';
+import { searchFavorite, type } from '../../api/etc';
 import { useRecoilState } from 'recoil';
-import { tokenState } from '../app/recoilStore';
+import { tokenState } from '../../app/recoilStore';
 import { TextField } from '@mui/material';
 
 const MajorSearch = ({ setModalIsOpen }) => {

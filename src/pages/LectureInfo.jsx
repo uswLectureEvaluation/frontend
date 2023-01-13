@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import { useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from '../app/recoilStore';
-import ModalStyle from '../components/Etc/ModalStyle';
+import { ModalStyle } from '../components/Etc/ModalStyle';
 import IsTestInfo from '../components/Lecture/IsTestInfo';
 import LectureDetail from '../components/Lecture/LectureDetail';
 import SearchEvaluationList from '../components/List/SearchEvaluationList';
