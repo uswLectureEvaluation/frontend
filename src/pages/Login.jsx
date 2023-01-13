@@ -37,41 +37,33 @@ const Login = () => {
       <AuthWrapper>
         <Title>로그인</Title>
         <CssTextField
+          variant="standard"
           margin="normal"
           required
-          fullWidth
-          id="email"
           label="아이디"
-          name="email"
-          autoComplete="email"
           inputRef={userId}
           onKeyPress={onKeypress}
         />
         <CssTextField
+          variant="standard"
           margin="normal"
           required
-          fullWidth
-          name="password"
           label="비밀번호"
           type="password"
-          id="password"
-          autoComplete="current-password"
           inputRef={password}
           onKeyPress={onKeypress}
         />
         <SearchWrapper>
           <div>
-            <SearchButton onClick={() => navigate('/idsearch')}>아이디 찾기</SearchButton>
-            <SearchButton onClick={() => navigate('/pwsearch')}>비밀번호 찾기</SearchButton>
+            <SearchButton type="button" onClick={() => navigate('/idsearch')}>
+              아이디 찾기
+            </SearchButton>
+            <SearchButton type="button" onClick={() => navigate('/pwsearch')}>
+              비밀번호 찾기
+            </SearchButton>
           </div>
         </SearchWrapper>
-        <Button
-          background="#336af8"
-          type="submit"
-          fullWidth
-          variant="contained"
-          onClick={loginAttempt}
-        >
+        <Button background="#336af8" type="button" onClick={loginAttempt}>
           로그인
         </Button>
       </AuthWrapper>

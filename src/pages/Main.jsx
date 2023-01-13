@@ -8,47 +8,20 @@ import { MajorModalStyle } from '../components/Etc/ModalStyle';
 import MainList from '../components/List/MainList';
 import MajorSearch from '../components/MajorSearch';
 import LectureSearch from '../components/LectureSearch';
-
-// const options = [
-//   {
-//     name: '최근 올라온 강의',
-//     lec: 'modifiedDate',
-//     imgs: 'images/icon_color_fire_36.svg',
-//   },
-//   {
-//     name: '꿀 강의',
-//     lec: 'lectureHoneyAvg',
-//     imgs: 'images/icon_color_bee_36.svg',
-//   },
-//   {
-//     name: '만족도가 높은 강의',
-//     lec: 'lectureSatisfactionAvg',
-//     imgs: 'images/icon_color_thumbs_36.svg',
-//   },
-//   {
-//     name: '배울게 많은 강의',
-//     lec: 'lectureLearningAvg',
-//     imgs: 'images/icon_color_book_36.svg',
-//   },
-//   {
-//     name: 'BEST 강의',
-//     lec: 'lectureTotalAvg',
-//     imgs: 'images/icon_color_best_36.svg',
-//   },
-// ];
+import OptionSelect from '../components/OptionSelect';
 
 const Main = () => {
   const navigate = useNavigate();
-  const [lecture] = useState('modifiedDate');
   const [checkClass, setCheckClass] = useState('전체');
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [select, onSelect] = useState(false);
   const major = Major();
 
   useEffect(() => {
     versionCheck(major);
   }, [major]);
   return (
-    <div>
+    <div role="presentation" onClick={() => select && onSelect(false)}>
       <Banner>
         <BannerWrapper>
           <div>
@@ -78,18 +51,10 @@ const Main = () => {
                 ))}
               </SortSelect> */}
             </FlexWrapper>
-            {/* <CustomSelect defaultValue={'modifiedDate'} onChange={onChangeHandler}>
-              {options.map((index) => (
-                <StyledOption key={index.name} value={index.lec}>
-                  <Soption>
-                    <Img alt="option-icon" width="22" height="22" src={index.imgs} /> {index.name}
-                  </Soption>
-                </StyledOption>
-              ))}
-            </CustomSelect> */}
+            <OptionSelect select={select} onSelect={onSelect} />
           </HeadSelection>
           <HeadSelection>
-            <MainList lecture={lecture} checkClass={checkClass} />
+            <MainList checkClass={checkClass} />
           </HeadSelection>
         </SearchWrapper>
         <Button
