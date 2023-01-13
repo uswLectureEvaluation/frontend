@@ -9,6 +9,7 @@ import MainList from '../components/List/MainList';
 import MajorSearch from '../components/MajorSearch';
 import LectureSearch from '../components/LectureSearch';
 import OptionSelect from '../components/OptionSelect';
+import { sortOptions } from '../components/placeholderData';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -51,7 +52,14 @@ const Main = () => {
                 ))}
               </SortSelect> */}
             </FlexWrapper>
-            <OptionSelect select={select} onSelect={onSelect} />
+            <OptionSelect
+              list={sortOptions}
+              state={select}
+              controller={onSelect}
+              icon={true}
+              itemTitle="name"
+              location="main"
+            />
           </HeadSelection>
           <HeadSelection>
             <MainList checkClass={checkClass} />

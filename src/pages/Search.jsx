@@ -7,6 +7,7 @@ import LectureList from '../components/List/LectureList';
 import MajorSearch from '../components/MajorSearch';
 import Meta from '../components/Meta';
 import OptionSelect from '../components/OptionSelect';
+import { sortOptions } from '../components/placeholderData';
 
 // const majorList = ['전체'];
 
@@ -32,7 +33,14 @@ const Search = () => {
               </SortSelect> */}
             </FlexWrapper>
             <FlexWrapper>
-              <OptionSelect select={select} onSelect={onSelect} />
+              <OptionSelect
+                list={sortOptions}
+                state={select}
+                controller={onSelect}
+                icon={false}
+                itemTitle="sub"
+                location="search"
+              />
             </FlexWrapper>
           </div>
 
