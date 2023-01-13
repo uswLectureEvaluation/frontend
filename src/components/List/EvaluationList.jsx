@@ -11,55 +11,7 @@ import WriteEvaluation from '../Write/WriteEvaluation';
 import styled from '@emotion/styled';
 import { queryClient } from '../..';
 import { subStr } from '../../utils/subString';
-
-export const DetailModal = (props) => {
-  const teamSet = props.team;
-  const homeworkSet = props.homework;
-  const difficultySet = props.difficulty;
-  const team = {
-    0: <DataColor id="cyan">없음</DataColor>,
-    1: <DataColor id="purple">있음</DataColor>,
-  };
-  const homework = {
-    0: <DataColor id="cyan">없음</DataColor>,
-    1: <DataColor id="black">보통</DataColor>,
-    2: <DataColor id="purple">많음</DataColor>,
-  };
-  const difficulty = {
-    0: <DataColor id="cyan">너그러움</DataColor>,
-    1: <DataColor id="black">보통</DataColor>,
-    2: <DataColor id="purple">까다로움</DataColor>,
-  };
-
-  return (
-    <StarFlex id="top">
-      <FlexContainer id="col">
-        <StarFlex id="between">
-          만족도
-          <PaddingRight />
-          <Rate id="modal">{props.satisfaction?.toFixed(1)}</Rate>
-        </StarFlex>
-        <StarFlex id="between">조모임 {team[teamSet]}</StarFlex>
-      </FlexContainer>
-      <FlexContainer id="col">
-        <StarFlex id="between">
-          꿀강 지수
-          <PaddingRight />
-          <Rate id="modal">{props.honey?.toFixed(1)}</Rate>
-        </StarFlex>
-        <StarFlex id="between">과제 {homework[homeworkSet]}</StarFlex>
-      </FlexContainer>
-      <FlexContainer id="col">
-        <StarFlex id="between">
-          배움 지수
-          <PaddingRight />
-          <Rate id="modal">{props.learning?.toFixed(1)}</Rate>
-        </StarFlex>
-        <StarFlex id="between">학점 {difficulty[difficultySet]}</StarFlex>
-      </FlexContainer>
-    </StarFlex>
-  );
-};
+import EvaluationDetail from '../EvaluationDetail';
 
 const EvaluationList = () => {
   const user = User();
@@ -193,18 +145,9 @@ export const EvaluationCard = ({ row }) => {
             {modal ? '간략히' : '자세히'}
           </ModalOpen>
         </MarginTop>
-        {modal && (
-          <DetailModal
-            satisfaction={row.satisfaction}
-            honey={row.honey}
-            learning={row.learning}
-            team={row.team}
-            homework={row.homework}
-            difficulty={row.difficulty}
-          />
-        )}
+        {modal && <EvaluationDetail lecture={row} />}
         <MarginTop id="bottom">
-          <EvaluationDetail>
+          <EvaluationText>
             {row.content.split('\n').map((value, index) => {
               return (
                 <div key={index}>
@@ -213,7 +156,7 @@ export const EvaluationCard = ({ row }) => {
                 </div>
               );
             })}
-          </EvaluationDetail>
+          </EvaluationText>
         </MarginTop>
         <Modal
           isOpen={modalIsOpen}
@@ -327,45 +270,6 @@ const MarginTop = styled.div`
     margin-top: 5px;
   }
 `;
-const DataColor = styled.div`
-  padding-left: 0.7rem;
-
-  &#black {
-    color: black;
-  }
-  &#cyan {
-    color: #336af8;
-  }
-  &#purple {
-    color: #6200ee;
-  }
-`;
-
-const StarFlex = styled.div`
-  display: flex;
-  align-items: flex-end;
-  padding-right: 1rem;
-  padding: 5px 12px;
-  font-size: 13px;
-  &#top {
-    padding: 8px 12px 0px 12px;
-  }
-  &#bottom {
-    padding: 0px 12px 8px 12px;
-  }
-  &#between {
-    justify-content: space-between;
-
-    font-weight: 300;
-  }
-`;
-
-const FlexContainer = styled.div`
-  display: flex;
-  &#col {
-    flex-direction: column;
-  }
-`;
 
 const YearText = styled.span`
   font-size: 14px;
@@ -377,7 +281,7 @@ const YearText = styled.span`
   margin-right: 12px;
 `;
 
-const EvaluationDetail = styled.div`
+const EvaluationText = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -387,9 +291,7 @@ const EvaluationDetail = styled.div`
   padding-top: 0.7rem;
   word-break: break-all;
 `;
-const PaddingRight = styled.span`
-  padding-right: 0.7rem;
-`;
+
 const EditButton = styled.span`
   font-size: 12px;
 

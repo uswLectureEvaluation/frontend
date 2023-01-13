@@ -7,6 +7,7 @@ import Lecture from '../../api/Lecture';
 import User from '../../api/User';
 import { fakeEvaluationList } from '../placeholderData';
 import styled from '@emotion/styled';
+import EvaluationDetail from '../EvaluationDetail';
 // import { fakeEvaluationList } from '../placeholderData';
 
 export const FakeList = () => {
@@ -18,57 +19,6 @@ export const FakeList = () => {
         ))}
       </div>
     </Wrapper>
-  );
-};
-
-export const DetailModal = ({ lecture }) => {
-  const teamSet = lecture.team;
-  const homeworkSet = lecture.homework;
-  const difficultySet = lecture.difficulty;
-  const team = {
-    0: <DataColor id="cyan">없음</DataColor>,
-    1: <DataColor id="purple">있음</DataColor>,
-  };
-  const homework = {
-    0: <DataColor id="cyan">없음</DataColor>,
-    1: <DataColor id="black">보통</DataColor>,
-    2: <DataColor id="purple">많음</DataColor>,
-  };
-  const difficulty = {
-    0: <DataColor id="cyan">너그러움</DataColor>,
-    1: <DataColor id="black">보통</DataColor>,
-    2: <DataColor id="purple">까다로움</DataColor>,
-  };
-
-  return (
-    <div>
-      <StarFlex id="top">
-        <FlexContainer id="col">
-          <StarFlex id="between">
-            만족도
-            <PaddingRight />
-            <Rate id="modal">{lecture.satisfaction?.toFixed(1)}</Rate>
-          </StarFlex>
-          <StarFlex id="between">조모임 {team[teamSet]}</StarFlex>
-        </FlexContainer>
-        <FlexContainer id="col">
-          <StarFlex id="between">
-            꿀강 지수
-            <PaddingRight />
-            <Rate id="modal">{lecture.honey?.toFixed(1)}</Rate>
-          </StarFlex>
-          <StarFlex id="between">과제 {homework[homeworkSet]}</StarFlex>
-        </FlexContainer>
-        <FlexContainer id="col">
-          <StarFlex id="between">
-            배움 지수
-            <PaddingRight />
-            <Rate id="modal">{lecture.learning?.toFixed(1)}</Rate>
-          </StarFlex>
-          <StarFlex id="between">학점 {difficulty[difficultySet]}</StarFlex>
-        </FlexContainer>
-      </StarFlex>
-    </div>
   );
 };
 
@@ -188,9 +138,9 @@ export const Subject = ({ lecture }) => {
         </MobileWrapper>
 
         <div style={{ marginBottom: '5px' }} />
-        {modal && <DetailModal lecture={lecture} />}
+        {modal && <EvaluationDetail lecture={lecture} />}
         <MarginTop id="bottom">
-          <EvaluationDetail>
+          <EvaluationText>
             {lecture.content.split('\n').map((value, index) => {
               return (
                 <div key={index}>
@@ -199,7 +149,7 @@ export const Subject = ({ lecture }) => {
                 </div>
               );
             })}
-          </EvaluationDetail>
+          </EvaluationText>
         </MarginTop>
       </LectureWrapper>
     </div>
@@ -281,46 +231,6 @@ const MobileWrapper = styled.div`
     flex-direction: column;
   }
 `;
-const DataColor = styled.div`
-  padding-left: 0.7rem;
-
-  &#black {
-    color: black;
-  }
-  &#cyan {
-    color: #336af8;
-  }
-  &#purple {
-    color: #6200ee;
-  }
-`;
-
-const StarFlex = styled.div`
-  display: flex;
-  align-items: flex-end;
-  padding-right: 1rem;
-  padding: 5px 12px;
-
-  font-size: 13px;
-  &#top {
-    padding: 8px 12px 0px 12px;
-  }
-  &#bottom {
-    padding: 0px 12px 8px 12px;
-  }
-  &#between {
-    justify-content: space-between;
-
-    font-weight: 300;
-  }
-`;
-
-const FlexContainer = styled.div`
-  display: flex;
-  &#col {
-    flex-direction: column;
-  }
-`;
 
 const YearText = styled.span`
   font-weight: 400;
@@ -331,7 +241,7 @@ const YearText = styled.span`
   margin-right: 12px;
 `;
 
-const EvaluationDetail = styled.div`
+const EvaluationText = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 16px;
@@ -342,9 +252,7 @@ const EvaluationDetail = styled.div`
   padding-top: 0.7rem;
   word-break: break-all;
 `;
-const PaddingRight = styled.span`
-  padding-right: 0.7rem;
-`;
+
 const EditButton = styled.span`
   font-size: 12px;
   font-weight: 500;
