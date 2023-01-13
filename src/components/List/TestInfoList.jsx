@@ -76,7 +76,7 @@ export const TestInfoCard = ({ row }) => {
   });
 
   const onDelete = () => {
-    if (window.confirm('시험정보를 삭제하시겠습니까?') === true) {
+    if (window.confirm('시험정보를 삭제하시겠습니까?')) {
       deleteExamInfo.mutate();
     }
   };

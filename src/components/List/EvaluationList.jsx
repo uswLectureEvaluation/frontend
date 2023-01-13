@@ -126,7 +126,7 @@ export const EvaluationCard = ({ row }) => {
   });
 
   const onDelete = () => {
-    if (window.confirm('강의평가를 삭제하시겠습니까?') === true) {
+    if (window.confirm('강의평가를 삭제하시겠습니까?')) {
       deleteEvaluate.mutate();
     }
   };
@@ -190,10 +190,10 @@ export const EvaluationCard = ({ row }) => {
               setModal(!modal);
             }}
           >
-            {modal === true ? '간략히' : '자세히'}
+            {modal ? '간략히' : '자세히'}
           </ModalOpen>
         </MarginTop>
-        {modal === true ? (
+        {modal && (
           <DetailModal
             satisfaction={row.satisfaction}
             honey={row.honey}
@@ -202,7 +202,7 @@ export const EvaluationCard = ({ row }) => {
             homework={row.homework}
             difficulty={row.difficulty}
           />
-        ) : null}
+        )}
         <MarginTop id="bottom">
           <EvaluationDetail>
             {row.content.split('\n').map((value, index) => {

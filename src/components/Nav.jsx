@@ -16,7 +16,7 @@ const Nav = () => {
     sessionStorage.removeItem('AccessToken');
     sessionStorage.removeItem('login');
     auth.logout().then(async (data) => {
-      if (data.Success === true) {
+      if (data.Success) {
         navigate('/');
         setTimeout(() => {
           queryClient.invalidateQueries({ queryKey: ['myInfo'] });

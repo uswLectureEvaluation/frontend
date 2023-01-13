@@ -4,7 +4,7 @@ import StarRatings from 'react-star-ratings';
 import styled from '@emotion/styled';
 import { subStr } from '../../utils/subString';
 
-const Detail = (props) => {
+const Detail = ({ lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg }) => {
   return (
     <div>
       <StarFlex id="top">
@@ -12,21 +12,21 @@ const Detail = (props) => {
           <StarFlex id="between">
             만족도
             <PaddingRight />
-            <Rate id="modal">{props.lectureSatisfactionAvg?.toFixed(1)}</Rate>
+            <Rate id="modal">{lectureSatisfactionAvg?.toFixed(1)}</Rate>
           </StarFlex>
         </FlexContainer>
         <FlexContainer id="col">
           <StarFlex id="between">
             꿀강지수
             <PaddingRight />
-            <Rate id="modal">{props.lectureHoneyAvg?.toFixed(1)}</Rate>
+            <Rate id="modal">{lectureHoneyAvg?.toFixed(1)}</Rate>
           </StarFlex>
         </FlexContainer>
         <FlexContainer id="col">
           <StarFlex id="between">
             배움지수
             <PaddingRight />
-            <Rate id="modal">{props.lectureLearningAvg?.toFixed(1)}</Rate>
+            <Rate id="modal">{lectureLearningAvg?.toFixed(1)}</Rate>
           </StarFlex>
         </FlexContainer>
       </StarFlex>
@@ -35,11 +35,9 @@ const Detail = (props) => {
 };
 
 const LectureCard = ({ row }) => {
-  const [modal, setModal] = useState(false);
-
   const navigate = useNavigate();
-
-  let title = subStr(row.lectureName, 14);
+  const [modal, setModal] = useState(false);
+  const title = subStr(row.lectureName, 14);
 
   const onClick = (id) => {
     !isNaN(id) ? navigate(`/lectureinfo?id=${id}`) : null;
@@ -74,18 +72,18 @@ const LectureCard = ({ row }) => {
                 e.stopPropagation();
               }}
             >
-              {modal === true ? '간략히' : '자세히'}
+              {modal ? '간략히' : '자세히'}
             </Minute>
           </RateWrapper>
         </MarginTop>
       </div>
-      {modal === true ? (
+      {modal && (
         <Detail
           lectureSatisfactionAvg={row.lectureSatisfactionAvg}
           lectureHoneyAvg={row.lectureHoneyAvg}
           lectureLearningAvg={row.lectureLearningAvg}
         />
-      ) : null}
+      )}
     </LectureWrapper>
   );
 };

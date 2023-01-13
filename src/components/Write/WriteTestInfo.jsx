@@ -195,7 +195,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
               name="examType"
               id="normal"
               value="족보"
-              defaultChecked={exam.includes('족보') === true}
+              defaultChecked={exam.includes('족보')}
             />
             <FormCheckText>족보</FormCheckText>
           </label>
@@ -205,7 +205,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
               name="examType"
               id="normal"
               value="교재"
-              defaultChecked={exam.includes('교재') === true}
+              defaultChecked={exam.includes('교재')}
             />
             <FormCheckText>교재</FormCheckText>
           </label>
@@ -215,7 +215,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
               name="examType"
               id="normal"
               value="PPT"
-              defaultChecked={exam.includes('PPT') === true}
+              defaultChecked={exam.includes('PPT')}
             />
             <FormCheckText>PPT</FormCheckText>
           </label>
@@ -225,7 +225,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
               name="examType"
               id="normal"
               value="필기"
-              defaultChecked={exam.includes('필기') === true}
+              defaultChecked={exam.includes('필기')}
             />
             <FormCheckText>필기</FormCheckText>
           </label>
@@ -238,7 +238,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
               name="examType"
               id="normal"
               value="응용"
-              defaultChecked={exam.includes('응용') === true}
+              defaultChecked={exam.includes('응용')}
             />
             <FormCheckText>응용</FormCheckText>
           </label>
@@ -248,7 +248,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
               name="examType"
               id="normal"
               value="실습"
-              defaultChecked={exam.includes('실습') === true}
+              defaultChecked={exam.includes('실습')}
             />
             <FormCheckText>실습</FormCheckText>
           </label>
@@ -258,7 +258,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
               name="examType"
               id="normal"
               value="과제"
-              defaultChecked={exam.includes('과제') === true}
+              defaultChecked={exam.includes('과제')}
             />
             <FormCheckText>과제</FormCheckText>
           </label>

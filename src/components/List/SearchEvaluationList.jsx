@@ -155,7 +155,7 @@ export const Subject = ({ lecture }) => {
               setModal(!modal);
             }}
           >
-            {modal === true ? '간략히' : '자세히'}
+            {modal ? '간략히' : '자세히'}
           </ModalOpen>
         </MarginTop>
         <MobileWrapper>
@@ -182,13 +182,13 @@ export const Subject = ({ lecture }) => {
                 setModal(!modal);
               }}
             >
-              {modal === true ? '간략히' : '자세히'}
+              {modal ? '간략히' : '자세히'}
             </ModalOpen>
           </div>
         </MobileWrapper>
 
         <div style={{ marginBottom: '5px' }} />
-        {modal === true ? <DetailModal lecture={lecture} /> : null}
+        {modal && <DetailModal lecture={lecture} />}
         <MarginTop id="bottom">
           <EvaluationDetail>
             {lecture.content.split('\n').map((value, index) => {
