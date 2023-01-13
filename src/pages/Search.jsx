@@ -6,27 +6,17 @@ import LectureSearch from '../components/LectureSearch';
 import LectureList from '../components/List/LectureList';
 import MajorSearch from '../components/MajorSearch';
 import Meta from '../components/Meta';
+import OptionSelect from '../components/OptionSelect';
 
 // const majorList = ['전체'];
-// const detail = [
-//   { name: '만족도', option: 'lectureSatisfactionAvg' },
-//   { name: '꿀강', option: 'lectureHoneyAvg' },
-//   { name: '배움', option: 'lectureLearningAvg' },
-//   { name: '날짜', option: 'modifiedDate' },
-//   { name: '종합', option: 'lectureTotalAvg' },
-// ];
 
 const Search = () => {
-  // const [searchParams] = useSearchParams();
-  // const onSelect = (e) => {
-  //   navigate(`/search?q=${searchValue}&option=${e}&majorType=${majorType}`);
-  // };
-
   const [count, setCount] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [select, onSelect] = useState(false);
 
   return (
-    <div>
+    <div role="presentation" onClick={() => select && onSelect(false)}>
       <Meta title="SUWIKI : 검색" />
       <Container>
         <LectureSearch />
@@ -42,13 +32,7 @@ const Search = () => {
               </SortSelect> */}
             </FlexWrapper>
             <FlexWrapper>
-              {/* <SortSelect id="sort" value={option} onChange={onSelect}>
-                {detail.map((index) => (
-                  <StyledOption id="semester" key={index.option} value={index.option}>
-                    <Soption id="semester">{index.name}</Soption>
-                  </StyledOption>
-                ))}
-              </SortSelect> */}
+              <OptionSelect select={select} onSelect={onSelect} />
             </FlexWrapper>
           </div>
 

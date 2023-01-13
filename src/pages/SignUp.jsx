@@ -184,7 +184,10 @@ const SignUp = () => {
             상세보기
           </AgreeButton>
         </Label>
-        <Button disabled={!isValid || !emailCheck || checkList.length !== 2} background="#336af8">
+        <Button
+          disabled={!isValid || !idCheck || !emailCheck || checkList.length !== 2}
+          background="#336af8"
+        >
           회원가입
         </Button>
       </AuthWrapper>
