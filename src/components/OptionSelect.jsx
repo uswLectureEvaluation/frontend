@@ -15,7 +15,7 @@ const OptionSelect = ({ list, state, controller, itemTitle, icon, location }) =>
   const handleSelect = (option) => {
     isMain
       ? navigate(`/?option=${option}&majorType=${majorType}`)
-      : navigate(`/search?q=${searchValue}&option=${option}&majorType=${majorType}}`);
+      : navigate(`/search?q=${searchValue}&option=${option}&majorType=${majorType}`);
   };
 
   return (
