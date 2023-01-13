@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import * as styles from '@mui/material/styles';
 import Major from '../api/Major';
 import { searchFavorite, type } from '../api/etc';
@@ -8,7 +8,7 @@ import { useRecoilState } from 'recoil';
 import { tokenState } from '../app/recoilStore';
 import { TextField } from '@mui/material';
 
-const MajorSearch = (props) => {
+const MajorSearch = ({ setModalIsOpen }) => {
   const major = Major();
   const [token, setToken] = useRecoilState(tokenState);
   const [searchParams] = useSearchParams();
@@ -22,11 +22,9 @@ const MajorSearch = (props) => {
   const majorChange = (e) => {
     setSelectedMajor(e.target.value);
   };
-
-  let searchValue = searchParams.get('q');
-  let majorType = searchParams.get('majorType');
-  let option = searchParams.get('option');
-  let defaultMajor = location.pathname === '/search' ? majorType : props.checkClass;
+  const searchValue = searchParams.get('q') || '';
+  const majorType = searchParams.get('majorType') || '전체';
+  const option = searchParams.get('option') || 'modifiedDate';
 
   useEffect(() => {
     if (localStorage.getItem('login') != null || sessionStorage.getItem('login') != null)
@@ -63,21 +61,22 @@ const MajorSearch = (props) => {
       if (location.pathname === '/search') {
         navigate(`/search?q=${searchValue}&option=${option}&majorType=${selectedMajor}`);
       } else {
-        props.setCheckClass(selectedMajor);
+        navigate(`/?option=${option}&majorType=${selectedMajor}`);
       }
     }
-    props.setModalIsOpen(false);
+    setModalIsOpen(false);
   };
 
   return (
     <ModalWrapper>
       <TitleWrapper>
         <Title>개설학과 검색</Title>
-        <Title onClick={() => props.setModalIsOpen(false)}>X</Title>
+        <Title onClick={() => setModalIsOpen(false)}>X</Title>
       </TitleWrapper>
       <TitleLine />
       <InputWrapper>
         <CssTextField
+          variant="standard"
           placeholder="개설학과를 검색하세요."
           value={searchMajor}
           onChange={(e) => setSearchMajor(e.target.value)}
@@ -95,20 +94,20 @@ const MajorSearch = (props) => {
         {all ? (
           <form onChange={majorChange}>
             {db
-              .filter((v) => {
-                return searchMajor === '' ? v : v.includes(searchMajor) ? v : null;
-              })
-              .map((v, i) => {
+              .filter((v) => (searchMajor === '' ? v : v.includes(searchMajor) ? v : null))
+              .map((v) => {
                 return (
-                  <label key={i}>
+                  <Fragment key={v}>
                     <FormCheckLeft
-                      name="majorType"
-                      id="easy"
+                      type="radio"
+                      id={v}
                       value={v}
-                      defaultChecked={defaultMajor === v}
+                      name="majorType"
+                      defaultChecked={majorType === v}
                     />
-                    <MajorSelect>
+                    <MajorSelect htmlFor={v}>
                       <SearchIcon
+                        loading="lazy"
                         src={
                           !favoriteDb.includes(v)
                             ? 'images/icon-emptystar-24.svg'
@@ -120,28 +119,27 @@ const MajorSearch = (props) => {
                       />
                       {v}
                     </MajorSelect>
-                  </label>
+                  </Fragment>
                 );
               })}
           </form>
         ) : (
           <form onChange={majorChange}>
             {favoriteDb
-              .filter((v) => {
-                return searchMajor === '' ? v : v.includes(searchMajor) ? v : null;
-              })
-              .map((v, i) => {
+              .filter((v) => (searchMajor === '' ? v : v.includes(searchMajor) ? v : null))
+              .map((v) => {
                 return (
-                  <label key={i}>
+                  <Fragment key={v}>
                     <FormCheckLeft
                       type="radio"
-                      name="majorType"
-                      id="easy"
+                      id={v}
                       value={v}
-                      defaultChecked={props.checkClass === v}
+                      name="majorType"
+                      defaultChecked={majorType === v}
                     />
-                    <MajorSelect>
+                    <MajorSelect htmlFor={v}>
                       <SearchIcon
+                        loading="lazy"
                         src={
                           !favoriteDb.includes(v)
                             ? 'images/icon-emptystar-24.svg'
@@ -153,7 +151,7 @@ const MajorSearch = (props) => {
                       />
                       {v}
                     </MajorSelect>
-                  </label>
+                  </Fragment>
                 );
               })}
           </form>
@@ -243,7 +241,7 @@ const MajorBox = styled.div`
   padding: 5px;
 `;
 
-const MajorSelect = styled.span`
+const MajorSelect = styled.label`
   display: flex;
   align-items: center;
 
@@ -281,33 +279,9 @@ const SearchIcon = styled.img`
 `;
 
 const FormCheckLeft = styled.input`
-  &:checked {
-    display: inline-block;
-    background: none;
-    padding: 0px 10px;
-    text-align: center;
-    height: 35px;
-    line-height: 33px;
-    font-weight: 500;
-    display: none;
-  }
-  &#difficult {
-    &:checked + ${MajorSelect} {
-      color: #7800ff;
-      font-weight: 600;
-    }
-  }
-  &#normal {
-    &:checked + ${MajorSelect} {
-      color: #222222;
-      font-weight: 600;
-    }
-  }
-  &#easy {
-    &:checked + ${MajorSelect} {
-      color: #336af8;
-      background-color: #eeeeee;
-    }
+  &:checked + ${MajorSelect} {
+    color: #336af8;
+    background-color: #eeeeee;
   }
   display: none;
 `;

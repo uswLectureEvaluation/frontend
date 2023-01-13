@@ -132,3 +132,71 @@ export const AppContainer = styled.div`
     margin: 0 auto;
   }
 `;
+
+export const SelectedOption = styled.span`
+  color: #336af8;
+  padding-right: 20px;
+  &#true {
+    color: #000;
+  }
+  @media screen and (max-width: 550px) {
+    &#major {
+      display: none;
+    }
+  }
+`;
+
+export const SelectedOption_M = styled.span`
+  display: none;
+  @media screen and (max-width: 550px) {
+    display: inline;
+    color: #336af8;
+    padding-right: 20px;
+    font-size: 0.9rem;
+    &#true {
+      color: #000;
+    }
+  }
+`;
+
+export const Arrows = styled.img`
+  position: absolute;
+  right: 9px;
+  bottom: 12px;
+`;
+
+export const OptionBox = styled.div`
+  z-index: 1;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px 9px;
+  min-width: 150px;
+  position: relative;
+  cursor: default;
+  &#major {
+    margin-right: 5px;
+    &::before {
+      content: '개설학과';
+    }
+  }
+  &::before {
+    content: ${({ icon }) => (icon ? `url(/images/icon_color_${icon}_36.svg)` : "'정렬'")};
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 10px;
+  }
+  ${({ select }) =>
+    !select &&
+    `  &:hover {
+    background-color: #e7ebf0;
+    border-color: #b2bac2;
+  }
+`}
+  &#true {
+    width: 180px;
+    padding: 7px 9px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+`;

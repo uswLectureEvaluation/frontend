@@ -4,9 +4,10 @@ import Lecture from '../../api/Lecture';
 import { fakeLectureList } from '../placeholderData';
 import { useSearchParams } from 'react-router-dom';
 
-const MainList = ({ checkClass }) => {
+const MainList = () => {
   const [searchParams] = useSearchParams();
   const lecture = searchParams.get('option') || 'modifiedDate';
+  const checkClass = searchParams.get('majorType') || '전체';
   // 메인 강의 리스트 API
   const lectures = Lecture();
   // 선택된 전공

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { queryClient } from '../..';
 import User from '../../api/User';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 
 const WriteExam = ({ setModalIsOpen, row, type }) => {
   const user = User();

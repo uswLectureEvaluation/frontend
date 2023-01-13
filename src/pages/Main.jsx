@@ -1,19 +1,16 @@
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import Major from '../api/Major';
 import { versionCheck } from '../app/versionCheck';
-import { MajorModalStyle } from '../components/Etc/ModalStyle';
 import MainList from '../components/List/MainList';
-import MajorSearch from '../components/MajorSearch';
 import LectureSearch from '../components/LectureSearch';
 import OptionSelect from '../components/OptionSelect';
+import { sortOptions } from '../components/placeholderData';
+import MajorSelect from '../components/MajorSelect';
 
 const Main = () => {
   const navigate = useNavigate();
-  const [checkClass, setCheckClass] = useState('전체');
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [select, onSelect] = useState(false);
   const major = Major();
 
@@ -42,19 +39,20 @@ const Main = () => {
         <LectureSearch />
         <SearchWrapper>
           <HeadSelection>
-            <FlexWrapper onClick={() => setModalIsOpen(true)}>
-              {/* <SortSelect id="major" defaultValue={checkClass}>
-                {majorList.map((index) => (
-                  <StyledOption id="semester" key={index} value={index}>
-                    <Soption id="semester">{checkClass}</Soption>
-                  </StyledOption>
-                ))}
-              </SortSelect> */}
+            <FlexWrapper>
+              <MajorSelect />
             </FlexWrapper>
-            <OptionSelect select={select} onSelect={onSelect} />
+            <OptionSelect
+              list={sortOptions}
+              state={select}
+              controller={onSelect}
+              icon={true}
+              itemTitle="name"
+              location="main"
+            />
           </HeadSelection>
           <HeadSelection>
-            <MainList checkClass={checkClass} />
+            <MainList />
           </HeadSelection>
         </SearchWrapper>
         <Button
@@ -65,19 +63,6 @@ const Main = () => {
           더 보러 가기 →
         </Button>
       </Container>
-      <Modal
-        isOpen={modalIsOpen}
-        style={MajorModalStyle}
-        // 오버레이나 esc를 누르면 핸들러 동작
-        ariaHideApp={false}
-        onRequestClose={() => setModalIsOpen(false)}
-      >
-        <MajorSearch
-          checkClass={checkClass}
-          setModalIsOpen={setModalIsOpen}
-          setCheckClass={setCheckClass}
-        />
-      </Modal>
     </div>
   );
 };

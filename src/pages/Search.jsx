@@ -1,20 +1,16 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
-import Modal from 'react-modal';
-import { MajorModalStyle } from '../components/Etc/ModalStyle';
 import LectureSearch from '../components/LectureSearch';
 import LectureList from '../components/List/LectureList';
-import MajorSearch from '../components/MajorSearch';
 import Meta from '../components/Meta';
 import OptionSelect from '../components/OptionSelect';
-
+import { sortOptions } from '../components/placeholderData';
+import MajorSelect from '../components/MajorSelect';
 // const majorList = ['전체'];
 
 const Search = () => {
   const [count, setCount] = useState(0);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [select, onSelect] = useState(false);
-
   return (
     <div role="presentation" onClick={() => select && onSelect(false)}>
       <Meta title="SUWIKI : 검색" />
@@ -22,17 +18,18 @@ const Search = () => {
         <LectureSearch />
         <SearchResultWrapper>
           <div style={{ display: 'flex' }}>
-            <FlexWrapper onClick={() => setModalIsOpen(true)}>
-              {/* <SortSelect id="major" defaultValue={majorType}>
-                {majorList.map((index) => (
-                  <StyledOption id="semester" key={index} value={index}>
-                    <Soption id="semester">{majorType}</Soption>
-                  </StyledOption>
-                ))}
-              </SortSelect> */}
+            <FlexWrapper>
+              <MajorSelect />
             </FlexWrapper>
             <FlexWrapper>
-              <OptionSelect select={select} onSelect={onSelect} />
+              <OptionSelect
+                list={sortOptions}
+                state={select}
+                controller={onSelect}
+                icon={false}
+                itemTitle="sub"
+                location="search"
+              />
             </FlexWrapper>
           </div>
 
@@ -45,15 +42,6 @@ const Search = () => {
           <LectureList setCount={setCount} />
         </HeadSelection>
       </Container>
-      <Modal
-        isOpen={modalIsOpen}
-        style={MajorModalStyle}
-        // 오버레이나 esc를 누르면 핸들러 동작
-        ariaHideApp={false}
-        onRequestClose={() => setModalIsOpen(false)}
-      >
-        <MajorSearch setModalIsOpen={setModalIsOpen} />
-      </Modal>
     </div>
   );
 };
@@ -87,8 +75,8 @@ const HeadSelection = styled.div`
 const FlexWrapper = styled.div`
   display: flex;
   margin-bottom: 1rem;
-
   &#count {
+    margin-right: 0;
     @media screen and (max-width: 960px) {
       display: none;
     }

@@ -63,3 +63,11 @@ export const fakeUserInfo = {
   writtenEvaluation: 0,
   writtenExam: 0,
 };
+
+export const sortOptions = [
+  { sub: '날짜', name: '최근 올라온 강의', option: 'modifiedDate', icon: 'fire' },
+  { sub: '꿀강', name: '꿀 강의', option: 'lectureHoneyAvg', icon: 'bee' },
+  { sub: '만족도', name: '만족도가 높은 강의', option: 'lectureSatisfactionAvg', icon: 'thumbs' },
+  { sub: '배움', name: '배울게 많은 강의', option: 'lectureLearningAvg', icon: 'book' },
+  { sub: '종합', name: 'BEST 강의', option: 'lectureTotalAvg', icon: 'best' },
+];

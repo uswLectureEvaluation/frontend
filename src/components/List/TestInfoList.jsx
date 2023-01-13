@@ -9,6 +9,7 @@ import ModalStyle from '../Etc/ModalStyle';
 import Spinner from '../Etc/Spinner';
 import WriteExam from '../Write/WriteTestInfo';
 import styled from '@emotion/styled';
+import { subStr } from '../../utils/subString';
 
 const TestInfoList = () => {
   const { ref, inView } = useInView();
@@ -63,14 +64,8 @@ export const TestInfoCard = ({ row }) => {
   const user = User();
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  let title = row.lectureName;
-  let mobileTitle = row.lectureName;
-  if (mobileTitle.length >= 8) {
-    mobileTitle = row.lectureName.substr(0, 8) + '...';
-  }
-  if (title.length >= 14) {
-    title = row.lectureName.substr(0, 14) + '...';
-  }
+  let title = subStr(row.lectureName, 14);
+  let mobileTitle = subStr(row.lectureName, 14);
 
   const deleteExamInfo = useMutation(() => user.deleteExamInfo(row.id), {
     onSuccess: () => {
