@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from '../../app/recoilStore';
 import { useMutation } from 'react-query';

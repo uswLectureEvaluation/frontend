@@ -1,18 +1,21 @@
 import styled from '@emotion/styled';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Arrows, OptionBox, SelectedOption } from '../styles/Common';
 
 const OptionSelect = ({ list, state, controller, itemTitle, icon, location }) => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const searchValue = searchParams.get('q');
   const option = searchParams.get('option') || 'modifiedDate';
+  const majorType = searchParams.get('majorType') || '전체';
   const selectedOption = list.find((row) => row.option === option);
   const OptionName = selectedOption[itemTitle];
   const isMain = location === 'main';
 
   const handleSelect = (option) => {
     isMain
-      ? navigate(`/?option=${option}&majorType=전체`)
-      : navigate(`/search?q=${searchParams.get('q')}&option=${option}&majorType=전체`);
+      ? navigate(`/?option=${option}&majorType=${majorType}`)
+      : navigate(`/search?q=${searchValue}&option=${option}&majorType=${majorType}}`);
   };
 
   return (
@@ -86,49 +89,5 @@ const Option = styled.li`
   }
   &#selected {
     background-color: #daecff;
-  }
-`;
-
-const SelectedOption = styled.span`
-  color: #336af8;
-  &#true {
-    color: #000;
-  }
-`;
-
-const Arrows = styled.img`
-  position: absolute;
-  right: 9px;
-  bottom: 12px;
-`;
-
-const OptionBox = styled.div`
-  z-index: 1;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 12px 9px;
-  min-width: 150px;
-  position: relative;
-  cursor: default;
-  &::before {
-    content: ${({ icon }) => (icon ? `url(/images/icon_color_${icon}_36.svg)` : "'정렬'")};
-    font-size: 15px;
-    font-weight: 500;
-    padding: 0;
-    margin-right: 10px;
-  }
-  ${({ select }) =>
-    !select &&
-    `  &:hover {
-    background-color: #e7ebf0;
-    border-color: #b2bac2;
-  }
-`}
-  &#true {
-    width: 180px;
-    padding: 7px 9px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
   }
 `;
