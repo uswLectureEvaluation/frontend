@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import StarRatings from 'react-star-ratings';
 import styled from '@emotion/styled';
+import { subStr } from '../../utils/subString';
 
 const Detail = (props) => {
   return (
@@ -38,11 +39,7 @@ const LectureCard = ({ row }) => {
 
   const navigate = useNavigate();
 
-  let title = row.lectureName;
-
-  if (title.length >= 14) {
-    title = row.lectureName.substr(0, 14) + '...';
-  }
+  let title = subStr(row.lectureName, 14);
 
   const onClick = (id) => {
     !isNaN(id) ? navigate(`/lectureinfo?id=${id}`) : null;

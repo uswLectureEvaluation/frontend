@@ -4,23 +4,18 @@ import Modal from 'react-modal';
 import { useState } from 'react';
 import { MajorModalStyle } from './Etc/ModalStyle';
 import MajorSearch from './MajorSearch';
+import { subStr } from '../utils/subString';
 
 const MajorSelect = () => {
   const [searchParams] = useSearchParams();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const majorType = searchParams.get('majorType') || '전체';
-  const subStr = (str) => {
-    if (str.length > 3) {
-      return str.substring(0, 3) + '...';
-    } else {
-      return str;
-    }
-  };
+
   return (
     <>
       <OptionBox id="major" onClick={() => setModalIsOpen(true)}>
         <SelectedOption id="major">{majorType}</SelectedOption>
-        <SelectedOption_M>{subStr(majorType)}</SelectedOption_M>
+        <SelectedOption_M>{subStr(majorType, 3)}</SelectedOption_M>
         <Arrows
           id="major"
           alt="arrow"

@@ -10,6 +10,7 @@ import Spinner from '../Etc/Spinner';
 import WriteEvaluation from '../Write/WriteEvaluation';
 import styled from '@emotion/styled';
 import { queryClient } from '../..';
+import { subStr } from '../../utils/subString';
 
 export const DetailModal = (props) => {
   const teamSet = props.team;
@@ -113,14 +114,9 @@ export const EvaluationCard = ({ row }) => {
   const user = User();
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  let title = row.lectureName;
-  let mobileTitle = row.lectureName;
-  if (mobileTitle.length >= 8) {
-    mobileTitle = row.lectureName.substr(0, 8) + '...';
-  }
-  if (title.length >= 14) {
-    title = title.substr(0, 14) + '...';
-  }
+  let title = subStr(row.lectureName, 14);
+  let mobileTitle = subStr(row.lectureName, 8);
+
   const deleteEvaluate = useMutation(() => user.deleteEvaluation(row.id), {
     onSuccess: () => {
       alert('삭제 완료');

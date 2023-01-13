@@ -8,7 +8,7 @@ import { useRecoilState } from 'recoil';
 import { tokenState } from '../app/recoilStore';
 import { TextField } from '@mui/material';
 
-const MajorSearch = (props) => {
+const MajorSearch = ({ setModalIsOpen }) => {
   const major = Major();
   const [token, setToken] = useRecoilState(tokenState);
   const [searchParams] = useSearchParams();
@@ -22,10 +22,9 @@ const MajorSearch = (props) => {
   const majorChange = (e) => {
     setSelectedMajor(e.target.value);
   };
-  let searchValue = searchParams.get('q');
-  let majorType = searchParams.get('majorType') || '전체';
-  let option = searchParams.get('option') || 'modifiedDate';
-  let defaultMajor = majorType;
+  const searchValue = searchParams.get('q') || '';
+  const majorType = searchParams.get('majorType') || '전체';
+  const option = searchParams.get('option') || 'modifiedDate';
 
   useEffect(() => {
     if (localStorage.getItem('login') != null || sessionStorage.getItem('login') != null)
@@ -65,14 +64,14 @@ const MajorSearch = (props) => {
         navigate(`/?option=${option}&majorType=${selectedMajor}`);
       }
     }
-    props.setModalIsOpen(false);
+    setModalIsOpen(false);
   };
 
   return (
     <ModalWrapper>
       <TitleWrapper>
         <Title>개설학과 검색</Title>
-        <Title onClick={() => props.setModalIsOpen(false)}>X</Title>
+        <Title onClick={() => setModalIsOpen(false)}>X</Title>
       </TitleWrapper>
       <TitleLine />
       <InputWrapper>
@@ -96,15 +95,15 @@ const MajorSearch = (props) => {
           <form onChange={majorChange}>
             {db
               .filter((v) => (searchMajor === '' ? v : v.includes(searchMajor) ? v : null))
-              .map((v, i) => {
+              .map((v) => {
                 return (
-                  <Fragment key={i}>
+                  <Fragment key={v}>
                     <FormCheckLeft
                       type="radio"
                       id={v}
                       value={v}
                       name="majorType"
-                      defaultChecked={defaultMajor === v}
+                      defaultChecked={majorType === v}
                     />
                     <MajorSelect htmlFor={v}>
                       <SearchIcon
@@ -127,18 +126,16 @@ const MajorSearch = (props) => {
         ) : (
           <form onChange={majorChange}>
             {favoriteDb
-              .filter((v) => {
-                return searchMajor === '' ? v : v.includes(searchMajor) ? v : null;
-              })
-              .map((v, i) => {
+              .filter((v) => (searchMajor === '' ? v : v.includes(searchMajor) ? v : null))
+              .map((v) => {
                 return (
-                  <Fragment key={i}>
+                  <Fragment key={v}>
                     <FormCheckLeft
                       type="radio"
                       id={v}
                       value={v}
                       name="majorType"
-                      defaultChecked={props.checkClass === v}
+                      defaultChecked={majorType === v}
                     />
                     <MajorSelect htmlFor={v}>
                       <SearchIcon
