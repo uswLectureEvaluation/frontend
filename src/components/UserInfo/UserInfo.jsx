@@ -29,7 +29,7 @@ const UserInfo = ({ my }) => {
       </InfoWrapper>
 
       <Wrapper id="top">
-        <Button id="mobile" onClick={() => navigate()}>
+        <Button id="mobile" onClick={handleNavigate}>
           {isLogin ? '내가 쓴 글' : '로그인하기'}
         </Button>
         <UserAccount
