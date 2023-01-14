@@ -1,9 +1,6 @@
 import styled from '@emotion/styled';
 import Modal from 'react-modal';
 import { useState } from 'react';
-import { useMutation } from 'react-query';
-import { queryClient } from 'index';
-import { User } from 'api';
 import { WriteTestInfo, Spinner } from 'components';
 import { ModalStyle } from 'components/Etc/ModalStyle';
 import { subStr } from 'utils/subString';
@@ -40,24 +37,14 @@ const TestInfoList = () => {
 };
 
 export const TestInfoCard = ({ row }) => {
-  const user = User();
-
+  const { DeleteTestInfo } = useUserQuery();
+  const { remove } = DeleteTestInfo(row.id);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   let title = subStr(row.lectureName, 14);
   let mobileTitle = subStr(row.lectureName, 14);
 
-  const deleteExamInfo = useMutation(() => user.deleteExamInfo(row.id), {
-    onSuccess: () => {
-      alert('삭제 완료');
-      queryClient.invalidateQueries({ queryKey: ['myInfo'] });
-    },
-    onError: (err) => alert(err.response.data.message),
-  });
-
   const onDelete = () => {
-    if (window.confirm('시험정보를 삭제하시겠습니까?')) {
-      deleteExamInfo.mutate();
-    }
+    window.confirm('시험정보를 삭제하시겠습니까?') && remove();
   };
 
   const examDifficultySet = row.examDifficulty;

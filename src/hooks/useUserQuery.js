@@ -54,9 +54,22 @@ const useUserQuery = () => {
     }, [inView, fetchNextPage]);
     return { data, isLoading, isFetchingNextPage, ref };
   };
+
   // 평가 삭제
   const DeleteEvaluate = (id) => {
     const { mutate: remove } = useMutation(() => user.deleteEvaluation(id), {
+      onSuccess: () => {
+        alert('삭제 완료');
+        queryClient.invalidateQueries({ queryKey: ['myInfo'] });
+      },
+      onError: (err) => alert(err.response.data.message),
+    });
+    return { remove };
+  };
+
+  // 시험정보 삭제
+  const DeleteTestInfo = (id) => {
+    const { mutate: remove } = useMutation(() => user.deleteExamInfo(id), {
       onSuccess: () => {
         alert('삭제 완료');
         queryClient.invalidateQueries({ queryKey: ['myInfo'] });
@@ -76,6 +89,6 @@ const useUserQuery = () => {
     });
     return { buy };
   };
-  return { EvaluationList, TestInfoList, DeleteEvaluate, BuyTestInfo };
+  return { EvaluationList, TestInfoList, DeleteEvaluate, DeleteTestInfo, BuyTestInfo };
 };
 export default useUserQuery;
