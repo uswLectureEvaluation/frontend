@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Auth from '../api/Auth';
-import { CssTextField } from '../components/Etc/CssTextField';
-import Meta from '../components/Meta';
-import { AuthWrapper, Container, Img } from '../styles/Common';
+import { Auth } from 'api';
+import { Meta } from 'components';
+import { CssTextField } from 'components/Etc/CssTextField';
+import { AuthWrapper, Container, Img } from 'styles/Common';
 
 const Login = () => {
   const navigate = useNavigate();

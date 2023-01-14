@@ -1,13 +1,10 @@
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Major from '../api/Major';
-import { versionCheck } from '../app/versionCheck';
-import MainList from '../components/List/MainList';
-import LectureSearch from '../components/LectureSearch';
-import OptionSelect from '../components/OptionSelect';
+import { Major } from 'api';
+import { versionCheck } from 'app/versionCheck';
+import { MainList, LectureSearch, OptionSelect, MajorSelect } from 'components';
 import { sortOptions } from '../components/placeholderData';
-import MajorSelect from '../components/Major/MajorSelect';
 
 const Main = () => {
   const navigate = useNavigate();

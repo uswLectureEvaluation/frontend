@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { useQuery } from 'react-query';
-import User from '../api/User';
-import Spinner from '../components/Etc/Spinner';
-import { AppContainer } from '../styles/Common';
+import { User } from 'api';
+import { Spinner } from 'components';
+import { AppContainer } from 'styles/Common';
 
 const HistoryTest = () => {
   const user = User();

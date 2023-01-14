@@ -1,8 +1,8 @@
+import styled from '@emotion/styled';
+import StarRatings from 'react-star-ratings';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import StarRatings from 'react-star-ratings';
-import styled from '@emotion/styled';
-import { subStr } from '../../utils/subString';
+import { subStr } from 'utils/subString';
 
 const Detail = ({ lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg }) => {
   return (

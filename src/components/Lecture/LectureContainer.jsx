@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { FlexWrap } from '../../styles/Common';
-import LectureCard from './LectureCard';
+import { FlexWrap } from 'styles/Common';
+import { LectureCard } from 'components';
 
 const LectureContainer = ({ data }) => {
   let oddList = data?.filter((row, i) => {

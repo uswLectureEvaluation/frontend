@@ -1,14 +1,11 @@
+import styled from '@emotion/styled';
+import StarRatings from 'react-star-ratings';
 import { useState, useEffect, Fragment } from 'react';
 import { useInView } from 'react-intersection-observer';
-import StarRatings from 'react-star-ratings';
 import { useInfiniteQuery } from 'react-query';
-import Spinner from '../Etc/Spinner';
-import Lecture from '../../api/Lecture';
-import User from '../../api/User';
-import { fakeEvaluationList } from '../placeholderData';
-import styled from '@emotion/styled';
-import EvaluationDetail from '../EvaluationDetail';
-// import { fakeEvaluationList } from '../placeholderData';
+import { Lecture, User } from 'api';
+import { EvaluationDetail, Spinner } from 'components';
+import { fakeEvaluationList } from 'components/placeholderData';
 
 export const FakeList = () => {
   return (

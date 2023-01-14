@@ -1,17 +1,15 @@
+import styled from '@emotion/styled';
+import Modal from 'react-modal';
+import StarRatings from 'react-star-ratings';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import Modal from 'react-modal';
 import { useInfiniteQuery, useMutation } from 'react-query';
-import StarRatings from 'react-star-ratings';
-import User from '../../api/User';
-import { isLoginStorage } from '../../utils/loginStorage.js';
-import { ModalStyle } from '../Etc/ModalStyle';
-import Spinner from '../Etc/Spinner';
-import WriteEvaluation from '../Write/WriteEvaluation';
-import styled from '@emotion/styled';
-import { queryClient } from '../..';
-import { subStr } from '../../utils/subString';
-import EvaluationDetail from '../EvaluationDetail';
+import { User } from 'api';
+import { isLoginStorage } from 'utils/loginStorage';
+import { ModalStyle } from 'components/Etc/ModalStyle';
+import { queryClient } from 'index';
+import { subStr } from 'utils/subString';
+import { EvaluationDetail, WriteEvaluation, Spinner } from 'components';
 
 const EvaluationList = () => {
   const user = User();

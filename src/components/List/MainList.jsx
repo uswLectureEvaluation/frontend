@@ -1,8 +1,8 @@
-import { useQuery } from 'react-query';
-import LectureContainer from '../Lecture/LectureContainer';
-import Lecture from '../../api/Lecture';
-import { fakeLectureList } from '../placeholderData';
 import { useSearchParams } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { Lecture } from 'api';
+import { LectureContainer } from 'components';
+import { fakeLectureList } from 'components/placeholderData';
 
 const MainList = () => {
   const [searchParams] = useSearchParams();

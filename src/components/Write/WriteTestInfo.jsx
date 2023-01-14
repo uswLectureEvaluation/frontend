@@ -1,10 +1,10 @@
+import styled from '@emotion/styled/macro';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
-import { queryClient } from '../..';
-import User from '../../api/User';
-import styled from '@emotion/styled/macro';
+import { queryClient } from 'index';
+import { User } from 'api';
 
-const WriteExam = ({ setModalIsOpen, row, type }) => {
+const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
   const user = User();
   const [semester] = useState(row.selectedSemester); //학기
   const [examType] = useState(row.examType); //중간,기말
@@ -276,7 +276,7 @@ const WriteExam = ({ setModalIsOpen, row, type }) => {
     </Wrapper>
   );
 };
-export default WriteExam;
+export default WriteTestInfo;
 
 const Wrapper = styled.div`
   display: flex;

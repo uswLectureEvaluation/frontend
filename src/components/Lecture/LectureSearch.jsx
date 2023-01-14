@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import useSearch from '../hooks/useSearch';
+import useSearch from 'hooks/useSearch';
 
 const LectureSearch = () => {
   const [input, onKeypress] = useSearch();

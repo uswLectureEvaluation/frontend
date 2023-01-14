@@ -1,24 +1,24 @@
 import styled from '@emotion/styled';
 
-const EvaluationDetail = ({ lecture }) => {
-  const teamSet = lecture.team;
-  const homeworkSet = lecture.homework;
-  const difficultySet = lecture.difficulty;
+const team = {
+  0: { color: 'cyan', text: '없음' },
+  1: { color: 'purple', text: '있음' },
+};
+const homework = {
+  0: { color: 'cyan', text: '없음' },
+  1: { color: 'black', text: '보통' },
+  2: { color: 'purple', text: '많음' },
+};
+const difficulty = {
+  0: { color: 'cyan', text: '너그러움' },
+  1: { color: 'black', text: '보통' },
+  2: { color: 'purple', text: '까다로움' },
+};
 
-  const team = {
-    0: <DataColor id="cyan">없음</DataColor>,
-    1: <DataColor id="purple">있음</DataColor>,
-  };
-  const homework = {
-    0: <DataColor id="cyan">없음</DataColor>,
-    1: <DataColor id="black">보통</DataColor>,
-    2: <DataColor id="purple">많음</DataColor>,
-  };
-  const difficulty = {
-    0: <DataColor id="cyan">너그러움</DataColor>,
-    1: <DataColor id="black">보통</DataColor>,
-    2: <DataColor id="purple">까다로움</DataColor>,
-  };
+const EvaluationDetail = ({ lecture }) => {
+  const teamSet = team[lecture.team];
+  const homeworkSet = homework[lecture.homework];
+  const difficultySet = difficulty[lecture.difficulty];
 
   return (
     <StarFlex id="top">
@@ -28,7 +28,9 @@ const EvaluationDetail = ({ lecture }) => {
           <PaddingRight />
           <Rate id="modal">{lecture.satisfaction?.toFixed(1)}</Rate>
         </StarFlex>
-        <StarFlex id="between">조모임 {team[teamSet]}</StarFlex>
+        <StarFlex id="between">
+          조모임 <DataColor id={teamSet.color}> {teamSet.text}</DataColor>
+        </StarFlex>
       </FlexContainer>
       <FlexContainer id="col">
         <StarFlex id="between">
@@ -36,7 +38,9 @@ const EvaluationDetail = ({ lecture }) => {
           <PaddingRight />
           <Rate id="modal">{lecture.honey?.toFixed(1)}</Rate>
         </StarFlex>
-        <StarFlex id="between">과제 {homework[homeworkSet]}</StarFlex>
+        <StarFlex id="between">
+          과제 <DataColor id={homeworkSet.color}> {homeworkSet.text}</DataColor>
+        </StarFlex>
       </FlexContainer>
       <FlexContainer id="col">
         <StarFlex id="between">
@@ -44,7 +48,9 @@ const EvaluationDetail = ({ lecture }) => {
           <PaddingRight />
           <Rate id="modal">{lecture.learning?.toFixed(1)}</Rate>
         </StarFlex>
-        <StarFlex id="between">학점 {difficulty[difficultySet]}</StarFlex>
+        <StarFlex id="between">
+          학점 <DataColor id={difficultySet.color}> {difficultySet.text}</DataColor>
+        </StarFlex>
       </FlexContainer>
     </StarFlex>
   );

@@ -1,9 +1,8 @@
-import Auth from '../api/Auth';
-import Meta from '../components/Meta';
-import { CssTextField } from '../components/Etc/CssTextField';
 import { useForm } from 'react-hook-form';
-import Button from '../components/Etc/Button';
-import { Container, AuthWrapper, Title, Img, Sub } from '../styles/Common';
+import { Auth } from 'api';
+import { Button, Meta } from 'components';
+import { CssTextField } from 'components/Etc/CssTextField';
+import { Container, AuthWrapper, Title, Img, Sub } from 'styles/Common';
 
 const Exit = () => {
   const auth = Auth();

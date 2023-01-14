@@ -1,10 +1,9 @@
-import Auth from '../api/Auth';
-import { CssTextField } from '../components/Etc/CssTextField';
-import Meta from '../components/Meta';
-import { Container, AuthWrapper, Title, Img, Sub, Checking } from '../styles/Common';
 import { useForm } from 'react-hook-form';
-import { validatePassword } from '../utils/validate';
-import Button from '../components/Etc/Button';
+import { Auth } from 'api';
+import { Meta, Button } from 'components';
+import { CssTextField } from 'components/Etc/CssTextField';
+import { Container, AuthWrapper, Title, Img, Sub, Checking } from 'styles/Common';
+import { validatePassword } from 'utils/validate';
 
 const ResetPassword = () => {
   const auth = Auth();

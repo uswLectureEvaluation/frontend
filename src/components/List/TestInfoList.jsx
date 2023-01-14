@@ -1,15 +1,14 @@
+import styled from '@emotion/styled';
+import Modal from 'react-modal';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import Modal from 'react-modal';
 import { useInfiniteQuery, useMutation } from 'react-query';
-import { queryClient } from '../..';
-import User from '../../api/User';
-import { isLoginStorage } from '../../utils/loginStorage';
-import { ModalStyle } from '../Etc/ModalStyle';
-import Spinner from '../Etc/Spinner';
-import WriteExam from '../Write/WriteTestInfo';
-import styled from '@emotion/styled';
-import { subStr } from '../../utils/subString';
+import { queryClient } from 'index';
+import { User } from 'api';
+import { WriteTestInfo, Spinner } from 'components';
+import { ModalStyle } from 'components/Etc/ModalStyle';
+import { isLoginStorage } from 'utils/loginStorage';
+import { subStr } from 'utils/subString';
 
 const TestInfoList = () => {
   const { ref, inView } = useInView();
@@ -175,7 +174,7 @@ export const TestInfoCard = ({ row }) => {
           ariaHideApp={false}
           onRequestClose={() => setModalIsOpen(false)}
         >
-          <WriteExam setModalIsOpen={setModalIsOpen} type="update" row={row} />
+          <WriteTestInfo setModalIsOpen={setModalIsOpen} type="update" row={row} />
         </Modal>
       </LectureWrapper>
     </div>
