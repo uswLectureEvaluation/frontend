@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import styled from '@emotion/styled/macro';
+import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { lectureState } from '../../app/recoilStore';
 import { useMutation } from 'react-query';
-import { queryClient } from '../..';
-import User from '../../api/User';
-import useSlider from '../Etc/RangeInput';
+import { queryClient } from 'index';
+import { User } from 'api';
+import { lectureState } from 'app/recoilStore';
+import useSlider from 'components/Etc/RangeInput';
 
 const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
   const user = User();

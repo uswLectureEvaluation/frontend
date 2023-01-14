@@ -1,19 +1,21 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
 import Modal from 'react-modal';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { lectureState } from '../app/recoilStore';
-import ModalStyle from '../components/Etc/ModalStyle';
-import IsTestInfo from '../components/Lecture/IsTestInfo';
-import LectureDetail from '../components/Lecture/LectureDetail';
-import SearchEvaluationList from '../components/List/SearchEvaluationList';
-import Meta from '../components/Meta';
-import WriteEvaluation from '../components/Write/WriteEvaluation';
-import WriteExam from '../components/Write/WriteTestInfo';
-import { AppContainer } from '../styles/Common';
-import { isLoginStorage } from '../utils/loginStorage';
-import LectureSearch from '../components/LectureSearch';
+import { lectureState } from 'app/recoilStore';
+import {
+  IsTestInfo,
+  LectureDetail,
+  SearchEvaluationList,
+  Meta,
+  WriteEvaluation,
+  WriteTestInfo,
+  LectureSearch,
+} from 'components';
+import { ModalStyle } from 'components/Etc/ModalStyle';
+import { AppContainer } from 'styles/Common';
+import { isLoginStorage } from 'utils/loginStorage';
 
 const menu = [
   { name: '강의평가', option: '강의평가' },
@@ -83,7 +85,7 @@ const LectureInfo = () => {
         {menuCheck === 0 ? (
           <WriteEvaluation row={lectureInfo} type="write" setModalIsOpen={setModalIsOpen} />
         ) : (
-          <WriteExam row={lectureInfo} type="write" setModalIsOpen={setModalIsOpen} />
+          <WriteTestInfo row={lectureInfo} type="write" setModalIsOpen={setModalIsOpen} />
         )}
       </Modal>
     </AppContainer>

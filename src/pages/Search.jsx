@@ -1,11 +1,8 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
-import LectureSearch from '../components/LectureSearch';
-import LectureList from '../components/List/LectureList';
-import Meta from '../components/Meta';
-import OptionSelect from '../components/OptionSelect';
-import { sortOptions } from '../components/placeholderData';
-import MajorSelect from '../components/MajorSelect';
+import { LectureSearch, LectureList, Meta, OptionSelect, MajorSelect } from 'components';
+import { sortOptions } from 'components/placeholderData';
+
 // const majorList = ['전체'];
 
 const Search = () => {

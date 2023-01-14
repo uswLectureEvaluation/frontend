@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Auth from '../api/Auth';
-import { CssTextField } from '../components/Etc/CssTextField';
-import { Container, AuthWrapper, Img, Button, Checking } from '../styles/Common';
-import Meta from '../components/Meta';
 import styled from '@emotion/styled';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { Auth } from 'api';
+import { Meta } from 'components';
+import { CssTextField } from 'components/Etc/CssTextField';
+import { Container, AuthWrapper, Img, Button, Checking } from 'styles/Common';
 import {
   validateEmail,
   validateId,
   validatePassword,
   validatePasswordConfirm,
-} from '../utils/validate';
+} from 'utils/validate';
 
 const SignUp = () => {
   const auth = Auth();

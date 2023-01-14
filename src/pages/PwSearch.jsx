@@ -1,9 +1,8 @@
-import Auth from '../api/Auth';
-import { CssTextField } from '../components/Etc/CssTextField';
-import Meta from '../components/Meta';
 import { useForm } from 'react-hook-form';
-import Button from '../components/Etc/Button';
-import { Container, AuthWrapper, Title, Img, Sub } from '../styles/Common';
+import { Auth } from 'api';
+import { Meta, Button } from 'components';
+import { CssTextField } from 'components/Etc/CssTextField';
+import { Container, AuthWrapper, Title, Img, Sub } from 'styles/Common';
 
 const PwSearch = () => {
   const auth = Auth();

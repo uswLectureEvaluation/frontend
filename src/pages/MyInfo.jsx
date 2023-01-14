@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query';
-import User from '../api/User';
-import UserInfo from '../components/UserInfo/UserInfo';
-import { fakeUserInfo } from '../components/placeholderData';
-import { isLoginStorage } from '../utils/loginStorage.js';
+import { User } from 'api';
+import { UserInfo } from 'components';
+import { fakeUserInfo } from 'components/placeholderData';
+import { isLoginStorage } from 'utils/loginStorage';
 
 const MyInfo = () => {
   const user = User();

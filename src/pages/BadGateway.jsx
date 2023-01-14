@@ -1,4 +1,4 @@
-import ErrorFrame from '../components/ErrorFrame';
+import { ErrorFrame } from 'components';
 
 const BadGateway = () => {
   return (

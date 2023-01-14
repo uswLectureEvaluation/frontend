@@ -1,11 +1,11 @@
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import Lecture from '../../api/Lecture';
-import { lectureState } from '../../app/recoilStore';
-import { isLoginStorage } from '../../utils/loginStorage';
-import LectureInfoBox from './LectureInfoBox';
-import { fakeLectureInfo } from '../placeholderData';
+import { Lecture } from 'api';
+import { LectureInfoBox } from 'components';
+import { fakeLectureInfo } from 'components/placeholderData';
+import { lectureState } from 'app/recoilStore';
+import { isLoginStorage } from 'utils/loginStorage';
 
 const LectureDetail = () => {
   const lectures = Lecture();

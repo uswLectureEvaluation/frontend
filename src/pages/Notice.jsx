@@ -1,11 +1,10 @@
+import styled from '@emotion/styled';
 import { Fragment, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useInfiniteQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import Notices from '../api/Notice';
-import Meta from '../components/Meta';
-import Spinner from '../components/Etc/Spinner';
-import styled from '@emotion/styled';
+import { Notice as Notices } from 'api';
+import { Meta, Spinner } from 'components';
 
 export const NoticeItem = ({ notice }) => {
   const navigate = useNavigate();

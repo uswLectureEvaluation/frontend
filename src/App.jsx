@@ -1,6 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { Footer, Nav } from './components';
-import ScrollButton from './components/Etc/ScrollButton';
+import { Footer, Nav, ScrollButton } from 'components';
 import {
   BadGateway,
   BanReason,
@@ -20,9 +19,9 @@ import {
   ResetPassword,
   Search,
   SignUp,
-} from './pages';
-import RouteChangeTracker from './RouteChangeTracker.js';
-import { global } from './styles/GlobalStyle';
+} from 'pages';
+import RouteChangeTracker from 'RouteChangeTracker';
+import { global } from 'styles/GlobalStyle';
 
 const App = () => {
   return (

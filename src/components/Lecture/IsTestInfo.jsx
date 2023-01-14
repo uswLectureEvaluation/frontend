@@ -1,15 +1,12 @@
-import { useEffect } from 'react';
 import styled from '@emotion/styled';
-import Button from '../Etc/Button';
-import SearchTestInfoList from '../List/SearchTestInfoList';
+import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useInfiniteQuery, useMutation } from 'react-query';
-import Spinner from '../Etc/Spinner';
-import { queryClient } from '../..';
-import Lecture from '../../api/Lecture';
-import User from '../../api/User';
-import { isLoginStorage } from '../../utils/loginStorage';
-import { fakeEvaluationList } from '../placeholderData';
+import { Lecture, User } from 'api';
+import { Button, Spinner, SearchTestInfoList } from 'components';
+import { fakeEvaluationList } from 'components/placeholderData';
+import { isLoginStorage } from 'utils/loginStorage';
+import { queryClient } from 'index';
 
 export const NotUsePoint = ({ selectId }) => {
   const user = User();

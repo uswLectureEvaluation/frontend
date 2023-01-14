@@ -28,13 +28,11 @@ const ScrollButton = () => {
   });
 
   return (
-    <>
-      {btnStatus ? (
-        <TopButton onClick={handleScroll}>
-          <img src="/images/icon_up_arrow_solid_24.svg" alt="upArrow" width="22" height="22" />
-        </TopButton>
-      ) : null}
-    </>
+    btnStatus && (
+      <TopButton onClick={handleScroll}>
+        <img src="/images/icon_up_arrow_solid_24.svg" alt="upArrow" width="22" height="22" />
+      </TopButton>
+    )
   );
 };
 

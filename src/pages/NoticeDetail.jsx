@@ -1,12 +1,11 @@
+import styled from '@emotion/styled';
 import { useQuery } from 'react-query';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import Notices from '../api/Notice';
-import Meta from '../components/Meta';
-import Spinner from '../components/Etc/Spinner';
-import styled from '@emotion/styled';
+import { Notice } from 'api';
+import { Spinner, Meta } from 'components';
 
 export const NoticeBox = () => {
-  const notice = Notices();
+  const notice = Notice();
   const [searchParams] = useSearchParams();
   const id = searchParams.get('id');
   const { data: detail, isLoading } = useQuery(['notice_detail', id], () => notice.detail(id), {

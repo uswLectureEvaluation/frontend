@@ -1,10 +1,10 @@
-import { useSearchParams } from 'react-router-dom';
-import { Arrows, OptionBox, SelectedOption, SelectedOption_M } from '../styles/Common';
 import Modal from 'react-modal';
 import { useState } from 'react';
-import { MajorModalStyle } from './Etc/ModalStyle';
-import MajorSearch from './MajorSearch';
-import { subStr } from '../utils/subString';
+import { useSearchParams } from 'react-router-dom';
+import { MajorSearch } from 'components';
+import { MajorModalStyle } from 'components/Etc/ModalStyle';
+import { subStr } from 'utils/subString';
+import { Arrows, OptionBox, SelectedOption, SelectedOption_M } from 'styles/Common';
 
 const MajorSelect = () => {
   const [searchParams] = useSearchParams();

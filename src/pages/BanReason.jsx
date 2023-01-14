@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
-import User from '../api/User';
 import { useQuery } from 'react-query';
-import Spinner from '../components/Etc/Spinner';
-import BanFrame from '../components/BanFrame';
-import { AppContainer } from '../styles/Common';
+import { User } from 'api';
+import { Spinner, BanFrame } from 'components';
+import { AppContainer } from 'styles/Common';
 
 const BanReason = () => {
   const user = User();

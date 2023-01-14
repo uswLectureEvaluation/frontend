@@ -1,8 +1,8 @@
+import styled from '@emotion/styled';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { queryClient } from '..';
-import Auth from '../api/Auth';
-import styled from '@emotion/styled';
+import { queryClient } from 'index';
+import { Auth } from 'api';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Nav = () => {
     sessionStorage.removeItem('AccessToken');
     sessionStorage.removeItem('login');
     auth.logout().then(async (data) => {
-      if (data.Success === true) {
+      if (data.Success) {
         navigate('/');
         setTimeout(() => {
           queryClient.invalidateQueries({ queryKey: ['myInfo'] });

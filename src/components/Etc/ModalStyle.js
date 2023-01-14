@@ -53,5 +53,3 @@ export const MajorModalStyle = {
     zIndex: 1100,
   },
 };
-
-export default ModalStyle;

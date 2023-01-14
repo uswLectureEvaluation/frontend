@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Arrows, OptionBox, SelectedOption } from '../styles/Common';
+import { Arrows, OptionBox, SelectedOption } from 'styles/Common';
 
 const OptionSelect = ({ list, state, controller, itemTitle, icon, location }) => {
   const navigate = useNavigate();
