@@ -7,6 +7,7 @@ import { TextField } from '@mui/material';
 import { tokenState } from 'app/recoilStore';
 import { Major } from 'api';
 import { searchFavorite, type } from 'api/etc';
+import { isLoginStorage } from 'utils/loginStorage';
 
 const MajorSearch = ({ setModalIsOpen }) => {
   const major = Major();
@@ -27,23 +28,23 @@ const MajorSearch = ({ setModalIsOpen }) => {
   const option = searchParams.get('option') || 'modifiedDate';
 
   useEffect(() => {
-    if (localStorage.getItem('login') != null || sessionStorage.getItem('login') != null)
-      searchFavorite(token, setToken).then((data) => setFavoriteDb(data.data));
+    if (!isLoginStorage()) searchFavorite(token, setToken).then((data) => setFavoriteDb(data.data));
   }, [token, setToken]);
 
   const onFavoriteMajor = (e) => {
-    if (localStorage.getItem('login') != null || sessionStorage.getItem('login') != null) {
-      setSelectedMajor(e.target.alt);
-      if (!favoriteDb.includes(e.target.alt)) {
-        major.favoriting(e.target.alt);
-        setFavoriteDb(favoriteDb.concat([e.target.alt]));
-      } else {
-        major.unfavoriting(e.target.alt);
-        setFavoriteDb(favoriteDb.filter((v) => v !== e.target.alt));
-      }
-    } else {
+    if (isLoginStorage()) {
       alert('로그인 후 이용해주세요');
       navigate('/login');
+      return;
+    }
+
+    setSelectedMajor(e.target.alt);
+    major.favoriting(e.target.alt);
+
+    if (!favoriteDb.includes(e.target.alt)) {
+      setFavoriteDb(favoriteDb.concat([e.target.alt]));
+    } else {
+      setFavoriteDb(favoriteDb.filter((v) => v !== e.target.alt));
     }
   };
 
@@ -57,13 +58,13 @@ const MajorSearch = ({ setModalIsOpen }) => {
   }, [token, setToken]);
 
   const clickSubmit = () => {
-    if (selectedMajor !== '') {
-      if (location.pathname === '/search') {
-        navigate(`/search?q=${searchValue}&option=${option}&majorType=${selectedMajor}`);
-      } else {
-        navigate(`/?option=${option}&majorType=${selectedMajor}`);
-      }
+    if (selectedMajor === '') return;
+    if (location.pathname === '/search') {
+      navigate(`/search?q=${searchValue}&option=${option}&majorType=${selectedMajor}`);
+    } else {
+      navigate(`/?option=${option}&majorType=${selectedMajor}`);
     }
+
     setModalIsOpen(false);
   };
 
@@ -91,71 +92,37 @@ const MajorSearch = ({ setModalIsOpen }) => {
         </TabMenu>
       </TabWrapper>
       <MajorBox>
-        {all ? (
-          <form onChange={majorChange}>
-            {db
-              .filter((v) => (searchMajor === '' ? v : v.includes(searchMajor) ? v : null))
-              .map((v) => {
-                return (
-                  <Fragment key={v}>
-                    <FormCheckLeft
-                      type="radio"
-                      id={v}
-                      value={v}
-                      name="majorType"
-                      defaultChecked={majorType === v}
+        <form onChange={majorChange}>
+          {(all ? db : favoriteDb)
+            .filter((v) => (searchMajor === '' ? v : v.includes(searchMajor) ? v : null))
+            .map((v) => {
+              return (
+                <Fragment key={v}>
+                  <FormCheckLeft
+                    type="radio"
+                    id={v}
+                    value={v}
+                    name="majorType"
+                    defaultChecked={majorType === v}
+                  />
+                  <MajorSelect htmlFor={v}>
+                    <SearchIcon
+                      loading="lazy"
+                      src={
+                        !favoriteDb.includes(v)
+                          ? 'images/icon-emptystar-24.svg'
+                          : 'images/icon_fullstar_24.svg'
+                      }
+                      width={20}
+                      alt={v}
+                      onClick={onFavoriteMajor}
                     />
-                    <MajorSelect htmlFor={v}>
-                      <SearchIcon
-                        loading="lazy"
-                        src={
-                          !favoriteDb.includes(v)
-                            ? 'images/icon-emptystar-24.svg'
-                            : 'images/icon_fullstar_24.svg'
-                        }
-                        width={20}
-                        alt={v}
-                        onClick={onFavoriteMajor}
-                      />
-                      {v}
-                    </MajorSelect>
-                  </Fragment>
-                );
-              })}
-          </form>
-        ) : (
-          <form onChange={majorChange}>
-            {favoriteDb
-              .filter((v) => (searchMajor === '' ? v : v.includes(searchMajor) ? v : null))
-              .map((v) => {
-                return (
-                  <Fragment key={v}>
-                    <FormCheckLeft
-                      type="radio"
-                      id={v}
-                      value={v}
-                      name="majorType"
-                      defaultChecked={majorType === v}
-                    />
-                    <MajorSelect htmlFor={v}>
-                      <SearchIcon
-                        loading="lazy"
-                        src={
-                          !favoriteDb.includes(v)
-                            ? 'images/icon-emptystar-24.svg'
-                            : 'images/icon_fullstar_24.svg'
-                        }
-                        width={20}
-                        alt={v}
-                        onClick={onFavoriteMajor}
-                      />
-                      {v}
-                    </MajorSelect>
-                  </Fragment>
-                );
-              })}
-          </form>
-        )}
+                    {v}
+                  </MajorSelect>
+                </Fragment>
+              );
+            })}
+        </form>
       </MajorBox>
       <SubmitButton onClick={clickSubmit}>확인</SubmitButton>
     </ModalWrapper>
