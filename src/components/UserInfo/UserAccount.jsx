@@ -15,13 +15,13 @@ const UserAccount = ({ loginId, email, isLogin }) => {
           <FlexContainer>{email}</FlexContainer>
         </FlexContainer>
       </div>
-      {!isLogin ? (
+      {!isLogin && (
         <FlexContainer id="needLogin">
           내가 쓴 글과 포인트를
           <br />
           확인하려면 로그인하세요
         </FlexContainer>
-      ) : null}
+      )}
     </Content>
   );
 };
