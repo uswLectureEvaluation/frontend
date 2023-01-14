@@ -1,42 +1,21 @@
 import styled from '@emotion/styled';
 import Modal from 'react-modal';
 import StarRatings from 'react-star-ratings';
-import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { useInfiniteQuery, useMutation } from 'react-query';
+import { useState } from 'react';
+import { useMutation } from 'react-query';
 import { User } from 'api';
-import { isLoginStorage } from 'utils/loginStorage';
 import { ModalStyle } from 'components/Etc/ModalStyle';
 import { queryClient } from 'index';
 import { subStr } from 'utils/subString';
 import { EvaluationDetail, WriteEvaluation, Spinner } from 'components';
+import useUserQuery from 'hooks/useUserQuery';
 
 const EvaluationList = () => {
-  const user = User();
-
-  const { ref, inView } = useInView();
-  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-    ['myInfo', 'myEvaluation'],
-    ({ pageParam = 1 }) => user.evaluateList(pageParam),
-    {
-      getNextPageParam: (lastPage) => {
-        if (!lastPage.isLast) return lastPage.nextPage;
-        return undefined;
-      },
-      enabled: isLoginStorage(),
-      cacheTime: 1000 * 60 * 30,
-      staleTime: 1000 * 60 * 30,
-    }
-  );
-  let isExistData = data?.pages[0].data.data.length === 0;
-
-  useEffect(() => {
-    if (inView) {
-      fetchNextPage();
-    }
-  }, [inView, fetchNextPage]);
-
+  const { EvaluationList } = useUserQuery();
+  const { data, isLoading, isFetchingNextPage, ref } = EvaluationList();
   if (isLoading) return <Spinner id="myInfo" />;
+  const isExistData = data?.pages[0].data.data.length === 0;
+
   return (
     <>
       {isExistData ? (
