@@ -75,7 +75,32 @@ const useLectureQuery = () => {
     }, [inView, fetchNextPage]);
     return { data, isFetchingNextPage, isLoading, ref };
   };
-  return { Main, Search, Evaluation };
+
+  // 시험정보 쿼리(key: 강의id)
+  const TestInfo = (id, setWritten) => {
+    const { ref, inView } = useInView();
+    const { data, isFetchingNextPage, isLoading, fetchNextPage } = useInfiniteQuery(
+      ['lecture', 'examList', id],
+      ({ pageParam = 1 }) => lecture.examInfo(id, pageParam),
+      {
+        getNextPageParam: (lastPage) => {
+          if (!lastPage.isLast) return lastPage.nextPage;
+          return undefined;
+        },
+        onSuccess: (data) => setWritten(data.pages[0].data.written),
+        cacheTime: 0,
+        staleTime: 0,
+        enabled: isLoginStorage(),
+      }
+    );
+    useEffect(() => {
+      if (inView && isLoginStorage()) {
+        fetchNextPage();
+      }
+    }, [inView, fetchNextPage]);
+    return { data, isFetchingNextPage, isLoading, ref };
+  };
+  return { Main, Search, Evaluation, TestInfo };
 };
 
 export default useLectureQuery;
