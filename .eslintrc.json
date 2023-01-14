@@ -4,6 +4,11 @@
     "browser": true,
     "es2021": true
   },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -26,6 +31,7 @@
     "import/no-unresolved": "off",
     "react/prop-types": "off",
     "import/no-named-as-default": "off",
-    "jsx-a11y/label-has-associated-control": "off"
+    "jsx-a11y/label-has-associated-control": "off",
+    "eqeqeq": "error"
   }
 }
