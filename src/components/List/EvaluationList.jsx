@@ -2,10 +2,7 @@ import styled from '@emotion/styled';
 import Modal from 'react-modal';
 import StarRatings from 'react-star-ratings';
 import { useState } from 'react';
-import { useMutation } from 'react-query';
-import { User } from 'api';
 import { ModalStyle } from 'components/Etc/ModalStyle';
-import { queryClient } from 'index';
 import { subStr } from 'utils/subString';
 import { EvaluationDetail, WriteEvaluation, Spinner } from 'components';
 import useUserQuery from 'hooks/useUserQuery';
@@ -40,23 +37,16 @@ const EvaluationList = () => {
 };
 
 export const EvaluationCard = ({ row }) => {
-  const user = User();
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  let title = subStr(row.lectureName, 14);
-  let mobileTitle = subStr(row.lectureName, 8);
-
-  const deleteEvaluate = useMutation(() => user.deleteEvaluation(row.id), {
-    onSuccess: () => {
-      alert('삭제 완료');
-      queryClient.invalidateQueries({ queryKey: ['myInfo'] });
-    },
-    onError: (err) => alert(err.response.data.message),
-  });
+  const { DeleteEvaluate } = useUserQuery();
+  const { deleteEvaluate } = DeleteEvaluate(row.id);
+  const title = subStr(row.lectureName, 14);
+  const mobileTitle = subStr(row.lectureName, 8);
 
   const onDelete = () => {
     if (window.confirm('강의평가를 삭제하시겠습니까?')) {
-      deleteEvaluate.mutate();
+      deleteEvaluate();
     }
   };
   return (
