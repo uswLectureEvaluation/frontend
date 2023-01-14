@@ -4,8 +4,8 @@ import useLectureQuery from 'hooks/useLectureQuery';
 const MainList = () => {
   const { Main } = useLectureQuery();
   const { getMain, mainLoading } = Main();
-  if (mainLoading) return <LectureContainer data={fakeLectureList} />;
 
+  if (mainLoading) return <LectureContainer data={fakeLectureList} />;
   return <LectureContainer data={getMain?.data} />;
 };
 

@@ -40,15 +40,14 @@ export const EvaluationCard = ({ row }) => {
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const { DeleteEvaluate } = useUserQuery();
-  const { deleteEvaluate } = DeleteEvaluate(row.id);
+  const { remove } = DeleteEvaluate(row.id);
   const title = subStr(row.lectureName, 14);
   const mobileTitle = subStr(row.lectureName, 8);
 
   const onDelete = () => {
-    if (window.confirm('강의평가를 삭제하시겠습니까?')) {
-      deleteEvaluate();
-    }
+    window.confirm('강의평가를 삭제하시겠습니까?') && remove();
   };
+
   return (
     <div style={{ marginTop: '15px' }}>
       <LectureWrapper>

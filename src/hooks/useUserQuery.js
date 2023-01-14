@@ -32,14 +32,14 @@ const useUserQuery = () => {
   };
   // 평가 삭제
   const DeleteEvaluate = (id) => {
-    const { mutate: deleteEvaluate } = useMutation(() => user.deleteEvaluation(id), {
+    const { mutate: remove } = useMutation(() => user.deleteEvaluation(id), {
       onSuccess: () => {
         alert('삭제 완료');
         queryClient.invalidateQueries({ queryKey: ['myInfo'] });
       },
       onError: (err) => alert(err.response.data.message),
     });
-    return { deleteEvaluate };
+    return { remove };
   };
   return { EvaluationList, DeleteEvaluate };
 };

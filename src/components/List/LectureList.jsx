@@ -12,8 +12,8 @@ const LectureList = ({ setCount }) => {
   useEffect(() => {
     setCount(count);
   }, [count, setCount]);
-  if (searchLoading) return <LectureContainer data={fakeLectureList} />;
 
+  if (searchLoading) return <LectureContainer data={fakeLectureList} />;
   return count ? (
     <>
       {getSearch.pages.map((page) => (
