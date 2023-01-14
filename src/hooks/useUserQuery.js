@@ -41,6 +41,17 @@ const useUserQuery = () => {
     });
     return { remove };
   };
-  return { EvaluationList, DeleteEvaluate };
+
+  // 시험정보 구매
+  const BuyTestInfo = (id) => {
+    const { mutate: buy } = useMutation(() => user.buyTestInfo(id), {
+      onSuccess: () => {
+        alert('구매 완료');
+        queryClient.invalidateQueries(['lecture', 'examList', id]);
+      },
+    });
+    return { buy };
+  };
+  return { EvaluationList, DeleteEvaluate, BuyTestInfo };
 };
 export default useUserQuery;

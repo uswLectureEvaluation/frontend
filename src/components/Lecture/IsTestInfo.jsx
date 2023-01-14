@@ -1,22 +1,15 @@
 import styled from '@emotion/styled';
-import { useMutation } from 'react-query';
-import { User } from 'api';
 import { Button, Spinner, SearchTestInfoList } from 'components';
 import { fakeEvaluationList } from 'components/placeholderData';
 import { isLoginStorage } from 'utils/loginStorage';
-import { queryClient } from 'index';
 import useLectureQuery from 'hooks/useLectureQuery';
+import useUserQuery from 'hooks/useUserQuery';
 
 export const NotUsePoint = ({ selectId }) => {
-  const user = User();
-  const purchaseTestInfo = useMutation(() => user.buyTestInfo(selectId), {
-    onSuccess: () => {
-      alert('구매 완료');
-      queryClient.invalidateQueries(['lecture', 'examList', selectId]);
-    },
-  });
+  const { BuyTestInfo } = useUserQuery();
+  const { buy } = BuyTestInfo(selectId);
   const unlock = () => {
-    if (window.confirm('시험정보를 열람하시겠습니까?')) purchaseTestInfo.mutate();
+    window.confirm('시험정보를 열람하시겠습니까?') && buy();
   };
 
   return (
