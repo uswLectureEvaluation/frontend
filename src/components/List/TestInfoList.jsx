@@ -1,38 +1,18 @@
 import styled from '@emotion/styled';
 import Modal from 'react-modal';
-import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { useInfiniteQuery, useMutation } from 'react-query';
+import { useState } from 'react';
+import { useMutation } from 'react-query';
 import { queryClient } from 'index';
 import { User } from 'api';
 import { WriteTestInfo, Spinner } from 'components';
 import { ModalStyle } from 'components/Etc/ModalStyle';
-import { isLoginStorage } from 'utils/loginStorage';
 import { subStr } from 'utils/subString';
+import useUserQuery from 'hooks/useUserQuery';
 
 const TestInfoList = () => {
-  const { ref, inView } = useInView();
-  const user = User();
-  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-    ['myInfo', 'myExamInfo'],
-    ({ pageParam = 1 }) => user.examInfoList(pageParam),
-    {
-      getNextPageParam: (lastPage) => {
-        if (!lastPage.isLast) return lastPage.nextPage;
-        return undefined;
-      },
-      enabled: isLoginStorage(),
-      cacheTime: 1000 * 60 * 30,
-      staleTime: 1000 * 60 * 30,
-    }
-  );
-  let isExistData = data?.pages[0].data.data.length === 0;
-
-  useEffect(() => {
-    if (inView) {
-      fetchNextPage();
-    }
-  }, [inView, fetchNextPage]);
+  const { TestInfoList } = useUserQuery();
+  const { data, isLoading, isFetchingNextPage, ref } = TestInfoList();
+  const isExistData = data?.pages[0].data.data.length === 0;
 
   if (isLoading) return <Spinner id="myInfo" />;
 

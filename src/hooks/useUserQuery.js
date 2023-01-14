@@ -30,6 +30,30 @@ const useUserQuery = () => {
     }, [inView, fetchNextPage]);
     return { data, isLoading, isFetchingNextPage, ref };
   };
+
+  // 내가 작성한 시험정보
+  const TestInfoList = () => {
+    const { ref, inView } = useInView();
+    const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+      ['myInfo', 'myExamInfo'],
+      ({ pageParam = 1 }) => user.examInfoList(pageParam),
+      {
+        getNextPageParam: (lastPage) => {
+          if (!lastPage.isLast) return lastPage.nextPage;
+          return undefined;
+        },
+        enabled: isLoginStorage(),
+        cacheTime: 1000 * 60 * 30,
+        staleTime: 1000 * 60 * 30,
+      }
+    );
+    useEffect(() => {
+      if (inView) {
+        fetchNextPage();
+      }
+    }, [inView, fetchNextPage]);
+    return { data, isLoading, isFetchingNextPage, ref };
+  };
   // 평가 삭제
   const DeleteEvaluate = (id) => {
     const { mutate: remove } = useMutation(() => user.deleteEvaluation(id), {
@@ -52,6 +76,6 @@ const useUserQuery = () => {
     });
     return { buy };
   };
-  return { EvaluationList, DeleteEvaluate, BuyTestInfo };
+  return { EvaluationList, TestInfoList, DeleteEvaluate, BuyTestInfo };
 };
 export default useUserQuery;
