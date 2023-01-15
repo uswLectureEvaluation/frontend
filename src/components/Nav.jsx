@@ -75,12 +75,12 @@ const Nav = () => {
 
       <NavMenu onClick={handleClick} click={click}>
         <NavLinks onClick={() => navigate('notice')}>공지사항</NavLinks>
-        {isLoginStorage() ? (
+        {!isLoginStorage() ? (
           <NavLinks onClick={() => navigate('login')}>로그인</NavLinks>
         ) : (
           <NavLinks onClick={logoutClick}>로그아웃</NavLinks>
         )}
-        {isLoginStorage() ? (
+        {!isLoginStorage() ? (
           <NavLinks id="signup" onClick={() => navigate('signup')}>
             회원가입
           </NavLinks>
