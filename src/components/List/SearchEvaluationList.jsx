@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
 import StarRatings from 'react-star-ratings';
-import { useState, useEffect, Fragment } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { useInfiniteQuery } from 'react-query';
-import { Lecture, User } from 'api';
+import { useState, Fragment } from 'react';
+import { User } from 'api';
 import { EvaluationDetail, Spinner } from 'components';
 import { fakeEvaluationList } from 'components/placeholderData';
+import useLectureQuery from 'hooks/useLectureQuery';
 
 export const FakeList = () => {
   return (
@@ -20,29 +19,10 @@ export const FakeList = () => {
 };
 
 const SearchEvaluationList = ({ selectId, setWritten, isLogin }) => {
-  const lectures = Lecture();
-  const { ref, inView } = useInView();
-  const { data, isFetchingNextPage, isLoading, fetchNextPage } = useInfiniteQuery(
-    ['lecture', 'evaluationList', selectId],
-    ({ pageParam = 1 }) => lectures.evaluation(selectId, pageParam),
-    {
-      getNextPageParam: (lastPage) => {
-        if (!lastPage.isLast) return lastPage.nextPage;
-        return undefined;
-      },
-      onSuccess: (data) => setWritten(data.pages[0].data.written),
-      cacheTime: 0,
-      staleTime: 0,
-      enabled: isLogin,
-    }
-  );
-  useEffect(() => {
-    if (inView && isLogin) {
-      fetchNextPage();
-    }
-  }, [inView, fetchNextPage, isLogin]);
-
+  const { Evaluation } = useLectureQuery();
+  const { data, isLoading, isFetchingNextPage, ref } = Evaluation(selectId, setWritten);
   if (isLoading) return <Spinner id="nextPage" />;
+
   const pages = data?.pages;
   const count = data?.pages[0].data.data.length;
 

@@ -1,42 +1,18 @@
 import styled from '@emotion/styled';
 import Modal from 'react-modal';
 import StarRatings from 'react-star-ratings';
-import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { useInfiniteQuery, useMutation } from 'react-query';
-import { User } from 'api';
-import { isLoginStorage } from 'utils/loginStorage';
+import { useState } from 'react';
 import { ModalStyle } from 'components/Etc/ModalStyle';
-import { queryClient } from 'index';
 import { subStr } from 'utils/subString';
 import { EvaluationDetail, WriteEvaluation, Spinner } from 'components';
+import useUserQuery from 'hooks/useUserQuery';
 
 const EvaluationList = () => {
-  const user = User();
-
-  const { ref, inView } = useInView();
-  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-    ['myInfo', 'myEvaluation'],
-    ({ pageParam = 1 }) => user.evaluateList(pageParam),
-    {
-      getNextPageParam: (lastPage) => {
-        if (!lastPage.isLast) return lastPage.nextPage;
-        return undefined;
-      },
-      enabled: isLoginStorage(),
-      cacheTime: 1000 * 60 * 30,
-      staleTime: 1000 * 60 * 30,
-    }
-  );
-  let isExistData = data?.pages[0].data.data.length === 0;
-
-  useEffect(() => {
-    if (inView) {
-      fetchNextPage();
-    }
-  }, [inView, fetchNextPage]);
-
+  const { EvaluationList } = useUserQuery();
+  const { data, isLoading, isFetchingNextPage, ref } = EvaluationList();
   if (isLoading) return <Spinner id="myInfo" />;
+  const isExistData = data?.pages[0].data.data.length === 0;
+
   return (
     <>
       {isExistData ? (
@@ -61,25 +37,17 @@ const EvaluationList = () => {
 };
 
 export const EvaluationCard = ({ row }) => {
-  const user = User();
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  let title = subStr(row.lectureName, 14);
-  let mobileTitle = subStr(row.lectureName, 8);
-
-  const deleteEvaluate = useMutation(() => user.deleteEvaluation(row.id), {
-    onSuccess: () => {
-      alert('삭제 완료');
-      queryClient.invalidateQueries({ queryKey: ['myInfo'] });
-    },
-    onError: (err) => alert(err.response.data.message),
-  });
+  const { DeleteEvaluate } = useUserQuery();
+  const { remove } = DeleteEvaluate(row.id);
+  const title = subStr(row.lectureName, 14);
+  const mobileTitle = subStr(row.lectureName, 8);
 
   const onDelete = () => {
-    if (window.confirm('강의평가를 삭제하시겠습니까?')) {
-      deleteEvaluate.mutate();
-    }
+    window.confirm('강의평가를 삭제하시겠습니까?') && remove();
   };
+
   return (
     <div style={{ marginTop: '15px' }}>
       <LectureWrapper>

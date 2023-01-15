@@ -1,23 +1,15 @@
 import styled from '@emotion/styled';
-import { useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { useInfiniteQuery, useMutation } from 'react-query';
-import { Lecture, User } from 'api';
 import { Button, Spinner, SearchTestInfoList } from 'components';
 import { fakeEvaluationList } from 'components/placeholderData';
 import { isLoginStorage } from 'utils/loginStorage';
-import { queryClient } from 'index';
+import useLectureQuery from 'hooks/useLectureQuery';
+import useUserQuery from 'hooks/useUserQuery';
 
 export const NotUsePoint = ({ selectId }) => {
-  const user = User();
-  const purchaseTestInfo = useMutation(() => user.buyTestInfo(selectId), {
-    onSuccess: () => {
-      alert('구매 완료');
-      queryClient.invalidateQueries(['lecture', 'examList', selectId]);
-    },
-  });
+  const { BuyTestInfo } = useUserQuery();
+  const { buy } = BuyTestInfo(selectId);
   const unlock = () => {
-    if (window.confirm('시험정보를 열람하시겠습니까?')) purchaseTestInfo.mutate();
+    window.confirm('시험정보를 열람하시겠습니까?') && buy();
   };
 
   return (
@@ -43,34 +35,15 @@ export const NoTestInfo = () => (
 );
 
 const IsTestInfo = ({ selectId, setWritten }) => {
-  const lectures = Lecture();
+  const { TestInfo } = useLectureQuery();
   const isLogin = isLoginStorage();
-  const { ref, inView } = useInView();
-  const { data, isFetchingNextPage, isLoading, fetchNextPage } = useInfiniteQuery(
-    ['lecture', 'examList', selectId],
-    ({ pageParam = 1 }) => lectures.examInfo(selectId, pageParam),
-    {
-      getNextPageParam: (lastPage) => {
-        if (!lastPage.isLast) return lastPage.nextPage;
-        return undefined;
-      },
-      onSuccess: (data) => setWritten(data.pages[0].data.written),
-      cacheTime: 0,
-      staleTime: 0,
-      enabled: isLogin,
-    }
-  );
-
-  useEffect(() => {
-    if (inView && isLogin) {
-      fetchNextPage();
-    }
-  }, [inView, fetchNextPage, isLogin]);
+  const { data, isLoading, isFetchingNextPage, ref } = TestInfo(selectId, setWritten);
 
   if (isLoading) return <Spinner />;
   const pages = data?.pages;
   const listLength = data?.pages[0].data.data.length;
   const examDataExist = data?.pages[0].data.examDataExist;
+
   if (!isLogin) {
     return <SearchTestInfoList page={fakeEvaluationList} />;
   } else if (listLength === 0 && examDataExist) {

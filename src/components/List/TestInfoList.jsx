@@ -1,38 +1,15 @@
 import styled from '@emotion/styled';
 import Modal from 'react-modal';
-import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { useInfiniteQuery, useMutation } from 'react-query';
-import { queryClient } from 'index';
-import { User } from 'api';
+import { useState } from 'react';
 import { WriteTestInfo, Spinner } from 'components';
 import { ModalStyle } from 'components/Etc/ModalStyle';
-import { isLoginStorage } from 'utils/loginStorage';
 import { subStr } from 'utils/subString';
+import useUserQuery from 'hooks/useUserQuery';
 
 const TestInfoList = () => {
-  const { ref, inView } = useInView();
-  const user = User();
-  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-    ['myInfo', 'myExamInfo'],
-    ({ pageParam = 1 }) => user.examInfoList(pageParam),
-    {
-      getNextPageParam: (lastPage) => {
-        if (!lastPage.isLast) return lastPage.nextPage;
-        return undefined;
-      },
-      enabled: isLoginStorage(),
-      cacheTime: 1000 * 60 * 30,
-      staleTime: 1000 * 60 * 30,
-    }
-  );
-  let isExistData = data?.pages[0].data.data.length === 0;
-
-  useEffect(() => {
-    if (inView) {
-      fetchNextPage();
-    }
-  }, [inView, fetchNextPage]);
+  const { TestInfoList } = useUserQuery();
+  const { data, isLoading, isFetchingNextPage, ref } = TestInfoList();
+  const isExistData = data?.pages[0].data.data.length === 0;
 
   if (isLoading) return <Spinner id="myInfo" />;
 
@@ -60,24 +37,14 @@ const TestInfoList = () => {
 };
 
 export const TestInfoCard = ({ row }) => {
-  const user = User();
-
+  const { DeleteTestInfo } = useUserQuery();
+  const { remove } = DeleteTestInfo(row.id);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   let title = subStr(row.lectureName, 14);
   let mobileTitle = subStr(row.lectureName, 14);
 
-  const deleteExamInfo = useMutation(() => user.deleteExamInfo(row.id), {
-    onSuccess: () => {
-      alert('삭제 완료');
-      queryClient.invalidateQueries({ queryKey: ['myInfo'] });
-    },
-    onError: (err) => alert(err.response.data.message),
-  });
-
   const onDelete = () => {
-    if (window.confirm('시험정보를 삭제하시겠습니까?')) {
-      deleteExamInfo.mutate();
-    }
+    window.confirm('시험정보를 삭제하시겠습니까?') && remove();
   };
 
   const examDifficultySet = row.examDifficulty;
