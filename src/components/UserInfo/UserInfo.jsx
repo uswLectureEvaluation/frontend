@@ -7,49 +7,21 @@ import { isLoginStorage } from 'utils/loginStorage';
 const UserInfo = ({ my }) => {
   const navigate = useNavigate();
   const isLogin = isLoginStorage();
-  const option = [
-    {
-      title: '이용 제한 내역',
-      page: 'banreason',
-    },
-    {
-      title: '구매이력',
-      page: 'historytest',
-    },
-    {
-      title: '비밀번호 변경',
-      page: 'resetpassword',
-    },
-    {
-      title: '회원 탈퇴',
-      page: 'exit',
-    },
-  ];
-  const urlOption = [
-    {
-      title: '피드백 전송',
-      page: 'https://forms.gle/tZByKoN6rJCysvNz6',
-    },
-    {
-      title: '문의하기',
-      page: 'email',
-    },
-    {
-      title: '이용약관',
-      page: 'https://sites.google.com/view/suwiki-policy-terms/',
-    },
-    {
-      title: '개인정보 처리 방침',
-      page: 'https://sites.google.com/view/suwiki-policy-privacy',
-    },
-    {
-      title: '오픈소스 라이선스',
-      page: '',
-    },
-  ];
+
   const handleNavigate = () => {
     isLogin ? navigate('/myposting') : navigate('/login');
   };
+
+  const optionSlice = (start, end) => {
+    return option.slice(start, end).map((i) => (
+      <FlexContainer id="use" key={i.title}>
+        <FlexContainer id="last" onClick={() => navigate(`/${i.page}`)}>
+          {i.title}
+        </FlexContainer>
+      </FlexContainer>
+    ));
+  };
+
   return (
     <Container>
       <InfoWrapper>
@@ -57,30 +29,22 @@ const UserInfo = ({ my }) => {
       </InfoWrapper>
 
       <Wrapper id="top">
-        <Button id="mobile" onClick={handleNavigate} background="#336af8">
+        <Button id="mobile" onClick={handleNavigate}>
           {isLogin ? '내가 쓴 글' : '로그인하기'}
         </Button>
-        {!isLogin ? (
-          <UserAccount
-            isLogin={isLogin}
-            loginId={fakeUserInfo.blurLoginId}
-            email={fakeUserInfo.blurEmail}
-          />
-        ) : (
-          <UserAccount isLogin={isLogin} loginId={my.loginId} email={my.email} />
-        )}
+        <UserAccount
+          isLogin={isLogin}
+          loginId={isLogin ? my.loginId : fakeUserInfo.blurLoginId}
+          email={isLogin ? my.email : fakeUserInfo.blurEmail}
+        />
 
-        <Button id="pc" onClick={handleNavigate} background="#336af8">
+        <Button id="pc" onClick={handleNavigate}>
           {isLogin ? '내가 쓴 글' : '로그인하기'}
         </Button>
       </Wrapper>
 
       <Wrapper>
-        {!isLogin ? (
-          <UserPoint my={fakeUserInfo} isLogin={isLogin} />
-        ) : (
-          <UserPoint my={my} isLogin={isLogin} />
-        )}
+        <UserPoint my={isLogin ? my : fakeUserInfo} isLogin={isLogin} />
       </Wrapper>
 
       <Wrapper>
@@ -127,15 +91,7 @@ const UserInfo = ({ my }) => {
       <Wrapper>
         <Content>
           <Title>이용 안내</Title>
-          {isLogin
-            ? option.slice(0, 2).map((i) => (
-                <FlexContainer id="use" key={i.title}>
-                  <FlexContainer id="last" onClick={() => navigate(`/${i.page}`)}>
-                    {i.title}
-                  </FlexContainer>
-                </FlexContainer>
-              ))
-            : null}
+          {isLogin && optionSlice(0, 2)}
           {urlOption.map((i) => (
             <FlexContainer id="use" key={i.title}>
               <FlexContainer
@@ -150,15 +106,7 @@ const UserInfo = ({ my }) => {
               </FlexContainer>
             </FlexContainer>
           ))}
-          {isLogin
-            ? option.slice(2, 4).map((i) => (
-                <FlexContainer id="use" key={i.title}>
-                  <FlexContainer id="last" onClick={() => navigate(`/${i.page}`)}>
-                    {i.title}
-                  </FlexContainer>
-                </FlexContainer>
-              ))
-            : null}
+          {isLogin && optionSlice(2, 4)}
         </Content>
       </Wrapper>
     </Container>
@@ -166,6 +114,47 @@ const UserInfo = ({ my }) => {
 };
 
 export default UserInfo;
+
+const option = [
+  {
+    title: '이용 제한 내역',
+    page: 'banreason',
+  },
+  {
+    title: '구매이력',
+    page: 'historytest',
+  },
+  {
+    title: '비밀번호 변경',
+    page: 'resetpassword',
+  },
+  {
+    title: '회원 탈퇴',
+    page: 'exit',
+  },
+];
+const urlOption = [
+  {
+    title: '피드백 전송',
+    page: 'https://forms.gle/tZByKoN6rJCysvNz6',
+  },
+  {
+    title: '문의하기',
+    page: 'email',
+  },
+  {
+    title: '이용약관',
+    page: 'https://sites.google.com/view/suwiki-policy-terms/',
+  },
+  {
+    title: '개인정보 처리 방침',
+    page: 'https://sites.google.com/view/suwiki-policy-privacy',
+  },
+  {
+    title: '오픈소스 라이선스',
+    page: '',
+  },
+];
 
 const Wrapper = styled.div`
   width: 100%;
@@ -284,7 +273,7 @@ const Button = styled.button`
   width: 30%;
   padding: 0 1rem;
   border: none;
-  background: ${(props) => props.background};
+  background: #336af8;
   color: white;
   text-align: center;
   font-size: 1.5rem;

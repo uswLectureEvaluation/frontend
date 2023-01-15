@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { queryClient } from 'index';
 import { Auth } from 'api';
+import { isLoginStorage } from 'utils/loginStorage';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -74,12 +75,12 @@ const Nav = () => {
 
       <NavMenu onClick={handleClick} click={click}>
         <NavLinks onClick={() => navigate('notice')}>공지사항</NavLinks>
-        {localStorage.getItem('login') === null && sessionStorage.getItem('login') === null ? (
+        {isLoginStorage() ? (
           <NavLinks onClick={() => navigate('login')}>로그인</NavLinks>
         ) : (
           <NavLinks onClick={logoutClick}>로그아웃</NavLinks>
         )}
-        {localStorage.getItem('login') === null && sessionStorage.getItem('login') === null ? (
+        {isLoginStorage() ? (
           <NavLinks id="signup" onClick={() => navigate('signup')}>
             회원가입
           </NavLinks>

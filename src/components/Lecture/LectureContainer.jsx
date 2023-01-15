@@ -3,10 +3,10 @@ import { FlexWrap } from 'styles/Common';
 import { LectureCard } from 'components';
 
 const LectureContainer = ({ data }) => {
-  let oddList = data?.filter((row, i) => {
+  const oddList = data?.filter((row, i) => {
     if (!(i % 2)) return row;
   });
-  let evenList = data?.filter((row, i) => {
+  const evenList = data?.filter((row, i) => {
     if (i % 2) return row;
   });
 
