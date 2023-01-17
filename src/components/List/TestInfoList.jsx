@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
-import Modal from 'react-modal';
 import { useState } from 'react';
-import { WriteTestInfo, Spinner } from 'components';
-import { ModalStyle } from 'components/Etc/ModalStyle';
+import { WriteTestInfo, Spinner, Modal } from 'components';
 import { subStr } from 'utils/subString';
 import useUserQuery from 'hooks/useUserQuery';
 
@@ -134,13 +132,7 @@ export const TestInfoCard = ({ row }) => {
             })}
           </EvaluationDetail>
         </MarginTop>
-        <Modal
-          isOpen={modalIsOpen}
-          style={ModalStyle}
-          // 오버레이나 esc를 누르면 핸들러 동작
-          ariaHideApp={false}
-          onRequestClose={() => setModalIsOpen(false)}
-        >
+        <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
           <WriteTestInfo setModalIsOpen={setModalIsOpen} type="update" row={row} />
         </Modal>
       </LectureWrapper>

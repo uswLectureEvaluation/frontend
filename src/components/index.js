@@ -3,6 +3,7 @@ export { default as Input } from './Etc/Input';
 export { default as RangeInput } from './Etc/RangeInput';
 export { default as ScrollButton } from './Etc/ScrollButton';
 export { default as Spinner } from './Etc/Spinner';
+export { default as Modal } from './Etc/Modal';
 
 export { default as IsTestInfo } from './Lecture/IsTestInfo';
 export { default as LectureCard } from './Lecture/LectureCard';

@@ -1,8 +1,6 @@
-import Modal from 'react-modal';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { MajorSearch } from 'components';
-import { MajorModalStyle } from 'components/Etc/ModalStyle';
+import { MajorSearch, Modal } from 'components';
 import { subStr } from 'utils/subString';
 import { Arrows, OptionBox, SelectedOption, SelectedOption_M } from 'styles/Common';
 
@@ -22,12 +20,7 @@ const MajorSelect = () => {
           src={`/images/icon_${modalIsOpen ? 'up' : 'down'}_arrow_solid_24.svg`}
         />
       </OptionBox>
-      <Modal
-        isOpen={modalIsOpen}
-        style={MajorModalStyle}
-        ariaHideApp={false}
-        onRequestClose={() => setModalIsOpen(false)}
-      >
+      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <MajorSearch setModalIsOpen={setModalIsOpen} />
       </Modal>
     </>
