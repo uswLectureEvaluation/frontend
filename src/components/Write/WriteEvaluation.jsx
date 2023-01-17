@@ -306,6 +306,7 @@ const TitleButton = styled.button`
   padding: 2rem;
   padding-bottom: 1rem;
   border: none;
+  border-radius: 15px;
   background-color: white;
   cursor: pointer;
   @media only screen and (max-width: 550px) {

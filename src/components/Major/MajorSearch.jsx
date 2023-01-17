@@ -203,7 +203,7 @@ const MajorBox = styled.div`
   margin-top: 10px;
   border-radius: 10px;
   border: 1px solid #e0e0e0;
-  min-height: 220px;
+  height: 500px;
   overflow-y: scroll;
   padding: 5px;
 `;

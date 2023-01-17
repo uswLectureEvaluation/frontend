@@ -1,10 +1,8 @@
 import styled from '@emotion/styled';
-import Modal from 'react-modal';
 import StarRatings from 'react-star-ratings';
 import { useState } from 'react';
-import { ModalStyle } from 'components/Etc/ModalStyle';
 import { subStr } from 'utils/subString';
-import { EvaluationDetail, WriteEvaluation, Spinner } from 'components';
+import { EvaluationDetail, WriteEvaluation, Spinner, Modal } from 'components';
 import useUserQuery from 'hooks/useUserQuery';
 
 const EvaluationList = () => {
@@ -124,12 +122,7 @@ export const EvaluationCard = ({ row }) => {
             })}
           </EvaluationText>
         </MarginTop>
-        <Modal
-          isOpen={modalIsOpen}
-          style={ModalStyle}
-          ariaHideApp={false}
-          onRequestClose={() => setModalIsOpen(false)}
-        >
+        <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
           <WriteEvaluation type="update" setModalIsOpen={setModalIsOpen} row={row} />
         </Modal>
       </LectureWrapper>

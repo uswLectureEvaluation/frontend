@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import Modal from 'react-modal';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
@@ -12,8 +11,8 @@ import {
   WriteEvaluation,
   WriteTestInfo,
   LectureSearch,
+  Modal,
 } from 'components';
-import { ModalStyle } from 'components/Etc/ModalStyle';
 import { AppContainer } from 'styles/Common';
 import { isLoginStorage } from 'utils/loginStorage';
 
@@ -76,12 +75,7 @@ const LectureInfo = () => {
         </Content>
       </Wrapper>
 
-      <Modal
-        isOpen={modalIsOpen}
-        style={ModalStyle}
-        ariaHideApp={false}
-        onRequestClose={() => setModalIsOpen(false)}
-      >
+      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         {menuCheck === 0 ? (
           <WriteEvaluation row={lectureInfo} type="write" setModalIsOpen={setModalIsOpen} />
         ) : (
