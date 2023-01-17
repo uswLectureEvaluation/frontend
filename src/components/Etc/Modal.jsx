@@ -44,10 +44,14 @@ const ModalContainer = styled.div`
 const ModalBody = styled.div`
   display: flex;
   position: absolute;
-  min-width: 500px;
+  padding: 10px;
+  min-width: 700px;
   max-height: 95vh;
   text-align: left;
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
   animation: ${modalShow} 0.2s;
+  @media only screen and (max-width: 550px) {
+    min-width: 90%;
+  }
 `;
