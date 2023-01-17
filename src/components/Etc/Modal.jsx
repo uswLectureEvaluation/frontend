@@ -1,16 +1,17 @@
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
+import { useEffect } from 'react';
 
 const Modal = ({ isOpen, onRequestClose, children }) => {
-  const onKeyPress = (e) => {
-    if (e.key === 'Escape') {
-      onRequestClose();
-    }
-  };
+  useEffect(() => {
+    const onKeyPress = (e) => e.key === 'Escape' && onRequestClose();
+    window.addEventListener('keydown', onKeyPress);
+    return () => window.removeEventListener('keydown', onKeyPress);
+  }, [onRequestClose]);
 
   return (
     isOpen && (
-      <ModalContainer tabIndex={0} onClick={onRequestClose} onKeyDown={onKeyPress}>
+      <ModalContainer tabIndex={0} onClick={onRequestClose}>
         <ModalBody onClick={(e) => e.stopPropagation()}>{children}</ModalBody>
       </ModalContainer>
     )
