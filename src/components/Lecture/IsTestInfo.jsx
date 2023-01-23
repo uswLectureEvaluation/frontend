@@ -5,12 +5,10 @@ import { isLoginStorage } from 'utils/loginStorage';
 import useLectureQuery from 'hooks/useLectureQuery';
 import useUserQuery from 'hooks/useUserQuery';
 
-export const NotUsePoint = ({ selectId }) => {
+const NotUsePoint = ({ selectId }) => {
   const { BuyTestInfo } = useUserQuery();
   const { buy } = BuyTestInfo(selectId);
-  const unlock = () => {
-    window.confirm('시험정보를 열람하시겠습니까?') && buy();
-  };
+  const unlock = () => window.confirm('시험정보를 열람하시겠습니까?') && buy();
 
   return (
     <Wrapper>
@@ -28,7 +26,7 @@ export const NotUsePoint = ({ selectId }) => {
   );
 };
 
-export const NoTestInfo = () => (
+const NoTestInfo = () => (
   <Wrapper>
     <Content>등록된 시험정보가 없어요</Content>
   </Wrapper>
