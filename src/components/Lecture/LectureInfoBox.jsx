@@ -1,13 +1,10 @@
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'components';
+import { floatFix } from 'utils/floatFix';
 
 const LectureInfoBox = ({ current, isLogin }) => {
   const navigate = useNavigate();
-  const floatFix = (num, size) => {
-    return parseFloat(num)?.toFixed(size);
-  };
-
   const teamSet = floatFix(current.lectureTeamAvg, 0);
   const homeworkSet = floatFix(current.lectureHomeworkAvg, 0);
   const difficultySet = floatFix(current.lectureDifficultyAvg, 0);
@@ -64,7 +61,7 @@ const LectureInfoBox = ({ current, isLogin }) => {
                     fontWeight: '500',
                   }}
                 >
-                  {Number(current.lectureHoneyAvg)?.toFixed(1)}
+                  {floatFix(current.lectureHoneyAvg, 1)}
                   <span style={{ color: '#a3a3a3' }}>/5</span>
                 </Color>
               </FlexContainer>
@@ -93,7 +90,7 @@ const LectureInfoBox = ({ current, isLogin }) => {
                     fontWeight: '500',
                   }}
                 >
-                  {Number(current.lectureLearningAvg)?.toFixed(1)}
+                  {floatFix(current.lectureLearningAvg, 1)}
                   <span style={{ color: '#a3a3a3' }}>/5</span>
                 </Color>
               </FlexContainer>
@@ -122,7 +119,7 @@ const LectureInfoBox = ({ current, isLogin }) => {
                     fontWeight: '500',
                   }}
                 >
-                  {Number(current.lectureSatisfactionAvg)?.toFixed(1)}
+                  {floatFix(current.lectureSatisfactionAvg, 1)}
                   <span style={{ color: '#a3a3a3' }}>/5</span>
                 </Color>
               </FlexContainer>

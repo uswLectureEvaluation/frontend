@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { floatFix } from 'utils/floatFix';
 
 const team = {
   0: { color: 'cyan', text: '없음' },
@@ -26,7 +27,7 @@ const EvaluationDetail = ({ lecture }) => {
         <StarFlex id="between">
           만족도
           <PaddingRight />
-          <Rate id="modal">{lecture.satisfaction?.toFixed(1)}</Rate>
+          <Rate id="modal">{floatFix(lecture.satisfaction, 1)}</Rate>
         </StarFlex>
         <StarFlex id="between">
           조모임 <DataColor id={teamSet.color}> {teamSet.text}</DataColor>
@@ -36,7 +37,7 @@ const EvaluationDetail = ({ lecture }) => {
         <StarFlex id="between">
           꿀강 지수
           <PaddingRight />
-          <Rate id="modal">{lecture.honey?.toFixed(1)}</Rate>
+          <Rate id="modal">{floatFix(lecture.honey, 1)}</Rate>
         </StarFlex>
         <StarFlex id="between">
           과제 <DataColor id={homeworkSet.color}> {homeworkSet.text}</DataColor>
@@ -46,7 +47,7 @@ const EvaluationDetail = ({ lecture }) => {
         <StarFlex id="between">
           배움 지수
           <PaddingRight />
-          <Rate id="modal">{lecture.learning?.toFixed(1)}</Rate>
+          <Rate id="modal">{floatFix(lecture.learning, 1)}</Rate>
         </StarFlex>
         <StarFlex id="between">
           학점 <DataColor id={difficultySet.color}> {difficultySet.text}</DataColor>
