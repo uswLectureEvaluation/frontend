@@ -49,12 +49,8 @@ const JwtInterceptors = (token, setToken) => {
   instance.interceptors.request.use(
     async (config) => {
       const tokenValid = await isAccessTokenValid();
-      // 로그인 유지 X
-      if (sessionStorage.getItem('AccessToken')) {
-        config.headers['Authorization'] = sessionStorage.getItem('AccessToken');
-      }
       // 로그인 유지 O
-      else if (
+      if (
         config.url.includes('login') ||
         config.url.includes('logout') ||
         config.url.includes('check') ||
@@ -65,8 +61,7 @@ const JwtInterceptors = (token, setToken) => {
         config.url.includes('suwiki/version') ||
         config.url.includes('suwiki/majorType') ||
         config.url.includes('lecture/search/?searchValue') ||
-        config.url.includes('notice') ||
-        config.url.includes('suwiki/majorType')
+        config.url.includes('notice')
       ) {
         // 액세스 토큰 필요없는 페이지
         config.headers['Content-Type'] = 'application/json';

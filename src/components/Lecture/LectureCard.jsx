@@ -3,6 +3,7 @@ import StarRatings from 'react-star-ratings';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { subStr } from 'utils/subString';
+import { floatFix } from 'utils/floatFix';
 
 const Detail = ({ lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg }) => {
   return (
@@ -12,21 +13,21 @@ const Detail = ({ lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg })
           <StarFlex id="between">
             만족도
             <PaddingRight />
-            <Rate id="modal">{lectureSatisfactionAvg?.toFixed(1)}</Rate>
+            <Rate id="modal">{floatFix(lectureSatisfactionAvg, 1)}</Rate>
           </StarFlex>
         </FlexContainer>
         <FlexContainer id="col">
           <StarFlex id="between">
             꿀강지수
             <PaddingRight />
-            <Rate id="modal">{lectureHoneyAvg?.toFixed(1)}</Rate>
+            <Rate id="modal">{floatFix(lectureHoneyAvg, 1)}</Rate>
           </StarFlex>
         </FlexContainer>
         <FlexContainer id="col">
           <StarFlex id="between">
             배움지수
             <PaddingRight />
-            <Rate id="modal">{lectureLearningAvg?.toFixed(1)}</Rate>
+            <Rate id="modal">{floatFix(lectureLearningAvg, 1)}</Rate>
           </StarFlex>
         </FlexContainer>
       </StarFlex>
@@ -65,7 +66,7 @@ const LectureCard = ({ row }) => {
               svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
               svgIconViewBox="0 0 24 24"
             />
-            <Rate>{row.lectureTotalAvg?.toFixed(1)}</Rate>
+            <Rate>{floatFix(row.lectureTotalAvg, 1)}</Rate>
             <Minute
               onClick={(e) => {
                 setModal(!modal);

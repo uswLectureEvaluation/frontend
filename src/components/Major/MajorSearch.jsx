@@ -28,11 +28,11 @@ const MajorSearch = ({ setModalIsOpen }) => {
   const option = searchParams.get('option') || 'modifiedDate';
 
   useEffect(() => {
-    if (!isLoginStorage()) searchFavorite(token, setToken).then((data) => setFavoriteDb(data.data));
+    if (isLoginStorage()) searchFavorite(token, setToken).then((data) => setFavoriteDb(data.data));
   }, [token, setToken]);
 
   const onFavoriteMajor = (e) => {
-    if (isLoginStorage()) {
+    if (!isLoginStorage()) {
       alert('로그인 후 이용해주세요');
       navigate('/login');
       return;

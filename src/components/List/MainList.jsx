@@ -5,8 +5,7 @@ const MainList = () => {
   const { Main } = useLectureQuery();
   const { getMain, mainLoading } = Main();
 
-  if (mainLoading) return <LectureContainer data={fakeLectureList} />;
-  return <LectureContainer data={getMain?.data} />;
+  return <LectureContainer data={!mainLoading ? getMain?.data : fakeLectureList} />;
 };
 
 export default MainList;
