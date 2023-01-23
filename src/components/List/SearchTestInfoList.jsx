@@ -55,14 +55,12 @@ export const Subject = ({ lecture }) => {
 
         <MarginTop id="bottom">
           <EvaluationDetail>
-            {lecture.content.split('\n').map((value, index) => {
-              return (
-                <div key={index}>
-                  {value}
-                  <br />
-                </div>
-              );
-            })}
+            {lecture.content.split('\n').map((value, index) => (
+              <div key={index}>
+                {value}
+                <br />
+              </div>
+            ))}
           </EvaluationDetail>
         </MarginTop>
       </LectureWrapper>

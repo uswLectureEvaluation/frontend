@@ -55,7 +55,7 @@ const IsTestInfo = ({ selectId, setWritten }) => {
           <SearchTestInfoList isLogin={isLogin} key={page.nextPage} page={page.data.data} />
         ))}
         <div ref={ref} style={{ marginBottom: '10px' }}>
-          {isFetchingNextPage ? <Spinner id="nextPage" /> : null}
+          {isFetchingNextPage && <Spinner id="nextPage" />}
         </div>
       </>
     );

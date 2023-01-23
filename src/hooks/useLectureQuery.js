@@ -4,11 +4,15 @@ import { useInfiniteQuery, useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import { isLoginStorage } from 'utils/loginStorage';
+import { useSetRecoilState } from 'recoil';
+import { lectureState } from 'app/recoilStore';
 
 const useLectureQuery = () => {
   const [searchParams] = useSearchParams();
+  const setLectureInfo = useSetRecoilState(lectureState);
   const lecture = Lecture();
   const searchValue = searchParams.get('q') || '';
+  const selectId = searchParams.get('id');
   const option = searchParams.get('option') || 'modifiedDate';
   const majorType = searchParams.get('majorType') || '전체';
   const major = majorType === '전체' ? '' : majorType;
@@ -49,6 +53,39 @@ const useLectureQuery = () => {
       }
     }, [inView, getNextSearch]);
     return { getSearch, searchLoading, nextLoading, value, ref };
+  };
+
+  // 강의 상세 쿼리(key: 강의id)
+  const Detail = () => {
+    const { data, isLoading } = useQuery(
+      ['lecture', 'detail', selectId],
+      () => lecture.detail(selectId),
+      {
+        cacheTime: 0,
+        staleTime: 0,
+        enabled: isLoginStorage(),
+        onSuccess: (lecture) => {
+          setLectureInfo({
+            selectId: selectId,
+            lectureName: lecture.data.lectureName,
+            professor: lecture.data.professor,
+            semesterList: lecture.data.semesterList,
+            selectedSemester: '선택',
+            satisfaction: 0.5,
+            honey: 0.5,
+            learning: 0.5,
+            team: undefined,
+            homework: undefined,
+            difficulty: undefined,
+            examInfo: '',
+            examType: '선택',
+            examDifficulty: '',
+            content: '',
+          });
+        },
+      }
+    );
+    return { data, isLoading, isLogin: isLoginStorage() };
   };
 
   // 강의평가 쿼리(key: 강의id)
@@ -100,7 +137,7 @@ const useLectureQuery = () => {
     }, [inView, fetchNextPage]);
     return { data, isFetchingNextPage, isLoading, ref };
   };
-  return { Main, Search, Evaluation, TestInfo };
+  return { Main, Search, Detail, Evaluation, TestInfo };
 };
 
 export default useLectureQuery;
