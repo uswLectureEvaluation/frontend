@@ -133,30 +133,6 @@ const Auth = () => {
       });
   };
 
-  //로그인api (로그인유지X)
-  const unCheckedLogin = async (setData, setLoading, id, pw) => {
-    const data = {
-      loginId: id,
-      password: pw,
-    };
-    return instance({
-      url: `user/login`,
-      method: 'POST',
-      data: data,
-      headers: headers,
-      withCredentials: true,
-    })
-      .then((r) => {
-        sessionStorage.setItem('login', true);
-        sessionStorage.setItem('AccessToken', r.AccessToken);
-        setData(r.data);
-        setLoading(true);
-      })
-      .catch(() => {
-        alert('id 또는 pw 확인해주세요');
-      });
-  };
-
   // 로그아웃
   const logout = () => {
     return instance({
@@ -181,8 +157,6 @@ const Auth = () => {
         if (data.success) {
           alert('비밀번호가 변경되었습니다\n다시 로그인 해주세요');
           removeStorage('login');
-          sessionStorage.removeItem('AccessToken');
-          sessionStorage.removeItem('login');
           window.location.href = '/';
         }
       })
@@ -215,7 +189,6 @@ const Auth = () => {
     checkId,
     checkEmail,
     login,
-    unCheckedLogin,
     logout,
     findId,
     findPw,

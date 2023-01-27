@@ -1,7 +1,7 @@
 const storage = localStorage;
 
 export const isLoginStorage = () => {
-  const state = localStorage.login || sessionStorage.login;
+  const state = localStorage.login;
   if (state === null) return false;
   if (state === undefined) return false;
   return state ? true : false;
