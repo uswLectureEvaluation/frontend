@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { removeStorage, setStorage } from 'utils/loginStorage';
 import { tokenState } from '../app/recoilStore';
@@ -7,6 +8,7 @@ const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 const Auth = () => {
   const [token, setToken] = useRecoilState(tokenState);
   const instance = JwtInterceptors(token, setToken).instance;
+  const navigate = useNavigate();
 
   const headers = {
     Accept: 'application/json',
@@ -124,6 +126,7 @@ const Auth = () => {
       .then((r) => {
         setStorage('login', true);
         setToken(r.AccessToken);
+        navigate('/');
       })
       .catch(() => {
         alert('id 또는 pw 확인해주세요');
