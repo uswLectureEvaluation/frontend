@@ -1,4 +1,5 @@
 import { useRecoilState } from 'recoil';
+import { removeStorage, setStorage } from 'utils/loginStorage';
 import { tokenState } from '../app/recoilStore';
 import JwtInterceptors from './ApiController';
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
@@ -121,7 +122,7 @@ const Auth = () => {
       withCredentials: true,
     })
       .then((r) => {
-        localStorage.setItem('login', true);
+        setStorage('login', true);
         setToken(r.AccessToken);
       })
       .catch(() => {
@@ -176,7 +177,7 @@ const Auth = () => {
       .then((data) => {
         if (data.success) {
           alert('비밀번호가 변경되었습니다\n다시 로그인 해주세요');
-          localStorage.removeItem('login');
+          removeStorage('login');
           sessionStorage.removeItem('AccessToken');
           sessionStorage.removeItem('login');
           window.location.href = '/';
@@ -200,8 +201,7 @@ const Auth = () => {
       data: data,
     })
       .then(() => {
-        localStorage.removeItem('login');
-        sessionStorage.removeItem('login');
+        removeStorage('login');
         window.location.href = '/';
       })
       .catch((error) => alert(error.response.data.message));

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { queryClient } from 'index';
 import { Auth } from 'api';
-import { isLoginStorage } from 'utils/loginStorage';
+import { isLoginStorage, removeStorage } from 'utils/loginStorage';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -12,10 +12,8 @@ const Nav = () => {
   const handleClick = () => setClick(!click);
 
   const logoutClick = () => {
-    localStorage.removeItem('login');
-    localStorage.removeItem('AccessToken');
-    sessionStorage.removeItem('AccessToken');
-    sessionStorage.removeItem('login');
+    removeStorage('login');
+    removeStorage('AccessToken');
     auth.logout().then(async (data) => {
       if (data.Success) {
         navigate('/');

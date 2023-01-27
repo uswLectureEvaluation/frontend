@@ -1,5 +1,6 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import { removeStorage } from 'utils/loginStorage';
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 axios.defaults.withCredentials = true;
 
@@ -74,7 +75,7 @@ const JwtInterceptors = (token, setToken) => {
           alert('로그인 시간이 만료되었습니다\n다시 로그인 해주세요');
           logout().then((res) => {
             if (res.data.Success) {
-              localStorage.removeItem('login');
+              removeStorage('login');
               window.location.href = '/login';
             }
           });

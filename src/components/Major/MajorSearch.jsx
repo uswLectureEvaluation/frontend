@@ -7,7 +7,7 @@ import { TextField } from '@mui/material';
 import { tokenState } from 'app/recoilStore';
 import { Major } from 'api';
 import { searchFavorite, type } from 'api/etc';
-import { isLoginStorage } from 'utils/loginStorage';
+import { getStorage, isLoginStorage, setStorage } from 'utils/loginStorage';
 
 const MajorSearch = ({ setModalIsOpen }) => {
   const major = Major();
@@ -49,12 +49,12 @@ const MajorSearch = ({ setModalIsOpen }) => {
   };
 
   useEffect(() => {
-    if (!window.localStorage.getItem('majorType')) {
+    if (!getStorage('majorType')) {
       type(token, setToken).then((res) => {
-        window.localStorage.setItem('majorType', ['전체', res.data]);
+        setStorage('majorType', ['전체', res.data]);
         setData(['전체', ...res.data]);
       });
-    } else setData(window.localStorage.getItem('majorType').split(','));
+    } else setData(getStorage('majorType').split(','));
   }, [token, setToken]);
 
   const clickSubmit = () => {
