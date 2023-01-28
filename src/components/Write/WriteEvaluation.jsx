@@ -14,25 +14,24 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
   const [honey, HoneySlider] = useSlider(row.honey);
   const [learning, LearingSlider] = useSlider(row.learning);
   const [satisfaction, SatisfactionSlider] = useSlider(row.satisfaction);
-  const [semester] = useState(row.selectedSemester); //학기
+  const [selectedSemester] = useState(row.selectedSemester); //학기
   const [team, setTeam] = useState(row.team); //조모임
   const [homework, setHomework] = useState(row.homework); //과제
   const [difficulty, setDifficulty] = useState(row.difficulty); //학점
   const evaluateWriting = useMutation(
     () =>
-      user.writeEvaluation(
-        row.selectId,
-        row.lectureName,
-        row.professor,
-        semester,
+      user.writeEvaluation(row.selectId, {
+        lectureName: row.lectureName,
+        professor: row.professor,
+        selectedSemester,
         satisfaction,
         learning,
         honey,
         team,
         difficulty,
         homework,
-        content
-      ),
+        content,
+      }),
     {
       onSuccess: () => {
         alert('작성 완료');
@@ -44,8 +43,8 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
   );
   const evaluateUpdate = useMutation(
     () =>
-      user.updateEvaluation(
-        semester,
+      user.updateEvaluation(row.id, {
+        selectedSemester,
         satisfaction,
         learning,
         honey,
@@ -53,8 +52,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
         difficulty,
         homework,
         content,
-        row.id
-      ),
+      }),
     {
       onSuccess: () => {
         alert('수정 완료');
@@ -68,7 +66,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
   };
 
   const onEvaluate = () => {
-    if (semester === '' || semester === '선택') return alert('학기를 선택해주세요');
+    if (selectedSemester === '' || selectedSemester === '선택') return alert('학기를 선택해주세요');
     if (honey < 0.5 || honey === undefined) return alert('꿀강지수는 0.5점부터 선택 가능합니다');
     if (learning < 0.5 || learning === undefined)
       return alert('배움지수는 0.5점부터 선택 가능합니다');

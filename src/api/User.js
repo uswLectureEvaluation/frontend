@@ -2,20 +2,14 @@ import JwtInterceptors from './ApiController';
 
 const User = () => {
   const instance = JwtInterceptors().instance;
-  // 내정보Api
+  // 내 정보
   const info = () => {
-    return instance({
-      url: `/user/my-page`,
-      method: 'GET',
-    });
+    return instance.get('/user/my-page');
   };
 
-  // 내가쓴글-강의평가Api
+  // 내가 쓴 글 - 강의평가
   const evaluateList = async (pageParam) => {
-    const result = await instance({
-      url: `/evaluate-posts/written/?page=${pageParam}`,
-      method: 'GET',
-    });
+    const result = await instance(`/evaluate-posts/written/?page=${pageParam}`);
     return {
       data: result,
       isLast: result.data.length < 10,
@@ -23,12 +17,9 @@ const User = () => {
     };
   };
 
-  // 내가쓴글-시험정보Api
+  // 내가 쓴 글 - 시험정보
   const examInfoList = async (pageParam) => {
-    const result = await instance({
-      url: `/exam-posts/written/?page=${pageParam}`,
-      method: 'GET',
-    });
+    const result = await instance.get(`/exam-posts/written/?page=${pageParam}`);
     return {
       data: result,
       isLast: result.data.length < 10,
@@ -36,186 +27,64 @@ const User = () => {
     };
   };
 
-  //강의평가수정 api 미완
-  const updateEvaluation = (
-    semester,
-    satisfaction,
-    learning,
-    honey,
-    team,
-    difficulty,
-    homework,
-    content,
-    id
-  ) => {
-    const data = {
-      selectedSemester: semester,
-      satisfaction,
-      learning,
-      honey,
-      team,
-      difficulty,
-      homework,
-      content,
-    };
-
-    return instance({
-      url: `/evaluate-posts/?evaluateIdx=${id}`,
-      method: 'PUT',
-      data: data,
-    });
+  // 강의 평가 수정
+  const updateEvaluation = (id, data) => {
+    return instance.put(`/evaluate-posts/?evaluateIdx=${id}`, data);
   };
 
-  //강의평가작성 api
-  const writeEvaluation = (
-    selectId,
-    lectureName,
-    professor,
-    semester,
-    satisfaction,
-    learning,
-    honey,
-    team,
-    difficulty,
-    homework,
-    content
-  ) => {
-    const data = {
-      lectureName,
-      professor,
-      selectedSemester: semester,
-      satisfaction,
-      learning,
-      honey,
-      team,
-      difficulty,
-      homework,
-      content,
-    };
-    return instance({
-      url: `evaluate-posts/?lectureId=${selectId}`,
-      method: 'POST',
-      data: data,
-    });
+  // 강의 평가 작성
+  const writeEvaluation = (id, data) => {
+    return instance.post(`evaluate-posts/?lectureId=${id}`, data);
   };
 
-  // 강의 평가 삭제 api
+  // 강의 평가 삭제
   const deleteEvaluation = (id) => {
-    return instance({
-      url: `/evaluate-posts/?evaluateIdx=${id}`,
-      method: 'DELETE',
-    });
+    return instance.delete(`/evaluate-posts/?evaluateIdx=${id}`);
   };
 
-  //강의평가 신고 api
-  const reportEvaluation = (evaluateIdx, content) => {
-    const data = {
-      evaluateIdx,
-      content,
-    };
-
-    return instance({
-      url: `/user/report/evaluate`,
-      method: 'POST',
-      data: data,
-    });
+  // 강의 평가 신고
+  const reportEvaluation = (data) => {
+    return instance.post('/user/report/evaluate', data);
   };
 
-  //시험정보 신고 api
-  const reportExamInfo = (examIdx, content) => {
-    const data = {
-      examIdx,
-      content,
-    };
-
-    return instance({
-      url: `/user/report/exam`,
-      method: 'POST',
-      data: data,
-    });
+  // 시험 정보 신고
+  const reportExamInfo = (data) => {
+    return instance.post('/user/report/exam', data);
   };
 
-  //시험정보쓰기 api
-  const writeExamInfo = (
-    selectId,
-    lectureName,
-    professor,
-    semester,
-    examInfo,
-    examType,
-    examDifficulty,
-    content
-  ) => {
-    const data = {
-      lectureName,
-      professor,
-      selectedSemester: semester,
-      examInfo,
-      examType,
-      examDifficulty,
-      content,
-    };
-
-    return instance({
-      url: `/exam-posts/?lectureId=${selectId}`,
-      method: 'POST',
-      data: data,
-    });
+  // 시험 정보 쓰기
+  const writeExamInfo = (id, data) => {
+    return instance.post(`/exam-posts/?lectureId=${id}`, data);
   };
 
-  //시험정보 구매
-  const buyTestInfo = (selectId) => {
-    return instance({
-      url: `/exam-posts/purchase/?lectureId=${selectId}`,
-      method: 'POST',
-    });
+  // 시험 정보 구매
+  const buyTestInfo = (id) => {
+    return instance.post(`/exam-posts/purchase/?lectureId=${id}`);
   };
 
-  //시험정보수정 api 미완
-  const UpdateExamInfo = (semester, examInfo, examType, examDifficulty, content, id) => {
-    const data = {
-      selectedSemester: semester,
-      examInfo,
-      examType,
-      examDifficulty,
-      content,
-    };
-
-    return instance({
-      url: `/exam-posts/?examIdx=${id}`,
-      method: 'PUT',
-      data: data,
-    });
+  // 시험 정보 수정
+  const UpdateExamInfo = (id, data) => {
+    return instance.put(`/exam-posts/?examIdx=${id}`, data);
   };
 
-  // 시험정보 삭제
+  // 시험 정보 삭제
   const deleteExamInfo = (id) => {
-    return instance({
-      url: `/exam-posts/?examIdx=${id}`,
-      method: 'DELETE',
-    });
+    return instance.delete(`/exam-posts/?examIdx=${id}`);
   };
 
-  //시험정보 구매이력
+  // 시험 정보 구매이력
   const purchasedTestInfo = () => {
-    return instance({
-      url: `/exam-posts/purchase`,
-      method: 'GET',
-    });
+    return instance.get('/exam-posts/purchase');
   };
 
+  // 밴 사유 리스트
   const banList = () => {
-    return instance({
-      url: `user/blacklist-reason`,
-      method: 'GET',
-    });
+    return instance.get('user/blacklist-reason');
   };
 
+  // 제재 사유 리스트
   const resList = () => {
-    return instance({
-      url: `user/restricted-reason`,
-      method: 'GET',
-    });
+    return instance.get('user/restricted-reason');
   };
 
   return {

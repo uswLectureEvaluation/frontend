@@ -6,7 +6,7 @@ import { User } from 'api';
 
 const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
   const user = User();
-  const [semester] = useState(row.selectedSemester); //학기
+  const [selectedSemester] = useState(row.selectedSemester); //학기
   const [examType] = useState(row.examType); //중간,기말
   const [examDifficulty, setDifficulty] = useState(row.examDifficulty); //난이도
   const [content, setContent] = useState(row.content); //글쓰기
@@ -14,16 +14,15 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
   const examInfo = exam.join(', ');
   const examWriting = useMutation(
     () =>
-      user.writeExamInfo(
-        row.selectId,
-        row.lectureName,
-        row.professor,
-        semester,
+      user.writeExamInfo(row.selectId, {
+        lectureName: row.lectureName,
+        professor: row.professor,
+        selectedSemester,
         examInfo,
         examType,
         examDifficulty,
-        content
-      ),
+        content,
+      }),
     {
       onSuccess: () => {
         alert('작성 완료');
@@ -35,7 +34,14 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
   );
 
   const examInfoUpdate = useMutation(
-    () => user.UpdateExamInfo(semester, examInfo, examType, examDifficulty, content, row.id),
+    () =>
+      user.UpdateExamInfo(row.id, {
+        selectedSemester,
+        examInfo,
+        examType,
+        examDifficulty,
+        content,
+      }),
     {
       onSuccess: () => {
         alert('수정 완료');
@@ -58,7 +64,7 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
     setContent(e.target.value);
   };
   const onTest = () => {
-    if (semester === '' || semester === '선택') return alert('학기를 선택해주세요');
+    if (selectedSemester === '' || selectedSemester === '선택') return alert('학기를 선택해주세요');
     if (examType === '' || examType === '선택') return alert('시험종류를 선택해주세요');
     if (examDifficulty === '') return alert('난이도(란)을 선택해주세요');
     if (exam.length === 0) return alert('시험유형(란)을 선택해주세요');

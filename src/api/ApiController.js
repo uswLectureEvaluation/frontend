@@ -72,36 +72,12 @@ const JwtInterceptors = () => {
 
   instance.interceptors.response.use(
     function (response) {
-      const reloadHandler = (firstURL, secondURL, methodType, alertText) => {
-        if (
-          (response.config.url.includes(firstURL) || response.config.url.includes(secondURL)) &&
-          response.config.method === methodType
-        ) {
-          alert(alertText);
-          window.location.reload();
-        }
-      };
-
-      reloadHandler('user/quit', null, 'post', '탈퇴 완료');
-
       return response.data;
     },
     async (error) => {
-      const originalRequest = error.config;
-      if (
-        error.response.status === 400 &&
-        originalRequest.url.includes('exam-posts/purchase/?lectureId')
-      ) {
-        alert('포인트가 부족해요.');
-      }
-      if (error.response.status === 401) {
-        alert('로그인 시간이 만료되었습니다\n다시 로그인 해주세요');
-        window.location.href = '/login';
-      }
       if (error.response.status === 502) {
-        window.location.href = '/502';
+        location.href = '/502';
       }
-
       return Promise.reject(error);
     }
   );
