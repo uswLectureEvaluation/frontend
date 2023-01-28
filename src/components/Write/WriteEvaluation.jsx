@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { User } from 'api';
 import useSlider from 'components/Etc/RangeInput';
 import SemesterSelect from 'components/SemesterSelect';
+import { semesters } from 'constants/placeholderData';
 
 const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
   const user = User();
-  const [modal, setModal] = useState(false);
   const [content, setContent] = useState(row.content);
   const [honey, HoneySlider] = useSlider(row.honey);
   const [learning, LearingSlider] = useSlider(row.learning);
@@ -73,9 +73,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
         <Content id="group">
           <ContentTitle>수강학기</ContentTitle>
           <SemesterSelect
-            state={modal}
-            controller={setModal}
-            list={row.semesterList.split(', ')}
+            list={semesters(row.semesterList)}
             selected={selectedSemester}
             setSelect={setSelectedSemester}
           />
@@ -83,9 +81,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
         <MobileContent id="semester">
           <ContentTitle id="mobile">수강학기</ContentTitle>
           <SemesterSelect
-            state={modal}
-            controller={setModal}
-            list={row.semesterList.split(', ')}
+            list={semesters(row.semesterList)}
             selected={selectedSemester}
             setSelect={setSelectedSemester}
           />
@@ -225,7 +221,9 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
         rows="15"
       />
       <Wrapper id="button">
-        <EditButton onClick={onEvaluate}>작성하기 (+10P)</EditButton>
+        <EditButton onClick={onEvaluate}>
+          {type === 'write' ? '작성하기 (+10P)' : '수정하기'}
+        </EditButton>
       </Wrapper>
     </Wrapper>
   );

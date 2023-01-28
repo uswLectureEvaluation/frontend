@@ -2,11 +2,13 @@ import styled from '@emotion/styled/macro';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { User } from 'api';
+import SemesterSelect from 'components/SemesterSelect';
+import { examTypes, semesters } from 'constants/placeholderData';
 
 const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
   const user = User();
-  const [selectedSemester] = useState(row.selectedSemester); //학기
-  const [examType] = useState(row.examType); //중간,기말
+  const [selectedSemester, setSelectedSemester] = useState(row.selectedSemester); //학기
+  const [examType, setExamType] = useState(row.examType); //중간,기말
   const [examDifficulty, setDifficulty] = useState(row.examDifficulty); //난이도
   const [content, setContent] = useState(row.content); //글쓰기
   const [exam, setExamInfo] = useState(() => row.examInfo.split(', ')); //시험내용
@@ -74,69 +76,29 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
         <Content id="group">
           <ContentTitleWrapper>
             <ContentTitle id="title">수강학기</ContentTitle>
-            {/* <SemesterSelect
-              id="semester"
-              defaultValue={row.selectedSemester}
-              onChange={(e) => {
-                setSemester(e);
-              }}
-            >
-              {optionsValue.map((index) => (
-                <StyledOption id="semester" key={index} value={index}>
-                  <Soption id="semester">{index}</Soption>
-                </StyledOption>
-              ))}
-            </SemesterSelect> */}
+            <SemesterSelect
+              list={semesters(row.semesterList)}
+              selected={selectedSemester}
+              setSelect={setSelectedSemester}
+            />
           </ContentTitleWrapper>
           <ContentTitleWrapper>
             <ContentTitle id="title">시험종류</ContentTitle>
-            {/* <SemesterSelect
-              id="semester"
-              defaultValue={row.examType}
-              onChange={(e) => {
-                setExamType(e);
-              }}
-            >
-              {examTypeOptions.map((index) => (
-                <StyledOption id="semester" key={index} value={index}>
-                  <Soption id="semester">{index}</Soption>
-                </StyledOption>
-              ))}
-            </SemesterSelect> */}
+            <SemesterSelect list={examTypes} selected={examType} setSelect={setExamType} />
           </ContentTitleWrapper>
         </Content>
         <MobileContent>
           <MobileContent id="semester">
             <ContentTitle id="mobile">수강학기</ContentTitle>
-            {/* <SemesterSelect
-              id="semester"
-              defaultValue={row.selectedSemester}
-              onChange={(e) => {
-                setSemester(e);
-              }}
-            >
-              {optionsValue.map((index) => (
-                <StyledOption id="semester" key={index} value={index}>
-                  <Soption id="semester">{index}</Soption>
-                </StyledOption>
-              ))}
-            </SemesterSelect> */}
+            <SemesterSelect
+              list={semesters(row.semesterList)}
+              selected={selectedSemester}
+              setSelect={setSelectedSemester}
+            />
           </MobileContent>
           <MobileContent id="semester">
             <ContentTitle id="mobile">시험종류</ContentTitle>
-            {/* <SemesterSelect
-              id="semester"
-              defaultValue={row.examType}
-              onChange={(e) => {
-                setExamType(e);
-              }}
-            >
-              {examTypeOptions.map((index) => (
-                <StyledOption id="semester" key={index} value={index}>
-                  <Soption id="semester">{index}</Soption>
-                </StyledOption>
-              ))}
-            </SemesterSelect> */}
+            <SemesterSelect list={examTypes} selected={examType} setSelect={setExamType} />
           </MobileContent>
         </MobileContent>
 
@@ -260,7 +222,9 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
         rows="15"
       />
       <Wrapper id="button">
-        <EditButton onClick={onTest}>작성하기 (+20P)</EditButton>
+        <EditButton onClick={onTest}>
+          {type === 'write' ? '작성하기 (+20P)' : '수정하기'}
+        </EditButton>
       </Wrapper>
     </Wrapper>
   );

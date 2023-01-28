@@ -1,18 +1,20 @@
+import { useState } from 'react';
 import { OptionBox, SelectedOption, Arrows, Options, Option } from 'styles/Common';
 
-const SemesterSelect = ({ state, controller, list, selected, setSelect }) => {
+const SemesterSelect = ({ list, selected, setSelect }) => {
+  const [modal, setModal] = useState(false);
   return (
     <OptionBox
       id="semester"
-      select={state}
+      select={modal}
       onClick={(e) => {
         e.stopPropagation;
-        controller(!state);
+        setModal(!modal);
       }}
     >
       <SelectedOption id="true">{selected}</SelectedOption>
-      <Arrows src={`/images/icon_${state ? 'up' : 'down'}_arrow_solid_24.svg`} />
-      {state && (
+      <Arrows src={`/images/icon_${modal ? 'up' : 'down'}_arrow_solid_24.svg`} />
+      {modal && (
         <Options id="semester">
           {list.map((semester) => {
             return (

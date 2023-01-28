@@ -71,3 +71,6 @@ export const sortOptions = [
   { sub: '배움', name: '배울게 많은 강의', option: 'lectureLearningAvg', icon: 'book' },
   { sub: '종합', name: 'BEST 강의', option: 'lectureTotalAvg', icon: 'best' },
 ];
+
+export const semesters = (semesterList) => ['선택', ...semesterList.split(', ')];
+export const examTypes = ['선택', '중간고사', '기말고사', '쪽지', '기타'];

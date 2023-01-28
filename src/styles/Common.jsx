@@ -166,7 +166,6 @@ export const Arrows = styled.img`
 `;
 
 export const OptionBox = styled.div`
-  z-index: 1;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 12px 9px;
@@ -180,7 +179,7 @@ export const OptionBox = styled.div`
     }
   }
   &#semester {
-    min-width: 120px;
+    min-width: 130px;
     &::before {
       content: '';
       margin-right: 0;
@@ -223,7 +222,7 @@ export const Options = styled.ul`
   min-width: 150px;
   cursor: default;
   &#semester {
-    min-width: 120px;
+    min-width: 130px;
   }
 `;
 
