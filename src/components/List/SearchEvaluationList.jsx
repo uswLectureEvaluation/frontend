@@ -3,7 +3,7 @@ import StarRatings from 'react-star-ratings';
 import { useState, Fragment } from 'react';
 import { User } from 'api';
 import { EvaluationDetail, Spinner } from 'components';
-import { fakeEvaluationList } from 'components/placeholderData';
+import { fakeEvaluationList } from 'constants/placeholderData';
 import useLectureQuery from 'hooks/useLectureQuery';
 import { floatFix } from 'utils/floatFix';
 

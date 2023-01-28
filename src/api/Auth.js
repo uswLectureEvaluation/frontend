@@ -9,7 +9,7 @@ const Auth = () => {
   const setToken = useSetRecoilState(tokenState);
   const navigate = useNavigate();
 
-  //회원가입 api
+  //회원가입
   const register = async (data) => {
     try {
       const res = await instance.post('user/join', data);
@@ -43,7 +43,7 @@ const Auth = () => {
     }
   };
 
-  //아이디 찾기api
+  //아이디 찾기
   const findId = async (data) => {
     try {
       const res = await instance.post('user/find-id', data);
@@ -53,7 +53,7 @@ const Auth = () => {
     }
   };
 
-  //비밀번호 찾기api
+  //비밀번호 찾기
   const findPw = async (data) => {
     try {
       const res = await instance.post('user/find-pw', data);
@@ -63,7 +63,7 @@ const Auth = () => {
     }
   };
 
-  //로그인api (로그인유지)
+  //로그인 (로그인유지)
   const login = async (data) => {
     try {
       const res = await instance.post('user/client-login', data);

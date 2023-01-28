@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Button, Spinner, SearchTestInfoList } from 'components';
-import { fakeEvaluationList } from 'components/placeholderData';
+import { fakeEvaluationList } from 'constants/placeholderData';
 import { isLoginStorage } from 'utils/loginStorage';
 import useLectureQuery from 'hooks/useLectureQuery';
 import useUserQuery from 'hooks/useUserQuery';

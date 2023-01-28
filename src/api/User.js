@@ -4,28 +4,69 @@ const User = () => {
   const instance = JwtInterceptors().instance;
   // 내 정보
   const info = () => {
-    return instance.get('/user/my-page');
+    try {
+      return instance.get('/user/my-page');
+    } catch (error) {
+      console.error(error.response.data.message);
+    }
   };
 
   // 내가 쓴 글 - 강의평가
   const evaluateList = async (pageParam) => {
-    const result = await instance(`/evaluate-posts/written/?page=${pageParam}`);
-    return {
-      data: result,
-      isLast: result.data.length < 10,
-      nextPage: pageParam + 1,
-    };
+    try {
+      const res = await instance(`/evaluate-posts/written/?page=${pageParam}`);
+      return {
+        data: res,
+        isLast: res.data.length < 10,
+        nextPage: pageParam + 1,
+      };
+    } catch (error) {
+      console.error(error.response.data.message);
+    }
   };
 
   // 내가 쓴 글 - 시험정보
   const examInfoList = async (pageParam) => {
-    const result = await instance.get(`/exam-posts/written/?page=${pageParam}`);
-    return {
-      data: result,
-      isLast: result.data.length < 10,
-      nextPage: pageParam + 1,
-    };
+    try {
+      const res = await instance.get(`/exam-posts/written/?page=${pageParam}`);
+      return {
+        data: res,
+        isLast: res.data.length < 10,
+        nextPage: pageParam + 1,
+      };
+    } catch (error) {
+      console.error(error.response.data.message);
+    }
   };
+
+  // 시험 정보 구매이력
+  const purchasedTestInfo = () => {
+    try {
+      return instance.get('/exam-posts/purchase');
+    } catch (error) {
+      console.error(error.response.data.message);
+    }
+  };
+
+  // 밴 사유 리스트
+  const banList = () => {
+    try {
+      return instance.get('user/blacklist-reason');
+    } catch (error) {
+      console.error(error.response.data.message);
+    }
+  };
+
+  // 제재 사유 리스트
+  const resList = () => {
+    try {
+      return instance.get('user/restricted-reason');
+    } catch (error) {
+      console.error(error.response.data.message);
+    }
+  };
+
+  //// get을 제외한 나머지 요청은 useUserQuery에서 에러 핸들링
 
   // 강의 평가 수정
   const updateEvaluation = (id, data) => {
@@ -70,21 +111,6 @@ const User = () => {
   // 시험 정보 삭제
   const deleteExamInfo = (id) => {
     return instance.delete(`/exam-posts/?examIdx=${id}`);
-  };
-
-  // 시험 정보 구매이력
-  const purchasedTestInfo = () => {
-    return instance.get('/exam-posts/purchase');
-  };
-
-  // 밴 사유 리스트
-  const banList = () => {
-    return instance.get('user/blacklist-reason');
-  };
-
-  // 제재 사유 리스트
-  const resList = () => {
-    return instance.get('user/restricted-reason');
   };
 
   return {

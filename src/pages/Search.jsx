@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { LectureSearch, LectureList, Meta, OptionSelect, MajorSelect } from 'components';
-import { sortOptions } from 'components/placeholderData';
+import { sortOptions } from 'constants/placeholderData';
 import { scrollToTop } from 'utils/scrollToTop';
 
 // const majorList = ['전체'];

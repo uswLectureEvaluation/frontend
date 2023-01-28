@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { UserAccount, UserPoint } from 'components';
-import { fakeUserInfo } from 'components/placeholderData';
+import { fakeUserInfo } from 'constants/placeholderData';
 import { isLoginStorage } from 'utils/loginStorage';
 
 const UserInfo = ({ my }) => {

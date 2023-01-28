@@ -4,6 +4,7 @@ import { isLoginStorage } from 'utils/loginStorage';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { queryClient } from 'index';
+import { CACHE_TIME } from 'constants/cacheTime';
 
 const useUserQuery = () => {
   const user = User();
@@ -13,15 +14,7 @@ const useUserQuery = () => {
     const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
       ['myInfo', 'myEvaluation'],
       ({ pageParam = 1 }) => user.evaluateList(pageParam),
-      {
-        getNextPageParam: (lastPage) => {
-          if (!lastPage.isLast) return lastPage.nextPage;
-          return undefined;
-        },
-        enabled: isLoginStorage(),
-        cacheTime: 1000 * 60 * 30,
-        staleTime: 1000 * 60 * 30,
-      }
+      userQueryOption
     );
     useEffect(() => {
       if (inView) {
@@ -37,15 +30,7 @@ const useUserQuery = () => {
     const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
       ['myInfo', 'myExamInfo'],
       ({ pageParam = 1 }) => user.examInfoList(pageParam),
-      {
-        getNextPageParam: (lastPage) => {
-          if (!lastPage.isLast) return lastPage.nextPage;
-          return undefined;
-        },
-        enabled: isLoginStorage(),
-        cacheTime: 1000 * 60 * 30,
-        staleTime: 1000 * 60 * 30,
-      }
+      userQueryOption
     );
     useEffect(() => {
       if (inView) {
@@ -92,3 +77,13 @@ const useUserQuery = () => {
   return { EvaluationList, TestInfoList, DeleteEvaluate, DeleteTestInfo, BuyTestInfo };
 };
 export default useUserQuery;
+
+const userQueryOption = {
+  getNextPageParam: (lastPage) => {
+    if (!lastPage.isLast) return lastPage.nextPage;
+    return undefined;
+  },
+  enabled: isLoginStorage(),
+  cacheTime: CACHE_TIME.MINUTE_30,
+  staleTime: CACHE_TIME.MINUTE_30,
+};
