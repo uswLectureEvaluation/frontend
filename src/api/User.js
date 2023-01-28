@@ -1,10 +1,7 @@
-import { useRecoilState } from 'recoil';
-import { tokenState } from '../app/recoilStore';
 import JwtInterceptors from './ApiController';
 
 const User = () => {
-  const [token, setToken] = useRecoilState(tokenState);
-  const instance = JwtInterceptors(token, setToken).instance;
+  const instance = JwtInterceptors().instance;
   // 내정보Api
   const info = () => {
     return instance({

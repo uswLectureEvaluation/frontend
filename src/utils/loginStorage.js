@@ -2,9 +2,7 @@ const storage = localStorage;
 
 export const isLoginStorage = () => {
   const state = localStorage.login;
-  if (state === null) return false;
-  if (state === undefined) return false;
-  return state ? true : false;
+  return !!state;
 };
 
 export const getStorage = (key, defaultValue = undefined) => {

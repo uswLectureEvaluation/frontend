@@ -1,29 +1,13 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { queryClient } from 'index';
-import { Auth } from 'api';
-import { isLoginStorage, removeStorage } from 'utils/loginStorage';
+import { isLoginStorage } from 'utils/loginStorage';
+import { logout } from 'api/etc';
 
 const Nav = () => {
   const navigate = useNavigate();
-  const auth = Auth();
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
-
-  const logoutClick = () => {
-    removeStorage('login');
-    removeStorage('AccessToken');
-    auth.logout().then(async (data) => {
-      if (data.Success) {
-        navigate('/');
-        setTimeout(() => {
-          queryClient.invalidateQueries({ queryKey: ['myInfo'] });
-          queryClient.invalidateQueries({ queryKey: ['lecture'] });
-        }, 300);
-      }
-    });
-  };
 
   return (
     <Navbar>
@@ -76,7 +60,7 @@ const Nav = () => {
         {!isLoginStorage() ? (
           <NavLinks onClick={() => navigate('login')}>로그인</NavLinks>
         ) : (
-          <NavLinks onClick={logoutClick}>로그아웃</NavLinks>
+          <NavLinks onClick={logout}>로그아웃</NavLinks>
         )}
         {!isLoginStorage() ? (
           <NavLinks id="signup" onClick={() => navigate('signup')}>

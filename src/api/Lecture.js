@@ -1,10 +1,7 @@
-import { useRecoilState } from 'recoil';
-import { tokenState } from '../app/recoilStore';
 import JwtInterceptors from './ApiController';
 
 const Lecture = () => {
-  const [token, setToken] = useRecoilState(tokenState);
-  const instance = JwtInterceptors(token, setToken).instance;
+  const instance = JwtInterceptors().instance;
 
   const main = async (lecture, page, majorType) => {
     return instance({

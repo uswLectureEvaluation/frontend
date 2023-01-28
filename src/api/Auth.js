@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { removeStorage, setStorage } from 'utils/loginStorage';
 import { tokenState } from '../app/recoilStore';
 import JwtInterceptors from './ApiController';
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 const Auth = () => {
-  const [token, setToken] = useRecoilState(tokenState);
-  const instance = JwtInterceptors(token, setToken).instance;
+  const setToken = useSetRecoilState(tokenState);
+  const instance = JwtInterceptors().instance;
   const navigate = useNavigate();
 
   const headers = {
@@ -133,14 +133,6 @@ const Auth = () => {
       });
   };
 
-  // 로그아웃
-  const logout = () => {
-    return instance({
-      url: `/user/client-logout`,
-      method: 'POST',
-    });
-  };
-
   //SUWIKI 비밀번호 변경
   const resetPassword = async (prePassword, newPassword) => {
     const data = {
@@ -189,7 +181,6 @@ const Auth = () => {
     checkId,
     checkEmail,
     login,
-    logout,
     findId,
     findPw,
     resetPassword,
