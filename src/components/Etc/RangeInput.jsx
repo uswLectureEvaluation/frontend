@@ -80,9 +80,6 @@ const CustomSlider = styled.input`
 
     /* webkit progress workaround */
     --webkitProgressPercent: 0%;
-    @media screen and (max-width: 550px) {
-      width: 90%;
-    }
   }
 
   &.range {
@@ -93,6 +90,9 @@ const CustomSlider = styled.input`
     width: 65%;
     margin: 0;
     padding: 0;
+    @media screen and (max-width: 550px) {
+      width: 90%;
+    }
   }
 
   &.range:focus {

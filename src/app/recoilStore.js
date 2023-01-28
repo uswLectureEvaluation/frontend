@@ -3,7 +3,7 @@ import { atom } from 'recoil';
 export const lectureState = atom({
   key: 'lectureState',
   default: {
-    selectId: '',
+    id: '',
     lectureName: '',
     professor: '',
     semesterList: '',
