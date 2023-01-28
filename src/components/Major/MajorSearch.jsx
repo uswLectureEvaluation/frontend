@@ -1,17 +1,14 @@
 import styled from '@emotion/styled/macro';
 import * as styles from '@mui/material/styles';
 import { Fragment, useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
 import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import { TextField } from '@mui/material';
-import { tokenState } from 'app/recoilStore';
 import { Major } from 'api';
 import { searchFavorite, type } from 'api/etc';
-import { isLoginStorage } from 'utils/loginStorage';
+import { getStorage, isLoginStorage, setStorage } from 'utils/loginStorage';
 
 const MajorSearch = ({ setModalIsOpen }) => {
   const major = Major();
-  const [token, setToken] = useRecoilState(tokenState);
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,8 +25,8 @@ const MajorSearch = ({ setModalIsOpen }) => {
   const option = searchParams.get('option') || 'modifiedDate';
 
   useEffect(() => {
-    if (isLoginStorage()) searchFavorite(token, setToken).then((data) => setFavoriteDb(data.data));
-  }, [token, setToken]);
+    if (isLoginStorage()) searchFavorite().then((data) => setFavoriteDb(data.data));
+  }, []);
 
   const onFavoriteMajor = (e) => {
     if (!isLoginStorage()) {
@@ -49,13 +46,13 @@ const MajorSearch = ({ setModalIsOpen }) => {
   };
 
   useEffect(() => {
-    if (!window.localStorage.getItem('majorType')) {
-      type(token, setToken).then((res) => {
-        window.localStorage.setItem('majorType', ['전체', res.data]);
+    if (!getStorage('majorType')) {
+      type().then((res) => {
+        setStorage('majorType', ['전체', res.data]);
         setData(['전체', ...res.data]);
       });
-    } else setData(window.localStorage.getItem('majorType').split(','));
-  }, [token, setToken]);
+    } else setData(getStorage('majorType').split(','));
+  }, []);
 
   const clickSubmit = () => {
     if (selectedMajor === '') return;

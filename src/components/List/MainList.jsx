@@ -1,5 +1,5 @@
 import { LectureContainer } from 'components';
-import { fakeLectureList } from 'components/placeholderData';
+import { fakeLectureList } from 'constants/placeholderData';
 import useLectureQuery from 'hooks/useLectureQuery';
 const MainList = () => {
   const { Main } = useLectureQuery();

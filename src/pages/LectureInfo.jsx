@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { lectureState } from 'app/recoilStore';
@@ -15,6 +15,7 @@ import {
 } from 'components';
 import { AppContainer } from 'styles/Common';
 import { isLoginStorage } from 'utils/loginStorage';
+import { scrollToTop } from 'utils/scrollToTop';
 
 const menu = [
   { name: '강의평가', option: '강의평가' },
@@ -45,6 +46,10 @@ const LectureInfo = () => {
     setMenuCheck(index);
     setCheck(e.target.id);
   };
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   return (
     <AppContainer>

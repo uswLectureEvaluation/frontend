@@ -1,14 +1,13 @@
 import styled from '@emotion/styled';
 import { Button, Spinner, SearchTestInfoList } from 'components';
-import { fakeEvaluationList } from 'components/placeholderData';
+import { fakeEvaluationList } from 'constants/placeholderData';
 import { isLoginStorage } from 'utils/loginStorage';
 import useLectureQuery from 'hooks/useLectureQuery';
-import useUserQuery from 'hooks/useUserQuery';
+import { User } from 'api';
 
 const NotUsePoint = ({ selectId }) => {
-  const { BuyTestInfo } = useUserQuery();
-  const { buy } = BuyTestInfo(selectId);
-  const unlock = () => window.confirm('시험정보를 열람하시겠습니까?') && buy();
+  const { buyTestInfo } = User();
+  const unlock = () => window.confirm('시험정보를 열람하시겠습니까?') && buyTestInfo(selectId);
 
   return (
     <Wrapper>

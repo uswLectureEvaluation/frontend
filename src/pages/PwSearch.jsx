@@ -11,8 +11,8 @@ const PwSearch = () => {
     handleSubmit,
     formState: { isValid },
   } = useForm();
-  const onSubmit = ({ id, email }) => {
-    auth.findPw(id, email);
+  const onSubmit = (data) => {
+    auth.findPw(data);
   };
 
   return (
@@ -26,7 +26,7 @@ const PwSearch = () => {
           variant="standard"
           margin="normal"
           label="아이디"
-          {...register('id', { required: true })}
+          {...register('loginId', { required: true })}
         />
         <CssTextField
           variant="standard"

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { CACHE_TIME } from 'constants/cacheTime';
 import React from 'react';
 import { hydrateRoot, createRoot } from 'react-dom/client';
 import { initialize } from 'react-ga';
@@ -12,8 +13,8 @@ export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      cacheTime: 1000 * 60 * 5,
-      staleTime: 1000 * 60 * 5,
+      cacheTime: CACHE_TIME.MINUTE_5,
+      staleTime: CACHE_TIME.MINUTE_5,
     },
   },
 });

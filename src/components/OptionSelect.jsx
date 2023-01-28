@@ -1,6 +1,5 @@
-import styled from '@emotion/styled';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Arrows, OptionBox, SelectedOption } from 'styles/Common';
+import { Arrows, Option, OptionBox, Options, SelectedOption } from 'styles/Common';
 
 const OptionSelect = ({ list, state, controller, itemTitle, icon, location }) => {
   const navigate = useNavigate();
@@ -59,35 +58,3 @@ const OptionSelect = ({ list, state, controller, itemTitle, icon, location }) =>
 };
 
 export default OptionSelect;
-
-const Options = styled.ul`
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 50px;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  background-color: #fff;
-  padding: 5px;
-  min-width: 150px;
-  cursor: default;
-`;
-
-const Option = styled.li`
-  padding: 10px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  &.true {
-    padding: 8px 10px;
-  }
-  &:hover {
-    background-color: #e7ebf0;
-  }
-  &#selected {
-    background-color: #daecff;
-  }
-`;

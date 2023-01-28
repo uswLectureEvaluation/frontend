@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
 import { useEffect } from 'react';
 
 const Modal = ({ isOpen, onRequestClose, children }) => {
@@ -19,15 +18,6 @@ const Modal = ({ isOpen, onRequestClose, children }) => {
 };
 
 export default Modal;
-
-const modalShow = keyframes`
-from {
-  opacity: 0;
-}
-to {
-  opacity: 1;
-}
-`;
 
 const ModalContainer = styled.div`
   position: fixed;
@@ -51,7 +41,6 @@ const ModalBody = styled.div`
   text-align: left;
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
-  animation: ${modalShow} 0.2s;
   @media only screen and (max-width: 550px) {
     min-width: 90%;
   }

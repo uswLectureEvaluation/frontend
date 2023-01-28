@@ -66,7 +66,7 @@ const useLectureQuery = () => {
         enabled: isLoginStorage(),
         onSuccess: (lecture) => {
           setLectureInfo({
-            selectId: selectId,
+            id: selectId,
             lectureName: lecture.data.lectureName,
             professor: lecture.data.professor,
             semesterList: lecture.data.semesterList,

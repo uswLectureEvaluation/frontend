@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { WriteTestInfo, Spinner, Modal } from 'components';
 import { subStr } from 'utils/subString';
 import useUserQuery from 'hooks/useUserQuery';
+import { User } from 'api';
 
 const TestInfoList = () => {
   const { TestInfoList } = useUserQuery();
@@ -35,14 +36,13 @@ const TestInfoList = () => {
 };
 
 export const TestInfoCard = ({ row }) => {
-  const { DeleteTestInfo } = useUserQuery();
-  const { remove } = DeleteTestInfo(row.id);
+  const { deleteExamInfo } = User();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   let title = subStr(row.lectureName, 14);
   let mobileTitle = subStr(row.lectureName, 14);
 
   const onDelete = () => {
-    window.confirm('시험정보를 삭제하시겠습니까?') && remove();
+    window.confirm('시험정보를 삭제하시겠습니까?') && deleteExamInfo(row.id);
   };
 
   const examDifficultySet = row.examDifficulty;

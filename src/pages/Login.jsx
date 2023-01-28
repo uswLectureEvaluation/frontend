@@ -13,7 +13,7 @@ const Login = () => {
   const password = useRef(null);
 
   const loginAttempt = () => {
-    auth.login(userId.current.value, password.current.value).then(() => navigate('/'));
+    auth.login({ loginId: userId.current.value, password: password.current.value });
   };
 
   const onKeypress = (e) => {

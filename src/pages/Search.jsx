@@ -1,13 +1,19 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LectureSearch, LectureList, Meta, OptionSelect, MajorSelect } from 'components';
-import { sortOptions } from 'components/placeholderData';
+import { sortOptions } from 'constants/placeholderData';
+import { scrollToTop } from 'utils/scrollToTop';
 
 // const majorList = ['전체'];
 
 const Search = () => {
   const [count, setCount] = useState(0);
   const [select, onSelect] = useState(false);
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
+
   return (
     <div role="presentation" onClick={() => select && onSelect(false)}>
       <Meta title="SUWIKI : 검색" />

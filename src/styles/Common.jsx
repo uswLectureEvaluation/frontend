@@ -166,7 +166,6 @@ export const Arrows = styled.img`
 `;
 
 export const OptionBox = styled.div`
-  z-index: 1;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 12px 9px;
@@ -177,6 +176,13 @@ export const OptionBox = styled.div`
     margin-right: 5px;
     &::before {
       content: '개설학과';
+    }
+  }
+  &#semester {
+    min-width: 130px;
+    &::before {
+      content: '';
+      margin-right: 0;
     }
   }
   &::before {
@@ -198,5 +204,40 @@ export const OptionBox = styled.div`
     display: flex;
     align-items: center;
     font-size: 14px;
+  }
+`;
+
+export const Options = styled.ul`
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 50px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 5px;
+  min-width: 150px;
+  cursor: default;
+  &#semester {
+    min-width: 130px;
+  }
+`;
+
+export const Option = styled.li`
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  &.true {
+    padding: 8px 10px;
+  }
+  &:hover {
+    background-color: #e7ebf0;
+  }
+  &#selected {
+    background-color: #daecff;
   }
 `;

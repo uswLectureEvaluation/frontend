@@ -1,74 +1,39 @@
 import styled from '@emotion/styled/macro';
 import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
-import { useMutation } from 'react-query';
-import { queryClient } from 'index';
 import { User } from 'api';
-import { lectureState } from 'app/recoilStore';
 import useSlider from 'components/Etc/RangeInput';
+import SemesterSelect from 'components/SemesterSelect';
+import { semesters } from 'constants/placeholderData';
 
 const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
   const user = User();
-  const current = useRecoilValue(lectureState);
   const [content, setContent] = useState(row.content);
   const [honey, HoneySlider] = useSlider(row.honey);
   const [learning, LearingSlider] = useSlider(row.learning);
   const [satisfaction, SatisfactionSlider] = useSlider(row.satisfaction);
-  const [semester] = useState(row.selectedSemester); //학기
+  const [selectedSemester, setSelectedSemester] = useState(row.selectedSemester); //학기
   const [team, setTeam] = useState(row.team); //조모임
   const [homework, setHomework] = useState(row.homework); //과제
   const [difficulty, setDifficulty] = useState(row.difficulty); //학점
-  const evaluateWriting = useMutation(
-    () =>
-      user.writeEvaluation(
-        row.selectId,
-        row.lectureName,
-        row.professor,
-        semester,
-        satisfaction,
-        learning,
-        honey,
-        team,
-        difficulty,
-        homework,
-        content
-      ),
-    {
-      onSuccess: () => {
-        alert('작성 완료');
-        queryClient.invalidateQueries(['lecture', 'evaluationList', current.selectId]);
-        queryClient.invalidateQueries(['lecture', 'detail', current.selectId]);
-        queryClient.invalidateQueries(['myInfo']);
-      },
-    }
-  );
-  const evaluateUpdate = useMutation(
-    () =>
-      user.updateEvaluation(
-        semester,
-        satisfaction,
-        learning,
-        honey,
-        team,
-        difficulty,
-        homework,
-        content,
-        row.id
-      ),
-    {
-      onSuccess: () => {
-        alert('수정 완료');
-        queryClient.invalidateQueries(['myInfo', 'myEvaluation']);
-      },
-    }
-  );
+  const data = {
+    lectureName: row.lectureName,
+    professor: row.professor,
+    selectedSemester,
+    satisfaction,
+    learning,
+    honey,
+    team,
+    difficulty,
+    homework,
+    content,
+  };
 
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
 
   const onEvaluate = () => {
-    if (semester === '' || semester === '선택') return alert('학기를 선택해주세요');
+    if (selectedSemester === '' || selectedSemester === '선택') return alert('학기를 선택해주세요');
     if (honey < 0.5 || honey === undefined) return alert('꿀강지수는 0.5점부터 선택 가능합니다');
     if (learning < 0.5 || learning === undefined)
       return alert('배움지수는 0.5점부터 선택 가능합니다');
@@ -79,7 +44,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
     if (difficulty === '') return alert('학점(란)을 선택해주세요');
     if (content.length < 30 || content.length > 1000)
       return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
-    type === 'update' ? evaluateUpdate.mutate() : evaluateWriting.mutate();
+    type === 'update' ? user.updateEvaluation(row.id, data) : user.writeEvaluation(row.id, data);
     setModalIsOpen(false);
   };
   const teamChange = (e) => {
@@ -91,7 +56,6 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
   const difficultyChange = (e) => {
     setDifficulty(e.target.value);
   };
-
   return (
     <Wrapper>
       <TitleWrapper>
@@ -108,43 +72,26 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
       <ContentWrapper>
         <Content id="group">
           <ContentTitle>수강학기</ContentTitle>
-          {/* <SemesterSelect
-            defaultValue={row.selectedSemester || '선택'}
-            id="semester"
-            onChange={(e) => {
-              setSemester(e);
-            }}
-          >
-            {optionsValue.map((index) => (
-              <StyledOption id="semester" key={index} value={index}>
-                <Soption id="semester">{index}</Soption>
-              </StyledOption>
-            ))}
-          </SemesterSelect> */}
+          <SemesterSelect
+            list={semesters(row.semesterList)}
+            selected={selectedSemester}
+            setSelect={setSelectedSemester}
+          />
         </Content>
         <MobileContent id="semester">
           <ContentTitle id="mobile">수강학기</ContentTitle>
-          {/* <SemesterSelect
-            id="semester"
-            defaultValue={row.selectedSemester || '선택'}
-            onChange={(e) => {
-              setSemester(e);
-            }}
-          >
-            {optionsValue.map((index) => (
-              <StyledOption id="semester" key={index} value={index}>
-                <Soption id="semester">{index}</Soption>
-              </StyledOption>
-            ))}
-          </SemesterSelect> */}
+          <SemesterSelect
+            list={semesters(row.semesterList)}
+            selected={selectedSemester}
+            setSelect={setSelectedSemester}
+          />
         </MobileContent>
-
         <Content>
           <ContentTitle>꿀강지수</ContentTitle>
           <HoneySlider /> <Score>{honey}</Score>
         </Content>
         <MobileContent>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <ContentTitle id="mobile">꿀강지수</ContentTitle>
             <Score id="mobile">{honey}</Score>
           </div>
@@ -156,7 +103,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
           <LearingSlider /> <Score>{learning}</Score>
         </Content>
         <MobileContent>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <ContentTitle id="mobile">배움지수</ContentTitle>
             <Score id="mobile">{learning}</Score>
           </div>
@@ -168,7 +115,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
           <SatisfactionSlider /> <Score>{satisfaction}</Score>
         </Content>
         <MobileContent>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <ContentTitle id="mobile">만족도</ContentTitle>
             <Score id="mobile">{satisfaction}</Score>
           </div>
@@ -274,7 +221,9 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
         rows="15"
       />
       <Wrapper id="button">
-        <EditButton onClick={onEvaluate}>작성하기 (+10P)</EditButton>
+        <EditButton onClick={onEvaluate}>
+          {type === 'write' ? '작성하기 (+10P)' : '수정하기'}
+        </EditButton>
       </Wrapper>
     </Wrapper>
   );
@@ -366,7 +315,7 @@ const MobileContent = styled.form`
   @media only screen and (max-width: 550px) {
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     &#semester {
       display: flex;
       flex-direction: row;

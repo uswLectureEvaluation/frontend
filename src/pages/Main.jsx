@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Major } from 'api';
 import { versionCheck } from 'app/versionCheck';
 import { MainList, LectureSearch, OptionSelect, MajorSelect } from 'components';
-import { sortOptions } from '../components/placeholderData';
+import { sortOptions } from '../constants/placeholderData';
 
 const Main = () => {
   const navigate = useNavigate();

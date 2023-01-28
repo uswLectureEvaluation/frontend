@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { LectureContainer } from 'components';
-import { fakeLectureList } from 'components/placeholderData';
+import { fakeLectureList } from 'constants/placeholderData';
 import { FlexWrap } from 'styles/Common';
 import useLectureQuery from 'hooks/useLectureQuery';
 

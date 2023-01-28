@@ -1,5 +1,5 @@
 import { LectureInfoBox } from 'components';
-import { fakeLectureInfo } from 'components/placeholderData';
+import { fakeLectureInfo } from 'constants/placeholderData';
 import useLectureQuery from 'hooks/useLectureQuery';
 
 const LectureDetail = () => {

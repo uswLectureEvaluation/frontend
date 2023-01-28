@@ -1,47 +1,38 @@
 import styled from '@emotion/styled/macro';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
-import { queryClient } from 'index';
 import { User } from 'api';
+import SemesterSelect from 'components/SemesterSelect';
+import { examTypes, semesters } from 'constants/placeholderData';
 
 const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
   const user = User();
-  const [semester] = useState(row.selectedSemester); //학기
-  const [examType] = useState(row.examType); //중간,기말
+  const [selectedSemester, setSelectedSemester] = useState(row.selectedSemester); //학기
+  const [examType, setExamType] = useState(row.examType); //중간,기말
   const [examDifficulty, setDifficulty] = useState(row.examDifficulty); //난이도
   const [content, setContent] = useState(row.content); //글쓰기
   const [exam, setExamInfo] = useState(() => row.examInfo.split(', ')); //시험내용
   const examInfo = exam.join(', ');
-  const examWriting = useMutation(
-    () =>
-      user.writeExamInfo(
-        row.selectId,
-        row.lectureName,
-        row.professor,
-        semester,
-        examInfo,
-        examType,
-        examDifficulty,
-        content
-      ),
-    {
-      onSuccess: () => {
-        alert('작성 완료');
-        queryClient.invalidateQueries(['lecture', 'examList', row.selectId]);
-        queryClient.invalidateQueries(['lecture', 'detail', row.selectId]);
-        queryClient.invalidateQueries(['myInfo']);
-      },
-    }
+  const examWriting = useMutation(() =>
+    user.writeExamInfo(row.selectId, {
+      lectureName: row.lectureName,
+      professor: row.professor,
+      selectedSemester,
+      examInfo,
+      examType,
+      examDifficulty,
+      content,
+    })
   );
 
-  const examInfoUpdate = useMutation(
-    () => user.UpdateExamInfo(semester, examInfo, examType, examDifficulty, content, row.id),
-    {
-      onSuccess: () => {
-        alert('수정 완료');
-        queryClient.invalidateQueries(['myInfo', 'myExamInfo']);
-      },
-    }
+  const examInfoUpdate = useMutation(() =>
+    user.UpdateExamInfo(row.id, {
+      selectedSemester,
+      examInfo,
+      examType,
+      examDifficulty,
+      content,
+    })
   );
 
   const difficultyChange = (e) => {
@@ -58,7 +49,7 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
     setContent(e.target.value);
   };
   const onTest = () => {
-    if (semester === '' || semester === '선택') return alert('학기를 선택해주세요');
+    if (selectedSemester === '' || selectedSemester === '선택') return alert('학기를 선택해주세요');
     if (examType === '' || examType === '선택') return alert('시험종류를 선택해주세요');
     if (examDifficulty === '') return alert('난이도(란)을 선택해주세요');
     if (exam.length === 0) return alert('시험유형(란)을 선택해주세요');
@@ -85,69 +76,29 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
         <Content id="group">
           <ContentTitleWrapper>
             <ContentTitle id="title">수강학기</ContentTitle>
-            {/* <SemesterSelect
-              id="semester"
-              defaultValue={row.selectedSemester}
-              onChange={(e) => {
-                setSemester(e);
-              }}
-            >
-              {optionsValue.map((index) => (
-                <StyledOption id="semester" key={index} value={index}>
-                  <Soption id="semester">{index}</Soption>
-                </StyledOption>
-              ))}
-            </SemesterSelect> */}
+            <SemesterSelect
+              list={semesters(row.semesterList)}
+              selected={selectedSemester}
+              setSelect={setSelectedSemester}
+            />
           </ContentTitleWrapper>
           <ContentTitleWrapper>
             <ContentTitle id="title">시험종류</ContentTitle>
-            {/* <SemesterSelect
-              id="semester"
-              defaultValue={row.examType}
-              onChange={(e) => {
-                setExamType(e);
-              }}
-            >
-              {examTypeOptions.map((index) => (
-                <StyledOption id="semester" key={index} value={index}>
-                  <Soption id="semester">{index}</Soption>
-                </StyledOption>
-              ))}
-            </SemesterSelect> */}
+            <SemesterSelect list={examTypes} selected={examType} setSelect={setExamType} />
           </ContentTitleWrapper>
         </Content>
         <MobileContent>
           <MobileContent id="semester">
             <ContentTitle id="mobile">수강학기</ContentTitle>
-            {/* <SemesterSelect
-              id="semester"
-              defaultValue={row.selectedSemester}
-              onChange={(e) => {
-                setSemester(e);
-              }}
-            >
-              {optionsValue.map((index) => (
-                <StyledOption id="semester" key={index} value={index}>
-                  <Soption id="semester">{index}</Soption>
-                </StyledOption>
-              ))}
-            </SemesterSelect> */}
+            <SemesterSelect
+              list={semesters(row.semesterList)}
+              selected={selectedSemester}
+              setSelect={setSelectedSemester}
+            />
           </MobileContent>
           <MobileContent id="semester">
             <ContentTitle id="mobile">시험종류</ContentTitle>
-            {/* <SemesterSelect
-              id="semester"
-              defaultValue={row.examType}
-              onChange={(e) => {
-                setExamType(e);
-              }}
-            >
-              {examTypeOptions.map((index) => (
-                <StyledOption id="semester" key={index} value={index}>
-                  <Soption id="semester">{index}</Soption>
-                </StyledOption>
-              ))}
-            </SemesterSelect> */}
+            <SemesterSelect list={examTypes} selected={examType} setSelect={setExamType} />
           </MobileContent>
         </MobileContent>
 
@@ -271,7 +222,9 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
         rows="15"
       />
       <Wrapper id="button">
-        <EditButton onClick={onTest}>작성하기 (+20P)</EditButton>
+        <EditButton onClick={onTest}>
+          {type === 'write' ? '작성하기 (+20P)' : '수정하기'}
+        </EditButton>
       </Wrapper>
     </Wrapper>
   );
