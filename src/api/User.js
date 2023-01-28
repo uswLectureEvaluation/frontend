@@ -1,3 +1,4 @@
+import { queryClient } from 'index';
 import JwtInterceptors from './ApiController';
 
 const User = () => {
@@ -66,51 +67,123 @@ const User = () => {
     }
   };
 
-  //// get을 제외한 나머지 요청은 useUserQuery에서 에러 핸들링
-
   // 강의 평가 수정
-  const updateEvaluation = (id, data) => {
-    return instance.put(`/evaluate-posts/?evaluateIdx=${id}`, data);
+  const updateEvaluation = async (id, data) => {
+    try {
+      const res = await instance.put(`/evaluate-posts/?evaluateIdx=${id}`, data);
+      if (res) {
+        alert('수정 완료');
+        queryClient.invalidateQueries(['myInfo', 'myEvaluation']);
+      }
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   };
 
   // 강의 평가 작성
-  const writeEvaluation = (id, data) => {
-    return instance.post(`evaluate-posts/?lectureId=${id}`, data);
+  const writeEvaluation = async (id, data) => {
+    try {
+      const res = await instance.post(`/evaluate-posts/?lectureId=${id}`, data);
+      if (res) {
+        alert('작성 완료');
+        queryClient.invalidateQueries(['lecture', 'evaluationList', id]);
+        queryClient.invalidateQueries(['lecture', 'detail', id]);
+        queryClient.invalidateQueries(['myInfo']);
+      }
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   };
 
   // 강의 평가 삭제
-  const deleteEvaluation = (id) => {
-    return instance.delete(`/evaluate-posts/?evaluateIdx=${id}`);
+  const deleteEvaluation = async (id) => {
+    try {
+      const res = await instance.delete(`/evaluate-posts/?evaluateIdx=${id}`);
+      if (res) {
+        alert('삭제 완료');
+        queryClient.invalidateQueries({ queryKey: ['myInfo'] });
+      }
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   };
 
   // 강의 평가 신고
-  const reportEvaluation = (data) => {
-    return instance.post('/user/report/evaluate', data);
+  const reportEvaluation = async (data) => {
+    try {
+      const res = await instance.post('/user/report/evaluate', data);
+      if (res) {
+        alert('신고 완료');
+      }
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   };
 
   // 시험 정보 신고
-  const reportExamInfo = (data) => {
-    return instance.post('/user/report/exam', data);
+  const reportExamInfo = async (data) => {
+    try {
+      const res = await instance.post('/user/report/exam', data);
+      if (res) {
+        alert('신고 완료');
+      }
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   };
 
   // 시험 정보 쓰기
-  const writeExamInfo = (id, data) => {
-    return instance.post(`/exam-posts/?lectureId=${id}`, data);
+  const writeExamInfo = async (id, data) => {
+    try {
+      const res = await instance.post(`/exam-posts/?lectureId=${id}`, data);
+      if (res) {
+        alert('작성 완료');
+        queryClient.invalidateQueries(['lecture', 'examList', id]);
+        queryClient.invalidateQueries(['lecture', 'detail', id]);
+        queryClient.invalidateQueries(['myInfo']);
+      }
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   };
 
   // 시험 정보 구매
-  const buyTestInfo = (id) => {
-    return instance.post(`/exam-posts/purchase/?lectureId=${id}`);
+  const buyTestInfo = async (id) => {
+    try {
+      const res = await instance.post(`/exam-posts/purchase/?lectureId=${id}`);
+      if (res.success) {
+        alert('구매 완료');
+        queryClient.invalidateQueries(['lecture', 'examList', id]);
+      }
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   };
 
   // 시험 정보 수정
-  const UpdateExamInfo = (id, data) => {
-    return instance.put(`/exam-posts/?examIdx=${id}`, data);
+  const UpdateExamInfo = async (id, data) => {
+    try {
+      const res = await instance.put(`/exam-posts/?examIdx=${id}`, data);
+      if (res.success) {
+        alert('수정 완료');
+        queryClient.invalidateQueries(['myInfo', 'myExamInfo']);
+      }
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   };
 
   // 시험 정보 삭제
-  const deleteExamInfo = (id) => {
-    return instance.delete(`/exam-posts/?examIdx=${id}`);
+  const deleteExamInfo = async (id) => {
+    try {
+      const res = await instance.delete(`/exam-posts/?examIdx=${id}`);
+      if (res.success) {
+        alert('삭제 완료');
+        queryClient.invalidateQueries({ queryKey: ['myInfo'] });
+      }
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   };
 
   return {

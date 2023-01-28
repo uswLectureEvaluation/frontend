@@ -56,7 +56,7 @@ export const Subject = ({ lecture }) => {
   const [modal, setModal] = useState(false);
   const onReport = () => {
     if (window.confirm('정말 신고하시겠어요? \n*허위 신고 시 제재가 가해질 수 있습니다!'))
-      user.reportEvaluation({ evaluateIdx: lecture.id }).then(() => alert('신고 완료'));
+      user.reportEvaluation({ evaluateIdx: lecture.id });
   };
 
   return (

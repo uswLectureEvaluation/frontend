@@ -5,6 +5,7 @@ import { subStr } from 'utils/subString';
 import { EvaluationDetail, WriteEvaluation, Spinner, Modal } from 'components';
 import useUserQuery from 'hooks/useUserQuery';
 import { floatFix } from 'utils/floatFix';
+import { User } from 'api';
 
 const EvaluationList = () => {
   const { EvaluationList } = useUserQuery();
@@ -36,15 +37,14 @@ const EvaluationList = () => {
 };
 
 export const EvaluationCard = ({ row }) => {
+  const { deleteEvaluation } = User();
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { DeleteEvaluate } = useUserQuery();
-  const { remove } = DeleteEvaluate(row.id);
   const title = subStr(row.lectureName, 14);
   const mobileTitle = subStr(row.lectureName, 8);
 
   const onDelete = () => {
-    window.confirm('강의평가를 삭제하시겠습니까?') && remove();
+    window.confirm('강의평가를 삭제하시겠습니까?') && deleteEvaluation(row.id);
   };
 
   return (

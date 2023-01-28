@@ -1,15 +1,11 @@
 import styled from '@emotion/styled/macro';
 import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
 import { useMutation } from 'react-query';
-import { queryClient } from 'index';
 import { User } from 'api';
-import { lectureState } from 'app/recoilStore';
 import useSlider from 'components/Etc/RangeInput';
 
 const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
   const user = User();
-  const current = useRecoilValue(lectureState);
   const [content, setContent] = useState(row.content);
   const [honey, HoneySlider] = useSlider(row.honey);
   const [learning, LearingSlider] = useSlider(row.learning);
@@ -18,47 +14,31 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
   const [team, setTeam] = useState(row.team); //조모임
   const [homework, setHomework] = useState(row.homework); //과제
   const [difficulty, setDifficulty] = useState(row.difficulty); //학점
-  const evaluateWriting = useMutation(
-    () =>
-      user.writeEvaluation(row.selectId, {
-        lectureName: row.lectureName,
-        professor: row.professor,
-        selectedSemester,
-        satisfaction,
-        learning,
-        honey,
-        team,
-        difficulty,
-        homework,
-        content,
-      }),
-    {
-      onSuccess: () => {
-        alert('작성 완료');
-        queryClient.invalidateQueries(['lecture', 'evaluationList', current.selectId]);
-        queryClient.invalidateQueries(['lecture', 'detail', current.selectId]);
-        queryClient.invalidateQueries(['myInfo']);
-      },
-    }
+  const evaluateWriting = useMutation(() =>
+    user.writeEvaluation(row.selectId, {
+      lectureName: row.lectureName,
+      professor: row.professor,
+      selectedSemester,
+      satisfaction,
+      learning,
+      honey,
+      team,
+      difficulty,
+      homework,
+      content,
+    })
   );
-  const evaluateUpdate = useMutation(
-    () =>
-      user.updateEvaluation(row.id, {
-        selectedSemester,
-        satisfaction,
-        learning,
-        honey,
-        team,
-        difficulty,
-        homework,
-        content,
-      }),
-    {
-      onSuccess: () => {
-        alert('수정 완료');
-        queryClient.invalidateQueries(['myInfo', 'myEvaluation']);
-      },
-    }
+  const evaluateUpdate = useMutation(() =>
+    user.updateEvaluation(row.id, {
+      selectedSemester,
+      satisfaction,
+      learning,
+      honey,
+      team,
+      difficulty,
+      homework,
+      content,
+    })
   );
 
   const onChangeContent = (e) => {

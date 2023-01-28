@@ -1,7 +1,6 @@
 import styled from '@emotion/styled/macro';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
-import { queryClient } from 'index';
 import { User } from 'api';
 
 const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
@@ -12,42 +11,26 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
   const [content, setContent] = useState(row.content); //글쓰기
   const [exam, setExamInfo] = useState(() => row.examInfo.split(', ')); //시험내용
   const examInfo = exam.join(', ');
-  const examWriting = useMutation(
-    () =>
-      user.writeExamInfo(row.selectId, {
-        lectureName: row.lectureName,
-        professor: row.professor,
-        selectedSemester,
-        examInfo,
-        examType,
-        examDifficulty,
-        content,
-      }),
-    {
-      onSuccess: () => {
-        alert('작성 완료');
-        queryClient.invalidateQueries(['lecture', 'examList', row.selectId]);
-        queryClient.invalidateQueries(['lecture', 'detail', row.selectId]);
-        queryClient.invalidateQueries(['myInfo']);
-      },
-    }
+  const examWriting = useMutation(() =>
+    user.writeExamInfo(row.selectId, {
+      lectureName: row.lectureName,
+      professor: row.professor,
+      selectedSemester,
+      examInfo,
+      examType,
+      examDifficulty,
+      content,
+    })
   );
 
-  const examInfoUpdate = useMutation(
-    () =>
-      user.UpdateExamInfo(row.id, {
-        selectedSemester,
-        examInfo,
-        examType,
-        examDifficulty,
-        content,
-      }),
-    {
-      onSuccess: () => {
-        alert('수정 완료');
-        queryClient.invalidateQueries(['myInfo', 'myExamInfo']);
-      },
-    }
+  const examInfoUpdate = useMutation(() =>
+    user.UpdateExamInfo(row.id, {
+      selectedSemester,
+      examInfo,
+      examType,
+      examDifficulty,
+      content,
+    })
   );
 
   const difficultyChange = (e) => {
