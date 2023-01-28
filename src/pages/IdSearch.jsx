@@ -11,8 +11,8 @@ const IdSearch = () => {
     handleSubmit,
     formState: { isValid },
   } = useForm();
-  const emailSubmit = ({ email }) => {
-    auth.findId(email);
+  const emailSubmit = (data) => {
+    auth.findId(data);
   };
 
   return (

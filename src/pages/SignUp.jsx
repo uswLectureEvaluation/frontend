@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import { Auth } from 'api';
 import { Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
@@ -14,8 +13,7 @@ import {
 } from 'utils/validate';
 
 const SignUp = () => {
-  const auth = Auth();
-  const navigate = useNavigate();
+  const { checkId, checkEmail, register: signup } = Auth();
   const {
     register,
     handleSubmit,
@@ -42,17 +40,15 @@ const SignUp = () => {
   };
   // 아이디 중복확인
   const onCheck = () => {
-    auth.checkId(setIdCheck, formValues.loginId);
+    checkId(setIdCheck, { loginId: formValues.loginId });
   };
   // 이메일 중복확인
   const onEmail = () => {
-    auth.checkEmail(setEmailCheck, formValues.email);
+    checkEmail(setEmailCheck, { email: formValues.email });
   };
   // 폼 제출
   const onSubmit = ({ loginId, password, email }) => {
-    auth.register(loginId, password, email).then((res) => {
-      res.success && navigate('/emailsignup', { state: email });
-    });
+    signup({ loginId, password, email });
   };
 
   // 중복확인 이후 값 변경 시 상태 초기화

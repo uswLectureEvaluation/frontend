@@ -12,8 +12,8 @@ const ResetPassword = () => {
     handleSubmit,
     formState: { isValid, errors },
   } = useForm({ mode: 'onChange' });
-  const handleChange = ({ prePassword, newPassword }) => {
-    auth.resetPassword(prePassword, newPassword);
+  const handleChange = (data) => {
+    auth.resetPassword(data);
   };
 
   return (

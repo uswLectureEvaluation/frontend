@@ -12,9 +12,9 @@ const Exit = () => {
     formState: { isValid },
   } = useForm();
 
-  const onSubmit = ({ id, pw }) => {
+  const onSubmit = (data) => {
     if (confirm('회원탈퇴 시 작성한 강의평가/시험정보는 전부 삭제됩니다. \n정말 탈퇴하시나요?')) {
-      auth.quit(id, pw);
+      auth.quit(data);
     } else {
       alert('취소');
     }
@@ -31,7 +31,7 @@ const Exit = () => {
           variant="standard"
           margin="normal"
           label="id"
-          {...register('id', { required: true })}
+          {...register('loginId', { required: true })}
         />
         <Sub>비밀번호를 입력하세요</Sub>
         <CssTextField
@@ -39,7 +39,7 @@ const Exit = () => {
           margin="normal"
           type="password"
           label="pw"
-          {...register('pw', { required: true })}
+          {...register('password', { required: true })}
         />
         <Button id="auth" type="submit" disabled={!isValid}>
           탈퇴
