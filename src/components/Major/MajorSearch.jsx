@@ -1,69 +1,14 @@
 import styled from '@emotion/styled/macro';
 import * as styles from '@mui/material/styles';
-import { Fragment, useEffect, useState } from 'react';
-import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
+import { Fragment, useState } from 'react';
 import { TextField } from '@mui/material';
-import { Major } from 'api';
-import { searchFavorite, type } from 'api/etc';
-import { getStorage, isLoginStorage, setStorage } from 'utils/loginStorage';
+import useFavoriteMajor from 'hooks/useFavoriteMajor';
 
 const MajorSearch = ({ setModalIsOpen }) => {
-  const major = Major();
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [all, setAll] = useState(true);
-  const [db, setData] = useState([]);
   const [searchMajor, setSearchMajor] = useState('');
-  const [favoriteDb, setFavoriteDb] = useState([]);
-  const [selectedMajor, setSelectedMajor] = useState('');
-  const majorChange = (e) => {
-    setSelectedMajor(e.target.value);
-  };
-  const searchValue = searchParams.get('q') || '';
-  const majorType = searchParams.get('majorType') || '전체';
-  const option = searchParams.get('option') || 'modifiedDate';
-
-  useEffect(() => {
-    if (isLoginStorage()) searchFavorite().then((data) => setFavoriteDb(data.data));
-  }, []);
-
-  const onFavoriteMajor = (e) => {
-    if (!isLoginStorage()) {
-      alert('로그인 후 이용해주세요');
-      navigate('/login');
-      return;
-    }
-
-    setSelectedMajor(e.target.alt);
-    major.favoriting(e.target.alt);
-
-    if (!favoriteDb.includes(e.target.alt)) {
-      setFavoriteDb(favoriteDb.concat([e.target.alt]));
-    } else {
-      setFavoriteDb(favoriteDb.filter((v) => v !== e.target.alt));
-    }
-  };
-
-  useEffect(() => {
-    if (!getStorage('majorType')) {
-      type().then((res) => {
-        setStorage('majorType', ['전체', res.data]);
-        setData(['전체', ...res.data]);
-      });
-    } else setData(getStorage('majorType').split(','));
-  }, []);
-
-  const clickSubmit = () => {
-    if (selectedMajor === '') return;
-    if (location.pathname === '/search') {
-      navigate(`/search?q=${searchValue}&option=${option}&majorType=${selectedMajor}`);
-    } else {
-      navigate(`/?option=${option}&majorType=${selectedMajor}`);
-    }
-
-    setModalIsOpen(false);
-  };
+  const [all, setAll] = useState(true);
+  const { db, favoriteDb, majorChange, majorType, onFavoriteMajor, clickSubmit } =
+    useFavoriteMajor();
 
   return (
     <ModalWrapper>
@@ -88,38 +33,36 @@ const MajorSearch = ({ setModalIsOpen }) => {
           즐겨찾기
         </TabMenu>
       </TabWrapper>
-      <MajorBox>
-        <form onChange={majorChange}>
-          {(all ? db : favoriteDb)
-            .filter((v) => (searchMajor === '' ? v : v.includes(searchMajor) ? v : null))
-            .map((v) => {
-              return (
-                <Fragment key={v}>
-                  <FormCheckLeft
-                    type="radio"
-                    id={v}
-                    value={v}
-                    name="majorType"
-                    defaultChecked={majorType === v}
+      <MajorBox onChange={majorChange}>
+        {(all ? db : favoriteDb)
+          .filter((v) => (searchMajor === '' ? v : v.includes(searchMajor) ? v : null))
+          .map((v) => {
+            return (
+              <Fragment key={v}>
+                <FormCheckLeft
+                  type="radio"
+                  id={v}
+                  value={v}
+                  name="majorType"
+                  defaultChecked={majorType === v}
+                />
+                <MajorSelect htmlFor={v}>
+                  <SearchIcon
+                    loading="lazy"
+                    src={
+                      !favoriteDb.includes(v)
+                        ? 'images/icon-emptystar-24.svg'
+                        : 'images/icon_fullstar_24.svg'
+                    }
+                    width={20}
+                    alt={v}
+                    onClick={onFavoriteMajor}
                   />
-                  <MajorSelect htmlFor={v}>
-                    <SearchIcon
-                      loading="lazy"
-                      src={
-                        !favoriteDb.includes(v)
-                          ? 'images/icon-emptystar-24.svg'
-                          : 'images/icon_fullstar_24.svg'
-                      }
-                      width={20}
-                      alt={v}
-                      onClick={onFavoriteMajor}
-                    />
-                    {v}
-                  </MajorSelect>
-                </Fragment>
-              );
-            })}
-        </form>
+                  {v}
+                </MajorSelect>
+              </Fragment>
+            );
+          })}
       </MajorBox>
       <SubmitButton onClick={clickSubmit}>확인</SubmitButton>
     </ModalWrapper>

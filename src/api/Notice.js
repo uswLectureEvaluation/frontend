@@ -4,23 +4,26 @@ const Notices = () => {
   const instance = JwtInterceptors().instance;
   //공지사항api 확인 필요
   const list = async (pageParam) => {
-    const result = await instance({
-      url: `/notice/all?page=${pageParam}`,
-      method: 'GET',
-    });
-    return {
-      data: result,
-      nextPage: pageParam + 1,
-      isLast: result.data.length < 10,
-    };
+    try {
+      const res = await instance.get(`/notice/all?page=${pageParam}`);
+      return {
+        data: res,
+        nextPage: pageParam + 1,
+        isLast: res.data.length < 10,
+      };
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
   };
 
   //공지사항 자세히보기 api
   const detail = async (notice) => {
-    return instance({
-      url: `/notice/?noticeId=${notice}`,
-      method: 'GET',
-    });
+    try {
+      const res = await instance.get(`/notice/?noticeId=${notice}`);
+      return res;
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
   };
   return { list, detail };
 };

@@ -5,43 +5,44 @@ const Major = () => {
 
   // 버전체크
   const version = async () => {
-    return instance({
-      url: `/suwiki/version`,
-      method: 'GET',
-    });
+    try {
+      const res = await instance.get('/suwiki/version');
+      return res;
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
   };
 
   // 전공 리스트
   const type = async () => {
-    return instance({
-      url: `/suwiki/majorType`,
-      method: 'GET',
-    });
+    try {
+      const res = await instance.get('/suwiki/majorType');
+      return res;
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
   };
 
   // 즐겨찾기 리스트
   const searchFavorite = async () => {
-    return instance({
-      url: `/user/favorite-major`,
-      method: 'GET',
-    });
+    try {
+      const res = await instance.get('/user/favorite-major');
+      return res;
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
   };
 
   //전공 즐겨찾기 하기 api
   const favoriting = async (majorType) => {
-    const data = {
-      majorType,
-    };
-
-    return instance({
-      url: `/user/favorite-major`,
-      method: 'POST',
-      data: data,
-    }).catch((error) => {
+    try {
+      const res = await instance.post('/user/favorite-major', { majorType });
+      return res;
+    } catch (error) {
       if (error.response.status === 500) {
         alert('로그인 후 이용해주세요');
       }
-    });
+    }
   };
 
   //즐겨찾기 삭제 api
