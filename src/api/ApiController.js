@@ -40,19 +40,9 @@ const JwtInterceptors = () => {
     async (config) => {
       const tokenValid = await isAccessTokenValid();
       const isLogin = isLoginStorage();
-      if (
-        isLogin &&
-        (config.url.includes('login') ||
-          config.url.includes('check') ||
-          config.url.includes('join') ||
-          config.url.includes('find') ||
-          config.url.includes('verify') ||
-          config.url.includes('suwiki/version') ||
-          config.url.includes('suwiki/majorType') ||
-          config.url.includes('notice'))
-      ) {
+      if (!isLogin) {
         config.headers['Content-Type'] = 'application/json';
-      } else if (!tokenValid) {
+      } else if (isLogin && !tokenValid) {
         const result = await refreshingToken();
         if (!result) {
           alert('로그인 시간이 만료되었습니다\n다시 로그인 해주세요');
