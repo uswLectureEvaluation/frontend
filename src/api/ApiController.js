@@ -2,6 +2,7 @@ import { tokenState } from 'app/recoilStore';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { useRecoilState } from 'recoil';
+import { isLoginStorage } from 'utils/loginStorage';
 import { logout, refresh } from './etc';
 const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 axios.defaults.withCredentials = true;
@@ -38,17 +39,17 @@ const JwtInterceptors = () => {
   instance.interceptors.request.use(
     async (config) => {
       const tokenValid = await isAccessTokenValid();
+      const isLogin = isLoginStorage();
       if (
-        config.url.includes('login') ||
-        config.url.includes('check') ||
-        config.url.includes('join') ||
-        config.url.includes('find') ||
-        config.url.includes('verify') ||
-        config.url.includes('lecture/all/?option') ||
-        config.url.includes('suwiki/version') ||
-        config.url.includes('suwiki/majorType') ||
-        config.url.includes('lecture/search/?searchValue') ||
-        config.url.includes('notice')
+        isLogin &&
+        (config.url.includes('login') ||
+          config.url.includes('check') ||
+          config.url.includes('join') ||
+          config.url.includes('find') ||
+          config.url.includes('verify') ||
+          config.url.includes('suwiki/version') ||
+          config.url.includes('suwiki/majorType') ||
+          config.url.includes('notice'))
       ) {
         config.headers['Content-Type'] = 'application/json';
       } else if (!tokenValid) {
