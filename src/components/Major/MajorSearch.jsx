@@ -8,7 +8,7 @@ const MajorSearch = ({ setModalIsOpen }) => {
   const [searchMajor, setSearchMajor] = useState('');
   const [all, setAll] = useState(true);
   const { db, favoriteDb, majorChange, majorType, onFavoriteMajor, clickSubmit } =
-    useFavoriteMajor();
+    useFavoriteMajor(setModalIsOpen);
 
   return (
     <ModalWrapper>
