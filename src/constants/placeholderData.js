@@ -74,3 +74,75 @@ export const sortOptions = [
 
 export const semesters = (semesterList) => ['선택', ...semesterList.split(', ')];
 export const examTypes = ['선택', '중간고사', '기말고사', '쪽지', '기타'];
+
+export const EvalutionSliderOptions = [
+  {
+    id: 'honey',
+    name: '꿀강지수',
+  },
+  {
+    id: 'learning',
+    name: '배움지수',
+  },
+  {
+    id: 'satisfaction',
+    name: '만족도',
+  },
+];
+
+export const EvaluationSelectOptions = [
+  {
+    id: 'team',
+    title: '조모임',
+    options: [
+      { id: 'easy', name: '없음', value: 0 },
+      { id: 'difficult', name: '있음', value: 1 },
+    ],
+  },
+  {
+    id: 'homework',
+    title: '과제',
+    options: [
+      { id: 'easy', name: '없음', value: 0 },
+      { id: 'normal', name: '보통', value: 1 },
+      { id: 'difficult', name: '많음', value: 2 },
+    ],
+  },
+  {
+    id: 'difficulty',
+    title: '학점',
+    options: [
+      { id: 'easy', name: '너그러움', value: 0 },
+      { id: 'normal', name: '보통', value: 1 },
+      { id: 'difficult', name: '까다로움', value: 2 },
+    ],
+  },
+];
+
+export const ExamSelectOptions = [
+  {
+    id: 'examDifficulty',
+    title: '난이도',
+    type: 'radio',
+    options: [
+      { id: 'easy', name: '쉬움', value: '쉬움' },
+      { id: 'normal', name: '보통', value: '보통' },
+      { id: 'difficult', name: '어려움', value: '어려움' },
+    ],
+  },
+  {
+    id: 'examInfo',
+    title: '시험유형',
+    subTitle: '(복수선택)',
+    type: 'checkbox',
+    options: [
+      { id: 'normal', name: '족보', value: '족보' },
+      { id: 'normal', name: '교재', value: '교재' },
+      { id: 'normal', name: 'PPT', value: 'PPT' },
+      { id: 'normal', name: '필기', value: '필기' },
+      { id: 'normal', name: '응용', value: '응용' },
+      { id: 'normal', name: '실습', value: '실습' },
+      { id: 'normal', name: '과제', value: '과제' },
+    ],
+  },
+];

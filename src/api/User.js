@@ -164,7 +164,7 @@ const User = () => {
   const UpdateExamInfo = async (id, data) => {
     try {
       const res = await instance.put(`/exam-posts/?examIdx=${id}`, data);
-      if (res.success) {
+      if (res) {
         alert('수정 완료');
         queryClient.invalidateQueries(['myInfo', 'myExamInfo']);
       }
@@ -177,7 +177,7 @@ const User = () => {
   const deleteExamInfo = async (id) => {
     try {
       const res = await instance.delete(`/exam-posts/?examIdx=${id}`);
-      if (res.success) {
+      if (res) {
         alert('삭제 완료');
         queryClient.invalidateQueries({ queryKey: ['myInfo'] });
       }

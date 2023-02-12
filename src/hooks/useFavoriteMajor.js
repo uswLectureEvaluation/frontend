@@ -6,7 +6,7 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { getStorage, isLoginStorage, setStorage } from 'utils/loginStorage';
 
-const useFavoriteMajor = () => {
+const useFavoriteMajor = (setModalIsOpen) => {
   const { favoriting, unfavoriting } = Major();
   const navigate = useNavigate();
   const location = useLocation();
@@ -46,6 +46,7 @@ const useFavoriteMajor = () => {
     } else {
       navigate(`/?option=${option}&majorType=${selectedMajor}`);
     }
+    setModalIsOpen(false);
   };
 
   // 전공 선택 변경
