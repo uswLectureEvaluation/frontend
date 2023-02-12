@@ -13,10 +13,10 @@ const UserInfo = ({ my }) => {
   };
 
   const optionSlice = (start, end) => {
-    return option.slice(start, end).map((i) => (
-      <FlexContainer id="use" key={i.title}>
-        <FlexContainer id="last" onClick={() => navigate(`/${i.page}`)}>
-          {i.title}
+    return option.slice(start, end).map(({ title, page }) => (
+      <FlexContainer id="use" key={title}>
+        <FlexContainer id="last" onClick={() => navigate(`/${page}`)}>
+          {title}
         </FlexContainer>
       </FlexContainer>
     ));
@@ -92,17 +92,17 @@ const UserInfo = ({ my }) => {
         <Content>
           <Title>이용 안내</Title>
           {isLogin && optionSlice(0, 2)}
-          {urlOption.map((i) => (
-            <FlexContainer id="use" key={i.title}>
+          {urlOption.map(({ title, page }) => (
+            <FlexContainer id="use" key={title}>
               <FlexContainer
                 id="last"
                 onClick={() => {
-                  i.page === 'email'
+                  page === 'email'
                     ? (window.location = 'mailto:suwikiask@gmail.com')
-                    : window.open(i.page);
+                    : window.open(page);
                 }}
               >
-                {i.title}
+                {title}
               </FlexContainer>
             </FlexContainer>
           ))}

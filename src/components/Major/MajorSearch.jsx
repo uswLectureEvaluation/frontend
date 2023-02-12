@@ -36,33 +36,31 @@ const MajorSearch = ({ setModalIsOpen }) => {
       <MajorBox onChange={majorChange}>
         {(all ? db : favoriteDb)
           .filter((v) => (searchMajor === '' ? v : v.includes(searchMajor) ? v : null))
-          .map((v) => {
-            return (
-              <Fragment key={v}>
-                <FormCheckLeft
-                  type="radio"
-                  id={v}
-                  value={v}
-                  name="majorType"
-                  defaultChecked={majorType === v}
+          .map((v) => (
+            <Fragment key={v}>
+              <FormCheckLeft
+                type="radio"
+                id={v}
+                value={v}
+                name="majorType"
+                defaultChecked={majorType === v}
+              />
+              <MajorSelect htmlFor={v}>
+                <SearchIcon
+                  loading="lazy"
+                  src={
+                    !favoriteDb.includes(v)
+                      ? 'images/icon-emptystar-24.svg'
+                      : 'images/icon_fullstar_24.svg'
+                  }
+                  width={20}
+                  alt={v}
+                  onClick={onFavoriteMajor}
                 />
-                <MajorSelect htmlFor={v}>
-                  <SearchIcon
-                    loading="lazy"
-                    src={
-                      !favoriteDb.includes(v)
-                        ? 'images/icon-emptystar-24.svg'
-                        : 'images/icon_fullstar_24.svg'
-                    }
-                    width={20}
-                    alt={v}
-                    onClick={onFavoriteMajor}
-                  />
-                  {v}
-                </MajorSelect>
-              </Fragment>
-            );
-          })}
+                {v}
+              </MajorSelect>
+            </Fragment>
+          ))}
       </MajorBox>
       <SubmitButton onClick={clickSubmit}>확인</SubmitButton>
     </ModalWrapper>

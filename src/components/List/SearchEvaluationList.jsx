@@ -119,14 +119,12 @@ export const Subject = ({ lecture }) => {
         {modal && <EvaluationDetail lecture={lecture} />}
         <MarginTop id="bottom">
           <EvaluationText>
-            {lecture.content.split('\n').map((value, index) => {
-              return (
-                <div key={index}>
-                  {value}
-                  <br />
-                </div>
-              );
-            })}
+            {lecture.content.split('\n').map((value, index) => (
+              <div key={index}>
+                {value}
+                <br />
+              </div>
+            ))}
           </EvaluationText>
         </MarginTop>
       </LectureWrapper>
