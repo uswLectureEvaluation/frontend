@@ -17,11 +17,9 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
     const { examInfo } = examOptions;
-    switch (name) {
-      case 'examDifficulty':
-        setExamOptions({ ...examOptions, examDifficulty: value });
-        break;
-      case 'examInfo':
+    const change = {
+      examDifficulty: () => setExamOptions({ ...examOptions, examDifficulty: value }),
+      examInfo: () => {
         if (checked) {
           setExamOptions({ ...examOptions, examInfo: [...examInfo, value] });
         } else {
@@ -30,10 +28,9 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
             examInfo: examInfo.filter((data) => data !== value),
           });
         }
-        break;
-      default:
-        break;
-    }
+      },
+    };
+    change[name]();
   };
   const examWriting = useMutation(() =>
     user.writeExamInfo(row.selectId, {

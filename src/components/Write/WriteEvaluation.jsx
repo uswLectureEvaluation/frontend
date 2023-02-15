@@ -1,66 +1,24 @@
 import styled from '@emotion/styled/macro';
-import { Fragment, useState } from 'react';
-import { User } from 'api';
-import useSlider from 'components/Etc/RangeInput';
+import { Fragment } from 'react';
 import SemesterSelect from 'components/SemesterSelect';
 import {
   EvaluationSelectOptions,
   EvalutionSliderOptions,
   semesters,
 } from 'constants/placeholderData';
+import useWriteEvaluation from 'hooks/useWriteEvaluation';
 
 const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
-  const user = User();
-  const [content, setContent] = useState(row.content);
-  const [selectedSemester, setSelectedSemester] = useState(row.selectedSemester); //학기
-  const SliderOptions = {
-    honey: useSlider(row.honey),
-    learning: useSlider(row.learning),
-    satisfaction: useSlider(row.satisfaction),
-  }; //강의옵션
-  const [lectureOptions, setLectureOptions] = useState({
-    team: row.team,
-    homework: row.homework,
-    difficulty: row.difficulty,
-  }); //강의옵션
-
-  const data = {
-    lectureName: row.lectureName,
-    professor: row.professor,
+  const {
     selectedSemester,
-    satisfaction: SliderOptions.satisfaction[0],
-    learning: SliderOptions.learning[0],
-    honey: SliderOptions.honey[0],
-    team: lectureOptions.team,
-    difficulty: lectureOptions.difficulty,
-    homework: lectureOptions.homework,
+    SliderOptions,
+    lectureOptions,
     content,
-  };
-
-  const onChangeContent = (e) => {
-    setContent(e.target.value);
-  };
-  const onChangeLectureOptions = (e) => {
-    setLectureOptions({ ...lectureOptions, [e.target.name]: e.target.value });
-  };
-
-  const onEvaluate = () => {
-    if (selectedSemester === '' || selectedSemester === '선택') return alert('학기를 선택해주세요');
-    if (SliderOptions.honey[0] < 0.5 || SliderOptions.honey[0] === undefined)
-      return alert('꿀강지수는 0.5점부터 선택 가능합니다');
-    if (SliderOptions.learning[0] < 0.5 || SliderOptions.learning[0] === undefined)
-      return alert('배움지수는 0.5점부터 선택 가능합니다');
-    if (SliderOptions.satisfaction[0] < 0.5 || SliderOptions.satisfaction[0] === undefined)
-      return alert('만족도는 0.5점부터 선택 가능합니다');
-    if (lectureOptions.team === '') return alert('조모임(란)을 선택해주세요');
-    if (lectureOptions.homework === '') return alert('과제(란)을 선택해주세요');
-    if (lectureOptions.difficulty === '') return alert('학점(란)을 선택해주세요');
-    if (content.length < 30 || content.length > 1000)
-      return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
-    type === 'update' ? user.updateEvaluation(row.id, data) : user.writeEvaluation(row.id, data);
-    setModalIsOpen(false);
-  };
-
+    setSelectedSemester,
+    onChangeContent,
+    onChangeLectureOptions,
+    onEvaluate,
+  } = useWriteEvaluation({ setModalIsOpen, row, type });
   return (
     <Wrapper>
       <TitleWrapper>
@@ -92,17 +50,17 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
           />
         </MobileContent>
         {EvalutionSliderOptions.map(({ id, name }) => {
-          const [value, Slider] = SliderOptions[id];
+          const { state, Slider } = SliderOptions[id];
           return (
             <Fragment key={id}>
               <Content>
                 <ContentTitle>{name}</ContentTitle>
-                <Slider /> <Score>{value}</Score>
+                <Slider /> <Score>{state}</Score>
               </Content>
               <MobileContent>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <ContentTitle id="mobile">{name}</ContentTitle>
-                  <Score id="mobile">{value}</Score>
+                  <Score id="mobile">{state}</Score>
                 </div>
                 <Slider />
               </MobileContent>
@@ -304,16 +262,6 @@ const FormCheckText = styled.span`
 `;
 
 const FormCheckLeft = styled.input`
-  &:checked {
-    display: inline-block;
-    background: none;
-    padding: 0px 10px;
-    text-align: center;
-    height: 35px;
-    line-height: 33px;
-
-    display: none;
-  }
   &#difficult {
     &:checked + ${FormCheckText} {
       color: #7800ff;
