@@ -1,12 +1,14 @@
 import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Major } from 'api';
 import { versionCheck } from 'app/versionCheck';
-import { MainList, LectureSearch, OptionSelect, MajorSelect } from 'components';
+import { LectureSearch, MainList, MajorSelect, OptionSelect } from 'components';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { isLoginStorage } from 'utils/loginStorage';
 import { sortOptions } from '../constants/placeholderData';
 
 const Main = () => {
+  const isLogin = isLoginStorage();
   const navigate = useNavigate();
   const [select, onSelect] = useState(false);
   const major = Major();
@@ -36,9 +38,11 @@ const Main = () => {
         <LectureSearch />
         <SearchWrapper>
           <HeadSelection>
-            <FlexWrapper>
-              <MajorSelect />
-            </FlexWrapper>
+            {isLogin && (
+              <FlexWrapper>
+                <MajorSelect />
+              </FlexWrapper>
+            )}
             <OptionSelect
               list={sortOptions}
               state={select}
