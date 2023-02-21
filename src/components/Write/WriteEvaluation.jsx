@@ -55,7 +55,8 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
             <Fragment key={id}>
               <Content>
                 <ContentTitle>{name}</ContentTitle>
-                <Slider /> <Score>{state}</Score>
+                <Slider />
+                <Score>{state}</Score>
               </Content>
               <MobileContent>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>

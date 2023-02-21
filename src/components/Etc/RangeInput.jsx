@@ -63,7 +63,7 @@ const RangeInput = ({ min = 0, max = 5, step = 0.5, defaultValue = 0, setSlide }
 const useSlider = (defaultState) => {
   const [state, setSlide] = useState(defaultState);
 
-  const Slider = () => <RangeInput setSlide={setSlide} onChange={setSlide} defaultValue={state} />;
+  const Slider = () => <RangeInput setSlide={setSlide} defaultValue={state} />;
 
   return { state, Slider, setSlide };
 };

@@ -39,11 +39,11 @@ const useWriteEvaluation = ({ setModalIsOpen, row, type }) => {
 
   const onEvaluate = () => {
     if (selectedSemester === '' || selectedSemester === '선택') return alert('학기를 선택해주세요');
-    if (SliderOptions.honey[0] < 0.5 || SliderOptions.honey[0] === undefined)
+    if (SliderOptions.honey.state < 0.5 || SliderOptions.honey.state === undefined)
       return alert('꿀강지수는 0.5점부터 선택 가능합니다');
-    if (SliderOptions.learning[0] < 0.5 || SliderOptions.learning[0] === undefined)
+    if (SliderOptions.learning.state < 0.5 || SliderOptions.learning.state === undefined)
       return alert('배움지수는 0.5점부터 선택 가능합니다');
-    if (SliderOptions.satisfaction[0] < 0.5 || SliderOptions.satisfaction[0] === undefined)
+    if (SliderOptions.satisfaction.state < 0.5 || SliderOptions.satisfaction.state === undefined)
       return alert('만족도는 0.5점부터 선택 가능합니다');
     if (lectureOptions.team === '') return alert('조모임(란)을 선택해주세요');
     if (lectureOptions.homework === '') return alert('과제(란)을 선택해주세요');
