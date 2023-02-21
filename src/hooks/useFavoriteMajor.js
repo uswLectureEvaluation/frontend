@@ -18,7 +18,7 @@ const useFavoriteMajor = (setModalIsOpen) => {
 
   const [db, setData] = useState([]);
   const [favoriteDb, setFavoriteDb] = useState([]);
-  const [selectedMajor, setSelectedMajor] = useState('');
+  const [selectedMajor, setSelectedMajor] = useState(majorType);
   const token = useRecoilValue(tokenState);
 
   // 즐겨찾기 추가/삭제
@@ -40,7 +40,6 @@ const useFavoriteMajor = (setModalIsOpen) => {
 
   // 확인 버튼 클릭 이벤트
   const clickSubmit = () => {
-    if (selectedMajor === '') return;
     if (location.pathname === '/search') {
       navigate(`/search?q=${searchValue}&option=${option}&majorType=${selectedMajor}`);
     } else {
