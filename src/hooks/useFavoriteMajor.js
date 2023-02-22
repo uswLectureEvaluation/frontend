@@ -6,7 +6,7 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { getStorage, isLoginStorage, setStorage } from 'utils/loginStorage';
 
-const useFavoriteMajor = () => {
+const useFavoriteMajor = (setModalIsOpen) => {
   const { favoriting, unfavoriting } = Major();
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,7 +18,7 @@ const useFavoriteMajor = () => {
 
   const [db, setData] = useState([]);
   const [favoriteDb, setFavoriteDb] = useState([]);
-  const [selectedMajor, setSelectedMajor] = useState('');
+  const [selectedMajor, setSelectedMajor] = useState(majorType);
   const token = useRecoilValue(tokenState);
 
   // 즐겨찾기 추가/삭제
@@ -40,12 +40,12 @@ const useFavoriteMajor = () => {
 
   // 확인 버튼 클릭 이벤트
   const clickSubmit = () => {
-    if (selectedMajor === '') return;
     if (location.pathname === '/search') {
       navigate(`/search?q=${searchValue}&option=${option}&majorType=${selectedMajor}`);
     } else {
       navigate(`/?option=${option}&majorType=${selectedMajor}`);
     }
+    setModalIsOpen(false);
   };
 
   // 전공 선택 변경

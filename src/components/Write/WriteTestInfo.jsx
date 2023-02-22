@@ -3,24 +3,43 @@ import { useState } from 'react';
 import { useMutation } from 'react-query';
 import { User } from 'api';
 import SemesterSelect from 'components/SemesterSelect';
-import { examTypes, semesters } from 'constants/placeholderData';
+import { ExamSelectOptions, examTypes, semesters } from 'constants/placeholderData';
 
 const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
   const user = User();
   const [selectedSemester, setSelectedSemester] = useState(row.selectedSemester); //학기
   const [examType, setExamType] = useState(row.examType); //중간,기말
-  const [examDifficulty, setDifficulty] = useState(row.examDifficulty); //난이도
   const [content, setContent] = useState(row.content); //글쓰기
-  const [exam, setExamInfo] = useState(() => row.examInfo.split(', ')); //시험내용
-  const examInfo = exam.join(', ');
+  const [examOptions, setExamOptions] = useState({
+    examInfo: row.examInfo.split(', '),
+    examDifficulty: row.examDifficulty,
+  }); //시험내용 옵션
+  const handleChange = (e) => {
+    const { name, value, checked } = e.target;
+    const { examInfo } = examOptions;
+    const change = {
+      examDifficulty: () => setExamOptions({ ...examOptions, examDifficulty: value }),
+      examInfo: () => {
+        if (checked) {
+          setExamOptions({ ...examOptions, examInfo: [...examInfo, value] });
+        } else {
+          setExamOptions({
+            ...examOptions,
+            examInfo: examInfo.filter((data) => data !== value),
+          });
+        }
+      },
+    };
+    change[name]();
+  };
   const examWriting = useMutation(() =>
     user.writeExamInfo(row.selectId, {
       lectureName: row.lectureName,
       professor: row.professor,
       selectedSemester,
-      examInfo,
+      examInfo: examOptions.examInfo.join(', '),
       examType,
-      examDifficulty,
+      examDifficulty: examOptions.examDifficulty,
       content,
     })
   );
@@ -28,31 +47,21 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
   const examInfoUpdate = useMutation(() =>
     user.UpdateExamInfo(row.id, {
       selectedSemester,
-      examInfo,
+      examInfo: examOptions.examInfo.join(', '),
       examType,
-      examDifficulty,
+      examDifficulty: examOptions.examDifficulty,
       content,
     })
   );
 
-  const difficultyChange = (e) => {
-    setDifficulty(e.target.value);
-  };
-  const handleExam = (checked, value) => {
-    if (checked) {
-      setExamInfo([...exam, value]);
-    } else {
-      setExamInfo(exam.filter((data) => data !== value));
-    }
-  };
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
   const onTest = () => {
     if (selectedSemester === '' || selectedSemester === '선택') return alert('학기를 선택해주세요');
     if (examType === '' || examType === '선택') return alert('시험종류를 선택해주세요');
-    if (examDifficulty === '') return alert('난이도(란)을 선택해주세요');
-    if (exam.length === 0) return alert('시험유형(란)을 선택해주세요');
+    if (examOptions.examDifficulty === '') return alert('난이도(란)을 선택해주세요');
+    if (examOptions.examInfo.length === 0) return alert('시험유형(란)을 선택해주세요');
     if (content.length < 30 || content.length > 1000)
       return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
     type === 'update' ? examInfoUpdate.mutate() : examWriting.mutate();
@@ -102,118 +111,28 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
           </MobileContent>
         </MobileContent>
 
-        <Content id="content" onChange={difficultyChange}>
-          <ContentTitle id="mobile">난이도</ContentTitle>
-          <label>
-            <FormCheckLeft
-              type="radio"
-              name="examDifficulty"
-              id="easy"
-              value="쉬움"
-              defaultChecked={examDifficulty === '쉬움'}
-            />
-            <FormCheckText>쉬움</FormCheckText>
-          </label>
-          <label>
-            <FormCheckLeft
-              type="radio"
-              name="examDifficulty"
-              id="normal"
-              value="보통"
-              defaultChecked={examDifficulty === '보통'}
-            />
-            <FormCheckText>보통</FormCheckText>
-          </label>
-          <label>
-            <FormCheckLeft
-              type="radio"
-              name="examDifficulty"
-              id="difficult"
-              value="어려움"
-              defaultChecked={examDifficulty === '어려움'}
-            />
-            <FormCheckText>어려움</FormCheckText>
-          </label>
-        </Content>
-
-        <Content id="content" onChange={(e) => handleExam(e.target.checked, e.target.value)}>
-          <ContentTitle id="mobile">
-            시험유형<SmallTitle>(복수선택)</SmallTitle>
-          </ContentTitle>
-          <label>
-            <FormCheckMulti
-              type="checkbox"
-              name="examType"
-              id="normal"
-              value="족보"
-              defaultChecked={exam.includes('족보')}
-            />
-            <FormCheckText>족보</FormCheckText>
-          </label>
-          <label>
-            <FormCheckMulti
-              type="checkbox"
-              name="examType"
-              id="normal"
-              value="교재"
-              defaultChecked={exam.includes('교재')}
-            />
-            <FormCheckText>교재</FormCheckText>
-          </label>
-          <label>
-            <FormCheckMulti
-              type="checkbox"
-              name="examType"
-              id="normal"
-              value="PPT"
-              defaultChecked={exam.includes('PPT')}
-            />
-            <FormCheckText>PPT</FormCheckText>
-          </label>
-          <label>
-            <FormCheckMulti
-              type="checkbox"
-              name="examType"
-              id="normal"
-              value="필기"
-              defaultChecked={exam.includes('필기')}
-            />
-            <FormCheckText>필기</FormCheckText>
-          </label>
-        </Content>
-        <Content id="content" onChange={(e) => handleExam(e.target.checked, e.target.value)}>
-          <ContentTitle id="mobile" />
-          <label>
-            <FormCheckMulti
-              type="checkbox"
-              name="examType"
-              id="normal"
-              value="응용"
-              defaultChecked={exam.includes('응용')}
-            />
-            <FormCheckText>응용</FormCheckText>
-          </label>
-          <label>
-            <FormCheckMulti
-              type="checkbox"
-              name="examType"
-              id="normal"
-              value="실습"
-              defaultChecked={exam.includes('실습')}
-            />
-            <FormCheckText>실습</FormCheckText>
-          </label>
-          <label>
-            <FormCheckMulti
-              type="checkbox"
-              name="examType"
-              id="normal"
-              value="과제"
-              defaultChecked={exam.includes('과제')}
-            />
-            <FormCheckText>과제</FormCheckText>
-          </label>
-        </Content>
+        {ExamSelectOptions.map(({ id, title, subTitle, type, options }) => (
+          <Content key={id} id="content" onChange={handleChange}>
+            <ContentTitle id={id}>
+              {title}
+              {subTitle && <SmallTitle>{subTitle}</SmallTitle>}
+            </ContentTitle>
+            <GridContainer id={id}>
+              {options.map(({ id: level, name, value }) => (
+                <label key={name}>
+                  <FormCheckLeft
+                    type={type}
+                    name={id}
+                    id={level}
+                    value={value}
+                    defaultChecked={examOptions[id].includes(value)}
+                  />
+                  <FormCheckText>{name}</FormCheckText>
+                </label>
+              ))}
+            </GridContainer>
+          </Content>
+        ))}
       </ContentWrapper>
       <TextField
         placeholder="시험에 대한 정보, 공부법, 문제유형 등을 자유롭게 작성해주세요 :)"
@@ -238,6 +157,15 @@ const Wrapper = styled.div`
   width: 100%;
   &#button {
     align-items: center;
+  }
+`;
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem 0;
+  &#examDifficulty {
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 
@@ -317,6 +245,9 @@ const ContentTitle = styled.div`
       width: 100%;
     }
   }
+  &#examInfo {
+    margin-bottom: auto;
+  }
 `;
 
 const ContentTitleWrapper = styled.div`
@@ -388,16 +319,6 @@ const FormCheckText = styled.span`
 `;
 
 const FormCheckLeft = styled.input`
-  &:checked {
-    display: inline-block;
-    background: none;
-    padding: 0px 10px;
-    text-align: center;
-    height: 35px;
-    line-height: 33px;
-    font-weight: 500;
-    display: none;
-  }
   &#difficult {
     &:checked + ${FormCheckText} {
       color: #7800ff;
@@ -418,39 +339,3 @@ const FormCheckLeft = styled.input`
   }
   display: none;
 `;
-
-const FormCheckMulti = styled.input`
-  &:checked {
-    display: inline-block;
-    background: none;
-    padding: 0px 10px;
-    text-align: center;
-    height: 35px;
-    line-height: 33px;
-    font-weight: 500;
-    display: none;
-  }
-  &#difficult {
-    &:checked + ${FormCheckText} {
-      color: #7800ff;
-
-      font-weight: 600;
-    }
-  }
-  &#normal {
-    &:checked + ${FormCheckText} {
-      color: #222222;
-
-      font-weight: 600;
-    }
-  }
-  &#easy {
-    &:checked + ${FormCheckText} {
-      color: #336af8;
-
-      font-weight: 600;
-    }
-  }
-  display: none;
-`;
-// 여기까지

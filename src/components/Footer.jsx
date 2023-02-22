@@ -1,23 +1,29 @@
 import styled from '@emotion/styled';
 
+const footerMenu = [
+  {
+    title: '이용약관',
+    pageLink: 'https://sites.google.com/view/suwiki-policy-terms',
+  },
+  {
+    title: '개인정보처리방침',
+    pageLink: 'https://sites.google.com/view/suwiki-policy-privacy',
+  },
+  {
+    title: '문의하기',
+    pageLink: 'https://alike-pump-ae3.notion.site/SUWIKI-2cd58468e90b404fbd3e30b8b2c0b699',
+  },
+];
+
 const Footer = () => {
   return (
     <FootWrapper>
       <Foot>
-        <FooterContent
-          right="1rem"
-          onClick={() => window.open('https://sites.google.com/view/suwiki-policy-terms/')}
-        >
-          이용약관
-        </FooterContent>
-        <FooterContent
-          onClick={() => window.open('https://sites.google.com/view/suwiki-policy-privacy')}
-        >
-          개인정보처리방침
-        </FooterContent>
-        <FooterContent left="2rem" onClick={() => window.open('mailto:suwikiask@gmail.com')}>
-          문의하기
-        </FooterContent>
+        {footerMenu.map(({ title, pageLink }) => (
+          <FooterContent key={pageLink} onClick={() => window.open(pageLink)}>
+            {title}
+          </FooterContent>
+        ))}
       </Foot>
     </FootWrapper>
   );

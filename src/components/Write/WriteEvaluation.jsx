@@ -1,61 +1,24 @@
 import styled from '@emotion/styled/macro';
-import { useState } from 'react';
-import { User } from 'api';
-import useSlider from 'components/Etc/RangeInput';
+import { Fragment } from 'react';
 import SemesterSelect from 'components/SemesterSelect';
-import { semesters } from 'constants/placeholderData';
+import {
+  EvaluationSelectOptions,
+  EvalutionSliderOptions,
+  semesters,
+} from 'constants/placeholderData';
+import useWriteEvaluation from 'hooks/useWriteEvaluation';
 
 const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
-  const user = User();
-  const [content, setContent] = useState(row.content);
-  const [honey, HoneySlider] = useSlider(row.honey);
-  const [learning, LearingSlider] = useSlider(row.learning);
-  const [satisfaction, SatisfactionSlider] = useSlider(row.satisfaction);
-  const [selectedSemester, setSelectedSemester] = useState(row.selectedSemester); //학기
-  const [team, setTeam] = useState(row.team); //조모임
-  const [homework, setHomework] = useState(row.homework); //과제
-  const [difficulty, setDifficulty] = useState(row.difficulty); //학점
-  const data = {
-    lectureName: row.lectureName,
-    professor: row.professor,
+  const {
     selectedSemester,
-    satisfaction,
-    learning,
-    honey,
-    team,
-    difficulty,
-    homework,
+    SliderOptions,
+    lectureOptions,
     content,
-  };
-
-  const onChangeContent = (e) => {
-    setContent(e.target.value);
-  };
-
-  const onEvaluate = () => {
-    if (selectedSemester === '' || selectedSemester === '선택') return alert('학기를 선택해주세요');
-    if (honey < 0.5 || honey === undefined) return alert('꿀강지수는 0.5점부터 선택 가능합니다');
-    if (learning < 0.5 || learning === undefined)
-      return alert('배움지수는 0.5점부터 선택 가능합니다');
-    if (satisfaction < 0.5 || satisfaction === undefined)
-      return alert('만족도는 0.5점부터 선택 가능합니다');
-    if (team === '') return alert('조모임(란)을 선택해주세요');
-    if (homework === '') return alert('과제(란)을 선택해주세요');
-    if (difficulty === '') return alert('학점(란)을 선택해주세요');
-    if (content.length < 30 || content.length > 1000)
-      return alert('최소 30자 이상 최대 1000자 이내로 입력해주세요');
-    type === 'update' ? user.updateEvaluation(row.id, data) : user.writeEvaluation(row.id, data);
-    setModalIsOpen(false);
-  };
-  const teamChange = (e) => {
-    setTeam(e.target.value);
-  };
-  const homeworkChange = (e) => {
-    setHomework(e.target.value);
-  };
-  const difficultyChange = (e) => {
-    setDifficulty(e.target.value);
-  };
+    setSelectedSemester,
+    onChangeContent,
+    onChangeLectureOptions,
+    onEvaluate,
+  } = useWriteEvaluation({ setModalIsOpen, row, type });
   return (
     <Wrapper>
       <TitleWrapper>
@@ -86,133 +49,42 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
             setSelect={setSelectedSemester}
           />
         </MobileContent>
-        <Content>
-          <ContentTitle>꿀강지수</ContentTitle>
-          <HoneySlider /> <Score>{honey}</Score>
-        </Content>
-        <MobileContent>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <ContentTitle id="mobile">꿀강지수</ContentTitle>
-            <Score id="mobile">{honey}</Score>
-          </div>
-          <HoneySlider />
-        </MobileContent>
-
-        <Content>
-          <ContentTitle>배움지수</ContentTitle>
-          <LearingSlider /> <Score>{learning}</Score>
-        </Content>
-        <MobileContent>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <ContentTitle id="mobile">배움지수</ContentTitle>
-            <Score id="mobile">{learning}</Score>
-          </div>
-          <LearingSlider />
-        </MobileContent>
-
-        <Content id="group">
-          <ContentTitle>만족도</ContentTitle>
-          <SatisfactionSlider /> <Score>{satisfaction}</Score>
-        </Content>
-        <MobileContent>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <ContentTitle id="mobile">만족도</ContentTitle>
-            <Score id="mobile">{satisfaction}</Score>
-          </div>
-          <SatisfactionSlider />
-        </MobileContent>
-
-        <Content id="content" onChange={teamChange}>
-          <ContentTitle>조모임</ContentTitle>
-          <label>
-            <FormCheckLeft
-              type="radio"
-              name="team"
-              id="easy"
-              value={0}
-              defaultChecked={team === 0}
-            />
-            <FormCheckText>없음</FormCheckText>
-          </label>
-          <label>
-            <FormCheckLeft
-              type="radio"
-              name="team"
-              id="difficult"
-              value={1}
-              defaultChecked={team === 1}
-            />
-            <FormCheckText>있음</FormCheckText>
-          </label>
-        </Content>
-
-        <Content id="content" onChange={homeworkChange}>
-          <ContentTitle>과제</ContentTitle>
-          <label>
-            <FormCheckLeft
-              type="radio"
-              name="homework"
-              id="easy"
-              value={0}
-              defaultChecked={homework === 0}
-            />
-            <FormCheckText>없음</FormCheckText>
-          </label>
-          <label>
-            <FormCheckLeft
-              type="radio"
-              name="homework"
-              id="normal"
-              value={1}
-              defaultChecked={homework === 1}
-            />
-            <FormCheckText>보통</FormCheckText>
-          </label>
-          <label>
-            <FormCheckLeft
-              type="radio"
-              name="homework"
-              id="difficult"
-              value={2}
-              defaultChecked={homework === 2}
-            />
-            <FormCheckText>많음</FormCheckText>
-          </label>
-        </Content>
-
-        <Content id="content" onChange={difficultyChange}>
-          <ContentTitle>학점</ContentTitle>
-          <label>
-            <FormCheckLeft
-              type="radio"
-              name="score"
-              id="easy"
-              value={0}
-              defaultChecked={difficulty === 0}
-            />
-            <FormCheckText>너그러움</FormCheckText>
-          </label>
-          <label>
-            <FormCheckLeft
-              type="radio"
-              name="score"
-              id="normal"
-              value={1}
-              defaultChecked={difficulty === 1}
-            />
-            <FormCheckText>보통</FormCheckText>
-          </label>
-          <label>
-            <FormCheckLeft
-              type="radio"
-              name="score"
-              id="difficult"
-              value={2}
-              defaultChecked={difficulty === 2}
-            />
-            <FormCheckText>까다로움</FormCheckText>
-          </label>
-        </Content>
+        {EvalutionSliderOptions.map(({ id, name }) => {
+          const { state, Slider } = SliderOptions[id];
+          return (
+            <Fragment key={id}>
+              <Content>
+                <ContentTitle>{name}</ContentTitle>
+                <Slider />
+                <Score>{state}</Score>
+              </Content>
+              <MobileContent>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <ContentTitle id="mobile">{name}</ContentTitle>
+                  <Score id="mobile">{state}</Score>
+                </div>
+                <Slider />
+              </MobileContent>
+            </Fragment>
+          );
+        })}
+        {EvaluationSelectOptions.map(({ id, title, options }) => (
+          <Content key={id} id="content" onChange={onChangeLectureOptions}>
+            <ContentTitle>{title}</ContentTitle>
+            {options.map(({ id: level, name, value }) => (
+              <label key={level}>
+                <FormCheckLeft
+                  type="radio"
+                  name={id}
+                  id={level}
+                  value={value}
+                  defaultChecked={lectureOptions[id] === value}
+                />
+                <FormCheckText>{name}</FormCheckText>
+              </label>
+            ))}
+          </Content>
+        ))}
       </ContentWrapper>
       <TextField
         placeholder="강의평가를 작성해주세요 :)"
@@ -391,34 +263,21 @@ const FormCheckText = styled.span`
 `;
 
 const FormCheckLeft = styled.input`
-  &:checked {
-    display: inline-block;
-    background: none;
-    padding: 0px 10px;
-    text-align: center;
-    height: 35px;
-    line-height: 33px;
-
-    display: none;
-  }
   &#difficult {
     &:checked + ${FormCheckText} {
       color: #7800ff;
-
       font-weight: 600;
     }
   }
   &#normal {
     &:checked + ${FormCheckText} {
       color: #222222;
-
       font-weight: 600;
     }
   }
   &#easy {
     &:checked + ${FormCheckText} {
       color: #336af8;
-
       font-weight: 600;
     }
   }
