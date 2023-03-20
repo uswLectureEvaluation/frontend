@@ -23,10 +23,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "tsc && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.{js,jsx} --fix"
+    "lint": "eslint src/**/*.{js,jsx} --fix",
+    "type-check": "tsc -p tsconfig.json"
   },
   "eslintConfig": {
     "extends": [
@@ -47,12 +48,16 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^18.15.3",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.7.0",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^2.8.2"
+    "prettier": "^2.8.2",
+    "typescript": "^5.0.2"
   }
 }
