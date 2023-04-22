@@ -3,16 +3,17 @@ import { Auth } from 'api';
 import { Meta, Button } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
 import { Container, AuthWrapper, Title, Img, Sub } from 'styles/Common';
+import { Loader } from 'components/Etc/Spinner';
 
 const PwSearch = () => {
   const auth = Auth();
   const {
     register,
     handleSubmit,
-    formState: { isValid },
+    formState: { isValid, isSubmitting },
   } = useForm();
   const onSubmit = (data) => {
-    auth.findPw(data);
+    return auth.findPw(data);
   };
 
   return (
@@ -34,8 +35,8 @@ const PwSearch = () => {
           label="학교 이메일"
           {...register('email', { required: true })}
         />
-        <Button id="auth" type="submit" disabled={!isValid}>
-          전송
+        <Button id="auth" type="submit" disabled={!isValid || isSubmitting}>
+          {isSubmitting ? <Loader id="button" /> : '전송'}
         </Button>
       </AuthWrapper>
     </Container>
