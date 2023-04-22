@@ -4,6 +4,7 @@ import { Meta, Button } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
 import { Container, AuthWrapper, Title, Img, Sub } from 'styles/Common';
 import { Loader } from 'components/Etc/Spinner';
+import { validateEmail } from 'utils/validate';
 
 const PwSearch = () => {
   const auth = Auth();
@@ -33,7 +34,7 @@ const PwSearch = () => {
           variant="standard"
           margin="normal"
           label="학교 이메일"
-          {...register('email', { required: true })}
+          {...register('email', validateEmail)}
         />
         <Button id="auth" type="submit" disabled={!isValid || isSubmitting}>
           {isSubmitting ? <Loader id="button" /> : '전송'}

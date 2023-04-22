@@ -4,6 +4,7 @@ import { Button, Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
 import { Container, AuthWrapper, Title, Img, Sub } from 'styles/Common';
 import { Loader } from 'components/Etc/Spinner';
+import { validateEmail } from 'utils/validate';
 
 const IdSearch = () => {
   const auth = Auth();
@@ -27,7 +28,7 @@ const IdSearch = () => {
           variant="standard"
           margin="normal"
           label="학교 이메일 입력(@suwon.ac.kr)"
-          {...register('email', { required: true })}
+          {...register('email', validateEmail)}
         />
         <Button id="auth" type="submit" disabled={!isValid || isSubmitting}>
           {isSubmitting ? <Loader id="button" /> : '전송'}
