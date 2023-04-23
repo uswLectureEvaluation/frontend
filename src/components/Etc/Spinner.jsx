@@ -37,11 +37,19 @@ const Container = styled.div`
   }
 `;
 
-const Loader = styled.div`
+export const Loader = styled.div`
   border: 5px solid #f3f3f3;
   border-top: 5px solid #346cfd;
   border-radius: 50%;
   width: 30px;
   height: 30px;
   animation: ${spin} 1s linear infinite;
+  &#button {
+    margin: 0 auto;
+    border: 0.2rem solid #f3f3f3;
+    border-top: 0.2rem solid #346cfd;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+  }
 `;

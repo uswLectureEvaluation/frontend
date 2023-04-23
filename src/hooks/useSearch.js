@@ -3,27 +3,29 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const useSearch = () => {
   const [searchParams] = useSearchParams();
-  const input = useRef(null);
+  const inputRef = useRef(null);
   const navigate = useNavigate();
-  const get = (key) => searchParams.get(key);
-  const value = get('q') || '';
-  const option = get('option') || 'lectureTotalAvg';
-  const majorType = get('majorType') || '전체';
 
-  const onKeypress = (e) => {
+  const getValue = (key) => searchParams.get(key) || '';
+  const value = getValue('q');
+  const option = getValue('option') || 'lectureTotalAvg';
+  const majorType = getValue('majorType') || '전체';
+
+  const handleKeypress = (e) => {
     if (e.key !== 'Enter') return;
-    if (input.current.value.length < 2) {
+    const inputValue = inputRef.current.value.trim();
+    if (inputValue.length < 2) {
       alert('두 글자 이상 입력해주세요');
       return;
     }
-    navigate(`/search?q=${input.current.value}&option=${option}&majorType=${majorType}`);
+    navigate(`/search?q=${inputValue}&option=${option}&majorType=${majorType}`);
   };
 
   useEffect(() => {
-    input.current.value = value || '';
+    inputRef.current.value = value;
   }, [value]);
 
-  return [input, onKeypress];
+  return [inputRef, handleKeypress];
 };
 
 export default useSearch;

@@ -3,16 +3,18 @@ import { Auth } from 'api';
 import { Button, Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
 import { Container, AuthWrapper, Title, Img, Sub } from 'styles/Common';
+import { Loader } from 'components/Etc/Spinner';
+import { validateEmail } from 'utils/validate';
 
 const IdSearch = () => {
   const auth = Auth();
   const {
     register,
     handleSubmit,
-    formState: { isValid },
+    formState: { isValid, isSubmitting },
   } = useForm();
   const emailSubmit = (data) => {
-    auth.findId(data);
+    return auth.findId(data);
   };
 
   return (
@@ -26,10 +28,10 @@ const IdSearch = () => {
           variant="standard"
           margin="normal"
           label="학교 이메일 입력(@suwon.ac.kr)"
-          {...register('email', { required: true })}
+          {...register('email', validateEmail)}
         />
-        <Button id="auth" type="submit" disabled={!isValid}>
-          전송
+        <Button id="auth" type="submit" disabled={!isValid || isSubmitting}>
+          {isSubmitting ? <Loader id="button" /> : '전송'}
         </Button>
       </AuthWrapper>
     </Container>
