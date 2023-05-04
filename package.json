@@ -26,8 +26,8 @@
     "build": "tsc && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.{js,jsx} --fix",
-    "type-check": "tsc -p tsconfig.json"
+    "lint": "eslint",
+    "type:check": "tsc --noEmit"
   },
   "eslintConfig": {
     "extends": [
