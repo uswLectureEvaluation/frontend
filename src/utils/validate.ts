@@ -25,10 +25,10 @@ export const validatePassword = {
 };
 
 // 비밀번호 재확인 검사 로직
-export const validatePasswordConfirm = (password) => {
+export const validatePasswordConfirm = (password: string) => {
   return {
     required: true,
-    validate: (value) => value === password || '비밀번호가 일치하지 않습니다.',
+    validate: (value: string) => value === password || '비밀번호가 일치하지 않습니다.',
   };
 };
 
@@ -40,5 +40,5 @@ export const validateEmail = {
       /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/,
     message: '이메일 형식이 틀렸습니다.',
   },
-  validate: (value) => value.endsWith('@suwon.ac.kr') || '이메일 형식이 틀렸습니다.',
+  validate: (value: string) => value.endsWith('@suwon.ac.kr') || '이메일 형식이 틀렸습니다.',
 };

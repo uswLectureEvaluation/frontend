@@ -5,7 +5,7 @@ export const isLoginStorage = () => {
   return !!state;
 };
 
-export const getStorage = (key, defaultValue = undefined) => {
+export const getStorage = (key: string, defaultValue = undefined) => {
   try {
     const storedValue = storage.getItem(key);
 
@@ -16,15 +16,15 @@ export const getStorage = (key, defaultValue = undefined) => {
   }
 };
 
-export const setStorage = (key, value) => {
+export const setStorage = (key: string, value: string | [string, unknown]) => {
   try {
-    storage.setItem(key, value);
+    storage.setItem(key, JSON.stringify(value));
   } catch (error) {
     console.error(error);
   }
 };
 
-export const removeStorage = (key) => {
+export const removeStorage = (key: string) => {
   try {
     storage.removeItem(key);
   } catch (error) {
