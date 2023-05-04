@@ -7,7 +7,7 @@ import { logout } from 'api/etc';
 const Nav = () => {
   const navigate = useNavigate();
   const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
+  const handleClick = () => setClick((prevClick) => !prevClick);
 
   return (
     <Navbar>
@@ -124,7 +124,8 @@ const MobileIcon = styled.div`
   }
 `;
 
-const NavMenu = styled.nav`
+//eslint-disable-next-line no-undef
+const NavMenu = styled.nav<{ click: boolean }>`
   display: flex;
   gap: 2rem;
 
