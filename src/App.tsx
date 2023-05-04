@@ -28,7 +28,7 @@ const App = () => {
     <BrowserRouter>
       <RouteChangeTracker />
       {global}
-      <Nav style={{ zindex: 5 }} />
+      <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/notice" element={<Notice />} />
