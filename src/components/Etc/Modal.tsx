@@ -1,19 +1,28 @@
 import styled from '@emotion/styled';
-import { useEffect } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 
-const Modal = ({ isOpen, onRequestClose, children }) => {
+interface ModalProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+}
+
+const Modal = ({ isOpen, onRequestClose, children }: PropsWithChildren<ModalProps>) => {
   useEffect(() => {
-    const onKeyPress = (e) => e.key === 'Escape' && onRequestClose();
+    const onKeyPress = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onRequestClose();
+      }
+    };
     window.addEventListener('keydown', onKeyPress);
     return () => window.removeEventListener('keydown', onKeyPress);
   }, [onRequestClose]);
 
+  if (!isOpen) return null;
+
   return (
-    isOpen && (
-      <ModalContainer tabIndex={0} onClick={onRequestClose}>
-        <ModalBody onClick={(e) => e.stopPropagation()}>{children}</ModalBody>
-      </ModalContainer>
-    )
+    <ModalContainer tabIndex={0} onClick={onRequestClose}>
+      <ModalBody onClick={(e) => e.stopPropagation()}>{children}</ModalBody>
+    </ModalContainer>
   );
 };
 

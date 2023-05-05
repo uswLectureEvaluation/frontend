@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 
-const Spinner = ({ id }) => {
+const Spinner = ({ id }: { id: string }) => {
   return (
     <Container id={id}>
       <Loader />
