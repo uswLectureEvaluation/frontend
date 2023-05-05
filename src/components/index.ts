@@ -1,5 +1,4 @@
 export { default as Button } from './Etc/Button';
-export { default as Input } from './Etc/Input';
 export { default as RangeInput } from './Etc/RangeInput';
 export { default as ScrollButton } from './Etc/ScrollButton';
 export { default as Spinner } from './Etc/Spinner';

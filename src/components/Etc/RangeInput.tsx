@@ -1,24 +1,43 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import styled from '@emotion/styled';
-const RangeInput = ({ min = 0, max = 5, step = 0.5, defaultValue = 0, setSlide }) => {
-  const inputRef = useRef();
 
-  const [wvalue, setValue] = useState(defaultValue);
+interface RangeInputProps {
+  min?: number;
+  max?: number;
+  step?: number;
+  defaultValue?: number;
+  setSlide: (value: number) => void;
+}
 
+const RangeInput = ({
+  min = 0,
+  max = 5,
+  step = 0.5,
+  defaultValue = 0,
+  setSlide,
+}: RangeInputProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const [sliderValue, setSliderValue] = useState(defaultValue);
   const [isChanging, setIsChanging] = useState(false);
 
-  const getPercent = useMemo(() => (value) => ((value - min) / (max - min)) * 100, [max, min]);
+  const getPercent = useMemo(
+    () => (value: number) => ((value - min) / (max - min)) * 100,
+    [max, min]
+  );
 
   const changeInputProgressPercentStyle = useCallback(() => {
-    inputRef.current.style.setProperty(
+    inputRef.current?.style.setProperty(
       '--webkitProgressPercent',
-      `${getPercent(inputRef.current.value)}%`
+      `${getPercent(inputRef.current?.valueAsNumber || 0)}%`
     );
   }, [getPercent]);
 
   useEffect(() => {
     changeInputProgressPercentStyle();
     const inputElement = inputRef.current;
+
+    if (!inputElement) return;
 
     const handleUpAndLeave = () => setIsChanging(false);
     const handleDown = () => setIsChanging(true);
@@ -41,28 +60,25 @@ const RangeInput = ({ min = 0, max = 5, step = 0.5, defaultValue = 0, setSlide }
   }, [inputRef, changeInputProgressPercentStyle]);
 
   return (
-    <>
-      <CustomSlider
-        className="range"
-        type="range"
-        ref={inputRef}
-        min={min}
-        max={max}
-        step={step}
-        value={wvalue}
-        onChange={(e) => {
-          setValue(Number(e.target.value));
-        }}
-        onMouseUp={(e) => setSlide(Number(e.target.value))}
-        onTouchEnd={() => setSlide(Number(inputRef.current.value))}
-      />
-    </>
+    <CustomSlider
+      className="range"
+      type="range"
+      ref={inputRef}
+      min={min}
+      max={max}
+      step={step}
+      value={sliderValue}
+      onChange={(e) => {
+        setSliderValue(Number(e.target.value));
+      }}
+      onMouseUp={(e) => setSlide(Number(e.currentTarget.value))}
+      onTouchEnd={() => setSlide(Number(inputRef.current?.value))}
+    />
   );
 };
 
-const useSlider = (defaultState) => {
+const useSlider = (defaultState: number) => {
   const [state, setSlide] = useState(defaultState);
-
   const Slider = () => <RangeInput setSlide={setSlide} defaultValue={state} />;
 
   return { state, Slider, setSlide };
