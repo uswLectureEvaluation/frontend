@@ -5,18 +5,22 @@ import { Button, EvaluationList, TestInfoList } from 'components';
 import { isLoginStorage } from 'utils/loginStorage';
 
 const MyPosting = () => {
-  const [evaluation, setEvaluation] = useState(true);
   const navigate = useNavigate();
+  const [evaluation, setEvaluation] = useState(true);
 
-  return !isLoginStorage() ? (
-    <FlexContainer>
-      <FlexContainer id="col">
-        <Button color="#336af8" onClick={() => navigate('/login')}>
-          로그인하기
-        </Button>
+  if (!isLoginStorage()) {
+    return (
+      <FlexContainer>
+        <FlexContainer id="col">
+          <Button color="#336af8" onClick={() => navigate('/login')}>
+            로그인하기
+          </Button>
+        </FlexContainer>
       </FlexContainer>
-    </FlexContainer>
-  ) : (
+    );
+  }
+
+  return (
     <FlexContainer>
       <FlexBox>
         <TextLink

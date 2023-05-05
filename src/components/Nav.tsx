@@ -124,7 +124,6 @@ const MobileIcon = styled.div`
   }
 `;
 
-//eslint-disable-next-line no-undef
 const NavMenu = styled.nav<{ click: boolean }>`
   display: flex;
   gap: 2rem;
