@@ -4,8 +4,6 @@ import { LectureSearch, LectureList, Meta, OptionSelect, MajorSelect } from 'com
 import { sortOptions } from 'constants/placeholderData';
 import { scrollToTop } from 'utils/scrollToTop';
 
-// const majorList = ['전체'];
-
 const Search = () => {
   const [count, setCount] = useState(0);
   const [select, onSelect] = useState(false);
@@ -15,7 +13,7 @@ const Search = () => {
   }, []);
 
   return (
-    <div role="presentation" onClick={() => select && onSelect(false)}>
+    <div>
       <Meta title="SUWIKI : 검색" />
       <Container>
         <LectureSearch />

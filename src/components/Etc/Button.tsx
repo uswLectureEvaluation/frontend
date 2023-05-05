@@ -1,11 +1,29 @@
 import styled from '@emotion/styled';
+import { PropsWithChildren } from 'react';
 
-const Button = ({ children, onClick, color, id, disabled, width, type }) => (
+interface ButtonProps {
+  onClick: () => void;
+  color?: string;
+  id?: string;
+  disabled?: boolean;
+  width?: string;
+  type?: 'button' | 'submit' | 'reset';
+}
+
+const Button = ({
+  children,
+  onClick,
+  color,
+  id,
+  disabled,
+  width,
+  type,
+}: PropsWithChildren<ButtonProps>) => (
   <Wrapper
     type={type || 'button'}
     disabled={disabled || false}
     onClick={onClick}
-    background={color}
+    color={color}
     width={width}
     id={id}
   >
@@ -15,12 +33,12 @@ const Button = ({ children, onClick, color, id, disabled, width, type }) => (
 
 export default Button;
 
-const Wrapper = styled.button`
+const Wrapper = styled.button<{ width: string | undefined }>`
   margin: 8px 0;
   width: ${({ width }) => width || '100%'};
   padding: 1rem;
   border: none;
-  background: ${({ background }) => background || '#336af8'};
+  background: ${({ color }) => color || '#336af8'};
   color: white;
   text-align: center;
   font-size: 1rem;

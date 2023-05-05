@@ -13,7 +13,8 @@ const MyInfo = () => {
     staleTime: 1000 * 60 * 30,
   });
 
-  if (isLoading) return <UserInfo my={fakeUserInfo} />;
+  if (isLoading || !data) return <UserInfo my={fakeUserInfo} />;
+
   return <UserInfo my={data} />;
 };
 
