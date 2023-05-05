@@ -25,7 +25,7 @@ const ScrollButton = () => {
     };
   });
 
-  if (btnStatus) return null;
+  if (!btnStatus) return null;
 
   return (
     <TopButton onClick={handleScroll}>

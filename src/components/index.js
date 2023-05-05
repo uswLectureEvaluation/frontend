@@ -37,3 +37,4 @@ export { default as Meta } from './Meta';
 export { default as Nav } from './Nav';
 export { default as NoticeItem } from './NoticeItem';
 export { default as OptionSelect } from './OptionSelect';
+export { default as MainBanner } from './MainBanner';
