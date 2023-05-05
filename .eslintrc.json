@@ -33,6 +33,7 @@
     "import/no-named-as-default": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "eqeqeq": "error",
-    "no-undef": "off"
+    "no-undef": "off",
+    "no-unused-vars": "off"
   }
 }
