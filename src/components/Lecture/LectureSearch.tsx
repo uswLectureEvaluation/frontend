@@ -4,14 +4,20 @@ import useSearch from 'hooks/useSearch';
 const LectureSearch = () => {
   const [input, onKeypress] = useSearch();
 
+  const handleMouseLeave = () => {
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  };
+
   return (
     <SearchWrapper>
       <SearchTitle>강의평가 검색</SearchTitle>
       <SearchInput
         ref={input}
         placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요"
-        onKeyPress={onKeypress}
-        onMouseLeave={() => document.activeElement.blur()}
+        onKeyDown={onKeypress}
+        onMouseLeave={handleMouseLeave}
       />
     </SearchWrapper>
   );
