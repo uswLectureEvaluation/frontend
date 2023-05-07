@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { versionCheck } from 'app/versionCheck';
 import { LectureSearch, MainBanner, MainList, MajorSelect, OptionSelect } from 'components';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { sortOptions } from '../constants/placeholderData';
 
@@ -9,9 +9,7 @@ const Main = () => {
   const navigate = useNavigate();
   const [select, onSelect] = useState(false);
 
-  useEffect(() => {
-    versionCheck();
-  }, []);
+  versionCheck();
 
   return (
     <div>
