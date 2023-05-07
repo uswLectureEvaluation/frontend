@@ -10,7 +10,7 @@ export const lectureState = atom({
   },
 });
 
-export const tokenState = atom({
+export const tokenState = atom<string | null>({
   key: 'tokenState',
   default: null,
 });
