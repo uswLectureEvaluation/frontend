@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import Major from 'api/Major';
 import { versionCheck } from 'app/versionCheck';
 import { LectureSearch, MainBanner, MainList, MajorSelect, OptionSelect } from 'components';
 import { useEffect, useState } from 'react';
@@ -9,11 +8,10 @@ import { sortOptions } from '../constants/placeholderData';
 const Main = () => {
   const navigate = useNavigate();
   const [select, onSelect] = useState(false);
-  const { version } = Major();
 
   useEffect(() => {
-    version().then((ver) => versionCheck(ver));
-  }, [version]);
+    versionCheck();
+  }, []);
 
   return (
     <div>

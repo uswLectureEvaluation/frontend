@@ -18,7 +18,8 @@ const RouteChangeTracker = () => {
       pageview(location.pathname + location.search);
     }
   }, [initialized, location]);
-  return <></>;
+
+  return null;
 };
 
 export default RouteChangeTracker;
