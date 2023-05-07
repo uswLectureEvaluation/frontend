@@ -21,13 +21,11 @@ import {
   SignUp,
 } from 'pages';
 import RouteChangeTracker from 'RouteChangeTracker';
-import { global } from 'styles/GlobalStyle';
 
 const App = () => {
   return (
     <BrowserRouter>
       <RouteChangeTracker />
-      {global}
       <Nav />
       <Routes>
         <Route path="/" element={<Main />} />

@@ -1,3 +1,5 @@
+import './styles/globalStyle.css';
+
 import axios from 'axios';
 import { CACHE_TIME } from 'constants/cacheTime';
 import React from 'react';
