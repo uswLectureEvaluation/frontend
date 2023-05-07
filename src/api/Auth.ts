@@ -28,7 +28,7 @@ const Auth = () => {
       if (res.success) navigate('/emailsignup', { state: data.email });
     } catch (error) {
       const axiosError = error as AxiosError;
-      console.error(axiosError.message);
+      alert(axiosError.message);
     }
   };
 
@@ -41,7 +41,7 @@ const Auth = () => {
       else alert('중복입니다.');
     } catch (error) {
       const axiosError = error as AxiosError;
-      console.error(axiosError.message);
+      alert(axiosError.message);
     }
   };
 
@@ -54,7 +54,7 @@ const Auth = () => {
       else alert('중복입니다.');
     } catch (error) {
       const axiosError = error as AxiosError;
-      console.error(axiosError.message);
+      alert(axiosError.message);
     }
   };
 
@@ -65,7 +65,7 @@ const Auth = () => {
       if (res.success) alert('해당 이메일로 아이디를 전송하였습니다');
     } catch (error) {
       const axiosError = error as AxiosError;
-      console.error(axiosError.message);
+      alert(axiosError.message);
     }
   };
 
@@ -76,7 +76,7 @@ const Auth = () => {
       if (res.success) alert('해당 이메일로 임시 비밀번호를 발송하였습니다.');
     } catch (error) {
       const axiosError = error as AxiosError;
-      console.error(axiosError.message);
+      alert(axiosError.message);
     }
   };
 
@@ -89,7 +89,7 @@ const Auth = () => {
       navigate('/');
     } catch (error) {
       const axiosError = error as AxiosError;
-      console.error(axiosError.message);
+      alert(axiosError.message);
     }
   };
 
@@ -104,7 +104,7 @@ const Auth = () => {
       }
     } catch (error) {
       const axiosError = error as AxiosError;
-      console.error(axiosError.message);
+      alert(axiosError.message);
     }
   };
 
@@ -119,7 +119,7 @@ const Auth = () => {
       }
     } catch (error) {
       const axiosError = error as AxiosError;
-      console.error(axiosError.message);
+      alert(axiosError.message);
     }
   };
 
