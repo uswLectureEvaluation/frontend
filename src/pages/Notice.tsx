@@ -5,8 +5,9 @@ import { useInfiniteQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { Notice as Notices } from 'api';
 import { Meta, Spinner } from 'components';
+import { NoticeItem } from 'types/notice';
 
-export const NoticeItem = ({ notice }) => {
+const Item = ({ notice }: { notice: NoticeItem }) => {
   const navigate = useNavigate();
   const toDetail = () => navigate(`/notice/detail?id=${notice.id}`);
 
@@ -21,44 +22,35 @@ export const NoticeItem = ({ notice }) => {
 export const NoticeContainer = () => {
   const notice = Notices();
   const { ref, inView } = useInView();
-  const {
-    data: notices,
-    isLoading,
-    fetchNextPage,
-    isFetchingNextPage,
-  } = useInfiniteQuery(['notice'], ({ pageParam = 1 }) => notice.list(pageParam), {
-    getNextPageParam: (lastPage) => {
-      if (!lastPage.isLast) return lastPage.nextPage;
-      return undefined;
-    },
-  });
+  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+    ['notice'],
+    () => notice.list(),
+    {
+      getNextPageParam: (lastPage) => {
+        if (lastPage && !lastPage.isLast) return lastPage.nextPage;
+      },
+    }
+  );
   useEffect(() => {
     if (inView) {
       fetchNextPage();
     }
   }, [inView, fetchNextPage]);
-  if (isLoading) return <Spinner id="notice" />;
-  const { pages } = notices;
-  const isPages = pages.length;
+  if (isLoading || data === undefined) return <Spinner id="notice" />;
+  if (data.pages.length === 0) return <NoNotice>아직 공지사항이 없어요.</NoNotice>;
 
   return (
     <>
-      {isPages ? (
-        <>
-          {pages.map((page) => (
-            <Fragment key={page.nextPage}>
-              {page.data.data.map((notice) => (
-                <NoticeItem notice={notice} key={notice.id} />
-              ))}
-            </Fragment>
+      {data.pages.map((page) => (
+        <Fragment key={page?.nextPage}>
+          {page?.data.data.map((notice) => (
+            <Item key={notice.id} notice={notice} />
           ))}
-          <div ref={ref} style={{ marginBottom: '10px' }}>
-            {isFetchingNextPage ? <Spinner /> : null}
-          </div>
-        </>
-      ) : (
-        <NoNotice>아직 공지사항이 없어요.</NoNotice>
-      )}
+        </Fragment>
+      ))}
+      <div ref={ref} style={{ marginBottom: '10px' }}>
+        {isFetchingNextPage ? <Spinner /> : null}
+      </div>
     </>
   );
 };
