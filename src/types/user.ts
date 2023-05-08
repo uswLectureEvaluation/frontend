@@ -29,3 +29,61 @@ export interface ResetPassword {
 }
 
 export interface FindPassword extends UserId, UserEmail {}
+
+export interface ReasonInfo {
+  judgement: string;
+  createdAt: Date;
+}
+
+export interface RestrictionInfo extends ReasonInfo {
+  restrictedReason: string;
+  restrictingDate: Date;
+}
+
+export interface BlacklistInfo extends ReasonInfo {
+  blackListReason: string;
+  expiredAt: Date;
+}
+
+export interface EvaluatePostBase {
+  selectedSemester: string;
+  satisfaction: number;
+  learning: number;
+  honey: number;
+  team: number;
+  difficulty: number;
+  homework: number;
+  content: string;
+}
+
+export interface EvaluatePostUpdate extends EvaluatePostBase {}
+
+export interface EvaluatePostCreate extends EvaluatePostBase {
+  lectureName: string;
+  professor: string;
+}
+
+export interface EvaluateReportCreate {
+  evaluateIdx: number;
+  content: string;
+}
+
+export interface ExamReportCreate {
+  examIdx: number;
+  content: string;
+}
+
+export interface ExamPostCreate {
+  lectureName: string;
+  professor: string;
+  selectedSemester: string;
+  examInfo: string;
+  examType: string;
+  examDifficulty: string;
+  content: string;
+}
+
+export type ExamPostUpdate = Pick<
+  ExamPostCreate,
+  'selectedSemester' | 'examInfo' | 'examType' | 'examDifficulty' | 'content'
+>;
