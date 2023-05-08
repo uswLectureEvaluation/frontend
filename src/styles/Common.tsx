@@ -52,7 +52,7 @@ export const Checking = styled.div`
   font-size: 1.2vh;
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<{ background: string }>`
   margin: 0;
   padding: 0 1rem;
   padding-top: 1rem;
@@ -165,7 +165,7 @@ export const Arrows = styled.img`
   bottom: 12px;
 `;
 
-export const OptionBox = styled.div`
+export const OptionBox = styled.div<{ select?: boolean; icon?: string | undefined }>`
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 12px 9px;
