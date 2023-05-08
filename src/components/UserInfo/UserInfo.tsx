@@ -3,8 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { UserAccount, UserPoint } from 'components';
 import { fakeUserInfo } from 'constants/placeholderData';
 import { isLoginStorage } from 'utils/loginStorage';
+import { UserProfileInfo } from 'types/user';
 
-const UserInfo = ({ my }) => {
+interface UserInfoProps {
+  my: UserProfileInfo;
+}
+
+const UserInfo = ({ my }: UserInfoProps) => {
   const navigate = useNavigate();
   const isLogin = isLoginStorage();
 
@@ -12,7 +17,7 @@ const UserInfo = ({ my }) => {
     isLogin ? navigate('/myposting') : navigate('/login');
   };
 
-  const optionSlice = (start, end) => {
+  const optionSlice = (start: number, end: number) => {
     return option.slice(start, end).map(({ title, page }) => (
       <FlexContainer id="use" key={title}>
         <FlexContainer id="last" onClick={() => navigate(`/${page}`)}>
