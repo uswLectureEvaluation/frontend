@@ -1,6 +1,11 @@
 import styled from '@emotion/styled';
+import { UserEmail, UserId } from 'types/user';
 
-const UserAccount = ({ loginId, email, isLogin }) => {
+interface UserAccountProps extends UserId, UserEmail {
+  isLogin: boolean;
+}
+
+const UserAccount = ({ loginId, email, isLogin }: UserAccountProps) => {
   return (
     <Content id="top">
       <div style={{ filter: !isLogin ? 'blur(6px)' : 'none' }}>

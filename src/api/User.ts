@@ -8,6 +8,7 @@ import {
   ExamPostCreate,
   ExamPostUpdate,
   ExamReportCreate,
+  UserProfileInfo,
 } from 'types/user';
 import { AxiosResponseSuccess } from 'types/common';
 
@@ -16,7 +17,7 @@ const User = () => {
   // 내 정보
   const info = () => {
     try {
-      return instance.get('/user/my-page');
+      return instance.get<UserProfileInfo>('/user/my-page');
     } catch (error) {
       const axiosError = error as AxiosError;
       console.error(axiosError.message);

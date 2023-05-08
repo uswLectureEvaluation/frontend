@@ -15,7 +15,7 @@ const MyInfo = () => {
 
   if (isLoading || !data) return <UserInfo my={fakeUserInfo} />;
 
-  return <UserInfo my={data} />;
+  return <UserInfo my={data.data} />;
 };
 
 export default MyInfo;
