@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { useQuery } from 'react-query';
 import { User } from 'api';
 import { Spinner } from 'components';
-import { AppContainer } from 'styles/Common';
+import { AppContainer } from 'styles/ommon';
 
 const HistoryTest = () => {
   const user = User();

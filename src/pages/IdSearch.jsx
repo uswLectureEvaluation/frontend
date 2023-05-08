@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Auth } from 'api';
 import { Button, Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
-import { Container, AuthWrapper, Title, Img, Sub } from 'styles/Common';
+import { Container, AuthWrapper, Title, Img, Sub } from 'styles/ommon';
 import { Loader } from 'components/Etc/Spinner';
 import { validateEmail } from 'utils/validate';
 

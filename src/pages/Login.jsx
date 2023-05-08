@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Auth } from 'api';
 import { Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
-import { AuthWrapper, Container, Img } from 'styles/Common';
+import { AuthWrapper, Container, Img } from 'styles/ommon';
 
 const Login = () => {
   const navigate = useNavigate();

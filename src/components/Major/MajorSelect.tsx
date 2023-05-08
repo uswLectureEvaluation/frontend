@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { MajorSearch, Modal } from 'components';
 import { subStr } from 'utils/subString';
-import { Arrows, OptionBox, SelectedOption, SelectedOption_M } from 'styles/Common';
+import { Arrows, OptionBox, SelectedOption, SelectedOption_M } from 'styles/ommon';
 
 const MajorSelect = () => {
   const [searchParams] = useSearchParams();

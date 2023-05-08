@@ -13,7 +13,7 @@ import {
   LectureSearch,
   Modal,
 } from 'components';
-import { AppContainer } from 'styles/Common';
+import { AppContainer } from 'styles/ommon';
 import { isLoginStorage } from 'utils/loginStorage';
 import { scrollToTop } from 'utils/scrollToTop';
 

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button, Meta } from 'components';
-import { Positioner } from 'styles/Common';
+import { Positioner } from 'styles/ommon';
 
 const EmailSignUp = () => {
   const navigate = useNavigate();
