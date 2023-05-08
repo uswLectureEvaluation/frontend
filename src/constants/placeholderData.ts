@@ -1,3 +1,4 @@
+import { SortOption } from 'types/common';
 import createFakeData from 'utils/fakeData';
 
 export const fakeLectureInfo = {
@@ -60,7 +61,7 @@ export const fakeUserInfo = {
   writtenExam: 0,
 };
 
-export const sortOptions = [
+export const sortOptions: SortOption[] = [
   { sub: '날짜', name: '최근 올라온 강의', option: 'modifiedDate', icon: 'fire' },
   { sub: '꿀강', name: '꿀 강의', option: 'lectureHoneyAvg', icon: 'bee' },
   { sub: '만족도', name: '만족도가 높은 강의', option: 'lectureSatisfactionAvg', icon: 'thumbs' },
