@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Auth } from 'api';
 import { Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
-import { Container, AuthWrapper, Img, Button, Checking } from 'styles/Common';
+import { Container, AuthWrapper, Img, Button, Checking } from 'styles/common';
 import {
   validateEmail,
   validateId,

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { LectureContainer } from 'components';
 import { fakeLectureList } from 'constants/placeholderData';
-import { FlexWrap } from 'styles/Common';
+import { FlexWrap } from 'styles/common';
 import useLectureQuery from 'hooks/useLectureQuery';
 
 const LectureList = ({ setCount }) => {

@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Auth } from 'api';
 import { Meta, Button } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
-import { Container, AuthWrapper, Title, Img, Sub, Checking } from 'styles/Common';
+import { Container, AuthWrapper, Title, Img, Sub, Checking } from 'styles/common';
 import { validatePassword } from 'utils/validate';
 
 const ResetPassword = () => {

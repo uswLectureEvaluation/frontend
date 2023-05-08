@@ -1,17 +1,34 @@
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Arrows, Option, OptionBox, Options, SelectedOption } from 'styles/Common';
+import { Arrows, Option, OptionBox, Options, SelectedOption } from 'styles/common';
+import { SortOption } from 'types/common';
 
-const OptionSelect = ({ list, state, controller, itemTitle, icon, location }) => {
+interface OptionSelectProps {
+  list: SortOption[];
+  state: boolean;
+  controller: (state: boolean) => void;
+  itemTitle: keyof SortOption;
+  icon?: boolean;
+  location: string;
+}
+
+const OptionSelect = ({
+  list,
+  state,
+  controller,
+  itemTitle,
+  icon = true,
+  location,
+}: OptionSelectProps) => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const searchValue = searchParams.get('q');
   const option = searchParams.get('option') || 'modifiedDate';
   const majorType = searchParams.get('majorType') || '전체';
-  const selectedOption = list.find((row) => row.option === option);
+  const selectedOption = list.find((row) => row.option === option) as SortOption;
   const OptionName = selectedOption[itemTitle];
   const isMain = location === 'main';
 
-  const handleSelect = (option) => {
+  const handleSelect = (option: string) => {
     isMain
       ? navigate(`/?option=${option}&majorType=${majorType}`)
       : navigate(`/search?q=${searchValue}&option=${option}&majorType=${majorType}`);
@@ -21,7 +38,7 @@ const OptionSelect = ({ list, state, controller, itemTitle, icon, location }) =>
     <OptionBox
       id={String(isMain)}
       select={state}
-      icon={icon ? selectedOption.icon : undefined}
+      icon={icon ? selectedOption?.icon : undefined}
       onClick={(e) => {
         e.stopPropagation;
         controller(!state);

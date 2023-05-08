@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { FlexWrap } from 'styles/Common';
+import { FlexWrap } from 'styles/common';
 import { LectureCard } from 'components';
 
 const LectureContainer = ({ data }) => {
