@@ -12,8 +12,16 @@ const useUserQuery = () => {
     const { ref, inView } = useInView();
     const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
       ['myInfo', 'myEvaluation'],
-      ({ pageParam = 1 }) => user.evaluateList(pageParam),
-      userQueryOption
+      () => user.evaluateList(),
+      {
+        getNextPageParam: (lastPage) => {
+          if (lastPage && !lastPage.isLast) return lastPage.nextPage;
+          return undefined;
+        },
+        enabled: isLoginStorage(),
+        cacheTime: CACHE_TIME.MINUTE_30,
+        staleTime: CACHE_TIME.MINUTE_30,
+      }
     );
     useEffect(() => {
       if (inView) {
@@ -28,8 +36,16 @@ const useUserQuery = () => {
     const { ref, inView } = useInView();
     const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
       ['myInfo', 'myExamInfo'],
-      ({ pageParam = 1 }) => user.examInfoList(pageParam),
-      userQueryOption
+      () => user.examInfoList(),
+      {
+        getNextPageParam: (lastPage) => {
+          if (lastPage && !lastPage.isLast) return lastPage.nextPage;
+          return undefined;
+        },
+        enabled: isLoginStorage(),
+        cacheTime: CACHE_TIME.MINUTE_30,
+        staleTime: CACHE_TIME.MINUTE_30,
+      }
     );
     useEffect(() => {
       if (inView) {
@@ -42,13 +58,3 @@ const useUserQuery = () => {
   return { EvaluationList, TestInfoList };
 };
 export default useUserQuery;
-
-const userQueryOption = {
-  getNextPageParam: (lastPage) => {
-    if (!lastPage.isLast) return lastPage.nextPage;
-    return undefined;
-  },
-  enabled: isLoginStorage(),
-  cacheTime: CACHE_TIME.MINUTE_30,
-  staleTime: CACHE_TIME.MINUTE_30,
-};
