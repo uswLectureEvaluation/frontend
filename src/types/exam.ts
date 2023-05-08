@@ -7,7 +7,7 @@ interface ExamPost {
   content: string;
 }
 
-interface ExamPostsResponse {
+export interface ExamPostsResponse {
   data: ExamPost[];
   isExamDataExists: boolean;
 }
