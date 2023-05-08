@@ -87,3 +87,11 @@ export type ExamPostUpdate = Pick<
   ExamPostCreate,
   'selectedSemester' | 'examInfo' | 'examType' | 'examDifficulty' | 'content'
 >;
+
+// my
+export interface UserProfileInfo extends UserId, UserEmail {
+  point: number;
+  writtenEvaluation: number;
+  writtenExam: number;
+  viewExam: number;
+}
