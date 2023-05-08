@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import SemesterSelect from 'components/SemesterSelect';
 import {
   EvaluationSelectOptions,
-  EvalutionSliderOptions,
+  EvaluationSliderOptions,
   semesters,
 } from 'constants/placeholderData';
 import useWriteEvaluation from 'hooks/useWriteEvaluation';
@@ -49,7 +49,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
             setSelect={setSelectedSemester}
           />
         </MobileContent>
-        {EvalutionSliderOptions.map(({ id, name }) => {
+        {EvaluationSliderOptions.map(({ id, name }) => {
           const { state, Slider } = SliderOptions[id];
           return (
             <Fragment key={id}>

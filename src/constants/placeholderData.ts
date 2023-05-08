@@ -75,7 +75,7 @@ export const sortOptions = [
 export const semesters = (semesterList) => ['선택', ...semesterList.split(', ')];
 export const examTypes = ['선택', '중간고사', '기말고사', '쪽지', '기타'];
 
-export const EvalutionSliderOptions = [
+export const EvaluationSliderOptions = [
   {
     id: 'honey',
     name: '꿀강지수',
