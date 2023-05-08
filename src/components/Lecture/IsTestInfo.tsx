@@ -5,7 +5,46 @@ import { isLoginStorage } from 'utils/loginStorage';
 import useLectureQuery from 'hooks/useLectureQuery';
 import { User } from 'api';
 
-const NotUsePoint = ({ selectId }) => {
+interface IsTestInfoProps {
+  selectId: string;
+  setWritten: (value: boolean) => void;
+}
+
+const IsTestInfo = ({ selectId, setWritten }: IsTestInfoProps) => {
+  const { TestInfo } = useLectureQuery();
+  const isLogin = isLoginStorage();
+  const { data, isLoading, isFetchingNextPage, ref } = TestInfo(selectId, setWritten);
+
+  if (!isLogin) {
+    return <SearchTestInfoList page={fakeEvaluationList} isLogin={false} />;
+  }
+
+  if (isLoading || !data || !data.pages[0]) return <Spinner />;
+
+  const listLength = data.pages[0].data.data.length;
+  const isExamDataExists = data?.pages[0].data.isExamDataExists;
+
+  if (listLength === 0) {
+    return isExamDataExists ? <NotUsePoint selectId={selectId} /> : <NoTestInfo />;
+  }
+
+  return (
+    <>
+      {data.pages.map((page) => {
+        if (page) {
+          return <SearchTestInfoList isLogin={isLogin} key={page.nextPage} page={page.data.data} />;
+        }
+      })}
+      <div ref={ref} style={{ marginBottom: '10px' }}>
+        {isFetchingNextPage && <Spinner id="nextPage" />}
+      </div>
+    </>
+  );
+};
+
+export default IsTestInfo;
+
+const NotUsePoint = ({ selectId }: { selectId: string }) => {
   const { buyTestInfo } = User();
   const unlock = () => window.confirm('시험정보를 열람하시겠습니까?') && buyTestInfo(selectId);
 
@@ -30,37 +69,6 @@ const NoTestInfo = () => (
     <Content>등록된 시험정보가 없어요</Content>
   </Wrapper>
 );
-
-const IsTestInfo = ({ selectId, setWritten }) => {
-  const { TestInfo } = useLectureQuery();
-  const isLogin = isLoginStorage();
-  const { data, isLoading, isFetchingNextPage, ref } = TestInfo(selectId, setWritten);
-
-  if (isLoading) return <Spinner />;
-  const pages = data?.pages;
-  const listLength = data?.pages[0].data.data.length;
-  const examDataExist = data?.pages[0].data.examDataExist;
-
-  if (!isLogin) {
-    return <SearchTestInfoList page={fakeEvaluationList} />;
-  } else if (listLength === 0 && examDataExist) {
-    return <NotUsePoint selectId={selectId} />;
-  } else if (listLength === 0 && !examDataExist) {
-    return <NoTestInfo />;
-  } else {
-    return (
-      <>
-        {pages.map((page) => (
-          <SearchTestInfoList isLogin={isLogin} key={page.nextPage} page={page.data.data} />
-        ))}
-        <div ref={ref} style={{ marginBottom: '10px' }}>
-          {isFetchingNextPage && <Spinner id="nextPage" />}
-        </div>
-      </>
-    );
-  }
-};
-export default IsTestInfo;
 
 const Wrapper = styled.div`
   width: 100%;
