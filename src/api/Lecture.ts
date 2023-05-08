@@ -1,5 +1,6 @@
 import { AxiosError } from 'axios';
 import JwtInterceptors from './ApiController';
+import { ExamPostsResponse } from 'types/exam';
 
 const Lecture = () => {
   const instance = JwtInterceptors().instance;
