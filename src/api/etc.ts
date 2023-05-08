@@ -1,22 +1,25 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
+import { ClientRefresh } from 'types/user';
 import { removeStorage } from 'utils/loginStorage';
 
 // 전공 선택 의존성때문에 따로 빼놓은 것
-export const type = async (Authorization) => {
+export const type = async (Authorization: string) => {
   try {
     const { data } = await axios.get(`/suwiki/majorType`, { headers: { Authorization } });
     return data;
   } catch (error) {
-    console.error(error.response.data.message);
+    const axiosError = error as AxiosError;
+    console.error(axiosError.message);
   }
 };
 
-export const searchFavorite = async (Authorization) => {
+export const searchFavorite = async (Authorization: string) => {
   try {
     const { data } = await axios.get(`/user/favorite-major`, { headers: { Authorization } });
     return data;
   } catch (error) {
-    console.error(error.response.data.message);
+    const axiosError = error as AxiosError;
+    console.error(axiosError.message);
   }
 };
 
@@ -29,16 +32,18 @@ export const logout = async () => {
       window.location.href = '/login';
     }
   } catch (error) {
-    console.error(error.response.data.message);
+    const axiosError = error as AxiosError;
+    console.error(axiosError.message);
   }
 };
 
 // 리프레시
 export const refresh = () => {
   try {
-    const res = axios.post(`/user/client-refresh`);
+    const res = axios.post<ClientRefresh>(`/user/client-refresh`);
     return res;
   } catch (error) {
-    console.error(error);
+    const axiosError = error as AxiosError;
+    console.error(axiosError.message);
   }
 };

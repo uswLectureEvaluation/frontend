@@ -1,6 +1,6 @@
 import { tokenState } from 'app/recoilStore';
 import axios from 'axios';
-import jwtDecode from 'jwt-decode';
+import jwtDecode, { type JwtPayload } from 'jwt-decode';
 import { useRecoilState } from 'recoil';
 import { isLoginStorage } from 'utils/loginStorage';
 import { logout, refresh } from './etc';
@@ -16,19 +16,17 @@ const JwtInterceptors = () => {
   //액세스토큰 유효성 검사
   const isAccessTokenValid = async () => {
     if (!token) return false;
-    const tokenInfo = await jwtDecode(token);
-    if (tokenInfo.exp <= Date.now() / 1000) return false;
+    const tokenInfo = await jwtDecode<JwtPayload>(token);
+    if (tokenInfo.exp && tokenInfo.exp <= Date.now() / 1000) return false;
     return true;
   };
   //토큰 리프레시
   const refreshingToken = async () => {
     try {
       const res = await refresh();
-      if (res.status !== 200) {
-        throw new Error(`Response status is ${res.status}`);
-      } else {
+      if (res) {
         setToken(res.data.AccessToken);
-        return res;
+        return res?.data.AccessToken;
       }
     } catch (error) {
       console.error('refreshToken ERROR', error);
@@ -40,16 +38,21 @@ const JwtInterceptors = () => {
     async (config) => {
       const tokenValid = await isAccessTokenValid();
       const isLogin = isLoginStorage();
+
       if (!isLogin) {
         config.headers['Content-Type'] = 'application/json';
-      } else if (isLogin && !tokenValid) {
+      }
+
+      if (!tokenValid) {
         const result = await refreshingToken();
+
         if (!result) {
           alert('로그인 시간이 만료되었습니다\n다시 로그인 해주세요');
           await logout();
+        } else {
+          config.headers['Authorization'] = result;
         }
-        config.headers['Authorization'] = result.data.AccessToken;
-      } else {
+      } else if (token) {
         config.headers['Authorization'] = token;
       }
 
