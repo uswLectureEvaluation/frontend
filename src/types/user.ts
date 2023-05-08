@@ -95,3 +95,7 @@ export interface UserProfileInfo extends UserId, UserEmail {
   writtenExam: number;
   viewExam: number;
 }
+
+export interface ClientRefresh {
+  AccessToken: string;
+}
