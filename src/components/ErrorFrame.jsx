@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { Meta } from 'components';
-import { Button, Container, Img, AuthWrapper } from 'styles/ommon';
+import { Button, Container, Img, AuthWrapper } from 'styles/common';
 
 const ErrorFrame = ({ status, mainMsg, subMsg }) => {
   const navigate = useNavigate();

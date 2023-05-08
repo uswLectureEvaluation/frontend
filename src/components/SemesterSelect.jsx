@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { OptionBox, SelectedOption, Arrows, Options, Option } from 'styles/ommon';
+import { OptionBox, SelectedOption, Arrows, Options, Option } from 'styles/common';
 
 const SemesterSelect = ({ list, selected, setSelect }) => {
   const [modal, setModal] = useState(false);

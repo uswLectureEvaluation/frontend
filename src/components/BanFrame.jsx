@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { FlexWrap } from 'styles/ommon';
+import { FlexWrap } from 'styles/common';
 
 const noDataMsg = {
   ban: '블랙리스트 대상이 아닙니다',

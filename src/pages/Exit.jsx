@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Auth } from 'api';
 import { Button, Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
-import { Container, AuthWrapper, Title, Img, Sub } from 'styles/ommon';
+import { Container, AuthWrapper, Title, Img, Sub } from 'styles/common';
 
 const Exit = () => {
   const auth = Auth();

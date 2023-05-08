@@ -1,5 +1,5 @@
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Arrows, Option, OptionBox, Options, SelectedOption } from 'styles/ommon';
+import { Arrows, Option, OptionBox, Options, SelectedOption } from 'styles/common';
 import { SortOption } from 'types/common';
 
 interface OptionSelectProps {

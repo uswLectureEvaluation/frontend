@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { useQuery } from 'react-query';
 import { User } from 'api';
 import { Spinner, BanFrame } from 'components';
-import { AppContainer } from 'styles/ommon';
+import { AppContainer } from 'styles/common';
 
 const BanReason = () => {
   const user = User();
