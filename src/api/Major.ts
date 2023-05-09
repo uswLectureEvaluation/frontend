@@ -1,4 +1,6 @@
+import { AxiosError } from 'axios';
 import JwtInterceptors from './ApiController';
+import { VersionCheckSuccess } from 'types/common';
 
 const Major = () => {
   const instance = JwtInterceptors().instance;
@@ -6,10 +8,11 @@ const Major = () => {
   // 버전체크
   const version = async () => {
     try {
-      const res = await instance.get('/suwiki/version');
+      const res: VersionCheckSuccess = await instance.get('/suwiki/version');
       return res;
     } catch (error) {
-      console.log(error.response.data.message);
+      const axiosError = error as AxiosError;
+      console.error(axiosError.message);
     }
   };
 
@@ -19,7 +22,8 @@ const Major = () => {
       const res = await instance.get('/suwiki/majorType');
       return res;
     } catch (error) {
-      console.log(error.response.data.message);
+      const axiosError = error as AxiosError;
+      console.error(axiosError.message);
     }
   };
 
@@ -29,29 +33,32 @@ const Major = () => {
       const res = await instance.get('/user/favorite-major');
       return res;
     } catch (error) {
-      console.log(error.response.data.message);
+      const axiosError = error as AxiosError;
+      console.error(axiosError.message);
     }
   };
 
   //전공 즐겨찾기 하기 api
-  const favoriting = async (majorType) => {
+  const favoriting = async (majorType: string) => {
     try {
       const res = await instance.post('/user/favorite-major', { majorType });
       return res;
     } catch (error) {
-      if (error.response.status === 500) {
+      const axiosError = error as AxiosError;
+      if (axiosError.status === 500) {
         alert('로그인 후 이용해주세요');
       }
     }
   };
 
   //즐겨찾기 삭제 api
-  const unfavoriting = async (majorType) => {
+  const unfavoriting = async (majorType: string) => {
     return instance({
       url: `/user/favorite-major?majorType=${majorType}`,
       method: 'delete',
     }).catch((error) => {
-      if (error.response.status === 500) {
+      const axiosError = error as AxiosError;
+      if (axiosError.status === 500) {
         alert('로그인 후 이용해주세요');
       }
     });

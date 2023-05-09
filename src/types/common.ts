@@ -1,3 +1,7 @@
+export interface VersionCheckSuccess {
+  version: number;
+}
+
 export interface AxiosResponseSuccess {
   success: boolean;
 }
