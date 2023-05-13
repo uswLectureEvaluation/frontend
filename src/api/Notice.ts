@@ -1,5 +1,5 @@
 import JwtInterceptors from './ApiController';
-import { NoticeItem, NoticeDetail } from '../types/notice';
+import type { NoticeItem, NoticeDetail } from '../types/notice';
 import { AxiosError } from 'axios';
 
 const Notices = () => {

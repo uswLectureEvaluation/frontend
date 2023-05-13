@@ -5,7 +5,7 @@ import { useInfiniteQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { Notice as Notices } from 'api';
 import { Meta, Spinner } from 'components';
-import { NoticeItem } from 'types/notice';
+import { type NoticeItem } from 'types/notice';
 
 const Item = ({ notice }: { notice: NoticeItem }) => {
   const navigate = useNavigate();
