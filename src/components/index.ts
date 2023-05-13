@@ -34,6 +34,5 @@ export { default as EvaluationDetail } from './EvaluationDetail';
 export { default as Footer } from './Footer';
 export { default as Meta } from './Meta';
 export { default as Nav } from './Nav';
-export { default as NoticeItem } from './NoticeItem';
 export { default as OptionSelect } from './OptionSelect';
 export { default as MainBanner } from './MainBanner';
