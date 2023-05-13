@@ -1,21 +1,20 @@
 import { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { scrollToTop } from 'utils/scrollToTop';
 
 const ScrollButton = () => {
   const [ScrollY, setScrollY] = useState(0);
-  const [btnStatus, setBtnStatus] = useState(false);
 
   const handleFollow = () => {
     setScrollY(window.pageYOffset);
-    if (ScrollY > 100) setBtnStatus(true);
-    else setBtnStatus(false);
   };
 
   const handleScroll = () => {
-    scrollToTop();
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
     setScrollY(0);
-    setBtnStatus(false);
   };
 
   useEffect(() => {
@@ -25,7 +24,7 @@ const ScrollButton = () => {
     };
   });
 
-  if (!btnStatus) return null;
+  if (ScrollY === 0) return null;
 
   return (
     <TopButton onClick={handleScroll}>
