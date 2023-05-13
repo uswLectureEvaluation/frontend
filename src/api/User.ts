@@ -1,4 +1,4 @@
-import { queryClient } from 'index';
+import { queryClient } from '../index';
 import JwtInterceptors from './ApiController';
 import { AxiosError } from 'axios';
 import {
