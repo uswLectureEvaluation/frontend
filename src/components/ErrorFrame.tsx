@@ -3,7 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { Meta } from 'components';
 import { Button, Container, Img, AuthWrapper } from 'styles/common';
 
-const ErrorFrame = ({ status, mainMsg, subMsg }) => {
+interface ErrorFrameProps {
+  status: string;
+  mainMsg: string;
+  subMsg: string;
+}
+
+const ErrorFrame = ({ status, mainMsg, subMsg }: ErrorFrameProps) => {
   const navigate = useNavigate();
   return (
     <Container>
