@@ -1,16 +1,11 @@
 import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
-import { LectureSearch, LectureList, Meta, OptionSelect, MajorSelect } from 'components';
+import { LectureList, LectureSearch, MajorSelect, Meta, OptionSelect } from 'components';
 import { sortOptions } from 'constants/placeholderData';
-import { scrollToTop } from 'utils/scrollToTop';
+import { useState } from 'react';
 
 const Search = () => {
   const [count, setCount] = useState(0);
   const [select, onSelect] = useState(false);
-
-  useEffect(() => {
-    scrollToTop();
-  }, []);
 
   return (
     <div>

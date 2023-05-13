@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { scrollToTop } from 'utils/scrollToTop';
 
 const ScrollButton = () => {
   const [ScrollY, setScrollY] = useState(0);
@@ -10,7 +9,11 @@ const ScrollButton = () => {
   };
 
   const handleScroll = () => {
-    scrollToTop();
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
     setScrollY(0);
   };
 
