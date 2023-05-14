@@ -1,4 +1,4 @@
-export interface MainLecture {
+export interface MainLectureItem {
   id: number;
   semesterList: string;
   professor: string;
@@ -9,4 +9,9 @@ export interface MainLecture {
   lectureSatisfactionAvg: number;
   lectureHoneyAvg: number;
   lectureLearningAvg: number;
+}
+
+export interface MainLecture {
+  data: MainLectureItem[];
+  count: number;
 }
