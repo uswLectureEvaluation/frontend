@@ -1,6 +1,7 @@
 import { AxiosError } from 'axios';
-import JwtInterceptors from './ApiController';
 import { ExamPostsResponse } from 'types/exam';
+import { MainLecture } from 'types/lecture';
+import JwtInterceptors from './ApiController';
 
 const Lecture = () => {
   const instance = JwtInterceptors().instance;
@@ -8,7 +9,9 @@ const Lecture = () => {
   // 메인페이지
   const main = (lecture = 'modifiedDate', page = 1, majorType = '') => {
     try {
-      return instance.get(`/lecture/all/?option=${lecture}&page=${page}&majorType=${majorType}`);
+      return instance.get<MainLecture>(
+        `/lecture/all/?option=${lecture}&page=${page}&majorType=${majorType}`
+      );
     } catch (error) {
       const axiosError = error as AxiosError;
       console.error(axiosError.message);
