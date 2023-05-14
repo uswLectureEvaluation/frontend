@@ -19,14 +19,11 @@ const useLectureQuery = () => {
   const value = searchValue === 'all' ? '' : searchValue;
 
   // 메인 쿼리(key: 정렬,전공)
-  const Main = () => {
-    const { data: getMain, isLoading: mainLoading } = useQuery(
-      ['main', option, major],
-      () => lecture.main(option, 1, major),
-      { keepPreviousData: true }
-    );
-    return { getMain, mainLoading };
-  };
+  const { data: getMainLecture } = useQuery(
+    ['main', option, major],
+    () => lecture.main(option, 1, major),
+    { keepPreviousData: true, suspense: true }
+  );
 
   // 검색 쿼리(key: 검색어,정렬,전공)
   const Search = () => {
@@ -137,7 +134,8 @@ const useLectureQuery = () => {
     }, [inView, fetchNextPage]);
     return { data, isFetchingNextPage, isLoading, ref };
   };
-  return { Main, Search, Detail, Evaluation, TestInfo };
+
+  return { getMainLecture, Search, Detail, Evaluation, TestInfo };
 };
 
 export default useLectureQuery;
