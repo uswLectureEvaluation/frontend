@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { PropsWithChildren } from 'react';
 
 interface ButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
   color?: string;
   id?: string;
   disabled?: boolean;
