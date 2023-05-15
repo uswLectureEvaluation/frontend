@@ -1,20 +1,21 @@
-import { useForm } from 'react-hook-form';
 import { Auth } from 'api';
 import { Button, Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
-import { Container, AuthWrapper, Title, Img, Sub } from 'styles/common';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { AuthWrapper, Container, Img, Sub, Title } from 'styles/common';
+import { UserLogin } from 'types/user';
 
 const Exit = () => {
-  const auth = Auth();
+  const { quit } = Auth();
   const {
     register,
     handleSubmit,
     formState: { isValid },
-  } = useForm();
+  } = useForm<UserLogin>();
 
-  const onSubmit = (data) => {
+  const onSubmit: SubmitHandler<UserLogin> = (data) => {
     if (confirm('회원탈퇴 시 작성한 강의평가/시험정보는 전부 삭제됩니다. \n정말 탈퇴하시나요?')) {
-      auth.quit(data);
+      quit(data);
     } else {
       alert('취소');
     }
