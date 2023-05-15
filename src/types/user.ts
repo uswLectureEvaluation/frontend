@@ -14,6 +14,8 @@ export interface UserLogin extends UserId, UserPW {}
 
 export interface UserJoin extends UserLogin, UserEmail {}
 
+export interface UserFindPw extends UserId, UserEmail {}
+
 export interface ResponseUserCheckID {
   overlap: boolean;
 }
