@@ -1,22 +1,21 @@
 import styled from '@emotion/styled';
-import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Auth } from 'api';
 import { Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
+import { KeyboardEvent, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthWrapper, Container, Img } from 'styles/common';
 
 const Login = () => {
   const navigate = useNavigate();
-  const auth = Auth();
-  const userId = useRef(null);
-  const password = useRef(null);
+  const { login } = Auth();
+  const userId = useRef<HTMLInputElement>(null);
+  const password = useRef<HTMLInputElement>(null);
 
-  const loginAttempt = () => {
-    auth.login({ loginId: userId.current.value, password: password.current.value });
-  };
+  const loginAttempt = () =>
+    login({ loginId: userId.current!.value, password: password.current!.value });
 
-  const onKeypress = (e) => {
+  const onKeypress = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key !== 'Enter') return;
 
     loginAttempt();
@@ -88,7 +87,7 @@ const Title = styled.div`
   }
 `;
 
-const Button = styled.button`
+const Button = styled.button<{ background: string }>`
   margin: 0;
   padding: 0 1rem;
   padding-top: 1rem;
