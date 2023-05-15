@@ -5,7 +5,7 @@ import { Positioner } from 'styles/common';
 
 const EmailSignUp = () => {
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const { state }: { state: string } = useLocation();
 
   return (
     <Positioner>
