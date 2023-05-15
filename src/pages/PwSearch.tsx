@@ -1,21 +1,21 @@
-import { useForm } from 'react-hook-form';
 import { Auth } from 'api';
-import { Meta, Button } from 'components';
+import { Button, Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
-import { Container, AuthWrapper, Title, Img, Sub } from 'styles/common';
 import { Loader } from 'components/Etc/Spinner';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+import { AuthWrapper, Container, Img, Sub, Title } from 'styles/common';
+import type { UserFindPw } from 'types/user';
 import { validateEmail } from 'utils/validate';
 
 const PwSearch = () => {
-  const auth = Auth();
+  const { findPw } = Auth();
   const {
     register,
     handleSubmit,
     formState: { isValid, isSubmitting },
-  } = useForm();
-  const onSubmit = (data) => {
-    return auth.findPw(data);
-  };
+  } = useForm<UserFindPw>();
+
+  const onSubmit: SubmitHandler<UserFindPw> = (data) => findPw(data);
 
   return (
     <Container>

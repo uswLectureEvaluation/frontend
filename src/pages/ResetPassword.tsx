@@ -1,26 +1,26 @@
-import { useForm } from 'react-hook-form';
 import { Auth } from 'api';
-import { Meta, Button } from 'components';
+import { Button, Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
-import { Container, AuthWrapper, Title, Img, Sub, Checking } from 'styles/common';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+import { AuthWrapper, Checking, Container, Img, Sub, Title } from 'styles/common';
+import type { ResetPassword as ResetPasswordType } from 'types/user';
 import { validatePassword } from 'utils/validate';
 
 const ResetPassword = () => {
-  const auth = Auth();
+  const { resetPassword } = Auth();
   const {
     register,
     handleSubmit,
     formState: { isValid, errors },
-  } = useForm({ mode: 'onChange' });
-  const handleChange = (data) => {
-    auth.resetPassword(data);
-  };
+  } = useForm<ResetPasswordType>({ mode: 'onChange' });
+
+  const onResetPwSubmit: SubmitHandler<ResetPasswordType> = (data) => resetPassword(data);
 
   return (
     <Container>
       <Meta title="SUWIKI : 비밀번호 변경" />
       <Img src="images/signup.svg" width={400} />
-      <AuthWrapper onSubmit={handleSubmit(handleChange)}>
+      <AuthWrapper onSubmit={handleSubmit(onResetPwSubmit)}>
         <Title>비밀번호 변경</Title>
         <Sub>기존 비밀번호를 입력하세요</Sub>
         <CssTextField
