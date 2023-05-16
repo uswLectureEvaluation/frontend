@@ -27,12 +27,12 @@ const Lecture = () => {
     major: string
   ) => {
     try {
-      const res = await instance.get(
+      const { data } = await instance.get(
         `/lecture/search/?searchValue=${searchValue}&option=${option}&page=${pageParam}&majorType=${major}`
       );
       return {
-        data: res,
-        isLast: res.data.length < 10,
+        data,
+        isLast: data.length < 10,
         nextPage: pageParam + 1,
       };
     } catch (error) {

@@ -29,7 +29,7 @@ const useLectureQuery = () => {
   const Search = () => {
     const { ref, inView } = useInView();
     const {
-      data: getSearch,
+      data,
       isLoading: searchLoading,
       fetchNextPage: getNextSearch,
       isFetchingNextPage: nextLoading,
@@ -49,7 +49,7 @@ const useLectureQuery = () => {
         getNextSearch();
       }
     }, [inView, getNextSearch]);
-    return { getSearch, searchLoading, nextLoading, value, ref };
+    return { data, searchLoading, nextLoading, value, ref };
   };
 
   // 강의 상세 쿼리(key: 강의id)
