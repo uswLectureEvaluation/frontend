@@ -1,13 +1,11 @@
 import styled from '@emotion/styled';
 import { versionCheck } from 'app/versionCheck';
 import { LectureSearch, MainBanner, MainList, MajorSelect, OptionSelect } from 'components';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { sortOptions } from '../constants/placeholderData';
 
 const Main = () => {
   const navigate = useNavigate();
-  const [select, onSelect] = useState(false);
 
   versionCheck();
 
@@ -21,14 +19,7 @@ const Main = () => {
             <FlexWrapper>
               <MajorSelect />
             </FlexWrapper>
-            <OptionSelect
-              list={sortOptions}
-              state={select}
-              controller={onSelect}
-              icon={true}
-              itemTitle="name"
-              location="main"
-            />
+            <OptionSelect list={sortOptions} itemTitle="name" location="main" />
           </HeadSelection>
           <HeadSelection>
             <MainList />

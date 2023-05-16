@@ -9,12 +9,10 @@ import {
 } from 'components';
 import { fakeLectureList, sortOptions } from 'constants/placeholderData';
 import useLectureQuery from 'hooks/useLectureQuery';
-import { useState } from 'react';
 
 const Search = () => {
   const { Search } = useLectureQuery();
   const { data, searchLoading } = Search();
-  const [select, onSelect] = useState(false);
 
   if (searchLoading || !data || !data.pages[0]) return <LectureContainer data={fakeLectureList} />;
   const count = data?.pages[0].data.count;
@@ -30,14 +28,7 @@ const Search = () => {
               <MajorSelect />
             </FlexWrapper>
             <FlexWrapper>
-              <OptionSelect
-                list={sortOptions}
-                state={select}
-                controller={onSelect}
-                icon={false}
-                itemTitle="sub"
-                location="search"
-              />
+              <OptionSelect list={sortOptions} itemTitle="sub" location="search" />
             </FlexWrapper>
           </div>
 
