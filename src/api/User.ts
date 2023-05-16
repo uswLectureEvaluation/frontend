@@ -15,9 +15,10 @@ import { AxiosResponseSuccess } from 'types/common';
 const User = () => {
   const instance = JwtInterceptors().instance;
   // 내 정보
-  const info = () => {
+  const info = async () => {
     try {
-      return instance.get<UserProfileInfo>('/user/my-page');
+      const data: UserProfileInfo = await instance.get('/user/my-page');
+      return data;
     } catch (error) {
       const axiosError = error as AxiosError;
       console.error(axiosError.message);
