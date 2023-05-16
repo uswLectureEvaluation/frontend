@@ -12,7 +12,9 @@ export interface UserEmail {
 
 export interface UserLogin extends UserId, UserPW {}
 
-export interface UserJoin extends UserLogin, UserEmail {}
+export interface UserJoin extends UserLogin, UserEmail {
+  passwordConfirm?: string;
+}
 
 export interface UserFindPw extends UserId, UserEmail {}
 
