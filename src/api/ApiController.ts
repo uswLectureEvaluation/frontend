@@ -24,13 +24,14 @@ const JwtInterceptors = () => {
   const refreshingToken = async () => {
     try {
       const res = await refresh();
-      if (res) {
+      if (res?.status !== 200) {
+        throw new Error(`Response status is ${res?.status}`);
+      } else {
         setToken(res.data.AccessToken);
-        return res?.data.AccessToken;
+        return res;
       }
     } catch (error) {
       console.error('refreshToken ERROR', error);
-      return false;
     }
   };
 
@@ -38,21 +39,16 @@ const JwtInterceptors = () => {
     async (config) => {
       const tokenValid = await isAccessTokenValid();
       const isLogin = isLoginStorage();
-
       if (!isLogin) {
         config.headers['Content-Type'] = 'application/json';
-      }
-
-      if (!tokenValid) {
+      } else if (isLogin && !tokenValid) {
         const result = await refreshingToken();
-
         if (!result) {
           alert('로그인 시간이 만료되었습니다\n다시 로그인 해주세요');
           await logout();
-        } else {
-          config.headers['Authorization'] = result;
         }
-      } else if (token) {
+        config.headers['Authorization'] = result?.data.AccessToken;
+      } else {
         config.headers['Authorization'] = token;
       }
 

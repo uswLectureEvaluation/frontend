@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import { ExamPostsResponse } from 'types/exam';
-import { MainLecture } from 'types/lecture';
+import { MainLecture, MainLectureItem } from 'types/lecture';
 import JwtInterceptors from './ApiController';
 
 const Lecture = () => {
@@ -27,12 +27,12 @@ const Lecture = () => {
     major: string
   ) => {
     try {
-      const res = await instance.get(
+      const { data } = await instance.get(
         `/lecture/search/?searchValue=${searchValue}&option=${option}&page=${pageParam}&majorType=${major}`
       );
       return {
-        data: res,
-        isLast: res.data.length < 10,
+        data,
+        isLast: data.length < 10,
         nextPage: pageParam + 1,
       };
     } catch (error) {
@@ -44,7 +44,7 @@ const Lecture = () => {
   // 검색 결과 자세히보기 (Lecture)
   const detail = (selectId: string) => {
     try {
-      return instance.get(`/lecture/?lectureId=${selectId}`);
+      return instance.get<MainLectureItem>(`/lecture/?lectureId=${selectId}`);
     } catch (error) {
       const axiosError = error as AxiosError;
       console.error(axiosError.message);
@@ -69,12 +69,12 @@ const Lecture = () => {
   // 검색 결과 자세히보기 (Exam)
   const examInfo = async (selectId: string, pageParam = 1) => {
     try {
-      const result = await instance.get<ExamPostsResponse>(
+      const data: ExamPostsResponse = await instance.get(
         `/exam-posts/?lectureId=${selectId}&page=${pageParam}`
       );
       return {
-        data: result.data,
-        isLast: result.data.data.length < 10,
+        data,
+        isLast: data.data.length < 10,
         nextPage: pageParam + 1,
       };
     } catch (error) {

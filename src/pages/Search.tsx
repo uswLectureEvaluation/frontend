@@ -1,11 +1,23 @@
 import styled from '@emotion/styled';
-import { LectureList, LectureSearch, MajorSelect, Meta, OptionSelect } from 'components';
-import { sortOptions } from 'constants/placeholderData';
+import {
+  LectureContainer,
+  LectureList,
+  LectureSearch,
+  MajorSelect,
+  Meta,
+  OptionSelect,
+} from 'components';
+import { fakeLectureList, sortOptions } from 'constants/placeholderData';
+import useLectureQuery from 'hooks/useLectureQuery';
 import { useState } from 'react';
 
 const Search = () => {
-  const [count, setCount] = useState(0);
+  const { Search } = useLectureQuery();
+  const { data, searchLoading } = Search();
   const [select, onSelect] = useState(false);
+
+  if (searchLoading || !data || !data.pages[0]) return <LectureContainer data={fakeLectureList} />;
+  const count = data?.pages[0].data.count;
 
   return (
     <div>
@@ -35,7 +47,7 @@ const Search = () => {
         </SearchResultWrapper>
 
         <HeadSelection>
-          <LectureList setCount={setCount} />
+          <LectureList data={data.pages} count={count} />
         </HeadSelection>
       </Container>
     </div>

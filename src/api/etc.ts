@@ -29,7 +29,7 @@ export const logout = async () => {
     const { data } = await axios.post(`/user/client-logout`);
     if (data.Success) {
       removeStorage('login');
-      window.location.href = '/login';
+      window.location.href = '/';
     }
   } catch (error) {
     const axiosError = error as AxiosError;
