@@ -7,11 +7,12 @@ const Lecture = () => {
   const instance = JwtInterceptors().instance;
 
   // 메인페이지
-  const main = (lecture = 'modifiedDate', page = 1, majorType = '') => {
+  const main = async (lecture = 'modifiedDate', page = 1, majorType = '') => {
     try {
-      return instance.get<MainLecture>(
+      const data: MainLecture = await instance.get(
         `/lecture/all/?option=${lecture}&page=${page}&majorType=${majorType}`
       );
+      return data;
     } catch (error) {
       const axiosError = error as AxiosError;
       console.error(axiosError.message);
@@ -27,12 +28,13 @@ const Lecture = () => {
     major: string
   ) => {
     try {
-      const { data } = await instance.get(
+      const data: MainLecture = await instance.get(
         `/lecture/search/?searchValue=${searchValue}&option=${option}&page=${pageParam}&majorType=${major}`
       );
+
       return {
         data,
-        isLast: data.length < 10,
+        isLast: data.data.length < 10,
         nextPage: pageParam + 1,
       };
     } catch (error) {
