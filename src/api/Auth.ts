@@ -24,7 +24,11 @@ const Auth = () => {
   //회원가입
   const register = async (data: UserJoin) => {
     try {
-      const res: AxiosResponseSuccess = await instance.post('user/join');
+      const res: AxiosResponseSuccess = await instance.post('user/join', {
+        loginId: data.loginId,
+        password: data.password,
+        email: data.email,
+      });
       if (res.success) navigate('/emailsignup', { state: data.email });
     } catch (error) {
       const axiosError = error as AxiosError;
