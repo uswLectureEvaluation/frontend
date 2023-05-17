@@ -1,7 +1,9 @@
 import './styles/globalStyle.css';
 
 import axios from 'axios';
+import AsyncBoundary from 'components/AsyncBoundary';
 import { CACHE_TIME } from 'constants/cacheTime';
+import { BadGateway } from 'pages';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { initialize } from 'react-ga';
@@ -25,13 +27,15 @@ const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 axios.defaults.baseURL = PROXY_URL;
 axios.defaults.withCredentials = true;
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RecoilRoot>
-        <App />
-        <ReactQueryDevtools />
-      </RecoilRoot>
-    </QueryClientProvider>
+    <AsyncBoundary pendingFallback={<></>} rejectedFallback={() => <BadGateway />}>
+      <QueryClientProvider client={queryClient}>
+        <RecoilRoot>
+          <App />
+          <ReactQueryDevtools />
+        </RecoilRoot>
+      </QueryClientProvider>
+    </AsyncBoundary>
   </React.StrictMode>
 );
