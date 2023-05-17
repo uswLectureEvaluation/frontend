@@ -1,3 +1,6 @@
+import type { RegisterOptions } from 'react-hook-form';
+import type { UserJoin } from 'types/user';
+
 // 아이디 유효성 검사 로직
 export const validateId = {
   required: true,
@@ -29,7 +32,7 @@ export const validatePasswordConfirm = (password: string) => {
   return {
     required: true,
     validate: (value: string) => value === password || '비밀번호가 일치하지 않습니다.',
-  };
+  } as RegisterOptions<UserJoin, 'passwordConfirm'>;
 };
 
 // 이메일 유효성 검사 로직

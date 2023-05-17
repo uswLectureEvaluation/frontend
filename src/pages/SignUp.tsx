@@ -1,16 +1,19 @@
 import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { Auth } from 'api';
 import { Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
-import { Container, AuthWrapper, Img, Button, Checking } from 'styles/common';
+import { useEffect, useState } from 'react';
+import { useForm, type SubmitHandler } from 'react-hook-form';
+import { AuthWrapper, Button, Checking, Container, Img } from 'styles/common';
+import type { UserJoin } from 'types/user';
 import {
   validateEmail,
   validateId,
   validatePassword,
   validatePasswordConfirm,
 } from 'utils/validate';
+
+type CheckList = 'terms' | 'privacy';
 
 const SignUp = () => {
   const { checkId, checkEmail, register: signup } = Auth();
@@ -19,37 +22,31 @@ const SignUp = () => {
     handleSubmit,
     watch,
     formState: { errors, isValid },
-  } = useForm({ mode: 'onChange' });
+  } = useForm<UserJoin>({ mode: 'onChange' });
   const formValues = watch();
 
   // 아이디, 이메일 중복확인, 체크리스트 상태
   const [idCheck, setIdCheck] = useState(false);
   const [emailCheck, setEmailCheck] = useState(false);
-  const [checkList, setCheckList] = useState([]);
+  const [checkList, setCheckList] = useState<CheckList[]>([]);
 
   // 체크박스 전체선택시 모두선택 체크박스 활성화시키기
-  const handleCheck = (e) => {
+  const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const targetName = e.target.name as CheckList;
     e.target.checked
-      ? setCheckList([...checkList, e.target.name])
-      : setCheckList(checkList.filter((el) => el !== e.target.name));
+      ? setCheckList([...checkList, targetName])
+      : setCheckList(checkList.filter((el) => el !== targetName));
   };
 
   // 전체체크 선택시 전체 선택 or 전체해제
-  const checkAll = (e) => {
+  const checkAll = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.target.checked ? setCheckList(['terms', 'privacy']) : setCheckList([]);
   };
-  // 아이디 중복확인
-  const onCheck = () => {
-    checkId(setIdCheck, { loginId: formValues.loginId });
-  };
-  // 이메일 중복확인
-  const onEmail = () => {
-    checkEmail(setEmailCheck, { email: formValues.email });
-  };
-  // 폼 제출
-  const onSubmit = ({ loginId, password, email }) => {
-    signup({ loginId, password, email });
-  };
+
+  const handleIdCheck = () => checkId(setIdCheck, { loginId: formValues.loginId });
+  const handleEmailCheck = () => checkEmail(setEmailCheck, { email: formValues.email });
+  const onSubmit: SubmitHandler<UserJoin> = ({ loginId, email, password }) =>
+    signup({ loginId, email, password });
 
   // 중복확인 이후 값 변경 시 상태 초기화
   useEffect(() => {
@@ -81,8 +78,8 @@ const SignUp = () => {
           <Button
             id="check"
             type="button"
-            disabled={errors.loginId || !formValues.loginId || idCheck}
-            onClick={onCheck}
+            disabled={!!errors.loginId || !formValues.loginId || idCheck}
+            onClick={handleIdCheck}
             background="#336af8"
           >
             {idCheck ? '확인완료' : '중복확인'}
@@ -116,10 +113,10 @@ const SignUp = () => {
             {...register('email', validateEmail)}
           />
           <Button
-            disabled={errors.email || !formValues.email || emailCheck}
+            disabled={!!errors.email || !formValues.email || emailCheck}
             id="check"
             type="button"
-            onClick={onEmail}
+            onClick={handleEmailCheck}
             background="#336af8"
           >
             {emailCheck ? '확인완료' : '중복확인'}
