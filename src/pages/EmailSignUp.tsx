@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
+import { Button } from 'components';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Button, Meta } from 'components';
 import { Positioner } from 'styles/common';
 
 const EmailSignUp = () => {
@@ -9,7 +9,6 @@ const EmailSignUp = () => {
 
   return (
     <Positioner>
-      <Meta title="SUWIKI : 이메일 인증" />
       <Wrapper>
         <Title>이메일 인증</Title>
         <Img>

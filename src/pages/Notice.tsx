@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
+import { Notice as Notices } from 'api';
+import { Spinner } from 'components';
 import { Fragment, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useInfiniteQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { Notice as Notices } from 'api';
-import { Meta, Spinner } from 'components';
 import { type NoticeItem } from 'types/notice';
 
 const Item = ({ notice }: { notice: NoticeItem }) => {
@@ -58,7 +58,6 @@ export const NoticeContainer = () => {
 const Notice = () => {
   return (
     <AppContainer>
-      <Meta title="SUWIKI : 공지사항" />
       <AppTitle>공지사항</AppTitle>
       <NoticeContainer />
     </AppContainer>

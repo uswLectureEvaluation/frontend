@@ -1,19 +1,17 @@
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
-import { Meta } from 'components';
-import { Button, Container, Img, AuthWrapper } from 'styles/common';
+import { AuthWrapper, Button, Container, Img } from 'styles/common';
 
 interface ErrorFrameProps {
-  status: string;
+  status?: string;
   mainMsg: string;
   subMsg: string;
 }
 
-const ErrorFrame = ({ status, mainMsg, subMsg }: ErrorFrameProps) => {
+const ErrorFrame = ({ mainMsg, subMsg }: ErrorFrameProps) => {
   const navigate = useNavigate();
   return (
     <Container>
-      <Meta title={`SUWIKI : ${status}`} />
       <Img src="images/signup.svg" width={400} />
       <AuthWrapper>
         <StyledText id="top">{mainMsg}</StyledText>

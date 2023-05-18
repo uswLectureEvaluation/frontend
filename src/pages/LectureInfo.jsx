@@ -4,7 +4,6 @@ import {
   IsTestInfo,
   LectureDetail,
   LectureSearch,
-  Meta,
   Modal,
   SearchEvaluationList,
   WriteEvaluation,
@@ -48,7 +47,6 @@ const LectureInfo = () => {
 
   return (
     <AppContainer>
-      <Meta title="SUWIKI : 검색" />
       <LectureSearch />
 
       <Wrapper>

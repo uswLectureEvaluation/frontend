@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
+import { Notice } from 'api';
+import { Spinner } from 'components';
 import { useQuery } from 'react-query';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Notice } from 'api';
-import { Spinner, Meta } from 'components';
 
 export const NoticeBox = () => {
   const notice = Notice();
@@ -18,7 +18,6 @@ export const NoticeBox = () => {
 
   return (
     <Content>
-      <Meta title={item.title} />
       <Title>{item.title}</Title>
       {content.map((row, index) => (
         <div key={id + index}>

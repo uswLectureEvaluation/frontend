@@ -1,5 +1,5 @@
 import { Auth } from 'api';
-import { Button, Meta } from 'components';
+import { Button } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
 import { Loader } from 'components/Etc/Spinner';
 import { useForm, type SubmitHandler } from 'react-hook-form';
@@ -19,7 +19,6 @@ const IdSearch = () => {
 
   return (
     <Container>
-      <Meta title="SUWIKI : 아이디 찾기" />
       <Img src="images/signup.svg" width={400} />
       <AuthWrapper onSubmit={handleSubmit(onEmailSubmit)}>
         <Title>아이디 찾기</Title>
