@@ -1,16 +1,18 @@
-import { queryClient } from '../index';
-import JwtInterceptors from './ApiController';
 import { AxiosError } from 'axios';
-import {
+import type { AxiosResponseSuccess } from 'types/common';
+import type {
+  BlacklistInfo,
   EvaluatePostCreate,
   EvaluatePostUpdate,
   EvaluateReportCreate,
   ExamPostCreate,
   ExamPostUpdate,
   ExamReportCreate,
+  RestrictionInfo,
   UserProfileInfo,
 } from 'types/user';
-import { AxiosResponseSuccess } from 'types/common';
+import { queryClient } from '../index';
+import JwtInterceptors from './ApiController';
 
 const User = () => {
   const instance = JwtInterceptors().instance;
@@ -66,9 +68,10 @@ const User = () => {
   };
 
   // 밴 사유 리스트
-  const banList = () => {
+  const banList = async () => {
     try {
-      return instance.get('user/blacklist-reason');
+      const data: BlacklistInfo[] = await instance.get('user/blacklist-reason');
+      return data;
     } catch (error) {
       const axiosError = error as AxiosError;
       console.error(axiosError.message);
@@ -76,9 +79,10 @@ const User = () => {
   };
 
   // 제재 사유 리스트
-  const resList = () => {
+  const resList = async () => {
     try {
-      return instance.get('user/restricted-reason');
+      const data: RestrictionInfo[] = await instance.get('user/restricted-reason');
+      return data;
     } catch (error) {
       const axiosError = error as AxiosError;
       console.error(axiosError.message);
