@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { LectureList, LectureSearch, MajorSelect, Meta, OptionSelect } from 'components';
+import { LectureList, LectureSearch, MajorSelect, OptionSelect } from 'components';
 import { fakeLectureList, sortOptions } from 'constants/placeholderData';
 import useLectureQuery from 'hooks/useLectureQuery';
 
@@ -11,7 +11,6 @@ const Search = () => {
 
   return (
     <div>
-      <Meta title="SUWIKI : 검색" />
       <Container>
         <LectureSearch />
         <SearchResultWrapper>

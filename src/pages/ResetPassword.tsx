@@ -1,5 +1,5 @@
 import { Auth } from 'api';
-import { Button, Meta } from 'components';
+import { Button } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { AuthWrapper, Checking, Container, Img, Sub, Title } from 'styles/common';
@@ -18,7 +18,6 @@ const ResetPassword = () => {
 
   return (
     <Container>
-      <Meta title="SUWIKI : 비밀번호 변경" />
       <Img src="images/signup.svg" width={400} />
       <AuthWrapper onSubmit={handleSubmit(onResetPwSubmit)}>
         <Title>비밀번호 변경</Title>

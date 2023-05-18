@@ -1,5 +1,5 @@
 import { Auth } from 'api';
-import { Button, Meta } from 'components';
+import { Button } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { AuthWrapper, Container, Img, Sub, Title } from 'styles/common';
@@ -23,7 +23,6 @@ const Exit = () => {
 
   return (
     <Container>
-      <Meta title="SUWIKI : 회원탈퇴" />
       <Img src="images/signup.svg" width={400} />
       <AuthWrapper onSubmit={handleSubmit(onSubmit)}>
         <Title>회원탈퇴</Title>

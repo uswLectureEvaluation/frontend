@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { Auth } from 'api';
-import { Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
 import { KeyboardEvent, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -23,10 +22,6 @@ const Login = () => {
 
   return (
     <Container>
-      <Meta
-        title="SUWIKI : 로그인"
-        description="SUWIKI에 로그인 하고 수원대학교 강의평가의 모든 서비스를 이용해 보세요"
-      />
       <picture>
         <source srcSet="/images/signup.avif" type="image/avif" />
         <source srcSet="/images/signup.webp" type="image/webp" />

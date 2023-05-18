@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { Auth } from 'api';
-import { Meta } from 'components';
 import { CssTextField } from 'components/Etc/CssTextField';
 import { useEffect, useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
@@ -58,7 +57,6 @@ const SignUp = () => {
 
   return (
     <Container>
-      <Meta title="SUWIKI : 회원가입" />
       <picture>
         <source srcSet="/images/signup.avif" type="image/avif" />
         <source srcSet="/images/signup.webp" type="image/webp" />
