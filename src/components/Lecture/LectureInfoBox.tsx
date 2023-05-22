@@ -2,31 +2,25 @@ import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'components';
 import { floatFix } from 'utils/floatFix';
+import { LectureItem } from 'types/lecture';
 
-const LectureInfoBox = ({ current, isLogin }) => {
+interface LectureInfoBoxProps {
+  current: LectureItem;
+  isLogin: boolean;
+}
+
+type SetTeamNumber = 0 | 1;
+type SetNumber = SetTeamNumber | 2;
+
+const LectureInfoBox = ({ current, isLogin }: LectureInfoBoxProps) => {
   const navigate = useNavigate();
-  const teamSet = floatFix(current.lectureTeamAvg, 0);
-  const homeworkSet = floatFix(current.lectureHomeworkAvg, 0);
-  const difficultySet = floatFix(current.lectureDifficultyAvg, 0);
-
-  const team = {
-    0: <DataColor id="cyan">없음</DataColor>,
-    1: <DataColor id="purple">있음</DataColor>,
-  };
-  const homework = {
-    0: <DataColor id="cyan">없음</DataColor>,
-    1: <DataColor id="black">보통</DataColor>,
-    2: <DataColor id="purple">많음</DataColor>,
-  };
-  const difficulty = {
-    0: <DataColor id="cyan">너그러움</DataColor>,
-    1: <DataColor id="black">보통</DataColor>,
-    2: <DataColor id="purple">까다로움</DataColor>,
-  };
+  const teamSet = Math.floor(current.lectureTeamAvg ?? 0) as SetTeamNumber;
+  const homeworkSet = Math.floor(current.lectureHomeworkAvg ?? 0) as SetNumber;
+  const difficultySet = Math.floor(current.lectureDifficultyAvg ?? 0) as SetNumber;
 
   return (
     <Content id="top">
-      <div style={{ filter: current.id === 'fake' ? 'blur(5px)' : null }}>
+      <div style={{ filter: current.id === -1 ? 'blur(5px)' : undefined }}>
         <TitleWrapper id="top">
           <div>
             <SubWrapper>
@@ -305,3 +299,18 @@ const DataColor = styled.div`
     color: #6200ee;
   }
 `;
+
+const team = {
+  0: <DataColor id="cyan">없음</DataColor>,
+  1: <DataColor id="purple">있음</DataColor>,
+};
+const homework = {
+  0: <DataColor id="cyan">없음</DataColor>,
+  1: <DataColor id="black">보통</DataColor>,
+  2: <DataColor id="purple">많음</DataColor>,
+};
+const difficulty = {
+  0: <DataColor id="cyan">너그러움</DataColor>,
+  1: <DataColor id="black">보통</DataColor>,
+  2: <DataColor id="purple">까다로움</DataColor>,
+};
