@@ -1,36 +1,24 @@
-import { SortOption } from 'types/common';
+import type { SortOption } from 'types/common';
+import type { LectureItem } from 'types/lecture';
 import createFakeData from 'utils/fakeData';
 
-export const fakeLectureInfo = {
-  id: 'fake',
-  lectureDifficultyAvg: 1,
-  lectureHomeworkAvg: 0,
+export const fakeLectureInfo: LectureItem = {
+  id: -1,
+  semesterList: '0000-0',
+  professor: '로딩중',
+  lectureType: '로딩',
+  lectureName: '로딩중입니다',
+  lectureTotalAvg: 0,
+  lectureSatisfactionAvg: 0,
   lectureHoneyAvg: 0,
   lectureLearningAvg: 0,
-  lectureName: 'suwiki-lecture',
-  lectureSatisfactionAvg: 0,
+  majorType: '로딩',
+  lectureDifficultyAvg: 0,
+  lectureHomeworkAvg: 0,
   lectureTeamAvg: 0,
-  lectureTotalAvg: 0,
-  lectureType: '로딩',
-  majorType: 'suwiki',
-  professor: 'suwiki',
-  semesterList: '0000-0',
 };
 
-export const fakeLectureList = createFakeData(10, (i) => ({
-  id: 'fake' + i,
-  lectureHoneyAvg: 0,
-  lectureLearningAvg: 0,
-  lectureName: '로딩중입니다',
-  lectureSatisfactionAvg: 0,
-  lectureTotalAvg: 0,
-  lectureType: '로딩',
-  majorType: '로딩',
-  professor: '로딩중',
-  semesterList: '0000-0',
-  content:
-    'suwiki-lecture-content-placeholder suwiki-lecture-content-placeholder suwiki-lecture-content-placeholder suwiki-lecture-content-placeholder',
-}));
+export const fakeLectureList = createFakeData(10, () => fakeLectureInfo);
 
 export const fakeEvaluationList = createFakeData(3, (i) => ({
   id: 'fake' + i,
