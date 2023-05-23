@@ -1,11 +1,19 @@
 import styled from '@emotion/styled';
-import StarRatings from 'react-star-ratings';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { subStr } from 'utils/subString';
+import StarRatings from 'react-star-ratings';
+import { LectureDetailItem } from 'types/lecture';
 import { floatFix } from 'utils/floatFix';
+import { subStr } from 'utils/subString';
 
-const Detail = ({ lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg }) => {
+const Detail = ({
+  lectureSatisfactionAvg,
+  lectureHoneyAvg,
+  lectureLearningAvg,
+}: Pick<
+  LectureDetailItem,
+  'lectureHoneyAvg' | 'lectureLearningAvg' | 'lectureSatisfactionAvg'
+>) => {
   return (
     <div>
       <StarFlex id="top">
@@ -35,18 +43,18 @@ const Detail = ({ lectureSatisfactionAvg, lectureHoneyAvg, lectureLearningAvg })
   );
 };
 
-const LectureCard = ({ row }) => {
+const LectureCard = ({ row }: { row: LectureDetailItem }) => {
   const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const title = subStr(row.lectureName, 14);
 
-  const onClick = (id) => {
-    !isNaN(id) ? navigate(`/lectureinfo?id=${id}`) : null;
+  const handleClick = (id: number) => {
+    if (id !== -1) navigate(`/lectureinfo?id=${id}`);
   };
 
   return (
-    <LectureWrapper onClick={() => onClick(row.id)}>
-      <div style={{ filter: isNaN(row.id) ? 'blur(4px)' : null }}>
+    <LectureWrapper onClick={() => handleClick(row.id)}>
+      <div style={{ filter: row.id === -1 ? 'blur(4px)' : undefined }}>
         <MarginTop>
           <TitleWrapper>
             <Title>{title}</Title>
