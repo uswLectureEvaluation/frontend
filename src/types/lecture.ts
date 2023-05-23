@@ -9,12 +9,17 @@ export interface LectureItem {
   lectureSatisfactionAvg: number;
   lectureHoneyAvg: number;
   lectureLearningAvg: number;
-  lectureDifficultyAvg?: number;
-  lectureHomeworkAvg?: number;
-  lectureTeamAvg?: number;
 }
 
+export interface LectureAverageRatings {
+  lectureDifficultyAvg: number;
+  lectureHomeworkAvg: number;
+  lectureTeamAvg: number;
+}
+
+export type LectureDetailItem = LectureItem & Partial<LectureAverageRatings>;
+
 export interface MainLecture {
-  data: LectureItem[];
+  data: LectureDetailItem[];
   count: number;
 }

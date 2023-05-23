@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import { ExamPostsResponse } from 'types/exam';
-import type { LectureItem, MainLecture } from 'types/lecture';
+import type { LectureDetailItem, MainLecture } from 'types/lecture';
 import JwtInterceptors from './ApiController';
 
 const Lecture = () => {
@@ -46,7 +46,7 @@ const Lecture = () => {
   // 검색 결과 자세히보기 (Lecture)
   const detail = (selectId: string) => {
     try {
-      return instance.get<LectureItem>(`/lecture/?lectureId=${selectId}`);
+      return instance.get<LectureDetailItem>(`/lecture/?lectureId=${selectId}`);
     } catch (error) {
       const axiosError = error as AxiosError;
       console.error(axiosError.message);

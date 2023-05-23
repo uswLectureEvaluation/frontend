@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'components';
 import { floatFix } from 'utils/floatFix';
-import { LectureItem } from 'types/lecture';
+import { LectureDetailItem } from 'types/lecture';
 
 interface LectureInfoBoxProps {
-  current: LectureItem;
+  current: LectureDetailItem;
   isLogin: boolean;
 }
 

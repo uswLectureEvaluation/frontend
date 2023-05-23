@@ -1,8 +1,8 @@
 import type { SortOption } from 'types/common';
-import type { LectureItem } from 'types/lecture';
+import type { LectureDetailItem } from 'types/lecture';
 import createFakeData from 'utils/fakeData';
 
-export const fakeLectureInfo: LectureItem = {
+export const fakeLectureInfo: LectureDetailItem = {
   id: -1,
   semesterList: '0000-0',
   professor: '로딩중',

@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import { FlexWrap } from 'styles/common';
 import { LectureCard } from 'components';
-import type { LectureItem } from 'types/lecture';
+import type { LectureDetailItem } from 'types/lecture';
 
-const LectureContainer = ({ data }: { data: LectureItem[] }) => {
+const LectureContainer = ({ data }: { data: LectureDetailItem[] }) => {
   const oddList = data.filter((row, i) => !(i % 2) && row);
   const evenList = data.filter((row, i) => i % 2 && row);
 
