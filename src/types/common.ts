@@ -12,3 +12,6 @@ export type SortOption = {
   option: string;
   icon: string;
 };
+
+export type SetTeamNumber = 0 | 1;
+export type SetNumber = SetTeamNumber | 2;
