@@ -6,6 +6,7 @@ import type {
   EvaluatePostUpdate,
   EvaluateReportCreate,
   ExamPostCreate,
+  ExamPostPurChase,
   ExamPostUpdate,
   ExamReportCreate,
   RestrictionInfo,
@@ -60,7 +61,7 @@ const User = () => {
   // 시험 정보 구매이력
   const purchasedTestInfo = () => {
     try {
-      return instance.get('/exam-posts/purchase');
+      return instance.get<ExamPostPurChase[]>('/exam-posts/purchase');
     } catch (error) {
       const axiosError = error as AxiosError;
       console.error(axiosError.message);

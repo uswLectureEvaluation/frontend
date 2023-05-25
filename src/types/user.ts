@@ -92,6 +92,14 @@ export type ExamPostUpdate = Pick<
   'selectedSemester' | 'examInfo' | 'examType' | 'examDifficulty' | 'content'
 >;
 
+export interface ExamPostPurChase {
+  id: number;
+  lectureName: string;
+  professor: string;
+  majorType: string;
+  createDate: Date;
+}
+
 // my
 export interface UserProfileInfo extends UserId, UserEmail {
   point: number;
