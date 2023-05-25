@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { SetNumber, SetTeamNumber } from 'types/common';
+import { Review } from 'types/evaluate';
 import { floatFix } from 'utils/floatFix';
 
 const team = {
@@ -16,10 +18,14 @@ const difficulty = {
   2: { color: 'purple', text: '까다로움' },
 };
 
-const EvaluationDetail = ({ lecture }) => {
-  const teamSet = team[lecture.team];
-  const homeworkSet = homework[lecture.homework];
-  const difficultySet = difficulty[lecture.difficulty];
+interface EvaluationDetailProps {
+  lecture: Review;
+}
+
+const EvaluationDetail = ({ lecture }: EvaluationDetailProps) => {
+  const teamSet = team[lecture.team as SetTeamNumber];
+  const homeworkSet = homework[lecture.homework as SetNumber];
+  const difficultySet = difficulty[lecture.difficulty as SetNumber];
 
   return (
     <StarFlex id="top">
