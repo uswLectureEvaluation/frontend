@@ -1,54 +1,35 @@
 import styled from '@emotion/styled';
-import { useQuery } from 'react-query';
 import { User } from 'api';
-import { Spinner } from 'components';
+import { useQuery } from 'react-query';
 import { AppContainer } from 'styles/common';
 
 const HistoryTest = () => {
   const user = User();
-  const { data: purchased, isLoading } = useQuery(
-    ['myInfo', 'purchasedTestInfo'],
-    user.purchasedTestInfo
-  );
-  if (isLoading) return <Spinner id="myInfo" />;
-  const purchasedTestInfo = purchased.data;
+  const { data } = useQuery(['myInfo', 'purchasedTestInfo'], user.purchasedTestInfo);
 
   return (
     <AppContainer>
       <AppTitle>구매이력</AppTitle>
-
-      {purchasedTestInfo.map((item) => {
+      {data?.data.map((item) => {
         return (
-          <NoticeItem
-            title={item.lectureName}
-            professor={item.professor}
-            major={item.majorType}
-            createDate={item.createDate.slice(0, 10)}
-            key={item.id}
-          />
+          <NoticeWrap key={item.id}>
+            <Option>{item.createDate.getFullYear()}</Option>
+            <TitleWrapper>
+              <Title>{item.lectureName}</Title>
+              <Professor>
+                {item.majorType} | {item.professor}
+              </Professor>
+            </TitleWrapper>
+            <MobileTitleWrapper>
+              <Professor>
+                {item.majorType} | {item.professor}
+              </Professor>
+              <Title>{item.lectureName}</Title>
+            </MobileTitleWrapper>
+          </NoticeWrap>
         );
       })}
     </AppContainer>
-  );
-};
-
-const NoticeItem = ({ title, professor, major, createDate }) => {
-  return (
-    <NoticeWrap>
-      <Option>{createDate}</Option>
-      <TitleWrapper>
-        <Title>{title}</Title>
-        <Professor>
-          {major} | {professor}
-        </Professor>
-      </TitleWrapper>
-      <MobileTitleWrapper>
-        <Professor>
-          {major} | {professor}
-        </Professor>
-        <Title>{title}</Title>
-      </MobileTitleWrapper>
-    </NoticeWrap>
   );
 };
 
