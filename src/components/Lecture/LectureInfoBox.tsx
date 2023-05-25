@@ -3,14 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from 'components';
 import { floatFix } from 'utils/floatFix';
 import { LectureDetailItem } from 'types/lecture';
+import { SetNumber, SetTeamNumber } from 'types/common';
 
 interface LectureInfoBoxProps {
   current: LectureDetailItem;
   isLogin: boolean;
 }
-
-type SetTeamNumber = 0 | 1;
-type SetNumber = SetTeamNumber | 2;
 
 const LectureInfoBox = ({ current, isLogin }: LectureInfoBoxProps) => {
   const navigate = useNavigate();
