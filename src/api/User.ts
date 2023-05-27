@@ -14,6 +14,7 @@ import type {
 } from 'types/user';
 import { queryClient } from '../index';
 import JwtInterceptors from './ApiController';
+import { Review } from 'types/evaluate';
 
 const User = () => {
   const instance = JwtInterceptors().instance;
@@ -31,10 +32,10 @@ const User = () => {
   // 내가 쓴 글 - 강의평가
   const evaluateList = async (pageParam = 1) => {
     try {
-      const res = await instance(`/evaluate-posts/written/?page=${pageParam}`);
+      const { data } = await instance<Review[]>(`/evaluate-posts/written/?page=${pageParam}`);
       return {
-        data: res,
-        isLast: res.data.length < 10,
+        data,
+        isLast: data.length < 10,
         nextPage: pageParam + 1,
       };
     } catch (error) {

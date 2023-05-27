@@ -6,12 +6,13 @@ import { EvaluationDetail, WriteEvaluation, Spinner, Modal } from 'components';
 import useUserQuery from 'hooks/useUserQuery';
 import { floatFix } from 'utils/floatFix';
 import { User } from 'api';
+import { Review } from 'types/evaluate';
 
 const EvaluationList = () => {
   const { EvaluationList } = useUserQuery();
   const { data, isLoading, isFetchingNextPage, ref } = EvaluationList();
   if (isLoading) return <Spinner id="myInfo" />;
-  const isExistData = data?.pages[0].data.data.length === 0;
+  const isExistData = data?.pages[0]?.data.length === 0;
 
   return (
     <>
@@ -19,10 +20,9 @@ const EvaluationList = () => {
         <NoEvaluation>아직 평가한 강의가 없어요.</NoEvaluation>
       ) : (
         data?.pages.map((page) => {
-          let data = page.data.data;
           return (
-            <Wrapper key={page.nextPage}>
-              {data.map((row) => (
+            <Wrapper key={page?.nextPage}>
+              {page?.data.map((row) => (
                 <EvaluationCard key={row.id} row={row} />
               ))}
             </Wrapper>
@@ -36,15 +36,15 @@ const EvaluationList = () => {
   );
 };
 
-export const EvaluationCard = ({ row }) => {
+export const EvaluationCard = ({ row }: { row: Review }) => {
   const { deleteEvaluation } = User();
   const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const title = subStr(row.lectureName, 14);
-  const mobileTitle = subStr(row.lectureName, 8);
+  const title = subStr(row.lectureName!, 14);
+  const mobileTitle = subStr(row.lectureName!, 8);
 
   const onDelete = () => {
-    window.confirm('강의평가를 삭제하시겠습니까?') && deleteEvaluation(row.id);
+    if (window.confirm('강의평가를 삭제하시겠습니까?')) deleteEvaluation(row.id!.toString());
   };
 
   return (
@@ -54,13 +54,7 @@ export const EvaluationCard = ({ row }) => {
           <MobileWrapper id="top">
             <YearText>{row.selectedSemester}</YearText>
             <div>
-              <DeleteButton
-                onClick={() => {
-                  onDelete();
-                }}
-              >
-                삭제
-              </DeleteButton>
+              <DeleteButton onClick={onDelete}>삭제</DeleteButton>
               <EditButton onClick={() => setModalIsOpen(true)}>수정</EditButton>
             </div>
           </MobileWrapper>
@@ -78,12 +72,7 @@ export const EvaluationCard = ({ row }) => {
             <Major id="border">|</Major>
             <Professor>{row.professor}</Professor>
           </TitleWrapper>
-          <DeleteButton
-            id="pc"
-            onClick={() => {
-              onDelete();
-            }}
-          >
+          <DeleteButton id="pc" onClick={onDelete}>
             삭제
           </DeleteButton>
           <EditButton id="pc" onClick={() => setModalIsOpen(true)}>
@@ -101,10 +90,10 @@ export const EvaluationCard = ({ row }) => {
             svgIconPath="M17.563,21.56a1,1,0,0,1-.466-.115L12,18.765l-5.1,2.68a1,1,0,0,1-1.451-1.054l.974-5.676L2.3,10.7A1,1,0,0,1,2.856,8.99l5.7-.828L11.1,3A1.04,1.04,0,0,1,12.9,3l2.549,5.164,5.7.828A1,1,0,0,1,21.7,10.7l-4.124,4.02.974,5.676a1,1,0,0,1-.985,1.169Z"
             svgIconViewBox="0 0 24 24"
           />
-          <Rate>{floatFix(row.totalAvg, 1)}</Rate>
+          <Rate>{floatFix(row.totalAvg!, 1)}</Rate>
           <ModalOpen
             onClick={() => {
-              setModal(!modal);
+              setModal((prevModal) => !prevModal);
             }}
           >
             {modal ? '간략히' : '자세히'}

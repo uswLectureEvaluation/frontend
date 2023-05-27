@@ -18,10 +18,6 @@ export interface Review extends ReviewBase {
   totalAvg?: number;
 }
 
-export interface ReviewResponse {
-  data: Review[];
-}
-
 export interface PostReviewRequest extends ReviewBase {
   lectureName: string;
   professor: string;
