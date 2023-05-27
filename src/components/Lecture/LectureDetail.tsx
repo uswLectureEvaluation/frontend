@@ -6,7 +6,7 @@ const LectureDetail = () => {
   const { Detail } = useLectureQuery();
   const { data, isLoading, isLogin } = Detail();
 
-  if (isLoading) return <LectureInfoBox isLogin={true} current={fakeLectureInfo} />;
+  if (isLoading || !data) return <LectureInfoBox current={fakeLectureInfo} />;
   return <LectureInfoBox isLogin={isLogin} current={isLogin ? data.data : fakeLectureInfo} />;
 };
 

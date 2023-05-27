@@ -7,10 +7,10 @@ import { SetNumber, SetTeamNumber } from 'types/common';
 
 interface LectureInfoBoxProps {
   current: LectureDetailItem;
-  isLogin: boolean;
+  isLogin?: boolean;
 }
 
-const LectureInfoBox = ({ current, isLogin }: LectureInfoBoxProps) => {
+const LectureInfoBox = ({ current, isLogin = true }: LectureInfoBoxProps) => {
   const navigate = useNavigate();
   const teamSet = Math.floor(current.lectureTeamAvg ?? 0) as SetTeamNumber;
   const homeworkSet = Math.floor(current.lectureHomeworkAvg ?? 0) as SetNumber;

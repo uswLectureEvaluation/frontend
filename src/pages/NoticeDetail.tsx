@@ -7,21 +7,20 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 export const NoticeBox = () => {
   const notice = Notice();
   const [searchParams] = useSearchParams();
-  const id = searchParams.get('id');
-  const { data: detail, isLoading } = useQuery(['notice_detail', id], () => notice.detail(id), {
+  const id = searchParams.get('id') as string;
+  const { data, isLoading } = useQuery(['notice_detail', id], () => notice.detail(id), {
     cacheTime: 1000 * 60 * 60,
     staleTime: 1000 * 60 * 60,
   });
   if (isLoading) return <Spinner id="notice" />;
-  const { data: item } = detail;
-  const content = item.content.split('\n');
+  const contents = data?.data.content.split('\n');
 
   return (
     <Content>
-      <Title>{item.title}</Title>
-      {content.map((row, index) => (
-        <div key={id + index}>
-          {row}
+      <Title>{data?.data.title}</Title>
+      {contents?.map((content) => (
+        <div key={content}>
+          {content}
           <br />
         </div>
       ))}
