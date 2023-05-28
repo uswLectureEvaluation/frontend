@@ -1,20 +1,32 @@
 import styled from '@emotion/styled';
 import { User } from 'api';
+import { ExamPost } from 'types/exam';
 
-const SearchTestInfoList = ({ page, isLogin }) => {
-  return page.map((lecture) => (
-    <div key={lecture.id} style={{ filter: !isLogin ? 'blur(10px)' : null }}>
-      <Subject lecture={lecture} />
-    </div>
-  ));
+interface SearchTestInfoListProps {
+  page: ExamPost[];
+  isLogin: boolean;
+}
+
+type ExamDiff = '매우 쉬움' | '쉬움' | '보통' | '어려움' | '매우 어려움';
+
+const SearchTestInfoList = ({ page, isLogin }: SearchTestInfoListProps) => {
+  return (
+    <>
+      {page.map((lecture) => (
+        <div key={lecture.id} style={{ filter: !isLogin ? 'blur(10px)' : undefined }}>
+          <Subject lecture={lecture} />
+        </div>
+      ))}
+    </>
+  );
 };
 
-export const Subject = ({ lecture }) => {
+export const Subject = ({ lecture }: { lecture: ExamPost }) => {
   const user = User();
   const examDifficultySet = lecture.examDifficulty;
   const onReport = () => {
     if (window.confirm('정말 신고하시겠어요? \n*허위 신고 시 제재가 가해질 수 있습니다!'))
-      user.reportExamInfo({ examIdx: lecture.id });
+      user.reportExamInfo({ examIdx: lecture.id, content: lecture.content });
   };
   const examDifficulty = {
     '매우 쉬움': <DataColor id="cyan">매우 쉬움</DataColor>,
@@ -41,7 +53,7 @@ export const Subject = ({ lecture }) => {
             <FlexContainer id="col">
               <StarFlex id="between">
                 난이도
-                <StarFlex id="data">{examDifficulty[examDifficultySet]}</StarFlex>
+                <StarFlex id="data">{examDifficulty[examDifficultySet as ExamDiff]}</StarFlex>
               </StarFlex>
             </FlexContainer>
             <FlexContainer id="col">

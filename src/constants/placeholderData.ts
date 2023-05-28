@@ -1,4 +1,5 @@
 import type { SortOption } from 'types/common';
+import { ExamPost } from 'types/exam';
 import type { LectureDetailItem } from 'types/lecture';
 import createFakeData from 'utils/fakeData';
 
@@ -20,8 +21,8 @@ export const fakeLectureInfo: LectureDetailItem = {
 
 export const fakeLectureList = createFakeData(10, () => fakeLectureInfo);
 
-export const fakeEvaluationList = createFakeData(3, (i) => ({
-  id: 'fake' + i,
+export const fakeEvaluationList: ExamPost[] = createFakeData(3, (i) => ({
+  id: i,
   selectedSemester: '0000-0',
   title: 'suwiki',
   learning: 0.0,
