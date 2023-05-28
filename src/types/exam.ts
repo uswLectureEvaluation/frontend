@@ -1,4 +1,4 @@
-interface ExamPost {
+export interface ExamPost {
   id: number;
   selectedSemester: string;
   examInfo: string;
