@@ -7,8 +7,18 @@ import {
   semesters,
 } from 'constants/placeholderData';
 import useWriteEvaluation from 'hooks/useWriteEvaluation';
+import type { Review } from 'types/evaluate';
 
-const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
+interface WriteEvaluationProps {
+  row: Review;
+  setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  type: string;
+}
+
+type SliderId = 'honey' | 'learning' | 'satisfaction';
+type LectureId = 'team' | 'homework' | 'difficulty';
+
+const WriteEvaluation = ({ setModalIsOpen, row, type }: WriteEvaluationProps) => {
   const {
     selectedSemester,
     SliderOptions,
@@ -36,7 +46,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
         <Content id="group">
           <ContentTitle>수강학기</ContentTitle>
           <SemesterSelect
-            list={semesters(row.semesterList)}
+            list={semesters(row.semesterList!)}
             selected={selectedSemester}
             setSelect={setSelectedSemester}
           />
@@ -44,13 +54,13 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
         <MobileContent id="semester">
           <ContentTitle id="mobile">수강학기</ContentTitle>
           <SemesterSelect
-            list={semesters(row.semesterList)}
+            list={semesters(row.semesterList!)}
             selected={selectedSemester}
             setSelect={setSelectedSemester}
           />
         </MobileContent>
         {EvaluationSliderOptions.map(({ id, name }) => {
-          const { state, Slider } = SliderOptions[id];
+          const { state, Slider } = SliderOptions[id as SliderId];
           return (
             <Fragment key={id}>
               <Content>
@@ -78,7 +88,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
                   name={id}
                   id={level}
                   value={value}
-                  defaultChecked={lectureOptions[id] === value}
+                  defaultChecked={lectureOptions[id as LectureId] === value}
                 />
                 <FormCheckText>{name}</FormCheckText>
               </label>
@@ -90,7 +100,7 @@ const WriteEvaluation = ({ setModalIsOpen, row, type }) => {
         placeholder="강의평가를 작성해주세요 :)"
         defaultValue={content}
         onChange={onChangeContent}
-        rows="15"
+        rows={15}
       />
       <Wrapper id="button">
         <EditButton onClick={onEvaluate}>
