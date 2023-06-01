@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { OptionBox, SelectedOption, Arrows, Options, Option } from 'styles/common';
 
-const SemesterSelect = ({ list, selected, setSelect }) => {
+interface SemesterSelectProps {
+  list: string[];
+  selected: string;
+  setSelect: React.Dispatch<string>;
+}
+
+const SemesterSelect = ({ list, selected, setSelect }: SemesterSelectProps) => {
   const [modal, setModal] = useState(false);
   return (
     <OptionBox
@@ -16,7 +22,7 @@ const SemesterSelect = ({ list, selected, setSelect }) => {
       <Arrows src={`/images/icon_${modal ? 'up' : 'down'}_arrow_solid_24.svg`} />
       {modal && (
         <Options id="semester">
-          {list.map((semester) => {
+          {list.map((semester: string) => {
             return (
               <Option
                 id={selected === semester ? 'selected' : undefined}
