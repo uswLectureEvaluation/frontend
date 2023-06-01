@@ -22,7 +22,7 @@ const SemesterSelect = ({ list, selected, setSelect }: SemesterSelectProps) => {
       <Arrows src={`/images/icon_${modal ? 'up' : 'down'}_arrow_solid_24.svg`} />
       {modal && (
         <Options id="semester">
-          {list.map((semester: string) => {
+          {list.map((semester) => {
             return (
               <Option
                 id={selected === semester ? 'selected' : undefined}
