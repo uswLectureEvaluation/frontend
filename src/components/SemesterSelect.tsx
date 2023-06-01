@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { OptionBox, SelectedOption, Arrows, Options, Option } from 'styles/common';
 
-const SemesterSelect = ({ list, selected, setSelect }) => {
+interface SemesterSelectProps {
+  list: string[];
+  selected: string;
+  setSelect: React.Dispatch<string>;
+}
+
+const SemesterSelect = ({ list, selected, setSelect }: SemesterSelectProps) => {
   const [modal, setModal] = useState(false);
   return (
     <OptionBox
