@@ -15,7 +15,9 @@ export const type = async (Authorization: string) => {
 
 export const searchFavorite = async (Authorization: string) => {
   try {
-    const { data } = await axios.get(`/user/favorite-major`, { headers: { Authorization } });
+    const { data } = await axios.get(`/user/favorite-major`, {
+      headers: { Authorization },
+    });
     return data;
   } catch (error) {
     const axiosError = error as AxiosError;

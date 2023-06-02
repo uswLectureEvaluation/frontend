@@ -9,13 +9,8 @@ const MajorSelect = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const majorType = searchParams.get('majorType') || '전체';
 
-  const handleOptionBoxClick = () => {
-    setModalIsOpen(true);
-  };
-
-  const handleModalRequestClose = () => {
-    setModalIsOpen(false);
-  };
+  const handleOptionBoxClick = () => setModalIsOpen(true);
+  const handleModalRequestClose = () => setModalIsOpen(false);
 
   return (
     <>
