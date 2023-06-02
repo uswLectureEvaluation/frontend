@@ -6,7 +6,7 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { getStorage, isLoginStorage, setStorage } from 'utils/loginStorage';
 
-const useFavoriteMajor = (setModalIsOpen) => {
+const useFavoriteMajor = (setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>) => {
   const { favoriting, unfavoriting } = Major();
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,13 +16,13 @@ const useFavoriteMajor = (setModalIsOpen) => {
   const majorType = searchParams.get('majorType') || '전체';
   const option = searchParams.get('option') || 'modifiedDate';
 
-  const [db, setData] = useState([]);
-  const [favoriteDb, setFavoriteDb] = useState([]);
+  const [db, setData] = useState<string[]>([]);
+  const [favoriteDb, setFavoriteDb] = useState<string[]>([]);
   const [selectedMajor, setSelectedMajor] = useState(majorType);
   const token = useRecoilValue(tokenState);
 
   // 즐겨찾기 추가/삭제
-  const onFavoriteMajor = (e) => {
+  const onFavoriteMajor = (e: any) => {
     if (!isLoginStorage()) {
       alert('로그인 후 이용해주세요');
       navigate('/login');
@@ -49,15 +49,15 @@ const useFavoriteMajor = (setModalIsOpen) => {
   };
 
   // 전공 선택 변경
-  const majorChange = (e) => {
-    setSelectedMajor(e.target.value);
-  };
+  const majorChange = (e: any) => setSelectedMajor(e.target.value);
 
   // 즐겨찾기 리스트 불러오기
   useEffect(() => {
     const loadList = async () => {
-      const data = await searchFavorite(token);
-      setFavoriteDb(data.data);
+      if (token) {
+        const { data } = await searchFavorite(token);
+        setFavoriteDb(data as string[]);
+      }
     };
     if (isLoginStorage()) {
       loadList();
@@ -67,13 +67,15 @@ const useFavoriteMajor = (setModalIsOpen) => {
   // 전공 리스트 불러오기
   useEffect(() => {
     const getList = async () => {
-      const data = await type(token);
-      setStorage('majorType', ['전체', data.data]);
-      setData(['전체', data.data]);
+      if (token) {
+        const data = await type(token);
+        setStorage('majorType', ['전체', data.data]);
+        setData(['전체', data.data]);
+      }
     };
     const loadList = () => {
       const data = getStorage('majorType');
-      setData(data.split(','));
+      if (data) setData(data.split(','));
     };
     getStorage('majorType') ? loadList() : getList();
   }, [token]);
