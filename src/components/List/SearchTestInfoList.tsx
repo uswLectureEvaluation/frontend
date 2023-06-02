@@ -7,7 +7,7 @@ interface SearchTestInfoListProps {
   isLogin: boolean;
 }
 
-type ExamDiff = '매우 쉬움' | '쉬움' | '보통' | '어려움' | '매우 어려움';
+export type ExamDiff = '매우 쉬움' | '쉬움' | '보통' | '어려움' | '매우 어려움';
 
 const SearchTestInfoList = ({ page, isLogin }: SearchTestInfoListProps) => {
   return (

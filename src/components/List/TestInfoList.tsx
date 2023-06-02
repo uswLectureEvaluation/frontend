@@ -4,24 +4,25 @@ import { WriteTestInfo, Spinner, Modal } from 'components';
 import { subStr } from 'utils/subString';
 import useUserQuery from 'hooks/useUserQuery';
 import { User } from 'api';
+import type { MyExam } from 'types/exam';
+import { ExamDiff } from './SearchTestInfoList';
 
 const TestInfoList = () => {
   const { TestInfoList } = useUserQuery();
   const { data, isLoading, isFetchingNextPage, ref } = TestInfoList();
-  const isExistData = data?.pages[0].data.data.length === 0;
+  const isExistData = data?.pages[0]?.data.length === 0;
 
-  if (isLoading) return <Spinner id="myInfo" />;
+  if (isLoading || !data) return <Spinner id="myInfo" />;
 
   return (
     <>
       {isExistData ? (
         <NoEvaluation>아직 평가한 강의가 없어요.</NoEvaluation>
       ) : (
-        data?.pages.map((page) => {
-          let data = page.data.data;
+        data.pages.map((page) => {
           return (
-            <Wrapper key={page.nextPage}>
-              {data.map((row) => (
+            <Wrapper key={page?.nextPage}>
+              {page?.data.map((row) => (
                 <TestInfoCard key={row.id} row={row} />
               ))}
             </Wrapper>
@@ -35,14 +36,14 @@ const TestInfoList = () => {
   );
 };
 
-export const TestInfoCard = ({ row }) => {
+export const TestInfoCard = ({ row }: { row: MyExam }) => {
   const { deleteExamInfo } = User();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   let title = subStr(row.lectureName, 14);
   let mobileTitle = subStr(row.lectureName, 14);
 
   const onDelete = () => {
-    window.confirm('시험정보를 삭제하시겠습니까?') && deleteExamInfo(row.id);
+    window.confirm('시험정보를 삭제하시겠습니까?') && deleteExamInfo(row.id.toString());
   };
 
   const examDifficultySet = row.examDifficulty;
@@ -59,13 +60,7 @@ export const TestInfoCard = ({ row }) => {
     <div style={{ marginTop: '15px' }}>
       <LectureWrapper>
         <MarginTop id="top">
-          <DeleteButton
-            onClick={() => {
-              onDelete();
-            }}
-          >
-            삭제
-          </DeleteButton>
+          <DeleteButton onClick={onDelete}>삭제</DeleteButton>
           <EditButton onClick={() => setModalIsOpen(true)}>수정</EditButton>
           <TitleWrapper>
             <YearText>{row.selectedSemester}</YearText>
@@ -81,13 +76,7 @@ export const TestInfoCard = ({ row }) => {
         <MobileMarginTop>
           <div style={{ marginBottom: '20px' }}>
             <div>
-              <DeleteButton
-                onClick={() => {
-                  onDelete();
-                }}
-              >
-                삭제
-              </DeleteButton>
+              <DeleteButton onClick={onDelete}>삭제</DeleteButton>
               <EditButton onClick={() => setModalIsOpen(true)}>수정</EditButton>
             </div>
             <div>
@@ -108,7 +97,7 @@ export const TestInfoCard = ({ row }) => {
             <FlexContainer id="col">
               <StarFlex id="between">
                 난이도
-                <StarFlex id="data">{examDifficulty[examDifficultySet]}</StarFlex>
+                <StarFlex id="data">{examDifficulty[examDifficultySet as ExamDiff]}</StarFlex>
               </StarFlex>
             </FlexContainer>
             <FlexContainer id="col">

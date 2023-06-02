@@ -1,4 +1,5 @@
 export interface ReviewBase {
+  id: number;
   selectedSemester: string;
   satisfaction: number;
   learning: number;
@@ -9,14 +10,15 @@ export interface ReviewBase {
   content: string;
 }
 
-export interface Review extends ReviewBase {
-  id: number;
-  lectureName?: string;
-  professor?: string;
-  majorType?: string;
-  semesterList?: string;
-  totalAvg?: number;
+export interface ReviewOptions {
+  lectureName: string;
+  professor: string;
+  majorType: string;
+  semesterList: string;
+  totalAvg: number;
 }
+
+export interface Review extends ReviewBase, ReviewOptions {}
 
 export interface PostReviewRequest extends ReviewBase {
   lectureName: string;

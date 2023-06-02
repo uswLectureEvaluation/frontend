@@ -1,3 +1,5 @@
+import type { ReviewOptions } from './evaluate';
+
 export interface ExamPost {
   id: number;
   selectedSemester: string;
@@ -6,6 +8,8 @@ export interface ExamPost {
   examDifficulty: string;
   content: string;
 }
+
+export interface MyExam extends ExamPost, ReviewOptions {}
 
 export interface ExamPostsResponse {
   data: ExamPost[];
