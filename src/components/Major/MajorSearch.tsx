@@ -4,7 +4,11 @@ import { Fragment, useState } from 'react';
 import { TextField } from '@mui/material';
 import useFavoriteMajor from 'hooks/useFavoriteMajor';
 
-const MajorSearch = ({ setModalIsOpen }) => {
+const MajorSearch = ({
+  setModalIsOpen,
+}: {
+  setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [searchMajor, setSearchMajor] = useState('');
   const [all, setAll] = useState(true);
   const { db, favoriteDb, majorChange, majorType, onFavoriteMajor, clickSubmit } =
@@ -26,10 +30,10 @@ const MajorSearch = ({ setModalIsOpen }) => {
         />
       </InputWrapper>
       <TabWrapper>
-        <TabMenu id={all ? 'selected' : null} onClick={() => setAll(true)}>
+        <TabMenu id={all ? 'selected' : undefined} onClick={() => setAll(true)}>
           전체
         </TabMenu>
-        <TabMenu id={all ? null : 'selected'} onClick={() => setAll(false)}>
+        <TabMenu id={all ? undefined : 'selected'} onClick={() => setAll(false)}>
           즐겨찾기
         </TabMenu>
       </TabWrapper>

@@ -9,7 +9,7 @@ import {
 import useWriteEvaluation from 'hooks/useWriteEvaluation';
 import type { Review } from 'types/evaluate';
 
-interface WriteEvaluationProps {
+export interface WriteEvaluationProps {
   row: Review;
   setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   type: string;
