@@ -1,3 +1,5 @@
+import type { ExamPost } from './exam';
+
 export interface ReviewBase {
   id: number;
   selectedSemester: string;
@@ -18,7 +20,7 @@ export interface ReviewOptions {
   totalAvg: number;
 }
 
-export interface Review extends ReviewBase, ReviewOptions {}
+export interface Review extends ExamPost, ReviewBase, ReviewOptions {}
 
 export interface PostReviewRequest extends ReviewBase {
   lectureName: string;
