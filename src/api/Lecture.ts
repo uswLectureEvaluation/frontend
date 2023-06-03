@@ -2,6 +2,7 @@ import { AxiosError } from 'axios';
 import { ExamPostsResponse } from 'types/exam';
 import type { LectureDetailItem, MainLecture } from 'types/lecture';
 import JwtInterceptors from './ApiController';
+import { Review } from 'types/evaluate';
 
 const Lecture = () => {
   const instance = JwtInterceptors().instance;
@@ -56,10 +57,12 @@ const Lecture = () => {
   // 검색 결과 자세히보기 (Evaluation)
   const evaluation = async (selectId: string, pageParam = 1) => {
     try {
-      const result = await instance.get(`/evaluate-posts/?lectureId=${selectId}&page=${pageParam}`);
+      const { data } = await instance.get<Review[]>(
+        `/evaluate-posts/?lectureId=${selectId}&page=${pageParam}`
+      );
       return {
-        data: result,
-        isLast: result.data.length < 10,
+        data,
+        isLast: data.length < 10,
         nextPage: pageParam + 1,
       };
     } catch (error) {

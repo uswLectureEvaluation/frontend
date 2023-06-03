@@ -6,6 +6,7 @@ import { EvaluationDetail, Spinner } from 'components';
 import { fakeEvaluationList } from 'constants/placeholderData';
 import useLectureQuery from 'hooks/useLectureQuery';
 import { floatFix } from 'utils/floatFix';
+import { Review } from 'types/evaluate';
 
 export const FakeList = () => {
   return (
@@ -19,22 +20,28 @@ export const FakeList = () => {
   );
 };
 
-const SearchEvaluationList = ({ selectId, setWritten, isLogin }) => {
+interface SearchEvaluationListProps {
+  selectId: string;
+  setWritten: React.Dispatch<React.SetStateAction<boolean>>;
+  isLogin: boolean;
+}
+
+const SearchEvaluationList = ({ selectId, setWritten, isLogin }: SearchEvaluationListProps) => {
   const { Evaluation } = useLectureQuery();
   const { data, isLoading, isFetchingNextPage, ref } = Evaluation(selectId, setWritten);
-  if (isLoading) return <Spinner id="nextPage" />;
 
-  const pages = data?.pages;
-  const count = data?.pages[0].data.data.length;
+  if (isLoading || !data) return <Spinner id="nextPage" />;
+
+  const count = data.pages[0]?.data.length;
 
   return !isLogin ? (
     <FakeList />
   ) : count !== 0 ? (
     <Wrapper>
-      <div style={{ filter: !isLogin ? 'blur(10px)' : null }}>
-        {pages?.map((page) => (
-          <Fragment key={page.nextPage}>
-            {page.data.data.map((lecture) => (
+      <div style={{ filter: !isLogin ? 'blur(10px)' : undefined }}>
+        {data.pages?.map((page) => (
+          <Fragment key={page?.nextPage}>
+            {page?.data.map((lecture) => (
               <Subject key={lecture.id} lecture={lecture} />
             ))}
           </Fragment>
@@ -51,12 +58,12 @@ const SearchEvaluationList = ({ selectId, setWritten, isLogin }) => {
   );
 };
 
-export const Subject = ({ lecture }) => {
+export const Subject = ({ lecture }: { lecture: Review }) => {
   const user = User();
   const [modal, setModal] = useState(false);
   const onReport = () => {
     if (window.confirm('정말 신고하시겠어요? \n*허위 신고 시 제재가 가해질 수 있습니다!'))
-      user.reportEvaluation({ evaluateIdx: lecture.id });
+      user.reportEvaluation({ evaluateIdx: lecture.id, content: '신고' });
   };
 
   return (

@@ -1,5 +1,5 @@
 import type { SortOption } from 'types/common';
-import { ExamPost } from 'types/exam';
+import type { Review } from 'types/evaluate';
 import type { LectureDetailItem } from 'types/lecture';
 import createFakeData from 'utils/fakeData';
 
@@ -21,22 +21,25 @@ export const fakeLectureInfo: LectureDetailItem = {
 
 export const fakeLectureList = createFakeData(10, () => fakeLectureInfo);
 
-export const fakeEvaluationList: ExamPost[] = createFakeData(3, (i) => ({
+export const fakeEvaluationList: Review[] = createFakeData(3, (i) => ({
   id: i,
   selectedSemester: '0000-0',
-  title: 'suwiki',
+  lectureName: 'suwiki',
+  professor: 'unknown',
+  majorType: 'unknown',
+  semesterList: 'unknown',
+  totalAvg: 0.0,
   learning: 0.0,
   honey: 0.0,
   satisfaction: 0.0,
-  totalAvg: 0.0,
   homework: 0.0,
   difficulty: 0.0,
   team: 0.0,
-  examDifficulty: '보통',
-  examInfo: '보통, 보통, 보통',
-  examType: '중간고사',
   content:
     'suwiki-lecture-content-placeholder suwiki-lecture-content-placeholder suwiki-lecture-content-placeholder suwiki-lecture-content-placeholder',
+  examInfo: '보통, 보통, 보통',
+  examType: '중간고사',
+  examDifficulty: '보통',
 }));
 
 export const fakeUserInfo = {
