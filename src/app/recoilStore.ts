@@ -1,12 +1,26 @@
 import { atom } from 'recoil';
+import { Review } from 'types/evaluate';
 
-export const lectureState = atom({
+export const lectureState = atom<Review>({
   key: 'lectureState',
   default: {
-    id: '',
+    id: -1,
     lectureName: '',
     professor: '',
     semesterList: '',
+    selectedSemester: '',
+    examInfo: '',
+    examType: '',
+    examDifficulty: '',
+    content: '',
+    satisfaction: -1,
+    learning: -1,
+    honey: -1,
+    team: -1,
+    difficulty: -1,
+    homework: -1,
+    majorType: '',
+    totalAvg: -1,
   },
 });
 
