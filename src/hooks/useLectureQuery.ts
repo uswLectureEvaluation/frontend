@@ -7,12 +7,13 @@ import { isLoginStorage } from 'utils/loginStorage';
 import { useSetRecoilState } from 'recoil';
 import { lectureState } from 'app/recoilStore';
 
+// 애러가 날 수 있는 hook
 const useLectureQuery = () => {
   const [searchParams] = useSearchParams();
   const setLectureInfo = useSetRecoilState(lectureState);
   const lecture = Lecture();
   const searchValue = searchParams.get('q') || '';
-  const selectId = searchParams.get('id');
+  const selectId = searchParams.get('id') || '';
   const option = searchParams.get('option') || 'modifiedDate';
   const majorType = searchParams.get('majorType') || '전체';
   const major = majorType === '전체' ? '' : majorType;
@@ -38,7 +39,7 @@ const useLectureQuery = () => {
       ({ pageParam = 1 }) => lecture.search(value, pageParam, option, major),
       {
         getNextPageParam: (lastPage) => {
-          if (!lastPage.isLast) return lastPage.nextPage;
+          if (lastPage && !lastPage.isLast) return lastPage.nextPage;
           return undefined;
         },
         keepPreviousData: true,
@@ -63,21 +64,23 @@ const useLectureQuery = () => {
         enabled: isLoginStorage(),
         onSuccess: (lecture) => {
           setLectureInfo({
-            id: selectId,
-            lectureName: lecture.data.lectureName,
-            professor: lecture.data.professor,
-            semesterList: lecture.data.semesterList,
+            id: Number(selectId),
+            lectureName: lecture!.data.lectureName,
+            professor: lecture!.data.professor,
+            semesterList: lecture!.data.semesterList,
             selectedSemester: '선택',
             satisfaction: 0.5,
             honey: 0.5,
             learning: 0.5,
-            team: undefined,
-            homework: undefined,
-            difficulty: undefined,
+            team: 0,
+            homework: 0,
+            difficulty: 0,
             examInfo: '',
             examType: '선택',
             examDifficulty: '',
             content: '',
+            majorType: '',
+            totalAvg: 0,
           });
         },
       }
@@ -86,17 +89,17 @@ const useLectureQuery = () => {
   };
 
   // 강의평가 쿼리(key: 강의id)
-  const Evaluation = (id, setWritten) => {
+  const Evaluation = (id: string, setWritten: any) => {
     const { ref, inView } = useInView();
     const { data, isFetchingNextPage, isLoading, fetchNextPage } = useInfiniteQuery(
       ['lecture', 'evaluationList', id],
       ({ pageParam = 1 }) => lecture.evaluation(id, pageParam),
       {
         getNextPageParam: (lastPage) => {
-          if (!lastPage.isLast) return lastPage.nextPage;
+          if (lastPage && !lastPage.isLast) return lastPage.nextPage;
           return undefined;
         },
-        onSuccess: (data) => setWritten(data.pages[0].data.written),
+        onSuccess: (data) => setWritten(data.pages[0]!.data),
         cacheTime: 0,
         staleTime: 0,
         enabled: isLoginStorage(),
@@ -111,17 +114,17 @@ const useLectureQuery = () => {
   };
 
   // 시험정보 쿼리(key: 강의id)
-  const TestInfo = (id, setWritten) => {
+  const TestInfo = (id: string, setWritten: any) => {
     const { ref, inView } = useInView();
     const { data, isFetchingNextPage, isLoading, fetchNextPage } = useInfiniteQuery(
       ['lecture', 'examList', id],
       ({ pageParam = 1 }) => lecture.examInfo(id, pageParam),
       {
         getNextPageParam: (lastPage) => {
-          if (!lastPage.isLast) return lastPage.nextPage;
+          if (lastPage && !lastPage.isLast) return lastPage.nextPage;
           return undefined;
         },
-        onSuccess: (data) => setWritten(data.pages[0].data.written),
+        onSuccess: (data) => setWritten(data.pages[0]!.data),
         cacheTime: 0,
         staleTime: 0,
         enabled: isLoginStorage(),

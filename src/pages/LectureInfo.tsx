@@ -20,6 +20,8 @@ const menu = [
   { name: '시험정보', option: '시험정보' },
 ];
 
+type CheckListNumber = 0 | 1;
+
 const LectureInfo = () => {
   const [check, setCheck] = useState('강의평가');
   const [written, setWritten] = useState(false);
@@ -27,7 +29,7 @@ const LectureInfo = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const lectureInfo = useRecoilValue(lectureState);
   const [searchparams] = useSearchParams();
-  const selectId = searchparams.get('id');
+  const selectId = searchparams.get('id') || '';
   const isLogin = isLoginStorage();
 
   const checkList = {
@@ -35,12 +37,12 @@ const LectureInfo = () => {
     1: <IsTestInfo selectId={selectId} setWritten={setWritten} />,
   };
   const menuList = menu.map((i, index) => (
-    <MenuTitle key={i.option} id={i.option} check={check} onClick={(e) => clickFunc(e, index)}>
+    <MenuTitle key={i.option} id={i.option} onClick={(e) => clickFunc(e, index)}>
       {i.name}
     </MenuTitle>
   ));
 
-  const clickFunc = (e, index) => {
+  const clickFunc = (e: any, index: number) => {
     setMenuCheck(index);
     setCheck(e.target.id);
   };
@@ -69,7 +71,7 @@ const LectureInfo = () => {
               }
             />
           </TitleWrapper>
-          {checkList[menuCheck]}
+          {checkList[menuCheck as CheckListNumber]}
         </Content>
       </Wrapper>
 
@@ -131,9 +133,6 @@ const MenuTitle = styled.li`
 
   &:hover {
     cursor: pointer;
-  }
-  &#${({ check }) => check} {
-    color: black;
   }
 `;
 

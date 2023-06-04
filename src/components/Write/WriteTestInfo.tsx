@@ -4,8 +4,17 @@ import { useMutation } from 'react-query';
 import { User } from 'api';
 import SemesterSelect from 'components/SemesterSelect';
 import { ExamSelectOptions, examTypes, semesters } from 'constants/placeholderData';
+import type { MyExam } from 'types/exam';
 
-const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
+type WriteTestProps = 'examDifficulty' | 'examInfo';
+
+interface WriteTestInfoProps {
+  setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  row: MyExam;
+  type: string;
+}
+
+const WriteTestInfo = ({ setModalIsOpen, row, type }: WriteTestInfoProps) => {
   const user = User();
   const [selectedSemester, setSelectedSemester] = useState(row.selectedSemester); //학기
   const [examType, setExamType] = useState(row.examType); //중간,기말
@@ -14,7 +23,7 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
     examInfo: row.examInfo.split(', '),
     examDifficulty: row.examDifficulty,
   }); //시험내용 옵션
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value, checked } = e.target;
     const { examInfo } = examOptions;
     const change = {
@@ -30,10 +39,10 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
         }
       },
     };
-    change[name]();
+    change[name as WriteTestProps]();
   };
   const examWriting = useMutation(() =>
-    user.writeExamInfo(row.selectId, {
+    user.writeExamInfo(row.id.toString(), {
       lectureName: row.lectureName,
       professor: row.professor,
       selectedSemester,
@@ -45,7 +54,7 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
   );
 
   const examInfoUpdate = useMutation(() =>
-    user.UpdateExamInfo(row.id, {
+    user.UpdateExamInfo(row.id.toString(), {
       selectedSemester,
       examInfo: examOptions.examInfo.join(', '),
       examType,
@@ -54,9 +63,6 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
     })
   );
 
-  const onChangeContent = (e) => {
-    setContent(e.target.value);
-  };
   const onTest = () => {
     if (selectedSemester === '' || selectedSemester === '선택') return alert('학기를 선택해주세요');
     if (examType === '' || examType === '선택') return alert('시험종류를 선택해주세요');
@@ -125,7 +131,7 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
                     name={id}
                     id={level}
                     value={value}
-                    defaultChecked={examOptions[id].includes(value)}
+                    defaultChecked={examOptions[id as WriteTestProps].includes(value)}
                   />
                   <FormCheckText>{name}</FormCheckText>
                 </label>
@@ -137,8 +143,8 @@ const WriteTestInfo = ({ setModalIsOpen, row, type }) => {
       <TextField
         placeholder="시험에 대한 정보, 공부법, 문제유형 등을 자유롭게 작성해주세요 :)"
         defaultValue={row.content}
-        onChange={onChangeContent}
-        rows="15"
+        onChange={(e) => setContent(e.target.value)}
+        rows={15}
       />
       <Wrapper id="button">
         <EditButton onClick={onTest}>
