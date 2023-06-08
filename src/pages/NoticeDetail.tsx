@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Notice } from 'api';
 import { Spinner } from 'components';
+import { CACHE_TIME } from 'constants/cacheTime';
 import { useQuery } from 'react-query';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -9,8 +10,8 @@ export const NoticeBox = () => {
   const [searchParams] = useSearchParams();
   const id = searchParams.get('id') as string;
   const { data, isLoading } = useQuery(['notice_detail', id], () => notice.detail(id), {
-    cacheTime: 1000 * 60 * 60,
-    staleTime: 1000 * 60 * 60,
+    cacheTime: CACHE_TIME.MINUTE_30,
+    staleTime: CACHE_TIME.MINUTE_30,
   });
   if (isLoading) return <Spinner id="notice" />;
   const contents = data?.data.content.split('\n');

@@ -1,11 +1,12 @@
 import { Lecture } from 'api';
+import { lectureState } from 'app/recoilStore';
+import { CACHE_TIME } from 'constants/cacheTime';
 import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { useInfiniteQuery, useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
-import { useInView } from 'react-intersection-observer';
-import { isLoginStorage } from 'utils/loginStorage';
 import { useSetRecoilState } from 'recoil';
-import { lectureState } from 'app/recoilStore';
+import { isLoginStorage } from 'utils/loginStorage';
 
 // 애러가 날 수 있는 hook
 const useLectureQuery = () => {
@@ -59,8 +60,8 @@ const useLectureQuery = () => {
       ['lecture', 'detail', selectId],
       () => lecture.detail(selectId),
       {
-        cacheTime: 0,
-        staleTime: 0,
+        cacheTime: CACHE_TIME.MINUTE_0,
+        staleTime: CACHE_TIME.MINUTE_0,
         enabled: isLoginStorage(),
         onSuccess: (lecture) => {
           setLectureInfo({
@@ -100,8 +101,8 @@ const useLectureQuery = () => {
           return undefined;
         },
         onSuccess: (data) => setWritten(data.pages[0]!.data),
-        cacheTime: 0,
-        staleTime: 0,
+        cacheTime: CACHE_TIME.MINUTE_0,
+        staleTime: CACHE_TIME.MINUTE_0,
         enabled: isLoginStorage(),
       }
     );
@@ -125,8 +126,8 @@ const useLectureQuery = () => {
           return undefined;
         },
         onSuccess: (data) => setWritten(data.pages[0]!.data),
-        cacheTime: 0,
-        staleTime: 0,
+        cacheTime: CACHE_TIME.MINUTE_0,
+        staleTime: CACHE_TIME.MINUTE_0,
         enabled: isLoginStorage(),
       }
     );
