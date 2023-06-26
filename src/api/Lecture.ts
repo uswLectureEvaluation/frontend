@@ -5,7 +5,7 @@ import JwtInterceptors from './ApiController';
 import { Review } from 'types/evaluate';
 
 const Lecture = () => {
-  const instance = JwtInterceptors().instance;
+  const { instance } = JwtInterceptors();
 
   // 메인페이지
   const main = async (lecture = 'modifiedDate', page = 1, majorType = '') => {

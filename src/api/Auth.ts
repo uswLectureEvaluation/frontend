@@ -17,7 +17,7 @@ import { tokenState } from '../app/recoilStore';
 import JwtInterceptors from './ApiController';
 
 const Auth = () => {
-  const instance = JwtInterceptors().instance;
+  const { instance } = JwtInterceptors();
   const setToken = useSetRecoilState(tokenState);
   const navigate = useNavigate();
 
