@@ -18,7 +18,7 @@ import { Review } from 'types/evaluate';
 import { MyExam } from 'types/exam';
 
 const User = () => {
-  const instance = JwtInterceptors().instance;
+  const { instance } = JwtInterceptors();
   // 내 정보
   const info = async () => {
     try {

@@ -3,7 +3,7 @@ import type { NoticeItem, NoticeDetail } from '../types/notice';
 import { AxiosError } from 'axios';
 
 const Notices = () => {
-  const instance = JwtInterceptors().instance;
+  const { instance } = JwtInterceptors();
   //공지사항 조회 api
   const list = async (pageParam = 1) => {
     try {

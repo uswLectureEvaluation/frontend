@@ -3,7 +3,7 @@ import JwtInterceptors from './ApiController';
 import { VersionCheckSuccess } from 'types/common';
 
 const Major = () => {
-  const instance = JwtInterceptors().instance;
+  const { instance } = JwtInterceptors();
 
   // 버전체크
   const version = async () => {
