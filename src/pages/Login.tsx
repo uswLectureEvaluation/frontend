@@ -1,24 +1,27 @@
 import styled from '@emotion/styled';
 import { Auth } from 'api';
 import { CssTextField } from 'components/Etc/CssTextField';
-import { KeyboardEvent, useRef } from 'react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { AuthWrapper, Container, Img } from 'styles/common';
 
 const Login = () => {
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm();
   const { login } = Auth();
-  const userId = useRef<HTMLInputElement>(null);
-  const password = useRef<HTMLInputElement>(null);
 
-  const loginAttempt = () =>
-    login({ loginId: userId.current!.value, password: password.current!.value });
-
-  const onKeypress = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key !== 'Enter') return;
-
-    loginAttempt();
+  const loginAttempt: SubmitHandler<FieldValues> = async (data) => {
+    const loginId = data.loginId as string;
+    const password = data.password as string;
+    await login({ loginId, password });
   };
+
+  const goIdSearch = () => navigate('/idsearch');
+  const goPwSearch = () => navigate('/pwsearch');
 
   return (
     <Container>
@@ -28,15 +31,14 @@ const Login = () => {
         <source srcSet="/images/signup.png" type="image/png" />
         <Img src="images/signup.svg" alt="signup" width={400} height={350} />
       </picture>
-      <AuthWrapper>
+      <AuthWrapper onSubmit={handleSubmit(loginAttempt)}>
         <Title>로그인</Title>
         <CssTextField
           variant="standard"
           margin="normal"
           required
           label="아이디"
-          inputRef={userId}
-          onKeyPress={onKeypress}
+          {...register('loginId')}
         />
         <CssTextField
           variant="standard"
@@ -44,20 +46,19 @@ const Login = () => {
           required
           label="비밀번호"
           type="password"
-          inputRef={password}
-          onKeyPress={onKeypress}
+          {...register('password')}
         />
         <SearchWrapper>
           <div>
-            <SearchButton type="button" onClick={() => navigate('/idsearch')}>
+            <SearchButton type="button" onClick={goIdSearch}>
               아이디 찾기
             </SearchButton>
-            <SearchButton type="button" onClick={() => navigate('/pwsearch')}>
+            <SearchButton type="button" onClick={goPwSearch}>
               비밀번호 찾기
             </SearchButton>
           </div>
         </SearchWrapper>
-        <Button background="#336af8" type="button" onClick={loginAttempt}>
+        <Button type="submit" disabled={isSubmitting}>
           로그인
         </Button>
       </AuthWrapper>
@@ -82,27 +83,29 @@ const Title = styled.div`
   }
 `;
 
-const Button = styled.button<{ background: string }>`
-  margin: 0;
-  padding: 0 1rem;
-  padding-top: 1rem;
+const Button = styled.button`
+  padding: 1rem;
   margin: 8px 0;
   border: none;
-  padding-bottom: 1rem;
-  background: ${(props) => props.background};
+  background: #336af8;
   color: white;
   font-size: 1.1rem;
   border-radius: 12px;
 
   font-weight: 600;
   cursor: pointer;
-  user-select: none;
   transition: 0.3s all;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
 
   @media only screen and (max-width: 550px) {
     margin-top: 5rem;
   }
 `;
+
 const SearchButton = styled.button`
   border: none;
   border-bottom: 1px solid;
