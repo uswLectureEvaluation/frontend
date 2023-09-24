@@ -1,4 +1,3 @@
-import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { AxiosResponseSuccess } from 'types/common';
@@ -16,6 +15,18 @@ import { removeStorage, setStorage } from 'utils/loginStorage';
 import { tokenState } from '../app/recoilStore';
 import JwtInterceptors from './ApiController';
 
+interface Errors {
+  response: {
+    data: {
+      code: string;
+      error: string;
+      exception: string;
+      message: string;
+      status: number;
+    };
+  };
+}
+
 const Auth = () => {
   const { instance } = JwtInterceptors();
   const setToken = useSetRecoilState(tokenState);
@@ -31,8 +42,8 @@ const Auth = () => {
       });
       if (res.success) navigate('/emailsignup', { state: data.email });
     } catch (error) {
-      const axiosError = error as AxiosError;
-      alert(axiosError.message);
+      const axiosError = error as Errors;
+      alert(axiosError.response.data.message);
     }
   };
 
@@ -44,8 +55,8 @@ const Auth = () => {
       if (!res.overlap) alert('사용가능합니다.');
       else alert('중복입니다.');
     } catch (error) {
-      const axiosError = error as AxiosError;
-      alert(axiosError.message);
+      const axiosError = error as Errors;
+      alert(axiosError.response.data.message);
     }
   };
 
@@ -57,8 +68,8 @@ const Auth = () => {
       if (!res.overlap) alert('사용가능합니다.');
       else alert('중복입니다.');
     } catch (error) {
-      const axiosError = error as AxiosError;
-      alert(axiosError.message);
+      const axiosError = error as Errors;
+      alert(axiosError.response.data.message);
     }
   };
 
@@ -68,8 +79,8 @@ const Auth = () => {
       const res: AxiosResponseSuccess = await instance.post('user/find-id', email);
       if (res.success) alert('해당 이메일로 아이디를 전송하였습니다');
     } catch (error) {
-      const axiosError = error as AxiosError;
-      alert(axiosError.message);
+      const axiosError = error as Errors;
+      alert(axiosError.response.data.message);
     }
   };
 
@@ -79,8 +90,8 @@ const Auth = () => {
       const res: AxiosResponseSuccess = await instance.post('user/find-pw', data);
       if (res.success) alert('해당 이메일로 임시 비밀번호를 발송하였습니다.');
     } catch (error) {
-      const axiosError = error as AxiosError;
-      alert(axiosError.message);
+      const axiosError = error as Errors;
+      alert(axiosError.response.data.message);
     }
   };
 
@@ -92,8 +103,8 @@ const Auth = () => {
       setToken(res.AccessToken);
       navigate('/');
     } catch (error) {
-      const axiosError = error as AxiosError;
-      alert(axiosError.message);
+      const axiosError = error as Errors;
+      alert(axiosError.response?.data?.message);
     }
   };
 
@@ -107,8 +118,8 @@ const Auth = () => {
         navigate('/');
       }
     } catch (error) {
-      const axiosError = error as AxiosError;
-      alert(axiosError.message);
+      const axiosError = error as Errors;
+      alert(axiosError.response.data.message);
     }
   };
 
@@ -122,8 +133,8 @@ const Auth = () => {
         navigate('/');
       }
     } catch (error) {
-      const axiosError = error as AxiosError;
-      alert(axiosError.message);
+      const axiosError = error as Errors;
+      alert(axiosError.response.data.message);
     }
   };
 
